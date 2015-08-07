@@ -175,7 +175,7 @@ networks  : one or more network addresses
 ```
  
 ----
-### Example 6
+### Example 6 :
 Display ipnetwork informations :
 
 ```
@@ -192,7 +192,7 @@ Usable      : 16777214
 ```
 
 ----
-### Example 7
+### Example 7 :
 Split network into cidr
 
 ```
@@ -218,7 +218,7 @@ Usable      : 8388606
 ```
 
 ----
-### Example 8
+### Example 8 :
 supernet networks into smallest possible subnets
 
 ```
@@ -235,7 +235,7 @@ Usable      : 510
 ```
 
 ----
-### Example 9
+### Example 9 :
 supernet networks into smallest possible subnets
 
 ```
@@ -261,7 +261,7 @@ Usable      : 254
 ```
 
 ----
-### Example 10
+### Example 10 :
 supernet networks into smallest possible subnets
 
 ```
@@ -277,7 +277,7 @@ Usable      : 65534
 ```
 
 ----
-### Example 11
+### Example 11 :
 Split network into cidr, display full network only
 
 ```
@@ -302,7 +302,7 @@ IPNetwork   : 10.240.0.0/12
 ```
 
 ----
-### Example 12
+### Example 12 :
 Test if an ip is contained in a network
 
 ```
@@ -313,7 +313,7 @@ C:\>ipnetwork -C 10.0.0.1 10.0.0.0/8 10.0.1.0/24
 ```
 
 ----
-### Example 13
+### Example 13 :
 Test if a network overlap another network
 
 ```
@@ -324,7 +324,7 @@ C:\>ipnetwork -o 10.0.0.1/24 10.0.0.0/8 10.0.1.0/24
 ```
 
 ----
-### Example 14
+### Example 14 :
 remove one ip from a class and regroup them into the smallest possible network
 
 ```
