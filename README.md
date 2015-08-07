@@ -11,7 +11,7 @@ IPNetwork utility classes take care of complex network, ip, netmask, subnet, cid
 /!\ Breaking changes as of version 2.0 : namespace changed from LukeSkywalker.IPNetwork to System.Net.IPNetwork
 
 ---
-### Example #1 :
+### Example 1 :
 ```
 IPNetwork ipnetwork = IPNetwork.Parse("192.168.168.100/24");
 
@@ -35,7 +35,7 @@ Cidr : 24
 ```
 
 ---
-### Example #2 :
+### Example 2 :
 
 ```
 IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.0/24");
@@ -73,7 +73,7 @@ Output
 ```
 
 ---
-### Example #3 :
+### Example 3 :
 ```
 IPNetwork iana_a_block = IPNetwork.IANA_ABLK_RESERVED1;
 IPNetwork iana_b_block = IPNetwork.IANA_BBLK_RESERVED1;
@@ -90,7 +90,7 @@ IANA_BBLK_RESERVED1 is 172.16.0.0/12
 IANA_CBLK_RESERVED1 is 192.168.0.0/16
 ```
 ---
-### Example #4 :
+### Example 4 :
 
 ```
 IPNetwork wholeInternet = IPNetwork.Parse("0.0.0.0/0");
@@ -120,7 +120,7 @@ All  :
 ```
 
 ---
-### Example #5 :
+### Example 5 :
 
 ```
 IPNetwork ipnetwork1 = IPNetwork.Parse("192.168.0.0/24");
@@ -175,7 +175,7 @@ networks  : one or more network addresses
 ```
  
 ----
-### Example 1
+### Example 6
 Display ipnetwork informations :
 
 ```
@@ -192,7 +192,7 @@ Usable      : 16777214
 ```
 
 ----
-### Example 2
+### Example 7
 Split network into cidr
 
 ```
@@ -218,7 +218,7 @@ Usable      : 8388606
 ```
 
 ----
-### Example 3
+### Example 8
 supernet networks into smallest possible subnets
 
 ```
@@ -235,7 +235,7 @@ Usable      : 510
 ```
 
 ----
-### Example 4
+### Example 9
 supernet networks into smallest possible subnets
 
 ```
@@ -261,7 +261,7 @@ Usable      : 254
 ```
 
 ----
-### Example 5
+### Example 10
 supernet networks into smallest possible subnets
 
 ```
@@ -277,7 +277,7 @@ Usable      : 65534
 ```
 
 ----
-### Example 6
+### Example 11
 Split network into cidr, display full network only
 
 ```
@@ -302,7 +302,7 @@ IPNetwork   : 10.240.0.0/12
 ```
 
 ----
-### Example 7
+### Example 12
 Test if an ip is contained in a network
 
 ```
@@ -313,7 +313,7 @@ C:\>ipnetwork -C 10.0.0.1 10.0.0.0/8 10.0.1.0/24
 ```
 
 ----
-### Example 8
+### Example 13
 Test if a network overlap another network
 
 ```
@@ -324,7 +324,7 @@ C:\>ipnetwork -o 10.0.0.1/24 10.0.0.0/8 10.0.1.0/24
 ```
 
 ----
-### Example 9
+### Example 14
 remove one ip from a class and regroup them into the smallest possible network
 
 ```
