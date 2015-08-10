@@ -1,23 +1,85 @@
 <?xml version="1.0"?>
 <project name="IPNetwork" default="main" basedir=".">
 
-   <property name="ipnetwork.sln" value="..\ipnetwork.sln" />
+   <property name="ipnetwork.sln" value="..\solution\ipnetwork.sln" />
    <property name="doc.base" value="${project::get-base-directory()}\..\doc" />
    <property name="doc.doxygen" value="${doc.base}\Doxyfile" />
-   <property name="release.version" value="1.3.2" />
+   <property name="release.version" value="2.0.1" />
    <property name="release.doc" value="..\doc\html" />
    <property name="release.base" value="..\release" />
+   <property name="src.base" value="..\" />
    <property name="release.zip" value="${release.base}\IPNetwork-${release.version}.zip" />
    <property name="release.temp" value="${release.base}\temp" />
-   <property name="build.dir" value="..\LukeSkywalker.IPNetwork.ConsoleApplication\bin\Release\" />
+   <property name="build.dir" value="..\solution\binaries\Release" />
+   
+   <property name="nuget.base" value="${release.base}\nuget\${release.version}" />
+   <property name="nuget.bin" value="C:\Program Files (x86)\bin\nuget.exe" />
+   
+   <property name="mstest.bin" value="C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe" />
+   <property name="mstest.base" value="${build.dir}" />
+   <property name="mstest.args" value="System.Net.IPNetwork.TestProject.dll" />
+   
 
 	<target name="main" description="Do the full integration process.">
-		<echo message="Starting integration process." />
+		
+
+		<call target="prerelease" />
+		<call target="postrelease" />
+
+		<sleep seconds="5" />
+
 		<call target="build" />
+		<call target="mstest" />
 		<call target="doxygen" />
 		<call target="copy" />
+		<call target="nuget" />
 		<call target="zip" />
 		<call target="clean" />
+
+		<call target="postrelease" />
+		
+		
+	</target>
+	
+	<target name="prerelease">
+	
+		<echo>
+		
+	Before you release:
+	
+		- Change version numbers in :
+		
+			..\solution\System.Net.IPNetwork\Properties\AssemblyInfo.cs
+			..\solution\System.Net.IPNetwork.ConsoleApplication\Properties\AssemblyInfo.cs
+			..\solution\\System.Net.IPNetwork.TestProject\Properties\AssemblyInfo.cs
+			..\nant\release.build (this file)
+			..\release\nuget\IPNetwork.nuspec
+
+	After you release:
+
+		- Manual push to nuget :
+			
+			cd ${nuget.base}
+			nuget push .\IPNetwork.${release.version}.nupkg
+			
+				
+		</echo>
+		
+	</target>
+	<target name="postrelease">
+	
+		<echo>
+		
+	After you release:
+
+		- Manual push to nuget :
+			
+			nuget push ..\release\nuget\${release.version}\IPNetwork2.${release.version}.nupkg
+			
+				
+		</echo>
+
+	
 	</target>
 
 	<target name="copy">
@@ -32,7 +94,7 @@
 		<mkdir dir="${release.temp}/bin" />
 		<mkdir dir="${release.temp}/lib" />
 		<mkdir dir="${release.temp}/doc" />
-		
+
 		<copy todir="${release.temp}/bin">
 		   <fileset basedir="${build.dir}" >
 		      <include name="**/*.*" />
@@ -48,20 +110,78 @@
 		
 		<copy todir="${release.temp}/lib">
 		   <fileset basedir="${build.dir}" >
-		      <include name="LukeSkywalker.IPNetwork.dll" />
+		      <include name="System.Net.IPNetwork.dll" />
 		   </fileset>
 		</copy>
 
-		<copy todir="${release.temp}" file="${doc.base}/README.lib.txt" />
-		<copy todir="${release.temp}" file="${doc.base}/README.txt" />
+		<copy todir="${release.temp}" file="${src.base}/README.md" />
 
 		<copy todir="${release.temp}/doc/html">
 		   <fileset basedir="${doc.base}/html">
             <include name="**/*" />
          </fileset>
-      </copy>
-
+		</copy>
 		
+	</target>
+	
+	<target name="mstest">
+		<echo>
+		
+		   UnitTest validation
+		   
+		   mstest.bin : ${mstest.bin}
+		   mstest.args : ${mstest.args}
+		  
+		   
+		</echo>
+		
+		<exec program="${mstest.bin}" workingdir="${mstest.base}">
+			<arg value="/testcontainer:${mstest.args}" />
+		</exec>
+
+	
+	</target>
+	
+	<target name="nuget">
+		<echo>
+		
+		   Prepare for nuget packaging
+		   
+		   nuget.base : ${nuget.base}
+		  
+		   
+		</echo>
+		
+		<delete >
+		   <fileset basedir="${nuget.base}">
+		      <include name="lib/**/*.*" />
+		      <include name="IPNetwork*.nupkg" />
+		   </fileset>
+		</delete>
+		
+		<mkdir dir="${nuget.base}" />
+		<mkdir dir="${nuget.base}/lib" />
+		<mkdir dir="${nuget.base}/lib/net40" />
+		
+		<copy todir="${nuget.base}">
+		   <fileset basedir="${nuget.base}/../" >
+		      <include name="IPNetwork2.nuspec" />
+		   </fileset>
+		</copy>
+		
+		<copy todir="${nuget.base}/lib/net40">
+		   <fileset basedir="${build.dir}" >
+		      <include name="System.Net.IPNetwork.dll" />
+		   </fileset>
+		</copy>
+		
+
+      <exec program="${nuget.bin}" workingdir="${nuget.base}">
+         <arg value="pack" />
+         <arg value="IPNetwork2.nuspec" />
+      </exec>
+
+	
 	</target>
 	
 	<target name="zip">
@@ -112,8 +232,17 @@
       </exec>
   </target>
   
+  
+  
  	<target name="build" description="Build of the solution using the release configuration.">
-		<property name="msbuild.property" value="OutDir=${build.dir};Configuration=Release"/>
+		
+		  <delete >
+			 <fileset basedir="${build.dir}">
+				  <include name="**/*.*" />
+			 </fileset>
+		  </delete>
+		  
+		<property name="msbuild.property" value="Configuration=Release"/>
 		<property name="msbuild.path" value="C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\"/>
 		<exec program="msbuild.exe" basedir="${msbuild.path}">
 		<arg value="${ipnetwork.sln}" />
@@ -121,6 +250,8 @@
 		<arg value="/t:rebuild" />
 		<arg value="/v:m" />
 		</exec>
+		
+		
 	</target>
 
   

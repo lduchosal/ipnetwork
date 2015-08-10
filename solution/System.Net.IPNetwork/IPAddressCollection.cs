@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Net;
 using System.Collections;
+using System.Numerics;
 
-namespace System.Net.IPNetwork {
+namespace System.Net {
     public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress> {
 
         private IPNetwork _ipnetwork;
-        private double _enumerator;
+        private BigInteger _enumerator;
 
         internal IPAddressCollection(IPNetwork ipnetwork) {
             this._ipnetwork = ipnetwork;
@@ -19,19 +20,19 @@ namespace System.Net.IPNetwork {
 
         #region Count, Array, Enumerator
 
-        public double Count {
+        public BigInteger Count {
             get {
                 return this._ipnetwork.Total;
             }
         }
 
-        public IPAddress this[double i] {
+        public IPAddress this[BigInteger i] {
             get {
                 if (i >= this.Count) {
                     throw new ArgumentOutOfRangeException("i");
                 }
-
-                IPNetworkCollection ipn = IPNetwork.Subnet(this._ipnetwork, 32);
+                byte width = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? (byte)32 : (byte)128;
+                IPNetworkCollection ipn = IPNetwork.Subnet(this._ipnetwork, width);
                 return ipn[i].Network;
             }
         }

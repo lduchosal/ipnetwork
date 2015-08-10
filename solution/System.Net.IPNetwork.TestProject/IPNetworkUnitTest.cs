@@ -3,10 +3,10 @@ using System.Text;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Net.IPNetwork;
 using System.Net;
+using System.Numerics;
 
-namespace System.Net.IPNetwork.TestProject {
+namespace System.Net.TestProject {
     /// <summary>
     /// IPNetworkUnitTest test every single method
     /// </summary>
@@ -725,9 +725,9 @@ namespace System.Net.IPNetwork.TestProject {
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void TestToCidrAE() {
-            IPNetwork.ToCidr(IPAddress.IPv6Any);
+            byte cidr = IPNetwork.ToCidr(IPAddress.IPv6Any);
+            Assert.AreEqual(0, cidr, "cidr");
         }
 
 
@@ -799,7 +799,8 @@ namespace System.Net.IPNetwork.TestProject {
         public void TestTryToCidrAE() {
             byte? cidr = null;
             bool parsed = IPNetwork.TryToCidr(IPAddress.IPv6Any, out cidr);
-            Assert.AreEqual(false, parsed, "parsed");
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual((byte)0, cidr, "cidr");
         }
 
 
@@ -872,94 +873,91 @@ namespace System.Net.IPNetwork.TestProject {
 
         #endregion
 
-        #region ToUint
+        #region ToBigInteger
 
         [TestMethod]
-        public void TestToUint32() {
+        public void TestToBigInteger32() {
 
             IPAddress mask = IPAddress.Parse("255.255.255.255");
             uint uintMask = 0xffffffff;
-            uint result = IPNetwork.ToUint(mask);
+            BigInteger result = IPNetwork.ToBigInteger(mask);
 
             Assert.AreEqual(uintMask, result, "uint");
         }
         [TestMethod]
-        public void TestToUint24() {
+        public void TestToBigInteger24() {
 
             IPAddress mask = IPAddress.Parse("255.255.255.0");
             uint uintMask = 0xffffff00;
-            uint result = IPNetwork.ToUint(mask);
+            BigInteger? result = IPNetwork.ToBigInteger(mask);
 
             Assert.AreEqual(uintMask, result, "uint");
         }
         [TestMethod]
-        public void TestToUint16() {
+        public void TestToBigInteger16() {
 
             IPAddress mask = IPAddress.Parse("255.255.0.0");
             uint uintMask = 0xffff0000;
-            uint result = IPNetwork.ToUint(mask);
+            BigInteger? result = IPNetwork.ToBigInteger(mask);
 
             Assert.AreEqual(uintMask, result, "uint");
         }
         [TestMethod]
-        public void TestToUint8() {
+        public void TestToBigInteger8() {
 
             IPAddress mask = IPAddress.Parse("255.0.0.0");
             uint uintMask = 0xff000000;
-            uint result = IPNetwork.ToUint(mask);
+            BigInteger? result = IPNetwork.ToBigInteger(mask);
 
             Assert.AreEqual(uintMask, result, "uint");
         }
         [TestMethod]
-        public void TestToUint0() {
+        public void TestToBigInteger0() {
 
             IPAddress mask = IPAddress.Parse("0.0.0.0");
             uint uintMask = 0x00000000;
-            uint result = IPNetwork.ToUint(mask);
+            BigInteger? result = IPNetwork.ToBigInteger(mask);
 
             Assert.AreEqual(uintMask, result, "uint");
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestToUintANE() {
-            uint result = IPNetwork.ToUint(null);
+        public void TestToBigIntegerANE() {
+            BigInteger? result = IPNetwork.ToBigInteger(null);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestToUintANE3() {
+        public void TestToBigIntegerANE3() {
             IPAddress ip = null;
-            uint result = IPNetwork.ToUint(ip);
+            BigInteger? result = IPNetwork.ToBigInteger(ip);
         }
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void TestToUintANE2()
-        {
-            uint result = IPNetwork.ToUint(IPAddress.IPv6Any);
+        public void TestToBigIntegerANE2() {
+            BigInteger? result = IPNetwork.ToBigInteger(IPAddress.IPv6Any);
+            uint expected = 0;
+            Assert.AreEqual(expected, result, "result");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestToUintByte()
-        {
-            uint result = IPNetwork.ToUint(33);
+        public void TestToBigIntegerByte() {
+            BigInteger result = IPNetwork.ToUint(33, Sockets.AddressFamily.InterNetwork);
         }
 
         [TestMethod]
-        public void TestToUintByte2()
-        {
-            uint result = IPNetwork.ToUint(32);
+        public void TestToBigIntegerByte2() {
+            BigInteger result = IPNetwork.ToUint(32, Sockets.AddressFamily.InterNetwork);
             uint expected = 4294967295;
-            Assert.AreEqual(expected, result, "uint");
+            Assert.AreEqual(expected, result, "result");
 
         }
 
 
         [TestMethod]
-        public void TestToUintByte3()
-        {
-            uint result = IPNetwork.ToUint(0);
+        public void TestToBigIntegerByte3() {
+            BigInteger result = IPNetwork.ToUint(0, Sockets.AddressFamily.InterNetwork);
             uint expected = 0;
-            Assert.AreEqual(expected, result, "uint");
+            Assert.AreEqual(expected, result, "result");
 
         }
 
@@ -967,124 +965,91 @@ namespace System.Net.IPNetwork.TestProject {
 
         #endregion
 
-        #region TryToUint
+        #region TryToBigInteger
 
         [TestMethod]
-        public void TestTryToUint32() {
+        public void TestTryToBigInteger32() {
 
             IPAddress mask = IPAddress.Parse("255.255.255.255");
             uint uintMask = 0xffffffff;
-            uint? result = null;
-            bool parsed = IPNetwork.TryToUint(mask, out result);
+            BigInteger? result = null;
+            bool parsed = IPNetwork.TryToBigInteger(mask, out result);
 
             Assert.AreEqual(uintMask, result, "uint");
             Assert.AreEqual(true, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryToUint24() {
+        public void TestTryToBigInteger24() {
 
             IPAddress mask = IPAddress.Parse("255.255.255.0");
             uint uintMask = 0xffffff00;
-            uint? result = null;
-            bool parsed = IPNetwork.TryToUint(mask, out result);
+            BigInteger? result = null;
+            bool parsed = IPNetwork.TryToBigInteger(mask, out result);
 
             Assert.AreEqual(uintMask, result, "uint");
             Assert.AreEqual(true, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryToUint16() {
+        public void TestTryToBigInteger16() {
 
             IPAddress mask = IPAddress.Parse("255.255.0.0");
             uint uintMask = 0xffff0000;
-            uint? result = null;
-            bool parsed = IPNetwork.TryToUint(mask, out result);
+            BigInteger? result = null;
+            bool parsed = IPNetwork.TryToBigInteger(mask, out result);
 
             Assert.AreEqual(uintMask, result, "uint");
             Assert.AreEqual(true, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryToUint8() {
+        public void TestTryToBigInteger8() {
 
             IPAddress mask = IPAddress.Parse("255.0.0.0");
             uint uintMask = 0xff000000;
 
-            uint? result = null;
-            bool parsed = IPNetwork.TryToUint(mask, out result);
+            BigInteger? result = null;
+            bool parsed = IPNetwork.TryToBigInteger(mask, out result);
 
             Assert.AreEqual(uintMask, result, "uint");
             Assert.AreEqual(true, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryToUint0() {
+        public void TestTryToBigInteger0() {
 
             IPAddress mask = IPAddress.Parse("0.0.0.0");
             uint uintMask = 0x00000000;
-            uint? result = null;
-            bool parsed = IPNetwork.TryToUint(mask, out result);
+            BigInteger? result = null;
+            bool parsed = IPNetwork.TryToBigInteger(mask, out result);
 
             Assert.AreEqual(uintMask, result, "uint");
             Assert.AreEqual(true, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryToUintANE() {
+        public void TestTryToBigIntegerANE() {
 
-            uint? result = null;
-            bool parsed = IPNetwork.TryToUint(null, out result);
+            BigInteger? result = null;
+            bool parsed = IPNetwork.TryToBigInteger(null, out result);
 
             Assert.AreEqual(null, result, "uint");
             Assert.AreEqual(false, parsed, "parsed");
 
         }
         [TestMethod]
-        public void TestTryToUintANE3() {
+        public void TestTryToBigIntegerANE3() {
             IPAddress ip = null;
-            uint? result = null;
-            bool parsed = IPNetwork.TryToUint(ip, out result);
+            BigInteger? result = null;
+            bool parsed = IPNetwork.TryToBigInteger(ip, out result);
 
             Assert.AreEqual(null, result, "uint");
             Assert.AreEqual(false, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryToUintANE2() {
+        public void TestTryToBigIntegerANE2() {
 
-            uint? result = null;
-            bool parsed = IPNetwork.TryToUint(IPAddress.IPv6Any, out result);
+            BigInteger? result = null;
+            bool parsed = IPNetwork.TryToBigInteger(IPAddress.IPv6Any, out result);
 
-            Assert.AreEqual(null, result, "uint");
-            Assert.AreEqual(false, parsed, "parsed");
-        }
-
-        [TestMethod]
-        public void TestTryToUintByte() {
-            uint? result = null;
-            bool parsed = IPNetwork.TryToUint(33, out result);
-
-            Assert.AreEqual(null, result, "uint");
-            Assert.AreEqual(false, parsed, "parsed");
-        }
-
-        [TestMethod]
-        public void TestTryToUintByte2() {
-            uint? result = null;
-            bool parsed = IPNetwork.TryToUint(32, out result);
-
-            uint expected = 4294967295;
-            Assert.AreEqual(expected, result, "uint");
+            Assert.AreEqual(0, result, "result");
             Assert.AreEqual(true, parsed, "parsed");
-
-        }
-
-
-        [TestMethod]
-        public void TestTryToUintByte3() {
-            uint? result = null;
-            bool parsed = IPNetwork.TryToUint(0, out result);
-
-            uint expected = 0;
-            Assert.AreEqual(expected, result, "uint");
-            Assert.AreEqual(true, parsed, "parsed");
-            
-
         }
 
 
@@ -1095,7 +1060,7 @@ namespace System.Net.IPNetwork.TestProject {
         [TestMethod]
         public void TryToNetmask1() {
             IPAddress result = null;
-            bool parsed = IPNetwork.TryToNetmask(0, out result);
+            bool parsed = IPNetwork.TryToNetmask(0, Sockets.AddressFamily.InterNetwork, out result);
             IPAddress expected = IPAddress.Parse("0.0.0.0");
 
             Assert.AreEqual(expected, result, "Netmask");
@@ -1106,7 +1071,7 @@ namespace System.Net.IPNetwork.TestProject {
         [TestMethod]
         public void TryToNetmask2() {
             IPAddress result = null;
-            bool parsed = IPNetwork.TryToNetmask(33, out result);
+            bool parsed = IPNetwork.TryToNetmask(33, Sockets.AddressFamily.InterNetwork, out result);
             IPAddress expected = null;
 
             Assert.AreEqual(expected, result, "Netmask");
@@ -1123,7 +1088,7 @@ namespace System.Net.IPNetwork.TestProject {
 
             byte cidr = 32;
             string netmask = "255.255.255.255";
-            string result = IPNetwork.ToNetmask(cidr).ToString();
+            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1133,7 +1098,7 @@ namespace System.Net.IPNetwork.TestProject {
 
             byte cidr = 31;
             string netmask = "255.255.255.254";
-            string result = IPNetwork.ToNetmask(cidr).ToString();
+            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1143,7 +1108,7 @@ namespace System.Net.IPNetwork.TestProject {
 
             byte cidr = 30;
             string netmask = "255.255.255.252";
-            string result = IPNetwork.ToNetmask(cidr).ToString();
+            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1153,7 +1118,7 @@ namespace System.Net.IPNetwork.TestProject {
 
             byte cidr = 29;
             string netmask = "255.255.255.248";
-            string result = IPNetwork.ToNetmask(cidr).ToString();
+            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1163,7 +1128,7 @@ namespace System.Net.IPNetwork.TestProject {
 
             byte cidr = 1;
             string netmask = "128.0.0.0";
-            string result = IPNetwork.ToNetmask(cidr).ToString();
+            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1174,7 +1139,7 @@ namespace System.Net.IPNetwork.TestProject {
 
             byte cidr = 0;
             string netmask = "0.0.0.0";
-            string result = IPNetwork.ToNetmask(cidr).ToString();
+            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1183,7 +1148,7 @@ namespace System.Net.IPNetwork.TestProject {
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void ToNetmaskOORE1() {
             byte cidr = 33;
-            string result = IPNetwork.ToNetmask(cidr).ToString();
+            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
         }
 
         #endregion
@@ -1262,8 +1227,8 @@ namespace System.Net.IPNetwork.TestProject {
         public void TestBitsSet32() {
 
             IPAddress ip = IPAddress.Parse("255.255.255.255");
-            int bits = 32;
-            int result = IPNetwork.BitsSet(ip);
+            uint bits = 32;
+            uint result = IPNetwork.BitsSet(ip);
 
             Assert.AreEqual(bits, result, "BitsSet");
 
@@ -1272,8 +1237,8 @@ namespace System.Net.IPNetwork.TestProject {
         public void TestBitsSet24() {
 
             IPAddress ip = IPAddress.Parse("255.255.255.0");
-            int bits = 24;
-            int result = IPNetwork.BitsSet(ip);
+            uint bits = 24;
+            uint result = IPNetwork.BitsSet(ip);
 
             Assert.AreEqual(bits, result, "BitsSet");
 
@@ -1282,8 +1247,8 @@ namespace System.Net.IPNetwork.TestProject {
         public void TestBitsSet16() {
 
             IPAddress ip = IPAddress.Parse("255.255.0.0");
-            int bits = 16;
-            int result = IPNetwork.BitsSet(ip);
+            uint bits = 16;
+            uint result = IPNetwork.BitsSet(ip);
 
             Assert.AreEqual(bits, result, "BitsSet");
 
@@ -1292,8 +1257,8 @@ namespace System.Net.IPNetwork.TestProject {
         public void TestBitsSet4() {
 
             IPAddress ip = IPAddress.Parse("128.128.128.128");
-            int bits = 4;
-            int result = IPNetwork.BitsSet(ip);
+            uint bits = 4;
+            uint result = IPNetwork.BitsSet(ip);
 
             Assert.AreEqual(bits, result, "BitsSet");
 
@@ -3193,7 +3158,7 @@ Usable      : 4294967294
             string sidr = "0";
             byte? cidr;
             byte? result = 0;
-            bool parsed = IPNetwork.TryParseCidr(sidr, out cidr);
+            bool parsed = IPNetwork.TryParseCidr(sidr, Sockets.AddressFamily.InterNetwork, out cidr);
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");
@@ -3207,7 +3172,7 @@ Usable      : 4294967294
             byte? cidr;
             byte? result = null;
 
-            bool parsed = IPNetwork.TryParseCidr(sidr, out cidr);
+            bool parsed = IPNetwork.TryParseCidr(sidr, Sockets.AddressFamily.InterNetwork, out cidr);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");
@@ -3221,7 +3186,7 @@ Usable      : 4294967294
             byte? cidr;
             byte? result = null;
 
-            bool parsed = IPNetwork.TryParseCidr(sidr, out cidr);
+            bool parsed = IPNetwork.TryParseCidr(sidr, Sockets.AddressFamily.InterNetwork, out cidr);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");

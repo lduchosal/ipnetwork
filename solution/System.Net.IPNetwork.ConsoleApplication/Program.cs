@@ -7,8 +7,9 @@ using System.IO;
 using System.Net;
 using System.Reflection;
 using System.Diagnostics;
+using System.Numerics;
 
-namespace System.Net.IPNetwork.ConsoleApplication {
+namespace System.Net.ConsoleApplication {
     public class Program {
 
         public static void Main(string[] args) {
@@ -101,7 +102,7 @@ namespace System.Net.IPNetwork.ConsoleApplication {
 
         }
 
-        private static void PrintNetworks(ProgramContext ac, IEnumerable<IPNetwork> ipnetworks, double networkLength) {
+        private static void PrintNetworks(ProgramContext ac, IEnumerable<IPNetwork> ipnetworks, BigInteger networkLength) {
             int i = 0;
             foreach (IPNetwork ipn in ipnetworks) {
                 i++;
@@ -111,7 +112,7 @@ namespace System.Net.IPNetwork.ConsoleApplication {
         }
 
         private static void SubnetNetworks(ProgramContext ac) {
-            int i = 0;
+            BigInteger i = 0;
             foreach (IPNetwork ipnetwork in ac.Networks) {
                 i++;
                 int networkLength = ac.Networks.Length;
@@ -132,7 +133,7 @@ namespace System.Net.IPNetwork.ConsoleApplication {
         //        Console.WriteLine("--");
         //    }
         //}
-        private static void PrintSeparator(double max, double index) {
+        private static void PrintSeparator(BigInteger max, BigInteger index) {
             if (max > 1 && index != max) {
                 Console.WriteLine("--");
             }
@@ -182,7 +183,7 @@ namespace System.Net.IPNetwork.ConsoleApplication {
             new ArgParsed('d', delegate(ProgramContext ac, string arg) { 
 
                 byte? cidr = 0;
-                if (!IPNetwork.TryParseCidr(arg, out cidr)) {
+                if (!IPNetwork.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out cidr)) {
                     Console.WriteLine("Invalid cidr {0}", cidr);
                     ac.Action = ActionEnum.Usage;
                     return;
@@ -194,7 +195,7 @@ namespace System.Net.IPNetwork.ConsoleApplication {
             new ArgParsed('s', delegate(ProgramContext ac, string arg) { 
                 
                 byte? cidr = null;
-                if (!IPNetwork.TryParseCidr(arg, out cidr)) {
+                if (!IPNetwork.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out cidr)) {
                     Console.WriteLine("Invalid cidr {0}", cidr);
                     ac.Action = ActionEnum.Usage;
                     return;
@@ -392,7 +393,7 @@ namespace System.Net.IPNetwork.ConsoleApplication {
             Console.WriteLine();
             Console.WriteLine("Parse options");
             Console.WriteLine("\t-d cidr : use cidr if not provided (default /32)");
-            Console.WriteLine("\t-D      : use default cidr (ClassA/8, ClassB/16, ClassC/24)");
+            Console.WriteLine("\t-D      : IPv4 only - use default cidr (ClassA/8, ClassB/16, ClassC/24)");
             Console.WriteLine();
             Console.WriteLine("Actions");
             Console.WriteLine("\t-h         : help message");
@@ -405,7 +406,7 @@ namespace System.Net.IPNetwork.ConsoleApplication {
             Console.WriteLine("\t-S network : substract network from subnet");
             Console.WriteLine("");
             Console.WriteLine("networks  : one or more network addresses ");
-            Console.WriteLine("            (1.2.3.4 10.0.0.0/8 10.0.0.0/255.0.0.0 ...)");
+            Console.WriteLine("            (1.2.3.4 10.0.0.0/8 10.0.0.0/255.0.0.0 2001:db8::/32 2001:db8:1:2:3:4:5:6/128 )");
 
         }
     }

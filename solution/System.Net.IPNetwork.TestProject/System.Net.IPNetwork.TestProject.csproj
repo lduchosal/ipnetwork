@@ -64,12 +64,15 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Numerics" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BigIntegerBitWiseUnitTest.cs" />
     <Compile Include="ConsoleUnitTest.cs" />
     <Compile Include="IPAddressCollectionUnitTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IPNetworkUnitTest.cs" />
+    <Compile Include="IPNetworkV6UnitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\System.Net.IPNetwork.ConsoleApplication\System.Net.IPNetwork.ConsoleApplication.csproj">

@@ -4,7 +4,7 @@ using System.Net;
 using System.Collections.Generic;
 using System.Collections;
 
-namespace System.Net.IPNetwork.TestProject {
+namespace System.Net.TestProject {
     /// <summary>
     /// IPNetworkUnitTest test every single method
     /// </summary>

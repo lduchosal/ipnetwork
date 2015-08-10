@@ -3,23 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Collections;
+using System.Numerics;
 
-namespace System.Net.IPNetwork {
+namespace System.Net {
     public class IPNetworkCollection : IEnumerable<IPNetwork>, IEnumerator<IPNetwork> {
 
-
-        private double _enumerator;
+        private BigInteger _enumerator;
         private byte _cidrSubnet;
         private IPNetwork _ipnetwork;
 
         private byte _cidr {
             get { return this._ipnetwork.Cidr; }
         }
-        private uint _broadcast {
-            get { return IPNetwork.ToUint(this._ipnetwork.Broadcast); }
+        private BigInteger _broadcast {
+            get { return IPNetwork.ToBigInteger(this._ipnetwork.Broadcast); }
         }
-        private uint _network {
-            get { return IPNetwork.ToUint(this._ipnetwork.Network); }
+        private BigInteger _network {
+            get { return IPNetwork.ToBigInteger(this._ipnetwork.Network); }
         }
 
         internal IPNetworkCollection(IPNetwork ipnetwork, byte cidrSubnet) {
@@ -39,26 +39,25 @@ namespace System.Net.IPNetwork {
 
         #region Count, Array, Enumerator
 
-        public double Count
+        public BigInteger Count
         {
             get
             {
-                double count = Math.Pow(2, this._cidrSubnet - this._cidr);
+                BigInteger count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
                 return count; 
             }
         }
 
-        public IPNetwork this[double i] {
+        public IPNetwork this[BigInteger i] {
             get
             {
                 if (i >= this.Count)
                 {
                     throw new ArgumentOutOfRangeException("i");
                 }
-                double size = this.Count;
-                int increment = (int)((this._broadcast - this._network) / size);
-                uint uintNetwork = (uint)(this._network + ((increment + 1) * i));
-                IPNetwork ipn = new IPNetwork(uintNetwork, this._cidrSubnet);
+                BigInteger increment = (this._broadcast - this._network) / this.Count;
+                BigInteger uintNetwork = this._network + ((increment + 1) * i);
+                IPNetwork ipn = new IPNetwork(uintNetwork, this._ipnetwork.AddressFamily, this._cidrSubnet);
                 return ipn;
             }
         }
