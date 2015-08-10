@@ -11,6 +11,11 @@ IPNetwork utility classes take care of complex network, ip, netmask, subnet, cid
 /!\ Breaking changes as of version 2.0 : namespace changed from LukeSkywalker.IPNetwork to System.Net.IPNetwork
 
 ---
+### Installation :
+
+PM> nuget install IPNetwork2
+
+---
 ### Example 1 (IPv6) :
 ```
 IPNetwork ipnetwork = IPNetwork.Parse("2001:0db8::/32");
