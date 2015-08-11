@@ -1580,7 +1580,7 @@ namespace System.Net.TestProject {
                 Console.WriteLine("{0}", ipnetwork);
             }
         }
-
+        
         public void Example5() {
             IPNetwork ipnetwork1 = IPNetwork.Parse("2001:0db8::/32");
             IPNetwork ipnetwork2 = IPNetwork.Parse("2001:0db9::/32");
@@ -1589,7 +1589,81 @@ namespace System.Net.TestProject {
             Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
 
         }
+        public void Example6() {
 
+            IPNetwork ipnetwork = IPNetwork.Parse("fe80::202:b3ff:fe1e:8329/24");
+
+            IPAddress ipaddress = IPAddress.Parse("2001:db8::");
+            IPAddress ipaddress2 = IPAddress.Parse("fe80::202:b3ff:fe1e:1");
+
+            bool contains1 = IPNetwork.Contains(ipnetwork, ipaddress);
+            bool contains2 = IPNetwork.Contains(ipnetwork, ipaddress2);
+
+            Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress, contains1);
+            Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress2, contains2);
+
+        }
+
+        public void Example7() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("192.168.168.100/24");
+
+            IPAddress ipaddress = IPAddress.Parse("192.168.168.200");
+            IPAddress ipaddress2 = IPAddress.Parse("192.168.0.200");
+
+            bool contains1 = IPNetwork.Contains(ipnetwork, ipaddress);
+            bool contains2 = IPNetwork.Contains(ipnetwork, ipaddress2);
+
+            Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress, contains1);
+            Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress2, contains2);
+
+        }
+
+
+        public void Example8() {
+
+            IPNetwork network = IPNetwork.Parse("::/124");
+            IPNetworkCollection ips = IPNetwork.Subnet(network, 128);
+
+            foreach (IPNetwork ip in ips) {
+                Console.WriteLine("{0}", ip);
+            }
+        }
+
+
+        public void Example9() {
+
+            IPNetwork network = IPNetwork.Parse("192.168.0.1");
+            IPNetwork network2 = IPNetwork.Parse("192.168.0.254");
+
+            IPNetwork ipnetwork = IPNetwork.Supernet(network, network2);
+
+            Console.WriteLine("Network : {0}", ipnetwork.Network);
+            Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);
+            Console.WriteLine("Broadcast : {0}", ipnetwork.Broadcast);
+            Console.WriteLine("FirstUsable : {0}", ipnetwork.FirstUsable);
+            Console.WriteLine("LastUsable : {0}", ipnetwork.LastUsable);
+            Console.WriteLine("Usable : {0}", ipnetwork.Usable);
+            Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
+
+        }
+
+
+        public void Example10() {
+
+        IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.1/25");
+                
+        Console.WriteLine("Network : {0}", ipnetwork.Network);
+        Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);
+        Console.WriteLine("Broadcast : {0}", ipnetwork.Broadcast);
+        Console.WriteLine("FirstUsable : {0}", ipnetwork.FirstUsable);
+        Console.WriteLine("LastUsable : {0}", ipnetwork.LastUsable);
+        Console.WriteLine("Usable : {0}", ipnetwork.Usable);
+        Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
+
+        }
+
+        
         #endregion
 
         #region ToString

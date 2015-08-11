@@ -4,7 +4,7 @@
    <property name="ipnetwork.sln" value="..\solution\ipnetwork.sln" />
    <property name="doc.base" value="${project::get-base-directory()}\..\doc" />
    <property name="doc.doxygen" value="${doc.base}\Doxyfile" />
-   <property name="release.version" value="2.0.1" />
+   <property name="release.version" value="2.0.2" />
    <property name="release.doc" value="..\doc\html" />
    <property name="release.base" value="..\release" />
    <property name="src.base" value="..\" />

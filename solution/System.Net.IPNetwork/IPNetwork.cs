@@ -160,10 +160,8 @@ namespace System.Net {
 
         internal IPNetwork(BigInteger ipaddress, AddressFamily family, byte cidr) {
 
-            if (family == AddressFamily.InterNetwork && cidr > 32) {
-                throw new ArgumentOutOfRangeException("cidr");
-            }
-            if (family == AddressFamily.InterNetworkV6 && cidr > 128) {
+            int maxCidr = family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
+            if (cidr > maxCidr) {
                 throw new ArgumentOutOfRangeException("cidr");
             }
 
@@ -862,7 +860,8 @@ namespace System.Net {
                 return;
             }
 
-            if (cidr > 32 && family == AddressFamily.InterNetwork) {
+            int maxCidr = family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
+            if (cidr > maxCidr) {
                 if (tryParse == false) {
                     throw new ArgumentOutOfRangeException("cidr");
                 }
@@ -870,14 +869,6 @@ namespace System.Net {
                 return;
             }
 
-            if (cidr > 128 && family == AddressFamily.InterNetworkV6) {
-                if (tryParse == false) {
-                    throw new ArgumentOutOfRangeException("cidr");
-                }
-                netmask = null;
-                return;
-            }
-            
             BigInteger mask = IPNetwork.ToUint(cidr, family);
             IPAddress netmask2 = IPNetwork.ToIPAddress(mask, family);
             netmask = netmask2;
@@ -1255,8 +1246,9 @@ namespace System.Net {
                 ipnetworkCollection = null;
                 return;
             }
-            
-            if (cidr > 32) {
+
+            int maxCidr = network._family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
+            if (cidr > maxCidr) {
                 if (trySubnet == false) {
                     throw new ArgumentOutOfRangeException("cidr");
                 }
@@ -1722,7 +1714,7 @@ namespace System.Net {
         }
 
         /// <summary>
-        /// Try to parse cidr. Have to be >= 0 and <= 32
+        /// Try to parse cidr. Have to be >= 0 and <= 32 or 128
         /// </summary>
         /// <param name="sidr"></param>
         /// <param name="cidr"></param>

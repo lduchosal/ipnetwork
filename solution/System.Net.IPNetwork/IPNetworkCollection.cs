@@ -24,7 +24,8 @@ namespace System.Net {
 
         internal IPNetworkCollection(IPNetwork ipnetwork, byte cidrSubnet) {
 
-            if (cidrSubnet > 32) {
+            int maxCidr = ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? 32 : 128;
+            if (cidrSubnet > maxCidr) {
                 throw new ArgumentOutOfRangeException("cidrSubnet");
             }
 
