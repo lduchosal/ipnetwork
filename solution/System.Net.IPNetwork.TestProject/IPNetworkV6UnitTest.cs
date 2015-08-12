@@ -1620,8 +1620,8 @@ namespace System.Net.TestProject {
         }
         
         public void Example5() {
-            IPNetwork ipnetwork1 = IPNetwork.Parse("2001:0db8::/32");
-            IPNetwork ipnetwork2 = IPNetwork.Parse("2001:0db9::/32");
+            IPNetwork ipnetwork1 = IPNetwork.Parse("2001:0db8::/64");
+            IPNetwork ipnetwork2 = IPNetwork.Parse("2001:0db9::/64");
             IPNetwork[] ipnetwork3 = IPNetwork.Supernet(new[] { ipnetwork1, ipnetwork2 });
 
             Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
@@ -1642,20 +1642,6 @@ namespace System.Net.TestProject {
 
         }
 
-        public void Example7() {
-
-            IPNetwork ipnetwork = IPNetwork.Parse("192.168.168.100/24");
-
-            IPAddress ipaddress = IPAddress.Parse("192.168.168.200");
-            IPAddress ipaddress2 = IPAddress.Parse("192.168.0.200");
-
-            bool contains1 = IPNetwork.Contains(ipnetwork, ipaddress);
-            bool contains2 = IPNetwork.Contains(ipnetwork, ipaddress2);
-
-            Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress, contains1);
-            Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress2, contains2);
-
-        }
 
 
         public void Example8() {
@@ -1666,39 +1652,6 @@ namespace System.Net.TestProject {
             foreach (IPNetwork ip in ips) {
                 Console.WriteLine("{0}", ip);
             }
-        }
-
-
-        public void Example9() {
-
-            IPNetwork network = IPNetwork.Parse("192.168.0.1");
-            IPNetwork network2 = IPNetwork.Parse("192.168.0.254");
-
-            IPNetwork ipnetwork = IPNetwork.Supernet(network, network2);
-
-            Console.WriteLine("Network : {0}", ipnetwork.Network);
-            Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);
-            Console.WriteLine("Broadcast : {0}", ipnetwork.Broadcast);
-            Console.WriteLine("FirstUsable : {0}", ipnetwork.FirstUsable);
-            Console.WriteLine("LastUsable : {0}", ipnetwork.LastUsable);
-            Console.WriteLine("Usable : {0}", ipnetwork.Usable);
-            Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
-
-        }
-
-
-        public void Example10() {
-
-        IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.1/25");
-                
-        Console.WriteLine("Network : {0}", ipnetwork.Network);
-        Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);
-        Console.WriteLine("Broadcast : {0}", ipnetwork.Broadcast);
-        Console.WriteLine("FirstUsable : {0}", ipnetwork.FirstUsable);
-        Console.WriteLine("LastUsable : {0}", ipnetwork.LastUsable);
-        Console.WriteLine("Usable : {0}", ipnetwork.Usable);
-        Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
-
         }
 
         
@@ -1748,6 +1701,408 @@ namespace System.Net.TestProject {
         }
 
         #endregion
+
+
+        #region Subnet
+
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestSubnet3() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("::");
+            byte cidr = 129;
+
+            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestSubnet4() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("::");
+            byte cidr = 1;
+
+            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+
+        }
+
+
+        [TestMethod]
+        public void TestSubnet5() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("1:1:1:1:1:1:1:1");
+            byte cidr = 65;
+
+            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            Assert.AreEqual(2, subnets.Count, "count");
+            Assert.AreEqual("1:1:1:1::/65", subnets[0].ToString(), "subnet1");
+            Assert.AreEqual("1:1:1:1:8000::/65", subnets[1].ToString(), "subnet2");
+
+        }
+
+
+        [TestMethod]
+        public void TestSubnet6() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("1:1:1:1:1:1:1:1");
+            byte cidr = 68;
+
+            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            Assert.AreEqual(16, subnets.Count, "count");
+            Assert.AreEqual("1:1:1:1::/68", subnets[0].ToString(), "subnet1");
+            Assert.AreEqual("1:1:1:1:1000::/68", subnets[1].ToString(), "subnet2");
+            Assert.AreEqual("1:1:1:1:2000::/68", subnets[2].ToString(), "subnet3");
+            Assert.AreEqual("1:1:1:1:3000::/68", subnets[3].ToString(), "subnet4");
+            Assert.AreEqual("1:1:1:1:4000::/68", subnets[4].ToString(), "subnet5");
+            Assert.AreEqual("1:1:1:1:5000::/68", subnets[5].ToString(), "subnet6");
+            Assert.AreEqual("1:1:1:1:6000::/68", subnets[6].ToString(), "subnet7");
+            Assert.AreEqual("1:1:1:1:7000::/68", subnets[7].ToString(), "subnet8");
+            Assert.AreEqual("1:1:1:1:8000::/68", subnets[8].ToString(), "subnet9");
+            Assert.AreEqual("1:1:1:1:9000::/68", subnets[9].ToString(), "subnet10");
+            Assert.AreEqual("1:1:1:1:a000::/68", subnets[10].ToString(), "subnet11");
+            Assert.AreEqual("1:1:1:1:b000::/68", subnets[11].ToString(), "subnet12");
+            Assert.AreEqual("1:1:1:1:c000::/68", subnets[12].ToString(), "subnet13");
+            Assert.AreEqual("1:1:1:1:d000::/68", subnets[13].ToString(), "subnet14");
+            Assert.AreEqual("1:1:1:1:e000::/68", subnets[14].ToString(), "subnet15");
+            Assert.AreEqual("1:1:1:1:f000::/68", subnets[15].ToString(), "subnet16");
+
+        }
+
+
+        [TestMethod]
+        public void TestSubnet7() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("1:1:1:1:1:1:1:1");
+            byte cidr = 72;
+
+            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            Assert.AreEqual(256, subnets.Count, "count");
+            Assert.AreEqual("1:1:1:1::/72", subnets[0].ToString(), "subnet1");
+            Assert.AreEqual("1:1:1:1:ff00::/72", subnets[255].ToString(), "subnet256");
+
+        }
+
+
+        [TestMethod]
+        public void TestSubnet9() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("2001:db08:1:1:1:1:1:1");
+            byte cidr = 128;
+            var count = BigInteger.Pow(2, ipnetwork.Cidr);
+            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            Assert.AreEqual(count, subnets.Count, "count");
+            Assert.AreEqual("2001:db08:1:1::/128", subnets[0].ToString(), "subnet1");
+            Assert.AreEqual("2001:db08:1:1::ff/128", subnets[255].ToString(), "subnet256");
+            Assert.AreEqual("2001:db08:1:1:ffff:ffff:ffff:ffff/128", subnets[count-1].ToString(), "last");
+
+        }
+
+
+        [TestMethod]
+        public void TestSubnet10() {
+            IPNetwork ipnetwork = IPNetwork.Parse("2001:db08::/0");
+            byte cidr = 128;
+            var count = BigInteger.Pow(2, 128-ipnetwork.Cidr);
+
+            // Here I spawm a OOM dragon ! beware of the beast !
+            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            Assert.AreEqual(count, subnets.Count, "count");
+            Assert.AreEqual("::/128", subnets[0].ToString(), "subnet1");
+            Assert.AreEqual("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff/128", subnets[count - 1].ToString(), "last");
+
+        }
+
+
+        [TestMethod]
+        public void TestSubnet12() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("2001:db08::/64");
+            byte cidr = 70;
+            int i = -1;
+            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            foreach (IPNetwork ipn in subnets) {
+                i++;
+                Assert.AreEqual(subnets[i], ipn, "subnet");
+            }
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestSubnet13() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("2001:db08::/64");
+            byte cidr = 70;
+            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            IPNetwork error = subnets[1000];
+
+        }
+
+        #endregion
+
+        #region TrySubnet
+
+
+        [TestMethod]
+        public void TestTrySubnet3() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("2001:db08::/64");
+            byte cidr = 255;
+
+            IPNetworkCollection subnets = null;
+            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+
+            Assert.AreEqual(false, subnetted, "subnetted");
+        }
+
+
+        [TestMethod]
+        public void TestTrySubnet4() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("2001:db08::/64");
+            byte cidr = 63;
+
+            IPNetworkCollection subnets = null;
+            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+
+            Assert.AreEqual(false, subnetted, "subnetted");
+
+        }
+
+
+        [TestMethod]
+        public void TestTrySubnet5() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("2001:db8::/64");
+            byte cidr = 65;
+
+            IPNetworkCollection subnets = null;
+            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+
+            Assert.AreEqual(true, subnetted, "subnetted");
+            Assert.AreEqual(2, subnets.Count, "count");
+            Assert.AreEqual("2001:db8::/65", subnets[0].ToString(), "subnet1");
+            Assert.AreEqual("2001:db8:0:0:8000::/65", subnets[1].ToString(), "subnet2");
+
+        }
+
+
+        [TestMethod]
+        public void TestTrySubnet6() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("2001:db8::/64");
+            byte cidr = 68;
+
+            IPNetworkCollection subnets = null;
+            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+
+            Assert.AreEqual(true, subnetted, "subnetted");
+            Assert.AreEqual(16, subnets.Count, "count");
+            Assert.AreEqual("2001:db8::/68", subnets[0].ToString(), "subnet1");
+            Assert.AreEqual("2001:db8:0:0:1000::/68", subnets[1].ToString(), "subnet2");
+            Assert.AreEqual("2001:db8:0:0:2000::/68", subnets[2].ToString(), "subnet3");
+            Assert.AreEqual("2001:db8:0:0:3000::/68", subnets[3].ToString(), "subnet4");
+            Assert.AreEqual("2001:db8:0:0:4000::/68", subnets[4].ToString(), "subnet5");
+            Assert.AreEqual("2001:db8:0:0:5000::/68", subnets[5].ToString(), "subnet6");
+            Assert.AreEqual("2001:db8:0:0:6000::/68", subnets[6].ToString(), "subnet7");
+            Assert.AreEqual("2001:db8:0:0:7000::/68", subnets[7].ToString(), "subnet8");
+            Assert.AreEqual("2001:db8:0:0:8000::/68", subnets[8].ToString(), "subnet9");
+            Assert.AreEqual("2001:db8:0:0:9000::/68", subnets[9].ToString(), "subnet10");
+            Assert.AreEqual("2001:db8:0:0:a000::/68", subnets[10].ToString(), "subnet11");
+            Assert.AreEqual("2001:db8:0:0:b000::/68", subnets[11].ToString(), "subnet12");
+            Assert.AreEqual("2001:db8:0:0:c000::/68", subnets[12].ToString(), "subnet13");
+            Assert.AreEqual("2001:db8:0:0:d000::/68", subnets[13].ToString(), "subnet14");
+            Assert.AreEqual("2001:db8:0:0:e000::/68", subnets[14].ToString(), "subnet15");
+            Assert.AreEqual("2001:db8:0:0:f000::/68", subnets[15].ToString(), "subnet16");
+
+        }
+
+
+
+        #endregion
+
+
+
+
+
+
+        #region TrySupernet
+
+
+        [TestMethod]
+        public void TestTrySupernet1() {
+
+            IPNetwork network1 = IPNetwork.Parse("2001:db8::/65");
+            IPNetwork network2 = IPNetwork.Parse("2001:db8:0:0:8000::/65");
+            IPNetwork supernetExpected = IPNetwork.Parse("2001:db8::/64");
+            IPNetwork supernet;
+            bool supernetted = true;
+            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+
+            Assert.AreEqual(supernetted, result, "supernetted");
+            Assert.AreEqual(supernetExpected, supernet, "supernet");
+
+        }
+
+        [TestMethod]
+        public void TestTrySupernet2() {
+
+            IPNetwork network1 = null;
+            IPNetwork network2 = IPNetwork.Parse("2001:db8::/64");
+            IPNetwork supernetExpected = null;
+            IPNetwork supernet;
+            bool parsed = false;
+            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+
+            Assert.AreEqual(supernetExpected, supernet, "supernet");
+            Assert.AreEqual(parsed, result, "parsed");
+        }
+
+        [TestMethod]
+        public void TestTrySupernet3() {
+
+            IPNetwork network1 = IPNetwork.Parse("2001:db8::/64");
+            IPNetwork network2 = null;
+            IPNetwork supernetExpected = null;
+            IPNetwork supernet;
+            bool parsed = false;
+            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+
+            Assert.AreEqual(supernetExpected, supernet, "supernet");
+            Assert.AreEqual(parsed, result, "parsed");
+        }
+
+        [TestMethod]
+        public void TestTrySupernet4() {
+
+            IPNetwork network1 = IPNetwork.Parse("2001:db8::/64");
+            IPNetwork network2 = IPNetwork.Parse("2001:db9::/65");
+            IPNetwork supernetExpected = null;
+            IPNetwork supernet;
+            bool parsed = false;
+            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+
+            Assert.AreEqual(supernetExpected, supernet, "supernet");
+            Assert.AreEqual(parsed, result, "parsed");
+        }
+
+        [TestMethod]
+        public void TestTrySupernet5() {
+
+            IPNetwork network1 = IPNetwork.Parse("2001:db8::/64");
+            IPNetwork network2 = IPNetwork.Parse("2001:dba::/64");
+            IPNetwork supernetExpected = null;
+            IPNetwork supernet;
+            bool parsed = false;
+            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+
+            Assert.AreEqual(supernetExpected, supernet, "supernet");
+            Assert.AreEqual(parsed, result, "parsed");
+        }
+
+        [TestMethod]
+        public void TestTrySupernet6() {
+
+            IPNetwork network1 = IPNetwork.Parse("2001:db8::/64");
+            IPNetwork network2 = IPNetwork.Parse("2001:db8::1/65");
+            IPNetwork supernetExpected = IPNetwork.Parse("2001:db8::/64");
+            IPNetwork supernet;
+            bool parsed = true;
+            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+
+            Assert.AreEqual(supernetExpected, supernet, "supernet");
+            Assert.AreEqual(parsed, result, "parsed");
+
+        }
+
+        [TestMethod]
+        public void TestTrySupernet7() {
+
+            IPNetwork network1 = IPNetwork.Parse("2001:db8::/64");
+            IPNetwork network2 = IPNetwork.Parse("2001:db8::1/65");
+            IPNetwork supernetExpected = IPNetwork.Parse("2001:db8::/64");
+            IPNetwork supernet;
+            bool parsed = true;
+            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+
+            Assert.AreEqual(supernetExpected, supernet, "supernet");
+            Assert.AreEqual(parsed, result, "parsed");
+
+        }
+
+        [TestMethod]
+        public void TestTrySupernet8() {
+
+            IPNetwork network1 = IPNetwork.Parse("2001:db0::/64");
+            IPNetwork network2 = IPNetwork.Parse("2001:dbf::/64");
+            IPNetwork supernetExpected = null;
+            IPNetwork supernet;
+            bool parsed = false;
+            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+
+            Assert.AreEqual(supernetExpected, supernet, "supernet");
+            Assert.AreEqual(parsed, result, "parsed");
+
+        }
+
+        [TestMethod]
+        public void TestTrySupernet9() {
+
+            IPNetwork network1 = IPNetwork.Parse("192.168.1.1/24");
+            IPNetwork network2 = IPNetwork.Parse("192.168.2.1/24");
+            IPNetwork[] network3 = new[] { network1, network2 };
+            IPNetwork[] supernetExpected = new[] { network1, network2 };
+            IPNetwork[] supernet;
+            bool parsed = true;
+            bool result = IPNetwork.TrySupernet(network3, out supernet);
+
+            Assert.AreEqual(supernetExpected[0], supernet[0], "supernet");
+            Assert.AreEqual(supernetExpected[1], supernet[1], "supernet");
+            Assert.AreEqual(parsed, result, "parsed");
+
+        }
+
+
+        [TestMethod]
+        public void TestTrySupernet10() {
+
+            IPNetwork network1 = IPNetwork.Parse("2001:db8:0000::/65");
+            IPNetwork network2 = IPNetwork.Parse("2001:db8:0:0:8000::/65");
+            IPNetwork[] network3 = new[] { network1, network2 };
+            IPNetwork[] supernetExpected = new[] { IPNetwork.Parse("2001:db8::/64") };
+            IPNetwork[] supernet;
+            bool parsed = true;
+            bool result = IPNetwork.TrySupernet(network3, out supernet);
+
+            Assert.AreEqual(supernetExpected[0], supernet[0], "supernet");
+            Assert.AreEqual(parsed, result, "parsed");
+
+        }
+
+
+        [TestMethod]
+        public void TestTrySupernet11() {
+
+            IPNetwork[] network3 = null;
+            IPNetwork[] supernetExpected = new[] { IPNetwork.Parse("2001:db8::/64") };
+            IPNetwork[] supernet;
+            bool parsed = false;
+            bool result = IPNetwork.TrySupernet(network3, out supernet);
+
+            Assert.AreEqual(null, supernet, "supernet");
+            Assert.AreEqual(parsed, result, "parsed");
+
+        }
+
+
+        #endregion
+
+
+
+
 
 
 

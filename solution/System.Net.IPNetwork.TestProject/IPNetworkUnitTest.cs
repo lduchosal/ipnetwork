@@ -1519,25 +1519,25 @@ namespace System.Net.TestProject {
 
         public void Example2b() {
 
-    IPNetwork ipnetwork1 = IPNetwork.Parse("10.1.0.0/16");
-    IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.1.0/24");
+            IPNetwork ipnetwork1 = IPNetwork.Parse("10.1.0.0/16");
+            IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.1.0/24");
 
-    IPAddress ipaddress1 = IPAddress.Parse("192.168.1.1");
-    IPAddress ipaddress2 = IPAddress.Parse("192.168.2.100");
-    IPAddress ipaddress3 = IPAddress.Parse("10.1.2.3");
-    IPAddress ipaddress4 = IPAddress.Parse("10.4.5.6");
-
-
-    bool contains1 = IPNetwork.Contains(ipnetwork2, ipaddress1);
-    bool contains2 = IPNetwork.Contains(ipnetwork2, ipaddress2);
-    bool contains3 = IPNetwork.Contains(ipnetwork1, ipaddress3);
-    bool contains4 = IPNetwork.Contains(ipnetwork1, ipaddress4);
+            IPAddress ipaddress1 = IPAddress.Parse("192.168.1.1");
+            IPAddress ipaddress2 = IPAddress.Parse("192.168.2.100");
+            IPAddress ipaddress3 = IPAddress.Parse("10.1.2.3");
+            IPAddress ipaddress4 = IPAddress.Parse("10.4.5.6");
 
 
-    Console.WriteLine("{0} contains {1} : {2}", ipnetwork1, ipaddress1, contains1);
-    Console.WriteLine("{0} contains {1} : {2}", ipnetwork1, ipaddress2, contains2);
-    Console.WriteLine("{0} contains {1} : {2}", ipnetwork2, ipaddress3, contains3);
-    Console.WriteLine("{0} contains {1} : {2}", ipnetwork2, ipaddress4, contains4);
+            bool contains1 = IPNetwork.Contains(ipnetwork2, ipaddress1);
+            bool contains2 = IPNetwork.Contains(ipnetwork2, ipaddress2);
+            bool contains3 = IPNetwork.Contains(ipnetwork1, ipaddress3);
+            bool contains4 = IPNetwork.Contains(ipnetwork1, ipaddress4);
+
+
+            Console.WriteLine("{0} contains {1} : {2}", ipnetwork1, ipaddress1, contains1);
+            Console.WriteLine("{0} contains {1} : {2}", ipnetwork1, ipaddress2, contains2);
+            Console.WriteLine("{0} contains {1} : {2}", ipnetwork2, ipaddress3, contains3);
+            Console.WriteLine("{0} contains {1} : {2}", ipnetwork2, ipaddress4, contains4);
 
 
         }
@@ -1582,7 +1582,55 @@ namespace System.Net.TestProject {
             Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
             
         }
-        
+
+
+
+        public void Example7() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("192.168.168.100/24");
+
+            IPAddress ipaddress = IPAddress.Parse("192.168.168.200");
+            IPAddress ipaddress2 = IPAddress.Parse("192.168.0.200");
+
+            bool contains1 = IPNetwork.Contains(ipnetwork, ipaddress);
+            bool contains2 = IPNetwork.Contains(ipnetwork, ipaddress2);
+
+            Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress, contains1);
+            Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress2, contains2);
+
+        }
+        public void Example9() {
+
+            IPNetwork network = IPNetwork.Parse("192.168.0.1");
+            IPNetwork network2 = IPNetwork.Parse("192.168.0.254");
+
+            IPNetwork ipnetwork = IPNetwork.Supernet(network, network2);
+
+            Console.WriteLine("Network : {0}", ipnetwork.Network);
+            Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);
+            Console.WriteLine("Broadcast : {0}", ipnetwork.Broadcast);
+            Console.WriteLine("FirstUsable : {0}", ipnetwork.FirstUsable);
+            Console.WriteLine("LastUsable : {0}", ipnetwork.LastUsable);
+            Console.WriteLine("Usable : {0}", ipnetwork.Usable);
+            Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
+
+        }
+
+
+        public void Example10() {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.1/25");
+
+            Console.WriteLine("Network : {0}", ipnetwork.Network);
+            Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);
+            Console.WriteLine("Broadcast : {0}", ipnetwork.Broadcast);
+            Console.WriteLine("FirstUsable : {0}", ipnetwork.FirstUsable);
+            Console.WriteLine("LastUsable : {0}", ipnetwork.LastUsable);
+            Console.WriteLine("Usable : {0}", ipnetwork.Usable);
+            Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
+
+        }
+
         #endregion
 
         #region IANA blocks

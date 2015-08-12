@@ -18,7 +18,7 @@ PM> nuget install IPNetwork2
 ---
 ### Example 1 (IPv6) :
 ```
-IPNetwork ipnetwork = IPNetwork.Parse("2001:0db8::/32");
+IPNetwork ipnetwork = IPNetwork.Parse("2001:0db8::/64");
 
 Console.WriteLine("Network : {0}", ipnetwork.Network);
 Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);
@@ -31,12 +31,12 @@ Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
 Output
 ```
 Network : 2001:db8::
-Netmask : ffff:ffff::
-Broadcast : 2001:db8:ffff:ffff:ffff:ffff:ffff:ffff
-FirstUsable : 2001:db8::1
-LastUsable : 2001:db8:ffff:ffff:ffff:ffff:ffff:fffe
-Usable : 79228162514264337593543950334
-Cidr : 32
+Netmask : ffff:ffff:ffff:ffff::
+Broadcast : 
+FirstUsable : 2001:db8::
+LastUsable : 2001:db8::ffff:ffff:ffff:ffff
+Usable : 18446744073709551616
+Cidr : 64
 ```
 
 
@@ -44,13 +44,14 @@ Cidr : 32
 ### Example 2 (IPv6) :
 ```
 
-IPNetwork ipnetwork = IPNetwork.Parse("2001:0db8::/32");
+
+IPNetwork ipnetwork = IPNetwork.Parse("2001:0db8::/64");
 
 IPAddress ipaddress = IPAddress.Parse("2001:0db8::1");
 IPAddress ipaddress2 = IPAddress.Parse("2001:0db9::1");
 
-IPNetwork ipnetwork2 = IPNetwork.Parse("2001:0db8::1/64");
-IPNetwork ipnetwork3 = IPNetwork.Parse("2001:0db9::1/32");
+IPNetwork ipnetwork2 = IPNetwork.Parse("2001:0db8::1/128");
+IPNetwork ipnetwork3 = IPNetwork.Parse("2001:0db9::1/64");
 
 bool contains1 = IPNetwork.Contains(ipnetwork, ipaddress);
 bool contains2 = IPNetwork.Contains(ipnetwork, ipaddress2);
@@ -72,12 +73,12 @@ Console.WriteLine("{0} overlap {1} : {2}", ipnetwork, ipnetwork3, overlap2);
 ```
 Output
 ```
-2001:db8::/32 contains 2001:db8::1 : True
-2001:db8::/32 contains 2001:db9::1 : False
-2001:db8::/32 contains 2001:db8::/64 : True
-2001:db8::/32 contains 2001:db9::/32 : False
-2001:db8::/32 overlap 2001:db8::/64 : True
-2001:db8::/32 overlap 2001:db9::/32 : False
+2001:db8::/64 contains 2001:db8::1 : True
+2001:db8::/64 contains 2001:db9::1 : False
+2001:db8::/64 contains 2001:db8::1/128 : True
+2001:db8::/64 contains 2001:db9::/64 : False
+2001:db8::/64 overlap 2001:db8::1/128 : True
+2001:db8::/64 overlap 2001:db9::/64 : False
 ```
 
 
