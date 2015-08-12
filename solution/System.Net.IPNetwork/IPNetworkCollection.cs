@@ -18,6 +18,9 @@ namespace System.Net {
         private BigInteger _broadcast {
             get { return IPNetwork.ToBigInteger(this._ipnetwork.Broadcast); }
         }
+        private BigInteger _lastUsable {
+            get { return IPNetwork.ToBigInteger(this._ipnetwork.LastUsable); }
+        }
         private BigInteger _network {
             get { return IPNetwork.ToBigInteger(this._ipnetwork.Network); }
         }
@@ -56,7 +59,10 @@ namespace System.Net {
                 {
                     throw new ArgumentOutOfRangeException("i");
                 }
-                BigInteger increment = (this._broadcast - this._network) / this.Count;
+
+                BigInteger last = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetworkV6
+                    ? this._lastUsable : this._broadcast;
+                BigInteger increment = (last - this._network) / this.Count;
                 BigInteger uintNetwork = this._network + ((increment + 1) * i);
                 IPNetwork ipn = new IPNetwork(uintNetwork, this._ipnetwork.AddressFamily, this._cidrSubnet);
                 return ipn;

@@ -90,6 +90,9 @@ namespace System.Net {
         /// </summary>
         public IPAddress Broadcast {
             get {
+                if (this._family == Sockets.AddressFamily.InterNetworkV6) {
+                    return null;
+                }
                 return IPNetwork.ToIPAddress(this._broadcast, this._family);
             }
         }
@@ -99,7 +102,9 @@ namespace System.Net {
         /// </summary>
         public IPAddress FirstUsable {
             get {
-                BigInteger fisrt = (this.Usable <= 0) ? this._network : this._network + 1;
+                BigInteger fisrt = this._family == Sockets.AddressFamily.InterNetworkV6
+                    ? this._network
+                    : (this.Usable <= 0) ? this._network : this._network + 1;
                 return IPNetwork.ToIPAddress(fisrt, this._family);
             }
         }
@@ -110,7 +115,9 @@ namespace System.Net {
         public IPAddress LastUsable
         {
             get {
-                BigInteger last = (this.Usable <= 0) ? this._network : this._broadcast - 1;
+                BigInteger last = this._family == Sockets.AddressFamily.InterNetworkV6
+                    ? this._broadcast
+                    : (this.Usable <= 0) ? this._network : this._broadcast - 1;
                 return IPNetwork.ToIPAddress(last, this._family);
             }
         }
@@ -121,13 +128,12 @@ namespace System.Net {
         public BigInteger Usable {
             get {
 
-                int maxCidr = this._family == Sockets.AddressFamily.InterNetwork ? 30 : 126;
-                byte[] mask = this._family == Sockets.AddressFamily.InterNetwork 
-                    ? new byte[] { 0xff, 0xff, 0xff, 0xff, 0x00 }
-                    : new byte[] { 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0x00 };
-
+                if (this._family == Sockets.AddressFamily.InterNetworkV6) {
+                    return this.Total;
+                }
+                byte[] mask = new byte[] { 0xff, 0xff, 0xff, 0xff, 0x00 };
                 BigInteger bmask = new BigInteger(mask);
-                BigInteger usableIps = (_cidr > maxCidr) ? 0 : ((bmask >> _cidr) - 1);
+                BigInteger usableIps = (_cidr > 30) ? 0 : ((bmask >> _cidr) - 1);
                 return usableIps;
             }
         }
@@ -1692,8 +1698,10 @@ namespace System.Net {
                 cidr = 0;
                 return false;
             }
-            if (ipaddress.AddressFamily != AddressFamily.InterNetwork) {
-                throw new ArgumentException("family");
+
+            if (ipaddress.AddressFamily == AddressFamily.InterNetworkV6) {
+                cidr = 64;
+                return true;
             }
             BigInteger uintIPAddress = IPNetwork.ToBigInteger(ipaddress);
             uintIPAddress = uintIPAddress >> 29;

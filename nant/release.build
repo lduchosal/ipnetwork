@@ -4,7 +4,7 @@
    <property name="ipnetwork.sln" value="..\solution\ipnetwork.sln" />
    <property name="doc.base" value="${project::get-base-directory()}\..\doc" />
    <property name="doc.doxygen" value="${doc.base}\Doxyfile" />
-   <property name="release.version" value="2.0.2" />
+   <property name="release.version" value="2.0.3" />
    <property name="release.doc" value="..\doc\html" />
    <property name="release.base" value="..\release" />
    <property name="src.base" value="..\" />
@@ -19,6 +19,32 @@
    <property name="mstest.base" value="${build.dir}" />
    <property name="mstest.args" value="System.Net.IPNetwork.TestProject.dll" />
    
+	<target name="prerelease">
+	
+		<echo>
+		
+	Before you release:
+	
+		- Change version numbers in :
+		
+			..\solution\System.Net.IPNetwork\Properties\AssemblyInfo.cs
+			..\solution\System.Net.IPNetwork.ConsoleApplication\Properties\AssemblyInfo.cs
+			..\solution\\System.Net.IPNetwork.TestProject\Properties\AssemblyInfo.cs
+			..\nant\release.build (this file)
+			..\release\nuget\IPNetwork.nuspec
+			..\doc\Doxyfile
+
+	After you release:
+
+		- Manual push to nuget :
+			
+			cd ${nuget.base}
+			nuget push .\IPNetwork.${release.version}.nupkg
+			
+				
+		</echo>
+		
+	</target>
 
 	<target name="main" description="Do the full integration process.">
 		
@@ -41,31 +67,6 @@
 		
 	</target>
 	
-	<target name="prerelease">
-	
-		<echo>
-		
-	Before you release:
-	
-		- Change version numbers in :
-		
-			..\solution\System.Net.IPNetwork\Properties\AssemblyInfo.cs
-			..\solution\System.Net.IPNetwork.ConsoleApplication\Properties\AssemblyInfo.cs
-			..\solution\\System.Net.IPNetwork.TestProject\Properties\AssemblyInfo.cs
-			..\nant\release.build (this file)
-			..\release\nuget\IPNetwork.nuspec
-
-	After you release:
-
-		- Manual push to nuget :
-			
-			cd ${nuget.base}
-			nuget push .\IPNetwork.${release.version}.nupkg
-			
-				
-		</echo>
-		
-	</target>
 	<target name="postrelease">
 	
 		<echo>
