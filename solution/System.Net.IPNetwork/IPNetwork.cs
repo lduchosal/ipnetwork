@@ -1128,9 +1128,9 @@ namespace System.Net {
 
         #region IANA block
 
-        private static IPNetwork _iana_ablock_reserved;
-        private static IPNetwork _iana_bblock_reserved;
-        private static IPNetwork _iana_cblock_reserved;
+        private static readonly Lazy<IPNetwork> _iana_ablock_reserved = new Lazy<IPNetwork>(() => IPNetwork.Parse("10.0.0.0/8"));
+        private static readonly Lazy<IPNetwork> _iana_bblock_reserved = new Lazy<IPNetwork>(() => IPNetwork.Parse("172.16.0.0/12"));
+        private static readonly Lazy<IPNetwork> _iana_cblock_reserved = new Lazy<IPNetwork>(() => IPNetwork.Parse("192.168.0.0/16"));
 
         /// <summary>
         /// 10.0.0.0/8
@@ -1138,10 +1138,7 @@ namespace System.Net {
         /// <returns></returns>
         public static IPNetwork IANA_ABLK_RESERVED1 {
             get {
-                if (_iana_ablock_reserved == null) {
-                    _iana_ablock_reserved = IPNetwork.Parse("10.0.0.0/8");
-                }
-                return _iana_ablock_reserved;
+                return _iana_ablock_reserved.Value;
             }
         }
 
@@ -1151,10 +1148,7 @@ namespace System.Net {
         /// <returns></returns>
         public static IPNetwork IANA_BBLK_RESERVED1 {
             get {
-                if (_iana_bblock_reserved == null) {
-                    _iana_bblock_reserved = IPNetwork.Parse("172.16.0.0/12");
-                }
-                return _iana_bblock_reserved;
+                return _iana_bblock_reserved.Value;
             }
         }
 
@@ -1164,10 +1158,7 @@ namespace System.Net {
         /// <returns></returns>
         public static IPNetwork IANA_CBLK_RESERVED1 {
             get {
-                if (_iana_cblock_reserved == null) {
-                    _iana_cblock_reserved = IPNetwork.Parse("192.168.0.0/16");
-                }
-                return _iana_cblock_reserved;
+                return _iana_cblock_reserved.Value;
             }
         }
 
