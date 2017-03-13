@@ -1419,7 +1419,7 @@ namespace System.Net {
 
         }
 
-        public static bool InternalSupernet(bool trySupernet, IPNetwork[] ipnetworks, out IPNetwork[] supernet)
+        internal static bool InternalSupernet(bool trySupernet, IPNetwork[] ipnetworks, out IPNetwork[] supernet)
 
         {
 

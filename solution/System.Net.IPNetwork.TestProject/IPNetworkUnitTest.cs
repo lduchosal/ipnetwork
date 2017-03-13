@@ -2193,6 +2193,23 @@ namespace System.Net.TestProject {
 
         }
 
+
+        [TestMethod]
+        public void TestSupernet9()
+        {
+
+            IPNetwork ipnetwork1 = IPNetwork.Parse("200.16.0.0/24");
+            IPNetwork ipnetwork2 = IPNetwork.Parse("200.16.1.0/24");
+            IPNetwork ipnetwork3 = IPNetwork.Parse("200.16.2.0/24");
+            IPNetwork ipnetwork4 = IPNetwork.Parse("200.16.3.0/24");
+
+            IPNetwork result = IPNetwork.Supernet(new[] { ipnetwork1, ipnetwork2, ipnetwork3, ipnetwork4 })[0];
+            IPNetwork expected = IPNetwork.Parse("200.16.0.0/22");
+
+            Assert.AreEqual(expected, result, "supernet");
+
+        }
+
         #endregion
 
         #region TrySupernet
@@ -2714,6 +2731,39 @@ namespace System.Net.TestProject {
             Assert.AreEqual(expected, wideSubnet, "wideSubnet");
         }
 
+
+        [TestMethod]
+        public void TestWideSubnet9()
+        {
+
+            string start = "200.16.0.0/24";
+            string end = "200.16.3.0/24";
+            var firt = IPNetwork.Parse(start).FirstUsable.ToString();
+            var last = IPNetwork.Parse(end).LastUsable.ToString();
+
+            IPNetwork expected = IPNetwork.Parse("200.16.0.0/22");
+
+            IPNetwork wideSubnet = IPNetwork.WideSubnet(firt, last);
+            Assert.AreEqual(expected, wideSubnet, "wideSubnet");
+
+
+
+        }
+
+
+        [TestMethod]
+        public void TestWideSubnet10()
+        {
+
+            string start = "200.16.0.0";
+            string end = "200.16.3.255";
+
+            IPNetwork expected = IPNetwork.Parse("200.16.0.0/22");
+
+            IPNetwork wideSubnet = IPNetwork.WideSubnet(start, end);
+            Assert.AreEqual(expected, wideSubnet, "wideSubnet");
+
+        }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
