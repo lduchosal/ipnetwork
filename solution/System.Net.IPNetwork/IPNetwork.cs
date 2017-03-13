@@ -436,7 +436,7 @@ namespace System.Net {
                 return;
             }
 
-            network = Regex.Replace(network, @"[^0-9a-f\.\/\s\:]+", "");
+            network = Regex.Replace(network, @"[^0-9a-fA-F\.\/\s\:]+", "");
             network = Regex.Replace(network, @"\s{2,}", " ");
             network = network.Trim();
             string[] args = network.Split(new char[] { ' ', '/' });
@@ -1034,6 +1034,11 @@ namespace System.Net {
             if (ipaddress == null)
             {
                 throw new ArgumentNullException("ipaddress");
+            }
+
+            if (network.AddressFamily != ipaddress.AddressFamily)
+            {
+                return false;
             }
 
             BigInteger uintNetwork = network._network;

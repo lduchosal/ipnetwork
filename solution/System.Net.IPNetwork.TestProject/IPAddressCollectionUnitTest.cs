@@ -263,10 +263,12 @@ namespace System.Net.TestProject {
         }
 
         [TestMethod]
-        public void Test_ipv6_Reset() {
+        public void Test_ipv6_Reset()
+        {
 
             IPNetwork ipn = IPNetwork.Parse("::/125");
-            using (IPAddressCollection ips = IPNetwork.ListIPAddress(ipn)) {
+            using (IPAddressCollection ips = IPNetwork.ListIPAddress(ipn))
+            {
                 ips.Reset();
             }
         }
@@ -367,14 +369,25 @@ namespace System.Net.TestProject {
         }
 
         [TestMethod]
-        public void Test_ipv6_EnumeratorIterate() {
+        public void Test_ipv6_EnumeratorIterate()
+        {
 
             IPNetwork ipn = IPNetwork.Parse("::/127");
             IEnumerator ips = IPNetwork.ListIPAddress(ipn);
-            while (ips.MoveNext()) {
+            while (ips.MoveNext())
+            {
                 Assert.IsNotNull(ips.Current);
             }
         }
+
+        [TestMethod]
+        public void Test_ipv6_DefaultNetmask()
+        {
+            var ipnetwork = IPNetwork.Parse("::1");
+            Assert.AreEqual(64, ipnetwork.Cidr, "Cidr");
+        }
+
+
 
         #endregion
 

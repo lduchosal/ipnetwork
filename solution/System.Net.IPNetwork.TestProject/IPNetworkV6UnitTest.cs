@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Numerics;
+using System.Diagnostics;
 
 namespace System.Net.TestProject {
     [TestClass]
@@ -417,7 +418,8 @@ namespace System.Net.TestProject {
 
 
         [TestMethod]
-        public void TestParseString6() {
+        public void TestParseString6()
+        {
 
             string ipaddress = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff/128";
 
@@ -434,6 +436,130 @@ namespace System.Net.TestProject {
             Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
             Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
             Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
+            Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
+            Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+
+        }
+
+
+        [TestMethod]
+        public void TestParseString7_Uppercase_ipv6_must_parse()
+        {
+
+            string ipaddress = "2FFF:FFFF:123::/60";
+
+            string network = "2fff:ffff:123::";
+            string netmask = "ffff:ffff:ffff:fff0::";
+            string firstUsable = "2fff:ffff:123::";
+            string lastUsable = "2fff:ffff:123:f:ffff:ffff:ffff:ffff";
+            byte cidr = 60;
+            // BigInteger usable = 295147905179352825856;
+
+            IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
+            Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
+            Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
+            Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+            Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
+            //Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
+            Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
+            Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+
+        }
+
+        [TestMethod]
+        public void TestParseString8_Uppercase_ipv6_must_parse()
+        {
+
+            string ipaddress = "2FFF:FFFE:123::/60";
+
+            string network = "2fff:fffe:123::";
+            string netmask = "ffff:ffff:ffff:fff0::";
+            string firstUsable = "2fff:fffe:123::";
+            string lastUsable = "2fff:fffe:123:f:ffff:ffff:ffff:ffff";
+            byte cidr = 60;
+            // BigInteger usable = 295147905179352825856;
+
+            IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
+            Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
+            Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
+            Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+            Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
+            //Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
+            Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
+            Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+
+
+        }
+
+        [TestMethod]
+        public void TestParseString9_Uppercase_ipv6_must_parse()
+        {
+
+            string ipaddress = "2FFF:FFFC:123::/60";
+
+            string network = "2fff:fffc:123::";
+            string netmask = "ffff:ffff:ffff:fff0::";
+            string firstUsable = "2fff:fffc:123::";
+            string lastUsable = "2fff:fffc:123:f:ffff:ffff:ffff:ffff";
+            byte cidr = 60;
+            // BigInteger usable = 295147905179352825856;
+
+            IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
+            Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
+            Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
+            Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+            Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
+            //Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
+            Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
+            Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+
+        }
+
+
+        [TestMethod]
+        public void TestParseString10_Uppercase_ipv6_must_parse()
+        {
+
+            string ipaddress = "2FFF:FFFA:123::/60";
+
+            string network = "2fff:fffa:123::";
+            string netmask = "ffff:ffff:ffff:fff0::";
+            string firstUsable = "2fff:fffa:123::";
+            string lastUsable = "2fff:fffa:123:f:ffff:ffff:ffff:ffff";
+            byte cidr = 60;
+            // BigInteger usable = 295147905179352825856;
+
+            IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
+            Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
+            Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
+            Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+            Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
+            //Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
+            Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
+            Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+
+        }
+
+
+        [TestMethod]
+        public void TestParseString11_Uppercase_ipv6_must_parse()
+        {
+
+            string ipaddress = "FFFF:FFF1:123::/60";
+
+            string network = "ffff:fff1:123::";
+            string netmask = "ffff:ffff:ffff:fff0::";
+            string firstUsable = "ffff:fff1:123::";
+            string lastUsable = "ffff:fff1:123:f:ffff:ffff:ffff:ffff";
+            byte cidr = 60;
+            // BigInteger usable = 295147905179352825856;
+
+            IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
+            Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
+            Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
+            Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+            Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
+            //Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
             Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
 
@@ -1495,12 +1621,25 @@ namespace System.Net.TestProject {
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestContains10() {
+        public void TestContains10()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("::/0");
             IPAddress ipaddress = null;
 
             bool result = IPNetwork.Contains(ipnetwork, ipaddress);
+
+        }
+
+        [TestMethod]
+        public void TestContains11_different_adress_family_returns_false()
+        {
+
+            IPNetwork ipnetwork = IPNetwork.Parse("::1"); // IPv6
+            IPAddress ipaddress = IPAddress.Parse("127.0.0.1"); // IPv4
+
+            bool result = IPNetwork.Contains(ipnetwork, ipaddress);
+            Assert.AreEqual(false, result, "contains");
 
         }
 
@@ -1832,7 +1971,8 @@ namespace System.Net.TestProject {
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestSubnet13() {
+        public void TestSubnet13()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("2001:db08::/64");
             byte cidr = 70;
@@ -1840,6 +1980,27 @@ namespace System.Net.TestProject {
             IPNetwork error = subnets[1000];
 
         }
+
+
+
+        [TestMethod]
+        public void TestSubnet14()
+        {
+
+            IPNetwork network = IPNetwork.Parse("15.0.0.0/8");
+            var subnets = IPNetwork.Subnet(network, (byte)12);
+            Assert.AreEqual(subnets[0].ToString(), "15.0.0.0/12", "subnets[0]");
+            Assert.AreEqual(subnets[1].ToString(), "15.16.0.0/12", "subnets[1]");
+            Assert.AreEqual(subnets[2].ToString(), "15.32.0.0/12", "subnets[2]");
+            Assert.AreEqual(subnets[15].ToString(), "15.240.0.0/12", "subnets[15]");
+
+            foreach (IPNetwork ipn in subnets)
+            {
+                Console.WriteLine(ipn);
+            }
+        }
+
+
 
         #endregion
 
