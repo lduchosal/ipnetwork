@@ -4,7 +4,7 @@
    <property name="ipnetwork.sln" value="..\solution\ipnetwork.sln" />
    <property name="doc.base" value="${project::get-base-directory()}\..\doc" />
    <property name="doc.doxygen" value="${doc.base}\Doxyfile" />
-   <property name="release.version" value="2.0.3" />
+   <property name="release.version" value="2.0.4" />
    <property name="release.doc" value="..\doc\html" />
    <property name="release.base" value="..\release" />
    <property name="src.base" value="..\" />
@@ -15,7 +15,7 @@
    <property name="nuget.base" value="${release.base}\nuget\${release.version}" />
    <property name="nuget.bin" value="C:\Program Files (x86)\bin\nuget.exe" />
    
-   <property name="mstest.bin" value="C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\MSTest.exe" />
+   <property name="mstest.bin" value="C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\MSTest.exe" />
    <property name="mstest.base" value="${build.dir}" />
    <property name="mstest.args" value="System.Net.IPNetwork.TestProject.dll" />
    
