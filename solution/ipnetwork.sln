@@ -1,40 +1,64 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5218800C-4C0D-43F8-8746-E8DE3A517367}"
-	ProjectSection(SolutionItems) = preProject
-		IPNetwork.vsmdi = IPNetwork.vsmdi
-		IPNetwork1.vsmdi = IPNetwork1.vsmdi
-		IPNetwork2.vsmdi = IPNetwork2.vsmdi
-		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
-	EndProjectSection
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.10
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Net.IPNetwork", "System.Net.IPNetwork\System.Net.IPNetwork.csproj", "{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Net.IPNetwork", "System.Net.IPNetwork\System.Net.IPNetwork.csproj", "{E76938D8-EDEC-4568-B73C-B98C41044423}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Net.IPNetwork.TestProject.NetCore", "System.Net.IPNetwork.TestProject.NetCore\System.Net.IPNetwork.TestProject.NetCore.csproj", "{C9366A60-E771-4E1E-B0EE-D4AF3A4F5390}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Net.IPNetwork.TestProject", "System.Net.IPNetwork.TestProject\System.Net.IPNetwork.TestProject.csproj", "{A31C810B-14C9-4876-B057-8091F520C73D}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "System.Net.IPNetwork.TestProject.Source", "System.Net.IPNetwork.TestProject.Source\System.Net.IPNetwork.TestProject.Source.shproj", "{EE240FA2-57F7-47DE-9F02-C9A6E5F438DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Net.IPNetwork.ConsoleApplication", "System.Net.IPNetwork.ConsoleApplication\System.Net.IPNetwork.ConsoleApplication.csproj", "{F321DB2F-4360-4742-851E-3867367A255E}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "System.Net.IPNetwork.ConsoleApplication.Source", "System.Net.IPNetwork.ConsoleApplication.Source\System.Net.IPNetwork.ConsoleApplication.Source.shproj", "{929D3BA7-9A9B-4CCC-85DD-B3CC465221FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Net.IPNetwork.ConsoleApplication.NetCore", "System.Net.IPNetwork.ConsoleApplication.NetCore\System.Net.IPNetwork.ConsoleApplication.NetCore.csproj", "{BD2A4B23-5C80-410C-9CB4-38E717F25268}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gnu.Getopt", "Gnu.Getopt\Gnu.Getopt.csproj", "{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "vendor", "vendor", "{7102AE06-D0A4-4CB9-A4BD-22CB803EA312}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "exe", "exe", "{7F79CD80-ADCD-4125-A5CE-EF19BEE25DF5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{4597D016-3B7D-47A9-BF01-83445C7F0C47}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F29C77A1-AA9F-47B4-A04F-A1BD121D9242}"
 EndProject
 Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		System.Net.IPNetwork.ConsoleApplication.Source\System.Net.IPNetwork.ConsoleApplication.Source.projitems*{929d3ba7-9a9b-4ccc-85dd-b3cc465221fc}*SharedItemsImports = 13
+		System.Net.IPNetwork.TestProject.Source\System.Net.IPNetwork.TestProject.Source.projitems*{ee240fa2-57f7-47de-9f02-c9a6e5f438db}*SharedItemsImports = 13
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E76938D8-EDEC-4568-B73C-B98C41044423}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E76938D8-EDEC-4568-B73C-B98C41044423}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E76938D8-EDEC-4568-B73C-B98C41044423}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E76938D8-EDEC-4568-B73C-B98C41044423}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A31C810B-14C9-4876-B057-8091F520C73D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A31C810B-14C9-4876-B057-8091F520C73D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A31C810B-14C9-4876-B057-8091F520C73D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A31C810B-14C9-4876-B057-8091F520C73D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F321DB2F-4360-4742-851E-3867367A255E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F321DB2F-4360-4742-851E-3867367A255E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F321DB2F-4360-4742-851E-3867367A255E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F321DB2F-4360-4742-851E-3867367A255E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9366A60-E771-4E1E-B0EE-D4AF3A4F5390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9366A60-E771-4E1E-B0EE-D4AF3A4F5390}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9366A60-E771-4E1E-B0EE-D4AF3A4F5390}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9366A60-E771-4E1E-B0EE-D4AF3A4F5390}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD2A4B23-5C80-410C-9CB4-38E717F25268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD2A4B23-5C80-410C-9CB4-38E717F25268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD2A4B23-5C80-410C-9CB4-38E717F25268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD2A4B23-5C80-410C-9CB4-38E717F25268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F} = {4597D016-3B7D-47A9-BF01-83445C7F0C47}
+		{C9366A60-E771-4E1E-B0EE-D4AF3A4F5390} = {F29C77A1-AA9F-47B4-A04F-A1BD121D9242}
+		{EE240FA2-57F7-47DE-9F02-C9A6E5F438DB} = {F29C77A1-AA9F-47B4-A04F-A1BD121D9242}
+		{929D3BA7-9A9B-4CCC-85DD-B3CC465221FC} = {7F79CD80-ADCD-4125-A5CE-EF19BEE25DF5}
+		{BD2A4B23-5C80-410C-9CB4-38E717F25268} = {7F79CD80-ADCD-4125-A5CE-EF19BEE25DF5}
+		{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7} = {7102AE06-D0A4-4CB9-A4BD-22CB803EA312}
 	EndGlobalSection
 EndGlobal

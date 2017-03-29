@@ -2910,14 +2910,12 @@ Usable      : 4294967294
         public void TestSort1() {
             string[] ips = new[] { "1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0" };
             List<IPNetwork> ipns = new List<IPNetwork>();
-            Array.ForEach<string>(ips, new Action<string>(
-                delegate(string ip) {
-                    IPNetwork ipn;
-                    if (IPNetwork.TryParse(ip, 32, out ipn)) {
-                        ipns.Add(ipn);
-                    }
+            foreach(string ip in ips) {
+                IPNetwork ipn;
+                if (IPNetwork.TryParse(ip, 32, out ipn)) {
+                    ipns.Add(ipn);
                 }
-            ));
+            }
 
             ipns.Sort();
             Assert.AreEqual("0.0.0.0/32", ipns[0].ToString(), "0");
@@ -2930,14 +2928,13 @@ Usable      : 4294967294
         public void TestSort2() {
             string[] ips = new[] { "0.0.0.100/32", "0.0.0.0/24" };
             List<IPNetwork> ipns = new List<IPNetwork>();
-            Array.ForEach<string>(ips, new Action<string>(
-                delegate(string ip) {
-                    IPNetwork ipn;
-                    if (IPNetwork.TryParse(ip, out ipn)) {
-                        ipns.Add(ipn);
-                    }
+            foreach (string ip in ips)
+            {
+                IPNetwork ipn;
+                if (IPNetwork.TryParse(ip, out ipn)) {
+                    ipns.Add(ipn);
                 }
-            ));
+            }
 
             ipns.Sort();
             Assert.AreEqual("0.0.0.0/24", ipns[0].ToString(), "0");
@@ -2952,14 +2949,14 @@ Usable      : 4294967294
         public void TryWideSubnet1() {
             string[] ips = new[] { "1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0" };
             List<IPNetwork> ipns = new List<IPNetwork>();
-            Array.ForEach<string>(ips, new Action<string>(
-                delegate(string ip) {
-                    IPNetwork ipn;
-                    if (IPNetwork.TryParse(ip, 32, out ipn)) {
-                        ipns.Add(ipn);
-                    }
+            foreach (string ip in ips)
+            {
+                IPNetwork ipn;
+                if (IPNetwork.TryParse(ip, 32, out ipn))
+                {
+                    ipns.Add(ipn);
                 }
-            ));
+            }
 
             IPNetwork ipnetwork = null;
             bool wide = IPNetwork.TryWideSubnet(ipns.ToArray(), out ipnetwork);
@@ -2972,14 +2969,14 @@ Usable      : 4294967294
         public void TryWideSubnet2() {
             string[] ips = new[] { "1.1.1.1", "10.0.0.0", "2.2.2.2", "0.0.0.0" };
             List<IPNetwork> ipns = new List<IPNetwork>();
-            Array.ForEach<string>(ips, new Action<string>(
-                delegate(string ip) {
-                    IPNetwork ipn;
-                    if (IPNetwork.TryParse(ip, 32, out ipn)) {
-                        ipns.Add(ipn);
-                    }
+            foreach (string ip in ips)
+            {
+                IPNetwork ipn;
+                if (IPNetwork.TryParse(ip, 32, out ipn))
+                {
+                    ipns.Add(ipn);
                 }
-            ));
+            }
 
             IPNetwork ipnetwork = null;
             bool wide = IPNetwork.TryWideSubnet(ipns.ToArray(), out ipnetwork);
@@ -2993,14 +2990,14 @@ Usable      : 4294967294
         public void TryWideSubnet3() {
             string[] ips = new[] { "a", "b", "c", "d" };
             List<IPNetwork> ipns = new List<IPNetwork>();
-            Array.ForEach<string>(ips, new Action<string>(
-                delegate(string ip) {
-                    IPNetwork ipn;
-                    if (IPNetwork.TryParse(ip, 32, out ipn)) {
-                        ipns.Add(ipn);
-                    }
+            foreach (string ip in ips)
+            {
+                IPNetwork ipn;
+                if (IPNetwork.TryParse(ip, 32, out ipn))
+                {
+                    ipns.Add(ipn);
                 }
-            ));
+            }
 
             IPNetwork ipnetwork = null;
             bool wide = IPNetwork.TryWideSubnet(ipns.ToArray(), out ipnetwork);
@@ -3012,14 +3009,14 @@ Usable      : 4294967294
         public void TryWideSubnet4() {
             string[] ips = new[] { "a", "b", "1.1.1.1", "d" };
             List<IPNetwork> ipns = new List<IPNetwork>();
-            Array.ForEach<string>(ips, new Action<string>(
-                delegate(string ip) {
-                    IPNetwork ipn;
-                    if (IPNetwork.TryParse(ip, 32, out ipn)) {
-                        ipns.Add(ipn);
-                    }
+            foreach (string ip in ips)
+            {
+                IPNetwork ipn;
+                if (IPNetwork.TryParse(ip, 32, out ipn))
+                {
+                    ipns.Add(ipn);
                 }
-            ));
+            }
 
             IPNetwork ipnetwork = null;
             bool wide = IPNetwork.TryWideSubnet(ipns.ToArray(), out ipnetwork);
@@ -3045,14 +3042,14 @@ Usable      : 4294967294
         public void WideSubnet1() {
             string[] ips = new[] { "1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0" };
             List<IPNetwork> ipns = new List<IPNetwork>();
-            Array.ForEach<string>(ips, new Action<string>(
-                delegate(string ip) {
-                    IPNetwork ipn;
-                    if (IPNetwork.TryParse(ip, 32, out ipn)) {
-                        ipns.Add(ipn);
-                    }
+            foreach (string ip in ips)
+            {
+                IPNetwork ipn;
+                if (IPNetwork.TryParse(ip, 32, out ipn))
+                {
+                    ipns.Add(ipn);
                 }
-            ));
+            }
 
             IPNetwork ipnetwork = IPNetwork.WideSubnet(ipns.ToArray());
             Assert.AreEqual("0.0.0.0/0", ipnetwork.ToString(), "ipnetwork");
@@ -3063,14 +3060,14 @@ Usable      : 4294967294
         public void WideSubnet2() {
             string[] ips = new[] { "1.1.1.1", "10.0.0.0", "2.2.2.2", "0.0.0.0" };
             List<IPNetwork> ipns = new List<IPNetwork>();
-            Array.ForEach<string>(ips, new Action<string>(
-                delegate(string ip) {
-                    IPNetwork ipn;
-                    if (IPNetwork.TryParse(ip, 32, out ipn)) {
-                        ipns.Add(ipn);
-                    }
+            foreach (string ip in ips)
+            {
+                IPNetwork ipn;
+                if (IPNetwork.TryParse(ip, 32, out ipn))
+                {
+                    ipns.Add(ipn);
                 }
-            ));
+            }
 
             IPNetwork ipnetwork = IPNetwork.WideSubnet(ipns.ToArray());
             Assert.AreEqual("0.0.0.0/4", ipnetwork.ToString(), "ipnetwork");
@@ -3092,14 +3089,14 @@ Usable      : 4294967294
 
             string[] ips = new[] { "a", "b", "e", "d" };
             List<IPNetwork> ipns = new List<IPNetwork>();
-            Array.ForEach<string>(ips, new Action<string>(
-                delegate(string ip) {
-                    IPNetwork ipn;
-                    if (IPNetwork.TryParse(ip, 32, out ipn)) {
-                        ipns.Add(ipn);
-                    }
+            foreach (string ip in ips)
+            {
+                IPNetwork ipn;
+                if (IPNetwork.TryParse(ip, 32, out ipn))
+                {
+                    ipns.Add(ipn);
                 }
-            ));
+            }
 
             IPNetwork ipnetwork = IPNetwork.WideSubnet(ipns.ToArray());
 
