@@ -2853,26 +2853,32 @@ namespace System.Net.TestProject {
         [TestMethod]
         public void TestGetHashCode1() {
 
-            IPNetwork ipnetwork = IPNetwork.Parse("0.0.1.1/0");
-            int hashCode = ipnetwork.GetHashCode();
-            Assert.AreEqual(-1611127575, hashCode, "hashcode");
+            IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.1.1/0");
+            IPNetwork ipnetwork2 = IPNetwork.Parse("0.0.1.1/0");
+            int hashCode1 = ipnetwork1.GetHashCode();
+            int hashCode2 = ipnetwork2.GetHashCode();
+            Assert.AreEqual(hashCode1, hashCode2, "hashcode");
 
         }
 
         [TestMethod]
         public void TestGetHashCode2() {
 
-            IPNetwork ipnetwork = IPNetwork.Parse("0.0.0.0/1");
-            int hashCode = ipnetwork.GetHashCode();
-            Assert.AreEqual(-1014887953, hashCode, "hashcode");
+            IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.0.0/1");
+            IPNetwork ipnetwork2 = IPNetwork.Parse("0.0.0.0/1");
+            int hashCode1 = ipnetwork1.GetHashCode();
+            int hashCode2 = ipnetwork2.GetHashCode();
+            Assert.AreEqual(hashCode1, hashCode2, "hashcode");
 
         }
         [TestMethod]
         public void TestGetHashCode3() {
 
-            IPNetwork ipnetwork = IPNetwork.Parse("0.0.0.0/32");
-            int hashCode = ipnetwork.GetHashCode();
-            Assert.AreEqual(-1013970447, hashCode, "hashcode");
+            IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.0.0/32");
+            IPNetwork ipnetwork2 = IPNetwork.Parse("0.0.0.0/32");
+            int hashCode1 = ipnetwork1.GetHashCode();
+            int hashCode2 = ipnetwork2.GetHashCode();
+            Assert.AreEqual(hashCode1, hashCode2, "hashcode");
 
         }
 
@@ -2883,8 +2889,8 @@ namespace System.Net.TestProject {
         [TestMethod]
         public void Print() {
             IPNetwork ipn = IPNetwork.Parse("0.0.0.0/0");
-            string print = IPNetwork.Print(ipn);
-            Assert.AreEqual(@"IPNetwork   : 0.0.0.0/0
+            string print = IPNetwork.Print(ipn).Replace("\r", "");
+            string expected = @"IPNetwork   : 0.0.0.0/0
 Network     : 0.0.0.0
 Netmask     : 0.0.0.0
 Cidr        : 0
@@ -2892,7 +2898,9 @@ Broadcast   : 255.255.255.255
 FirstUsable : 0.0.0.1
 LastUsable  : 255.255.255.254
 Usable      : 4294967294
-", print, "Print");
+".Replace("\r", "");
+
+            Assert.AreEqual(expected, print, "Print");
         }
 
         [TestMethod]
