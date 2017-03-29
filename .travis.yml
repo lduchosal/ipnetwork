@@ -1,2 +1,10 @@
 language: csharp
-solution: solution/ipnetwork.sln
+dist: trusty
+sudo: required
+mono: none
+dotnet: 1.0.1
+script:
+  - cd src
+  - dotnet restore
+  - dotnet pack
+  - dotnet test ./System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj
