@@ -74,7 +74,7 @@
 
 		- Manual push to nuget :
 			
-			nuget push ..\release\nuget\${release.version}\IPNetwork2.${release.version}.nupkg
+			nuget push ..\release\IPNetwork2.${release.version}.nupkg
 			
 				
 		</echo>
