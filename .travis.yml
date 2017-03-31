@@ -6,5 +6,5 @@ dotnet: 1.0.1
 script:
   - cd src
   - dotnet restore
-  - dotnet pack
+  - dotnet pack ./System.Net.IPNetwork
   - dotnet test ./System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj
