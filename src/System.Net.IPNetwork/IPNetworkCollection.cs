@@ -1,11 +1,9 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Collections;
 using System.Numerics;
 
-namespace System.Net {
+namespace System.Net
+{
     public class IPNetworkCollection : IEnumerable<IPNetwork>, IEnumerator<IPNetwork> {
 
         private BigInteger _enumerator;

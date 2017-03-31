@@ -1,11 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Net;
-using System.Collections.Generic;
 using System.Collections;
+using System.Collections.Generic;
 using System.Numerics;
 
-namespace System.Net.TestProject {
+namespace System.Net.TestProject
+{
     /// <summary>
     /// IPNetworkUnitTest test every single method
     /// </summary>

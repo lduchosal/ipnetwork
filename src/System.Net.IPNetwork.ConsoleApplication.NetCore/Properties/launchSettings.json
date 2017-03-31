@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "System.Net.IPNetwork.ConsoleApplication.NetCore": {
+      "commandName": "Project"
+    }
+  }
+}

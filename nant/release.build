@@ -1,24 +1,25 @@
 <?xml version="1.0"?>
 <project name="IPNetwork" default="main" basedir=".">
 
-   <property name="ipnetwork.sln" value="..\solution\ipnetwork.sln" />
-   <property name="doc.base" value="${project::get-base-directory()}\..\doc" />
-   <property name="doc.doxygen" value="${doc.base}\Doxyfile" />
-   <property name="release.version" value="2.0.4" />
-   <property name="release.doc" value="..\doc\html" />
-   <property name="release.base" value="..\release" />
-   <property name="src.base" value="..\" />
-   <property name="release.zip" value="${release.base}\IPNetwork-${release.version}.zip" />
-   <property name="release.temp" value="${release.base}\temp" />
-   <property name="build.dir" value="..\solution\binaries\Release" />
-   
-   <property name="nuget.base" value="${release.base}\nuget\${release.version}" />
-   <property name="nuget.bin" value="C:\Program Files (x86)\bin\nuget.exe" />
-   
-   <property name="mstest.bin" value="C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\MSTest.exe" />
-   <property name="mstest.base" value="${build.dir}" />
-   <property name="mstest.args" value="System.Net.IPNetwork.TestProject.dll" />
-   
+	<property name="ipnetwork.sln" value="..\src\ipnetwork.sln" />
+	<property name="doc.base" value="${project::get-base-directory()}\..\doc" />
+	<property name="doc.doxygen" value="${doc.base}\Doxyfile" />
+	<property name="release.version" value="2.1.0" />
+	<property name="release.doc" value="..\doc\html" />
+	<property name="release.base" value="..\release" />
+	<property name="src.base" value="..\" />
+	<property name="release.zip" value="${release.base}\IPNetwork-${release.version}.zip" />
+	<property name="release.temp" value="${release.base}\temp" />
+
+	<property name="src.dir" value="..\src" />
+	<property name="consoleappnetframework.dir" value="..\src\System.Net.IPNetwork.ConsoleApplication.NetFramework\bin\Release" />
+	<property name="consoleappnetcore.dir" value="..\src\System.Net.IPNetwork.ConsoleApplication.NetCore\bin\Release\netcoreapp1.1" />
+	<property name="lib.dir" value="..\src\System.Net.IPNetwork\bin\release\netstandard1.3" />
+
+	<property name="nupkg.dir" value="..\src\System.Net.IPNetwork\bin\release" />
+	<property name="nuget.dir" value="..\release" />
+
+	  
 	<target name="prerelease">
 	
 		<echo>
@@ -27,18 +28,17 @@
 	
 		- Change version numbers in :
 		
+			..\nant\release.build (this file)
+			..\solution\System.Net.IPNetwork\System.Net.IPNetwork.csproj
 			..\solution\System.Net.IPNetwork\Properties\AssemblyInfo.cs
 			..\solution\System.Net.IPNetwork.ConsoleApplication\Properties\AssemblyInfo.cs
 			..\solution\\System.Net.IPNetwork.TestProject\Properties\AssemblyInfo.cs
-			..\nant\release.build (this file)
-			..\release\nuget\IPNetwork.nuspec
 			..\doc\Doxyfile
 
 	After you release:
 
 		- Manual push to nuget :
 			
-			cd ${nuget.base}
 			nuget push .\IPNetwork.${release.version}.nupkg
 			
 				
@@ -52,14 +52,13 @@
 		<call target="prerelease" />
 		<call target="postrelease" />
 
-		<sleep seconds="5" />
+		<sleep seconds="1" />
 
 		<call target="build" />
-		<call target="mstest" />
 		<call target="doxygen" />
 		<call target="copy" />
-		<call target="nuget" />
 		<call target="zip" />
+		<call target="nuget" />
 		<call target="clean" />
 
 		<call target="postrelease" />
@@ -93,11 +92,18 @@
 		<delete dir="${release.temp}" />
 		<mkdir dir="${release.temp}" />
 		<mkdir dir="${release.temp}/bin" />
+		<mkdir dir="${release.temp}/bin-netcoreapp1.1" />
 		<mkdir dir="${release.temp}/lib" />
 		<mkdir dir="${release.temp}/doc" />
 
 		<copy todir="${release.temp}/bin">
-		   <fileset basedir="${build.dir}" >
+		   <fileset basedir="${consoleappnetframework.dir}" >
+		      <include name="**/*.*" />
+		   </fileset>
+		</copy>
+
+		<copy todir="${release.temp}/bin-netcoreapp1.1">
+		   <fileset basedir="${consoleappnetcore.dir}" >
 		      <include name="**/*.*" />
 		   </fileset>
 		</copy>
@@ -110,7 +116,7 @@
 		</delete>
 		
 		<copy todir="${release.temp}/lib">
-		   <fileset basedir="${build.dir}" >
+		   <fileset basedir="${lib.dir}" >
 		      <include name="System.Net.IPNetwork.dll" />
 		   </fileset>
 		</copy>
@@ -123,67 +129,29 @@
          </fileset>
 		</copy>
 		
-	</target>
-	
-	<target name="mstest">
-		<echo>
 		
-		   UnitTest validation
-		   
-		   mstest.bin : ${mstest.bin}
-		   mstest.args : ${mstest.args}
-		  
-		   
-		</echo>
-		
-		<exec program="${mstest.bin}" workingdir="${mstest.base}">
-			<arg value="/testcontainer:${mstest.args}" />
-		</exec>
-
-	
 	</target>
-	
+		
+		
 	<target name="nuget">
 		<echo>
 		
-		   Prepare for nuget packaging
-		   
-		   nuget.base : ${nuget.base}
-		  
+		   Copy nugetpackage for release 
+		   nuget.dir : ${nuget.dir}
 		   
 		</echo>
 		
-		<delete >
-		   <fileset basedir="${nuget.base}">
-		      <include name="lib/**/*.*" />
-		      <include name="IPNetwork*.nupkg" />
-		   </fileset>
-		</delete>
-		
-		<mkdir dir="${nuget.base}" />
-		<mkdir dir="${nuget.base}/lib" />
-		<mkdir dir="${nuget.base}/lib/net40" />
-		
-		<copy todir="${nuget.base}">
-		   <fileset basedir="${nuget.base}/../" >
-		      <include name="IPNetwork2.nuspec" />
+		<mkdir dir="${nuget.dir}" />
+
+		<copy todir="${nuget.dir}">
+		   <fileset basedir="${nupkg.dir}" >
+		      <include name="*.nupkg" />
 		   </fileset>
 		</copy>
-		
-		<copy todir="${nuget.base}/lib/net40">
-		   <fileset basedir="${build.dir}" >
-		      <include name="System.Net.IPNetwork.dll" />
-		   </fileset>
-		</copy>
-		
 
-      <exec program="${nuget.bin}" workingdir="${nuget.base}">
-         <arg value="pack" />
-         <arg value="IPNetwork2.nuspec" />
-      </exec>
-
-	
+		
 	</target>
+		
 	
 	<target name="zip">
 		<echo>
@@ -236,31 +204,56 @@
   
   
  	<target name="build" description="Build of the solution using the release configuration.">
-		
-		  <delete >
-			 <fileset basedir="${build.dir}">
-				  <include name="**/*.*" />
-			 </fileset>
-		  </delete>
+
+		<delete dir="${src.dir}\Gnu.Getopt\bin" />
+		<delete dir="${src.dir}\Gnu.Getopt\obj" />
+		<delete dir="${src.dir}\System.Net.IPNetwork\bin" />
+		<delete dir="${src.dir}\System.Net.IPNetwork\obj" />
+		<delete dir="${src.dir}\System.Net.IPNetwork.ConsoleApplication.NetFramework\bin" />
+		<delete dir="${src.dir}\System.Net.IPNetwork.ConsoleApplication.NetFramework\obj" />
+		<delete dir="${src.dir}\System.Net.IPNetwork.ConsoleApplication.NetCore\bin" />
+		<delete dir="${src.dir}\System.Net.IPNetwork.ConsoleApplication.NetCore\obj" />
+		<delete dir="${src.dir}\System.Net.IPNetwork.TestProject.NetCore\bin" />
+		<delete dir="${src.dir}\System.Net.IPNetwork.TestProject.NetCore\obj" />
 		  
-		<property name="msbuild.property" value="Configuration=Release"/>
-		<property name="msbuild.path" value="C:\WINDOWS\Microsoft.NET\Framework\v4.0.30319\"/>
-		<exec program="msbuild.exe" basedir="${msbuild.path}">
-		<arg value="${ipnetwork.sln}" />
-		<arg value="/p:${msbuild.property}" />
-		<arg value="/t:rebuild" />
-		<arg value="/v:m" />
+		<property name="dotnet.path" value="C:\Program Files\dotnet"/>
+		<exec program="dotnet.exe" basedir="${dotnet.path}" workingdir="${src.dir}">
+			<arg value="clean" />
 		</exec>
 		
+		<exec program="dotnet.exe" basedir="${dotnet.path}" workingdir="${src.dir}">
+			<arg value="restore" />
+		</exec>
+		
+		<exec program="dotnet.exe" basedir="${dotnet.path}" workingdir="${src.dir}">
+			<arg value="pack" />
+			<arg value="-c" />
+			<arg value="release" />
+			<arg value=".\System.Net.IPNetwork\" />
+		</exec>
+		
+		<exec program="dotnet.exe" basedir="${dotnet.path}" workingdir="${src.dir}">
+			<arg value="test" />
+			<arg value="./System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj" />
+		</exec>
+		
+		<exec program="dotnet.exe" basedir="${dotnet.path}" workingdir="${src.dir}">
+			<arg value="build" />
+			<arg value="-c" />
+			<arg value="release" />
+			<arg value="./System.Net.IPNetwork.ConsoleApplication.NetFramework" />
+		</exec>
+		
+		<exec program="dotnet.exe" basedir="${dotnet.path}" workingdir="${src.dir}">
+			<arg value="build" />
+			<arg value="-c" />
+			<arg value="release" />
+			<arg value="./System.Net.IPNetwork.ConsoleApplication.NetCore" />
+		</exec>
 		
 	</target>
 
-  
-   <target name="build_" description="Compiles using the Automated Configuration">
-      <msbuild project="${ipnetwork.sln}">
-         <property name="Configuration" value="Release"/>
-      </msbuild>
-   </target>
+ 
 
 </project>
 

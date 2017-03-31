@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Net;
-using System.Net.Sockets;
-using System.Text.RegularExpressions;
-using System.Collections;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Diagnostics;
+using System.Net.Sockets;
 using System.Numerics;
+using System.Text.RegularExpressions;
 
-namespace System.Net {
+namespace System.Net
+{
     /// <summary>
     /// IP Network utility class. 
     /// Use IPNetwork.Parse to create instances.

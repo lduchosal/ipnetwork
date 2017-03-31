@@ -706,13 +706,13 @@ namespace Gnu.Getopt
 			// "POSIXLY_CORRECT" environment variable in the C version
 			try 
 			{
-				if(false) 
-				{
-					this.posixlyCorrect = true;
-					this.cultureInfo = new CultureInfo("en-US");
-				}
-				else
-					this.posixlyCorrect = false;
+				//if(false) 
+				//{
+				//	this.posixlyCorrect = true;
+				//	this.cultureInfo = new CultureInfo("en-US");
+				//}
+				//else
+				this.posixlyCorrect = false;
 			}
 			catch(Exception) 
 			{

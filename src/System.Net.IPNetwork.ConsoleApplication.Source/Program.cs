@@ -1,15 +1,12 @@
-﻿using System;
+﻿using Gnu.Getopt;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Gnu.Getopt;
-using System.IO;
-using System.Net;
-using System.Reflection;
 using System.Diagnostics;
+using System.IO;
 using System.Numerics;
+using System.Reflection;
 
-namespace System.Net.ConsoleApplication {
+namespace System.Net.ConsoleApplication
+{
     public class Program {
 
         public static void Main(string[] args) {

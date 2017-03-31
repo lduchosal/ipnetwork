@@ -1,12 +1,9 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net;
-using System.Collections;
 using System.Numerics;
 
-namespace System.Net {
+namespace System.Net
+{
     public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress> {
 
         private IPNetwork _ipnetwork;

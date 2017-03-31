@@ -1,11 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Numerics;
-using System.Text;
 
-namespace System.Net.TestProject {
+namespace System.Net.TestProject
+{
     [TestClass]
     public class BigIntegerBitWiseUnitTest {
 

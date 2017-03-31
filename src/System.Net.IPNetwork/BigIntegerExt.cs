@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace System.Net {
+namespace System.Net
+{
     using System;
     using System.Numerics;
     using System.Text;
