@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("System.Net.IPNetwork")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("IPNetwork C# library take care of complex network, ip, ipv4, ipv6, netmask, cidr, subnet, subnetting, supernet and supernetting calculation for .Net developpers. It works with IPv4 and IPv6 as well. It is written in C# for .NetStandard and coreclr and has a light and clean API and is fully unit tested.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Luc Dvchosal")]
 [assembly: AssemblyProduct("System.Net.IPNetwork")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("2.1.0.0")]
+[assembly: AssemblyVersion("2.1.1.0")]
 [assembly: AssemblyFileVersion("2.1.0.0")]

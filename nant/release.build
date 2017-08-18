@@ -4,7 +4,7 @@
 	<property name="ipnetwork.sln" value="..\src\ipnetwork.sln" />
 	<property name="doc.base" value="${project::get-base-directory()}\..\doc" />
 	<property name="doc.doxygen" value="${doc.base}\Doxyfile" />
-	<property name="release.version" value="2.1.0" />
+	<property name="release.version" value="2.1.1" />
 	<property name="release.doc" value="..\doc\html" />
 	<property name="release.base" value="..\release" />
 	<property name="src.base" value="..\" />
@@ -14,7 +14,10 @@
 	<property name="src.dir" value="..\src" />
 	<property name="consoleappnetframework.dir" value="..\src\System.Net.IPNetwork.ConsoleApplication.NetFramework\bin\Release" />
 	<property name="consoleappnetcore.dir" value="..\src\System.Net.IPNetwork.ConsoleApplication.NetCore\bin\Release\netcoreapp1.1" />
-	<property name="lib.dir" value="..\src\System.Net.IPNetwork\bin\release\netstandard1.3" />
+	<property name="lib.dir.netstandard1.3" value="..\src\System.Net.IPNetwork\bin\release\netstandard1.3" />
+	<property name="lib.dir.net46" value="..\src\System.Net.IPNetwork\bin\release\net46" />
+	<property name="lib.dir.net45" value="..\src\System.Net.IPNetwork\bin\release\net45" />
+	<property name="lib.dir.net40" value="..\src\System.Net.IPNetwork\bin\release\net40" />
 
 	<property name="nupkg.dir" value="..\src\System.Net.IPNetwork\bin\release" />
 	<property name="nuget.dir" value="..\release" />
@@ -115,8 +118,26 @@
 		   </fileset>
 		</delete>
 		
-		<copy todir="${release.temp}/lib">
-		   <fileset basedir="${lib.dir}" >
+		<copy todir="${release.temp}/lib/netstandard1.3">
+		   <fileset basedir="${lib.dir.netstandard1.3}" >
+		      <include name="System.Net.IPNetwork.dll" />
+		   </fileset>
+		</copy>
+		
+		<copy todir="${release.temp}/lib/net46">
+		   <fileset basedir="${lib.dir.net46}" >
+		      <include name="System.Net.IPNetwork.dll" />
+		   </fileset>
+		</copy>
+		
+		<copy todir="${release.temp}/lib/net45">
+		   <fileset basedir="${lib.dir.net45}" >
+		      <include name="System.Net.IPNetwork.dll" />
+		   </fileset>
+		</copy>
+		
+		<copy todir="${release.temp}/lib/net40">
+		   <fileset basedir="${lib.dir.net40}" >
 		      <include name="System.Net.IPNetwork.dll" />
 		   </fileset>
 		</copy>
