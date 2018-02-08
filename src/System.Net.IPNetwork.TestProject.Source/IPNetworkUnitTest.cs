@@ -1273,7 +1273,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.1/24");
             IPAddress ipaddress = IPAddress.Parse("192.168.0.100");
 
-            bool result = IPNetwork.Contains(ipnetwork, ipaddress);
+            bool result = ipnetwork.Contains(ipaddress);
             bool expected = true;
 
             Assert.AreEqual(expected, result, "contains");
@@ -1287,7 +1287,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.1/24");
             IPAddress ipaddress = IPAddress.Parse("10.10.10.10");
 
-            bool result = IPNetwork.Contains(ipnetwork, ipaddress);
+            bool result = ipnetwork.Contains(ipaddress);
             bool expected = false;
 
             Assert.AreEqual(expected, result, "contains");
@@ -1301,7 +1301,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.0.1/24");
 
-            bool result = IPNetwork.Contains(ipnetwork, ipnetwork2);
+            bool result = ipnetwork.Contains(ipnetwork2);
             bool expected = true;
 
             Assert.AreEqual(expected, result, "contains");
@@ -1315,7 +1315,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.1/16");
             IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.1.1/24");
 
-            bool result = IPNetwork.Contains(ipnetwork, ipnetwork2);
+            bool result = ipnetwork.Contains(ipnetwork2);
             bool expected = true;
 
             Assert.AreEqual(expected, result, "contains");
@@ -1329,7 +1329,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.1/16");
             IPNetwork ipnetwork2 = IPNetwork.Parse("10.10.10.0/24");
 
-            bool result = IPNetwork.Contains(ipnetwork, ipnetwork2);
+            bool result = ipnetwork.Contains(ipnetwork2);
             bool expected = false;
 
             Assert.AreEqual(expected, result, "contains");
@@ -1344,7 +1344,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.1.1/24");
             IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.0.0/16");
 
-            bool result = IPNetwork.Contains(ipnetwork, ipnetwork2);
+            bool result = ipnetwork.Contains(ipnetwork2);
             bool expected = false;
 
             Assert.AreEqual(expected, result, "contains");
@@ -1361,7 +1361,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = null;
             IPNetwork ipnetwork2 = null;
 
-            bool result = IPNetwork.Contains(ipnetwork, ipnetwork2);
+            bool result = ipnetwork.Contains(ipnetwork2);
 
 
         }
@@ -1374,7 +1374,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.Parse("0.0.0.0/0");
             IPNetwork ipnetwork2 = null;
 
-            bool result = IPNetwork.Contains(ipnetwork, ipnetwork2);
+            bool result = ipnetwork.Contains(ipnetwork2);
 
         }
 
@@ -1387,7 +1387,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = null;
             IPAddress ipaddress = null;
 
-            bool result = IPNetwork.Contains(ipnetwork, ipaddress);
+            bool result = ipnetwork.Contains(ipaddress);
 
         }
         [TestMethod]
@@ -1398,7 +1398,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.Parse("0.0.0.0/0");
             IPAddress ipaddress = null;
 
-            bool result = IPNetwork.Contains(ipnetwork, ipaddress);
+            bool result = ipnetwork.Contains(ipaddress);
 
         }
 
@@ -1412,7 +1412,7 @@ namespace System.Net.TestProject
         {
             IPNetwork network1 = null;
             IPNetwork network2 = null;
-            IPNetwork.Overlap(network1, network2);
+            network1.Overlap(network2);
         }
 
         [TestMethod]
@@ -1421,7 +1421,7 @@ namespace System.Net.TestProject
         {
             IPNetwork network1 = IPNetwork.Parse("10.0.0.0/0");
             IPNetwork network2 = null;
-            IPNetwork.Overlap(network1, network2);
+            network1.Overlap(network2);
         }
 
         [TestMethod]
@@ -1429,7 +1429,7 @@ namespace System.Net.TestProject
         {
             IPNetwork network1 = IPNetwork.Parse("10.0.0.0/0");
             IPNetwork network2 = IPNetwork.Parse("10.0.0.0/0");
-            bool result = IPNetwork.Overlap(network1, network2);
+            bool result = network1.Overlap(network2);
             bool expected = true;
 
             Assert.AreEqual(expected, result, "overlap");
@@ -1440,7 +1440,7 @@ namespace System.Net.TestProject
         {
             IPNetwork network1 = IPNetwork.Parse("10.10.0.0/16");
             IPNetwork network2 = IPNetwork.Parse("10.10.1.0/24");
-            bool result = IPNetwork.Overlap(network1, network2);
+            bool result = network1.Overlap(network2);
             bool expected = true;
 
             Assert.AreEqual(expected, result, "overlap");
@@ -1451,7 +1451,7 @@ namespace System.Net.TestProject
         {
             IPNetwork network1 = IPNetwork.Parse("10.10.0.0/24");
             IPNetwork network2 = IPNetwork.Parse("10.10.1.0/24");
-            bool result = IPNetwork.Overlap(network1, network2);
+            bool result = network1.Overlap(network2);
             bool expected = false;
 
             Assert.AreEqual(expected, result, "overlap");
@@ -1462,7 +1462,7 @@ namespace System.Net.TestProject
         {
             IPNetwork network1 = IPNetwork.Parse("10.10.1.0/24");
             IPNetwork network2 = IPNetwork.Parse("10.10.0.0/16");
-            bool result = IPNetwork.Overlap(network1, network2);
+            bool result = network1.Overlap(network2);
             bool expected = true;
 
             Assert.AreEqual(expected, result, "overlap");
@@ -1495,13 +1495,13 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.0.128/25");
             IPNetwork ipnetwork3 = IPNetwork.Parse("192.168.1.1/24");
 
-            bool contains1 = IPNetwork.Contains(ipnetwork, ipaddress);
-            bool contains2 = IPNetwork.Contains(ipnetwork, ipaddress2);
-            bool contains3 = IPNetwork.Contains(ipnetwork, ipnetwork2);
-            bool contains4 = IPNetwork.Contains(ipnetwork, ipnetwork3);
+            bool contains1 = ipnetwork.Contains(ipaddress);
+            bool contains2 = ipnetwork.Contains(ipaddress2);
+            bool contains3 = ipnetwork.Contains(ipnetwork2);
+            bool contains4 = ipnetwork.Contains(ipnetwork3);
 
-            bool overlap1 = IPNetwork.Overlap(ipnetwork, ipnetwork2);
-            bool overlap2 = IPNetwork.Overlap(ipnetwork, ipnetwork3);
+            bool overlap1 = ipnetwork.Overlap(ipnetwork2);
+            bool overlap2 = ipnetwork.Overlap(ipnetwork3);
 
             Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress, contains1);
             Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress2, contains2);
@@ -1526,10 +1526,10 @@ namespace System.Net.TestProject
             IPAddress ipaddress4 = IPAddress.Parse("10.4.5.6");
 
 
-            bool contains1 = IPNetwork.Contains(ipnetwork2, ipaddress1);
-            bool contains2 = IPNetwork.Contains(ipnetwork2, ipaddress2);
-            bool contains3 = IPNetwork.Contains(ipnetwork1, ipaddress3);
-            bool contains4 = IPNetwork.Contains(ipnetwork1, ipaddress4);
+            bool contains1 = ipnetwork2.Contains(ipaddress1);
+            bool contains2 = ipnetwork2.Contains(ipaddress2);
+            bool contains3 = ipnetwork1.Contains(ipaddress3);
+            bool contains4 = ipnetwork1.Contains(ipaddress4);
 
 
             Console.WriteLine("{0} contains {1} : {2}", ipnetwork1, ipaddress1, contains1);
@@ -1558,7 +1558,7 @@ namespace System.Net.TestProject
         {
             IPNetwork wholeInternet = IPNetwork.Parse("0.0.0.0/0");
             byte newCidr = 2;
-            IPNetworkCollection subneted = IPNetwork.Subnet(wholeInternet, newCidr);
+            IPNetworkCollection subneted = wholeInternet.Subnet(newCidr);
 
             Console.WriteLine("{0} was subnetted into {1} subnets", wholeInternet, subneted.Count);
             Console.WriteLine("First: {0}", subneted[0]);
@@ -1590,8 +1590,8 @@ namespace System.Net.TestProject
             IPAddress ipaddress = IPAddress.Parse("192.168.168.200");
             IPAddress ipaddress2 = IPAddress.Parse("192.168.0.200");
 
-            bool contains1 = IPNetwork.Contains(ipnetwork, ipaddress);
-            bool contains2 = IPNetwork.Contains(ipnetwork, ipaddress2);
+            bool contains1 = ipnetwork.Contains(ipaddress);
+            bool contains2 = ipnetwork.Contains(ipaddress2);
 
             Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress, contains1);
             Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress2, contains2);
@@ -1602,7 +1602,7 @@ namespace System.Net.TestProject
             IPNetwork network = IPNetwork.Parse("192.168.0.1");
             IPNetwork network2 = IPNetwork.Parse("192.168.0.254");
 
-            IPNetwork ipnetwork = IPNetwork.Supernet(network, network2);
+            IPNetwork ipnetwork = network.Supernet(network2);
 
             Console.WriteLine("Network : {0}", ipnetwork.Network);
             Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);
@@ -1670,7 +1670,7 @@ namespace System.Net.TestProject
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.66.66/24");
             bool expected = true;
-            bool result = IPNetwork.IsIANAReserved(ipnetwork);
+            bool result = ipnetwork.IsIANAReserved();
 
             Assert.AreEqual(expected, result, "IANA");
 
@@ -1681,7 +1681,7 @@ namespace System.Net.TestProject
 
             IPNetwork ipnetwork = IPNetwork.Parse("10.10.10/18");
             bool expected = true;
-            bool result = IPNetwork.IsIANAReserved(ipnetwork);
+            bool result = ipnetwork.IsIANAReserved();
 
             Assert.AreEqual(expected, result, "IANA");
 
@@ -1692,7 +1692,7 @@ namespace System.Net.TestProject
 
             IPNetwork ipnetwork = IPNetwork.Parse("172.31.10.10/24");
             bool expected = true;
-            bool result = IPNetwork.IsIANAReserved(ipnetwork);
+            bool result = ipnetwork.IsIANAReserved();
 
             Assert.AreEqual(expected, result, "IANA");
 
@@ -1713,7 +1713,7 @@ namespace System.Net.TestProject
         public void TestIANA8() {
 
             IPNetwork ipnetwork = null;
-            IPNetwork.IsIANAReserved(ipnetwork);
+            ipnetwork.IsIANAReserved();
 
 
         }
@@ -1735,7 +1735,7 @@ namespace System.Net.TestProject
 
             IPNetwork ipnetwork = IPNetwork.Parse("172.16.0.0/8");
             bool expected = false;
-            bool result = IPNetwork.IsIANAReserved(ipnetwork);
+            bool result = ipnetwork.IsIANAReserved();
 
             Assert.AreEqual(expected, result, "IANA");
 
@@ -1747,7 +1747,7 @@ namespace System.Net.TestProject
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.15.1/8");
             bool expected = false;
-            bool result = IPNetwork.IsIANAReserved(ipnetwork);
+            bool result = ipnetwork.IsIANAReserved();
 
             Assert.AreEqual(expected, result, "IANA");
 
@@ -1857,7 +1857,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = null;
             byte cidr = 9;
 
-            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
 
         }
 
@@ -1868,7 +1868,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
             byte cidr = 55;
 
-            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
 
         }
 
@@ -1880,7 +1880,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
             byte cidr = 1;
 
-            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
 
         }
 
@@ -1891,7 +1891,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
             byte cidr = 9;
 
-            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
             Assert.AreEqual(2, subnets.Count, "count");
             Assert.AreEqual("10.0.0.0/9", subnets[0].ToString(), "subnet1");
             Assert.AreEqual("10.128.0.0/9", subnets[1].ToString(), "subnet2");
@@ -1905,7 +1905,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
             byte cidr = 20;
 
-            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
             Assert.AreEqual(16, subnets.Count, "count");
             Assert.AreEqual("192.168.0.0/20", subnets[0].ToString(), "subnet1");
             Assert.AreEqual("192.168.16.0/20", subnets[1].ToString(), "subnet2");
@@ -1933,7 +1933,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
             byte cidr = 24;
 
-            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
             Assert.AreEqual(256, subnets.Count, "count");
             Assert.AreEqual("192.168.0.0/24", subnets[0].ToString(), "subnet1");
             Assert.AreEqual("192.168.255.0/24", subnets[255].ToString(), "subnet16");
@@ -1947,7 +1947,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
             byte cidr = 24;
 
-            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
             Assert.AreEqual(256, subnets.Count, "count");
             Assert.AreEqual("192.168.0.0/24", subnets[0].ToString(), "subnet1");
             Assert.AreEqual("192.168.255.0/24", subnets[255].ToString(), "subnet256");
@@ -1960,7 +1960,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.0/24");
             byte cidr = 32;
 
-            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
             Assert.AreEqual(256, subnets.Count, "count");
             Assert.AreEqual("192.168.0.0/32", subnets[0].ToString(), "subnet1");
             Assert.AreEqual("192.168.0.255/32", subnets[255].ToString(), "subnet256");
@@ -1975,7 +1975,7 @@ namespace System.Net.TestProject
             byte cidr = 32;
 
             // Here I spawm a OOM dragon ! beware of the beast !
-            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
             Assert.AreEqual(4294967296, subnets.Count, "count");
             Assert.AreEqual("0.0.0.0/32", subnets[0].ToString(), "subnet1");
             Assert.AreEqual("255.255.255.255/32", subnets[4294967295].ToString(), "subnet256");
@@ -1989,7 +1989,7 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
             byte cidr = 20;
             int i = -1;
-            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
             foreach (IPNetwork ipn in subnets) {
                 i++;
                 Assert.AreEqual(subnets[i], ipn, "subnet");
@@ -2003,7 +2003,7 @@ namespace System.Net.TestProject
 
             IPNetwork ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
             byte cidr = 20;
-            IPNetworkCollection subnets = IPNetwork.Subnet(ipnetwork, cidr);
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
             IPNetwork error = subnets[1000];
 
         }
@@ -2113,7 +2113,7 @@ namespace System.Net.TestProject
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.1.1/24");
             IPNetwork expected = IPNetwork.Parse("192.168.0.0/23");
-            IPNetwork supernet = IPNetwork.Supernet(network1, network2);
+            IPNetwork supernet = network1.Supernet(network2);
 
             Assert.AreEqual(expected, supernet, "supernet");
 
@@ -2134,7 +2134,7 @@ namespace System.Net.TestProject
 
             IPNetwork network1 = IPNetwork.Parse("192.168.1.1/24");
             IPNetwork network2 = null;
-            IPNetwork supernet = IPNetwork.Supernet(network1, network2);
+            IPNetwork supernet = network1.Supernet(network2);
         }
 
         [TestMethod]
@@ -2143,7 +2143,7 @@ namespace System.Net.TestProject
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.1.1/25");
-            IPNetwork supernet = IPNetwork.Supernet(network1, network2);
+            IPNetwork supernet = network1.Supernet(network2);
         }
 
         [TestMethod]
@@ -2152,7 +2152,7 @@ namespace System.Net.TestProject
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.5.1/24");
-            IPNetwork supernet = IPNetwork.Supernet(network1, network2);
+            IPNetwork supernet = network1.Supernet(network2);
         }
 
         [TestMethod]
@@ -2161,7 +2161,7 @@ namespace System.Net.TestProject
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.0.1/25");
             IPNetwork expected = IPNetwork.Parse("192.168.0.0/24");
-            IPNetwork supernet = IPNetwork.Supernet(network1, network2);
+            IPNetwork supernet = network1.Supernet(network2);
 
             Assert.AreEqual(expected, supernet, "supernet");
 
@@ -2173,7 +2173,7 @@ namespace System.Net.TestProject
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/25");
             IPNetwork network2 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork expected = IPNetwork.Parse("192.168.0.0/24");
-            IPNetwork supernet = IPNetwork.Supernet(network1, network2);
+            IPNetwork supernet = network1.Supernet(network2);
 
             Assert.AreEqual(expected, supernet, "supernet");
 
@@ -2186,7 +2186,7 @@ namespace System.Net.TestProject
 
             IPNetwork network1 = IPNetwork.Parse("192.168.1.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.2.1/24");
-            IPNetwork supernet = IPNetwork.Supernet(network1, network2);
+            IPNetwork supernet = network1.Supernet(network2);
 
 
         }
@@ -2221,7 +2221,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = IPNetwork.Parse("192.168.0.0/23");
             IPNetwork supernet;
             bool parsed = true;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2236,7 +2236,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = null;
             IPNetwork supernet;
             bool parsed = false;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2250,7 +2250,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = null;
             IPNetwork supernet;
             bool parsed = false;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2264,7 +2264,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = null;
             IPNetwork supernet;
             bool parsed = false;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2278,7 +2278,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = null;
             IPNetwork supernet;
             bool parsed = false;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2292,7 +2292,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = IPNetwork.Parse("192.168.0.0/24");
             IPNetwork supernet;
             bool parsed = true;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2307,7 +2307,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = IPNetwork.Parse("192.168.0.0/24");
             IPNetwork supernet;
             bool parsed = true;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2322,7 +2322,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = null;
             IPNetwork supernet;
             bool parsed = false;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2451,7 +2451,7 @@ namespace System.Net.TestProject
         {
 
             IPNetwork ipnetwork1 = IPNetwork.Parse("192.168.0.0/24");
-            IPNetworkCollection subnetted = IPNetwork.Subnet(ipnetwork1, 32);
+            IPNetworkCollection subnetted = ipnetwork1.Subnet(32);
             IPNetwork[] ipnetworks = subnetted.ToArray();
             Assert.AreEqual(256, ipnetworks.Length, "subnet");
 
@@ -2469,7 +2469,7 @@ namespace System.Net.TestProject
         {
 
             IPNetwork ipnetwork1 = IPNetwork.Parse("192.168.0.0/16");
-            IPNetworkCollection subnetted = IPNetwork.Subnet(ipnetwork1, 32);
+            IPNetworkCollection subnetted = ipnetwork1.Subnet(32);
             IPNetwork[] ipnetworks = subnetted.ToArray();
             Assert.AreEqual(65536, ipnetworks.Length, "subnet");
 
@@ -2485,7 +2485,7 @@ namespace System.Net.TestProject
         {
 
             IPNetwork ipnetwork1 = IPNetwork.Parse("192.168.0.0/8");
-            IPNetworkCollection subnetted = IPNetwork.Subnet(ipnetwork1, 32);
+            IPNetworkCollection subnetted = ipnetwork1.Subnet(32);
             IPNetwork[] ipnetworks = subnetted.ToArray();
             Assert.AreEqual(16777216, ipnetworks.Length, "subnet");
 

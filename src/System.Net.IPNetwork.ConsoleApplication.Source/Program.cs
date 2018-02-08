@@ -50,15 +50,14 @@ namespace System.Net.ConsoleApplication
 
         private static void ContainNetwork(ProgramContext ac) {
             foreach (IPNetwork ipnetwork in ac.Networks) {
-                bool contain = IPNetwork.Contains(ac.ContainNetwork, ipnetwork);
+                bool contain = ac.ContainNetwork.Contains(ipnetwork);
                 Console.WriteLine("{0} contains {1} : {2}", ac.ContainNetwork, ipnetwork, contain);
             }            
         }
 
         private static void OverlapNetwork(ProgramContext ac) {
-
             foreach (IPNetwork ipnetwork in ac.Networks) {
-                bool overlap = IPNetwork.Overlap(ac.OverlapNetwork, ipnetwork);
+                bool overlap = ac.OverlapNetwork.Overlap(ipnetwork);
                 Console.WriteLine("{0} overlaps {1} : {2}", ac.OverlapNetwork, ipnetwork, overlap);
             }
         }

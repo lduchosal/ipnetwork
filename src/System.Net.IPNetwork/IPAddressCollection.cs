@@ -29,7 +29,7 @@ namespace System.Net
                     throw new ArgumentOutOfRangeException("i");
                 }
                 byte width = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? (byte)32 : (byte)128;
-                IPNetworkCollection ipn = IPNetwork.Subnet(this._ipnetwork, width);
+                IPNetworkCollection ipn = this._ipnetwork.Subnet(width);
                 return ipn[i].Network;
             }
         }

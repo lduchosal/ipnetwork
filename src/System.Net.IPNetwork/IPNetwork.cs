@@ -1017,28 +1017,22 @@ namespace System.Net
         /// <summary>
         /// return true if ipaddress is contained in network
         /// </summary>
-        /// <param name="network"></param>
         /// <param name="ipaddress"></param>
         /// <returns></returns>
-        public static bool Contains(IPNetwork network, IPAddress ipaddress) {
-
-            if (network == null)
-            {
-                throw new ArgumentNullException("network");
-            }
+        public bool Contains(IPAddress ipaddress) {
 
             if (ipaddress == null)
             {
                 throw new ArgumentNullException("ipaddress");
             }
 
-            if (network.AddressFamily != ipaddress.AddressFamily)
+            if (AddressFamily != ipaddress.AddressFamily)
             {
                 return false;
             }
 
-            BigInteger uintNetwork = network._network;
-            BigInteger uintBroadcast = network._broadcast;
+            BigInteger uintNetwork = _network;
+            BigInteger uintBroadcast = _broadcast;
             BigInteger uintAddress = IPNetwork.ToBigInteger(ipaddress);
 
             bool contains = (uintAddress >= uintNetwork
@@ -1048,26 +1042,31 @@ namespace System.Net
             
         }
 
-        /// <summary>
-        /// return true is network2 is fully contained in network
-        /// </summary>
-        /// <param name="network"></param>
-        /// <param name="network2"></param>
-        /// <returns></returns>
-        public static bool Contains(IPNetwork network, IPNetwork network2) {
+        [Obsolete("static Contains is deprecated, please use instance Contains.")]
+        public static bool Contains(IPNetwork network, IPAddress ipaddress) {
 
             if (network == null)
             {
                 throw new ArgumentNullException("network");
             }
 
+            return network.Contains(ipaddress);
+        }
+
+        /// <summary>
+        /// return true is network2 is fully contained in network
+        /// </summary>
+        /// <param name="network2"></param>
+        /// <returns></returns>
+        public bool Contains(IPNetwork network2) {
+
             if (network2 == null)
             {
                 throw new ArgumentNullException("network2");
             }
 
-            BigInteger uintNetwork = network._network;
-            BigInteger uintBroadcast = network._broadcast;
+            BigInteger uintNetwork = _network;
+            BigInteger uintBroadcast = _broadcast;
 
             BigInteger uintFirst = network2._network;
             BigInteger uintLast = network2._broadcast;
@@ -1078,6 +1077,17 @@ namespace System.Net
             return contains;
         }
 
+        [Obsolete("static Contains is deprecated, please use instance Contains.")]
+        public static bool Contains(IPNetwork network, IPNetwork network2) {
+
+            if (network == null)
+            {
+                throw new ArgumentNullException("network");
+            }
+
+            return network.Contains(network2);
+        }
+
         #endregion
 
         #region overlap
@@ -1085,24 +1095,17 @@ namespace System.Net
         /// <summary>
         /// return true is network2 overlap network
         /// </summary>
-        /// <param name="network"></param>
         /// <param name="network2"></param>
         /// <returns></returns>
-        public static bool Overlap(IPNetwork network, IPNetwork network2) {
-
-            if (network == null)
-            {
-                throw new ArgumentNullException("network");
-            }
+        public bool Overlap(IPNetwork network2) {
 
             if (network2 == null)
             {
                 throw new ArgumentNullException("network2");
             }
             
-
-            BigInteger uintNetwork = network._network;
-            BigInteger uintBroadcast = network._broadcast;
+            BigInteger uintNetwork = _network;
+            BigInteger uintBroadcast = _broadcast;
 
             BigInteger uintFirst = network2._network;
             BigInteger uintLast = network2._broadcast;
@@ -1114,6 +1117,17 @@ namespace System.Net
                 || (uintFirst >= uintNetwork && uintLast <= uintBroadcast);
 
             return overlap;
+        }
+
+        [Obsolete("static Overlap is deprecated, please use instance Overlap.")]
+        public static bool Overlap(IPNetwork network, IPNetwork network2) {
+
+            if (network == null)
+            {
+                throw new ArgumentNullException("network");
+            }
+
+            return network.Overlap(network2);
         }
 
         #endregion
@@ -1175,26 +1189,30 @@ namespace System.Net
                 throw new ArgumentNullException("ipaddress");
             }
 
-            return IPNetwork.Contains(IPNetwork.IANA_ABLK_RESERVED1, ipaddress)
-                || IPNetwork.Contains(IPNetwork.IANA_BBLK_RESERVED1, ipaddress)
-                || IPNetwork.Contains(IPNetwork.IANA_CBLK_RESERVED1, ipaddress);
+            return IPNetwork.IANA_ABLK_RESERVED1.Contains(ipaddress)
+                || IPNetwork.IANA_BBLK_RESERVED1.Contains(ipaddress)
+                || IPNetwork.IANA_CBLK_RESERVED1.Contains(ipaddress);
         }
 
         /// <summary>
         /// return true if ipnetwork is contained in 
         /// IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1
         /// </summary>
-        /// <param name="ipnetwork"></param>
         /// <returns></returns>
+        public bool IsIANAReserved() {
+            return IPNetwork.IANA_ABLK_RESERVED1.Contains(this)
+                || IPNetwork.IANA_BBLK_RESERVED1.Contains(this)
+                || IPNetwork.IANA_CBLK_RESERVED1.Contains(this);
+        }
+
+        [Obsolete("static IsIANAReserved is deprecated, please use instance IsIANAReserved.")]
         public static bool IsIANAReserved(IPNetwork ipnetwork) {
 
             if (ipnetwork == null) {
                 throw new ArgumentNullException("ipnetwork");
             }
 
-            return IPNetwork.Contains(IPNetwork.IANA_ABLK_RESERVED1, ipnetwork)
-                || IPNetwork.Contains(IPNetwork.IANA_BBLK_RESERVED1, ipnetwork)
-                || IPNetwork.Contains(IPNetwork.IANA_CBLK_RESERVED1, ipnetwork);
+            return ipnetwork.IsIANAReserved();
         }
 
         #endregion
@@ -1206,13 +1224,17 @@ namespace System.Net
         /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
         /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9
         /// </summary>
-        /// <param name="ipnetwork"></param>
         /// <param name="cidr"></param>
         /// <returns></returns>
-        public static IPNetworkCollection Subnet(IPNetwork network, byte cidr) {
+        public IPNetworkCollection Subnet(byte cidr) {
             IPNetworkCollection ipnetworkCollection = null;
-            IPNetwork.InternalSubnet(false, network, cidr, out ipnetworkCollection);
+            IPNetwork.InternalSubnet(false, this, cidr, out ipnetworkCollection);
             return ipnetworkCollection;
+        }
+
+        [Obsolete("static Subnet is deprecated, please use instance Subnet.")]
+        public static IPNetworkCollection Subnet(IPNetwork network, byte cidr) {
+            return network.Subnet(cidr);
         }
 
         /// <summary>
@@ -1220,12 +1242,11 @@ namespace System.Net
         /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
         /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9
         /// </summary>
-        /// <param name="ipnetwork"></param>
         /// <param name="cidr"></param>
         /// <returns></returns>
-        public static bool TrySubnet(IPNetwork network, byte cidr, out IPNetworkCollection ipnetworkCollection) {
+        public bool TrySubnet(byte cidr, out IPNetworkCollection ipnetworkCollection) {
             IPNetworkCollection inc = null;
-            IPNetwork.InternalSubnet(true, network, cidr, out inc);
+            IPNetwork.InternalSubnet(true, this, cidr, out inc);
             if (inc == null) {
                 ipnetworkCollection = null;
                 return false;
@@ -1233,6 +1254,11 @@ namespace System.Net
 
             ipnetworkCollection = inc;
             return true;
+        }
+
+        [Obsolete("static TrySubnet is deprecated, please use instance TrySubnet.")]
+        public static bool TrySubnet(IPNetwork network, byte cidr, out IPNetworkCollection ipnetworkCollection) {
+            return network.TrySubnet(cidr, out ipnetworkCollection);
         }
 
         private static void InternalSubnet(bool trySubnet, IPNetwork network, byte cidr, out IPNetworkCollection ipnetworkCollection) {
@@ -1278,13 +1304,17 @@ namespace System.Net
         /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
         /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24 
         /// </summary>
-        /// <param name="network1"></param>
         /// <param name="network2"></param>
         /// <returns></returns>
-        public static IPNetwork Supernet(IPNetwork network1, IPNetwork network2) {
+        public IPNetwork Supernet(IPNetwork network2) {
             IPNetwork supernet = null;
-            IPNetwork.InternalSupernet(false, network1, network2, out supernet);
+            IPNetwork.InternalSupernet(false, this, network2, out supernet);
             return supernet;
+        }
+
+        [Obsolete("static Supernet is deprecated, please use instance Supernet.")]
+        public static IPNetwork Supernet(IPNetwork network, IPNetwork network2) {
+            return network.Supernet(network2);
         }
 
         /// <summary>
@@ -1293,16 +1323,20 @@ namespace System.Net
         /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
         /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24 
         /// </summary>
-        /// <param name="network1"></param>
         /// <param name="network2"></param>
         /// <returns></returns>
-        public static bool TrySupernet(IPNetwork network1, IPNetwork network2, out IPNetwork supernet) {
+        public bool TrySupernet(IPNetwork network2, out IPNetwork supernet) {
 
             IPNetwork outSupernet = null;
-            IPNetwork.InternalSupernet(true, network1, network2, out outSupernet);
+            IPNetwork.InternalSupernet(true, this, network2, out outSupernet);
             bool parsed = (outSupernet != null);
             supernet = outSupernet;
             return parsed;
+        }
+
+        [Obsolete("static TrySupernet is deprecated, please use instance TrySupernet.")]
+        public static bool TrySupernet(IPNetwork network, IPNetwork network2, out IPNetwork supernet) {
+            return network.TrySupernet(network2, out supernet);
         }
 
         private static void InternalSupernet(bool trySupernet, IPNetwork network1, IPNetwork network2, out IPNetwork supernet) {
@@ -1324,12 +1358,12 @@ namespace System.Net
             }
 
 
-            if (IPNetwork.Contains(network1, network2)) {
+            if (network1.Contains(network2)) {
                 supernet = new IPNetwork(network1._network, network1._family, network1.Cidr);
                 return;
             }
 
-            if (IPNetwork.Contains(network2, network1)) {
+            if (network2.Contains(network1)) {
                 supernet = new IPNetwork(network2._network, network2._family, network2.Cidr);
                 return;
             }
@@ -1453,7 +1487,7 @@ namespace System.Net
                     IPNetwork ipn2 = current.Peek();
 
                     IPNetwork outNetwork = null;
-                    bool success = IPNetwork.TrySupernet(ipn1, ipn2, out outNetwork);
+                    bool success = ipn1.TrySupernet(ipn2, out outNetwork);
                     if (success) {
                         current.Pop();
                         current.Push(outNetwork);
@@ -1555,7 +1589,7 @@ namespace System.Net
             IPNetwork ipnetwork = new IPNetwork(0, startIP.AddressFamily, 0);
             for (byte cidr = 32; cidr >= 0; cidr--) {
                 IPNetwork wideSubnet = IPNetwork.Parse(start, cidr);
-                if (IPNetwork.Contains(wideSubnet, endIP)) {
+                if (wideSubnet.Contains(endIP)) {
                     ipnetwork = wideSubnet;
                     break;
                 }
@@ -1629,7 +1663,7 @@ namespace System.Net
             IPNetwork ipn = new IPNetwork(0, family, 0);
             for (byte cidr = nnin0._cidr; cidr >= 0; cidr--) {
                 IPNetwork wideSubnet = new IPNetwork(uintNnin0, family, cidr);
-                if (IPNetwork.Contains(wideSubnet, ipaddressX)) {
+                if (wideSubnet.Contains(ipaddressX)) {
                     ipn = wideSubnet;
                     break;
                 }
@@ -1642,28 +1676,35 @@ namespace System.Net
         #endregion
 
         #region Print
+
         /// <summary>
         /// Print an ipnetwork in a clear representation string
         /// </summary>
-        /// <param name="ipnetwork"></param>
         /// <returns></returns>
+        public string Print() {
+
+            StringWriter sw = new StringWriter();
+
+            sw.WriteLine("IPNetwork   : {0}", ToString());
+            sw.WriteLine("Network     : {0}", Network);
+            sw.WriteLine("Netmask     : {0}", Netmask);
+            sw.WriteLine("Cidr        : {0}", Cidr);
+            sw.WriteLine("Broadcast   : {0}", Broadcast);
+            sw.WriteLine("FirstUsable : {0}", FirstUsable);
+            sw.WriteLine("LastUsable  : {0}", LastUsable);
+            sw.WriteLine("Usable      : {0}", Usable);
+
+            return sw.ToString();
+        }
+
+        [Obsolete("static Print is deprecated, please use instance Print.")]
         public static string Print(IPNetwork ipnetwork) {
 
             if (ipnetwork == null) {
                 throw new ArgumentNullException("ipnetwork");
             }
-            StringWriter sw = new StringWriter();
 
-            sw.WriteLine("IPNetwork   : {0}", ipnetwork.ToString());
-            sw.WriteLine("Network     : {0}", ipnetwork.Network);
-            sw.WriteLine("Netmask     : {0}", ipnetwork.Netmask);
-            sw.WriteLine("Cidr        : {0}", ipnetwork.Cidr);
-            sw.WriteLine("Broadcast   : {0}", ipnetwork.Broadcast);
-            sw.WriteLine("FirstUsable : {0}", ipnetwork.FirstUsable);
-            sw.WriteLine("LastUsable  : {0}", ipnetwork.LastUsable);
-            sw.WriteLine("Usable      : {0}", ipnetwork.Usable);
-
-            return sw.ToString();
+            return ipnetwork.Print();
         }
 
         #endregion
@@ -1741,8 +1782,13 @@ namespace System.Net
 
         #region ListIPAddress
 
+        [Obsolete("static ListIPAddress is deprecated, please use instance ListIPAddress.")]
         public static IPAddressCollection ListIPAddress(IPNetwork ipnetwork) {
-            return new IPAddressCollection(ipnetwork);
+            return ipnetwork.ListIPAddress();
+        }
+
+        public IPAddressCollection ListIPAddress() {
+            return new IPAddressCollection(this);
         }
 
         #endregion
@@ -1773,7 +1819,7 @@ namespace System.Net
                     continue;
                 }
 
-                var collection = IPNetwork.Subnet(ipn, substract.Cidr);
+                var collection = ipn.Subnet(substract.Cidr);
                 var rtemp = new List<IPNetwork>();
                 foreach(var subnet in collection) {
                     if (subnet != substract) {
@@ -1881,7 +1927,6 @@ namespace System.Net
         }
 
         #endregion
-
 
     }
 }

@@ -53,13 +53,13 @@ IPAddress ipaddress2 = IPAddress.Parse("2001:0db9::1");
 IPNetwork ipnetwork2 = IPNetwork.Parse("2001:0db8::1/128");
 IPNetwork ipnetwork3 = IPNetwork.Parse("2001:0db9::1/64");
 
-bool contains1 = IPNetwork.Contains(ipnetwork, ipaddress);
-bool contains2 = IPNetwork.Contains(ipnetwork, ipaddress2);
-bool contains3 = IPNetwork.Contains(ipnetwork, ipnetwork2);
-bool contains4 = IPNetwork.Contains(ipnetwork, ipnetwork3);
+bool contains1 = ipnetwork.Contains(ipaddress);
+bool contains2 = ipnetwork.Contains(ipaddress2);
+bool contains3 = ipnetwork.Contains(ipnetwork2);
+bool contains4 = ipnetwork.Contains(ipnetwork3);
 
-bool overlap1 = IPNetwork.Overlap(ipnetwork, ipnetwork2);
-bool overlap2 = IPNetwork.Overlap(ipnetwork, ipnetwork3);
+bool overlap1 = ipnetwork.Overlap(ipnetwork2);
+bool overlap2 = ipnetwork.Overlap(ipnetwork3);
 
 Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress, contains1);
 Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress2, contains2);
@@ -87,7 +87,7 @@ Output
 ```
 IPNetwork wholeInternet = IPNetwork.Parse("::/0");
 byte newCidr = 2;
-IPNetworkCollection subneted = IPNetwork.Subnet(wholeInternet, newCidr);
+IPNetworkCollection subneted = wholeInternet.Subnet(newCidr);
 
 Console.WriteLine("{0} was subnetted into {1} subnets", wholeInternet, subneted.Count);
 Console.WriteLine("First: {0}", subneted[0]);
@@ -160,13 +160,13 @@ IPAddress ipaddress2 = IPAddress.Parse("192.168.1.100");
 IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.0.128/25");
 IPNetwork ipnetwork3 = IPNetwork.Parse("192.168.1.1/24");
 
-bool contains1 = IPNetwork.Contains(ipnetwork, ipaddress);
-bool contains2 = IPNetwork.Contains(ipnetwork, ipaddress2);
-bool contains3 = IPNetwork.Contains(ipnetwork, ipnetwork2);
-bool contains4 = IPNetwork.Contains(ipnetwork, ipnetwork3);
+bool contains1 = ipnetwork.Contains(ipaddress);
+bool contains2 = ipnetwork.Contains(ipaddress2);
+bool contains3 = ipnetwork.Contains(ipnetwork2);
+bool contains4 = ipnetwork.Contains(ipnetwork3);
 
-bool overlap1 = IPNetwork.Overlap(ipnetwork, ipnetwork2);
-bool overlap2 = IPNetwork.Overlap(ipnetwork, ipnetwork3);
+bool overlap1 = ipnetwork.Overlap(ipnetwork2);
+bool overlap2 = ipnetwork.Overlap(ipnetwork3);
 
 Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress, contains1);
 Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress2, contains2);
@@ -210,7 +210,7 @@ IANA_CBLK_RESERVED1 is 192.168.0.0/16
 ```
 IPNetwork wholeInternet = IPNetwork.Parse("0.0.0.0/0");
 byte newCidr = 2;
-IPNetwork subneted = IPNetwork.Subnet(wholeInternet, newCidr);
+IPNetwork subneted = wholeInternet.Subnet(newCidr);
 
 Console.WriteLine("{0} was subnetted into {1} subnets", wholeInternet, subneted.Count);
 Console.WriteLine("First: {0}", subneted[0]);
