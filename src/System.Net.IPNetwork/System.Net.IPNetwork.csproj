@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard1.3;net40;net45;net46</TargetFrameworks>
   
 	<PackageId>IPNetwork2</PackageId>
-    <PackageVersion>2.1.1</PackageVersion>
+    <PackageVersion>2.1.2</PackageVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PackageLicenseUrl>https://github.com/lduchosal/ipnetwork/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/lduchosal/ipnetwork</PackageProjectUrl>

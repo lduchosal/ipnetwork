@@ -4,7 +4,7 @@
 	<property name="ipnetwork.sln" value="..\src\ipnetwork.sln" />
 	<property name="doc.base" value="${project::get-base-directory()}\..\doc" />
 	<property name="doc.doxygen" value="${doc.base}\Doxyfile" />
-	<property name="release.version" value="2.1.1" />
+	<property name="release.version" value="2.1.2" />
 	<property name="release.doc" value="..\doc\html" />
 	<property name="release.base" value="..\release" />
 	<property name="src.base" value="..\" />
@@ -13,7 +13,7 @@
 
 	<property name="src.dir" value="..\src" />
 	<property name="consoleappnetframework.dir" value="..\src\System.Net.IPNetwork.ConsoleApplication.NetFramework\bin\Release" />
-	<property name="consoleappnetcore.dir" value="..\src\System.Net.IPNetwork.ConsoleApplication.NetCore\bin\Release\netcoreapp1.1" />
+	<property name="consoleappnetcore.dir" value="..\src\System.Net.IPNetwork.ConsoleApplication.NetCore\bin\Release\netcoreapp2.0" />
 	<property name="lib.dir.netstandard1.3" value="..\src\System.Net.IPNetwork\bin\release\netstandard1.3" />
 	<property name="lib.dir.net46" value="..\src\System.Net.IPNetwork\bin\release\net46" />
 	<property name="lib.dir.net45" value="..\src\System.Net.IPNetwork\bin\release\net45" />
@@ -32,11 +32,17 @@
 		- Change version numbers in :
 		
 			..\nant\release.build (this file)
-			..\solution\System.Net.IPNetwork\System.Net.IPNetwork.csproj
-			..\solution\System.Net.IPNetwork\Properties\AssemblyInfo.cs
-			..\solution\System.Net.IPNetwork.ConsoleApplication\Properties\AssemblyInfo.cs
-			..\solution\\System.Net.IPNetwork.TestProject\Properties\AssemblyInfo.cs
+			
+			..\src\System.Net.IPNetwork\System.Net.IPNetwork.csproj
+			
+			..\src\System.Net.IPNetwork\Properties\AssemblyInfo.cs
+			..\src\System.Net.IPNetwork.ConsoleApplication.NetFramework\Properties\AssemblyInfo.cs
+			..\src\System.Net.IPNetwork.ConsoleApplication.Source\Properties\AssemblyInfo.cs
+			..\src\System.Net.IPNetwork.TestProject.Source\Properties\AssemblyInfo.cs
+			
 			..\doc\Doxyfile
+			
+			
 
 	After you release:
 
@@ -95,7 +101,7 @@
 		<delete dir="${release.temp}" />
 		<mkdir dir="${release.temp}" />
 		<mkdir dir="${release.temp}/bin" />
-		<mkdir dir="${release.temp}/bin-netcoreapp1.1" />
+		<mkdir dir="${release.temp}/bin-netcoreapp2.0" />
 		<mkdir dir="${release.temp}/lib" />
 		<mkdir dir="${release.temp}/doc" />
 
@@ -105,7 +111,7 @@
 		   </fileset>
 		</copy>
 
-		<copy todir="${release.temp}/bin-netcoreapp1.1">
+		<copy todir="${release.temp}/bin-netcoreapp2.0">
 		   <fileset basedir="${consoleappnetcore.dir}" >
 		      <include name="**/*.*" />
 		   </fileset>

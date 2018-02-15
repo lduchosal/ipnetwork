@@ -293,14 +293,22 @@ namespace System.Net.TestProject
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestParseIPAddressNoNetmask5() {
+        public void TestParseIPAddressNoNetmask5()
+        {
 
             string ipaddress = "240.0.0.0";
             IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
 
         }
 
+        [TestMethod]
+        public void TestParseIPAddressNoNetmask127001(){
 
+            string ipaddress = "127.0.0.1";
+            IPNetwork result = null;
+            IPNetwork.TryParse(ipaddress, out result);
+            Assert.AreEqual(result.Cidr, 8);
+        }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
@@ -1361,7 +1369,9 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = null;
             IPNetwork ipnetwork2 = null;
 
-            bool result = ipnetwork.Contains(ipnetwork2);
+#pragma warning disable 0618
+            bool result = IPNetwork.Contains(ipnetwork, ipnetwork2);
+#pragma warning restore 0618
 
 
         }
@@ -1387,8 +1397,9 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = null;
             IPAddress ipaddress = null;
 
-            bool result = ipnetwork.Contains(ipaddress);
-
+#pragma warning disable 0618
+            bool result = IPNetwork.Contains(ipnetwork, ipaddress);
+#pragma warning restore 0618
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
@@ -1412,7 +1423,10 @@ namespace System.Net.TestProject
         {
             IPNetwork network1 = null;
             IPNetwork network2 = null;
-            network1.Overlap(network2);
+
+#pragma warning disable 0618
+            bool result = IPNetwork.Overlap(network1, network2);
+#pragma warning restore 0618
         }
 
         [TestMethod]
@@ -1713,11 +1727,11 @@ namespace System.Net.TestProject
         public void TestIANA8() {
 
             IPNetwork ipnetwork = null;
-            ipnetwork.IsIANAReserved();
-
+#pragma warning disable 0618
+            bool result = IPNetwork.IsIANAReserved(ipnetwork);
+#pragma warning restore 0618
 
         }
-
 
         [TestMethod]
         public void TestIANA9() {
@@ -1857,7 +1871,9 @@ namespace System.Net.TestProject
             IPNetwork ipnetwork = null;
             byte cidr = 9;
 
-            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
+#pragma warning disable 0618
+            IPNetworkCollection result = IPNetwork.Subnet(ipnetwork, cidr);
+#pragma warning restore 0618
 
         }
 
@@ -2014,15 +2030,16 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void TestTrySubnet1() {
 
             IPNetwork ipnetwork = null;
             byte cidr = 9;
 
             IPNetworkCollection subnets = null;
+#pragma warning disable 0618
             bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
-
-            Assert.AreEqual(false, subnetted, "subnetted");
+#pragma warning restore 0618
 
         }
 
@@ -2033,7 +2050,7 @@ namespace System.Net.TestProject
             byte cidr = 55;
 
             IPNetworkCollection subnets = null;
-            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+            bool subnetted = ipnetwork.TrySubnet(cidr, out subnets);
 
             Assert.AreEqual(false, subnetted, "subnetted");
         }
@@ -2046,7 +2063,7 @@ namespace System.Net.TestProject
             byte cidr = 1;
 
             IPNetworkCollection subnets = null;
-            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+            bool subnetted = ipnetwork.TrySubnet(cidr, out subnets);
 
             Assert.AreEqual(false, subnetted, "subnetted");
 
@@ -2061,7 +2078,7 @@ namespace System.Net.TestProject
 
 
             IPNetworkCollection subnets = null;
-            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+            bool subnetted = ipnetwork.TrySubnet(cidr, out subnets);
 
             Assert.AreEqual(true, subnetted, "subnetted");
             Assert.AreEqual(2, subnets.Count, "count");
@@ -2078,7 +2095,7 @@ namespace System.Net.TestProject
             byte cidr = 20;
 
             IPNetworkCollection subnets = null;
-            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+            bool subnetted = ipnetwork.TrySubnet(cidr, out subnets);
 
             Assert.AreEqual(true, subnetted, "subnetted");
             Assert.AreEqual(16, subnets.Count, "count");
@@ -2120,12 +2137,12 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof(NullReferenceException))]
         public void TestSupernet2() {
 
             IPNetwork network1 = null;
             IPNetwork network2 = IPNetwork.Parse("192.168.1.1/24");
-            IPNetwork supernet = IPNetwork.Supernet(network1, network2);
+            IPNetwork supernet = network1.Supernet(network2);
         }
 
         [TestMethod]
@@ -2229,17 +2246,17 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void TestTrySupernet2() {
 
             IPNetwork network1 = null;
             IPNetwork network2 = IPNetwork.Parse("192.168.1.1/24");
-            IPNetwork supernetExpected = null;
             IPNetwork supernet;
-            bool parsed = false;
-            bool result = network1.TrySupernet(network2, out supernet);
 
-            Assert.AreEqual(supernetExpected, supernet, "supernet");
-            Assert.AreEqual(parsed, result, "parsed");
+#pragma warning disable 0618
+            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+#pragma warning restore 0618
+
         }
 
         [TestMethod]
@@ -2887,7 +2904,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Print() {
             IPNetwork ipn = IPNetwork.Parse("0.0.0.0/0");
-            string print = IPNetwork.Print(ipn).Replace("\r", "");
+            string print = ipn.Print().Replace("\r", "");
             string expected = @"IPNetwork   : 0.0.0.0/0
 Network     : 0.0.0.0
 Netmask     : 0.0.0.0
@@ -2905,7 +2922,9 @@ Usable      : 4294967294
         [ExpectedException(typeof(ArgumentNullException))]
         public void PrintNull() {
             IPNetwork ipn = null;
+#pragma warning disable 0618
             string print = IPNetwork.Print(ipn);
+#pragma warning restore 0618
         }
 
         #endregion

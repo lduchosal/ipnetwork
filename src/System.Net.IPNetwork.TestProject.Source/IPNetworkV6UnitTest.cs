@@ -2013,7 +2013,7 @@ namespace System.Net.TestProject
             byte cidr = 255;
 
             IPNetworkCollection subnets = null;
-            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+            bool subnetted = ipnetwork.TrySubnet(cidr, out subnets);
 
             Assert.AreEqual(false, subnetted, "subnetted");
         }
@@ -2026,7 +2026,7 @@ namespace System.Net.TestProject
             byte cidr = 63;
 
             IPNetworkCollection subnets = null;
-            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+            bool subnetted = ipnetwork.TrySubnet(cidr, out subnets);
 
             Assert.AreEqual(false, subnetted, "subnetted");
 
@@ -2040,7 +2040,7 @@ namespace System.Net.TestProject
             byte cidr = 65;
 
             IPNetworkCollection subnets = null;
-            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+            bool subnetted = ipnetwork.TrySubnet(cidr, out subnets);
 
             Assert.AreEqual(true, subnetted, "subnetted");
             Assert.AreEqual(2, subnets.Count, "count");
@@ -2057,7 +2057,7 @@ namespace System.Net.TestProject
             byte cidr = 68;
 
             IPNetworkCollection subnets = null;
-            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+            bool subnetted = ipnetwork.TrySubnet(cidr, out subnets);
 
             Assert.AreEqual(true, subnetted, "subnetted");
             Assert.AreEqual(16, subnets.Count, "count");
@@ -2079,18 +2079,10 @@ namespace System.Net.TestProject
             Assert.AreEqual("2001:db8:0:0:f000::/68", subnets[15].ToString(), "subnet16");
 
         }
-
-
-
+        
         #endregion
 
-
-
-
-
-
         #region TrySupernet
-
 
         [TestMethod]
         public void TestTrySupernet1() {
@@ -2100,7 +2092,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = IPNetwork.Parse("2001:db8::/64");
             IPNetwork supernet;
             bool supernetted = true;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetted, result, "supernetted");
             Assert.AreEqual(supernetExpected, supernet, "supernet");
@@ -2108,17 +2100,16 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void TestTrySupernet2() {
 
             IPNetwork network1 = null;
             IPNetwork network2 = IPNetwork.Parse("2001:db8::/64");
-            IPNetwork supernetExpected = null;
             IPNetwork supernet;
-            bool parsed = false;
+#pragma warning disable 0618
             bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+#pragma warning restore 0618
 
-            Assert.AreEqual(supernetExpected, supernet, "supernet");
-            Assert.AreEqual(parsed, result, "parsed");
         }
 
         [TestMethod]
@@ -2129,7 +2120,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = null;
             IPNetwork supernet;
             bool parsed = false;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2143,7 +2134,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = null;
             IPNetwork supernet;
             bool parsed = false;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2157,7 +2148,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = null;
             IPNetwork supernet;
             bool parsed = false;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2171,7 +2162,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = IPNetwork.Parse("2001:db8::/64");
             IPNetwork supernet;
             bool parsed = true;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2186,7 +2177,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = IPNetwork.Parse("2001:db8::/64");
             IPNetwork supernet;
             bool parsed = true;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -2201,7 +2192,7 @@ namespace System.Net.TestProject
             IPNetwork supernetExpected = null;
             IPNetwork supernet;
             bool parsed = false;
-            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+            bool result = network1.TrySupernet(network2, out supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");

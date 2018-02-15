@@ -42,7 +42,7 @@ namespace System.Net.ConsoleApplication
 
         private static void ListIPAddress(ProgramContext ac) {
             foreach (IPNetwork ipnetwork in ac.Networks) {
-                foreach (IPAddress ipaddress in IPNetwork.ListIPAddress(ipnetwork)) {
+                foreach (IPAddress ipaddress in ipnetwork.ListIPAddress()) {
                     Console.WriteLine("{0}", ipaddress.ToString());
                 }
             }
@@ -113,7 +113,7 @@ namespace System.Net.ConsoleApplication
                 i++;
                 int networkLength = ac.Networks.Length;
                 IPNetworkCollection ipnetworks = null;
-                if (!IPNetwork.TrySubnet(ipnetwork, ac.SubnetCidr, out ipnetworks)) {
+                if (!ipnetwork.TrySubnet(ac.SubnetCidr, out ipnetworks)) {
                     Console.WriteLine("Unable to subnet ipnetwork {0} into cidr {1}", ipnetwork, ac.SubnetCidr);
                     Program.PrintSeparator(networkLength, i);
                     continue;

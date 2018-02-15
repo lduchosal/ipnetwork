@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">IPNetwork
-   &#160;<span id="projectnumber">2.1.0</span>
+   &#160;<span id="projectnumber">2.1.2</span>
    </div>
    <div id="projectbrief">IPNetwork utility computes your ip, ipv4, ipv6, netmask, cidr, subnet, supernet and network</div>
   </td>
@@ -87,12 +87,42 @@ Inheritance diagram for System.Net.IPNetwork:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
+<tr class="memitem:a21020310a915796f1cfc8c9fcc5fb108"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a21020310a915796f1cfc8c9fcc5fb108">Contains</a> (IPAddress ipaddress)</td></tr>
+<tr class="memdesc:a21020310a915796f1cfc8c9fcc5fb108"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true if ipaddress is contained in network  <a href="#a21020310a915796f1cfc8c9fcc5fb108">More...</a><br /></td></tr>
+<tr class="separator:a21020310a915796f1cfc8c9fcc5fb108"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad9b1c17c294d4d6aa662e42319adc05f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#ad9b1c17c294d4d6aa662e42319adc05f">Contains</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network2)</td></tr>
+<tr class="memdesc:ad9b1c17c294d4d6aa662e42319adc05f"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true is network2 is fully contained in network  <a href="#ad9b1c17c294d4d6aa662e42319adc05f">More...</a><br /></td></tr>
+<tr class="separator:ad9b1c17c294d4d6aa662e42319adc05f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a714ca7276bacc9b52bb4d3a388bd3c33"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a714ca7276bacc9b52bb4d3a388bd3c33">Overlap</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network2)</td></tr>
+<tr class="memdesc:a714ca7276bacc9b52bb4d3a388bd3c33"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true is network2 overlap network  <a href="#a714ca7276bacc9b52bb4d3a388bd3c33">More...</a><br /></td></tr>
+<tr class="separator:a714ca7276bacc9b52bb4d3a388bd3c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0c5af5aeffabd6d04c50d4adca51f8e"><td class="memItemLeft" align="right" valign="top"><a id="ae0c5af5aeffabd6d04c50d4adca51f8e"></a>
 override string&#160;</td><td class="memItemRight" valign="bottom"><b>ToString</b> ()</td></tr>
 <tr class="separator:ae0c5af5aeffabd6d04c50d4adca51f8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a4f2cbe05b789333366ef309049e8c7"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a5a4f2cbe05b789333366ef309049e8c7">IsIANAReserved</a> ()</td></tr>
+<tr class="memdesc:a5a4f2cbe05b789333366ef309049e8c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true if ipnetwork is contained in IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1  <a href="#a5a4f2cbe05b789333366ef309049e8c7">More...</a><br /></td></tr>
+<tr class="separator:a5a4f2cbe05b789333366ef309049e8c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a515a41459a6024bafbb2b5f2208f3603"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_system_1_1_net_1_1_i_p_network_collection.html">IPNetworkCollection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a515a41459a6024bafbb2b5f2208f3603">Subnet</a> (byte cidr)</td></tr>
+<tr class="memdesc:a515a41459a6024bafbb2b5f2208f3603"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subnet a network into multiple nets of cidr mask Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25 Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9  <a href="#a515a41459a6024bafbb2b5f2208f3603">More...</a><br /></td></tr>
+<tr class="separator:a515a41459a6024bafbb2b5f2208f3603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f5c552a637b59f823f8689d9b343bdb"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a6f5c552a637b59f823f8689d9b343bdb">TrySubnet</a> (byte cidr, out <a class="el" href="class_system_1_1_net_1_1_i_p_network_collection.html">IPNetworkCollection</a> ipnetworkCollection)</td></tr>
+<tr class="memdesc:a6f5c552a637b59f823f8689d9b343bdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subnet a network into multiple nets of cidr mask Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25 Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9  <a href="#a6f5c552a637b59f823f8689d9b343bdb">More...</a><br /></td></tr>
+<tr class="separator:a6f5c552a637b59f823f8689d9b343bdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50b4f0e853fcabfad9b0de228b775621"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a50b4f0e853fcabfad9b0de228b775621">Supernet</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network2)</td></tr>
+<tr class="memdesc:a50b4f0e853fcabfad9b0de228b775621"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supernet two consecutive cidr equal subnet into a single one 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24  <a href="#a50b4f0e853fcabfad9b0de228b775621">More...</a><br /></td></tr>
+<tr class="separator:a50b4f0e853fcabfad9b0de228b775621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59b2232608fbd77675dbfa7c1eb07f9d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a59b2232608fbd77675dbfa7c1eb07f9d">TrySupernet</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network2, out <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> supernet)</td></tr>
+<tr class="memdesc:a59b2232608fbd77675dbfa7c1eb07f9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to supernet two consecutive cidr equal subnet into a single one 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24  <a href="#a59b2232608fbd77675dbfa7c1eb07f9d">More...</a><br /></td></tr>
+<tr class="separator:a59b2232608fbd77675dbfa7c1eb07f9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabea447a8c79b48a5563b337758879a4"><td class="memItemLeft" align="right" valign="top"><a id="aabea447a8c79b48a5563b337758879a4"></a>
 override int&#160;</td><td class="memItemRight" valign="bottom"><b>GetHashCode</b> ()</td></tr>
 <tr class="separator:aabea447a8c79b48a5563b337758879a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fb8c5e88f49c74b699c1ba653d597f2"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a4fb8c5e88f49c74b699c1ba653d597f2">Print</a> ()</td></tr>
+<tr class="memdesc:a4fb8c5e88f49c74b699c1ba653d597f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print an ipnetwork in a clear representation string  <a href="#a4fb8c5e88f49c74b699c1ba653d597f2">More...</a><br /></td></tr>
+<tr class="separator:a4fb8c5e88f49c74b699c1ba653d597f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a56094c8fd7c62f0b382362d0d0ed65e2"><td class="memItemLeft" align="right" valign="top"><a id="a56094c8fd7c62f0b382362d0d0ed65e2"></a>
+<a class="el" href="class_system_1_1_net_1_1_i_p_address_collection.html">IPAddressCollection</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ListIPAddress</b> ()</td></tr>
+<tr class="separator:a56094c8fd7c62f0b382362d0d0ed65e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4edd643e4808d41ebae05278f5079f2c"><td class="memItemLeft" align="right" valign="top"><a id="a4edd643e4808d41ebae05278f5079f2c"></a>
 Int32&#160;</td><td class="memItemRight" valign="bottom"><b>CompareTo</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> other)</td></tr>
 <tr class="separator:a4edd643e4808d41ebae05278f5079f2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -165,42 +195,39 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a974cf2931ace9678334b9eb511dff865"><td class="memItemLeft" align="right" valign="top">static IPAddress&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a974cf2931ace9678334b9eb511dff865">ToIPAddress</a> (BigInteger ipaddress, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a4841bfb3366981a87dde43fc84fed435">AddressFamily</a> family)</td></tr>
 <tr class="memdesc:a974cf2931ace9678334b9eb511dff865"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transform a uint ipaddress into IPAddress object  <a href="#a974cf2931ace9678334b9eb511dff865">More...</a><br /></td></tr>
 <tr class="separator:a974cf2931ace9678334b9eb511dff865"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9390448eb377d01953de1bd4ffff44e0"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a9390448eb377d01953de1bd4ffff44e0">Contains</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network, IPAddress ipaddress)</td></tr>
-<tr class="memdesc:a9390448eb377d01953de1bd4ffff44e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true if ipaddress is contained in network  <a href="#a9390448eb377d01953de1bd4ffff44e0">More...</a><br /></td></tr>
+<tr class="memitem:a9390448eb377d01953de1bd4ffff44e0"><td class="memItemLeft" align="right" valign="top"><a id="a9390448eb377d01953de1bd4ffff44e0"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>Contains</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network, IPAddress ipaddress)</td></tr>
 <tr class="separator:a9390448eb377d01953de1bd4ffff44e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3774378145b2a3ea4de695e9a6647eb1"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a3774378145b2a3ea4de695e9a6647eb1">Contains</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network2)</td></tr>
-<tr class="memdesc:a3774378145b2a3ea4de695e9a6647eb1"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true is network2 is fully contained in network  <a href="#a3774378145b2a3ea4de695e9a6647eb1">More...</a><br /></td></tr>
+<tr class="memitem:a3774378145b2a3ea4de695e9a6647eb1"><td class="memItemLeft" align="right" valign="top"><a id="a3774378145b2a3ea4de695e9a6647eb1"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>Contains</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network2)</td></tr>
 <tr class="separator:a3774378145b2a3ea4de695e9a6647eb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a56fdaa365ca52de19312c552c03a0389"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a56fdaa365ca52de19312c552c03a0389">Overlap</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network2)</td></tr>
-<tr class="memdesc:a56fdaa365ca52de19312c552c03a0389"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true is network2 overlap network  <a href="#a56fdaa365ca52de19312c552c03a0389">More...</a><br /></td></tr>
+<tr class="memitem:a56fdaa365ca52de19312c552c03a0389"><td class="memItemLeft" align="right" valign="top"><a id="a56fdaa365ca52de19312c552c03a0389"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>Overlap</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network2)</td></tr>
 <tr class="separator:a56fdaa365ca52de19312c552c03a0389"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adbbc960d6bf2e253c082d5fb35d210ef"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#adbbc960d6bf2e253c082d5fb35d210ef">IsIANAReserved</a> (IPAddress ipaddress)</td></tr>
 <tr class="memdesc:adbbc960d6bf2e253c082d5fb35d210ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true if ipaddress is contained in IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1  <a href="#adbbc960d6bf2e253c082d5fb35d210ef">More...</a><br /></td></tr>
 <tr class="separator:adbbc960d6bf2e253c082d5fb35d210ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11d560c4fe4e0d8b8626ea52d661f203"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a11d560c4fe4e0d8b8626ea52d661f203">IsIANAReserved</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> ipnetwork)</td></tr>
-<tr class="memdesc:a11d560c4fe4e0d8b8626ea52d661f203"><td class="mdescLeft">&#160;</td><td class="mdescRight">return true if ipnetwork is contained in IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1  <a href="#a11d560c4fe4e0d8b8626ea52d661f203">More...</a><br /></td></tr>
+<tr class="memitem:a11d560c4fe4e0d8b8626ea52d661f203"><td class="memItemLeft" align="right" valign="top"><a id="a11d560c4fe4e0d8b8626ea52d661f203"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsIANAReserved</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> ipnetwork)</td></tr>
 <tr class="separator:a11d560c4fe4e0d8b8626ea52d661f203"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae1cb7efcb7eebeb4714d51d163913450"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_system_1_1_net_1_1_i_p_network_collection.html">IPNetworkCollection</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#ae1cb7efcb7eebeb4714d51d163913450">Subnet</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network, byte cidr)</td></tr>
-<tr class="memdesc:ae1cb7efcb7eebeb4714d51d163913450"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subnet a network into multiple nets of cidr mask Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25 Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9  <a href="#ae1cb7efcb7eebeb4714d51d163913450">More...</a><br /></td></tr>
+<tr class="memitem:ae1cb7efcb7eebeb4714d51d163913450"><td class="memItemLeft" align="right" valign="top"><a id="ae1cb7efcb7eebeb4714d51d163913450"></a>
+static <a class="el" href="class_system_1_1_net_1_1_i_p_network_collection.html">IPNetworkCollection</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Subnet</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network, byte cidr)</td></tr>
 <tr class="separator:ae1cb7efcb7eebeb4714d51d163913450"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4dbc2e9e4fa066942ebfa0b125e05b03"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a4dbc2e9e4fa066942ebfa0b125e05b03">TrySubnet</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network, byte cidr, out <a class="el" href="class_system_1_1_net_1_1_i_p_network_collection.html">IPNetworkCollection</a> ipnetworkCollection)</td></tr>
-<tr class="memdesc:a4dbc2e9e4fa066942ebfa0b125e05b03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subnet a network into multiple nets of cidr mask Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25 Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9  <a href="#a4dbc2e9e4fa066942ebfa0b125e05b03">More...</a><br /></td></tr>
+<tr class="memitem:a4dbc2e9e4fa066942ebfa0b125e05b03"><td class="memItemLeft" align="right" valign="top"><a id="a4dbc2e9e4fa066942ebfa0b125e05b03"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>TrySubnet</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network, byte cidr, out <a class="el" href="class_system_1_1_net_1_1_i_p_network_collection.html">IPNetworkCollection</a> ipnetworkCollection)</td></tr>
 <tr class="separator:a4dbc2e9e4fa066942ebfa0b125e05b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a79d13eb0a9599822f88f81ac8a511450"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a79d13eb0a9599822f88f81ac8a511450">Supernet</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network1, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network2)</td></tr>
-<tr class="memdesc:a79d13eb0a9599822f88f81ac8a511450"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supernet two consecutive cidr equal subnet into a single one 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24  <a href="#a79d13eb0a9599822f88f81ac8a511450">More...</a><br /></td></tr>
-<tr class="separator:a79d13eb0a9599822f88f81ac8a511450"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af36d7ce0c405b22396a8dfc9a6d19e47"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#af36d7ce0c405b22396a8dfc9a6d19e47">TrySupernet</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network1, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network2, out <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> supernet)</td></tr>
-<tr class="memdesc:af36d7ce0c405b22396a8dfc9a6d19e47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to supernet two consecutive cidr equal subnet into a single one 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24  <a href="#af36d7ce0c405b22396a8dfc9a6d19e47">More...</a><br /></td></tr>
-<tr class="separator:af36d7ce0c405b22396a8dfc9a6d19e47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d5744566687d81bd6e7d35fa710584b"><td class="memItemLeft" align="right" valign="top"><a id="a7d5744566687d81bd6e7d35fa710584b"></a>
+static <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td><td class="memItemRight" valign="bottom"><b>Supernet</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network2)</td></tr>
+<tr class="separator:a7d5744566687d81bd6e7d35fa710584b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e543b199919c8d9b6ecc60673f45c3d"><td class="memItemLeft" align="right" valign="top"><a id="a8e543b199919c8d9b6ecc60673f45c3d"></a>
+static bool&#160;</td><td class="memItemRight" valign="bottom"><b>TrySupernet</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> network2, out <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> supernet)</td></tr>
+<tr class="separator:a8e543b199919c8d9b6ecc60673f45c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aef3bffcc963b75153abc4e5d836269db"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> []&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#aef3bffcc963b75153abc4e5d836269db">Supernet</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>[] ipnetworks)</td></tr>
 <tr class="memdesc:aef3bffcc963b75153abc4e5d836269db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supernet a list of subnet 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23 192.168.0.0/24 + 192.168.1.0/24 + 192.168.2.0/24 + 192.168.3.0/24 = 192.168.0.0/22  <a href="#aef3bffcc963b75153abc4e5d836269db">More...</a><br /></td></tr>
 <tr class="separator:aef3bffcc963b75153abc4e5d836269db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dda64a72396a2eb7ffc359eb6243861"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a0dda64a72396a2eb7ffc359eb6243861">TrySupernet</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>[] ipnetworks, out <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>[] supernet)</td></tr>
 <tr class="memdesc:a0dda64a72396a2eb7ffc359eb6243861"><td class="mdescLeft">&#160;</td><td class="mdescRight">Supernet a list of subnet 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23 192.168.0.0/24 + 192.168.1.0/24 + 192.168.2.0/24 + 192.168.3.0/24 = 192.168.0.0/22  <a href="#a0dda64a72396a2eb7ffc359eb6243861">More...</a><br /></td></tr>
 <tr class="separator:a0dda64a72396a2eb7ffc359eb6243861"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a92a1bed9e75d1f36fec57bb1ca3b3e31"><td class="memItemLeft" align="right" valign="top"><a id="a92a1bed9e75d1f36fec57bb1ca3b3e31"></a>
-static bool&#160;</td><td class="memItemRight" valign="bottom"><b>InternalSupernet</b> (bool trySupernet, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>[] ipnetworks, out <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>[] supernet)</td></tr>
-<tr class="separator:a92a1bed9e75d1f36fec57bb1ca3b3e31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7b573988c14d28a484dabf0c371eefd"><td class="memItemLeft" align="right" valign="top"><a id="ae7b573988c14d28a484dabf0c371eefd"></a>
 static <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td><td class="memItemRight" valign="bottom"><b>WideSubnet</b> (string start, string end)</td></tr>
 <tr class="separator:ae7b573988c14d28a484dabf0c371eefd"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -210,8 +237,8 @@ static bool&#160;</td><td class="memItemRight" valign="bottom"><b>TryWideSubnet<
 <tr class="memitem:af439ae17e915bd8258fd22d1dcd404e9"><td class="memItemLeft" align="right" valign="top"><a id="af439ae17e915bd8258fd22d1dcd404e9"></a>
 static <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td><td class="memItemRight" valign="bottom"><b>WideSubnet</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>[] ipnetworks)</td></tr>
 <tr class="separator:af439ae17e915bd8258fd22d1dcd404e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1953f20b7a44ccbd17e7e2986c42325f"><td class="memItemLeft" align="right" valign="top">static string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a1953f20b7a44ccbd17e7e2986c42325f">Print</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> ipnetwork)</td></tr>
-<tr class="memdesc:a1953f20b7a44ccbd17e7e2986c42325f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print an ipnetwork in a clear representation string  <a href="#a1953f20b7a44ccbd17e7e2986c42325f">More...</a><br /></td></tr>
+<tr class="memitem:a1953f20b7a44ccbd17e7e2986c42325f"><td class="memItemLeft" align="right" valign="top"><a id="a1953f20b7a44ccbd17e7e2986c42325f"></a>
+static string&#160;</td><td class="memItemRight" valign="bottom"><b>Print</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> ipnetwork)</td></tr>
 <tr class="separator:a1953f20b7a44ccbd17e7e2986c42325f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae34614011cfca42104fa174838719755"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#ae34614011cfca42104fa174838719755">TryGuessCidr</a> (string ip, out byte cidr)</td></tr>
 <tr class="separator:ae34614011cfca42104fa174838719755"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -221,8 +248,7 @@ static <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork<
 <tr class="memitem:aa2e453f15e8fefe61d4522b25959e1da"><td class="memItemLeft" align="right" valign="top"><a id="aa2e453f15e8fefe61d4522b25959e1da"></a>
 static <a class="el" href="class_system_1_1_net_1_1_i_p_address_collection.html">IPAddressCollection</a>&#160;</td><td class="memItemRight" valign="bottom"><b>ListIPAddress</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> ipnetwork)</td></tr>
 <tr class="separator:aa2e453f15e8fefe61d4522b25959e1da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13253d5e6a21163a5724f0b3ddbdff79"><td class="memItemLeft" align="right" valign="top"><a id="a13253d5e6a21163a5724f0b3ddbdff79"></a>
-static Int32&#160;</td><td class="memItemRight" valign="bottom"><b>Compare</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> left, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> right)</td></tr>
+<tr class="memitem:a13253d5e6a21163a5724f0b3ddbdff79"><td class="memItemLeft" align="right" valign="top">static Int32&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a13253d5e6a21163a5724f0b3ddbdff79">Compare</a> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> left, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> right)</td></tr>
 <tr class="separator:a13253d5e6a21163a5724f0b3ddbdff79"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0e74f344ba993cce649a2bf8d28064ee"><td class="memItemLeft" align="right" valign="top"><a id="a0e74f344ba993cce649a2bf8d28064ee"></a>
 static Boolean&#160;</td><td class="memItemRight" valign="bottom"><b>Equals</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> left, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> right)</td></tr>
@@ -317,8 +343,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a9390448eb377d01953de1bd4ffff44e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9390448eb377d01953de1bd4ffff44e0">&#9670;&nbsp;</a></span>Contains() <span class="overload">[1/2]</span></h2>
+<a id="a13253d5e6a21163a5724f0b3ddbdff79"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13253d5e6a21163a5724f0b3ddbdff79">&#9670;&nbsp;</a></span>Compare()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -327,16 +353,16 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool System.Net.IPNetwork.Contains </td>
+          <td class="memname">static Int32 System.Net.IPNetwork.Compare </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
-          <td class="paramname"><em>network</em>, </td>
+          <td class="paramname"><em>left</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">IPAddress&#160;</td>
-          <td class="paramname"><em>ipaddress</em>&#160;</td>
+          <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
+          <td class="paramname"><em>right</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -350,11 +376,70 @@ Properties</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Need a better way to do it</p>
+<p>#region TrySubstractNetwork</p>
+<p>public static bool TrySubstractNetwork(IPNetwork[] ipnetworks, IPNetwork substract, out IEnumerable&lt;IPNetwork&gt; result) { </p><pre class="fragment">if (ipnetworks == null) {
+    result = null;
+    return false;
+}
+if (ipnetworks.Length &lt;= 0) {
+    result = null;
+    return false;
+}
+if (substract == null) {
+    result = null;
+    return false;
+}
+var results = new List&lt;IPNetwork&gt;();
+foreach (var ipn in ipnetworks) {
+    if (!Overlap(ipn, substract)) {
+        results.Add(ipn);
+        continue;
+    }
+
+    var collection = ipn.Subnet(substract.Cidr);
+    var rtemp = new List&lt;IPNetwork&gt;();
+    foreach(var subnet in collection) {
+        if (subnet != substract) {
+            rtemp.Add(subnet);
+        }
+    }
+    var supernets = Supernet(rtemp.ToArray());
+    results.AddRange(supernets);
+}
+result = results;
+return true;
+</pre><p> } #endregion </p>
+
+</div>
+</div>
+<a id="a21020310a915796f1cfc8c9fcc5fb108"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a21020310a915796f1cfc8c9fcc5fb108">&#9670;&nbsp;</a></span>Contains() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool System.Net.IPNetwork.Contains </td>
+          <td>(</td>
+          <td class="paramtype">IPAddress&#160;</td>
+          <td class="paramname"><em>ipaddress</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 <p>return true if ipaddress is contained in network </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">network</td><td></td></tr>
     <tr><td class="paramname">ipaddress</td><td></td></tr>
   </table>
   </dd>
@@ -363,8 +448,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a3774378145b2a3ea4de695e9a6647eb1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3774378145b2a3ea4de695e9a6647eb1">&#9670;&nbsp;</a></span>Contains() <span class="overload">[2/2]</span></h2>
+<a id="ad9b1c17c294d4d6aa662e42319adc05f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9b1c17c294d4d6aa662e42319adc05f">&#9670;&nbsp;</a></span>Contains() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -373,26 +458,16 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool System.Net.IPNetwork.Contains </td>
+          <td class="memname">bool System.Net.IPNetwork.Contains </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
-          <td class="paramname"><em>network</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>network2</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
-          <td class="paramname"><em>network2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -400,7 +475,6 @@ Properties</h2></td></tr>
 <p>return true is network2 is fully contained in network </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">network</td><td></td></tr>
     <tr><td class="paramname">network2</td><td></td></tr>
   </table>
   </dd>
@@ -444,8 +518,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a11d560c4fe4e0d8b8626ea52d661f203"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11d560c4fe4e0d8b8626ea52d661f203">&#9670;&nbsp;</a></span>IsIANAReserved() <span class="overload">[2/2]</span></h2>
+<a id="a5a4f2cbe05b789333366ef309049e8c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5a4f2cbe05b789333366ef309049e8c7">&#9670;&nbsp;</a></span>IsIANAReserved() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -454,33 +528,26 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool System.Net.IPNetwork.IsIANAReserved </td>
+          <td class="memname">bool System.Net.IPNetwork.IsIANAReserved </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
-          <td class="paramname"><em>ipnetwork</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>return true if ipnetwork is contained in IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1 </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ipnetwork</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
-<a id="a56fdaa365ca52de19312c552c03a0389"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a56fdaa365ca52de19312c552c03a0389">&#9670;&nbsp;</a></span>Overlap()</h2>
+<a id="a714ca7276bacc9b52bb4d3a388bd3c33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a714ca7276bacc9b52bb4d3a388bd3c33">&#9670;&nbsp;</a></span>Overlap()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -489,26 +556,16 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool System.Net.IPNetwork.Overlap </td>
+          <td class="memname">bool System.Net.IPNetwork.Overlap </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
-          <td class="paramname"><em>network</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>network2</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
-          <td class="paramname"><em>network2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -516,7 +573,6 @@ Properties</h2></td></tr>
 <p>return true is network2 overlap network </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">network</td><td></td></tr>
     <tr><td class="paramname">network2</td><td></td></tr>
   </table>
   </dd>
@@ -702,8 +758,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a1953f20b7a44ccbd17e7e2986c42325f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1953f20b7a44ccbd17e7e2986c42325f">&#9670;&nbsp;</a></span>Print()</h2>
+<a id="a4fb8c5e88f49c74b699c1ba653d597f2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fb8c5e88f49c74b699c1ba653d597f2">&#9670;&nbsp;</a></span>Print()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -712,33 +768,26 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static string System.Net.IPNetwork.Print </td>
+          <td class="memname">string System.Net.IPNetwork.Print </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
-          <td class="paramname"><em>ipnetwork</em></td><td>)</td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Print an ipnetwork in a clear representation string </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ipnetwork</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 <dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
-<a id="ae1cb7efcb7eebeb4714d51d163913450"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae1cb7efcb7eebeb4714d51d163913450">&#9670;&nbsp;</a></span>Subnet()</h2>
+<a id="a515a41459a6024bafbb2b5f2208f3603"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a515a41459a6024bafbb2b5f2208f3603">&#9670;&nbsp;</a></span>Subnet()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -747,26 +796,16 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="class_system_1_1_net_1_1_i_p_network_collection.html">IPNetworkCollection</a> System.Net.IPNetwork.Subnet </td>
+          <td class="memname"><a class="el" href="class_system_1_1_net_1_1_i_p_network_collection.html">IPNetworkCollection</a> System.Net.IPNetwork.Subnet </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
-          <td class="paramname"><em>network</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">byte&#160;</td>
-          <td class="paramname"><em>cidr</em>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>cidr</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -774,7 +813,6 @@ Properties</h2></td></tr>
 <p>Subnet a network into multiple nets of cidr mask Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25 Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ipnetwork</td><td></td></tr>
     <tr><td class="paramname">cidr</td><td></td></tr>
   </table>
   </dd>
@@ -783,8 +821,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a79d13eb0a9599822f88f81ac8a511450"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a79d13eb0a9599822f88f81ac8a511450">&#9670;&nbsp;</a></span>Supernet() <span class="overload">[1/2]</span></h2>
+<a id="a50b4f0e853fcabfad9b0de228b775621"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50b4f0e853fcabfad9b0de228b775621">&#9670;&nbsp;</a></span>Supernet() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -793,26 +831,16 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> System.Net.IPNetwork.Supernet </td>
+          <td class="memname"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> System.Net.IPNetwork.Supernet </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
-          <td class="paramname"><em>network1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>network2</em></td><td>)</td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
-          <td class="paramname"><em>network2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -820,7 +848,6 @@ Properties</h2></td></tr>
 <p>Supernet two consecutive cidr equal subnet into a single one 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">network1</td><td></td></tr>
     <tr><td class="paramname">network2</td><td></td></tr>
   </table>
   </dd>
@@ -1376,8 +1403,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="a4dbc2e9e4fa066942ebfa0b125e05b03"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4dbc2e9e4fa066942ebfa0b125e05b03">&#9670;&nbsp;</a></span>TrySubnet()</h2>
+<a id="a6f5c552a637b59f823f8689d9b343bdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f5c552a637b59f823f8689d9b343bdb">&#9670;&nbsp;</a></span>TrySubnet()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1386,14 +1413,8 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool System.Net.IPNetwork.TrySubnet </td>
+          <td class="memname">bool System.Net.IPNetwork.TrySubnet </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
-          <td class="paramname"><em>network</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype">byte&#160;</td>
           <td class="paramname"><em>cidr</em>, </td>
         </tr>
@@ -1411,7 +1432,7 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1419,7 +1440,6 @@ Properties</h2></td></tr>
 <p>Subnet a network into multiple nets of cidr mask Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25 Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ipnetwork</td><td></td></tr>
     <tr><td class="paramname">cidr</td><td></td></tr>
   </table>
   </dd>
@@ -1428,8 +1448,8 @@ Properties</h2></td></tr>
 
 </div>
 </div>
-<a id="af36d7ce0c405b22396a8dfc9a6d19e47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af36d7ce0c405b22396a8dfc9a6d19e47">&#9670;&nbsp;</a></span>TrySupernet() <span class="overload">[1/2]</span></h2>
+<a id="a59b2232608fbd77675dbfa7c1eb07f9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59b2232608fbd77675dbfa7c1eb07f9d">&#9670;&nbsp;</a></span>TrySupernet() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1438,14 +1458,8 @@ Properties</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static bool System.Net.IPNetwork.TrySupernet </td>
+          <td class="memname">bool System.Net.IPNetwork.TrySupernet </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
-          <td class="paramname"><em>network1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td>
           <td class="paramname"><em>network2</em>, </td>
         </tr>
@@ -1463,7 +1477,7 @@ Properties</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1471,7 +1485,6 @@ Properties</h2></td></tr>
 <p>Try to supernet two consecutive cidr equal subnet into a single one 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">network1</td><td></td></tr>
     <tr><td class="paramname">network2</td><td></td></tr>
   </table>
   </dd>
@@ -2046,7 +2059,7 @@ Properties</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>D:/inetexp/ipnetwork/solution/System.Net.IPNetwork/IPNetwork.cs</li>
+<li>D:/GitHub/ipnetwork/src/System.Net.IPNetwork/IPNetwork.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -6,5 +6,5 @@ var searchData=
   ['ipaddresscollection',['IPAddressCollection',['../class_system_1_1_net_1_1_i_p_address_collection.html',1,'System::Net']]],
   ['ipnetwork',['IPNetwork',['../class_system_1_1_net_1_1_i_p_network.html',1,'System::Net']]],
   ['ipnetworkcollection',['IPNetworkCollection',['../class_system_1_1_net_1_1_i_p_network_collection.html',1,'System::Net']]],
-  ['isianareserved',['IsIANAReserved',['../class_system_1_1_net_1_1_i_p_network.html#adbbc960d6bf2e253c082d5fb35d210ef',1,'System.Net.IPNetwork.IsIANAReserved(IPAddress ipaddress)'],['../class_system_1_1_net_1_1_i_p_network.html#a11d560c4fe4e0d8b8626ea52d661f203',1,'System.Net.IPNetwork.IsIANAReserved(IPNetwork ipnetwork)']]]
+  ['isianareserved',['IsIANAReserved',['../class_system_1_1_net_1_1_i_p_network.html#adbbc960d6bf2e253c082d5fb35d210ef',1,'System.Net.IPNetwork.IsIANAReserved(IPAddress ipaddress)'],['../class_system_1_1_net_1_1_i_p_network.html#a5a4f2cbe05b789333366ef309049e8c7',1,'System.Net.IPNetwork.IsIANAReserved()']]]
 ];

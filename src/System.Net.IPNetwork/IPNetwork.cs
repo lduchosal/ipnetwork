@@ -1234,6 +1234,9 @@ namespace System.Net
 
         [Obsolete("static Subnet is deprecated, please use instance Subnet.")]
         public static IPNetworkCollection Subnet(IPNetwork network, byte cidr) {
+            if (network == null) {
+                throw new ArgumentNullException("network");
+            }
             return network.Subnet(cidr);
         }
 
@@ -1258,6 +1261,9 @@ namespace System.Net
 
         [Obsolete("static TrySubnet is deprecated, please use instance TrySubnet.")]
         public static bool TrySubnet(IPNetwork network, byte cidr, out IPNetworkCollection ipnetworkCollection) {
+            if (network == null) {
+                throw new ArgumentNullException("network");
+            }
             return network.TrySubnet(cidr, out ipnetworkCollection);
         }
 
@@ -1336,6 +1342,9 @@ namespace System.Net
 
         [Obsolete("static TrySupernet is deprecated, please use instance TrySupernet.")]
         public static bool TrySupernet(IPNetwork network, IPNetwork network2, out IPNetwork supernet) {
+            if(network == null) {
+                throw new ArgumentNullException("network");
+            }
             return network.TrySupernet(network2, out supernet);
         }
 
