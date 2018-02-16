@@ -971,6 +971,22 @@ namespace System.Net.TestProject
 
         #endregion
 
+
+        #region TryToUint
+
+        [TestMethod]
+        public void TestTryToUint1()
+        {
+
+            BigInteger? result = null;
+            bool parsed = IPNetwork.TryToUint(32, Sockets.AddressFamily.InterNetwork, out result);
+
+            Assert.IsNotNull(result, "uint");
+            Assert.AreEqual(true, parsed, "parsed");
+        }
+
+        #endregion
+
         #region TryToBigInteger
 
         [TestMethod]
@@ -1363,7 +1379,7 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestContains7()
+        public void TestContainsStatic3()
         {
 
             IPNetwork ipnetwork = null;
@@ -1372,6 +1388,22 @@ namespace System.Net.TestProject
 #pragma warning disable 0618
             bool result = IPNetwork.Contains(ipnetwork, ipnetwork2);
 #pragma warning restore 0618
+
+
+        }
+
+        [TestMethod]
+        public void TestContainsStatic4()
+        {
+
+            IPNetwork ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
+            IPNetwork ipnetwork2 = IPNetwork.IANA_CBLK_RESERVED1;
+
+#pragma warning disable 0618
+            bool result = IPNetwork.Contains(ipnetwork, ipnetwork2);
+#pragma warning restore 0618
+
+            Assert.IsTrue(result, "result");
 
 
         }
@@ -1391,7 +1423,7 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestContains9()
+        public void TestContainsStatic1()
         {
 
             IPNetwork ipnetwork = null;
@@ -1401,6 +1433,21 @@ namespace System.Net.TestProject
             bool result = IPNetwork.Contains(ipnetwork, ipaddress);
 #pragma warning restore 0618
         }
+
+
+        [TestMethod]
+        public void TestContainsStatic2()
+        {
+
+            IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
+            IPAddress ipaddress = IPAddress.Parse("10.0.0.1");
+
+#pragma warning disable 0618
+            bool result = IPNetwork.Contains(ipnetwork, ipaddress);
+#pragma warning restore 0618
+            Assert.IsTrue(result, "result");
+        }
+
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestContains10()
@@ -1427,6 +1474,20 @@ namespace System.Net.TestProject
 #pragma warning disable 0618
             bool result = IPNetwork.Overlap(network1, network2);
 #pragma warning restore 0618
+        }
+
+
+        [TestMethod]
+        public void TestOverlapStatic2()
+        {
+            IPNetwork network1 = IPNetwork.IANA_ABLK_RESERVED1;
+            IPNetwork network2 = IPNetwork.IANA_ABLK_RESERVED1;
+
+#pragma warning disable 0618
+            bool result = IPNetwork.Overlap(network1, network2);
+#pragma warning restore 0618
+
+            Assert.IsTrue(result, "result");
         }
 
         [TestMethod]
@@ -1611,7 +1672,8 @@ namespace System.Net.TestProject
             Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress2, contains2);
 
         }
-        public void Example9() {
+        public void Example9()
+        {
 
             IPNetwork network = IPNetwork.Parse("192.168.0.1");
             IPNetwork network2 = IPNetwork.Parse("192.168.0.254");
@@ -1724,13 +1786,26 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestIANA8() {
+        public void TestIANA8()
+        {
 
             IPNetwork ipnetwork = null;
 #pragma warning disable 0618
             bool result = IPNetwork.IsIANAReserved(ipnetwork);
 #pragma warning restore 0618
 
+        }
+
+
+        [TestMethod]
+        public void TestIANABlk1()
+        {
+
+            IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
+#pragma warning disable 0618
+            bool result = IPNetwork.IsIANAReserved(ipnetwork);
+#pragma warning restore 0618
+            Assert.IsTrue(result, "result");
         }
 
         [TestMethod]
@@ -2185,12 +2260,28 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestSupernet7() {
+        public void TestSupernet7()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/25");
             IPNetwork network2 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork expected = IPNetwork.Parse("192.168.0.0/24");
             IPNetwork supernet = network1.Supernet(network2);
+
+            Assert.AreEqual(expected, supernet, "supernet");
+
+        }
+
+        [TestMethod]
+        public void TestSupernetStatic1()
+        {
+
+            IPNetwork network1 = IPNetwork.Parse("192.168.0.1/25");
+            IPNetwork network2 = IPNetwork.Parse("192.168.0.1/24");
+            IPNetwork expected = IPNetwork.Parse("192.168.0.0/24");
+#pragma warning disable CS0618 // Type or member is obsolete
+            IPNetwork supernet = IPNetwork.Supernet(network1, network2);
+#pragma warning restore CS0618 // Type or member is obsolete
 
             Assert.AreEqual(expected, supernet, "supernet");
 
@@ -2920,8 +3011,18 @@ Usable      : 4294967294
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void PrintNull() {
+        public void PrintNull()
+        {
             IPNetwork ipn = null;
+#pragma warning disable 0618
+            string print = IPNetwork.Print(ipn);
+#pragma warning restore 0618
+        }
+
+        [TestMethod]
+        public void PrintStatic()
+        {
+            IPNetwork ipn = IPNetwork.IANA_ABLK_RESERVED1;
 #pragma warning disable 0618
             string print = IPNetwork.Print(ipn);
 #pragma warning restore 0618

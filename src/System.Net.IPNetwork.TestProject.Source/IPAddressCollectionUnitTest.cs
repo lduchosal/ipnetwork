@@ -14,10 +14,34 @@ namespace System.Net.TestProject
         #region Parse
 
         [TestMethod]
-        public void TestAtIndexIPAddress() {
+        public void TestAtIndexIPAddress()
+        {
 
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
-            using (var ips = ipn.ListIPAddress()) {
+            using (var ips = ipn.ListIPAddress())
+            {
+                Assert.AreEqual("192.168.1.0", ips[0].ToString(), "0");
+                Assert.AreEqual("192.168.1.1", ips[1].ToString(), "1");
+                Assert.AreEqual("192.168.1.2", ips[2].ToString(), "2");
+                Assert.AreEqual("192.168.1.3", ips[3].ToString(), "3");
+                Assert.AreEqual("192.168.1.4", ips[4].ToString(), "4");
+                Assert.AreEqual("192.168.1.5", ips[5].ToString(), "5");
+                Assert.AreEqual("192.168.1.6", ips[6].ToString(), "6");
+                Assert.AreEqual("192.168.1.7", ips[7].ToString(), "7");
+            }
+
+        }
+
+
+        [TestMethod]
+        public void TestAtIndexIPAddress2()
+        {
+
+            IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
+#pragma warning disable CS0618 // Type or member is obsolete
+            using (var ips = IPNetwork.ListIPAddress(ipn))
+#pragma warning restore CS0618 // Type or member is obsolete
+            {
                 Assert.AreEqual("192.168.1.0", ips[0].ToString(), "0");
                 Assert.AreEqual("192.168.1.1", ips[1].ToString(), "1");
                 Assert.AreEqual("192.168.1.2", ips[2].ToString(), "2");

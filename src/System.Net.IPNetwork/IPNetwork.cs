@@ -708,20 +708,7 @@ namespace System.Net
         #endregion
 
         #region ToCidr
-        /// <summary>
-        /// Convert netmask to CIDR
-        ///  255.255.255.0 -> 24
-        ///  255.255.0.0   -> 16
-        ///  255.0.0.0     -> 8
-        /// </summary>
-        /// <param name="netmask"></param>
-        /// <returns></returns>
-        private static byte ToCidr(BigInteger netmask, AddressFamily family) {
-            byte? cidr = null;
-            IPNetwork.InternalToCidr(false, netmask, family, out cidr);
-            return (byte)cidr;
-        }
-
+        
         /// <summary>
         /// Convert netmask to CIDR
         ///  255.255.255.0 -> 24

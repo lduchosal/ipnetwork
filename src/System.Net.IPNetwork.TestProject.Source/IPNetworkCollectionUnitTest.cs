@@ -6,6 +6,42 @@ namespace System.Net.TestProject
     public class IPNetworkCollectionUnitTest
     {
 
+        #region Current 
+
+        [TestMethod]
+        public void TestCurrent()
+        {
+            IPNetwork ipn = IPNetwork.Parse("192.168.0.0/32");
+            using (IPNetworkCollection ipns = ipn.Subnet(32))
+            {
+                var ipnse = (Collections.IEnumerator)ipns;
+                ipnse.MoveNext();
+                var ipn0 = ipnse.Current;
+
+                Assert.AreEqual("192.168.0.0/32", ipn0.ToString(), "ipn0");
+            }
+        }
+
+        #endregion
+
+        #region Enumerator 
+
+        [TestMethod]
+        public void TestEnumerator()
+        {
+            IPNetwork ipn = IPNetwork.Parse("192.168.0.0/32");
+            using (IPNetworkCollection ipns = ipn.Subnet(32))
+            {
+                var ipnse = (Collections.IEnumerable)ipns;
+                var ee = ipnse.GetEnumerator();
+                ee.MoveNext();
+                var ipn0 = ee.Current;
+                Assert.AreEqual("192.168.0.0/32", ipn0.ToString(), "ipn0");
+            }
+        }
+
+        #endregion
+
         #region Reset 
 
         [TestMethod]
