@@ -29,6 +29,13 @@ signed dlls</PackageReleaseNotes>
     <RepositoryType>git</RepositoryType>
 
 	</PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.3|AnyCPU'">
+    <DebugType>full</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
   
   
   <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">

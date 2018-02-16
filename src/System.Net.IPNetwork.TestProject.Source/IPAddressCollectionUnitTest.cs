@@ -85,7 +85,7 @@ namespace System.Net.TestProject
         public void TestResetEnumerator() {
 
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
-            using (IEnumerator<IPAddress> ips = ipn.ListIPAddress()) {
+            using (var ips = ipn.ListIPAddress()) {
                 ips.Reset();
                 while (ips.MoveNext()) {
                     Assert.IsNotNull(ips.Current);
@@ -386,9 +386,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(64, ipnetwork.Cidr, "Cidr");
         }
 
-
-
         #endregion
+
 
     }
 }

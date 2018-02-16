@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26403.7
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Net.IPNetwork", "System.Net.IPNetwork\System.Net.IPNetwork.csproj", "{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F}"
 EndProject
@@ -68,5 +68,8 @@ Global
 		{BD2A4B23-5C80-410C-9CB4-38E717F25268} = {7F79CD80-ADCD-4125-A5CE-EF19BEE25DF5}
 		{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7} = {7102AE06-D0A4-4CB9-A4BD-22CB803EA312}
 		{E46142DB-9950-453D-809E-F2096A3B46C1} = {7F79CD80-ADCD-4125-A5CE-EF19BEE25DF5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B02827A7-02C5-46F3-B4A3-798C279618E6}
 	EndGlobalSection
 EndGlobal

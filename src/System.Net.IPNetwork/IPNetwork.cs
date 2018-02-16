@@ -901,16 +901,6 @@ namespace System.Net
             
         }
 
-        static BigInteger BigMask(byte b, int length) {
-
-            var bytes = new List<byte>(length + 1);
-            for (int i = 0; i < length; i++) {
-                bytes.Add(b);
-            }
-            bytes.Add(0);
-
-            return new BigInteger(bytes.ToArray());
-        }
 
         /// <summary>
         /// Count bits set to 1 in netmask
