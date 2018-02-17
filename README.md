@@ -6,9 +6,7 @@ IPNetwork command line and C# library take care of complex network, IP, IPv4, IP
 
 ## IPNetwork utility classes for .Net
 
-IPNetwork utility classes take care of complex network, IP, IPv4, IPv6, netmask, CIDR, subnet, subnetting, supernet, and supernetting calculation for .NET developers. It works with IPv4 as well as IPv6, is written in C#, has a light and clean API, and is fully unit-tested.
-
-/!\ Breaking changes as of version 2.0 : namespace changed from LukeSkywalker.IPNetwork to System.Net.IPNetwork
+IPNetwork utility classes take care of complex network, IP, IPv4, IPv6, netmask, CIDR, subnet, subnetting, supernet, and supernetting calculation for .NET developers. It works with IPv4 as well as IPv6, is written in C#, has a light and clean API, and is fully unit-tested with 100% code coverage.
 
 ---
 ### Installation :
