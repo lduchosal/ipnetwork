@@ -175,7 +175,17 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestEnumeratorCurrent() {
+        public void TestEnumerableCurrent()
+        {
+
+            IPNetwork ipn = IPNetwork.Parse("192.168.1.0/31");
+            IEnumerable ips = ipn.ListIPAddress();
+            Assert.IsNotNull(ips.GetEnumerator());
+        }
+
+        [TestMethod]
+        public void TestEnumeratorCurrent()
+        {
 
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/31");
             IEnumerator ips = ipn.ListIPAddress();

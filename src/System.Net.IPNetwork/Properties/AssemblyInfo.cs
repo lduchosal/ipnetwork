@@ -34,3 +34,4 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("2.1.2.0")]
 [assembly: AssemblyFileVersion("2.1.2.0")]
+[assembly: InternalsVisibleTo("System.Net.IPNetwork.TestProject.NetCore, PublicKey=00240000048000009400000006020000002400005253413100040000010001004d29ae79cfcf603de0200afc96f4d8304aa857341b78e706fedb3f0ac9c9d613443cea78a1ee687def573ad45b5cdc0abeeb1db304eec7c07331015d8aeeb3fd5e092273a2347e6cb54803a00484807c64bc3092f17619abfc5290133efad358a27747bfe71d1dc23b461d7cf91272844fc7a8390dc63b16236729dadb2c21bc")]

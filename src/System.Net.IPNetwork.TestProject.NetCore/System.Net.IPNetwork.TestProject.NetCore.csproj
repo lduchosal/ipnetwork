@@ -1,7 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>    
-    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>    
+    <SignAssembly>true</SignAssembly>    
+    <AssemblyOriginatorKeyFile>System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>

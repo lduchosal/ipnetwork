@@ -20,6 +20,62 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
+        public void TestToOctalString3()
+        {
+
+            var bigi = BigInteger.Parse("1048576");
+            bigi++;
+            string result = bigi.ToOctalString();
+
+            Assert.AreEqual("04000001", result);
+
+        }
+
+
+        [TestMethod]
+        public void TestToOctalString01()
+        {
+
+            var bigi = BigInteger.Zero;
+            bigi++;
+            string result = bigi.ToOctalString();
+
+            Assert.AreEqual("01", result);
+
+        }
+
+
+        [TestMethod]
+        public void TestToOctalString02()
+        {
+
+            var bigi = BigInteger.Zero;
+            bigi--;
+            string result = bigi.ToOctalString();
+
+            Assert.AreEqual("377", result);
+
+        }
+
+        [TestMethod]
+        public void TestToOctalString03()
+        {
+
+            var bigi = BigInteger.Zero;
+            bigi--;
+            bigi--;
+            bigi--;
+            bigi--;
+            bigi--;
+            bigi--;
+            bigi--;
+            string result = bigi.ToOctalString();
+
+            Assert.AreEqual("371", result);
+
+        }
+
+        [TestMethod]
         public void TestToHexadecimalString1()
         {
 
@@ -40,6 +96,18 @@ namespace System.Net.TestProject
             string result = convertme.ToBinaryString();
 
             Assert.AreEqual("011111111111111111111111111111111", result);
+
+        }
+
+        [TestMethod]
+        public void TestToBinaryString01()
+        {
+
+            var bigi = BigInteger.Zero;
+            bigi++;
+            string result = bigi.ToBinaryString();
+
+            Assert.AreEqual("01", result);
 
         }
 

@@ -6,6 +6,24 @@ namespace System.Net.TestProject
     public class IPNetworkCollectionUnitTest
     {
 
+        #region ctor 
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestCtor1()
+        {
+            IPNetworkCollection ipn = new IPNetworkCollection(IPNetwork.IANA_ABLK_RESERVED1, 33);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestCtor2()
+        {
+            IPNetworkCollection ipn = new IPNetworkCollection(IPNetwork.IANA_ABLK_RESERVED1, 2);
+        }
+
+        #endregion
+
         #region Current 
 
         [TestMethod]

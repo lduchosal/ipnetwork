@@ -11,6 +11,16 @@ namespace System.Net.TestProject
     [TestClass]
     public class IPNetworkUnitTest {
 
+        #region ctor
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestCtor1()
+        {
+            new IPNetwork(BigInteger.Zero, Sockets.AddressFamily.InterNetwork, 33);
+        }
+        #endregion
+
         #region Parse
 
         [TestMethod]
@@ -958,13 +968,55 @@ namespace System.Net.TestProject
 
         }
 
-
         [TestMethod]
-        public void TestToBigIntegerByte3() {
+        public void TestToBigIntegerByte3()
+        {
             BigInteger result = IPNetwork.ToUint(0, Sockets.AddressFamily.InterNetwork);
             uint expected = 0;
             Assert.AreEqual(expected, result, "result");
 
+        }
+
+        [TestMethod]
+        public void TestToBigIntegerInternal1()
+        {
+            BigInteger? result = null;
+            IPNetwork.InternalToBigInteger(true, 33, Sockets.AddressFamily.InterNetwork, out result);
+            Assert.AreEqual(null, result, "result");
+
+        }
+
+        [TestMethod]
+        public void TestToBigIntegerInternal2()
+        {
+            BigInteger? result = null;
+            IPNetwork.InternalToBigInteger(true, 129, Sockets.AddressFamily.InterNetworkV6, out result);
+            Assert.AreEqual(null, result, "result");
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestToBigIntegerInternal3()
+        {
+            BigInteger? result = null;
+            IPNetwork.InternalToBigInteger(false, 129, Sockets.AddressFamily.InterNetworkV6, out result);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void TestToBigIntegerInternal4()
+        {
+            BigInteger? result = null;
+            IPNetwork.InternalToBigInteger(false, 32, Sockets.AddressFamily.AppleTalk, out result);
+        }
+
+        [TestMethod]
+        public void TestToBigIntegerInternal5()
+        {
+            BigInteger? result = null;
+            IPNetwork.InternalToBigInteger(true, 32, Sockets.AddressFamily.AppleTalk, out result);
+            Assert.AreEqual(null, result, "result");
         }
 
 
@@ -1106,13 +1158,46 @@ namespace System.Net.TestProject
         #region ToNetmask
 
         [TestMethod]
-        public void ToNetmask32() {
+        public void ToNetmask32()
+        {
 
             byte cidr = 32;
             string netmask = "255.255.255.255";
             string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void ToNetmaskNonInet()
+        {
+
+            byte cidr = 0;
+            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.AppleTalk).ToString();
+
+        }
+
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ToNetmaskNegative()
+        {
+
+            byte cidr = 0;
+            cidr--;
+            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
+
+        }
+
+        [TestMethod]
+        public void ToNetmaskInternal1()
+        {
+
+            IPAddress result;
+            IPNetwork.InternalToNetmask(true, 0, Sockets.AddressFamily.AppleTalk, out result);
+            Assert.AreEqual(null, result);
         }
 
         [TestMethod]
@@ -1175,7 +1260,57 @@ namespace System.Net.TestProject
 
         #endregion
 
+        #region ToIPAddress
+
+        [TestMethod]
+        public void TestToIPAddress()
+        {
+
+            var ip = new BigInteger();
+            IPAddress result = IPNetwork.ToIPAddress(ip, Sockets.AddressFamily.InterNetwork);
+            Assert.AreEqual(IPAddress.Any, result, "ToIPAddress");
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestToIPAddress2()
+        {
+
+            var ip = new BigInteger();
+            IPAddress result = IPNetwork.ToIPAddress(ip, Sockets.AddressFamily.AppleTalk);
+
+        }
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestToIPAddress3()
+        {
+
+            var ip = new BigInteger(new byte[] {
+                0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+                0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+                0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+                0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+                0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+                0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+                0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+                0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+                0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,0xFF,
+            });
+            IPAddress result = IPNetwork.ToIPAddress(ip, Sockets.AddressFamily.AppleTalk);
+
+        }
+        #endregion
+
         #region ValidNetmask
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestValidNetmaskInvalid1()
+        {
+            var resut = IPNetwork.ValidNetmask(BigInteger.Zero, Sockets.AddressFamily.AppleTalk);
+        }
+
 
         [TestMethod]
         public void TestValidNetmask0() {
@@ -1934,16 +2069,30 @@ namespace System.Net.TestProject
 
             Assert.AreEqual(expected, result, "ToString");
         }
-        
+
         #endregion
 
         #region Subnet
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestSubnet1() {
+        public void TestSubnet1()
+        {
 
             IPNetwork ipnetwork = null;
+            byte cidr = 9;
+
+#pragma warning disable 0618
+            IPNetworkCollection result = IPNetwork.Subnet(ipnetwork, cidr);
+#pragma warning restore 0618
+
+        }
+
+        [TestMethod]
+        public void TestSubnetStatic1()
+        {
+
+            IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
             byte cidr = 9;
 
 #pragma warning disable 0618
@@ -2105,10 +2254,44 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
+        public void TestInternalSubnet1()
+        {
+
+            IPNetworkCollection subnets = null;
+            IPNetwork.InternalSubnet(true, null, 0, out subnets);
+            Assert.AreEqual(null, subnets, "subnets");
+        }
+
+        [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestTrySubnet1() {
+        public void TestInternalSubnet2()
+        {
+
+            IPNetworkCollection subnets = null;
+            IPNetwork.InternalSubnet(false, null, 0, out subnets);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestTrySubnet1()
+        {
 
             IPNetwork ipnetwork = null;
+            byte cidr = 9;
+
+            IPNetworkCollection subnets = null;
+#pragma warning disable 0618
+            bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
+#pragma warning restore 0618
+
+        }
+
+        [TestMethod]
+        public void TestTrySubnetStatic1()
+        {
+
+            IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
             byte cidr = 9;
 
             IPNetworkCollection subnets = null;
@@ -2200,7 +2383,26 @@ namespace System.Net.TestProject
         #region Supernet
 
         [TestMethod]
-        public void TestSupernet1() {
+        public void TestSupernetInternal1()
+        {
+            IPNetwork result;
+            IPNetwork.InternalSupernet(true, null, null, out result);
+
+            Assert.AreEqual(null, result, "supernet");
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestSupernetInternal2()
+        {
+            IPNetwork result;
+            IPNetwork.InternalSupernet(false, null, null, out result);
+
+        }
+        [TestMethod]
+        public void TestSupernet1()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.1.1/24");
@@ -2338,9 +2540,24 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestTrySupernet2() {
+        public void TestTrySupernet2()
+        {
 
             IPNetwork network1 = null;
+            IPNetwork network2 = IPNetwork.Parse("192.168.1.1/24");
+            IPNetwork supernet;
+
+#pragma warning disable 0618
+            bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
+#pragma warning restore 0618
+
+        }
+
+        [TestMethod]
+        public void TestTrySupernetStatic2()
+        {
+
+            IPNetwork network1 = IPNetwork.IANA_ABLK_RESERVED1;
             IPNetwork network2 = IPNetwork.Parse("192.168.1.1/24");
             IPNetwork supernet;
 
@@ -2664,7 +2881,7 @@ namespace System.Net.TestProject
         public void TestTrySupernetArray9()
         {
 
-            IPNetwork[] ipnetworks = { 
+            IPNetwork[] ipnetworks = {
                 IPNetwork.Parse("10.0.2.2/24"),
                 IPNetwork.Parse("192.168.0.0/24"),
                 IPNetwork.Parse("192.168.1.0/24"),
@@ -2674,10 +2891,10 @@ namespace System.Net.TestProject
                 IPNetwork.Parse("10.6.6.6/8"),
                 IPNetwork.Parse("11.6.6.6/8"),
                 IPNetwork.Parse("12.6.6.6/8"),
-                
+
             };
 
-            IPNetwork[] expected = { 
+            IPNetwork[] expected = {
                 IPNetwork.Parse("10.0.0.0/7"),
                 IPNetwork.Parse("12.0.0.0/8"),
                 IPNetwork.Parse("192.168.0/22")
@@ -2689,6 +2906,27 @@ namespace System.Net.TestProject
             Assert.AreEqual(expected[0], result[0], "suppernet");
             Assert.AreEqual(expected[1], result[1], "suppernet1");
             Assert.AreEqual(expected[2], result[2], "suppernet2");
+        }
+
+
+
+        [TestMethod]
+        public void TestTrySupernetArray10()
+        {
+
+            IPNetwork[] ipnetworks = {
+                IPNetwork.Parse("10.0.2.2/24"),
+                IPNetwork.Parse("10.0.2.2/23"),
+            };
+
+            IPNetwork[] expected = {
+                IPNetwork.Parse("10.0.2.2/23"),
+            };
+
+            IPNetwork[] result = IPNetwork.Supernet(ipnetworks);
+
+            Assert.AreEqual(expected.Length, result.Length, "supernetarray");
+            Assert.AreEqual(expected[0], result[0], "suppernet");
         }
 
 
@@ -2883,10 +3121,22 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestWideSubnetInvalid2() {
+        public void TestWideSubnetInvalid2()
+        {
 
             string start = "1.2.3.4";
             string end = "invalid";
+
+            IPNetwork wideSubnet = IPNetwork.WideSubnet(start, end);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void TestWideSubnetMixed1()
+        {
+
+            string start = "1.2.3.4";
+            string end = "2001:0db8::";
 
             IPNetwork wideSubnet = IPNetwork.WideSubnet(start, end);
         }
@@ -3228,9 +3478,36 @@ Usable      : 4294967294
             IPNetwork ipnetwork = IPNetwork.WideSubnet(ipns.ToArray());
         }
 
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void WideSubnetMixed()
+        {
+
+            var ipns = new List<IPNetwork>
+            {
+                IPNetwork.IANA_ABLK_RESERVED1,
+                IPNetwork.Parse("2001:0db8::/64")
+            };
+            IPNetwork ipnetwork = IPNetwork.WideSubnet(ipns.ToArray());
+        }
+
 
 
         #endregion
+
+        #region resize
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestResize1()
+        {
+            var resut = IPNetwork.Resize(new byte[33], Sockets.AddressFamily.InterNetwork);
+        }
+
+
+        #endregion
+
+
 
         /**
          * 
