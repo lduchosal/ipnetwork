@@ -15,4 +15,5 @@ build_script:
 test_script:
   - vstest.console /logger:Appveyor /src/System.Net.IPNetwork.TestProject.NetCore/bin/Debug/netcoreapp2.0/System.Net.IPNetwork.TestProject.NetCore.dll
   - OpenCover.Console.exe -register:user -target:dotnet -targetargs:test -output:".\ipnetwork_coverage.xml" -oldstyle
+  - codecov -f "ipnetwork_coverage.xml" -t 87444874-ee5a-40a2-8b79-2c402813f83e
 deploy: off
