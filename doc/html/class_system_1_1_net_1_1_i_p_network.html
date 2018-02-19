@@ -377,39 +377,41 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 <p>Need a better way to do it</p>
-<p>#region TrySubstractNetwork</p>
-<p>public static bool TrySubstractNetwork(IPNetwork[] ipnetworks, IPNetwork substract, out IEnumerable&lt;IPNetwork&gt; result) { </p><pre class="fragment">if (ipnetworks == null) {
-    result = null;
-    return false;
-}
-if (ipnetworks.Length &lt;= 0) {
-    result = null;
-    return false;
-}
-if (substract == null) {
-    result = null;
-    return false;
-}
-var results = new List&lt;IPNetwork&gt;();
-foreach (var ipn in ipnetworks) {
-    if (!Overlap(ipn, substract)) {
-        results.Add(ipn);
-        continue;
-    }
+<p>#region TrySubstractNetwork </p><pre class="fragment">    public static bool TrySubstractNetwork(IPNetwork[] ipnetworks, IPNetwork substract, out IEnumerable&lt;IPNetwork&gt; result) {
 
-    var collection = ipn.Subnet(substract.Cidr);
-    var rtemp = new List&lt;IPNetwork&gt;();
-    foreach(var subnet in collection) {
-        if (subnet != substract) {
-            rtemp.Add(subnet);
+        if (ipnetworks == null) {
+            result = null;
+            return false;
         }
+        if (ipnetworks.Length &lt;= 0) {
+            result = null;
+            return false;
+        }
+        if (substract == null) {
+            result = null;
+            return false;
+        }
+        var results = new List&lt;IPNetwork&gt;();
+        foreach (var ipn in ipnetworks) {
+            if (!Overlap(ipn, substract)) {
+                results.Add(ipn);
+                continue;
+            }
+
+            var collection = ipn.Subnet(substract.Cidr);
+            var rtemp = new List&lt;IPNetwork&gt;();
+            foreach(var subnet in collection) {
+                if (subnet != substract) {
+                    rtemp.Add(subnet);
+                }
+            }
+            var supernets = Supernet(rtemp.ToArray());
+            results.AddRange(supernets);
+        }
+        result = results;
+        return true;
     }
-    var supernets = Supernet(rtemp.ToArray());
-    results.AddRange(supernets);
-}
-result = results;
-return true;
-</pre><p> } #endregion </p>
+</pre><p> #endregion </p>
 
 </div>
 </div>

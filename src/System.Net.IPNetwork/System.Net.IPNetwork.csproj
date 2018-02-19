@@ -37,6 +37,9 @@ signed dlls</PackageReleaseNotes>
     <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   
+  <PropertyGroup>
+	<DefineConstants Condition="'$(OS)' != 'Windows_NT'">$(DefineConstants);TRAVISCI</DefineConstants>
+  </PropertyGroup>
   
   <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
     <Reference Include="System" />

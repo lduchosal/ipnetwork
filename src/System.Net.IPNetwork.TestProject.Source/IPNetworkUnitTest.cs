@@ -1308,7 +1308,7 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentException))]
         public void TestValidNetmaskInvalid1()
         {
-            var resut = IPNetwork.ValidNetmask(BigInteger.Zero, Sockets.AddressFamily.AppleTalk);
+            var resut = IPNetwork.InternalValidNetmask(BigInteger.Zero, Sockets.AddressFamily.AppleTalk);
         }
 
 

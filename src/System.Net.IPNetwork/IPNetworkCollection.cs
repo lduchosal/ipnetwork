@@ -22,8 +22,12 @@ namespace System.Net
         private BigInteger _network {
             get { return IPNetwork.ToBigInteger(this._ipnetwork.Network); }
         }
-
-        internal IPNetworkCollection(IPNetwork ipnetwork, byte cidrSubnet) {
+#if TRAVISCI
+        public
+#else
+        internal
+#endif
+        IPNetworkCollection(IPNetwork ipnetwork, byte cidrSubnet) {
 
             int maxCidr = ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? 32 : 128;
             if (cidrSubnet > maxCidr) {
@@ -39,7 +43,7 @@ namespace System.Net
             this._enumerator = -1;
         }
 
-        #region Count, Array, Enumerator
+#region Count, Array, Enumerator
 
         public BigInteger Count
         {
@@ -67,9 +71,9 @@ namespace System.Net
             }
         }
 
-        #endregion
+#endregion
 
-        #region IEnumerable Members
+#region IEnumerable Members
 
         IEnumerator<IPNetwork> IEnumerable<IPNetwork>.GetEnumerator()
         {
@@ -81,16 +85,16 @@ namespace System.Net
             return this;
         }
 
-        #region IEnumerator<IPNetwork> Members
+#region IEnumerator<IPNetwork> Members
 
         public IPNetwork Current
         {
             get { return this[this._enumerator]; }
         }
 
-        #endregion
+#endregion
 
-        #region IDisposable Members
+#region IDisposable Members
 
         public void Dispose()
         {
@@ -98,9 +102,9 @@ namespace System.Net
             return;
         }
 
-        #endregion
+#endregion
 
-        #region IEnumerator Members
+#region IEnumerator Members
 
         object IEnumerator.Current
         {
@@ -123,9 +127,9 @@ namespace System.Net
             this._enumerator = -1;
         }
 
-        #endregion
+#endregion
 
-        #endregion
+#endregion
 
     }
 }
