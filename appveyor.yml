@@ -3,3 +3,5 @@ image: Visual Studio 2017
 build:
   project: src/
   verbosity: minimal
+environment:
+  EnableNuGetPackageRestore: true
