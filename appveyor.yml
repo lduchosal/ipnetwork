@@ -13,5 +13,6 @@ before_build:
 build_script:
   - cmd: dotnet pack ./src/System.Net.IPNetwork
 test_script:
-  - vstest.console /logger:Appveyor c:\Projects\ipnetwork\src\System.Net.IPNetwork.TestProject.NetCore\bin\Debug\netcoreapp2.0\System.Net.IPNetwork.TestProject.NetCore.dll
+  - vstest.console /logger:Appveyor /src/System.Net.IPNetwork.TestProject.NetCore/bin/Debug/netcoreapp2.0/System.Net.IPNetwork.TestProject.NetCore.dll
+  - OpenCover.Console.exe -register:user -target:dotnet -targetargs:test -output:".\ipnetwork_coverage.xml" -oldstyle
 deploy: off
