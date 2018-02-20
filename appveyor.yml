@@ -10,6 +10,7 @@ init:
 before_build:
   - cmd: dotnet --version
   - cmd: dotnet restore ./src --verbosity m
+  - cmd: nuget restore .\src 
 build_script:
   - cmd: dotnet pack ./src/System.Net.IPNetwork
 test_script:
