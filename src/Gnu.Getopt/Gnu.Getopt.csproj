@@ -6,6 +6,7 @@
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <SignAssembly>true</SignAssembly>
+    <SignAssembly Condition=" '$(OS)' != 'Windows_NT' ">false</SignAssembly>
     <AssemblyOriginatorKeyFile>System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
