@@ -3,6 +3,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.0</TargetFramework>
+	<SignAssembly>true</SignAssembly>
+    <SignAssembly Condition=" '$(OS)' != 'Windows_NT' ">false</SignAssembly>
   </PropertyGroup>
 
   <Import Project="..\System.Net.IPNetwork.ConsoleApplication.Source\System.Net.IPNetwork.ConsoleApplication.Source.projitems" Label="Shared" />
