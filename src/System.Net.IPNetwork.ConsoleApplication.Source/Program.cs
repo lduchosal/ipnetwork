@@ -369,7 +369,10 @@ namespace System.Net.ConsoleApplication
 
         private static void Usage() {
 
-            Assembly assembly = Assembly.GetEntryAssembly();
+            Assembly assembly = Assembly.GetEntryAssembly()
+                ?? Assembly.GetExecutingAssembly()
+                ?? Assembly.GetCallingAssembly()
+                ;
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             string version = fvi.FileVersion;
 
