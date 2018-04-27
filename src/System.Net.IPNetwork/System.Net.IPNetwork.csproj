@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard1.3;net40;net45;net46</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks> 
 	<PackageId>IPNetwork2</PackageId>
-    <PackageVersion>2.1.2</PackageVersion>
+    <PackageVersion>2.1.3</PackageVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PackageLicenseUrl>https://github.com/lduchosal/ipnetwork/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/lduchosal/ipnetwork</PackageProjectUrl>
@@ -48,4 +48,7 @@ signed dlls</PackageReleaseNotes>
     <Reference Include="System.Data" />
   </ItemGroup>
   
+  <ItemGroup>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath="." />
+  </ItemGroup>
 </Project>

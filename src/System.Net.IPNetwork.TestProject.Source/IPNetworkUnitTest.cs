@@ -1682,6 +1682,7 @@ namespace System.Net.TestProject
 
         #region Examples
 
+        [TestMethod]
         public void Example1()
         {
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.168.100/24");
@@ -1696,6 +1697,7 @@ namespace System.Net.TestProject
 
         }
 
+        [TestMethod]
         public void Example2() {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.0/24");
@@ -1725,6 +1727,7 @@ namespace System.Net.TestProject
 
         }
 
+        [TestMethod]
         public void Example2b() {
 
             IPNetwork ipnetwork1 = IPNetwork.Parse("10.1.0.0/16");
@@ -1750,6 +1753,7 @@ namespace System.Net.TestProject
 
         }
 
+        [TestMethod]
         public void Example3()
         {
 
@@ -1764,6 +1768,7 @@ namespace System.Net.TestProject
         }
 
 
+        [TestMethod]
         public void Example4()
         {
             IPNetwork wholeInternet = IPNetwork.Parse("0.0.0.0/0");
@@ -1781,6 +1786,7 @@ namespace System.Net.TestProject
             }
         }
 
+        [TestMethod]
         public void Example5()
         {
             IPNetwork ipnetwork1 = IPNetwork.Parse("192.168.0.0/24");
@@ -1793,6 +1799,7 @@ namespace System.Net.TestProject
 
 
 
+        [TestMethod]
         public void Example7() {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.168.100/24");
@@ -1807,6 +1814,7 @@ namespace System.Net.TestProject
             Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress2, contains2);
 
         }
+        [TestMethod]
         public void Example9()
         {
 
@@ -1826,6 +1834,7 @@ namespace System.Net.TestProject
         }
 
 
+        [TestMethod]
         public void Example10() {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.1/25");
@@ -2806,6 +2815,7 @@ namespace System.Net.TestProject
             Assert.AreEqual(expected[0], ipnetwork1, "suppernet");
         }
 
+        [TestMethod]
         public void TestTrySupernetArray6()
         {
 
