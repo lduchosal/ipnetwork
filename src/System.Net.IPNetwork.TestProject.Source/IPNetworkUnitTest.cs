@@ -2410,6 +2410,33 @@ namespace System.Net.TestProject
 
         }
         [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+
+        public void Issue33__TestSupernet__Bug_or_default_behavior()
+        {
+
+            IPNetwork network1 = IPNetwork.Parse("192.168.0.0/24");
+            IPNetwork network2 = IPNetwork.Parse("192.168.2.0/24");
+            IPNetwork expected = IPNetwork.Parse("192.168.0.0/23");
+            IPNetwork supernet = network1.Supernet(network2);
+
+            Assert.AreEqual(expected, supernet, "supernet");
+
+        }
+
+        [TestMethod]
+        public void Issue33__TestWideSubnet__Bug_or_default_behavior()
+        {
+
+            IPNetwork network1 = IPNetwork.Parse("192.168.0.0/24");
+            IPNetwork network2 = IPNetwork.Parse("192.168.2.0/24");
+            IPNetwork expected = IPNetwork.Parse("192.168.0.0/22");
+            IPNetwork widenetwork = IPNetwork.WideSubnet(new[] { network1, network2 });
+
+            Assert.AreEqual(expected, widenetwork, "widesubnet");
+
+        }
+        [TestMethod]
         public void TestSupernet1()
         {
 
