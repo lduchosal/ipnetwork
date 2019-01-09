@@ -1754,17 +1754,12 @@ namespace System.Net
 #region TryGuessCidr
 
         /// <summary>
-        /// 
-        /// Class              Leading bits    Default netmask
-        ///     A (CIDR /8)	       00           255.0.0.0
-        ///     A (CIDR /8)	       01           255.0.0.0
-        ///     B (CIDR /16)	   10           255.255.0.0
-        ///     C (CIDR /24)       11 	        255.255.255.0
-        ///  
+        /// Assume default CIDR is for a single IP address. AKA not an IP network at all.
+        /// If this is the case, the user should probably be using <see cref="IPAddress"/> instead of <see cref="IPNetwork"/>.
         /// </summary>
-        /// <param name="ip"></param>
-        /// <param name="cidr"></param>
-        /// <returns></returns>
+        /// <param name="ip">IP address to guess CIDR for.</param>
+        /// <param name="cidr">Our parameter with resulting CIDR.</param>
+        /// <returns>Returns the default full CIDR for the IP protocol.</returns>
         public static bool TryGuessCidr(string ip, out byte cidr) {
 
             IPAddress ipaddress = null;
@@ -1775,19 +1770,11 @@ namespace System.Net
             }
 
             if (ipaddress.AddressFamily == AddressFamily.InterNetworkV6) {
-                cidr = 64;
+                cidr = 128;
                 return true;
             }
-            BigInteger uintIPAddress = IPNetwork.ToBigInteger(ipaddress);
-            uintIPAddress = uintIPAddress >> 29;
-            if (uintIPAddress <= 3) {
-                cidr = 8;
-                return true;
-            } else if (uintIPAddress <= 5) {
-                cidr = 16;
-                return true;
-            } else if (uintIPAddress <= 6) {
-                cidr = 24;
+            else if (ipaddress.AddressFamily == AddressFamily.InterNetworkV4)
+                cidr = 32;
                 return true;
             }
 
