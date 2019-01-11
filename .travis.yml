@@ -1,10 +1,13 @@
 language: csharp
-dist: trusty
+dist: xenial
 sudo: required
 mono: none
-dotnet: 2.1.300
+dotnet: 2.2
 script:
   - cd src
   - dotnet restore
   - dotnet pack ./System.Net.IPNetwork
   - dotnet test ./System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj
+global:
+    - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+    - DOTNET_CLI_TELEMETRY_OPTOUT=1
