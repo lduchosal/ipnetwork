@@ -2,7 +2,7 @@ language: csharp
 dist: trusty
 sudo: required
 mono: none
-dotnet: 2
+dotnet: 2.2.100
 script:
   - cd src
   - dotnet restore
