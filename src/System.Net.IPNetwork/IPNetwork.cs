@@ -1749,51 +1749,45 @@ namespace System.Net
             return ipnetwork.Print();
         }
 
-#endregion
+        #endregion
 
-#region TryGuessCidr
+        #region TryGuessCidr
+
+        private static readonly Lazy<CidrGuess> _cidr_classless = new Lazy<CidrGuess>(() => new CidrClassLess());
+        private static readonly Lazy<CidrGuess> _cidr_classfull = new Lazy<CidrGuess>(() => new CidrClassFull());
 
         /// <summary>
-        /// 
-        /// Class              Leading bits    Default netmask
-        ///     A (CIDR /8)	       00           255.0.0.0
-        ///     A (CIDR /8)	       01           255.0.0.0
-        ///     B (CIDR /16)	   10           255.255.0.0
-        ///     C (CIDR /24)       11 	        255.255.255.0
-        ///  
+        /// Delegate to CidrGuess ClassFull guessing of cidr
         /// </summary>
         /// <param name="ip"></param>
         /// <param name="cidr"></param>
         /// <returns></returns>
-        public static bool TryGuessCidr(string ip, out byte cidr) {
+        public static bool TryGuessCidr(string ip, out byte cidr)
+        {
+            return TryGuessCidr(ip, _cidr_classfull.Value, out cidr);
+        }
 
-            IPAddress ipaddress = null;
-            bool parsed = IPAddress.TryParse(string.Format("{0}", ip), out ipaddress);
-            if (parsed == false) {
-                cidr = 0;
-                return false;
+        public static bool TryGuessCidr(string ip, CidrGuessEnum cidrguessenum, out byte cidr)
+        {
+            Lazy<CidrGuess> cidrguess = _cidr_classfull;
+            switch (cidrguessenum)
+            {
+                case CidrGuessEnum.ClassFull:
+                    cidrguess = _cidr_classfull;
+                    break;
+
+                case CidrGuessEnum.ClassLess:
+                    cidrguess = _cidr_classless;
+                    break;
             }
 
-            if (ipaddress.AddressFamily == AddressFamily.InterNetworkV6) {
-                cidr = 64;
-                return true;
-            }
-            BigInteger uintIPAddress = IPNetwork.ToBigInteger(ipaddress);
-            uintIPAddress = uintIPAddress >> 29;
-            if (uintIPAddress <= 3) {
-                cidr = 8;
-                return true;
-            } else if (uintIPAddress <= 5) {
-                cidr = 16;
-                return true;
-            } else if (uintIPAddress <= 6) {
-                cidr = 24;
-                return true;
-            }
+            return TryGuessCidr(ip, cidrguess.Value, out cidr);
 
-            cidr = 0;
-            return false;
+        }
 
+        public static bool TryGuessCidr(string ip, CidrGuess cidrguess, out byte cidr)
+        {
+            return cidrguess.TryGuessCidr(ip, out cidr);
         }
 
         /// <summary>

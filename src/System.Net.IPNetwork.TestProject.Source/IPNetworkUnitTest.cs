@@ -2830,9 +2830,9 @@ namespace System.Net.TestProject
         {
 
             IPNetwork ipnetwork1 = IPNetwork.Parse("192.168.0.0/16");
-            IPNetworkCollection subnetted = ipnetwork1.Subnet(32);
+            IPNetworkCollection subnetted = ipnetwork1.Subnet(24);
             IPNetwork[] ipnetworks = subnetted.ToArray();
-            Assert.AreEqual(65536, ipnetworks.Length, "subnet");
+            Assert.AreEqual(256, ipnetworks.Length, "subnet");
 
             IPNetwork[] expected = { IPNetwork.Parse("192.168.0.0/16") };
 
@@ -2847,9 +2847,9 @@ namespace System.Net.TestProject
         {
 
             IPNetwork ipnetwork1 = IPNetwork.Parse("192.168.0.0/8");
-            IPNetworkCollection subnetted = ipnetwork1.Subnet(32);
+            IPNetworkCollection subnetted = ipnetwork1.Subnet(24);
             IPNetwork[] ipnetworks = subnetted.ToArray();
-            Assert.AreEqual(16777216, ipnetworks.Length, "subnet");
+            Assert.AreEqual(65536, ipnetworks.Length, "subnet");
 
             IPNetwork[] expected = { IPNetwork.Parse("192.0.0.0/8") };
 
@@ -3183,7 +3183,8 @@ namespace System.Net.TestProject
         #region TryGuessCidr
 
         [TestMethod]
-        public void TestTryGuessCidrNull() {
+        public void TestTryGuessCidrNull()
+        {
 
             byte cidr;
             bool parsed = IPNetwork.TryGuessCidr(null, out cidr);
@@ -3193,7 +3194,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryGuessCidrA() {
+        public void TestTryGuessCidrA()
+        {
 
             byte cidr;
             bool parsed = IPNetwork.TryGuessCidr("10.0.0.0", out cidr);
@@ -3203,7 +3205,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryGuessCidrB() {
+        public void TestTryGuessCidrB()
+        {
 
             byte cidr;
             bool parsed = IPNetwork.TryGuessCidr("172.0.0.0", out cidr);
@@ -3213,7 +3216,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryGuessCidrC() {
+        public void TestTryGuessCidrC()
+        {
 
             byte cidr;
             bool parsed = IPNetwork.TryGuessCidr("192.0.0.0", out cidr);
@@ -3223,7 +3227,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryGuessCidrD() {
+        public void TestTryGuessCidrD()
+        {
 
             byte cidr;
             bool parsed = IPNetwork.TryGuessCidr("224.0.0.0", out cidr);
@@ -3231,12 +3236,148 @@ namespace System.Net.TestProject
             Assert.AreEqual(false, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryGuessCidrE() {
+        public void TestTryGuessCidrE()
+        {
 
             byte cidr;
             bool parsed = IPNetwork.TryGuessCidr("240.0.0.0", out cidr);
 
             Assert.AreEqual(false, parsed, "parsed");
+        }
+
+        #endregion
+
+        #region TryGuessCidr_ClassFull
+
+        [TestMethod]
+        public void TestTryGuessCidrNull_ClassFull()
+        {
+
+            byte cidr;
+            bool parsed = IPNetwork.TryGuessCidr(null, CidrGuessEnum.ClassFull, out cidr);
+
+            Assert.AreEqual(false, parsed, "parsed");
+            Assert.AreEqual(0, cidr, "cidr");
+        }
+
+        [TestMethod]
+        public void TestTryGuessCidrA_ClassFull()
+        {
+
+            byte cidr;
+            bool parsed = IPNetwork.TryGuessCidr("10.0.0.0", CidrGuessEnum.ClassFull, out cidr);
+
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual(8, cidr, "cidr");
+        }
+
+        [TestMethod]
+        public void TestTryGuessCidrB_ClassFull()
+        {
+
+            byte cidr;
+            bool parsed = IPNetwork.TryGuessCidr("172.0.0.0", CidrGuessEnum.ClassFull, out cidr);
+
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual(16, cidr, "cidr");
+        }
+
+        [TestMethod]
+        public void TestTryGuessCidrC_ClassFull()
+        {
+
+            byte cidr;
+            bool parsed = IPNetwork.TryGuessCidr("192.0.0.0", CidrGuessEnum.ClassFull, out cidr);
+
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual(24, cidr, "cidr");
+        }
+
+        [TestMethod]
+        public void TestTryGuessCidrD_ClassFull()
+        {
+
+            byte cidr;
+            bool parsed = IPNetwork.TryGuessCidr("224.0.0.0", CidrGuessEnum.ClassFull, out cidr);
+
+            Assert.AreEqual(false, parsed, "parsed");
+        }
+        [TestMethod]
+        public void TestTryGuessCidrE_ClassFull()
+        {
+
+            byte cidr;
+            bool parsed = IPNetwork.TryGuessCidr("240.0.0.0", CidrGuessEnum.ClassFull, out cidr);
+
+            Assert.AreEqual(false, parsed, "parsed");
+        }
+
+        #endregion
+
+        #region TryGuessCidr_ClassLess
+
+        [TestMethod]
+        public void TestTryGuessCidrNull_ClassLess()
+        {
+            byte cidr;
+            bool parsed = IPNetwork.TryGuessCidr(null, CidrGuessEnum.ClassLess, out cidr);
+
+            Assert.AreEqual(false, parsed, "parsed");
+            Assert.AreEqual(0, cidr, "cidr");
+        }
+
+        [TestMethod]
+        public void TestTryGuessCidrA_ClassLess()
+        {
+
+            byte cidr;
+            bool parsed = IPNetwork.TryGuessCidr("10.0.0.0", CidrGuessEnum.ClassLess, out cidr);
+
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual(32, cidr, "cidr");
+        }
+
+        [TestMethod]
+        public void TestTryGuessCidrB_ClassLess()
+        {
+
+            byte cidr;
+            bool parsed = IPNetwork.TryGuessCidr("172.0.0.0", CidrGuessEnum.ClassLess, out cidr);
+
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual(32, cidr, "cidr");
+        }
+
+        [TestMethod]
+        public void TestTryGuessCidrC_ClassLess()
+        {
+
+            byte cidr;
+            bool parsed = IPNetwork.TryGuessCidr("192.0.0.0", CidrGuessEnum.ClassLess, out cidr);
+
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual(32, cidr, "cidr");
+        }
+
+        [TestMethod]
+        public void TestTryGuessCidrD_ClassLess()
+        {
+
+            byte cidr;
+            bool parsed = IPNetwork.TryGuessCidr("224.0.0.0", CidrGuessEnum.ClassLess, out cidr);
+
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual(32, cidr, "cidr");
+        }
+        [TestMethod]
+        public void TestTryGuessCidrE_ClassLess()
+        {
+
+            byte cidr;
+            bool parsed = IPNetwork.TryGuessCidr("240.0.0.0", CidrGuessEnum.ClassLess, out cidr);
+
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual(32, cidr, "cidr");
         }
 
         #endregion
@@ -3543,7 +3684,6 @@ Usable      : 4294967294
 
 
         #endregion
-
 
 
         /**

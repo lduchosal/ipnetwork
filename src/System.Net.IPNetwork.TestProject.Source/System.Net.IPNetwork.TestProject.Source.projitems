@@ -11,6 +11,8 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)BigIntegerBitWiseUnitTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)BigIntegerToUnitTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CidrClassLessUnitTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CidrClassFullUnitTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConsoleUnitTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPAddressCollectionUnitTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPNetworkCollectionUnitTest.cs" />
