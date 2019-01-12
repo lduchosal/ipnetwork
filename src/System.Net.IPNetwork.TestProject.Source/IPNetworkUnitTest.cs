@@ -2006,6 +2006,20 @@ namespace System.Net.TestProject
 
         }
 
+        
+        [TestMethod]
+        public void Example11() {
+
+            IPNetwork defaultParse = IPNetwork.Parse("192.168.0.0");
+            IPNetwork classFullParse = IPNetwork.Parse("192.168.0.0", CidrGuess.ClassFull);
+            IPNetwork classLessParse = IPNetwork.Parse("192.168.0.0", CidrGuess.ClassLess);
+
+            Console.WriteLine("IPV4 Default Parse : {0}", defaultParse);
+            Console.WriteLine("IPV4 ClassFull Parse : {0}", classFullParse);
+            Console.WriteLine("IPV4 ClassLess Parse : {0}", classLessParse);
+
+        }
+
         #endregion
 
         #region IANA blocks

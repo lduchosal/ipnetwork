@@ -301,22 +301,44 @@ IPV6 : /64
 IPV4 : /32
 IPV6 : /128
 
- 
-
-
+#### IPv4
 
 ```C#
-IPNetwork defaultStrategy = IPNetwork.Parse("192.168.0.0"); // default to ClassFull parse -> /24
-IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.1.0");
-IPNetwork[] ipnetwork3 = IPNetwork.Supernet(new[]{ipnetwork1, ipnetwork2});
+IPNetwork defaultParse= IPNetwork.Parse("192.168.0.0");
+IPNetwork classFullParse = IPNetwork.Parse("192.168.0.0", CidrGuess.ClassFull);
+IPNetwork classLessParse = IPNetwork.Parse("192.168.0.0", CidrGuess.ClassLess);
 
-Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
+Console.WriteLine("IPV4 Default Parse : {0}", defaultStrategy);
+Console.WriteLine("IPV4 ClassFull Parse : {0}", classFullParse);
+Console.WriteLine("IPV4 ClassLess Parse : {0}", classLessParse);
 ```
 
 Output
 
 ```JS
-192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+IPV4 Default Parse : 192.168.0.0/24
+IPV4 ClassFull Parse : 192.168.0.0/24
+IPV4 ClassLess Parse : 192.168.0.0/32
+```
+
+#### IPv6
+
+```C#
+IPNetwork defaultParse = IPNetwork.Parse("::1");
+IPNetwork classFullParse = IPNetwork.Parse("::1", CidrGuess.ClassFull);
+IPNetwork classLessParse = IPNetwork.Parse("::1", CidrGuess.ClassLess);
+
+Console.WriteLine("IPV6 Default Parse : {0}", defaultParse);
+Console.WriteLine("IPV6 ClassFull Parse : {0}", classFullParse);
+Console.WriteLine("IPV6 ClassLess Parse : {0}", classLessParse);
+```
+
+Output
+
+```JS
+IPV6 Default Parse : ::/64
+IPV6 ClassFull Parse : ::/64
+IPV6 ClassLess Parse : ::1/128
 ```
 
 ---

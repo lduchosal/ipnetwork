@@ -1843,6 +1843,7 @@ namespace System.Net.TestProject
 
         #region Examples
 
+        [TestMethod]
         public void Example1() {
 
             IPNetwork ipnetwork = IPNetwork.Parse("2001:0db8::/64");
@@ -1857,6 +1858,7 @@ namespace System.Net.TestProject
 
         }
 
+        [TestMethod]
         public void Example2() {
 
             IPNetwork ipnetwork = IPNetwork.Parse("2001:0db8::/64");
@@ -1887,6 +1889,7 @@ namespace System.Net.TestProject
 
         }
 
+        [TestMethod]
         public void Example4() {
             IPNetwork wholeInternet = IPNetwork.Parse("::/0");
             byte newCidr = 2;
@@ -1902,6 +1905,7 @@ namespace System.Net.TestProject
             }
         }
         
+        [TestMethod]
         public void Example5() {
             IPNetwork ipnetwork1 = IPNetwork.Parse("2001:0db8::/64");
             IPNetwork ipnetwork2 = IPNetwork.Parse("2001:0db9::/64");
@@ -1910,6 +1914,8 @@ namespace System.Net.TestProject
             Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
 
         }
+
+        [TestMethod]
         public void Example6() {
 
             IPNetwork ipnetwork = IPNetwork.Parse("fe80::202:b3ff:fe1e:8329/24");
@@ -1925,8 +1931,7 @@ namespace System.Net.TestProject
 
         }
 
-
-
+        [TestMethod]
         public void Example8() {
 
             IPNetwork network = IPNetwork.Parse("::/124");
@@ -1937,11 +1942,21 @@ namespace System.Net.TestProject
             }
         }
 
+        [TestMethod]
+        public void Example11() {
+
+            IPNetwork defaultParse = IPNetwork.Parse("::1");
+            IPNetwork classFullParse = IPNetwork.Parse("::1", CidrGuess.ClassFull);
+            IPNetwork classLessParse = IPNetwork.Parse("::1", CidrGuess.ClassLess);
+
+            Console.WriteLine("IPV6 Default Parse : {0}", defaultParse);
+            Console.WriteLine("IPV6 ClassFull Parse : {0}", classFullParse);
+            Console.WriteLine("IPV6 ClassLess Parse : {0}", classLessParse);
+        }
         
         #endregion
 
         #region ToString
-
 
         [TestMethod]
         public void TestToString() {
