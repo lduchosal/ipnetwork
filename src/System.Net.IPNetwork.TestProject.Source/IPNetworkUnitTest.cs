@@ -2010,7 +2010,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Example11() {
 
-            IPNetwork defaultParse = IPNetwork.Parse("192.168.0.0");
+            IPNetwork defaultParse = IPNetwork.Parse("192.168.0.0"); // default to ClassFull
             IPNetwork classFullParse = IPNetwork.Parse("192.168.0.0", CidrGuess.ClassFull);
             IPNetwork classLessParse = IPNetwork.Parse("192.168.0.0", CidrGuess.ClassLess);
 

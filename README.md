@@ -283,7 +283,7 @@ Output
 
 ### Example 10 - ClassLess network parse
 
-If you don't specify the network cidr, IPNetwork will try to guess the CIDR for you. There are two strategies to guess ClassFull and ClassLess.
+If you don't specify the network cidr, IPNetwork will try to guess the CIDR for you. There are two strategies to guess ClassFull (default) and ClassLess.
 
 #### ClassFull (default strategy)
 
@@ -304,7 +304,7 @@ IPV6 : /128
 #### IPv4
 
 ```C#
-IPNetwork defaultParse= IPNetwork.Parse("192.168.0.0");
+IPNetwork defaultParse= IPNetwork.Parse("192.168.0.0"); // default to ClassFull
 IPNetwork classFullParse = IPNetwork.Parse("192.168.0.0", CidrGuess.ClassFull);
 IPNetwork classLessParse = IPNetwork.Parse("192.168.0.0", CidrGuess.ClassLess);
 
@@ -324,7 +324,7 @@ IPV4 ClassLess Parse : 192.168.0.0/32
 #### IPv6
 
 ```C#
-IPNetwork defaultParse = IPNetwork.Parse("::1");
+IPNetwork defaultParse = IPNetwork.Parse("::1"); // default to ClassFull
 IPNetwork classFullParse = IPNetwork.Parse("::1", CidrGuess.ClassFull);
 IPNetwork classLessParse = IPNetwork.Parse("::1", CidrGuess.ClassLess);
 
