@@ -186,12 +186,15 @@ namespace System.Net
         /// <summary>
         /// 192.168.168.100 - 255.255.255.0
         /// 
+        /// ```
         /// Network   : 192.168.168.0
         /// Netmask   : 255.255.255.0
         /// Cidr      : 24
         /// Start     : 192.168.168.1
         /// End       : 192.168.168.254
         /// Broadcast : 192.168.168.255
+        /// ```
+        /// 
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
@@ -261,7 +264,29 @@ namespace System.Net
         public static IPNetwork Parse(string network) {
 
             IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, network, out ipnetwork);
+            IPNetwork.InternalParse(false, network, CidrGuess.ClassFull, out ipnetwork);
+            return ipnetwork;
+
+        }
+
+        /// <summary>
+        /// 192.168.0.1/24
+        /// 192.168.0.1 255.255.255.0
+        /// 
+        /// Network   : 192.168.0.0
+        /// Netmask   : 255.255.255.0
+        /// Cidr      : 24
+        /// Start     : 192.168.0.1
+        /// End       : 192.168.0.254
+        /// Broadcast : 192.168.0.255
+        /// </summary>
+        /// <param name="network"></param>
+        /// <param name="cidrGuess"></param>
+        /// <returns></returns>
+        public static IPNetwork Parse(string network, ICidrGuess cidrGuess) {
+
+            IPNetwork ipnetwork = null;
+            IPNetwork.InternalParse(false, network, cidrGuess, out ipnetwork);
             return ipnetwork;
 
         }
@@ -269,8 +294,6 @@ namespace System.Net
 #endregion
 
 #region TryParse
-
-
 
         /// <summary>
         /// 192.168.168.100 - 255.255.255.0
@@ -337,7 +360,7 @@ namespace System.Net
         public static bool TryParse(string network, out IPNetwork ipnetwork) {
 
             IPNetwork ipnetwork2 = null;
-            IPNetwork.InternalParse(true, network, out ipnetwork2);
+            IPNetwork.InternalParse(true, network, CidrGuess.ClassFull, out ipnetwork2);
             bool parsed = (ipnetwork2 != null);
             ipnetwork = ipnetwork2;
             return parsed;
@@ -428,7 +451,7 @@ namespace System.Net
             IPNetwork.InternalParse(tryParse, ip, mask, out ipnetwork);
         }
 
-        private static void InternalParse(bool tryParse, string network, out IPNetwork ipnetwork) {
+        private static void InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, out IPNetwork ipnetwork) {
 
             if (string.IsNullOrEmpty(network)) {
                 if (tryParse == false) {
@@ -445,8 +468,9 @@ namespace System.Net
             byte cidr = 0;
             if (args.Length == 1) {
 
-                if (IPNetwork.TryGuessCidr(args[0], out cidr)) {
-                    IPNetwork.InternalParse(tryParse, args[0], cidr, out ipnetwork);
+                string cidrlessNetwork = args[0];
+                if (cidrGuess.TryGuessCidr(cidrlessNetwork, out cidr)) {
+                    IPNetwork.InternalParse(tryParse, cidrlessNetwork, cidr, out ipnetwork);
                     return;
                 }
 
@@ -1753,9 +1777,6 @@ namespace System.Net
 
         #region TryGuessCidr
 
-        private static readonly Lazy<CidrGuess> _cidr_classless = new Lazy<CidrGuess>(() => new CidrClassLess());
-        private static readonly Lazy<CidrGuess> _cidr_classfull = new Lazy<CidrGuess>(() => new CidrClassFull());
-
         /// <summary>
         /// Delegate to CidrGuess ClassFull guessing of cidr
         /// </summary>
@@ -1764,30 +1785,7 @@ namespace System.Net
         /// <returns></returns>
         public static bool TryGuessCidr(string ip, out byte cidr)
         {
-            return TryGuessCidr(ip, _cidr_classfull.Value, out cidr);
-        }
-
-        public static bool TryGuessCidr(string ip, CidrGuessEnum cidrguessenum, out byte cidr)
-        {
-            Lazy<CidrGuess> cidrguess = _cidr_classfull;
-            switch (cidrguessenum)
-            {
-                case CidrGuessEnum.ClassFull:
-                    cidrguess = _cidr_classfull;
-                    break;
-
-                case CidrGuessEnum.ClassLess:
-                    cidrguess = _cidr_classless;
-                    break;
-            }
-
-            return TryGuessCidr(ip, cidrguess.Value, out cidr);
-
-        }
-
-        public static bool TryGuessCidr(string ip, CidrGuess cidrguess, out byte cidr)
-        {
-            return cidrguess.TryGuessCidr(ip, out cidr);
+            return CidrGuess.ClassFull.TryGuessCidr(ip, out cidr);
         }
 
         /// <summary>

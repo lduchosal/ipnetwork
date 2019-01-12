@@ -3,7 +3,7 @@
 namespace System.Net
 {
 
-    public class CidrClassLess : CidrGuess
+    public sealed class CidrClassLess : ICidrGuess
     {
         /// <summary>
         /// 

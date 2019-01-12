@@ -281,6 +281,46 @@ Output
 
 ---
 
+### Example 10 - ClassLess network parse
+
+If you don't specify the network cidr, IPNetwork will try to guess the CIDR for you. There are two strategies to guess ClassFull and ClassLess.
+
+#### ClassFull (default strategy)
+
+is based on the default Class A, B or C networks.
+IPV4 :
+
+- Class A: 0 - 127 with a mask of 255.0.0.0 (/8)
+- Class B: 128 - 191 with a mask of 255.255.0.0 (/16)
+- Class C: 192 - 223 with a mask of 255.255.255.0 (/24)
+
+IPV6 : /64
+
+#### ClassLess
+
+IPV4 : /32
+IPV6 : /128
+
+ 
+
+
+
+```C#
+IPNetwork defaultStrategy = IPNetwork.Parse("192.168.0.0"); // default to ClassFull parse -> /24
+IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.1.0");
+IPNetwork[] ipnetwork3 = IPNetwork.Supernet(new[]{ipnetwork1, ipnetwork2});
+
+Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
+```
+
+Output
+
+```JS
+192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+```
+
+---
+
 ## IPNetwork utility command line
 
 IPNetwork utility command line take care of complex network, ip, netmask,

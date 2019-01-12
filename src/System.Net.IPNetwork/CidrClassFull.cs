@@ -3,7 +3,7 @@ using System.Numerics;
 
 namespace System.Net
 {
-    public class CidrClassFull : CidrGuess
+    public sealed class CidrClassFull : ICidrGuess
     {
         /// <summary>
         /// 
