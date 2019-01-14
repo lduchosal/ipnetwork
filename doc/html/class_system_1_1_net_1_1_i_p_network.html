@@ -22,7 +22,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">IPNetwork
-   &#160;<span id="projectnumber">2.1.3</span>
+   &#160;<span id="projectnumber">2.2.0</span>
    </div>
    <div id="projectbrief">IPNetwork utility computes your ip, ipv4, ipv6, netmask, cidr, subnet, supernet and network</div>
   </td>
@@ -150,6 +150,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:aef49c4d560c72092f1b6434907421c52"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#aef49c4d560c72092f1b6434907421c52">Parse</a> (string network)</td></tr>
 <tr class="memdesc:aef49c4d560c72092f1b6434907421c52"><td class="mdescLeft">&#160;</td><td class="mdescRight">192.168.0.1/24 192.168.0.1 255.255.255.0  <a href="#aef49c4d560c72092f1b6434907421c52">More...</a><br /></td></tr>
 <tr class="separator:aef49c4d560c72092f1b6434907421c52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af01331d7570258a732dcf81d24167af7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#af01331d7570258a732dcf81d24167af7">Parse</a> (string network, <a class="el" href="interface_system_1_1_net_1_1_i_cidr_guess.html">ICidrGuess</a> cidrGuess)</td></tr>
+<tr class="memdesc:af01331d7570258a732dcf81d24167af7"><td class="mdescLeft">&#160;</td><td class="mdescRight">192.168.0.1/24 192.168.0.1 255.255.255.0  <a href="#af01331d7570258a732dcf81d24167af7">More...</a><br /></td></tr>
+<tr class="separator:af01331d7570258a732dcf81d24167af7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a285fc05c46662e8e40dae6da4bf9e674"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a285fc05c46662e8e40dae6da4bf9e674">TryParse</a> (string ipaddress, string netmask, out <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> ipnetwork)</td></tr>
 <tr class="memdesc:a285fc05c46662e8e40dae6da4bf9e674"><td class="mdescLeft">&#160;</td><td class="mdescRight">192.168.168.100 - 255.255.255.0  <a href="#a285fc05c46662e8e40dae6da4bf9e674">More...</a><br /></td></tr>
 <tr class="separator:a285fc05c46662e8e40dae6da4bf9e674"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -241,6 +244,7 @@ static <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork<
 static string&#160;</td><td class="memItemRight" valign="bottom"><b>Print</b> (<a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> ipnetwork)</td></tr>
 <tr class="separator:a1953f20b7a44ccbd17e7e2986c42325f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae34614011cfca42104fa174838719755"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#ae34614011cfca42104fa174838719755">TryGuessCidr</a> (string ip, out byte cidr)</td></tr>
+<tr class="memdesc:ae34614011cfca42104fa174838719755"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delegate to CidrGuess ClassFull guessing of cidr  <a href="#ae34614011cfca42104fa174838719755">More...</a><br /></td></tr>
 <tr class="separator:ae34614011cfca42104fa174838719755"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a54d74a4927f48e2df0560985a43cb025"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a54d74a4927f48e2df0560985a43cb025">TryParseCidr</a> (string sidr, <a class="el" href="class_system_1_1_net_1_1_i_p_network.html#a4841bfb3366981a87dde43fc84fed435">AddressFamily</a> family, out byte? cidr)</td></tr>
 <tr class="memdesc:a54d74a4927f48e2df0560985a43cb025"><td class="mdescLeft">&#160;</td><td class="mdescRight">Try to parse cidr. Have to be &gt;= 0 and &lt;= 32 or 128  <a href="#a54d74a4927f48e2df0560985a43cb025">More...</a><br /></td></tr>
@@ -584,7 +588,7 @@ Properties</h2></td></tr>
 </div>
 </div>
 <a id="ac3f4f96b6eb5deafcee4c1c40ff17f9d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3f4f96b6eb5deafcee4c1c40ff17f9d">&#9670;&nbsp;</a></span>Parse() <span class="overload">[1/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3f4f96b6eb5deafcee4c1c40ff17f9d">&#9670;&nbsp;</a></span>Parse() <span class="overload">[1/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -618,8 +622,7 @@ Properties</h2></td></tr>
 </div><div class="memdoc">
 
 <p>192.168.168.100 - 255.255.255.0 </p>
-<p>Network : 192.168.168.0 Netmask : 255.255.255.0 Cidr : 24 Start : 192.168.168.1 End : 192.168.168.254 Broadcast : 192.168.168.255 </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<div class="fragment"><div class="line"><a class="code" href="class_system_1_1_net_1_1_i_p_network.html#ae8917d430d34d121cdcd4940043f23fa">Network</a>   : 192.168.168.0</div><div class="line">Netmask   : 255.255.255.0</div><div class="line">Cidr      : 24</div><div class="line">Start     : 192.168.168.1</div><div class="line">End       : 192.168.168.254</div><div class="line">Broadcast : 192.168.168.255</div></div><!-- fragment --><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ipaddress</td><td></td></tr>
     <tr><td class="paramname">netmask</td><td></td></tr>
@@ -631,7 +634,7 @@ Properties</h2></td></tr>
 </div>
 </div>
 <a id="a1b060769e3d9317fa6011edb7d52339a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1b060769e3d9317fa6011edb7d52339a">&#9670;&nbsp;</a></span>Parse() <span class="overload">[2/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1b060769e3d9317fa6011edb7d52339a">&#9670;&nbsp;</a></span>Parse() <span class="overload">[2/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -678,7 +681,7 @@ Properties</h2></td></tr>
 </div>
 </div>
 <a id="a1c8c8eaa30232f22d5b29668078fc1fd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c8c8eaa30232f22d5b29668078fc1fd">&#9670;&nbsp;</a></span>Parse() <span class="overload">[3/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c8c8eaa30232f22d5b29668078fc1fd">&#9670;&nbsp;</a></span>Parse() <span class="overload">[3/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -725,7 +728,7 @@ Properties</h2></td></tr>
 </div>
 </div>
 <a id="aef49c4d560c72092f1b6434907421c52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef49c4d560c72092f1b6434907421c52">&#9670;&nbsp;</a></span>Parse() <span class="overload">[4/4]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aef49c4d560c72092f1b6434907421c52">&#9670;&nbsp;</a></span>Parse() <span class="overload">[4/5]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -753,6 +756,53 @@ Properties</h2></td></tr>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">network</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="af01331d7570258a732dcf81d24167af7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af01331d7570258a732dcf81d24167af7">&#9670;&nbsp;</a></span>Parse() <span class="overload">[5/5]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="class_system_1_1_net_1_1_i_p_network.html">IPNetwork</a> System.Net.IPNetwork.Parse </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>network</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="interface_system_1_1_net_1_1_i_cidr_guess.html">ICidrGuess</a>&#160;</td>
+          <td class="paramname"><em>cidrGuess</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>192.168.0.1/24 192.168.0.1 255.255.255.0 </p>
+<p>Network : 192.168.0.0 Netmask : 255.255.255.0 Cidr : 24 Start : 192.168.0.1 End : 192.168.0.254 Broadcast : 192.168.0.255 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">network</td><td></td></tr>
+    <tr><td class="paramname">cidrGuess</td><td></td></tr>
   </table>
   </dd>
 </dl>
@@ -1133,8 +1183,7 @@ Properties</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p></p>
-<p>Class Leading bits Default netmask A (CIDR /8) 00 255.0.0.0 A (CIDR /8) 01 255.0.0.0 B (CIDR /16) 10 255.255.0.0 C (CIDR /24) 11 255.255.255.0</p>
+<p>Delegate to CidrGuess ClassFull guessing of cidr </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ip</td><td></td></tr>
@@ -2061,7 +2110,7 @@ Properties</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>D:/GitHub/ipnetwork/src/System.Net.IPNetwork/IPNetwork.cs</li>
+<li>D:/perso/ipnetwork/src/System.Net.IPNetwork/IPNetwork.cs</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
