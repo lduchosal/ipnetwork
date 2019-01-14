@@ -41,7 +41,8 @@
 			..\src\System.Net.IPNetwork.TestProject.Source\Properties\AssemblyInfo.cs
 			
 			..\doc\Doxyfile
-			
+            
+			..\appveyor.yml
 			
 
 	After you release:
