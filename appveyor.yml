@@ -2,6 +2,7 @@ version: '2.2.0.{build}'
 image: Visual Studio 2017
 build:
   project: src/
+  publish_nuget: true
 branches:
   only:
   - master
