@@ -9,11 +9,7 @@
     <PackageLicenseUrl>https://github.com/lduchosal/ipnetwork/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/lduchosal/ipnetwork</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>dotnetstandard1.3  support
-dotnet46 support
-dotnet45 support
-dotnet40 support
-signed dlls</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <PackageTags>ipnetwork network ip ipv4 ipv6 netmask cidr subnet subnetting supernet supernetting calculation</PackageTags>
 
     <Title>IPNetwork utility classes for .Net</Title>
