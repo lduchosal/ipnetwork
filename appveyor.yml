@@ -38,3 +38,7 @@ deploy:
   api_key:
     secure: Ct5Hb+2vmp8gYxa7RhnCJLa2MLxiPLZKmX49kFvUQtekPLgJtgUYXmDGsZ2Ln8Jg
   skip_symbols: false
+
+artifacts:
+  - path: '**\*.nupkg'
+    name: nuget
