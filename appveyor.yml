@@ -10,6 +10,9 @@ assembly_info:
   
 build:
   project: src/
+  - cmd: dotnet pack ./src/System.Net.IPNetwork
+  - cmd: dotnet build -c release ./src/System.Net.IPNetwork.ConsoleApplication.NetFramework
+  - cmd: dotnet build -c release ./src/System.Net.IPNetwork.ConsoleApplication.NetCore
 
 branches:
   only:
@@ -23,12 +26,7 @@ before_build:
   - cmd: dotnet clean ./src
   - cmd: dotnet restore ./src --verbosity m
   - cmd: nuget restore .\src 
-  
-build_script:
-  - cmd: dotnet pack -c release ./src/System.Net.IPNetwork
-  - cmd: dotnet build -c release ./src/System.Net.IPNetwork.ConsoleApplication.NetFramework
-  - cmd: dotnet build -c release ./src/System.Net.IPNetwork.ConsoleApplication.NetCore
-  
+
 test_script:
   - cmd: dotnet test ./src/System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj
   - vstest.console /logger:Appveyor c:\Projects\ipnetwork\src\System.Net.IPNetwork.TestProject.NetCore\bin\Debug\netcoreapp2.0\System.Net.IPNetwork.TestProject.NetCore.dll
