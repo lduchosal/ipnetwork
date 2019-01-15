@@ -34,4 +34,9 @@ test_script:
   - cmd: dotnet test ./src/System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj
   - vstest.console /logger:Appveyor c:\Projects\ipnetwork\src\System.Net.IPNetwork.TestProject.NetCore\bin\Debug\netcoreapp2.0\System.Net.IPNetwork.TestProject.NetCore.dll
  
-deploy: off
+deploy:
+  provider: NuGet
+  api_key:
+    secure: Ct5Hb+2vmp8gYxa7RhnCJLa2MLxiPLZKmX49kFvUQtekPLgJtgUYXmDGsZ2Ln8Jg
+  skip_symbols: false
+  artifact: /.*\.nupkg/
