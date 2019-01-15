@@ -20,7 +20,7 @@ init:
   
 before_build:
   - cmd: dotnet --version
-  - cmd: dotnet clean
+  - cmd: dotnet clean ./src
   - cmd: dotnet restore ./src --verbosity m
   - cmd: nuget restore .\src 
   
