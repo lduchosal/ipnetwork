@@ -10,7 +10,6 @@ assembly_info:
   
 build:
   project: src/
-  publish_nuget: true
 
 branches:
   only:
