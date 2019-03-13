@@ -732,10 +732,11 @@ namespace Gnu.Getopt
 				if (optstring.Length > 1)
 					this.optstring = optstring.Substring(1);
 			}
-			else if (this.posixlyCorrect)
-			{
-				this.ordering = Order.RequireOrder;
-			}
+            // always false
+            // else if (this.posixlyCorrect)
+			//{
+			//	this.ordering = Order.RequireOrder;
+			//}
 			else
 			{
 				this.ordering = Order.Permute; // The normal default case
