@@ -1749,18 +1749,20 @@ namespace System.Net
         /// <returns></returns>
         public string Print() {
 
-            StringWriter sw = new StringWriter();
+            using (var sw = new StringWriter())
+            {
 
-            sw.WriteLine("IPNetwork   : {0}", ToString());
-            sw.WriteLine("Network     : {0}", Network);
-            sw.WriteLine("Netmask     : {0}", Netmask);
-            sw.WriteLine("Cidr        : {0}", Cidr);
-            sw.WriteLine("Broadcast   : {0}", Broadcast);
-            sw.WriteLine("FirstUsable : {0}", FirstUsable);
-            sw.WriteLine("LastUsable  : {0}", LastUsable);
-            sw.WriteLine("Usable      : {0}", Usable);
+                sw.WriteLine("IPNetwork   : {0}", ToString());
+                sw.WriteLine("Network     : {0}", Network);
+                sw.WriteLine("Netmask     : {0}", Netmask);
+                sw.WriteLine("Cidr        : {0}", Cidr);
+                sw.WriteLine("Broadcast   : {0}", Broadcast);
+                sw.WriteLine("FirstUsable : {0}", FirstUsable);
+                sw.WriteLine("LastUsable  : {0}", LastUsable);
+                sw.WriteLine("Usable      : {0}", Usable);
 
-            return sw.ToString();
+                return sw.ToString();
+            }
         }
 
         [Obsolete("static Print is deprecated, please use instance Print.")]

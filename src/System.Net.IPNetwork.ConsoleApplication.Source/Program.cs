@@ -146,17 +146,20 @@ namespace System.Net.ConsoleApplication
 
         private static void PrintNetwork(ProgramContext ac, IPNetwork ipn) {
 
-            StringWriter sw = new StringWriter();
-            if (ac.IPNetwork)   sw.WriteLine("IPNetwork   : {0}", ipn.ToString());
-            if (ac.Network)     sw.WriteLine("Network     : {0}", ipn.Network.ToString());
-            if (ac.Netmask)     sw.WriteLine("Netmask     : {0}", ipn.Netmask.ToString());
-            if (ac.Cidr)        sw.WriteLine("Cidr        : {0}", ipn.Cidr);
-            if (ac.Broadcast)   sw.WriteLine("Broadcast   : {0}", ipn.Broadcast.ToString());
-            if (ac.FirstUsable) sw.WriteLine("FirstUsable : {0}", ipn.FirstUsable.ToString());
-            if (ac.LastUsable)  sw.WriteLine("LastUsable  : {0}", ipn.LastUsable.ToString());
-            if (ac.Usable)      sw.WriteLine("Usable      : {0}", ipn.Usable);
-            if (ac.Total)       sw.WriteLine("Total       : {0}", ipn.Total);
-            Console.Write(sw.ToString());
+            using (var sw = new StringWriter())
+            {
+                if (ac.IPNetwork)   sw.WriteLine("IPNetwork   : {0}", ipn.ToString());
+                if (ac.Network)     sw.WriteLine("Network     : {0}", ipn.Network.ToString());
+                if (ac.Netmask)     sw.WriteLine("Netmask     : {0}", ipn.Netmask.ToString());
+                if (ac.Cidr)        sw.WriteLine("Cidr        : {0}", ipn.Cidr);
+                if (ac.Broadcast)   sw.WriteLine("Broadcast   : {0}", ipn.Broadcast.ToString());
+                if (ac.FirstUsable) sw.WriteLine("FirstUsable : {0}", ipn.FirstUsable.ToString());
+                if (ac.LastUsable)  sw.WriteLine("LastUsable  : {0}", ipn.LastUsable.ToString());
+                if (ac.Usable)      sw.WriteLine("Usable      : {0}", ipn.Usable);
+                if (ac.Total)       sw.WriteLine("Total       : {0}", ipn.Total);
+
+                Console.Write(sw.ToString());
+            }
         }
 
         private static Dictionary<int, ArgParsed> Args = new Dictionary<int, ArgParsed>();
