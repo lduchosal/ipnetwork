@@ -14,6 +14,7 @@ namespace System.Net.TestSerialization
     {
 
         [TestMethod]
+        [Ignore] //("Assembly version is writen in binary serilaization.")
         public void Test_Serialize_BinaryFormatter()
         {
             var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
