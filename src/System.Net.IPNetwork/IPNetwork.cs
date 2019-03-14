@@ -3,6 +3,8 @@ using System.IO;
 using System.Net.Sockets;
 using System.Numerics;
 using System.Text.RegularExpressions;
+using System.Runtime.Serialization;
+using System.Xml.Serialization;
 
 namespace System.Net
 {
@@ -10,7 +12,9 @@ namespace System.Net
     /// IP Network utility class. 
     /// Use IPNetwork.Parse to create instances.
     /// </summary>
-    public class IPNetwork : IComparable<IPNetwork> {
+    [DataContract]
+    [Serializable]
+    public sealed class IPNetwork : IComparable<IPNetwork>, ISerializable {
 
         #region properties
 
@@ -24,9 +28,21 @@ namespace System.Net
         //private uint _usable;
         private byte _cidr;
 
+        [DataMember(Name="IPNetwork", IsRequired=true)]
+        public string Value
+        {
+            get { return this.ToString(); }
+            set {
+                var ipnetwork = IPNetwork.Parse(value);
+                this._ipaddress = ipnetwork._ipaddress;
+                this._family = ipnetwork._family;
+                this._cidr = ipnetwork._cidr;
+            }
+        }
+
         #endregion
 
-        #region accessors
+            #region accessors
 
         private BigInteger _network {
             get {
@@ -166,7 +182,7 @@ namespace System.Net
         internal
 #endif
 
-            IPNetwork(BigInteger ipaddress, AddressFamily family, byte cidr) {
+        IPNetwork(BigInteger ipaddress, AddressFamily family, byte cidr) {
 
             int maxCidr = family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
             if (cidr > maxCidr) {
@@ -1938,9 +1954,9 @@ namespace System.Net
             return Equals(this, obj as IPNetwork);
         }
 
-#endregion
+        #endregion
 
-#region Operators
+        #region Operators
 
         public static Boolean operator ==(IPNetwork left, IPNetwork right)
         {
@@ -1962,7 +1978,40 @@ namespace System.Net
             return Compare(left, right) > 0;
         }
 
-#endregion
+        #endregion
 
+        #region XmlSerialization
+
+        IPNetwork() { }
+
+        #endregion
+
+        #region ISerializable
+
+        internal struct IPNetworkInteral
+        {
+            public BigInteger IPAddress;
+            public byte Cidr;
+            public AddressFamily AddressFamily;
+        }
+
+
+        IPNetwork(SerializationInfo info, StreamingContext context)
+        {
+            var sipnetwork = (string)info.GetValue("IPNetwork", typeof(string));
+            var ipnetwork = IPNetwork.Parse(sipnetwork);
+
+            this._ipaddress = ipnetwork._ipaddress;
+            this._cidr = ipnetwork._cidr;
+            this._family = ipnetwork._family;
+
+        }
+
+        void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
+        {
+            info.AddValue("IPNetwork", this.ToString());
+        }
+
+        #endregion
     }
 }

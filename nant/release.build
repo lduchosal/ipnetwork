@@ -4,7 +4,7 @@
 	<property name="ipnetwork.sln" value="..\src\ipnetwork.sln" />
 	<property name="doc.base" value="${project::get-base-directory()}\..\doc" />
 	<property name="doc.doxygen" value="${doc.base}\Doxyfile" />
-	<property name="release.version" value="2.2.0" />
+	<property name="release.version" value="2.3.0" />
 	<property name="release.doc" value="..\doc\html" />
 	<property name="release.base" value="..\release" />
 	<property name="src.base" value="..\" />
@@ -14,7 +14,8 @@
 	<property name="src.dir" value="..\src" />
 	<property name="consoleappnetframework.dir" value="..\src\System.Net.IPNetwork.ConsoleApplication.NetFramework\bin\Release" />
 	<property name="consoleappnetcore.dir" value="..\src\System.Net.IPNetwork.ConsoleApplication.NetCore\bin\Release\netcoreapp2.0" />
-	<property name="lib.dir.netstandard1.3" value="..\src\System.Net.IPNetwork\bin\release\netstandard1.3" />
+	<property name="lib.dir.netstandard2.0" value="..\src\System.Net.IPNetwork\bin\release\netstandard2.0" />
+	<property name="lib.dir.net47" value="..\src\System.Net.IPNetwork\bin\release\net47" />
 	<property name="lib.dir.net46" value="..\src\System.Net.IPNetwork\bin\release\net46" />
 	<property name="lib.dir.net45" value="..\src\System.Net.IPNetwork\bin\release\net45" />
 	<property name="lib.dir.net40" value="..\src\System.Net.IPNetwork\bin\release\net40" />
