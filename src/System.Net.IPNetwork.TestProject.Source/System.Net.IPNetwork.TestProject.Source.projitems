@@ -18,5 +18,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)IPNetworkCollectionUnitTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPNetworkUnitTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPNetworkV6UnitTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SerializeBinaryFormatterTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SerializeJsonTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SerializeXmlTest.cs" />
   </ItemGroup>
 </Project>

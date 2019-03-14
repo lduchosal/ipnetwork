@@ -2330,21 +2330,6 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTrySupernet7() {
-
-            IPNetwork network1 = IPNetwork.Parse("2001:db8::/64");
-            IPNetwork network2 = IPNetwork.Parse("2001:db8::1/65");
-            IPNetwork supernetExpected = IPNetwork.Parse("2001:db8::/64");
-            IPNetwork supernet;
-            bool parsed = true;
-            bool result = network1.TrySupernet(network2, out supernet);
-
-            Assert.AreEqual(supernetExpected, supernet, "supernet");
-            Assert.AreEqual(parsed, result, "parsed");
-
-        }
-
-        [TestMethod]
         public void TestTrySupernet8() {
 
             IPNetwork network1 = IPNetwork.Parse("2001:db0::/64");

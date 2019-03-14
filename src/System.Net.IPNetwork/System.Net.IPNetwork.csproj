@@ -1,10 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net40;net45;net46</TargetFrameworks>
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks> 
+    <TargetFrameworks>netstandard2.0;net40;net45;net46;net47</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0</TargetFrameworks> 
 	<PackageId>IPNetwork2</PackageId>
-    <PackageVersion>2.2.0</PackageVersion>
+    <PackageVersion>2.3.0</PackageVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PackageLicenseUrl>https://github.com/lduchosal/ipnetwork/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/lduchosal/ipnetwork</PackageProjectUrl>
@@ -17,7 +17,7 @@
     <PackageSummary>IPNetwork utility classes for .Net</PackageSummary>
     <authors>Luc Dvchosal</authors>
     <owners>Luc Dvchosal</owners>
-    <copyright>Copyright 2018</copyright>
+    <copyright>Copyright 2019</copyright>
     <SignAssembly>True</SignAssembly>
     <SignAssembly Condition=" '$(OS)' != 'Windows_NT' ">false</SignAssembly>
     <AssemblyOriginatorKeyFile>System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
@@ -26,7 +26,7 @@
 
 	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.3|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
@@ -37,7 +37,7 @@
 	<DefineConstants Condition="'$(OS)' != 'Windows_NT'">$(DefineConstants);TRAVISCI</DefineConstants>
   </PropertyGroup>
   
-  <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47'">
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />

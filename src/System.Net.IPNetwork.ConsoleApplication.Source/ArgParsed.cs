@@ -6,9 +6,7 @@
         public delegate void ArgParsedDelegate(ProgramContext ac, string arg);
 
         public void Run(ProgramContext ac, string arg) {
-            if (this.OnArgParsed != null) {
-                this.OnArgParsed(ac, arg);
-            }
+            this.OnArgParsed?.Invoke(ac, arg);
         }
 
         public ArgParsed(int arg, ArgParsedDelegate onArgParsed) {
