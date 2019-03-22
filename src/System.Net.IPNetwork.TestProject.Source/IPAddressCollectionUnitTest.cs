@@ -11,7 +11,7 @@ namespace System.Net.TestProject
     [TestClass]
     public class IPAddressCollectionUnitTest {
 
-        #region Parse
+        #region ListIPAddress
 
         [TestMethod]
         public void TestAtIndexIPAddress()
@@ -423,5 +423,75 @@ namespace System.Net.TestProject
         #endregion
 
 
+        [TestMethod]
+        public void Test_Usable_AtIndexIPAddress()
+        {
+            var ipn = IPNetwork.Parse("192.168.1.0/29");
+            using (var ips = ipn.ListIPAddress(FilterEnum.Usable))
+            {
+                Assert.AreEqual("192.168.1.1", ips[0].ToString(), "0");
+                Assert.AreEqual("192.168.1.2", ips[1].ToString(), "1");
+                Assert.AreEqual("192.168.1.3", ips[2].ToString(), "2");
+                Assert.AreEqual("192.168.1.4", ips[3].ToString(), "3");
+                Assert.AreEqual("192.168.1.5", ips[4].ToString(), "4");
+                Assert.AreEqual("192.168.1.6", ips[5].ToString(), "5");
+            }
+        }
+
+
+        [TestMethod]
+        public void Test_Usable_IteratorIPAddress()
+        {
+            var ipn = IPNetwork.Parse("192.168.1.0/29");
+            using (var ips = ipn.ListIPAddress(FilterEnum.Usable))
+            {
+                int i = 0;
+                foreach(var ip in ips)
+                {
+                    Assert.AreEqual(ips[i], ip , i.ToString());
+                    i++;
+                }
+            }
+        }
+
+
+        [TestMethod]
+        public void Test_Usable_AtIndexIPAddress_31()
+        {
+            var ipn = IPNetwork.Parse("192.168.1.0/31");
+            using (var ips = ipn.ListIPAddress(FilterEnum.Usable))
+            {
+                Assert.AreEqual(0, ips.Count, "Count");
+            }
+        }
+
+        [TestMethod]
+        public void Test_Usable_AtIndexIPAddress_32()
+        {
+            var ipn = IPNetwork.Parse("192.168.1.0/32");
+            using (var ips = ipn.ListIPAddress(FilterEnum.Usable))
+            {
+                Assert.AreEqual(0, ips.Count, "Count");
+            }
+        }
+
+
+        [TestMethod]
+        public void Test_All_AtIndexIPAddress()
+        {
+            var ipn = IPNetwork.Parse("192.168.1.0/29");
+            using (var ips = ipn.ListIPAddress(FilterEnum.All))
+            {
+                Assert.AreEqual("192.168.1.0", ips[0].ToString(), "0");
+                Assert.AreEqual("192.168.1.1", ips[1].ToString(), "1");
+                Assert.AreEqual("192.168.1.2", ips[2].ToString(), "2");
+                Assert.AreEqual("192.168.1.3", ips[3].ToString(), "3");
+                Assert.AreEqual("192.168.1.4", ips[4].ToString(), "4");
+                Assert.AreEqual("192.168.1.5", ips[5].ToString(), "5");
+                Assert.AreEqual("192.168.1.6", ips[6].ToString(), "6");
+                Assert.AreEqual("192.168.1.7", ips[7].ToString(), "6");
+            }
+
+        }
     }
 }

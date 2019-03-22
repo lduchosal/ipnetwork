@@ -4,14 +4,23 @@ using System.Numerics;
 
 namespace System.Net
 {
+
+    public enum FilterEnum
+    {
+        All,
+        Usable
+    }
+
     public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress> {
 
-        private IPNetwork _ipnetwork;
+        private readonly IPNetwork _ipnetwork;
         private BigInteger _enumerator;
+        private readonly FilterEnum _filter;
 
-        internal IPAddressCollection(IPNetwork ipnetwork) {
+        internal IPAddressCollection(IPNetwork ipnetwork, FilterEnum filter) {
             this._ipnetwork = ipnetwork;
-            this._enumerator = -1;
+            this._filter = filter;
+            Reset();
         }
 
 
@@ -19,7 +28,18 @@ namespace System.Net
 
         public BigInteger Count {
             get {
-                return this._ipnetwork.Total;
+
+                BigInteger count = _ipnetwork.Total;
+                if (this._filter == FilterEnum.Usable)
+                {
+                    count -= 2;
+                }
+                if (count < 0)
+                {
+                    count = 0;
+                }
+
+                return count;
             }
         }
 
@@ -30,7 +50,13 @@ namespace System.Net
                 }
                 byte width = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? (byte)32 : (byte)128;
                 IPNetworkCollection ipn = this._ipnetwork.Subnet(width);
-                return ipn[i].Network;
+
+                BigInteger index = i;
+                if (this._filter == FilterEnum.Usable)
+                {
+                    index++;
+                }
+                return ipn[index].Network;
             }
         }
 
