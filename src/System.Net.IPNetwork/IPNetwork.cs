@@ -1839,9 +1839,10 @@ namespace System.Net
             return ipnetwork.ListIPAddress();
         }
 
-        public IPAddressCollection ListIPAddress() {
-            return new IPAddressCollection(this);
+        public IPAddressCollection ListIPAddress(FilterEnum filter = FilterEnum.All) {
+            return new IPAddressCollection(this, filter);
         }
+
 
 #endregion
 
