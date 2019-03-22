@@ -4,7 +4,7 @@
     <TargetFrameworks>netstandard2.0;net40;net45;net46;net47</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0</TargetFrameworks> 
 	<PackageId>IPNetwork2</PackageId>
-    <PackageVersion>2.3.0</PackageVersion>
+    <PackageVersion>2.4.0</PackageVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PackageLicenseUrl>https://github.com/lduchosal/ipnetwork/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/lduchosal/ipnetwork</PackageProjectUrl>
