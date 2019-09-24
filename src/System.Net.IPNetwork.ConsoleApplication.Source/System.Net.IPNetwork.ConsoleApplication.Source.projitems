@@ -15,4 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Program.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ProgramContext.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)System.Net.IPNetwork.snk" />
+  </ItemGroup>
 </Project>

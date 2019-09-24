@@ -1,10 +1,5 @@
-﻿using IPNetwork = System.Net.IPNetwork;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Xml.Serialization;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
-using System.Xml;
-using System.Text;
-using Newtonsoft.Json;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace System.Net.TestSerialization
