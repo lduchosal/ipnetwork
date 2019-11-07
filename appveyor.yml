@@ -1,5 +1,5 @@
 version: '2.4.0.{build}'
-image: Visual Studio 2019 Preview
+image: Visual Studio 2019
 
 assembly_info:
   patch: true
