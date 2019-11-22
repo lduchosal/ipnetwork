@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>    
-    <TargetFramework>netcoreapp3.0</TargetFramework>    
+    <TargetFrameworks>netcoreapp2.0;netcoreapp3.0</TargetFrameworks>    
     <SignAssembly>true</SignAssembly>    
     <SignAssembly Condition="'$(OS)' != 'Windows_NT'">false</SignAssembly>    
     <AssemblyOriginatorKeyFile>System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
