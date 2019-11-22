@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;net40;net45;net46;net47</TargetFrameworks>
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0</TargetFrameworks> 
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>        
+    <TargetFrameworks>netstandard1.6;netstandard2.0;net40;net45;net46;net47</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.6;netstandard2.0</TargetFrameworks> 
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <PackageId>IPNetwork2</PackageId>
     <PackageVersion>2.4.0</PackageVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -27,7 +27,7 @@
 
 	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.6|AnyCPU'">
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
@@ -47,5 +47,11 @@
   
   <ItemGroup>
     <None Include="..\..\LICENSE" Pack="true" PackagePath="." />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.6'">
+    <PackageReference Include="System.Runtime.Serialization.Primitives" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Numerics" Version="4.3.0" />
+    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="4.3.0" />
   </ItemGroup>
 </Project>
