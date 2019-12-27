@@ -237,7 +237,7 @@ IANA_CBLK_RESERVED1 is 192.168.0.0/16
 ```C#
 IPNetwork wholeInternet = IPNetwork.Parse("0.0.0.0/0");
 byte newCidr = 2;
-IPNetwork subneted = wholeInternet.Subnet(newCidr);
+IPNetworkCollection subneted = wholeInternet.Subnet(newCidr);
 
 Console.WriteLine("{0} was subnetted into {1} subnets", wholeInternet, subneted.Count);
 Console.WriteLine("First: {0}", subneted[0]);

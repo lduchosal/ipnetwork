@@ -2389,6 +2389,24 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
+        public void TestSubnet_Example8()
+        {
+            IPNetwork wholeInternet = IPNetwork.Parse("0.0.0.0/0");
+            byte newCidr = 2;
+            IPNetworkCollection subneted = wholeInternet.Subnet(newCidr);
+
+            Console.WriteLine("{0} was subnetted into {1} subnets", wholeInternet, subneted.Count);
+            Console.WriteLine("First: {0}", subneted[0]);
+            Console.WriteLine("Last : {0}", subneted[subneted.Count - 1]);
+            Console.WriteLine("All  :");
+
+            foreach (IPNetwork ipnetwork in subneted)
+            {
+                Console.WriteLine("{0}", ipnetwork);
+            }
+        }
+
+        [TestMethod]
         public void TestSubnet10()
         {
             IPNetwork ipnetwork = IPNetwork.Parse("0.0.0.0/0");
