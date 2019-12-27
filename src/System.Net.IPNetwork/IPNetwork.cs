@@ -1982,7 +1982,11 @@ namespace System.Net
 
         #region XmlSerialization
 
-        public IPNetwork() { }
+        /// <summary>
+        /// Created for DataContractSerialization. Better use static methods IPNetwork.Parse() to create IPNetworks
+        /// </summary>
+        public IPNetwork() : this(0, AddressFamily.InterNetwork, 0) {
+        }
 
         #endregion
 

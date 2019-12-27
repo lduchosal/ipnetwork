@@ -64,10 +64,18 @@ namespace System.Net.TestSerialization.NetFramework
         {
             var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
             string serialized = DataContractSerializeHelper.Serialize(ipnetwork);
-            
+
             var result = DataContractSerializeHelper.Deserialize<IPNetwork>(serialized);
-            
+
             Assert.AreEqual(ipnetwork, result);
+        }
+
+        [TestMethod]
+        public void Test_Empty_Constructor()
+        {
+            var ipnetwork = new IPNetwork();
+            Assert.AreEqual("0.0.0.0/0", ipnetwork.ToString());
         }
     }
 }
+
