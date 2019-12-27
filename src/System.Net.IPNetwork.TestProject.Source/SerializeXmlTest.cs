@@ -24,10 +24,7 @@ namespace System.Net.TestSerialization.NetFramework
 
             var result = Encoding.UTF8.GetString(mem.ToArray());
 
-            string expected = @"<?xml version=""1.0""?>
-<IPNetwork xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
-  <Value>10.0.0.0/8</Value>
-</IPNetwork>";
+            string expected = $@"<?xml version=""1.0""?>{Environment.NewLine}<IPNetwork xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">{Environment.NewLine}  <Value>10.0.0.0/8</Value>{Environment.NewLine}</IPNetwork>";
             Assert.AreEqual(expected, result);
         }
 

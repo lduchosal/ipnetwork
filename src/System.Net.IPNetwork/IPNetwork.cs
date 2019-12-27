@@ -11,8 +11,7 @@ namespace System.Net
     /// <summary>
     /// IP Network utility class. 
     /// Use IPNetwork.Parse to create instances.
-    /// </summary>
-    [DataContract]
+    /// </summary> 
     [Serializable]
     public sealed class IPNetwork : IComparable<IPNetwork>, ISerializable {
 
@@ -1983,7 +1982,11 @@ namespace System.Net
 
         #region XmlSerialization
 
-        IPNetwork() { }
+        /// <summary>
+        /// Created for DataContractSerialization. Better use static methods IPNetwork.Parse() to create IPNetworks
+        /// </summary>
+        public IPNetwork() : this(0, AddressFamily.InterNetwork, 0) {
+        }
 
         #endregion
 
