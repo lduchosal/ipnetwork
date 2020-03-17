@@ -1690,11 +1690,13 @@ namespace System.Net
             return true;
         }
 
-        public static IPNetwork WideSubnet(IPNetwork[] ipnetworks) {
+        public static IPNetwork WideSubnet(IPNetwork[] ipnetworks)
+        {
             IPNetwork ipn = null;
             IPNetwork.InternalWideSubnet(false, ipnetworks, out ipn);
             return ipn;
         }
+
 
         internal static void InternalWideSubnet(bool tryWide, IPNetwork[] ipnetworks, out IPNetwork ipnetwork) {
 

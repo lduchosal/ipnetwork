@@ -1990,6 +1990,39 @@ namespace System.Net.TestProject
 
         }
 
+        [TestMethod]
+        public void When_TrySupernet_192_168_0_0_cidr24_add_192_168_10_0_cidr24_Then_Should_Invalid()
+        {
+
+            IPNetwork network = IPNetwork.Parse("192.168.0.0/24");
+            IPNetwork network2 = IPNetwork.Parse("192.168.10.0/24");
+
+            bool supernetted = network.TrySupernet(network2, out var ipnetwork);
+            Assert.AreEqual(false, supernetted);
+
+
+        }
+
+        [TestMethod]
+        public void When_TryWideSubnet_192_168_0_0_cidr24_add_192_168_10_0_cidr24_Then_Should_Invalid()
+        {
+
+            IPNetwork network = IPNetwork.Parse("192.168.0.0/24");
+            IPNetwork network2 = IPNetwork.Parse("192.168.10.0/24");
+
+            bool wideSubnetted = IPNetwork.TryWideSubnet(new[] { network, network2 }, out IPNetwork ipnetwork);
+            Assert.AreEqual(true, wideSubnetted);
+            Assert.AreEqual("192.168.0.0/20", ipnetwork.ToString());
+
+            Console.WriteLine("Network : {0}", ipnetwork.Network);
+            Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);
+            Console.WriteLine("Broadcast : {0}", ipnetwork.Broadcast);
+            Console.WriteLine("FirstUsable : {0}", ipnetwork.FirstUsable);
+            Console.WriteLine("LastUsable : {0}", ipnetwork.LastUsable);
+            Console.WriteLine("Usable : {0}", ipnetwork.Usable);
+            Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
+
+        }
 
         [TestMethod]
         public void Example10() {
