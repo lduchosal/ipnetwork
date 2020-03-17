@@ -66,7 +66,8 @@ namespace System.Net.TestProject
             byte cidr;
             bool parsed = cidrguess.TryGuessCidr("224.0.0.0", out cidr);
 
-            Assert.AreEqual(false, parsed, "parsed");
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual(24, cidr, "cidr");
         }
         [TestMethod]
 
@@ -77,7 +78,8 @@ namespace System.Net.TestProject
             byte cidr;
             bool parsed = cidrguess.TryGuessCidr("240.0.0.0", out cidr);
 
-            Assert.AreEqual(false, parsed, "parsed");
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual(24, cidr, "cidr");
         }
 
         #endregion

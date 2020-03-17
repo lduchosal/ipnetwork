@@ -38,18 +38,18 @@ namespace System.Net
                 return true;
             }
             BigInteger uintIPAddress = IPNetwork.ToBigInteger(ipaddress);
-            uintIPAddress = uintIPAddress >> 29;
-            if (uintIPAddress <= 3)
+            uintIPAddress = uintIPAddress >> 30;
+            if (uintIPAddress <= 1)
             {
                 cidr = 8;
                 return true;
             }
-            else if (uintIPAddress <= 5)
+            else if (uintIPAddress <= 2)
             {
                 cidr = 16;
                 return true;
             }
-            else if (uintIPAddress <= 6)
+            else if (uintIPAddress <= 3)
             {
                 cidr = 24;
                 return true;

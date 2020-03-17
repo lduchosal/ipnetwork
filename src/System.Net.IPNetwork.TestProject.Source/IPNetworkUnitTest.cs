@@ -226,7 +226,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestParseIPAddressNoNetmask1() {
+        public void TestParseIPAddressNoNetmask1()
+        {
 
             string ipaddress = "10.0.0.0";
 
@@ -249,6 +250,32 @@ namespace System.Net.TestProject
         }
 
 
+        [TestMethod]
+        public void When_Parse_254_128_0_0_Should_Succeed ()
+        {
+
+            string ipaddress = "254.128.0.0";
+
+            string network = "254.128.0.0";
+            string netmask = "255.255.255.0";
+            string broadcast = "254.128.0.255";
+            string firstUsable = "254.128.0.1";
+            string lastUsable = "254.128.0.254";
+            byte cidr = 24;
+            uint usable = 254;
+
+            IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
+            Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
+            Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
+            Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
+            Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
+            Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
+            Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
+            Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+        }
+
+
+        
 
         [TestMethod]
         public void TestParseIPAddressNoNetmask2() {
@@ -451,20 +478,21 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void TestParseIPAddressNoNetmask4() {
 
             string ipaddress = "224.0.0.0";
             IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
 
+            Assert.AreEqual("224.0.0.0/24", ipnetwork.ToString(), "Network");
+
         }
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
         public void TestParseIPAddressNoNetmask5()
         {
 
             string ipaddress = "240.0.0.0";
             IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
+            Assert.AreEqual("240.0.0.0/24", ipnetwork.ToString(), "Network");
 
         }
 
@@ -3455,7 +3483,8 @@ namespace System.Net.TestProject
             byte cidr;
             bool parsed = IPNetwork.TryGuessCidr("224.0.0.0", out cidr);
 
-            Assert.AreEqual(false, parsed, "parsed");
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual(24, cidr, "cidr");
         }
         [TestMethod]
         public void TestTryGuessCidrE()
@@ -3464,7 +3493,8 @@ namespace System.Net.TestProject
             byte cidr;
             bool parsed = IPNetwork.TryGuessCidr("240.0.0.0", out cidr);
 
-            Assert.AreEqual(false, parsed, "parsed");
+            Assert.AreEqual(true, parsed, "parsed");
+            Assert.AreEqual(24, cidr, "cidr");
         }
 
         #endregion
