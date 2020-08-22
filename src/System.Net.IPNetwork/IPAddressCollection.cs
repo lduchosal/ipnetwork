@@ -120,12 +120,12 @@ namespace System.Net
                 }
             }
 
-            void IDisposable.Dispose()
+            public void Dispose()
             {
                 // nothing to dispose
             }
 
-            bool IEnumerator.MoveNext()
+            public bool MoveNext()
             {
                 _enumerator++;
                 if (_enumerator >= _collection.Count) {
@@ -134,14 +134,15 @@ namespace System.Net
                 return true;
             }
 
-            void IEnumerator.Reset()
+            public void Reset()
             {
                 _enumerator = -1;
             }
 
             public Enumerator(IPAddressCollection collection)
             {
-                _collection = collection;
+                 _collection = collection;
+                Reset();
             }
         }
         #endregion
