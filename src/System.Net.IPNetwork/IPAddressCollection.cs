@@ -141,8 +141,8 @@ namespace System.Net
 
             public Enumerator(IPAddressCollection collection)
             {
-                 _collection = collection;
-                Reset();
+                _collection = collection;
+                _enumerator = -1;
             }
         }
         #endregion
