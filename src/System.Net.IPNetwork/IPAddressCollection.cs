@@ -14,8 +14,8 @@ namespace System.Net
     public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress> {
 
         private readonly IPNetwork _ipnetwork;
-        private BigInteger _enumerator;
         private readonly FilterEnum _filter;
+        private BigInteger _enumerator;
 
         internal IPAddressCollection(IPNetwork ipnetwork, FilterEnum filter) {
             this._ipnetwork = ipnetwork;
@@ -25,7 +25,6 @@ namespace System.Net
 
 
         #region Count, Array, Enumerator
-
         public BigInteger Count {
             get {
 
@@ -62,54 +61,89 @@ namespace System.Net
 
         #endregion
 
-        #region IEnumerable Members
-
-        IEnumerator<IPAddress> IEnumerable<IPAddress>.GetEnumerator() {
-            return this;
-        }
-
-        IEnumerator IEnumerable.GetEnumerator() {
-            return this;
-        }
-
-        #region IEnumerator<IPNetwork> Members
-
+        #region Legacy Enumeration
         public IPAddress Current {
-            get { return this[this._enumerator]; }
+            get {
+                return this[_enumerator];
+            }
         }
-
-        #endregion
-
-        #region IDisposable Members
-
-        public void Dispose() {
-            // nothing to dispose
-            return;
-        }
-
-        #endregion
-
-        #region IEnumerator Members
 
         object IEnumerator.Current {
-            get { return this.Current; }
+            get {
+                return Current;
+            }
         }
 
-        public bool MoveNext() {
-            this._enumerator++;
-            if (this._enumerator >= this.Count) {
+        public bool MoveNext()
+        {
+            _enumerator++;
+            if (_enumerator >= this.Count) {
                 return false;
             }
             return true;
-
         }
 
-        public void Reset() {
-            this._enumerator = -1;
+        public void Reset()
+        {
+            _enumerator = -1;
         }
 
+        public void Dispose()
+        {
+            // nothing to dispose
+        }
         #endregion
 
+        #region Enumeration
+        IEnumerator<IPAddress> IEnumerable<IPAddress>.GetEnumerator() {
+            return new Enumerator(this);
+        }
+
+        IEnumerator IEnumerable.GetEnumerator() {
+            return new Enumerator(this);
+        }
+
+        struct Enumerator : IEnumerator<IPAddress>
+        {
+            private readonly IPAddressCollection _collection;
+            private BigInteger _enumerator;
+
+            object IEnumerator.Current {
+                get {
+                    return Current;
+                }
+            }
+
+            public IPAddress Current {
+                get {
+                    return _collection[_enumerator];
+                }
+            }
+
+            void IDisposable.Dispose()
+            {
+                // nothing to dispose
+            }
+
+            bool IEnumerator.MoveNext()
+            {
+                _enumerator++;
+                if (_enumerator >= _collection.Count) {
+                    return false;
+                }
+                return true;
+            }
+
+            void IEnumerator.Reset()
+            {
+                _enumerator = -1;
+            }
+
+            public Enumerator(IPAddressCollection collection)
+            {
+                _collection = collection;
+            }
+        }
         #endregion
     }
 }
