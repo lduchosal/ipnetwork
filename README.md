@@ -6,6 +6,7 @@
 [![Nuget](https://img.shields.io/nuget/dt/IPNetwork2)](https://www.nuget.org/packages/ipnetwork2)
 [![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=lduchosal/ipnetwork)](https://dependabot.com)
 [![HitCount](http://hits.dwyl.io/lduchosal/ipnetwork.svg)](http://hits.dwyl.io/lduchosal/ipnetwork)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flduchosal%2Fipnetwork.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Flduchosal%2Fipnetwork?ref=badge_shield)
 
 IPNetwork command line and C# library take care of complex network, IP, IPv4, IPv6, netmask, CIDR, subnet, subnetting, supernet, and supernetting calculation for .NET developers. It works with IPv4 as well as IPv6, is written in C#, has a light and clean API, and is fully unit-tested.
 
