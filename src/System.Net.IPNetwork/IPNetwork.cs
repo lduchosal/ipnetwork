@@ -666,6 +666,17 @@ namespace System.Net
             }
 
             byte[] bytes = ipaddress.GetAddressBytes();
+#if NET45 || NET46 || NET47 || NETSTANDARD20
+            bytes.AsSpan().Reverse();
+#else
+            Array.Reverse(bytes);
+#endif
+
+            // add trailing 0 to make unsigned
+            var unsigned = new byte[bytes.Length + 1];
+            Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
+            uintIpAddress = new BigInteger(unsigned);
+
             /// 20180217 lduchosal
             /// code impossible to reach, GetAddressBytes returns either 4 or 16 bytes length addresses
             /// if (bytes.Length != 4 && bytes.Length != 16) {
@@ -675,12 +686,6 @@ namespace System.Net
             ///     uintIpAddress = null;
             ///     return;
             /// }
-            
-            Array.Reverse(bytes);
-            var unsigned = new List<byte>(bytes);
-            unsigned.Add(0);
-            uintIpAddress = new BigInteger(unsigned.ToArray());
-            return;
         }
 
 
@@ -1105,7 +1110,6 @@ namespace System.Net
                 && uintAddress <= uintBroadcast);
 
             return contains;
-            
         }
 
         [Obsolete("static Contains is deprecated, please use instance Contains.")]
