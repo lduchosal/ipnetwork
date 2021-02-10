@@ -96,6 +96,14 @@ namespace System.Net
             }
         }
 
+        private BigInteger CreateBroadcast(ref BigInteger network)
+        {
+            int width = this._family == Sockets.AddressFamily.InterNetwork ? 4 : 16;
+            BigInteger uintBroadcast = network + this._netmask.PositiveReverse(width);
+
+            return uintBroadcast;
+        }
+
         /// <summary>
         /// Broadcast address
         /// </summary>
@@ -1090,7 +1098,7 @@ namespace System.Net
             }
 
             BigInteger uintNetwork = _network;
-            BigInteger uintBroadcast = _broadcast;
+            BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork);
             BigInteger uintAddress = IPNetwork.ToBigInteger(ipaddress);
 
             bool contains = (uintAddress >= uintNetwork
