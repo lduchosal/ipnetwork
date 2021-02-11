@@ -665,27 +665,37 @@ namespace System.Net
                 return;
             }
 
+#if NET5_0 || NETSTANDARD2_1
+            byte[] bytes = ipaddress.AddressFamily == AddressFamily.InterNetwork ? new byte[4] : new byte[16];
+            var span = bytes.AsSpan();
+            if (!ipaddress.TryWriteBytes(span, out _))
+            {
+                if (tryParse == false) {
+                    throw new ArgumentException("ipaddress");
+                }
+
+                uintIpAddress = null;
+                return;
+            }
+
+            uintIpAddress = new BigInteger(span, isUnsigned: true, isBigEndian: true);
+#elif NET45 || NET46 || NET47 || NETSTANDARD20
             byte[] bytes = ipaddress.GetAddressBytes();
-#if NET45 || NET46 || NET47 || NETSTANDARD20
             bytes.AsSpan().Reverse();
-#else
-            Array.Reverse(bytes);
-#endif
 
             // add trailing 0 to make unsigned
             var unsigned = new byte[bytes.Length + 1];
             Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
             uintIpAddress = new BigInteger(unsigned);
+#else
+            byte[] bytes = ipaddress.GetAddressBytes();
+            Array.Reverse(bytes);
 
-            /// 20180217 lduchosal
-            /// code impossible to reach, GetAddressBytes returns either 4 or 16 bytes length addresses
-            /// if (bytes.Length != 4 && bytes.Length != 16) {
-            ///     if (tryParse == false) {
-            ///         throw new ArgumentException("bytes");
-            ///     }
-            ///     uintIpAddress = null;
-            ///     return;
-            /// }
+            // add trailing 0 to make unsigned
+            var unsigned = new byte[bytes.Length + 1];
+            Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
+            uintIpAddress = new BigInteger(unsigned);
+#endif
         }
 
 
