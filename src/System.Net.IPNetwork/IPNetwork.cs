@@ -1139,6 +1139,7 @@ namespace System.Net
         /// <param name="network2"></param>
         /// <returns></returns>
         public bool Contains(IPNetwork network2) {
+
             if (network2 == null)
             {
                 throw new ArgumentNullException("network2");
