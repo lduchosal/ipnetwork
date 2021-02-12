@@ -96,6 +96,14 @@ namespace System.Net
             }
         }
 
+        static BigInteger CreateBroadcast(ref BigInteger network, BigInteger netmask, AddressFamily family)
+        {
+            int width = family == AddressFamily.InterNetwork ? 4 : 16;
+            BigInteger uintBroadcast = network + netmask.PositiveReverse(width);
+
+            return uintBroadcast;
+        }
+
         /// <summary>
         /// Broadcast address
         /// </summary>
@@ -657,22 +665,37 @@ namespace System.Net
                 return;
             }
 
+#if NET5_0 || NETSTANDARD2_1
+            byte[] bytes = ipaddress.AddressFamily == AddressFamily.InterNetwork ? new byte[4] : new byte[16];
+            var span = bytes.AsSpan();
+            if (!ipaddress.TryWriteBytes(span, out _))
+            {
+                if (tryParse == false) {
+                    throw new ArgumentException("ipaddress");
+                }
+
+                uintIpAddress = null;
+                return;
+            }
+
+            uintIpAddress = new BigInteger(span, isUnsigned: true, isBigEndian: true);
+#elif NET45 || NET46 || NET47 || NETSTANDARD20
             byte[] bytes = ipaddress.GetAddressBytes();
-            /// 20180217 lduchosal
-            /// code impossible to reach, GetAddressBytes returns either 4 or 16 bytes length addresses
-            /// if (bytes.Length != 4 && bytes.Length != 16) {
-            ///     if (tryParse == false) {
-            ///         throw new ArgumentException("bytes");
-            ///     }
-            ///     uintIpAddress = null;
-            ///     return;
-            /// }
-            
+            bytes.AsSpan().Reverse();
+
+            // add trailing 0 to make unsigned
+            var unsigned = new byte[bytes.Length + 1];
+            Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
+            uintIpAddress = new BigInteger(unsigned);
+#else
+            byte[] bytes = ipaddress.GetAddressBytes();
             Array.Reverse(bytes);
-            var unsigned = new List<byte>(bytes);
-            unsigned.Add(0);
-            uintIpAddress = new BigInteger(unsigned.ToArray());
-            return;
+
+            // add trailing 0 to make unsigned
+            var unsigned = new byte[bytes.Length + 1];
+            Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
+            uintIpAddress = new BigInteger(unsigned);
+#endif
         }
 
 
@@ -1090,14 +1113,13 @@ namespace System.Net
             }
 
             BigInteger uintNetwork = _network;
-            BigInteger uintBroadcast = _broadcast;
+            BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, this._netmask, this._family);
             BigInteger uintAddress = IPNetwork.ToBigInteger(ipaddress);
 
             bool contains = (uintAddress >= uintNetwork
                 && uintAddress <= uintBroadcast);
 
             return contains;
-            
         }
 
         [Obsolete("static Contains is deprecated, please use instance Contains.")]
@@ -1124,10 +1146,10 @@ namespace System.Net
             }
 
             BigInteger uintNetwork = _network;
-            BigInteger uintBroadcast = _broadcast;
+            BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, this._netmask, this._family);
 
             BigInteger uintFirst = network2._network;
-            BigInteger uintLast = network2._broadcast;
+            BigInteger uintLast = CreateBroadcast(ref uintFirst, network2._netmask, network2._family);
 
             bool contains = (uintFirst >= uintNetwork
                 && uintLast <= uintBroadcast);
