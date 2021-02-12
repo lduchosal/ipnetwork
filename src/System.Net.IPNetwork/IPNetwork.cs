@@ -1139,17 +1139,16 @@ namespace System.Net
         /// <param name="network2"></param>
         /// <returns></returns>
         public bool Contains(IPNetwork network2) {
-
             if (network2 == null)
             {
                 throw new ArgumentNullException("network2");
             }
 
             BigInteger uintNetwork = _network;
-            BigInteger uintBroadcast = _broadcast;
+            BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork);
 
             BigInteger uintFirst = network2._network;
-            BigInteger uintLast = network2._broadcast;
+            BigInteger uintLast = CreateBroadcast(ref uintFirst);
 
             bool contains = (uintFirst >= uintNetwork
                 && uintLast <= uintBroadcast);
