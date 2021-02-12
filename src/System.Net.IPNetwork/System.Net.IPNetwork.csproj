@@ -67,6 +67,12 @@
     </PackageReference>
   </ItemGroup>
   
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+    <PackageReference Include="System.Memory">
+      <Version>4.5.4</Version>
+    </PackageReference>
+  </ItemGroup>
+  
   <ItemGroup Condition="'$(TargetFramework)' == 'net45'">
     <PackageReference Include="System.Memory">
       <Version>4.5.4</Version>
@@ -80,6 +86,12 @@
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'net47'">
+    <PackageReference Include="System.Memory">
+      <Version>4.5.4</Version>
+    </PackageReference>
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework)' == 'net50'">
     <PackageReference Include="System.Memory">
       <Version>4.5.4</Version>
     </PackageReference>
