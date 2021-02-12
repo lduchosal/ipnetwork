@@ -96,10 +96,10 @@ namespace System.Net
             }
         }
 
-        private BigInteger CreateBroadcast(ref BigInteger network)
+        static BigInteger CreateBroadcast(ref BigInteger network, BigInteger netmask, AddressFamily family)
         {
-            int width = this._family == Sockets.AddressFamily.InterNetwork ? 4 : 16;
-            BigInteger uintBroadcast = network + this._netmask.PositiveReverse(width);
+            int width = family == AddressFamily.InterNetwork ? 4 : 16;
+            BigInteger uintBroadcast = network + netmask.PositiveReverse(width);
 
             return uintBroadcast;
         }
@@ -1113,7 +1113,7 @@ namespace System.Net
             }
 
             BigInteger uintNetwork = _network;
-            BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork);
+            BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, this._netmask, this._family);
             BigInteger uintAddress = IPNetwork.ToBigInteger(ipaddress);
 
             bool contains = (uintAddress >= uintNetwork
@@ -1146,10 +1146,10 @@ namespace System.Net
             }
 
             BigInteger uintNetwork = _network;
-            BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork);
+            BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, this._netmask, this._family);
 
             BigInteger uintFirst = network2._network;
-            BigInteger uintLast = CreateBroadcast(ref uintFirst);
+            BigInteger uintLast = CreateBroadcast(ref uintFirst, network2._netmask, network2._family);
 
             bool contains = (uintFirst >= uintNetwork
                 && uintLast <= uintBroadcast);
