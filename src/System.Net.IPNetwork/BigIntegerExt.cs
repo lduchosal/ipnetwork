@@ -140,18 +140,25 @@ namespace System.Net
         /// <param name="width"></param>
         /// <returns></returns>
         public static BigInteger PositiveReverse(this BigInteger input, int width) {
-
-            var result = new List<byte>();
             var bytes = input.ToByteArray();
-            var work = new byte[width];
-            Array.Copy(bytes, 0, work, 0, bytes.Length - 1); // Length -1 : positive BigInteger
+            var length = width + 1;
 
-            for (int i = 0; i < work.Length; i++) {
-                result.Add((byte)(~work[i]));
+            // if the byte array is same size as output, we'll perform the operations in place
+            var output = bytes.Length != length ? new byte[length] : bytes;
+
+            // invert all of the source bytes
+            for (var i = 0; i < bytes.Length - 1; i++) {
+                output[i] = (byte)~bytes[i];
             }
-            result.Add(0); // positive BigInteger
-            return new BigInteger(result.ToArray());
 
+            // invert the remainder of the output buffer
+            for (var i = bytes.Length - 1; i < output.Length - 1; i++) {
+                output[i] = byte.MaxValue;
+            }
+
+            // ensure output value is positive and return
+            output[output.Length - 1] = 0;
+            return new BigInteger(output);
         }
     }
 }
