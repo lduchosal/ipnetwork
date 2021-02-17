@@ -1168,7 +1168,78 @@ namespace System.Net
             return network.Contains(network2);
         }
 
-#endregion
+        /// <summary>
+        /// Determines if any of the specified <paramref name="networks"/> contains the given <paramref name="address"/>
+        /// </summary>
+        /// <param name="networks">A list of networks to check</param>
+        /// <param name="address">The ip address to check</param>
+        /// <returns><c>true</c> if any of the networks contains the address; otherwise <c>false</c></returns>
+        public static bool Contains(IPNetwork[] networks, IPAddress address) {
+            if (address == null) {
+                throw new ArgumentNullException("ipaddress");
+            }
+
+            if (networks == null) {
+                throw new ArgumentNullException("networks");
+            }
+
+            // empty set, can't contain
+            if (networks.Length == 0) {
+                return false;
+            }
+
+            BigInteger uintAddress = IPNetwork.ToBigInteger(address);
+
+            foreach (var network in networks)
+            {
+                if (address.AddressFamily != network.AddressFamily)
+                    continue;
+
+                BigInteger uintNetwork = network._network;
+                BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, network._netmask, network._family);
+
+                if (uintAddress >= uintNetwork && uintAddress <= uintBroadcast) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Determines if any of the specified <paramref name="networks"/> contains the given <paramref name="address"/>
+        /// </summary>
+        /// <param name="networks">A list of networks to check</param>
+        /// <param name="address">The ip address to check</param>
+        /// <returns><c>true</c> if any of the networks contains the address; otherwise <c>false</c></returns>
+        public static bool Contains(IEnumerable<IPNetwork> networks, IPAddress address)
+        {
+            if (address == null) {
+                throw new ArgumentNullException("ipaddress");
+            }
+
+            if (networks == null) {
+                throw new ArgumentNullException("networks");
+            }
+
+            BigInteger uintAddress = IPNetwork.ToBigInteger(address);
+
+            foreach (var network in networks) {
+                if (address.AddressFamily != network.AddressFamily)
+                    continue;
+
+                BigInteger uintNetwork = network._network;
+                BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, network._netmask, network._family);
+
+                if (uintAddress >= uintNetwork && uintAddress <= uintBroadcast) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        #endregion
 
 #region overlap
 
