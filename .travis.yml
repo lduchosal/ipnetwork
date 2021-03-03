@@ -1,8 +1,8 @@
 language: csharp
-dist: xenial
+dist: focal
 sudo: required
 mono: none
-dotnet: 3.0
+dotnet: 5.0
 script:
   - cd src
   - dotnet restore
