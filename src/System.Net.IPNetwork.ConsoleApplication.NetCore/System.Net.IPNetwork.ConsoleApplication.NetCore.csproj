@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>netcoreapp2.0;netcoreapp3.0</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.0;netcoreapp3.0;net5.0</TargetFrameworks>
 	<SignAssembly>true</SignAssembly>
     <SignAssembly Condition=" '$(OS)' != 'Windows_NT' ">false</SignAssembly>
   </PropertyGroup>
