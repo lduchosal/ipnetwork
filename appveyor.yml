@@ -40,7 +40,7 @@ build_script:
   
 test_script:
   - cmd: dotnet test ./src/System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj
-  - vstest.console /logger:Appveyor c:\Projects\ipnetwork\src\System.Net.IPNetwork.TestProject.NetCore\bin\Debug\netcoreapp3.0\System.Net.IPNetwork.TestProject.NetCore.dll
+  - vstest.console /logger:Appveyor c:\Projects\ipnetwork\src\System.Net.IPNetwork.TestProject.NetCore\bin\Debug\net5.0\System.Net.IPNetwork.TestProject.NetCore.dll
  
 # 1. Regenerate AppVeyor Api Key
 # https://www.nuget.org/account/apikeys
