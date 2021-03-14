@@ -29,7 +29,7 @@ init:
   
 before_build:
   - cmd: dotnet --version
-  - cmd: dotnet tool install coveralls.net
+  - cmd: dotnet tool install --global coveralls.net
   - cmd: dotnet clean ./src
   - cmd: dotnet restore ./src --verbosity m
   - cmd: nuget restore ./src 
