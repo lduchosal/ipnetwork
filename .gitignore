@@ -286,3 +286,4 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+src/System.Net.IPNetwork.TestProject.NetCore/coverage.net5.0.opencover.xml

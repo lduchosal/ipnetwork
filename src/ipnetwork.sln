@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2027
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Net.IPNetwork", "System.Net.IPNetwork\System.Net.IPNetwork.csproj", "{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F}"
 EndProject
@@ -31,6 +31,8 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		System.Net.IPNetwork.ConsoleApplication.Source\System.Net.IPNetwork.ConsoleApplication.Source.projitems*{929d3ba7-9a9b-4ccc-85dd-b3cc465221fc}*SharedItemsImports = 13
 		System.Net.IPNetwork.TestProject.Source\System.Net.IPNetwork.TestProject.Source.projitems*{a3cf69f0-b39a-4723-a35c-e785e05b464a}*SharedItemsImports = 4
+		System.Net.IPNetwork.ConsoleApplication.Source\System.Net.IPNetwork.ConsoleApplication.Source.projitems*{bd2a4b23-5c80-410c-9cb4-38e717f25268}*SharedItemsImports = 5
+		System.Net.IPNetwork.TestProject.Source\System.Net.IPNetwork.TestProject.Source.projitems*{c9366a60-e771-4e1e-b0ee-d4af3a4f5390}*SharedItemsImports = 5
 		System.Net.IPNetwork.ConsoleApplication.Source\System.Net.IPNetwork.ConsoleApplication.Source.projitems*{e46142db-9950-453d-809e-f2096a3b46c1}*SharedItemsImports = 4
 		System.Net.IPNetwork.TestProject.Source\System.Net.IPNetwork.TestProject.Source.projitems*{ee240fa2-57f7-47de-9f02-c9a6e5f438db}*SharedItemsImports = 13
 	EndGlobalSection
