@@ -5,8 +5,6 @@ pull_request_rules:
       - check-success=CodeFactor
       - check-success=continuous-integration/appveyor/pr
       - check-success=License Compliance
-      - label=merge when passing
-      - label=dependabot
     actions:
       merge:
         method: merge
