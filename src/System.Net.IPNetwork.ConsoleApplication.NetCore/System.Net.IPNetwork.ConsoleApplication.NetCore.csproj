@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net5.0</TargetFrameworks>
-	<SignAssembly>true</SignAssembly>
+    <TargetFramework>net5.0</TargetFramework>
+	  <SignAssembly>true</SignAssembly>
     <SignAssembly Condition=" '$(OS)' != 'Windows_NT' ">false</SignAssembly>
   </PropertyGroup>
 
