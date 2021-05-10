@@ -28,5 +28,5 @@ jobs:
     - name: Build
       run: dotnet build  --no-restore -c release ./src/System.Net.IPNetwork.ConsoleApplication.NetCore --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal ./src/System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+      run: dotnet test --verbosity normal ./src/System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
     
