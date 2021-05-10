@@ -17,9 +17,16 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+    - name: Install dependencies
+      run: dotnet tool install --global coveralls.net
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore ./src --verbosity m
+    - name: Restore nugets
+      run: nuget restore ./src
+    - name: Pack
+      run: dotnet pack -c release ./src/System.Net.IPNetwork
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build  --no-restore -c release ./src/System.Net.IPNetwork.ConsoleApplication.NetCore --no-restore
     - name: Test
-      run: dotnet test --no-build --verbosity normal
+      run: dotnet test --no-build --verbosity normal ./src/System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+    
