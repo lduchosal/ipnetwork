@@ -2686,6 +2686,20 @@ namespace System.Net.TestProject
             Assert.AreEqual(expected, widenetwork, "widesubnet");
 
         }
+
+        [TestMethod]
+        public void Issue162__Test_IPrangeToCIDRnotation()
+        {
+            var network1 = "172.64.0.0";
+            var network2 = "172.71.255.255";
+
+            var final = IPNetwork.WideSubnet(network1, network2);
+            var result = final.ToString();
+
+            string expected = "172.64.0.0/13";
+            Assert.AreEqual(expected, result, "Supernet");
+        }
+
         [TestMethod]
         public void TestSupernet1()
         {
