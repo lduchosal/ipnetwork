@@ -1925,8 +1925,12 @@ namespace System.Net
             if (ReferenceEquals(left, null)) return -1;
             if (ReferenceEquals(right, null)) return 1;
 
-            //  first test the network
-            var result = left._network.CompareTo(right._network);
+            //  first test family
+            var result = left._family.CompareTo(right._family);
+            if (result != 0) return result;
+
+            //  second test the network
+            result = left._network.CompareTo(right._network);
             if (result != 0) return result;
 
             //  then test the cidr
