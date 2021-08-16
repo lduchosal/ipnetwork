@@ -14,6 +14,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)CidrClassLessUnitTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CidrClassFullUnitTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ConsoleUnitTest.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EqualsUnitTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPAddressCollectionUnitTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPNetworkCollectionUnitTest.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPNetworkUnitTest.cs" />
