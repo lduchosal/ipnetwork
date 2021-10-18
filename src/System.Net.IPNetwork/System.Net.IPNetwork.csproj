@@ -90,10 +90,4 @@
       <Version>4.5.4</Version>
     </PackageReference>
   </ItemGroup>
-  
-  <ItemGroup Condition="'$(TargetFramework)' == 'net50'">
-    <PackageReference Include="System.Memory">
-      <Version>4.5.4</Version>
-    </PackageReference>
-  </ItemGroup>
 </Project>
