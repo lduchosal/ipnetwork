@@ -26,7 +26,7 @@ jobs:
     - name: Pack
       run: dotnet pack -c release ./src/System.Net.IPNetwork
     - name: Build
-      run: dotnet build  --no-restore -c release ./src/System.Net.IPNetwork.ConsoleApplication.NetCore --no-restore
+      run: dotnet build  --no-restore -c release ./src/ConsoleApplication --no-restore
     - name: Test
-      run: dotnet test --verbosity normal ./src/System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+      run: dotnet test --verbosity normal ./src/ConsoleApplication/ConsoleApplication.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
     
