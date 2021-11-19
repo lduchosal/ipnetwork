@@ -2,7 +2,7 @@
 
   <PropertyGroup>
 	  <TargetFrameworks>net45;net46;net47;net48;netcoreapp3.1;net5.0</TargetFrameworks>
-	  <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks>
+	  <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net5.0</TargetFrameworks>
 
 
 	  <IsPackable>false</IsPackable>
