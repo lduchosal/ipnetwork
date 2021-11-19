@@ -6,7 +6,7 @@
 		<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net5.0</TargetFrameworks>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<SignAssembly>True</SignAssembly>
-		<AssemblyOriginatorKeyFile>D:\GitHub\ipnetwork\src\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
+		<AssemblyOriginatorKeyFile>..\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
 
 	</PropertyGroup>
 

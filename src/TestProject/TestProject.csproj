@@ -11,7 +11,7 @@
 	  <SignAssembly>True</SignAssembly>
 
 
-	  <AssemblyOriginatorKeyFile>D:\GitHub\ipnetwork\src\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
+	  <AssemblyOriginatorKeyFile>..\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">
