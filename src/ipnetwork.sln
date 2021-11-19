@@ -1,17 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Net.IPNetwork", "System.Net.IPNetwork\System.Net.IPNetwork.csproj", "{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Net.IPNetwork.TestProject.NetCore", "System.Net.IPNetwork.TestProject.NetCore\System.Net.IPNetwork.TestProject.NetCore.csproj", "{C9366A60-E771-4E1E-B0EE-D4AF3A4F5390}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "System.Net.IPNetwork.TestProject.Source", "System.Net.IPNetwork.TestProject.Source\System.Net.IPNetwork.TestProject.Source.shproj", "{EE240FA2-57F7-47DE-9F02-C9A6E5F438DB}"
-EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "System.Net.IPNetwork.ConsoleApplication.Source", "System.Net.IPNetwork.ConsoleApplication.Source\System.Net.IPNetwork.ConsoleApplication.Source.shproj", "{929D3BA7-9A9B-4CCC-85DD-B3CC465221FC}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "System.Net.IPNetwork.ConsoleApplication.NetCore", "System.Net.IPNetwork.ConsoleApplication.NetCore\System.Net.IPNetwork.ConsoleApplication.NetCore.csproj", "{BD2A4B23-5C80-410C-9CB4-38E717F25268}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gnu.Getopt", "Gnu.Getopt\Gnu.Getopt.csproj", "{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7}"
 EndProject
@@ -23,19 +15,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{4597D016-3B7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{F29C77A1-AA9F-47B4-A04F-A1BD121D9242}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Net.IPNetwork.ConsoleApplication.NetFramework", "System.Net.IPNetwork.ConsoleApplication.NetFramework\System.Net.IPNetwork.ConsoleApplication.NetFramework.csproj", "{E46142DB-9950-453D-809E-F2096A3B46C1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication", "ConsoleApplication\ConsoleApplication.csproj", "{017AB983-2928-46D3-A05A-D7CF97FC6F7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "System.Net.IPNetwork.TestProject.NetFramework", "System.Net.IPNetwork.TestProject.NetFramework\System.Net.IPNetwork.TestProject.NetFramework.csproj", "{A3CF69F0-B39A-4723-A35C-E785E05B464A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{D4A8E6B7-7902-4EA4-8CD1-3733C2529582}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		System.Net.IPNetwork.ConsoleApplication.Source\System.Net.IPNetwork.ConsoleApplication.Source.projitems*{929d3ba7-9a9b-4ccc-85dd-b3cc465221fc}*SharedItemsImports = 13
-		System.Net.IPNetwork.TestProject.Source\System.Net.IPNetwork.TestProject.Source.projitems*{a3cf69f0-b39a-4723-a35c-e785e05b464a}*SharedItemsImports = 4
-		System.Net.IPNetwork.ConsoleApplication.Source\System.Net.IPNetwork.ConsoleApplication.Source.projitems*{bd2a4b23-5c80-410c-9cb4-38e717f25268}*SharedItemsImports = 5
-		System.Net.IPNetwork.TestProject.Source\System.Net.IPNetwork.TestProject.Source.projitems*{c9366a60-e771-4e1e-b0ee-d4af3a4f5390}*SharedItemsImports = 5
-		System.Net.IPNetwork.ConsoleApplication.Source\System.Net.IPNetwork.ConsoleApplication.Source.projitems*{e46142db-9950-453d-809e-f2096a3b46c1}*SharedItemsImports = 4
-		System.Net.IPNetwork.TestProject.Source\System.Net.IPNetwork.TestProject.Source.projitems*{ee240fa2-57f7-47de-9f02-c9a6e5f438db}*SharedItemsImports = 13
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -45,39 +29,27 @@ Global
 		{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C9366A60-E771-4E1E-B0EE-D4AF3A4F5390}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C9366A60-E771-4E1E-B0EE-D4AF3A4F5390}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C9366A60-E771-4E1E-B0EE-D4AF3A4F5390}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C9366A60-E771-4E1E-B0EE-D4AF3A4F5390}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BD2A4B23-5C80-410C-9CB4-38E717F25268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BD2A4B23-5C80-410C-9CB4-38E717F25268}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BD2A4B23-5C80-410C-9CB4-38E717F25268}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BD2A4B23-5C80-410C-9CB4-38E717F25268}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E46142DB-9950-453D-809E-F2096A3B46C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E46142DB-9950-453D-809E-F2096A3B46C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E46142DB-9950-453D-809E-F2096A3B46C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E46142DB-9950-453D-809E-F2096A3B46C1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A3CF69F0-B39A-4723-A35C-E785E05B464A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A3CF69F0-B39A-4723-A35C-E785E05B464A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A3CF69F0-B39A-4723-A35C-E785E05B464A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A3CF69F0-B39A-4723-A35C-E785E05B464A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{017AB983-2928-46D3-A05A-D7CF97FC6F7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{017AB983-2928-46D3-A05A-D7CF97FC6F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{017AB983-2928-46D3-A05A-D7CF97FC6F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{017AB983-2928-46D3-A05A-D7CF97FC6F7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4A8E6B7-7902-4EA4-8CD1-3733C2529582}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4A8E6B7-7902-4EA4-8CD1-3733C2529582}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4A8E6B7-7902-4EA4-8CD1-3733C2529582}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4A8E6B7-7902-4EA4-8CD1-3733C2529582}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F} = {4597D016-3B7D-47A9-BF01-83445C7F0C47}
-		{C9366A60-E771-4E1E-B0EE-D4AF3A4F5390} = {F29C77A1-AA9F-47B4-A04F-A1BD121D9242}
-		{EE240FA2-57F7-47DE-9F02-C9A6E5F438DB} = {F29C77A1-AA9F-47B4-A04F-A1BD121D9242}
-		{929D3BA7-9A9B-4CCC-85DD-B3CC465221FC} = {7F79CD80-ADCD-4125-A5CE-EF19BEE25DF5}
-		{BD2A4B23-5C80-410C-9CB4-38E717F25268} = {7F79CD80-ADCD-4125-A5CE-EF19BEE25DF5}
 		{0A98C6FD-F44A-4BE8-BED4-C4EFB6EEECC7} = {7102AE06-D0A4-4CB9-A4BD-22CB803EA312}
-		{E46142DB-9950-453D-809E-F2096A3B46C1} = {7F79CD80-ADCD-4125-A5CE-EF19BEE25DF5}
-		{A3CF69F0-B39A-4723-A35C-E785E05B464A} = {F29C77A1-AA9F-47B4-A04F-A1BD121D9242}
+		{017AB983-2928-46D3-A05A-D7CF97FC6F7C} = {7F79CD80-ADCD-4125-A5CE-EF19BEE25DF5}
+		{D4A8E6B7-7902-4EA4-8CD1-3733C2529582} = {F29C77A1-AA9F-47B4-A04F-A1BD121D9242}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B02827A7-02C5-46F3-B4A3-798C279618E6}
