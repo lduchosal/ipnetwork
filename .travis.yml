@@ -7,7 +7,7 @@ script:
   - cd src
   - dotnet restore
   - dotnet pack ./System.Net.IPNetwork
-  - dotnet test -f net5.0 ./System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj
+  - dotnet test -f net5.0 ./TestProject/TestProject.csproj
 global:
     - DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
     - DOTNET_CLI_TELEMETRY_OPTOUT=1

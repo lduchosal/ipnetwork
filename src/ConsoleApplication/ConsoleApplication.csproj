@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFrameworks>net45;net46;net47;net48;netcoreapp3.1;net5.0</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net5.0</TargetFrameworks>
+		<ImplicitUsings>disable</ImplicitUsings>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>..\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
+
+	</PropertyGroup>
+
+	
+	<ItemGroup>
+    <ProjectReference Include="..\Gnu.Getopt\Gnu.Getopt.csproj" />
+    <ProjectReference Include="..\System.Net.IPNetwork\System.Net.IPNetwork.csproj" />
+  </ItemGroup>
+
+</Project>
