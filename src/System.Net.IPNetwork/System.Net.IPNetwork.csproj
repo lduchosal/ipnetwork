@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.3;net40;net45;net46</TargetFrameworks>
+    <TargetFrameworks>netstandard1.3;net45;net46;net47;net48;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
     <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard1.3</TargetFrameworks> 
 	<PackageId>IPNetwork2</PackageId>
     <PackageVersion>2.1.3</PackageVersion>

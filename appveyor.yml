@@ -14,8 +14,8 @@ before_build:
 build_script:
   - cmd: dotnet pack ./src/System.Net.IPNetwork
 test_script:
-  - cmd: dotnet test ./src/System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj
-  - vstest.console /logger:Appveyor c:\Projects\ipnetwork\src\System.Net.IPNetwork.TestProject.NetCore\bin\Debug\netcoreapp2.0\System.Net.IPNetwork.TestProject.NetCore.dll
-  - c:\Projects\ipnetwork\src\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test c:\projects\ipnetwork\src\System.Net.IPNetwork.TestProject.NetCore\System.Net.IPNetwork.TestProject.NetCore.csproj" -output:".\ipnetwork_coverage.xml" -oldstyle
+  - cmd: dotnet test ./src/TestProject/TestProject.csproj
+  - vstest.console /logger:Appveyor c:\Projects\ipnetwork\src\TestProject\bin\Debug\netcoreapp3.1\TestProject.dll
+  - c:\Projects\ipnetwork\src\packages\OpenCover.4.6.519\tools\OpenCover.Console.exe -register:user -target:"C:/Program Files/dotnet/dotnet.exe" -targetargs:"test c:\projects\ipnetwork\src\TestProject\TestProject.csproj" -output:".\ipnetwork_coverage.xml" -oldstyle
   - codecov -f "ipnetwork_coverage.xml" -t 87444874-ee5a-40a2-8b79-2c402813f83e
 deploy: off

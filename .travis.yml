@@ -7,4 +7,4 @@ script:
   - cd src
   - dotnet restore
   - dotnet pack ./System.Net.IPNetwork
-  - dotnet test ./System.Net.IPNetwork.TestProject.NetCore/System.Net.IPNetwork.TestProject.NetCore.csproj
+  - dotnet test ./TestProject/TestProject.csproj
