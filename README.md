@@ -4,8 +4,6 @@
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/lduchosal/ipnetwork?branch=master&svg=true)](https://ci.appveyor.com/project/lduchosal/ipnetwork/branch/master)
 [![Nuget](https://img.shields.io/badge/nuget-ipnetwork2-blue.svg)](https://www.nuget.org/packages/ipnetwork2)
 [![Nuget](https://img.shields.io/nuget/dt/IPNetwork2)](https://www.nuget.org/packages/ipnetwork2)
-[![Dependabot](https://api.dependabot.com/badges/status?host=github&repo=lduchosal/ipnetwork)](https://dependabot.com)
-[![HitCount](http://hits.dwyl.io/lduchosal/ipnetwork.svg)](http://hits.dwyl.io/lduchosal/ipnetwork)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flduchosal%2Fipnetwork.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Flduchosal%2Fipnetwork?ref=badge_shield)
 [![Coverage Status](https://coveralls.io/repos/github/lduchosal/ipnetwork/badge.svg?branch=master)](https://coveralls.io/github/lduchosal/ipnetwork?branch=master)
 ![GitHub last commit](https://img.shields.io/github/last-commit/lduchosal/ipnetwork)
