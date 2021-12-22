@@ -935,7 +935,7 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof(ArgumentException))]
         public void ParseIpCidr3() {
             string ipaddress = "192.168.168.100";
             IPAddress ip = IPAddress.Parse(ipaddress);
