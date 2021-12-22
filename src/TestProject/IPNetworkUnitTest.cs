@@ -39,7 +39,7 @@ namespace System.Net.TestProject
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestParseIPAddressNetmaskANE4() {
-            IPNetwork.Parse(null, 0);
+            IPNetwork.Parse((string)null, 0);
         }
 
         [TestMethod]
