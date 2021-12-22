@@ -921,31 +921,25 @@ namespace System.Net.TestProject
 
         [TestMethod]
         public void ParseIpCidr1() {
-
             string ipaddress = "192.168.168.100";
             IPAddress ip = IPAddress.Parse(ipaddress);
             IPNetwork ipnetwork = IPNetwork.Parse(ip, 24);
             Assert.AreEqual("192.168.168.0/24", ipnetwork.ToString(), "network");
-
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void ParseIpCidr2() {
-
             IPAddress ip = null;
             IPNetwork ipnetwork = IPNetwork.Parse(ip, 24);
-
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
         public void ParseIpCidr3() {
-
             string ipaddress = "192.168.168.100";
             IPAddress ip = IPAddress.Parse(ipaddress);
             IPNetwork ipnetwork = IPNetwork.Parse(ip, 33);
-
         }
 
         #endregion

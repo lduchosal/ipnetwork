@@ -886,12 +886,10 @@ namespace System.Net.TestProject
 
         [TestMethod]
         public void ParseIpCidr1() {
-
             string ipaddress = "2001:0db8::";
             IPAddress ip = IPAddress.Parse(ipaddress);
             IPNetwork ipnetwork = IPNetwork.Parse(ip, 124);
             Assert.AreEqual("2001:db8::/124", ipnetwork.ToString(), "network");
-
         }
 
         [TestMethod]
