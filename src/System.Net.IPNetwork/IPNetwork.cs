@@ -264,11 +264,9 @@ namespace System.Net
         /// <param name="cidr"></param>
         /// <returns></returns>
         public static IPNetwork Parse(IPAddress ipaddress, byte cidr) {
-
             IPNetwork ipnetwork = null;
             IPNetwork.InternalParse(false, ipaddress, cidr, out ipnetwork);
             return ipnetwork;
-
         }
 
         /// <summary>
@@ -650,7 +648,6 @@ namespace System.Net
         /// <param name="cidr"></param>
         /// <returns></returns>
         private static void InternalParse(bool tryParse, IPAddress ipaddress, byte cidr, out IPNetwork ipnetwork) {
-
             if (ipaddress == null)
             {
                 if (tryParse == false)
