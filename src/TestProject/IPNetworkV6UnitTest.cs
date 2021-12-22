@@ -882,23 +882,24 @@ namespace System.Net.TestProject
 
         #endregion
 
-        #region ParseIpCidr
+        #region CtorWithIpAndCidr
 
         [TestMethod]
-        public void ParseIpCidr1() {
+        public void CtorWithIpAndCidr1()
+        {
             string ipaddress = "2001:0db8::";
             IPAddress ip = IPAddress.Parse(ipaddress);
-            IPNetwork ipnetwork = IPNetwork.Parse(ip, 124);
+            IPNetwork ipnetwork = new IPNetwork(ip, 124);
             Assert.AreEqual("2001:db8::/124", ipnetwork.ToString(), "network");
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void ParseIpCidr2()
+        public void CtorWithIpAndCidr2()
         {
             string ipaddress = "2001:db8::";
             IPAddress ip = IPAddress.Parse(ipaddress);
-            IPNetwork ipnet = IPNetwork.Parse(ipaddress, 129);
+            IPNetwork ipnetwork = new IPNetwork(ip, 129);
         }
         #endregion
 

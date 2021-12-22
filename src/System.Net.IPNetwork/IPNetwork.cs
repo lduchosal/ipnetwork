@@ -188,23 +188,36 @@ namespace System.Net
 #else
         internal
 #endif
+            IPNetwork(BigInteger ipaddress, AddressFamily family, byte cidr)
+        {
+            Init(ipaddress, family, cidr);
+        }
 
-        IPNetwork(BigInteger ipaddress, AddressFamily family, byte cidr) {
+        public IPNetwork(IPAddress ipaddress, byte cidr)
+        {
+            if (ipaddress == null) throw new ArgumentNullException(nameof(ipaddress));
 
-            int maxCidr = family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
-            if (cidr > maxCidr) {
+            var uintIpAddress = ToBigInteger(ipaddress);
+
+            Init(uintIpAddress, ipaddress.AddressFamily, cidr);
+        }
+
+        private void Init(BigInteger ipaddress, AddressFamily family, byte cidr)
+        {
+            var maxCidr = family == AddressFamily.InterNetwork ? 32 : 128;
+            if (cidr > maxCidr)
+            {
                 throw new ArgumentOutOfRangeException("cidr");
             }
 
-            this._ipaddress = ipaddress;
-            this._family = family;
-            this._cidr = cidr;
-
+            _ipaddress = ipaddress;
+            _family = family;
+            _cidr = cidr;
         }
 
 #endregion
 
-#region parsers
+        #region parsers
 
         /// <summary>
         /// 192.168.168.100 - 255.255.255.0
