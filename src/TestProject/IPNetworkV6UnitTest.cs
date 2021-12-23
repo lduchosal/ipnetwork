@@ -894,7 +894,7 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void CtorWithIpAndCidr2()
         {
             string ipaddress = "2001:db8::";
