@@ -264,25 +264,6 @@ namespace System.Net
         }
 
         /// <summary>
-        /// 192.168.168.100/24
-        /// 
-        /// Network   : 192.168.168.0
-        /// Netmask   : 255.255.255.0
-        /// Cidr      : 24
-        /// Start     : 192.168.168.1
-        /// End       : 192.168.168.254
-        /// Broadcast : 192.168.168.255
-        /// </summary>
-        /// <param name="ipaddress"></param>
-        /// <param name="cidr"></param>
-        /// <returns></returns>
-        public static IPNetwork Parse(IPAddress ipaddress, byte cidr) {
-            IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, ipaddress, cidr, out ipnetwork);
-            return ipnetwork;
-        }
-
-        /// <summary>
         /// 192.168.168.100 255.255.255.0
         /// 
         /// Network   : 192.168.168.0
@@ -646,44 +627,7 @@ namespace System.Net
 
             IPNetwork.InternalParse(tryParse, ip, mask, out ipnetwork);
         }
-
-        /// <summary>
-        /// 192.168.168.100/24
-        /// 
-        /// Network   : 192.168.168.0
-        /// Netmask   : 255.255.255.0
-        /// Cidr      : 24
-        /// Start     : 192.168.168.1
-        /// End       : 192.168.168.254
-        /// Broadcast : 192.168.168.255
-        /// </summary>
-        /// <param name="ipaddress"></param>
-        /// <param name="cidr"></param>
-        /// <returns></returns>
-        private static void InternalParse(bool tryParse, IPAddress ipaddress, byte cidr, out IPNetwork ipnetwork) {
-            if (ipaddress == null)
-            {
-                if (tryParse == false)
-                {
-                    throw new ArgumentNullException("ipaddress");
-                }
-                ipnetwork = null;
-                return;
-            }
-
-            IPAddress mask = null;
-            bool parsedNetmask = IPNetwork.TryToNetmask(cidr, ipaddress.AddressFamily, out mask);
-            if (parsedNetmask == false) {
-                if (tryParse == false) {
-                    throw new ArgumentException("cidr");
-                }
-                ipnetwork = null;
-                return;
-            }
-            
-            IPNetwork.InternalParse(tryParse, ipaddress, mask, out ipnetwork);
-        }
-
+        
 #endregion
 
 #region converters
