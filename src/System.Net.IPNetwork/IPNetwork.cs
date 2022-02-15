@@ -188,23 +188,36 @@ namespace System.Net
 #else
         internal
 #endif
+            IPNetwork(BigInteger ipaddress, AddressFamily family, byte cidr)
+        {
+            Init(ipaddress, family, cidr);
+        }
 
-        IPNetwork(BigInteger ipaddress, AddressFamily family, byte cidr) {
+        public IPNetwork(IPAddress ipaddress, byte cidr)
+        {
+            if (ipaddress == null) throw new ArgumentNullException(nameof(ipaddress));
 
-            int maxCidr = family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
-            if (cidr > maxCidr) {
+            var uintIpAddress = ToBigInteger(ipaddress);
+
+            Init(uintIpAddress, ipaddress.AddressFamily, cidr);
+        }
+
+        private void Init(BigInteger ipaddress, AddressFamily family, byte cidr)
+        {
+            var maxCidr = family == AddressFamily.InterNetwork ? 32 : 128;
+            if (cidr > maxCidr)
+            {
                 throw new ArgumentOutOfRangeException("cidr");
             }
 
-            this._ipaddress = ipaddress;
-            this._family = family;
-            this._cidr = cidr;
-
+            _ipaddress = ipaddress;
+            _family = family;
+            _cidr = cidr;
         }
 
 #endregion
 
-#region parsers
+        #region parsers
 
         /// <summary>
         /// 192.168.168.100 - 255.255.255.0
@@ -248,25 +261,6 @@ namespace System.Net
             IPNetwork.InternalParse(false, ipaddress, cidr, out ipnetwork);
             return ipnetwork;
 
-        }
-
-        /// <summary>
-        /// 192.168.168.100/24
-        /// 
-        /// Network   : 192.168.168.0
-        /// Netmask   : 255.255.255.0
-        /// Cidr      : 24
-        /// Start     : 192.168.168.1
-        /// End       : 192.168.168.254
-        /// Broadcast : 192.168.168.255
-        /// </summary>
-        /// <param name="ipaddress"></param>
-        /// <param name="cidr"></param>
-        /// <returns></returns>
-        public static IPNetwork Parse(IPAddress ipaddress, byte cidr) {
-            IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, ipaddress, cidr, out ipnetwork);
-            return ipnetwork;
         }
 
         /// <summary>
@@ -633,44 +627,7 @@ namespace System.Net
 
             IPNetwork.InternalParse(tryParse, ip, mask, out ipnetwork);
         }
-
-        /// <summary>
-        /// 192.168.168.100/24
-        /// 
-        /// Network   : 192.168.168.0
-        /// Netmask   : 255.255.255.0
-        /// Cidr      : 24
-        /// Start     : 192.168.168.1
-        /// End       : 192.168.168.254
-        /// Broadcast : 192.168.168.255
-        /// </summary>
-        /// <param name="ipaddress"></param>
-        /// <param name="cidr"></param>
-        /// <returns></returns>
-        private static void InternalParse(bool tryParse, IPAddress ipaddress, byte cidr, out IPNetwork ipnetwork) {
-            if (ipaddress == null)
-            {
-                if (tryParse == false)
-                {
-                    throw new ArgumentNullException("ipaddress");
-                }
-                ipnetwork = null;
-                return;
-            }
-
-            IPAddress mask = null;
-            bool parsedNetmask = IPNetwork.TryToNetmask(cidr, ipaddress.AddressFamily, out mask);
-            if (parsedNetmask == false) {
-                if (tryParse == false) {
-                    throw new ArgumentException("cidr");
-                }
-                ipnetwork = null;
-                return;
-            }
-            
-            IPNetwork.InternalParse(tryParse, ipaddress, mask, out ipnetwork);
-        }
-
+        
 #endregion
 
 #region converters
