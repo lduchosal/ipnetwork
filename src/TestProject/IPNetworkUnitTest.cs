@@ -3478,42 +3478,6 @@ namespace System.Net.TestProject
 
         #endregion
 
-        #region GetHashCode
-
-        [TestMethod]
-        public void TestGetHashCode1() {
-
-            IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.1.1/0");
-            IPNetwork ipnetwork2 = IPNetwork.Parse("0.0.1.1/0");
-            int hashCode1 = ipnetwork1.GetHashCode();
-            int hashCode2 = ipnetwork2.GetHashCode();
-            Assert.AreEqual(hashCode1, hashCode2, "hashcode");
-
-        }
-
-        [TestMethod]
-        public void TestGetHashCode2() {
-
-            IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.0.0/1");
-            IPNetwork ipnetwork2 = IPNetwork.Parse("0.0.0.0/1");
-            int hashCode1 = ipnetwork1.GetHashCode();
-            int hashCode2 = ipnetwork2.GetHashCode();
-            Assert.AreEqual(hashCode1, hashCode2, "hashcode");
-
-        }
-        [TestMethod]
-        public void TestGetHashCode3() {
-
-            IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.0.0/32");
-            IPNetwork ipnetwork2 = IPNetwork.Parse("0.0.0.0/32");
-            int hashCode1 = ipnetwork1.GetHashCode();
-            int hashCode2 = ipnetwork2.GetHashCode();
-            Assert.AreEqual(hashCode1, hashCode2, "hashcode");
-
-        }
-
-        #endregion
-
         #region Print
 
         [TestMethod]

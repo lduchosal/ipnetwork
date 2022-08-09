@@ -1,0 +1,60 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Collections.Generic;
+using System.Net;
+
+namespace System.Net.TestProject
+{
+    [TestClass]
+    public class HashSetUnitTest
+    {
+
+
+        [TestMethod]
+        public void TestGetHashCode_HashSet_Add1()
+        {
+
+            IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.1.1/0");
+            IPNetwork ipnetwork2 = IPNetwork.Parse("1.1.1.1/0");
+
+            var hashset = new HashSet<IPNetwork>();
+            bool add1 = hashset.Add(ipnetwork1);
+            bool add2 = hashset.Add(ipnetwork2);
+
+            Assert.IsTrue(add1, "add1");
+            Assert.IsFalse(add2, "add2");
+        }
+
+        [TestMethod]
+        public void TestGetHashCode_HashSet_Add2()
+        {
+
+            IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.0.0/1");
+            IPNetwork ipnetwork2 = IPNetwork.Parse("1.0.0.0/1");
+
+            var hashset = new HashSet<IPNetwork>();
+            bool add1 = hashset.Add(ipnetwork1);
+            bool add2 = hashset.Add(ipnetwork2);
+
+            Assert.IsTrue(add1, "add1");
+            Assert.IsFalse(add2, "add2");
+
+        }
+
+        [TestMethod]
+        public void TestGetHashCode_HashSet_Add3()
+        {
+
+            IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.0.0/32");
+            IPNetwork ipnetwork2 = IPNetwork.Parse("0.0.0.1/32");
+
+            var hashset = new HashSet<IPNetwork>();
+            bool add1 = hashset.Add(ipnetwork1);
+            bool add2 = hashset.Add(ipnetwork2);
+
+            Assert.IsTrue(add1, "add1");
+            Assert.IsTrue(add2, "add2");
+
+        }
+
+    }
+}
