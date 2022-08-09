@@ -1528,7 +1528,7 @@ namespace System.Net
 
         public override int GetHashCode() {
             return string.Format("{0}|{1}|{2}",
-                this._ipaddress.GetHashCode(),
+                this._family.GetHashCode(),
                 this._network.GetHashCode(),
                 this._cidr.GetHashCode()).GetHashCode();
         }
