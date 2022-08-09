@@ -7,12 +7,9 @@ namespace System.Net.TestProject
     [TestClass]
     public class HashSetUnitTest
     {
-
-
         [TestMethod]
         public void TestGetHashCode_HashSet_Add1()
         {
-
             IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.1.1/0");
             IPNetwork ipnetwork2 = IPNetwork.Parse("1.1.1.1/0");
 
@@ -27,7 +24,6 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestGetHashCode_HashSet_Add2()
         {
-
             IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.0.0/1");
             IPNetwork ipnetwork2 = IPNetwork.Parse("1.0.0.0/1");
 
@@ -37,13 +33,11 @@ namespace System.Net.TestProject
 
             Assert.IsTrue(add1, "add1");
             Assert.IsFalse(add2, "add2");
-
         }
 
         [TestMethod]
         public void TestGetHashCode_HashSet_Add3()
         {
-
             IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.0.0/32");
             IPNetwork ipnetwork2 = IPNetwork.Parse("0.0.0.1/32");
 
@@ -53,10 +47,7 @@ namespace System.Net.TestProject
 
             Assert.IsTrue(add1, "add1");
             Assert.IsTrue(add2, "add2");
-
         }
-
-
 
         #region Equals IPv6 vs IPv4
 
@@ -72,12 +63,8 @@ namespace System.Net.TestProject
 
             Assert.IsTrue(add1, "add1");
             Assert.IsTrue(add2, "add2");
-
         }
 
         #endregion
-
-
-
     }
 }
