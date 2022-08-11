@@ -148,7 +148,6 @@ namespace System.Net.TestProject
             Assert.AreEqual("::", wildcardmask, "wildcardmask");
         }
 
-
         [DataTestMethod]
         [DataRow("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", "::")]
         [DataRow("ffff:ffff:ffff:ffff::", "::ffff:ffff:ffff:ffff")]
