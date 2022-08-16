@@ -3,6 +3,9 @@ using System.Numerics;
 
 namespace System.Net
 {
+    /// <summary>
+    /// Class <c>CidrClassFull</c> tries to guess CIDR in a ClassFull way.
+    /// </summary>
     public sealed class CidrClassFull : ICidrGuess
     {
         /// <summary>

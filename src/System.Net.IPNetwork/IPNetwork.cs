@@ -27,6 +27,9 @@ namespace System.Net
         //private uint _usable;
         private byte _cidr;
 
+        /// <summary>
+        /// 
+        /// </summary>
         [DataMember(Name="IPNetwork", IsRequired=true)]
         public string Value
         {
@@ -192,7 +195,12 @@ namespace System.Net
         {
             Init(ipaddress, family, cidr);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ipaddress"></param>
+        /// <param name="cidr"></param>
+        /// <exception cref="ArgumentNullException"></exception>
         public IPNetwork(IPAddress ipaddress, byte cidr)
         {
             if (ipaddress == null) throw new ArgumentNullException(nameof(ipaddress));
@@ -327,9 +335,9 @@ namespace System.Net
 
         }
 
-#endregion
+        #endregion
 
-#region TryParse
+        #region TryParse
 
         /// <summary>
         /// 192.168.168.100 - 255.255.255.0
@@ -343,6 +351,7 @@ namespace System.Net
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
+        /// <param name="ipnetwork"></param>
         /// <returns></returns>
         public static bool TryParse(string ipaddress, string netmask, out IPNetwork ipnetwork) {
 
@@ -368,6 +377,7 @@ namespace System.Net
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <param name="cidr"></param>
+        /// <param name="ipnetwork"></param>
         /// <returns></returns>
         public static bool TryParse(string ipaddress, byte cidr, out IPNetwork ipnetwork) {
 
@@ -428,10 +438,10 @@ namespace System.Net
 
         }
 
-        
-#endregion
 
-#region InternalParse
+        #endregion
+
+        #region InternalParse
 
         /// <summary>
         /// 192.168.168.100 - 255.255.255.0
@@ -443,8 +453,10 @@ namespace System.Net
         /// End       : 192.168.168.254
         /// Broadcast : 192.168.168.255
         /// </summary>
+        /// <param name="tryParse"></param>
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
+        /// <param name="ipnetwork"></param>
         /// <returns></returns>
         private static void InternalParse(bool tryParse, string ipaddress, string netmask, out IPNetwork ipnetwork) {
 
@@ -539,8 +551,10 @@ namespace System.Net
         /// End       : 192.168.168.254
         /// Broadcast : 192.168.168.255
         /// </summary>
+        /// <param name="tryParse"></param>
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
+        /// <param name="ipnetwork"></param>
         /// <returns></returns>
         private static void InternalParse(bool tryParse, IPAddress ipaddress, IPAddress netmask, out IPNetwork ipnetwork) {
 
@@ -590,8 +604,10 @@ namespace System.Net
         /// End       : 192.168.168.254
         /// Broadcast : 192.168.168.255
         /// </summary>
+        /// <param name="tryParse"></param>
         /// <param name="ipaddress"></param>
         /// <param name="cidr"></param>
+        /// <param name="ipnetwork"></param>
         /// <returns></returns>
         private static void InternalParse(bool tryParse, string ipaddress, byte cidr, out IPNetwork ipnetwork) {
 
@@ -654,6 +670,7 @@ namespace System.Net
         /// 0.0.1.0 -> 256
         /// </summary>
         /// <param name="ipaddress"></param>
+        /// <param name="uintIpAddress"></param>
         /// <returns></returns>
         public static bool TryToBigInteger(IPAddress ipaddress, out BigInteger? uintIpAddress) {
             BigInteger? uintIpAddress2 = null;
@@ -716,6 +733,7 @@ namespace System.Net
         /// Convert a cidr to BigInteger netmask
         /// </summary>
         /// <param name="cidr"></param>
+        /// <param name="family"></param>
         /// <returns></returns>
         public static BigInteger ToUint(byte cidr, AddressFamily family) {
 
@@ -729,6 +747,8 @@ namespace System.Net
         /// Convert a cidr to uint netmask
         /// </summary>
         /// <param name="cidr"></param>
+        /// <param name="family"></param>
+        /// <param name="uintNetmask"></param>
         /// <returns></returns>
         public static bool TryToUint(byte cidr, AddressFamily family, out BigInteger? uintNetmask) {
 
@@ -742,7 +762,10 @@ namespace System.Net
         /// <summary>
         /// Convert a cidr to uint netmask
         /// </summary>
+        /// <param name="tryParse"></param>
         /// <param name="cidr"></param>
+        /// <param name="family"></param>
+        /// <param name="uintNetmask"></param>
         /// <returns></returns>
 #if TRAVISCI
         public
@@ -801,17 +824,20 @@ namespace System.Net
 
         }
 
-#endregion
+        #endregion
 
-#region ToCidr
-        
+        #region ToCidr
+
         /// <summary>
         /// Convert netmask to CIDR
         ///  255.255.255.0 -> 24
         ///  255.255.0.0   -> 16
         ///  255.0.0.0     -> 8
         /// </summary>
+        /// <param name="tryParse"></param>
         /// <param name="netmask"></param>
+        /// <param name="family"></param>
+        /// <param name="cidr"></param>
         /// <returns></returns>
         private static void InternalToCidr(bool tryParse, BigInteger netmask, AddressFamily family, out byte? cidr) {
 
@@ -849,6 +875,7 @@ namespace System.Net
         ///  255.0.0.0     -> 8
         /// </summary>
         /// <param name="netmask"></param>
+        /// <param name="cidr"></param>
         /// <returns></returns>
         public static bool TryToCidr(IPAddress netmask, out byte? cidr) {
             byte? cidr2 = null;
@@ -870,15 +897,16 @@ namespace System.Net
             BigInteger? uintNetmask2 = null;
             bool parsed = IPNetwork.TryToBigInteger(netmask, out uintNetmask2);
 
-            /// 20180217 lduchosal
-            /// impossible to reach code.
-            /// if (parsed == false) {
-            ///     if (tryParse == false) {
-            ///         throw new ArgumentException("netmask");
-            ///     }
-            ///     cidr = null;
-            ///     return;
-            /// }
+            // 20180217 lduchosal
+            // impossible to reach code.
+            // if (parsed == false) {
+            //     if (tryParse == false) {
+            //         throw new ArgumentException("netmask");
+            //     }
+            //     cidr = null;
+            //     return;
+            // }
+
             BigInteger uintNetmask = (BigInteger)uintNetmask2;
 
             byte? cidr2 = null;
@@ -890,9 +918,9 @@ namespace System.Net
         }
 
 
-#endregion
+        #endregion
 
-#region ToNetmask
+        #region ToNetmask
 
         /// <summary>
         /// Convert CIDR to netmask
@@ -900,8 +928,9 @@ namespace System.Net
         ///  16 -> 255.255.0.0
         ///  8 -> 255.0.0.0
         /// </summary>
-        /// <see cref="http://snipplr.com/view/15557/cidr-class-for-ipv4/"/>
+        /// <see href="http://snipplr.com/view/15557/cidr-class-for-ipv4/"/>
         /// <param name="cidr"></param>
+        /// <param name="family"></param>
         /// <returns></returns>
         public static IPAddress ToNetmask(byte cidr, AddressFamily family) {
 
@@ -916,8 +945,10 @@ namespace System.Net
         ///  16 -> 255.255.0.0
         ///  8 -> 255.0.0.0
         /// </summary>
-        /// <see cref="http://snipplr.com/view/15557/cidr-class-for-ipv4/"/>
+        /// <see href="http://snipplr.com/view/15557/cidr-class-for-ipv4/"/>
         /// <param name="cidr"></param>
+        /// <param name="family"></param>
+        /// <param name="netmask"></param>
         /// <returns></returns>
         public static bool TryToNetmask(byte cidr, AddressFamily family, out IPAddress netmask) {
 
@@ -945,16 +976,16 @@ namespace System.Net
                     return;
             }
 
-            /// 20180217 lduchosal
-            /// impossible to reach code, byte cannot be negative :
-            /// 
-            /// if (cidr < 0) {
-            ///     if (tryParse == false) {
-            ///         throw new ArgumentOutOfRangeException("cidr");
-            ///     }
-            ///     netmask = null;
-            ///     return;
-            /// }
+            // 20180217 lduchosal
+            // impossible to reach code, byte cannot be negative :
+            // 
+            // if (cidr < 0) {
+            //     if (tryParse == false) {
+            //         throw new ArgumentOutOfRangeException("cidr");
+            //     }
+            //     netmask = null;
+            //     return;
+            // }
 
             int maxCidr = family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
             if (cidr > maxCidr) {
@@ -972,19 +1003,20 @@ namespace System.Net
             return;
         }
 
-#endregion
+        #endregion
 
-#endregion
+        #endregion
 
-#region utils
+        #region utils
 
-#region BitsSet
+        #region BitsSet
 
         /// <summary>
         /// Count bits set to 1 in netmask
         /// </summary>
-        /// <see cref="http://stackoverflow.com/questions/109023/best-algorithm-to-count-the-number-of-set-bits-in-a-32-bit-integer"/>
+        /// <see href="http://stackoverflow.com/questions/109023/best-algorithm-to-count-the-number-of-set-bits-in-a-32-bit-integer"/>
         /// <param name="netmask"></param>
+        /// <param name="family"></param>
         /// <returns></returns>
         private static byte BitsSet(BigInteger netmask, AddressFamily family) {
             
@@ -1015,7 +1047,7 @@ namespace System.Net
         /// return true if netmask is a valid netmask
         /// 255.255.255.0, 255.0.0.0, 255.255.240.0, ...
         /// </summary>
-        /// <see cref="http://www.actionsnip.com/snippets/tomo_atlacatl/calculate-if-a-netmask-is-valid--as2-"/>
+        /// <see href="http://www.actionsnip.com/snippets/tomo_atlacatl/calculate-if-a-netmask-is-valid--as2-"/>
         /// <param name="netmask"></param>
         /// <returns></returns>
         public static bool ValidNetmask(IPAddress netmask) {
@@ -1056,14 +1088,15 @@ namespace System.Net
 
         }
 
-#endregion
+        #endregion
 
-#region ToIPAddress
+        #region ToIPAddress
 
         /// <summary>
         /// Transform a uint ipaddress into IPAddress object
         /// </summary>
         /// <param name="ipaddress"></param>
+        /// <param name="family"></param>
         /// <returns></returns>
         public static IPAddress ToIPAddress(BigInteger ipaddress, AddressFamily family) {
 
@@ -1339,6 +1372,7 @@ namespace System.Net
         /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9
         /// </summary>
         /// <param name="cidr"></param>
+        /// <param name="ipnetworkCollection"></param>
         /// <returns></returns>
         public bool TrySubnet(byte cidr, out IPNetworkCollection ipnetworkCollection) {
             IPNetworkCollection inc = null;
@@ -1428,6 +1462,7 @@ namespace System.Net
         /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24 
         /// </summary>
         /// <param name="network2"></param>
+        /// <param name="supernet"></param>
         /// <returns></returns>
         public bool TrySupernet(IPNetwork network2, out IPNetwork supernet) {
 
@@ -1491,13 +1526,12 @@ namespace System.Net
             IPNetwork first = (network1._network < network2._network) ? network1 : network2;
             IPNetwork last = (network1._network > network2._network) ? network1 : network2;
 
-            /// Starting from here :
-            /// network1 and network2 have the same cidr,
-            /// network1 does not contain network2,
-            /// network2 does not contain network1,
-            /// first is the lower subnet
-            /// last is the higher subnet
-
+            // Starting from here :
+            // network1 and network2 have the same cidr,
+            // network1 does not contain network2,
+            // network2 does not contain network1,
+            // first is the lower subnet
+            // last is the higher subnet
 
             if ((first._broadcast + 1) != last._network) {
                 if (trySupernet == false) {
@@ -1543,7 +1577,6 @@ namespace System.Net
         /// 192.168.0.0/24 + 192.168.1.0/24 + 192.168.2.0/24 + 192.168.3.0/24 = 192.168.0.0/22
         /// </summary>
         /// <param name="ipnetworks"></param>
-        /// <param name="supernet"></param>
         /// <returns></returns>
         public static IPNetwork[] Supernet(IPNetwork[] ipnetworks)
         {
@@ -1843,9 +1876,10 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Try to parse cidr. Have to be >= 0 and <= 32 or 128
+        /// Try to parse cidr. Have to be >= 0 and &lt;= 32 or 128
         /// </summary>
         /// <param name="sidr"></param>
+        /// <param name="family"></param>
         /// <param name="cidr"></param>
         /// <returns></returns>
         public static bool TryParseCidr(string sidr, AddressFamily family, out byte? cidr) {
@@ -1870,61 +1904,70 @@ namespace System.Net
 
 #region ListIPAddress
 
+        /// <summary>
+        /// List all ip addresses in a subnet
+        /// </summary>
+        /// <param name="ipnetwork"></param>
+        /// <returns></returns>
         [Obsolete("static ListIPAddress is deprecated, please use instance ListIPAddress.")]
         public static IPAddressCollection ListIPAddress(IPNetwork ipnetwork) {
             return ipnetwork.ListIPAddress();
         }
 
+        /// <summary>
+        /// List all ip addresses in a subnet
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns></returns>
         public IPAddressCollection ListIPAddress(FilterEnum filter = FilterEnum.All) {
             return new IPAddressCollection(this, filter);
         }
 
 
-#endregion
+        #endregion
 
-        /**
-         * Need a better way to do it
-         * 
-#region TrySubstractNetwork
+        //
+        // Need a better way to do it
+        //
+        // #region TrySubstractNetwork
+        // 
+        //         public static bool TrySubstractNetwork(IPNetwork[] ipnetworks, IPNetwork substract, out IEnumerable<IPNetwork> result) {
+        // 
+        //             if (ipnetworks == null) {
+        //                 result = null;
+        //                 return false;
+        //             }
+        //             if (ipnetworks.Length <= 0) {
+        //                 result = null;
+        //                 return false;
+        //             }
+        //             if (substract == null) {
+        //                 result = null;
+        //                 return false;
+        //             }
+        //             var results = new List<IPNetwork>();
+        //             foreach (var ipn in ipnetworks) {
+        //                 if (!Overlap(ipn, substract)) {
+        //                     results.Add(ipn);
+        //                     continue;
+        //                 }
+        // 
+        //                 var collection = ipn.Subnet(substract.Cidr);
+        //                 var rtemp = new List<IPNetwork>();
+        //                 foreach(var subnet in collection) {
+        //                     if (subnet != substract) {
+        //                         rtemp.Add(subnet);
+        //                     }
+        //                 }
+        //                 var supernets = Supernet(rtemp.ToArray());
+        //                 results.AddRange(supernets);
+        //             }
+        //             result = results;
+        //             return true;
+        //         }
+        // #endregion
 
-        public static bool TrySubstractNetwork(IPNetwork[] ipnetworks, IPNetwork substract, out IEnumerable<IPNetwork> result) {
-
-            if (ipnetworks == null) {
-                result = null;
-                return false;
-            }
-            if (ipnetworks.Length <= 0) {
-                result = null;
-                return false;
-            }
-            if (substract == null) {
-                result = null;
-                return false;
-            }
-            var results = new List<IPNetwork>();
-            foreach (var ipn in ipnetworks) {
-                if (!Overlap(ipn, substract)) {
-                    results.Add(ipn);
-                    continue;
-                }
-
-                var collection = ipn.Subnet(substract.Cidr);
-                var rtemp = new List<IPNetwork>();
-                foreach(var subnet in collection) {
-                    if (subnet != substract) {
-                        rtemp.Add(subnet);
-                    }
-                }
-                var supernets = Supernet(rtemp.ToArray());
-                results.AddRange(supernets);
-            }
-            result = results;
-            return true;
-        }
-#endregion
-         * **/
-
-#region IComparable<IPNetwork> Members
+        #region IComparable<IPNetwork> Members
 
         public static Int32 Compare(IPNetwork left, IPNetwork right)
         {
@@ -1998,22 +2041,41 @@ namespace System.Net
         #endregion
 
         #region Operators
-
+        /// <summary>
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static Boolean operator ==(IPNetwork left, IPNetwork right)
         {
             return Equals(left, right);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static Boolean operator !=(IPNetwork left, IPNetwork right)
         {
             return !Equals(left, right);
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static Boolean operator <(IPNetwork left, IPNetwork right)
         {
             return Compare(left, right) < 0;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        /// <returns></returns>
         public static Boolean operator >(IPNetwork left, IPNetwork right)
         {
             return Compare(left, right) > 0;

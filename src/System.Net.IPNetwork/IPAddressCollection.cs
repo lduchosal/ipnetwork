@@ -4,13 +4,15 @@ using System.Numerics;
 
 namespace System.Net
 {
-
     public enum FilterEnum
     {
         All,
         Usable
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress> {
 
         private readonly IPNetwork _ipnetwork;
@@ -82,12 +84,16 @@ namespace System.Net
             }
             return true;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void Reset()
         {
             _enumerator = -1;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public void Dispose()
         {
             // nothing to dispose

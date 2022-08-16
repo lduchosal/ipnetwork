@@ -9,5 +9,8 @@
     <SignAssembly Condition=" '$(OS)' != 'Windows_NT' ">false</SignAssembly>
     <AssemblyOriginatorKeyFile>System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
 
 </Project>
