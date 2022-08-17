@@ -1,10 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net6.0</TargetFrameworks>
   </PropertyGroup>
 	<PropertyGroup>
-		<Version>2.6.0</Version>
+		<Version>2.6.1</Version>
 	</PropertyGroup>
 
 	<PropertyGroup>
