@@ -9,7 +9,8 @@ namespace System.Net.TestProject
     /// IPNetworkUnitTest test every single method
     /// </summary>
     [TestClass]
-    public class IPNetworkUnitTest {
+    public class IPNetworkUnitTest
+    {
 
         #region ctor
 
@@ -25,58 +26,67 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseIPAddressNetmaskANE2() {
+        public void TestParseIPAddressNetmaskANE2()
+        {
             IPAddress ip = null;
             IPNetwork.Parse(ip, ip);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseIPAddressNetmaskANE3() {
+        public void TestParseIPAddressNetmaskANE3()
+        {
             IPNetwork.Parse("", 0);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseIPAddressNetmaskANE4() {
+        public void TestParseIPAddressNetmaskANE4()
+        {
             IPNetwork.Parse((string)null, 0);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseIPAddressNetmaskANE5() {
+        public void TestParseIPAddressNetmaskANE5()
+        {
             string n = null;
             IPNetwork.Parse(n, n);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestParseIPAddressNetmaskANE8() {
+        public void TestParseIPAddressNetmaskANE8()
+        {
             IPNetwork ipnet = IPNetwork.Parse("x.x.x.x", "x.x.x.x");
 
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestParseIPAddressNetmaskANE9() {
+        public void TestParseIPAddressNetmaskANE9()
+        {
             IPNetwork ipnet = IPNetwork.Parse("0.0.0.0", "x.x.x.x");
 
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestParseIPAddressNetmaskANE10() {
+        public void TestParseIPAddressNetmaskANE10()
+        {
             IPNetwork ipnet = IPNetwork.Parse("x.x.x.x", 0);
 
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestParseIPAddressNetmaskANE11() {
+        public void TestParseIPAddressNetmaskANE11()
+        {
             IPNetwork ipnet = IPNetwork.Parse("0.0.0.0", 33);
 
         }
 
         [TestMethod]
-        public void TestParseIPAddressNetmask() {
+        public void TestParseIPAddressNetmask()
+        {
 
             string ipaddress = "192.168.168.100";
             string netmask = "255.255.255.0";
@@ -101,7 +111,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestParseString1() {
+        public void TestParseString1()
+        {
 
             string ipaddress = "192.168.168.100 255.255.255.0";
 
@@ -126,7 +137,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestParseString2() {
+        public void TestParseString2()
+        {
 
             string ipaddress = "192.168.168.100/24";
 
@@ -151,7 +163,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestParseString3() {
+        public void TestParseString3()
+        {
 
             string ipaddress = "0.0.0.0/0";
 
@@ -176,7 +189,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestParseString4() {
+        public void TestParseString4()
+        {
 
             string ipaddress = "0.0.0.0/32";
 
@@ -201,7 +215,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestParseString5() {
+        public void TestParseString5()
+        {
 
             string ipaddress = "255.255.255.255/32";
 
@@ -251,7 +266,7 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void When_Parse_254_128_0_0_Should_Succeed ()
+        public void When_Parse_254_128_0_0_Should_Succeed()
         {
 
             string ipaddress = "254.128.0.0";
@@ -275,10 +290,11 @@ namespace System.Net.TestProject
         }
 
 
-        
+
 
         [TestMethod]
-        public void TestParseIPAddressNoNetmask2() {
+        public void TestParseIPAddressNoNetmask2()
+        {
 
             string ipaddress = "172.0.0.0";
 
@@ -300,7 +316,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
         [TestMethod]
-        public void TestParseIPAddressNoNetmask3() {
+        public void TestParseIPAddressNoNetmask3()
+        {
 
             string ipaddress = "192.0.0.0";
 
@@ -323,13 +340,14 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestParseIPAddressNoNetmask1_ClassFull() {
+        public void TestParseIPAddressNoNetmask1_ClassFull()
+        {
 
             string ipaddress = "10.0.0.0";
             var guessCidr = CidrGuess.ClassFull;
 
             IPNetwork ipnetwork = IPNetwork.Parse(ipaddress, guessCidr);
-            
+
             string network = "10.0.0.0";
             string netmask = "255.0.0.0";
             string broadcast = "10.255.255.255";
@@ -350,7 +368,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestParseIPAddressNoNetmask2_ClassFull() {
+        public void TestParseIPAddressNoNetmask2_ClassFull()
+        {
 
             string ipaddress = "172.0.0.0";
             var guessCidr = CidrGuess.ClassFull;
@@ -375,13 +394,14 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestParseIPAddressNoNetmask3_ClassFull() {
+        public void TestParseIPAddressNoNetmask3_ClassFull()
+        {
 
             string ipaddress = "192.0.0.0";
             var guessCidr = CidrGuess.ClassFull;
 
             IPNetwork ipnetwork = IPNetwork.Parse(ipaddress, guessCidr);
-            
+
             string network = "192.0.0.0";
             string netmask = "255.255.255.0";
             string broadcast = "192.0.0.255";
@@ -400,13 +420,14 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestParseIPAddressNoNetmask1_ClassLess() {
+        public void TestParseIPAddressNoNetmask1_ClassLess()
+        {
 
             string ipaddress = "10.0.0.0";
             var guessCidr = CidrGuess.ClassLess;
 
             IPNetwork ipnetwork = IPNetwork.Parse(ipaddress, guessCidr);
-            
+
             string network = "10.0.0.0";
             string netmask = "255.255.255.255";
             string broadcast = "10.0.0.0";
@@ -427,7 +448,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestParseIPAddressNoNetmask2_ClassLess() {
+        public void TestParseIPAddressNoNetmask2_ClassLess()
+        {
 
             string ipaddress = "172.0.0.0";
             var guessCidr = CidrGuess.ClassLess;
@@ -452,13 +474,14 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestParseIPAddressNoNetmask3_ClassLess() {
+        public void TestParseIPAddressNoNetmask3_ClassLess()
+        {
 
             string ipaddress = "192.0.0.0";
             var guessCidr = CidrGuess.ClassLess;
 
             IPNetwork ipnetwork = IPNetwork.Parse(ipaddress, guessCidr);
-            
+
             string network = "192.0.0.0";
             string netmask = "255.255.255.255";
             string broadcast = "192.0.0.0";
@@ -478,7 +501,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestParseIPAddressNoNetmask4() {
+        public void TestParseIPAddressNoNetmask4()
+        {
 
             string ipaddress = "224.0.0.0";
             IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
@@ -497,7 +521,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestParseIPAddressNoNetmask127001(){
+        public void TestParseIPAddressNoNetmask127001()
+        {
 
             string ipaddress = "127.0.0.1";
             IPNetwork result = null;
@@ -507,21 +532,24 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestParseStringAE1() {
+        public void TestParseStringAE1()
+        {
             string ipaddress = "garbage";
             IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestParseStringAE2() {
+        public void TestParseStringAE2()
+        {
             string ipaddress = "0.0.0.0 0.0.1.0";
             IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseStringANE1() {
+        public void TestParseStringANE1()
+        {
             string ipaddress = null;
             IPNetwork ipnetwork = IPNetwork.Parse(ipaddress);
         }
@@ -533,7 +561,8 @@ namespace System.Net.TestProject
         #region TryParse
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE2() {
+        public void TestTryParseIPAddressNetmaskANE2()
+        {
             IPNetwork ipnet = null;
             IPAddress ip = null;
             bool parsed = IPNetwork.TryParse(ip, ip, out ipnet);
@@ -543,7 +572,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE3() {
+        public void TestTryParseIPAddressNetmaskANE3()
+        {
             IPNetwork ipnet = null;
             bool parsed = IPNetwork.TryParse("", 0, out ipnet);
 
@@ -551,7 +581,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(null, ipnet, "ipnet");
         }
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE4() {
+        public void TestTryParseIPAddressNetmaskANE4()
+        {
             IPNetwork ipnet = null;
             bool parsed = IPNetwork.TryParse(null, 0, out ipnet);
 
@@ -559,7 +590,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(null, ipnet, "ipnet");
         }
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE5() {
+        public void TestTryParseIPAddressNetmaskANE5()
+        {
             string n = null;
             IPNetwork ipnet = null;
             bool parsed = IPNetwork.TryParse(n, n, out ipnet);
@@ -570,7 +602,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE6() {
+        public void TestTryParseIPAddressNetmaskANE6()
+        {
             IPNetwork ipnet = null;
             bool parsed = IPNetwork.TryParse(IPAddress.Parse("10.10.10.10"), null, out ipnet);
             Assert.AreEqual(false, parsed, "parsed");
@@ -578,7 +611,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE7() {
+        public void TestTryParseIPAddressNetmaskANE7()
+        {
             IPNetwork ipnet = null;
             bool parsed = IPNetwork.TryParse("0.0.0.0", null, out ipnet);
 
@@ -588,7 +622,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE8() {
+        public void TestTryParseIPAddressNetmaskANE8()
+        {
             IPNetwork ipnet = null;
             bool parsed = IPNetwork.TryParse("x.x.x.x", "x.x.x.x", out ipnet);
 
@@ -598,7 +633,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE9() {
+        public void TestTryParseIPAddressNetmaskANE9()
+        {
             IPNetwork ipnet = null;
             bool parsed = IPNetwork.TryParse("0.0.0.0", "x.x.x.x", out ipnet);
 
@@ -610,7 +646,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE10() {
+        public void TestTryParseIPAddressNetmaskANE10()
+        {
             IPNetwork ipnet = null;
             bool parsed = IPNetwork.TryParse("x.x.x.x", 0, out ipnet);
 
@@ -620,7 +657,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE11() {
+        public void TestTryParseIPAddressNetmaskANE11()
+        {
             IPNetwork ipnet = null;
             bool parsed = IPNetwork.TryParse("0.0.0.0", 33, out ipnet);
 
@@ -631,7 +669,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmask() {
+        public void TestTryParseIPAddressNetmask()
+        {
 
             IPNetwork ipnetwork = null;
             string ipaddress = "192.168.168.100";
@@ -658,7 +697,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTryParseString1() {
+        public void TestTryParseString1()
+        {
 
             IPNetwork ipnetwork = null;
             string ipaddress = "192.168.168.100 255.255.255.0";
@@ -685,7 +725,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTryParseString2() {
+        public void TestTryParseString2()
+        {
 
             IPNetwork ipnetwork = null;
             string ipaddress = "192.168.168.100/24";
@@ -712,7 +753,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTryParseString3() {
+        public void TestTryParseString3()
+        {
 
             IPNetwork ipnetwork = null;
             string ipaddress = "0.0.0.0/0";
@@ -726,7 +768,7 @@ namespace System.Net.TestProject
             uint usable = 4294967294;
 
             bool parsed = IPNetwork.TryParse(ipaddress, out ipnetwork);
-            Assert.AreEqual(true, parsed, "parsed"); 
+            Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
             Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
             Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
@@ -739,7 +781,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTryParseString4() {
+        public void TestTryParseString4()
+        {
 
             IPNetwork ipnetwork = null;
             string ipaddress = "0.0.0.0/32";
@@ -753,7 +796,7 @@ namespace System.Net.TestProject
             uint usable = 0;
 
             bool parsed = IPNetwork.TryParse(ipaddress, out ipnetwork);
-            Assert.AreEqual(true, parsed, "parsed"); 
+            Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
             Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
             Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
@@ -766,7 +809,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTryParseString5() {
+        public void TestTryParseString5()
+        {
 
             IPNetwork ipnetwork = null;
             string ipaddress = "255.255.255.255/32";
@@ -794,7 +838,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTryParseStringAE1() {
+        public void TestTryParseStringAE1()
+        {
             string ipaddress = "garbage";
             IPNetwork ipnetwork = null;
             bool parsed = IPNetwork.TryParse(ipaddress, out ipnetwork);
@@ -802,7 +847,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseStringAE2() {
+        public void TestTryParseStringAE2()
+        {
             string ipaddress = "0.0.0.0 0.0.1.0";
             IPNetwork ipnetwork = null;
             bool parsed = IPNetwork.TryParse(ipaddress, out ipnetwork);
@@ -810,7 +856,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseStringANE1() {
+        public void TestTryParseStringANE1()
+        {
             string ipaddress = null;
             IPNetwork ipnetwork = null;
             bool parsed = IPNetwork.TryParse(ipaddress, out ipnetwork);
@@ -824,7 +871,8 @@ namespace System.Net.TestProject
         #region ParseStringString
 
         [TestMethod]
-        public void TestParseStringString1() {
+        public void TestParseStringString1()
+        {
 
             string ipaddress = "192.168.168.100";
             string netmask = "255.255.255.0";
@@ -836,7 +884,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseStringString2() {
+        public void TestParseStringString2()
+        {
 
             string ipaddress = null;
             string netmask = null;
@@ -847,7 +896,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseStringString3() {
+        public void TestParseStringString3()
+        {
 
             string ipaddress = "192.168.168.100";
             string netmask = null;
@@ -858,7 +908,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseStringString4() {
+        public void TestParseStringString4()
+        {
 
             string ipaddress = "";
             string netmask = "";
@@ -869,7 +920,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseStringString5() {
+        public void TestParseStringString5()
+        {
 
             string ipaddress = "192.168.168.100";
             string netmask = "";
@@ -883,7 +935,8 @@ namespace System.Net.TestProject
         #region ParseIpIp
 
         [TestMethod]
-        public void ParseIpIp1() {
+        public void ParseIpIp1()
+        {
 
             string ipaddress = "192.168.168.100";
             string netmask = "255.255.255.0";
@@ -896,7 +949,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ParseIpIp2() {
+        public void ParseIpIp2()
+        {
 
             IPAddress ip = null;
             IPAddress netm = null;
@@ -906,7 +960,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void ParseIpIp3() {
+        public void ParseIpIp3()
+        {
 
             string ipaddress = "192.168.168.100";
             IPAddress ip = IPAddress.Parse(ipaddress);
@@ -951,12 +1006,14 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestToCidrANE() {
+        public void TestToCidrANE()
+        {
             IPNetwork.ToCidr(null);
         }
 
         [TestMethod]
-        public void TestToCidrAE() {
+        public void TestToCidrAE()
+        {
             byte cidr = IPNetwork.ToCidr(IPAddress.IPv6Any);
             Assert.AreEqual(0, cidr, "cidr");
         }
@@ -964,13 +1021,15 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestToCidrAE2() {
+        public void TestToCidrAE2()
+        {
             IPNetwork.ToCidr(IPAddress.Parse("6.6.6.6"));
         }
 
 
         [TestMethod]
-        public void TestToCidr32() {
+        public void TestToCidr32()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.255.255");
             byte cidr = 32;
@@ -979,7 +1038,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(cidr, result, "cidr");
         }
         [TestMethod]
-        public void TestToCidr24() {
+        public void TestToCidr24()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.255.0");
             byte cidr = 24;
@@ -988,7 +1048,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(cidr, result, "cidr");
         }
         [TestMethod]
-        public void TestToCidr16() {
+        public void TestToCidr16()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.0.0");
             byte cidr = 16;
@@ -997,7 +1058,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(cidr, result, "cidr");
         }
         [TestMethod]
-        public void TestToCidr8() {
+        public void TestToCidr8()
+        {
 
             IPAddress mask = IPAddress.Parse("255.0.0.0");
             byte cidr = 8;
@@ -1006,7 +1068,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(cidr, result, "cidr");
         }
         [TestMethod]
-        public void TestToCidr0() {
+        public void TestToCidr0()
+        {
 
             IPAddress mask = IPAddress.Parse("0.0.0.0");
             byte cidr = 0;
@@ -1020,14 +1083,16 @@ namespace System.Net.TestProject
         #region TryToCidr
 
         [TestMethod]
-        public void TestTryToCidrANE() {
+        public void TestTryToCidrANE()
+        {
             byte? cidr = null;
             bool parsed = IPNetwork.TryToCidr(null, out cidr);
             Assert.AreEqual(false, parsed, "parsed");
         }
 
         [TestMethod]
-        public void TestTryToCidrAE() {
+        public void TestTryToCidrAE()
+        {
             byte? cidr = null;
             bool parsed = IPNetwork.TryToCidr(IPAddress.IPv6Any, out cidr);
             Assert.AreEqual(true, parsed, "parsed");
@@ -1036,7 +1101,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTryToCidrAE2() {
+        public void TestTryToCidrAE2()
+        {
             byte? cidr = null;
             bool parsed = IPNetwork.TryToCidr(IPAddress.Parse("6.6.6.6"), out cidr);
             Assert.AreEqual(false, parsed, "parsed");
@@ -1044,7 +1110,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTryToCidr32() {
+        public void TestTryToCidr32()
+        {
             byte? cidr = null;
             IPAddress mask = IPAddress.Parse("255.255.255.255");
             byte result = 32;
@@ -1054,7 +1121,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(cidr, result, "cidr");
         }
         [TestMethod]
-        public void TestTryToCidr24() {
+        public void TestTryToCidr24()
+        {
             byte? cidr = null;
             IPAddress mask = IPAddress.Parse("255.255.255.0");
             byte result = 24;
@@ -1062,10 +1130,11 @@ namespace System.Net.TestProject
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(cidr, result, "cidr");
-            
+
         }
         [TestMethod]
-        public void TestTryToCidr16() {
+        public void TestTryToCidr16()
+        {
 
             byte? cidr = null;
             IPAddress mask = IPAddress.Parse("255.255.0.0");
@@ -1074,10 +1143,11 @@ namespace System.Net.TestProject
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(cidr, result, "cidr");
-            
+
         }
         [TestMethod]
-        public void TestTryToCidr8() {
+        public void TestTryToCidr8()
+        {
 
 
             byte? cidr = null;
@@ -1087,10 +1157,11 @@ namespace System.Net.TestProject
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(cidr, result, "cidr");
-            
+
         }
         [TestMethod]
-        public void TestTryToCidr0() {
+        public void TestTryToCidr0()
+        {
 
             byte? cidr = null;
             IPAddress mask = IPAddress.Parse("0.0.0.0");
@@ -1099,7 +1170,7 @@ namespace System.Net.TestProject
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(cidr, result, "cidr");
-            
+
         }
 
         #endregion
@@ -1107,7 +1178,8 @@ namespace System.Net.TestProject
         #region ToBigInteger
 
         [TestMethod]
-        public void TestToBigInteger32() {
+        public void TestToBigInteger32()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.255.255");
             uint uintMask = 0xffffffff;
@@ -1116,7 +1188,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(uintMask, result, "uint");
         }
         [TestMethod]
-        public void TestToBigInteger24() {
+        public void TestToBigInteger24()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.255.0");
             uint uintMask = 0xffffff00;
@@ -1125,7 +1198,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(uintMask, result, "uint");
         }
         [TestMethod]
-        public void TestToBigInteger16() {
+        public void TestToBigInteger16()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.0.0");
             uint uintMask = 0xffff0000;
@@ -1134,7 +1208,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(uintMask, result, "uint");
         }
         [TestMethod]
-        public void TestToBigInteger8() {
+        public void TestToBigInteger8()
+        {
 
             IPAddress mask = IPAddress.Parse("255.0.0.0");
             uint uintMask = 0xff000000;
@@ -1143,7 +1218,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(uintMask, result, "uint");
         }
         [TestMethod]
-        public void TestToBigInteger0() {
+        public void TestToBigInteger0()
+        {
 
             IPAddress mask = IPAddress.Parse("0.0.0.0");
             uint uintMask = 0x00000000;
@@ -1153,17 +1229,20 @@ namespace System.Net.TestProject
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestToBigIntegerANE() {
+        public void TestToBigIntegerANE()
+        {
             BigInteger? result = IPNetwork.ToBigInteger(null);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestToBigIntegerANE3() {
+        public void TestToBigIntegerANE3()
+        {
             IPAddress ip = null;
             BigInteger? result = IPNetwork.ToBigInteger(ip);
         }
         [TestMethod]
-        public void TestToBigIntegerANE2() {
+        public void TestToBigIntegerANE2()
+        {
             BigInteger? result = IPNetwork.ToBigInteger(IPAddress.IPv6Any);
             uint expected = 0;
             Assert.AreEqual(expected, result, "result");
@@ -1171,12 +1250,14 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestToBigIntegerByte() {
+        public void TestToBigIntegerByte()
+        {
             BigInteger result = IPNetwork.ToUint(33, Sockets.AddressFamily.InterNetwork);
         }
 
         [TestMethod]
-        public void TestToBigIntegerByte2() {
+        public void TestToBigIntegerByte2()
+        {
             BigInteger result = IPNetwork.ToUint(32, Sockets.AddressFamily.InterNetwork);
             uint expected = 4294967295;
             Assert.AreEqual(expected, result, "result");
@@ -1257,7 +1338,8 @@ namespace System.Net.TestProject
         #region TryToBigInteger
 
         [TestMethod]
-        public void TestTryToBigInteger32() {
+        public void TestTryToBigInteger32()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.255.255");
             uint uintMask = 0xffffffff;
@@ -1268,7 +1350,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(true, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryToBigInteger24() {
+        public void TestTryToBigInteger24()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.255.0");
             uint uintMask = 0xffffff00;
@@ -1279,7 +1362,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(true, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryToBigInteger16() {
+        public void TestTryToBigInteger16()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.0.0");
             uint uintMask = 0xffff0000;
@@ -1290,7 +1374,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(true, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryToBigInteger8() {
+        public void TestTryToBigInteger8()
+        {
 
             IPAddress mask = IPAddress.Parse("255.0.0.0");
             uint uintMask = 0xff000000;
@@ -1302,7 +1387,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(true, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryToBigInteger0() {
+        public void TestTryToBigInteger0()
+        {
 
             IPAddress mask = IPAddress.Parse("0.0.0.0");
             uint uintMask = 0x00000000;
@@ -1313,7 +1399,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(true, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryToBigIntegerANE() {
+        public void TestTryToBigIntegerANE()
+        {
 
             BigInteger? result = null;
             bool parsed = IPNetwork.TryToBigInteger(null, out result);
@@ -1323,7 +1410,8 @@ namespace System.Net.TestProject
 
         }
         [TestMethod]
-        public void TestTryToBigIntegerANE3() {
+        public void TestTryToBigIntegerANE3()
+        {
             IPAddress ip = null;
             BigInteger? result = null;
             bool parsed = IPNetwork.TryToBigInteger(ip, out result);
@@ -1332,7 +1420,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(false, parsed, "parsed");
         }
         [TestMethod]
-        public void TestTryToBigIntegerANE2() {
+        public void TestTryToBigIntegerANE2()
+        {
 
             BigInteger? result = null;
             bool parsed = IPNetwork.TryToBigInteger(IPAddress.IPv6Any, out result);
@@ -1347,7 +1436,8 @@ namespace System.Net.TestProject
 
         #region TryToNetmask
         [TestMethod]
-        public void TryToNetmask1() {
+        public void TryToNetmask1()
+        {
             IPAddress result = null;
             bool parsed = IPNetwork.TryToNetmask(0, Sockets.AddressFamily.InterNetwork, out result);
             IPAddress expected = IPAddress.Parse("0.0.0.0");
@@ -1358,7 +1448,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TryToNetmask2() {
+        public void TryToNetmask2()
+        {
             IPAddress result = null;
             bool parsed = IPNetwork.TryToNetmask(33, Sockets.AddressFamily.InterNetwork, out result);
             IPAddress expected = null;
@@ -1416,7 +1507,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void ToNetmask31() {
+        public void ToNetmask31()
+        {
 
             byte cidr = 31;
             string netmask = "255.255.255.254";
@@ -1426,7 +1518,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void ToNetmask30() {
+        public void ToNetmask30()
+        {
 
             byte cidr = 30;
             string netmask = "255.255.255.252";
@@ -1436,7 +1529,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void ToNetmask29() {
+        public void ToNetmask29()
+        {
 
             byte cidr = 29;
             string netmask = "255.255.255.248";
@@ -1446,7 +1540,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void ToNetmask1() {
+        public void ToNetmask1()
+        {
 
             byte cidr = 1;
             string netmask = "128.0.0.0";
@@ -1457,7 +1552,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void ToNetmask0() {
+        public void ToNetmask0()
+        {
 
             byte cidr = 0;
             string netmask = "0.0.0.0";
@@ -1468,7 +1564,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void ToNetmaskOORE1() {
+        public void ToNetmaskOORE1()
+        {
             byte cidr = 33;
             string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
         }
@@ -1528,7 +1625,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestValidNetmask0() {
+        public void TestValidNetmask0()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.255.255");
             bool expected = true;
@@ -1538,7 +1636,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestValidNetmask1() {
+        public void TestValidNetmask1()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.255.0");
             bool expected = true;
@@ -1548,7 +1647,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestValidNetmask2() {
+        public void TestValidNetmask2()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.0.0");
             bool expected = true;
@@ -1559,7 +1659,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestValidNetmaskEAE1() {
+        public void TestValidNetmaskEAE1()
+        {
 
             IPAddress mask = IPAddress.Parse("0.255.0.0");
             bool expected = false;
@@ -1571,7 +1672,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestValidNetmaskEAE2() {
+        public void TestValidNetmaskEAE2()
+        {
 
             IPAddress mask = null;
             bool expected = true;
@@ -1582,7 +1684,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestValidNetmaskEAE3() {
+        public void TestValidNetmaskEAE3()
+        {
 
             IPAddress mask = IPAddress.Parse("255.255.0.1");
             bool expected = false;
@@ -1596,7 +1699,8 @@ namespace System.Net.TestProject
         #region BitsSet
 
         [TestMethod]
-        public void TestBitsSet32() {
+        public void TestBitsSet32()
+        {
 
             IPAddress ip = IPAddress.Parse("255.255.255.255");
             uint bits = 32;
@@ -1606,7 +1710,8 @@ namespace System.Net.TestProject
 
         }
         [TestMethod]
-        public void TestBitsSet24() {
+        public void TestBitsSet24()
+        {
 
             IPAddress ip = IPAddress.Parse("255.255.255.0");
             uint bits = 24;
@@ -1616,7 +1721,8 @@ namespace System.Net.TestProject
 
         }
         [TestMethod]
-        public void TestBitsSet16() {
+        public void TestBitsSet16()
+        {
 
             IPAddress ip = IPAddress.Parse("255.255.0.0");
             uint bits = 16;
@@ -1626,7 +1732,8 @@ namespace System.Net.TestProject
 
         }
         [TestMethod]
-        public void TestBitsSet4() {
+        public void TestBitsSet4()
+        {
 
             IPAddress ip = IPAddress.Parse("128.128.128.128");
             uint bits = 4;
@@ -1913,7 +2020,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void Example2() {
+        public void Example2()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.0/24");
             IPAddress ipaddress = IPAddress.Parse("192.168.0.100");
@@ -1943,7 +2051,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void Example2b() {
+        public void Example2b()
+        {
 
             IPNetwork ipnetwork1 = IPNetwork.Parse("10.1.0.0/16");
             IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.1.0/24");
@@ -2006,16 +2115,17 @@ namespace System.Net.TestProject
         {
             IPNetwork ipnetwork1 = IPNetwork.Parse("192.168.0.0/24");
             IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.1.0/24");
-            IPNetwork[] ipnetwork3 = IPNetwork.Supernet(new[]{ipnetwork1, ipnetwork2});
+            IPNetwork[] ipnetwork3 = IPNetwork.Supernet(new[] { ipnetwork1, ipnetwork2 });
 
             Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
-            
+
         }
 
 
 
         [TestMethod]
-        public void Example7() {
+        public void Example7()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.168.100/24");
 
@@ -2083,7 +2193,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void Example10() {
+        public void Example10()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.1/25");
 
@@ -2097,9 +2208,10 @@ namespace System.Net.TestProject
 
         }
 
-        
+
         [TestMethod]
-        public void Example11() {
+        public void Example11()
+        {
 
             IPNetwork defaultParse = IPNetwork.Parse("192.168.0.0"); // default to ClassFull
             IPNetwork classFullParse = IPNetwork.Parse("192.168.0.0", CidrGuess.ClassFull);
@@ -2115,7 +2227,8 @@ namespace System.Net.TestProject
 
         #region IANA blocks
         [TestMethod]
-        public void TestIANA1() {
+        public void TestIANA1()
+        {
 
             IPAddress ipaddress = IPAddress.Parse("192.168.66.66");
             bool expected = true;
@@ -2126,7 +2239,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestIANA2() {
+        public void TestIANA2()
+        {
 
             IPAddress ipaddress = IPAddress.Parse("10.0.0.0");
             bool expected = true;
@@ -2137,7 +2251,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestIANA3() {
+        public void TestIANA3()
+        {
 
             IPAddress ipaddress = IPAddress.Parse("172.17.10.10");
             bool expected = true;
@@ -2148,7 +2263,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestIANA4() {
+        public void TestIANA4()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.66.66/24");
             bool expected = true;
@@ -2159,7 +2275,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestIANA5() {
+        public void TestIANA5()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("10.10.10/18");
             bool expected = true;
@@ -2170,7 +2287,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestIANA6() {
+        public void TestIANA6()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("172.31.10.10/24");
             bool expected = true;
@@ -2182,7 +2300,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestIANA7() {
+        public void TestIANA7()
+        {
 
             IPAddress ipaddress = null;
             IPNetwork.IsIANAReserved(ipaddress);
@@ -2215,7 +2334,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestIANA9() {
+        public void TestIANA9()
+        {
 
             IPAddress ipaddress = IPAddress.Parse("1.2.3.4");
             bool expected = false;
@@ -2226,7 +2346,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestIANA10() {
+        public void TestIANA10()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("172.16.0.0/8");
             bool expected = false;
@@ -2238,7 +2359,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestIANA11() {
+        public void TestIANA11()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.15.1/8");
             bool expected = false;
@@ -2253,7 +2375,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestToString() {
+        public void TestToString()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.15.1/8");
             string expected = "192.0.0.0/8";
@@ -2263,7 +2386,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestToString1() {
+        public void TestToString1()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.15.1/9");
             string expected = "192.128.0.0/9";
@@ -2273,7 +2397,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestToString2() {
+        public void TestToString2()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.15.1/10");
             string expected = "192.128.0.0/10";
@@ -2283,7 +2408,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestToString3() {
+        public void TestToString3()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.15.1/11");
             string expected = "192.160.0.0/11";
@@ -2293,7 +2419,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestToString4() {
+        public void TestToString4()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.15.1/12");
             string expected = "192.160.0.0/12";
@@ -2303,7 +2430,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestToString5() {
+        public void TestToString5()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.15.1/13");
             string expected = "192.168.0.0/13";
@@ -2313,7 +2441,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestToString6() {
+        public void TestToString6()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.15.1/14");
             string expected = "192.168.0.0/14";
@@ -2322,7 +2451,8 @@ namespace System.Net.TestProject
             Assert.AreEqual(expected, result, "ToString");
         }
         [TestMethod]
-        public void TestToString7() {
+        public void TestToString7()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.15.1/15");
             string expected = "192.168.0.0/15";
@@ -2332,7 +2462,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestToString8() {
+        public void TestToString8()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.15.1/16");
             string expected = "192.168.0.0/16";
@@ -2374,7 +2505,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestSubnet3() {
+        public void TestSubnet3()
+        {
 
             IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
             byte cidr = 55;
@@ -2386,7 +2518,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestSubnet4() {
+        public void TestSubnet4()
+        {
 
             IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
             byte cidr = 1;
@@ -2397,7 +2530,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestSubnet5() {
+        public void TestSubnet5()
+        {
 
             IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
             byte cidr = 9;
@@ -2411,7 +2545,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestSubnet6() {
+        public void TestSubnet6()
+        {
 
             IPNetwork ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
             byte cidr = 20;
@@ -2439,7 +2574,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestSubnet7() {
+        public void TestSubnet7()
+        {
 
             IPNetwork ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
             byte cidr = 24;
@@ -2453,7 +2589,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestSubnet8() {
+        public void TestSubnet8()
+        {
 
             IPNetwork ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
             byte cidr = 24;
@@ -2466,7 +2603,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestSubnet9() {
+        public void TestSubnet9()
+        {
 
             IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.0/24");
             byte cidr = 32;
@@ -2513,13 +2651,15 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestSubnet12() {
+        public void TestSubnet12()
+        {
 
             IPNetwork ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
             byte cidr = 20;
             int i = -1;
             IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
-            foreach (IPNetwork ipn in subnets) {
+            foreach (IPNetwork ipn in subnets)
+            {
                 i++;
                 Assert.AreEqual(subnets[i], ipn, "subnet");
             }
@@ -2528,7 +2668,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestSubnet13() {
+        public void TestSubnet13()
+        {
 
             IPNetwork ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
             byte cidr = 20;
@@ -2591,7 +2732,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTrySubnet3() {
+        public void TestTrySubnet3()
+        {
 
             IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
             byte cidr = 55;
@@ -2604,7 +2746,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTrySubnet4() {
+        public void TestTrySubnet4()
+        {
 
             IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
             byte cidr = 1;
@@ -2618,7 +2761,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTrySubnet5() {
+        public void TestTrySubnet5()
+        {
 
             IPNetwork ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
             byte cidr = 9;
@@ -2636,7 +2780,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTrySubnet6() {
+        public void TestTrySubnet6()
+        {
 
             IPNetwork ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
             byte cidr = 20;
@@ -2745,7 +2890,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
-        public void TestSupernet2() {
+        public void TestSupernet2()
+        {
 
             IPNetwork network1 = null;
             IPNetwork network2 = IPNetwork.Parse("192.168.1.1/24");
@@ -2754,7 +2900,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestSupernet3() {
+        public void TestSupernet3()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.1.1/24");
             IPNetwork network2 = null;
@@ -2763,7 +2910,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestSupernet4() {
+        public void TestSupernet4()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.1.1/25");
@@ -2772,7 +2920,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestSupernet5() {
+        public void TestSupernet5()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.5.1/24");
@@ -2780,7 +2929,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestSupernet6() {
+        public void TestSupernet6()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.0.1/25");
@@ -2822,7 +2972,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestSupernet8() {
+        public void TestSupernet8()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.1.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.2.1/24");
@@ -2854,7 +3005,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTrySupernet1() {
+        public void TestTrySupernet1()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.1.1/24");
@@ -2898,7 +3050,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTrySupernet3() {
+        public void TestTrySupernet3()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.1.1/24");
             IPNetwork network2 = null;
@@ -2912,7 +3065,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTrySupernet4() {
+        public void TestTrySupernet4()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.1.1/25");
@@ -2926,7 +3080,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTrySupernet5() {
+        public void TestTrySupernet5()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.5.1/24");
@@ -2940,7 +3095,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTrySupernet6() {
+        public void TestTrySupernet6()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.0.1/25");
@@ -2955,7 +3111,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTrySupernet7() {
+        public void TestTrySupernet7()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/25");
             IPNetwork network2 = IPNetwork.Parse("192.168.0.1/24");
@@ -2970,7 +3127,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTrySupernet8() {
+        public void TestTrySupernet8()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.1.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.2.1/24");
@@ -2985,12 +3143,13 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTrySupernet9() {
+        public void TestTrySupernet9()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.1.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.2.1/24");
-            IPNetwork[] network3 = new [] { network1, network2 };
-            IPNetwork[] supernetExpected = new [] { network1, network2 };
+            IPNetwork[] network3 = new[] { network1, network2 };
+            IPNetwork[] supernetExpected = new[] { network1, network2 };
             IPNetwork[] supernet;
             bool parsed = true;
             bool result = IPNetwork.TrySupernet(network3, out supernet);
@@ -3003,7 +3162,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTrySupernet10() {
+        public void TestTrySupernet10()
+        {
 
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
             IPNetwork network2 = IPNetwork.Parse("192.168.1.1/24");
@@ -3020,7 +3180,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestTrySupernet11() {
+        public void TestTrySupernet11()
+        {
 
             IPNetwork[] network3 = null;
             IPNetwork[] supernetExpected = new[] { IPNetwork.Parse("192.168.0.0/23") };
@@ -3157,7 +3318,7 @@ namespace System.Net.TestProject
         public void TestTrySupernetArray7()
         {
 
-            IPNetwork[] ipnetworks = { 
+            IPNetwork[] ipnetworks = {
                 IPNetwork.Parse("10.0.2.2/24"),
                 IPNetwork.Parse("192.168.0.0/24"),
                 IPNetwork.Parse("192.168.1.0/24"),
@@ -3166,7 +3327,7 @@ namespace System.Net.TestProject
                 IPNetwork.Parse("192.168.3.0/24")
             };
 
-            IPNetwork[] expected = { 
+            IPNetwork[] expected = {
                 IPNetwork.Parse("10.0.1.0/24"),
                 IPNetwork.Parse("10.0.2.0/24"),
                 IPNetwork.Parse("192.168.0/22")
@@ -3184,7 +3345,7 @@ namespace System.Net.TestProject
         public void TestTrySupernetArray8()
         {
 
-            IPNetwork[] ipnetworks = { 
+            IPNetwork[] ipnetworks = {
                 IPNetwork.Parse("10.0.2.2/24"),
                 IPNetwork.Parse("192.168.0.0/24"),
                 IPNetwork.Parse("192.168.1.0/24"),
@@ -3192,10 +3353,10 @@ namespace System.Net.TestProject
                 IPNetwork.Parse("10.0.1.1/24"),
                 IPNetwork.Parse("192.168.3.0/24"),
                 IPNetwork.Parse("10.6.6.6/8")
-                
+
             };
 
-            IPNetwork[] expected = { 
+            IPNetwork[] expected = {
                 IPNetwork.Parse("10.0.0.0/8"),
                 IPNetwork.Parse("192.168.0/22")
             };
@@ -3266,7 +3427,8 @@ namespace System.Net.TestProject
         #region WideSubnet
 
         [TestMethod]
-        public void TestWideSubnet1() {
+        public void TestWideSubnet1()
+        {
 
             string start = "192.168.168.0";
             string end = "192.168.168.255";
@@ -3281,7 +3443,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestWideSubnet2() {
+        public void TestWideSubnet2()
+        {
 
             string start = null;
             string end = "192.168.168.255";
@@ -3292,7 +3455,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void TestWideSubnet3() {
+        public void TestWideSubnet3()
+        {
 
             string start = "192.168.168.255";
             string end = null;
@@ -3302,7 +3466,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestWideSubnet4() {
+        public void TestWideSubnet4()
+        {
 
             string start = "192.168.168.255";
             string end = "192.168.168.0";
@@ -3316,7 +3481,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestWideSubnet7() {
+        public void TestWideSubnet7()
+        {
 
             string start = "0.0.0.0";
             string end = "0.255.255.255";
@@ -3330,7 +3496,8 @@ namespace System.Net.TestProject
 
 
         [TestMethod]
-        public void TestWideSubnet8() {
+        public void TestWideSubnet8()
+        {
 
             string start = "1.2.3.4";
             string end = "5.6.7.8";
@@ -3377,7 +3544,8 @@ namespace System.Net.TestProject
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void TestWideSubnetInvalid1() {
+        public void TestWideSubnetInvalid1()
+        {
 
             string start = "invalid";
             string end = "5.6.7.8";
@@ -3481,7 +3649,8 @@ namespace System.Net.TestProject
         #region Print
 
         [TestMethod]
-        public void Print() {
+        public void Print()
+        {
             IPNetwork ipn = IPNetwork.Parse("0.0.0.0/0");
             string print = ipn.Print().Replace("\r", "");
             string expected = @"IPNetwork   : 0.0.0.0/0
@@ -3521,12 +3690,15 @@ Usable      : 4294967294
         #region Sort
 
         [TestMethod]
-        public void TestSort1() {
+        public void TestSort1()
+        {
             string[] ips = new[] { "1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0" };
             List<IPNetwork> ipns = new List<IPNetwork>();
-            foreach(string ip in ips) {
+            foreach (string ip in ips)
+            {
                 IPNetwork ipn;
-                if (IPNetwork.TryParse(ip, 32, out ipn)) {
+                if (IPNetwork.TryParse(ip, 32, out ipn))
+                {
                     ipns.Add(ipn);
                 }
             }
@@ -3539,13 +3711,15 @@ Usable      : 4294967294
         }
 
         [TestMethod]
-        public void TestSort2() {
+        public void TestSort2()
+        {
             string[] ips = new[] { "0.0.0.100/32", "0.0.0.0/24" };
             List<IPNetwork> ipns = new List<IPNetwork>();
             foreach (string ip in ips)
             {
                 IPNetwork ipn;
-                if (IPNetwork.TryParse(ip, out ipn)) {
+                if (IPNetwork.TryParse(ip, out ipn))
+                {
                     ipns.Add(ipn);
                 }
             }
@@ -3560,7 +3734,8 @@ Usable      : 4294967294
         #region TryWideSubnet
 
         [TestMethod]
-        public void TryWideSubnet1() {
+        public void TryWideSubnet1()
+        {
             string[] ips = new[] { "1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0" };
             List<IPNetwork> ipns = new List<IPNetwork>();
             foreach (string ip in ips)
@@ -3580,7 +3755,8 @@ Usable      : 4294967294
         }
 
         [TestMethod]
-        public void TryWideSubnet2() {
+        public void TryWideSubnet2()
+        {
             string[] ips = new[] { "1.1.1.1", "10.0.0.0", "2.2.2.2", "0.0.0.0" };
             List<IPNetwork> ipns = new List<IPNetwork>();
             foreach (string ip in ips)
@@ -3601,7 +3777,8 @@ Usable      : 4294967294
 
 
         [TestMethod]
-        public void TryWideSubnet3() {
+        public void TryWideSubnet3()
+        {
             string[] ips = new[] { "a", "b", "c", "d" };
             List<IPNetwork> ipns = new List<IPNetwork>();
             foreach (string ip in ips)
@@ -3620,7 +3797,8 @@ Usable      : 4294967294
         }
 
         [TestMethod]
-        public void TryWideSubnet4() {
+        public void TryWideSubnet4()
+        {
             string[] ips = new[] { "a", "b", "1.1.1.1", "d" };
             List<IPNetwork> ipns = new List<IPNetwork>();
             foreach (string ip in ips)
@@ -3640,7 +3818,8 @@ Usable      : 4294967294
         }
 
         [TestMethod]
-        public void TryWideSubnetNull() {
+        public void TryWideSubnetNull()
+        {
 
             IPNetwork ipnetwork = null;
             bool wide = IPNetwork.TryWideSubnet(null, out ipnetwork);
@@ -3653,7 +3832,8 @@ Usable      : 4294967294
         #region WideSubnet
 
         [TestMethod]
-        public void WideSubnet1() {
+        public void WideSubnet1()
+        {
             string[] ips = new[] { "1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0" };
             List<IPNetwork> ipns = new List<IPNetwork>();
             foreach (string ip in ips)
@@ -3671,7 +3851,8 @@ Usable      : 4294967294
         }
 
         [TestMethod]
-        public void WideSubnet2() {
+        public void WideSubnet2()
+        {
             string[] ips = new[] { "1.1.1.1", "10.0.0.0", "2.2.2.2", "0.0.0.0" };
             List<IPNetwork> ipns = new List<IPNetwork>();
             foreach (string ip in ips)
@@ -3690,7 +3871,8 @@ Usable      : 4294967294
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void WideSubnetNull() {
+        public void WideSubnetNull()
+        {
 
             IPNetwork ipnetwork = IPNetwork.WideSubnet(null);
 
@@ -3747,7 +3929,7 @@ Usable      : 4294967294
 
 
         /**
-         * 
+         *
         #region TrySubstractNetwork
 
 
@@ -3807,49 +3989,56 @@ Usable      : 4294967294
         #region Count
 
         [TestMethod]
-        public void Total32() {
+        public void Total32()
+        {
             var network = IPNetwork.Parse("0.0.0.0/32");
             var total = 1;
             Assert.AreEqual(total, network.Total, "Total");
         }
 
         [TestMethod]
-        public void Total31() {
+        public void Total31()
+        {
             var network = IPNetwork.Parse("0.0.0.0/31");
             var total = 2;
             Assert.AreEqual(total, network.Total, "Total");
         }
 
         [TestMethod]
-        public void Total30() {
+        public void Total30()
+        {
             var network = IPNetwork.Parse("0.0.0.0/30");
             var total = 4;
             Assert.AreEqual(total, network.Total, "Total");
         }
 
         [TestMethod]
-        public void Total24() {
+        public void Total24()
+        {
             var network = IPNetwork.Parse("0.0.0.0/24");
             var total = 256;
             Assert.AreEqual(total, network.Total, "Total");
         }
 
         [TestMethod]
-        public void Total16() {
+        public void Total16()
+        {
             var network = IPNetwork.Parse("0.0.0.0/16");
             var total = 65536;
             Assert.AreEqual(total, network.Total, "Total");
         }
 
         [TestMethod]
-        public void Total8() {
+        public void Total8()
+        {
             var network = IPNetwork.Parse("0.0.0.0/8");
             var total = 16777216;
             Assert.AreEqual(total, network.Total, "Total");
         }
 
         [TestMethod]
-        public void Total0() {
+        public void Total0()
+        {
             var network = IPNetwork.Parse("0.0.0.0/0");
             var total = 4294967296;
             Assert.AreEqual(total, network.Total, "Total");
@@ -3860,49 +4049,56 @@ Usable      : 4294967294
         #region Usable
 
         [TestMethod]
-        public void Usable32() {
+        public void Usable32()
+        {
             var network = IPNetwork.Parse("0.0.0.0/32");
             uint usable = 0;
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
         [TestMethod]
-        public void Usable31() {
+        public void Usable31()
+        {
             var network = IPNetwork.Parse("0.0.0.0/31");
             uint usable = 0;
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
         [TestMethod]
-        public void Usable30() {
+        public void Usable30()
+        {
             var network = IPNetwork.Parse("0.0.0.0/30");
             uint usable = 2;
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
         [TestMethod]
-        public void Usable24() {
+        public void Usable24()
+        {
             var network = IPNetwork.Parse("0.0.0.0/24");
             uint usable = 254;
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
         [TestMethod]
-        public void Usable16() {
+        public void Usable16()
+        {
             var network = IPNetwork.Parse("0.0.0.0/16");
             uint usable = 65534;
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
         [TestMethod]
-        public void Usable8() {
+        public void Usable8()
+        {
             var network = IPNetwork.Parse("0.0.0.0/8");
             uint usable = 16777214;
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
         [TestMethod]
-        public void Usable0() {
+        public void Usable0()
+        {
             var network = IPNetwork.Parse("0.0.0.0/0");
             uint usable = 4294967294;
             Assert.AreEqual(usable, network.Usable, "Usable");
@@ -3913,7 +4109,8 @@ Usable      : 4294967294
         #region TryParseCidr
 
         [TestMethod]
-        public void TryParseCidr1() {
+        public void TryParseCidr1()
+        {
 
             string sidr = "0";
             byte? cidr;
@@ -3926,7 +4123,8 @@ Usable      : 4294967294
         }
 
         [TestMethod]
-        public void TryParseCidr2() {
+        public void TryParseCidr2()
+        {
 
             string sidr = "sadsd";
             byte? cidr;
@@ -3940,7 +4138,8 @@ Usable      : 4294967294
         }
 
         [TestMethod]
-        public void TryParseCidr3() {
+        public void TryParseCidr3()
+        {
 
             string sidr = "33";
             byte? cidr;

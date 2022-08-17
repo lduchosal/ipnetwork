@@ -4,10 +4,12 @@ using System.Numerics;
 namespace System.Net.TestProject
 {
     [TestClass]
-    public class BigIntegerBitWiseUnitTest {
+    public class BigIntegerBitWiseUnitTest
+    {
 
         [TestMethod]
-        public void Test1() {
+        public void Test1()
+        {
 
             byte[] bytes = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             BigInteger reverseme = new BigInteger(bytes);
@@ -19,7 +21,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void Test2() {
+        public void Test2()
+        {
 
             byte[] bytes = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             BigInteger reverseme = new BigInteger(bytes);

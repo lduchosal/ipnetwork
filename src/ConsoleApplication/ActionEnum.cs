@@ -1,6 +1,7 @@
 ﻿namespace System.Net.ConsoleApplication
 {
-    public enum ActionEnum {
+    public enum ActionEnum
+    {
         Usage,
         PrintNetworks,
         Subnet,

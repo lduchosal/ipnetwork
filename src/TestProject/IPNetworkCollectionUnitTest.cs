@@ -6,7 +6,7 @@ namespace System.Net.TestProject
     public class IPNetworkCollectionUnitTest
     {
 
-        #region ctor 
+        #region ctor
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
@@ -24,7 +24,7 @@ namespace System.Net.TestProject
 
         #endregion
 
-        #region Current 
+        #region Current
 
         [TestMethod]
         public void TestCurrent()
@@ -42,7 +42,7 @@ namespace System.Net.TestProject
 
         #endregion
 
-        #region Enumerator 
+        #region Enumerator
 
         [TestMethod]
         public void TestEnumerator()
@@ -60,7 +60,7 @@ namespace System.Net.TestProject
 
         #endregion
 
-        #region Reset 
+        #region Reset
 
         [TestMethod]
         public void TestReset1()
@@ -80,7 +80,7 @@ namespace System.Net.TestProject
 
         #endregion
 
-        #region MoveNext 
+        #region MoveNext
 
         [TestMethod]
         public void MoveNext1()

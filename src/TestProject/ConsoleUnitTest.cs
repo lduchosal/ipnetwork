@@ -6,7 +6,8 @@ namespace System.Net.TestProject
     /// Summary description for ConsoleUnitTest
     /// </summary>
     [TestClass]
-    public class ConsoleUnitTest {
+    public class ConsoleUnitTest
+    {
 
         [TestMethod]
         public void TestMethod1()

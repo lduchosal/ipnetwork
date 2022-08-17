@@ -39,7 +39,7 @@ namespace System.Net.TestSerialization.NetFramework
             using (var xmlReader = XmlReader.Create(textReader))
             {
                 var serializer = new DataContractSerializer(typeof(T));
-                var result = (T) serializer.ReadObject(xmlReader);
+                var result = (T)serializer.ReadObject(xmlReader);
                 return result;
             }
         }
@@ -54,7 +54,7 @@ namespace System.Net.TestSerialization.NetFramework
             var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
 
             string result = DataContractSerializeHelper.Serialize(ipnetwork);
-        
+
             string expected = $"<IPNetwork xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:x=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://schemas.datacontract.org/2004/07/System.Net\">{Environment.NewLine}  <IPNetwork i:type=\"x:string\" xmlns=\"\">10.0.0.0/8</IPNetwork>{Environment.NewLine}</IPNetwork>";
             Assert.AreEqual(expected, result);
         }

@@ -1,4 +1,8 @@
-﻿using System.Net.Sockets;
+﻿// <copyright file="CidrClassLess.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using System.Net.Sockets;
 
 namespace System.Net
 {
@@ -8,17 +12,16 @@ namespace System.Net
     public sealed class CidrClassLess : ICidrGuess
     {
         /// <summary>
-        /// 
+        ///
         /// IPV4 : 32
         /// IPV6 : 128
-        /// 
+        ///
         /// </summary>
         /// <param name="ip"></param>
         /// <param name="cidr"></param>
         /// <returns></returns>
         public bool TryGuessCidr(string ip, out byte cidr)
         {
-
             IPAddress ipaddress = null;
             bool parsed = IPAddress.TryParse(string.Format("{0}", ip), out ipaddress);
             if (parsed == false)
@@ -32,6 +35,7 @@ namespace System.Net
                 cidr = 128;
                 return true;
             }
+
             cidr = 32;
             return true;
         }

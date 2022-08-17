@@ -2,3 +2,48 @@
 
 # CS1591: Missing XML comment for publicly visible type or member
 dotnet_diagnostic.CS1591.severity = suggestion
+
+# SA1616: Element return value documentation should have text
+dotnet_diagnostic.SA1616.severity = suggestion
+
+# SA1602: Element return value documentation should have text
+dotnet_diagnostic.SA1602.severity = suggestion
+
+# SA1614: Element parameter documentation should have text
+dotnet_diagnostic.SA1614.severity = suggestion
+
+# SA1617: Void return value should not be documented
+dotnet_diagnostic.SA1617.severity = suggestion
+
+# Default severity for analyzer diagnostics with category 'StyleCop.CSharp.OrderingRules'
+dotnet_analyzer_diagnostic.category-StyleCop.CSharp.OrderingRules.severity = suggestion
+
+# SA1629: Documentation text should end with a period
+dotnet_diagnostic.SA1629.severity = suggestion
+
+# SA1101: Prefix local calls with this
+dotnet_diagnostic.SA1101.severity = suggestion
+
+# SA1124: Do not use regions
+dotnet_diagnostic.SA1124.severity = suggestion
+
+# SA1309: Field names should not begin with underscore
+dotnet_diagnostic.SA1309.severity = silent
+
+# SA1600: Elements should be documented
+dotnet_diagnostic.SA1600.severity = suggestion
+
+# SA1606: Element documentation should have summary text
+dotnet_diagnostic.SA1606.severity = suggestion
+
+# SA1623: Property summary documentation should match accessors
+dotnet_diagnostic.SA1623.severity = suggestion
+
+# SA1121: Use built-in type alias
+dotnet_diagnostic.SA1121.severity = suggestion
+
+# SA1300: Element should begin with upper-case letter
+dotnet_diagnostic.SA1300.severity = suggestion
+
+# SA1627: Documentation text should not be empty
+dotnet_diagnostic.SA1627.severity = suggestion

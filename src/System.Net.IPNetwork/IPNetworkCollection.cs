@@ -1,40 +1,54 @@
-﻿using System.Collections;
+﻿// <copyright file="IPNetworkCollection.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 
 namespace System.Net
 {
-    public class IPNetworkCollection : IEnumerable<IPNetwork>, IEnumerator<IPNetwork> {
-
+    public class IPNetworkCollection : IEnumerable<IPNetwork>, IEnumerator<IPNetwork>
+    {
         private BigInteger _enumerator;
         private byte _cidrSubnet;
         private IPNetwork _ipnetwork;
 
-        private byte _cidr {
+        private byte _cidr
+        {
             get { return this._ipnetwork.Cidr; }
         }
-        private BigInteger _broadcast {
+
+        private BigInteger _broadcast
+        {
             get { return IPNetwork.ToBigInteger(this._ipnetwork.Broadcast); }
         }
-        private BigInteger _lastUsable {
+
+        private BigInteger _lastUsable
+        {
             get { return IPNetwork.ToBigInteger(this._ipnetwork.LastUsable); }
         }
-        private BigInteger _network {
+
+        private BigInteger _network
+        {
             get { return IPNetwork.ToBigInteger(this._ipnetwork.Network); }
         }
+
 #if TRAVISCI
         public
 #else
         internal
 #endif
-        IPNetworkCollection(IPNetwork ipnetwork, byte cidrSubnet) {
-
+        IPNetworkCollection(IPNetwork ipnetwork, byte cidrSubnet)
+        {
             int maxCidr = ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? 32 : 128;
-            if (cidrSubnet > maxCidr) {
+            if (cidrSubnet > maxCidr)
+            {
                 throw new ArgumentOutOfRangeException("cidrSubnet");
             }
 
-            if (cidrSubnet < ipnetwork.Cidr) {
+            if (cidrSubnet < ipnetwork.Cidr)
+            {
                 throw new ArgumentException("cidr");
             }
 
@@ -43,18 +57,19 @@ namespace System.Net
             this._enumerator = -1;
         }
 
-#region Count, Array, Enumerator
+        #region Count, Array, Enumerator
 
         public BigInteger Count
         {
             get
             {
                 BigInteger count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
-                return count; 
+                return count;
             }
         }
 
-        public IPNetwork this[BigInteger i] {
+        public IPNetwork this[BigInteger i]
+        {
             get
             {
                 if (i >= this.Count)
@@ -71,9 +86,9 @@ namespace System.Net
             }
         }
 
-#endregion
+        #endregion
 
-#region IEnumerable Members
+        #region IEnumerable Members
 
         IEnumerator<IPNetwork> IEnumerable<IPNetwork>.GetEnumerator()
         {
@@ -85,16 +100,16 @@ namespace System.Net
             return this;
         }
 
-#region IEnumerator<IPNetwork> Members
+        #region IEnumerator<IPNetwork> Members
 
         public IPNetwork Current
         {
             get { return this[this._enumerator]; }
         }
 
-#endregion
+        #endregion
 
-#region IDisposable Members
+        #region IDisposable Members
 
         public void Dispose()
         {
@@ -102,9 +117,9 @@ namespace System.Net
             return;
         }
 
-#endregion
+        #endregion
 
-#region IEnumerator Members
+        #region IEnumerator Members
 
         object IEnumerator.Current
         {
@@ -118,8 +133,8 @@ namespace System.Net
             {
                 return false;
             }
-            return true;
 
+            return true;
         }
 
         public void Reset()
@@ -127,9 +142,9 @@ namespace System.Net
             this._enumerator = -1;
         }
 
-#endregion
+        #endregion
 
-#endregion
+        #endregion
 
     }
 }
