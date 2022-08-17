@@ -223,7 +223,7 @@ namespace System.Net
             _cidr = cidr;
         }
 
-#endregion
+        #endregion
 
         #region parsers
 
@@ -245,8 +245,7 @@ namespace System.Net
         /// <returns></returns>
         public static IPNetwork Parse(string ipaddress, string netmask) {
 
-            IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, ipaddress, netmask, out ipnetwork);
+            IPNetwork.InternalParse(false, ipaddress, netmask, out var ipnetwork);
             return ipnetwork;
         }
 
@@ -265,10 +264,8 @@ namespace System.Net
         /// <returns></returns>
         public static IPNetwork Parse(string ipaddress, byte cidr) {
 
-            IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, ipaddress, cidr, out ipnetwork);
+            IPNetwork.InternalParse(false, ipaddress, cidr, out var ipnetwork);
             return ipnetwork;
-
         }
 
         /// <summary>
@@ -286,10 +283,8 @@ namespace System.Net
         /// <returns></returns>
         public static IPNetwork Parse(IPAddress ipaddress, IPAddress netmask) {
 
-            IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, ipaddress, netmask, out ipnetwork);
+            IPNetwork.InternalParse(false, ipaddress, netmask, out var ipnetwork);
             return ipnetwork;
-
         }
 
         /// <summary>
@@ -304,13 +299,12 @@ namespace System.Net
         /// Broadcast : 192.168.0.255
         /// </summary>
         /// <param name="network"></param>
+        /// <param name="sanitanize"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(string network) {
+        public static IPNetwork Parse(string network, bool sanitanize = true) {
 
-            IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, network, CidrGuess.ClassFull, out ipnetwork);
+            IPNetwork.InternalParse(false, network, CidrGuess.ClassFull, sanitanize, out var ipnetwork);
             return ipnetwork;
-
         }
 
         /// <summary>
@@ -326,13 +320,13 @@ namespace System.Net
         /// </summary>
         /// <param name="network"></param>
         /// <param name="cidrGuess"></param>
+        /// <param name="sanitanize"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(string network, ICidrGuess cidrGuess) {
+        public static IPNetwork Parse(string network, ICidrGuess cidrGuess, bool sanitanize = true) {
 
             IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, network, cidrGuess, out ipnetwork);
+            IPNetwork.InternalParse(false, network, cidrGuess, sanitanize, out ipnetwork);
             return ipnetwork;
-
         }
 
         #endregion
@@ -355,8 +349,7 @@ namespace System.Net
         /// <returns></returns>
         public static bool TryParse(string ipaddress, string netmask, out IPNetwork ipnetwork) {
 
-            IPNetwork ipnetwork2 = null;
-            IPNetwork.InternalParse(true, ipaddress, netmask, out ipnetwork2);
+            IPNetwork.InternalParse(true, ipaddress, netmask, out var ipnetwork2);
             bool parsed = (ipnetwork2 != null);
             ipnetwork = ipnetwork2;
             return parsed;
@@ -381,8 +374,7 @@ namespace System.Net
         /// <returns></returns>
         public static bool TryParse(string ipaddress, byte cidr, out IPNetwork ipnetwork) {
 
-            IPNetwork ipnetwork2 = null;
-            IPNetwork.InternalParse(true, ipaddress, cidr, out ipnetwork2);
+            IPNetwork.InternalParse(true, ipaddress, cidr, out var ipnetwork2);
             bool parsed = (ipnetwork2 != null);
             ipnetwork = ipnetwork2;
             return parsed;
@@ -403,14 +395,36 @@ namespace System.Net
         /// <param name="network"></param>
         /// <param name="ipnetwork"></param>
         /// <returns></returns>
-        public static bool TryParse(string network, out IPNetwork ipnetwork) {
-
-            IPNetwork ipnetwork2 = null;
-            IPNetwork.InternalParse(true, network, CidrGuess.ClassFull, out ipnetwork2);
+        public static bool TryParse(string network, out IPNetwork ipnetwork)
+        {
+            bool sanitanize = true;
+            IPNetwork.InternalParse(true, network, CidrGuess.ClassFull, sanitanize, out var ipnetwork2);
             bool parsed = (ipnetwork2 != null);
             ipnetwork = ipnetwork2;
             return parsed;
+        }
 
+        /// <summary>
+        /// 192.168.0.1/24
+        /// 192.168.0.1 255.255.255.0
+        /// 
+        /// Network   : 192.168.0.0
+        /// Netmask   : 255.255.255.0
+        /// Cidr      : 24
+        /// Start     : 192.168.0.1
+        /// End       : 192.168.0.254
+        /// Broadcast : 192.168.0.255
+        /// </summary>
+        /// <param name="network"></param>
+        /// <param name="sanitanize"></param>
+        /// <param name="ipnetwork"></param>
+        /// <returns></returns>
+        public static bool TryParse(string network, bool sanitanize, out IPNetwork ipnetwork)
+        {
+            IPNetwork.InternalParse(true, network, CidrGuess.ClassFull, sanitanize, out var ipnetwork2);
+            bool parsed = (ipnetwork2 != null);
+            ipnetwork = ipnetwork2;
+            return parsed;
         }
 
         /// <summary>
@@ -499,7 +513,7 @@ namespace System.Net
             IPNetwork.InternalParse(tryParse, ip, mask, out ipnetwork);
         }
 
-        private static void InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, out IPNetwork ipnetwork) {
+        private static void InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, bool sanitanize, out IPNetwork ipnetwork) {
 
             if (string.IsNullOrEmpty(network)) {
                 if (tryParse == false) {
@@ -509,10 +523,15 @@ namespace System.Net
                 return;
             }
 
-            network = Regex.Replace(network, @"[^0-9a-fA-F\.\/\s\:]+", "");
-            network = Regex.Replace(network, @"\s{2,}", " ");
-            network = network.Trim();
-            string[] args = network.Split(new char[] { ' ', '/' });
+            if (sanitanize)
+            {
+                network = Regex.Replace(network, @"[^0-9a-fA-F\.\/\s\:]+", "");
+                network = Regex.Replace(network, @"\s{2,}", " ");
+                network = network.Trim();
+            }
+
+            var splitOptions = sanitanize ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None;
+            string[] args = network.Split(new char[] { ' ', '/' }, splitOptions);
             byte cidr = 0;
             if (args.Length == 1) {
 
