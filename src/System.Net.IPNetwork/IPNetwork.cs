@@ -243,8 +243,8 @@ namespace System.Net
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(string ipaddress, string netmask) {
-
+        public static IPNetwork Parse(string ipaddress, string netmask) 
+        {
             IPNetwork.InternalParse(false, ipaddress, netmask, out var ipnetwork);
             return ipnetwork;
         }
@@ -262,8 +262,8 @@ namespace System.Net
         /// <param name="ipaddress"></param>
         /// <param name="cidr"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(string ipaddress, byte cidr) {
-
+        public static IPNetwork Parse(string ipaddress, byte cidr) 
+        {
             IPNetwork.InternalParse(false, ipaddress, cidr, out var ipnetwork);
             return ipnetwork;
         }
@@ -281,8 +281,8 @@ namespace System.Net
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(IPAddress ipaddress, IPAddress netmask) {
-
+        public static IPNetwork Parse(IPAddress ipaddress, IPAddress netmask) 
+        {
             IPNetwork.InternalParse(false, ipaddress, netmask, out var ipnetwork);
             return ipnetwork;
         }
@@ -301,8 +301,8 @@ namespace System.Net
         /// <param name="network"></param>
         /// <param name="sanitanize"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(string network, bool sanitanize = true) {
-
+        public static IPNetwork Parse(string network, bool sanitanize = true) 
+        {
             IPNetwork.InternalParse(false, network, CidrGuess.ClassFull, sanitanize, out var ipnetwork);
             return ipnetwork;
         }
@@ -322,10 +322,9 @@ namespace System.Net
         /// <param name="cidrGuess"></param>
         /// <param name="sanitanize"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(string network, ICidrGuess cidrGuess, bool sanitanize = true) {
-
-            IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, network, cidrGuess, sanitanize, out ipnetwork);
+        public static IPNetwork Parse(string network, ICidrGuess cidrGuess, bool sanitanize = true) 
+        {
+            IPNetwork.InternalParse(false, network, cidrGuess, sanitanize, out var ipnetwork);
             return ipnetwork;
         }
 
@@ -513,10 +512,12 @@ namespace System.Net
             IPNetwork.InternalParse(tryParse, ip, mask, out ipnetwork);
         }
 
-        private static void InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, bool sanitanize, out IPNetwork ipnetwork) {
-
-            if (string.IsNullOrEmpty(network)) {
-                if (tryParse == false) {
+        private static void InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, bool sanitanize, out IPNetwork ipnetwork) 
+        {
+            if (string.IsNullOrEmpty(network)) 
+            {
+                if (tryParse == false) 
+                {
                     throw new ArgumentNullException("network");
                 }
                 ipnetwork = null;
@@ -533,29 +534,32 @@ namespace System.Net
             var splitOptions = sanitanize ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None;
             string[] args = network.Split(new char[] { ' ', '/' }, splitOptions);
             byte cidr = 0;
-            if (args.Length == 1) {
 
+            if (args.Length == 1) 
+            {
                 string cidrlessNetwork = args[0];
-                if (cidrGuess.TryGuessCidr(cidrlessNetwork, out cidr)) {
+                if (cidrGuess.TryGuessCidr(cidrlessNetwork, out cidr)) 
+                {
                     IPNetwork.InternalParse(tryParse, cidrlessNetwork, cidr, out ipnetwork);
                     return;
                 }
 
-                if (tryParse == false) {
+                if (tryParse == false) 
+                {
                     throw new ArgumentException("network");
                 }
                 ipnetwork = null;
                 return;
             }
 
-            if (byte.TryParse(args[1], out cidr)) {
+            if (byte.TryParse(args[1], out cidr)) 
+            {
                 IPNetwork.InternalParse(tryParse, args[0], cidr, out ipnetwork);
                 return;
             }
 
             IPNetwork.InternalParse(tryParse, args[0], args[1], out ipnetwork);
             return;
-
         }
 
 
