@@ -6,22 +6,6 @@ namespace System.Net.TestProject
     [TestClass]
     public class IPNetworkV6UnitTest {
 
-        #region TryParse
-
-        [TestMethod]
-        public void Test_TryParse_InvalidIpv6_return_valid_ipv6network()
-        {
-            var parsed1 = IPNetwork.TryParse("g001:02b8::/64", out var ipnetwork1);
-            var parsed2 = IPNetwork.TryParse("1:2b8::/64", out var ipnetwork2);
-            
-            Assert.AreEqual(true, parsed1, "parsed1");
-            Assert.AreEqual(true, parsed2, "parsed2");
-            Assert.AreEqual(ipnetwork1, ipnetwork2, "ipnetwork1 == ipnetwork2");
-
-        }
-
-        #endregion
-
         #region Parse
 
         [TestMethod]

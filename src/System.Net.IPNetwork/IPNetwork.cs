@@ -223,7 +223,7 @@ namespace System.Net
             _cidr = cidr;
         }
 
-#endregion
+        #endregion
 
         #region parsers
 
@@ -243,10 +243,9 @@ namespace System.Net
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(string ipaddress, string netmask) {
-
-            IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, ipaddress, netmask, out ipnetwork);
+        public static IPNetwork Parse(string ipaddress, string netmask) 
+        {
+            IPNetwork.InternalParse(false, ipaddress, netmask, out var ipnetwork);
             return ipnetwork;
         }
 
@@ -263,12 +262,10 @@ namespace System.Net
         /// <param name="ipaddress"></param>
         /// <param name="cidr"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(string ipaddress, byte cidr) {
-
-            IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, ipaddress, cidr, out ipnetwork);
+        public static IPNetwork Parse(string ipaddress, byte cidr) 
+        {
+            IPNetwork.InternalParse(false, ipaddress, cidr, out var ipnetwork);
             return ipnetwork;
-
         }
 
         /// <summary>
@@ -284,12 +281,10 @@ namespace System.Net
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(IPAddress ipaddress, IPAddress netmask) {
-
-            IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, ipaddress, netmask, out ipnetwork);
+        public static IPNetwork Parse(IPAddress ipaddress, IPAddress netmask) 
+        {
+            IPNetwork.InternalParse(false, ipaddress, netmask, out var ipnetwork);
             return ipnetwork;
-
         }
 
         /// <summary>
@@ -304,13 +299,12 @@ namespace System.Net
         /// Broadcast : 192.168.0.255
         /// </summary>
         /// <param name="network"></param>
+        /// <param name="sanitanize"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(string network) {
-
-            IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, network, CidrGuess.ClassFull, out ipnetwork);
+        public static IPNetwork Parse(string network, bool sanitanize = true) 
+        {
+            IPNetwork.InternalParse(false, network, CidrGuess.ClassFull, sanitanize, out var ipnetwork);
             return ipnetwork;
-
         }
 
         /// <summary>
@@ -326,13 +320,12 @@ namespace System.Net
         /// </summary>
         /// <param name="network"></param>
         /// <param name="cidrGuess"></param>
+        /// <param name="sanitanize"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(string network, ICidrGuess cidrGuess) {
-
-            IPNetwork ipnetwork = null;
-            IPNetwork.InternalParse(false, network, cidrGuess, out ipnetwork);
+        public static IPNetwork Parse(string network, ICidrGuess cidrGuess, bool sanitanize = true) 
+        {
+            IPNetwork.InternalParse(false, network, cidrGuess, sanitanize, out var ipnetwork);
             return ipnetwork;
-
         }
 
         #endregion
@@ -353,17 +346,14 @@ namespace System.Net
         /// <param name="netmask"></param>
         /// <param name="ipnetwork"></param>
         /// <returns></returns>
-        public static bool TryParse(string ipaddress, string netmask, out IPNetwork ipnetwork) {
-
-            IPNetwork ipnetwork2 = null;
-            IPNetwork.InternalParse(true, ipaddress, netmask, out ipnetwork2);
+        public static bool TryParse(string ipaddress, string netmask, out IPNetwork ipnetwork)
+        {
+            IPNetwork.InternalParse(true, ipaddress, netmask, out var ipnetwork2);
             bool parsed = (ipnetwork2 != null);
             ipnetwork = ipnetwork2;
+
             return parsed;
-
         }
-
-
 
         /// <summary>
         /// 192.168.168.100/24
@@ -379,14 +369,13 @@ namespace System.Net
         /// <param name="cidr"></param>
         /// <param name="ipnetwork"></param>
         /// <returns></returns>
-        public static bool TryParse(string ipaddress, byte cidr, out IPNetwork ipnetwork) {
-
-            IPNetwork ipnetwork2 = null;
-            IPNetwork.InternalParse(true, ipaddress, cidr, out ipnetwork2);
+        public static bool TryParse(string ipaddress, byte cidr, out IPNetwork ipnetwork) 
+        {
+            IPNetwork.InternalParse(true, ipaddress, cidr, out var ipnetwork2);
             bool parsed = (ipnetwork2 != null);
             ipnetwork = ipnetwork2;
-            return parsed;
 
+            return parsed;
         }
 
         /// <summary>
@@ -403,14 +392,38 @@ namespace System.Net
         /// <param name="network"></param>
         /// <param name="ipnetwork"></param>
         /// <returns></returns>
-        public static bool TryParse(string network, out IPNetwork ipnetwork) {
-
-            IPNetwork ipnetwork2 = null;
-            IPNetwork.InternalParse(true, network, CidrGuess.ClassFull, out ipnetwork2);
+        public static bool TryParse(string network, out IPNetwork ipnetwork)
+        {
+            bool sanitanize = true;
+            IPNetwork.InternalParse(true, network, CidrGuess.ClassFull, sanitanize, out var ipnetwork2);
             bool parsed = (ipnetwork2 != null);
             ipnetwork = ipnetwork2;
-            return parsed;
 
+            return parsed;
+        }
+
+        /// <summary>
+        /// 192.168.0.1/24
+        /// 192.168.0.1 255.255.255.0
+        /// 
+        /// Network   : 192.168.0.0
+        /// Netmask   : 255.255.255.0
+        /// Cidr      : 24
+        /// Start     : 192.168.0.1
+        /// End       : 192.168.0.254
+        /// Broadcast : 192.168.0.255
+        /// </summary>
+        /// <param name="network"></param>
+        /// <param name="sanitanize"></param>
+        /// <param name="ipnetwork"></param>
+        /// <returns></returns>
+        public static bool TryParse(string network, bool sanitanize, out IPNetwork ipnetwork)
+        {
+            IPNetwork.InternalParse(true, network, CidrGuess.ClassFull, sanitanize, out var ipnetwork2);
+            bool parsed = (ipnetwork2 != null);
+            ipnetwork = ipnetwork2;
+
+            return parsed;
         }
 
         /// <summary>
@@ -428,14 +441,13 @@ namespace System.Net
         /// <param name="netmask"></param>
         /// <param name="ipnetwork"></param>
         /// <returns></returns>
-        public static bool TryParse(IPAddress ipaddress, IPAddress netmask, out IPNetwork ipnetwork) {
-
-            IPNetwork ipnetwork2 = null;
-            IPNetwork.InternalParse(true, ipaddress, netmask, out ipnetwork2);
+        public static bool TryParse(IPAddress ipaddress, IPAddress netmask, out IPNetwork ipnetwork) 
+        {
+            IPNetwork.InternalParse(true, ipaddress, netmask, out var ipnetwork2);
             bool parsed = (ipnetwork2 != null);
             ipnetwork = ipnetwork2;
-            return parsed;
 
+            return parsed;
         }
 
 
@@ -458,8 +470,8 @@ namespace System.Net
         /// <param name="netmask"></param>
         /// <param name="ipnetwork"></param>
         /// <returns></returns>
-        private static void InternalParse(bool tryParse, string ipaddress, string netmask, out IPNetwork ipnetwork) {
-
+        private static void InternalParse(bool tryParse, string ipaddress, string netmask, out IPNetwork ipnetwork) 
+        {
             if (string.IsNullOrEmpty(ipaddress)) {
                 if (tryParse == false) {
                     throw new ArgumentNullException("ipaddress");
@@ -476,8 +488,7 @@ namespace System.Net
                 return;
             }
 
-            IPAddress ip = null;
-            bool ipaddressParsed = IPAddress.TryParse(ipaddress, out ip);
+            bool ipaddressParsed = IPAddress.TryParse(ipaddress, out var ip);
             if (ipaddressParsed == false) {
                 if (tryParse == false) {
                     throw new ArgumentException("ipaddress");
@@ -486,8 +497,7 @@ namespace System.Net
                 return;
             }
 
-            IPAddress mask = null;
-            bool netmaskParsed = IPAddress.TryParse(netmask, out mask);
+            bool netmaskParsed = IPAddress.TryParse(netmask, out var mask);
             if (netmaskParsed == false) {
                 if (tryParse == false) {
                     throw new ArgumentException("netmask");
@@ -499,47 +509,55 @@ namespace System.Net
             IPNetwork.InternalParse(tryParse, ip, mask, out ipnetwork);
         }
 
-        private static void InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, out IPNetwork ipnetwork) {
-
-            if (string.IsNullOrEmpty(network)) {
-                if (tryParse == false) {
+        private static void InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, bool sanitanize, out IPNetwork ipnetwork) 
+        {
+            if (string.IsNullOrEmpty(network)) 
+            {
+                if (tryParse == false) 
+                {
                     throw new ArgumentNullException("network");
                 }
                 ipnetwork = null;
                 return;
             }
 
-            network = Regex.Replace(network, @"[^0-9a-fA-F\.\/\s\:]+", "");
-            network = Regex.Replace(network, @"\s{2,}", " ");
-            network = network.Trim();
-            string[] args = network.Split(new char[] { ' ', '/' });
-            byte cidr = 0;
-            if (args.Length == 1) {
+            if (sanitanize)
+            {
+                network = Regex.Replace(network, @"[^0-9a-fA-F\.\/\s\:]+", "");
+                network = Regex.Replace(network, @"\s{2,}", " ");
+                network = network.Trim();
+            }
 
+            var splitOptions = sanitanize ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None;
+            string[] args = network.Split(new char[] { ' ', '/' }, splitOptions);
+            byte cidr = 0;
+
+            if (args.Length == 1) 
+            {
                 string cidrlessNetwork = args[0];
-                if (cidrGuess.TryGuessCidr(cidrlessNetwork, out cidr)) {
+                if (cidrGuess.TryGuessCidr(cidrlessNetwork, out cidr)) 
+                {
                     IPNetwork.InternalParse(tryParse, cidrlessNetwork, cidr, out ipnetwork);
                     return;
                 }
 
-                if (tryParse == false) {
+                if (tryParse == false) 
+                {
                     throw new ArgumentException("network");
                 }
                 ipnetwork = null;
                 return;
             }
 
-            if (byte.TryParse(args[1], out cidr)) {
+            if (byte.TryParse(args[1], out cidr)) 
+            {
                 IPNetwork.InternalParse(tryParse, args[0], cidr, out ipnetwork);
                 return;
             }
 
             IPNetwork.InternalParse(tryParse, args[0], args[1], out ipnetwork);
             return;
-
         }
-
-
 
         /// <summary>
         /// 192.168.168.100 255.255.255.0
@@ -556,8 +574,8 @@ namespace System.Net
         /// <param name="netmask"></param>
         /// <param name="ipnetwork"></param>
         /// <returns></returns>
-        private static void InternalParse(bool tryParse, IPAddress ipaddress, IPAddress netmask, out IPNetwork ipnetwork) {
-
+        private static void InternalParse(bool tryParse, IPAddress ipaddress, IPAddress netmask, out IPNetwork ipnetwork) 
+        {
             if (ipaddress == null) {
                 if (tryParse == false) {
                     throw new ArgumentNullException("ipaddress");
@@ -575,8 +593,7 @@ namespace System.Net
             }
 
             BigInteger uintIpAddress = IPNetwork.ToBigInteger(ipaddress);
-            byte? cidr2 = null;
-            bool parsed = IPNetwork.TryToCidr(netmask, out cidr2);
+            bool parsed = IPNetwork.TryToCidr(netmask, out var cidr2);
             if (parsed == false) {
                 if (tryParse == false) {
                     throw new ArgumentException("netmask");
@@ -591,8 +608,6 @@ namespace System.Net
 
             return;
         }
-
-
 
         /// <summary>
         /// 192.168.168.100/24
@@ -609,8 +624,8 @@ namespace System.Net
         /// <param name="cidr"></param>
         /// <param name="ipnetwork"></param>
         /// <returns></returns>
-        private static void InternalParse(bool tryParse, string ipaddress, byte cidr, out IPNetwork ipnetwork) {
-
+        private static void InternalParse(bool tryParse, string ipaddress, byte cidr, out IPNetwork ipnetwork) 
+        {
             if (string.IsNullOrEmpty(ipaddress)) {
                 if (tryParse == false) {
                     throw new ArgumentNullException("ipaddress");
@@ -618,10 +633,8 @@ namespace System.Net
                 ipnetwork = null;
                 return;
             }
-
             
-            IPAddress ip = null;
-            bool ipaddressParsed = IPAddress.TryParse(ipaddress, out ip);
+            bool ipaddressParsed = IPAddress.TryParse(ipaddress, out var ip);
             if (ipaddressParsed == false) {
                 if (tryParse == false) {
                     throw new ArgumentException("ipaddress");
@@ -630,8 +643,7 @@ namespace System.Net
                 return;
             }
 
-            IPAddress mask = null;
-            bool parsedNetmask = IPNetwork.TryToNetmask(cidr, ip.AddressFamily, out mask);
+            bool parsedNetmask = IPNetwork.TryToNetmask(cidr, ip.AddressFamily, out var mask);
             if (parsedNetmask == false) {
                 if (tryParse == false) {
                     throw new ArgumentException("cidr");
@@ -639,7 +651,6 @@ namespace System.Net
                 ipnetwork = null;
                 return;
             }
-
 
             IPNetwork.InternalParse(tryParse, ip, mask, out ipnetwork);
         }
@@ -657,11 +668,11 @@ namespace System.Net
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <returns></returns>
-        public static BigInteger ToBigInteger(IPAddress ipaddress) {
-            BigInteger? uintIpAddress = null;
-            IPNetwork.InternalToBigInteger(false, ipaddress, out uintIpAddress);
+        public static BigInteger ToBigInteger(IPAddress ipaddress) 
+        {
+            IPNetwork.InternalToBigInteger(false, ipaddress, out var uintIpAddress);
+        
             return (BigInteger)uintIpAddress;
-
         }
 
         /// <summary>
@@ -672,11 +683,12 @@ namespace System.Net
         /// <param name="ipaddress"></param>
         /// <param name="uintIpAddress"></param>
         /// <returns></returns>
-        public static bool TryToBigInteger(IPAddress ipaddress, out BigInteger? uintIpAddress) {
-            BigInteger? uintIpAddress2 = null;
-            IPNetwork.InternalToBigInteger(true, ipaddress, out uintIpAddress2);
+        public static bool TryToBigInteger(IPAddress ipaddress, out BigInteger? uintIpAddress) 
+        {
+            IPNetwork.InternalToBigInteger(true, ipaddress, out var uintIpAddress2);
             bool parsed = (uintIpAddress2 != null);
             uintIpAddress = uintIpAddress2;
+
             return parsed;
         }
 
@@ -685,8 +697,8 @@ namespace System.Net
 #else
         internal
 #endif
-            static void InternalToBigInteger(bool tryParse, IPAddress ipaddress, out BigInteger? uintIpAddress) {
-
+            static void InternalToBigInteger(bool tryParse, IPAddress ipaddress, out BigInteger? uintIpAddress) 
+        {
             if (ipaddress == null) {
                 if (tryParse == false) {
                     throw new ArgumentNullException("ipaddress");
@@ -728,20 +740,18 @@ namespace System.Net
 #endif
         }
 
-
         /// <summary>
         /// Convert a cidr to BigInteger netmask
         /// </summary>
         /// <param name="cidr"></param>
         /// <param name="family"></param>
         /// <returns></returns>
-        public static BigInteger ToUint(byte cidr, AddressFamily family) {
+        public static BigInteger ToUint(byte cidr, AddressFamily family) 
+        {
+            IPNetwork.InternalToBigInteger(false, cidr, family, out var uintNetmask);
 
-            BigInteger? uintNetmask = null;
-            IPNetwork.InternalToBigInteger(false, cidr, family, out uintNetmask);
             return (BigInteger)uintNetmask;
         }
-
 
         /// <summary>
         /// Convert a cidr to uint netmask
@@ -750,12 +760,12 @@ namespace System.Net
         /// <param name="family"></param>
         /// <param name="uintNetmask"></param>
         /// <returns></returns>
-        public static bool TryToUint(byte cidr, AddressFamily family, out BigInteger? uintNetmask) {
-
-            BigInteger? uintNetmask2 = null;
-            IPNetwork.InternalToBigInteger(true, cidr, family, out uintNetmask2);
+        public static bool TryToUint(byte cidr, AddressFamily family, out BigInteger? uintNetmask) 
+        {
+            IPNetwork.InternalToBigInteger(true, cidr, family, out var uintNetmask2);
             bool parsed = (uintNetmask2 != null);
             uintNetmask = uintNetmask2;
+
             return parsed;
         }
 
@@ -772,8 +782,8 @@ namespace System.Net
 #else
         internal
 #endif
-            static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamily family, out BigInteger? uintNetmask) {
-
+            static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamily family, out BigInteger? uintNetmask) 
+        {
             if (family == AddressFamily.InterNetwork && cidr > 32) {
                 if (tryParse == false) {
                     throw new ArgumentOutOfRangeException("cidr");
@@ -820,8 +830,6 @@ namespace System.Net
             int copy = m.Length > 16 ? 16 : m.Length;
             Array.Copy(m, 0, bmask, 0, copy);
             uintNetmask = new BigInteger(bmask);
-
-
         }
 
         #endregion
@@ -839,8 +847,8 @@ namespace System.Net
         /// <param name="family"></param>
         /// <param name="cidr"></param>
         /// <returns></returns>
-        private static void InternalToCidr(bool tryParse, BigInteger netmask, AddressFamily family, out byte? cidr) {
-
+        private static void InternalToCidr(bool tryParse, BigInteger netmask, AddressFamily family, out byte? cidr) 
+        {
             if (!IPNetwork.InternalValidNetmask(netmask, family)) {
                 if (tryParse == false) {
                     throw new ArgumentException("netmask");
@@ -851,9 +859,10 @@ namespace System.Net
 
             byte cidr2 = IPNetwork.BitsSet(netmask, family);
             cidr = cidr2;
-            return;
 
+            return;
         }
+
         /// <summary>
         /// Convert netmask to CIDR
         ///  255.255.255.0 -> 24
@@ -862,9 +871,9 @@ namespace System.Net
         /// </summary>
         /// <param name="netmask"></param>
         /// <returns></returns>
-        public static byte ToCidr(IPAddress netmask) {
-            byte? cidr = null;
-            IPNetwork.InternalToCidr(false, netmask, out cidr);
+        public static byte ToCidr(IPAddress netmask) 
+        {
+            IPNetwork.InternalToCidr(false, netmask, out var cidr);
             return (byte)cidr;
         }
 
@@ -877,16 +886,16 @@ namespace System.Net
         /// <param name="netmask"></param>
         /// <param name="cidr"></param>
         /// <returns></returns>
-        public static bool TryToCidr(IPAddress netmask, out byte? cidr) {
-            byte? cidr2 = null;
-            IPNetwork.InternalToCidr(true, netmask, out cidr2);
+        public static bool TryToCidr(IPAddress netmask, out byte? cidr) 
+        {
+            IPNetwork.InternalToCidr(true, netmask, out var cidr2);
             bool parsed = (cidr2 != null);
             cidr = cidr2;
             return parsed;
         }
 
-        private static void InternalToCidr(bool tryParse, IPAddress netmask, out byte? cidr) {
-
+        private static void InternalToCidr(bool tryParse, IPAddress netmask, out byte? cidr) 
+        {
             if (netmask == null) {
                 if (tryParse == false) {
                     throw new ArgumentNullException("netmask");
@@ -894,8 +903,7 @@ namespace System.Net
                 cidr = null;
                 return;
             }
-            BigInteger? uintNetmask2 = null;
-            bool parsed = IPNetwork.TryToBigInteger(netmask, out uintNetmask2);
+            bool parsed = IPNetwork.TryToBigInteger(netmask, out var uintNetmask2);
 
             // 20180217 lduchosal
             // impossible to reach code.
@@ -909,14 +917,11 @@ namespace System.Net
 
             BigInteger uintNetmask = (BigInteger)uintNetmask2;
 
-            byte? cidr2 = null;
-            IPNetwork.InternalToCidr(tryParse, uintNetmask, netmask.AddressFamily, out cidr2);
+            IPNetwork.InternalToCidr(tryParse, uintNetmask, netmask.AddressFamily, out var cidr2);
             cidr = cidr2;
 
             return;
-
         }
-
 
         #endregion
 
@@ -932,10 +937,10 @@ namespace System.Net
         /// <param name="cidr"></param>
         /// <param name="family"></param>
         /// <returns></returns>
-        public static IPAddress ToNetmask(byte cidr, AddressFamily family) {
+        public static IPAddress ToNetmask(byte cidr, AddressFamily family) 
+        {
+            IPNetwork.InternalToNetmask(false, cidr, family, out var netmask);
 
-            IPAddress netmask = null;
-            IPNetwork.InternalToNetmask(false, cidr, family, out netmask);
             return netmask;
         }
 
@@ -950,23 +955,22 @@ namespace System.Net
         /// <param name="family"></param>
         /// <param name="netmask"></param>
         /// <returns></returns>
-        public static bool TryToNetmask(byte cidr, AddressFamily family, out IPAddress netmask) {
-
-            IPAddress netmask2 = null;
-            IPNetwork.InternalToNetmask(true, cidr, family, out netmask2);
+        public static bool TryToNetmask(byte cidr, AddressFamily family, out IPAddress netmask) 
+        {
+            IPNetwork.InternalToNetmask(true, cidr, family, out var netmask2);
             bool parsed = (netmask2 != null);
             netmask = netmask2;
+
             return parsed;
         }
-
 
 #if TRAVISCI
         public
 #else
         internal
 #endif
-            static void InternalToNetmask(bool tryParse, byte cidr, AddressFamily family, out IPAddress netmask) {
-
+            static void InternalToNetmask(bool tryParse, byte cidr, AddressFamily family, out IPAddress netmask) 
+        {
             if (family != AddressFamily.InterNetwork
                 && family != AddressFamily.InterNetworkV6) {
                     if (tryParse == false) {
@@ -1018,24 +1022,25 @@ namespace System.Net
         /// <param name="netmask"></param>
         /// <param name="family"></param>
         /// <returns></returns>
-        private static byte BitsSet(BigInteger netmask, AddressFamily family) {
-            
+        private static byte BitsSet(BigInteger netmask, AddressFamily family) 
+        {
             string s = netmask.ToBinaryString();
+        
             return (byte)s.Replace("0", "")
                 .ToCharArray()
                 .Length;
-            
         }
-
 
         /// <summary>
         /// Count bits set to 1 in netmask
         /// </summary>
         /// <param name="netmask"></param>
         /// <returns></returns>
-        public static uint BitsSet(IPAddress netmask) {
+        public static uint BitsSet(IPAddress netmask) 
+        {
             BigInteger uintNetmask = IPNetwork.ToBigInteger(netmask);
             uint bits = IPNetwork.BitsSet(uintNetmask, netmask.AddressFamily);
+
             return bits;
         }
 
@@ -1050,13 +1055,14 @@ namespace System.Net
         /// <see href="http://www.actionsnip.com/snippets/tomo_atlacatl/calculate-if-a-netmask-is-valid--as2-"/>
         /// <param name="netmask"></param>
         /// <returns></returns>
-        public static bool ValidNetmask(IPAddress netmask) {
-
+        public static bool ValidNetmask(IPAddress netmask) 
+        {
             if (netmask == null) {
                 throw new ArgumentNullException("netmask");
             }
             BigInteger uintNetmask = IPNetwork.ToBigInteger(netmask);
             bool valid = IPNetwork.InternalValidNetmask(uintNetmask, netmask.AddressFamily);
+
             return valid;
         }
 
@@ -1065,8 +1071,8 @@ namespace System.Net
 #else
         internal
 #endif
-            static bool InternalValidNetmask(BigInteger netmask, AddressFamily family) {
-
+            static bool InternalValidNetmask(BigInteger netmask, AddressFamily family) 
+        {
             if (family != AddressFamily.InterNetwork
                 && family != AddressFamily.InterNetworkV6) {
                 throw new ArgumentException("family");
@@ -1084,8 +1090,8 @@ namespace System.Net
 
             BigInteger neg = ((~netmask) & (mask));
             bool isNetmask = ((neg + 1) & neg) == 0;
-            return isNetmask;
 
+            return isNetmask;
         }
 
         #endregion
@@ -1098,8 +1104,8 @@ namespace System.Net
         /// <param name="ipaddress"></param>
         /// <param name="family"></param>
         /// <returns></returns>
-        public static IPAddress ToIPAddress(BigInteger ipaddress, AddressFamily family) {
-
+        public static IPAddress ToIPAddress(BigInteger ipaddress, AddressFamily family) 
+        {
             int width = family == AddressFamily.InterNetwork ? 4 : 16;
             byte[] bytes = ipaddress.ToByteArray();
             byte[] bytes2 = new byte[width];
@@ -1117,8 +1123,8 @@ namespace System.Net
 #else
         internal
 #endif
-            static byte[] Resize(byte[] bytes, AddressFamily family) {
-            
+            static byte[] Resize(byte[] bytes, AddressFamily family) 
+        {
             if (family != AddressFamily.InterNetwork
                 && family != AddressFamily.InterNetworkV6) {
                 throw new ArgumentException("family");
@@ -1132,6 +1138,7 @@ namespace System.Net
 
             byte[] result = new byte[width];
             Array.Copy(bytes, 0, result, 0, bytes.Length);
+
             return result;
         }
 
@@ -1146,8 +1153,8 @@ namespace System.Net
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <returns></returns>
-        public bool Contains(IPAddress ipaddress) {
-
+        public bool Contains(IPAddress ipaddress) 
+        {
             if (ipaddress == null)
             {
                 throw new ArgumentNullException("ipaddress");
@@ -1169,8 +1176,8 @@ namespace System.Net
         }
 
         [Obsolete("static Contains is deprecated, please use instance Contains.")]
-        public static bool Contains(IPNetwork network, IPAddress ipaddress) {
-
+        public static bool Contains(IPNetwork network, IPAddress ipaddress) 
+        {
             if (network == null)
             {
                 throw new ArgumentNullException("network");
@@ -1184,8 +1191,8 @@ namespace System.Net
         /// </summary>
         /// <param name="network2"></param>
         /// <returns></returns>
-        public bool Contains(IPNetwork network2) {
-
+        public bool Contains(IPNetwork network2) 
+        {
             if (network2 == null)
             {
                 throw new ArgumentNullException("network2");
@@ -1204,8 +1211,8 @@ namespace System.Net
         }
 
         [Obsolete("static Contains is deprecated, please use instance Contains.")]
-        public static bool Contains(IPNetwork network, IPNetwork network2) {
-
+        public static bool Contains(IPNetwork network, IPNetwork network2) 
+        {
             if (network == null)
             {
                 throw new ArgumentNullException("network");
@@ -1223,8 +1230,8 @@ namespace System.Net
         /// </summary>
         /// <param name="network2"></param>
         /// <returns></returns>
-        public bool Overlap(IPNetwork network2) {
-
+        public bool Overlap(IPNetwork network2) 
+        {
             if (network2 == null)
             {
                 throw new ArgumentNullException("network2");
@@ -1246,8 +1253,8 @@ namespace System.Net
         }
 
         [Obsolete("static Overlap is deprecated, please use instance Overlap.")]
-        public static bool Overlap(IPNetwork network, IPNetwork network2) {
-
+        public static bool Overlap(IPNetwork network, IPNetwork network2) 
+        {
             if (network == null)
             {
                 throw new ArgumentNullException("network");
@@ -1309,8 +1316,8 @@ namespace System.Net
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <returns></returns>
-        public static bool IsIANAReserved(IPAddress ipaddress) {
-
+        public static bool IsIANAReserved(IPAddress ipaddress) 
+        {
             if (ipaddress == null) {
                 throw new ArgumentNullException("ipaddress");
             }
@@ -1325,15 +1332,16 @@ namespace System.Net
         /// IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1
         /// </summary>
         /// <returns></returns>
-        public bool IsIANAReserved() {
+        public bool IsIANAReserved() 
+        {
             return IPNetwork.IANA_ABLK_RESERVED1.Contains(this)
                 || IPNetwork.IANA_BBLK_RESERVED1.Contains(this)
                 || IPNetwork.IANA_CBLK_RESERVED1.Contains(this);
         }
 
         [Obsolete("static IsIANAReserved is deprecated, please use instance IsIANAReserved.")]
-        public static bool IsIANAReserved(IPNetwork ipnetwork) {
-
+        public static bool IsIANAReserved(IPNetwork ipnetwork) 
+        {
             if (ipnetwork == null) {
                 throw new ArgumentNullException("ipnetwork");
             }
@@ -1352,14 +1360,16 @@ namespace System.Net
         /// </summary>
         /// <param name="cidr"></param>
         /// <returns></returns>
-        public IPNetworkCollection Subnet(byte cidr) {
-            IPNetworkCollection ipnetworkCollection = null;
-            IPNetwork.InternalSubnet(false, this, cidr, out ipnetworkCollection);
+        public IPNetworkCollection Subnet(byte cidr) 
+        {
+            IPNetwork.InternalSubnet(false, this, cidr, out var ipnetworkCollection);
+
             return ipnetworkCollection;
         }
 
         [Obsolete("static Subnet is deprecated, please use instance Subnet.")]
-        public static IPNetworkCollection Subnet(IPNetwork network, byte cidr) {
+        public static IPNetworkCollection Subnet(IPNetwork network, byte cidr) 
+        {
             if (network == null) {
                 throw new ArgumentNullException("network");
             }
@@ -1374,9 +1384,9 @@ namespace System.Net
         /// <param name="cidr"></param>
         /// <param name="ipnetworkCollection"></param>
         /// <returns></returns>
-        public bool TrySubnet(byte cidr, out IPNetworkCollection ipnetworkCollection) {
-            IPNetworkCollection inc = null;
-            IPNetwork.InternalSubnet(true, this, cidr, out inc);
+        public bool TrySubnet(byte cidr, out IPNetworkCollection ipnetworkCollection) 
+        {
+            IPNetwork.InternalSubnet(true, this, cidr, out var inc);
             if (inc == null) {
                 ipnetworkCollection = null;
                 return false;
@@ -1387,7 +1397,8 @@ namespace System.Net
         }
 
         [Obsolete("static TrySubnet is deprecated, please use instance TrySubnet.")]
-        public static bool TrySubnet(IPNetwork network, byte cidr, out IPNetworkCollection ipnetworkCollection) {
+        public static bool TrySubnet(IPNetwork network, byte cidr, out IPNetworkCollection ipnetworkCollection) 
+        {
             if (network == null) {
                 throw new ArgumentNullException("network");
             }
@@ -1399,9 +1410,10 @@ namespace System.Net
 #else
         internal
 #endif
-            static void InternalSubnet(bool trySubnet, IPNetwork network, byte cidr, out IPNetworkCollection ipnetworkCollection) {
-        
-            if (network == null) {
+            static void InternalSubnet(bool trySubnet, IPNetwork network, byte cidr, out IPNetworkCollection ipnetworkCollection) 
+        {
+            if (network == null) 
+            {
                 if (trySubnet == false) {
                     throw new ArgumentNullException("network");
                 }
@@ -1410,16 +1422,20 @@ namespace System.Net
             }
 
             int maxCidr = network._family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
-            if (cidr > maxCidr) {
-                if (trySubnet == false) {
+            if (cidr > maxCidr) 
+            {
+                if (trySubnet == false) 
+                {
                     throw new ArgumentOutOfRangeException("cidr");
                 }
                 ipnetworkCollection = null;
                 return;
             }
 
-            if (cidr < network.Cidr) {
-                if (trySubnet == false) {
+            if (cidr < network.Cidr) 
+            {
+                if (trySubnet == false) 
+                {
                     throw new ArgumentException("cidr");
                 }
                 ipnetworkCollection = null;
@@ -1429,8 +1445,6 @@ namespace System.Net
             ipnetworkCollection = new IPNetworkCollection(network, cidr);
             return ;
         }
-
-        
 
 #endregion
 
@@ -1444,14 +1458,15 @@ namespace System.Net
         /// </summary>
         /// <param name="network2"></param>
         /// <returns></returns>
-        public IPNetwork Supernet(IPNetwork network2) {
-            IPNetwork supernet = null;
-            IPNetwork.InternalSupernet(false, this, network2, out supernet);
+        public IPNetwork Supernet(IPNetwork network2) 
+        {
+            IPNetwork.InternalSupernet(false, this, network2, out var supernet);
             return supernet;
         }
 
         [Obsolete("static Supernet is deprecated, please use instance Supernet.")]
-        public static IPNetwork Supernet(IPNetwork network, IPNetwork network2) {
+        public static IPNetwork Supernet(IPNetwork network, IPNetwork network2) 
+        {
             return network.Supernet(network2);
         }
 
@@ -1464,17 +1479,17 @@ namespace System.Net
         /// <param name="network2"></param>
         /// <param name="supernet"></param>
         /// <returns></returns>
-        public bool TrySupernet(IPNetwork network2, out IPNetwork supernet) {
-
-            IPNetwork outSupernet = null;
-            IPNetwork.InternalSupernet(true, this, network2, out outSupernet);
+        public bool TrySupernet(IPNetwork network2, out IPNetwork supernet) 
+        {
+            IPNetwork.InternalSupernet(true, this, network2, out var outSupernet);
             bool parsed = (outSupernet != null);
             supernet = outSupernet;
             return parsed;
         }
 
         [Obsolete("static TrySupernet is deprecated, please use instance TrySupernet.")]
-        public static bool TrySupernet(IPNetwork network, IPNetwork network2, out IPNetwork supernet) {
+        public static bool TrySupernet(IPNetwork network, IPNetwork network2, out IPNetwork supernet) 
+        {
             if(network == null) {
                 throw new ArgumentNullException("network");
             }
@@ -1486,8 +1501,8 @@ namespace System.Net
 #else
         internal
 #endif
-            static void InternalSupernet(bool trySupernet, IPNetwork network1, IPNetwork network2, out IPNetwork supernet) {
-
+            static void InternalSupernet(bool trySupernet, IPNetwork network1, IPNetwork network2, out IPNetwork supernet) 
+        {
             if (network1 == null) {
                 if (trySupernet == false) {
                     throw new ArgumentNullException("network1");
@@ -1503,7 +1518,6 @@ namespace System.Net
                 supernet = null;
                 return;
             }
-
 
             if (network1.Contains(network2)) {
                 supernet = new IPNetwork(network1._network, network1._family, network1.Cidr);
@@ -1580,8 +1594,7 @@ namespace System.Net
         /// <returns></returns>
         public static IPNetwork[] Supernet(IPNetwork[] ipnetworks)
         {
-            IPNetwork[] supernet;
-            InternalSupernet(false, ipnetworks, out supernet);
+            InternalSupernet(false, ipnetworks, out var supernet);
             return supernet;
         }
 
@@ -1593,10 +1606,10 @@ namespace System.Net
         /// <param name="ipnetworks"></param>
         /// <param name="supernet"></param>
         /// <returns></returns>
-        public static bool TrySupernet(IPNetwork[] ipnetworks, out IPNetwork[] supernet) {
+        public static bool TrySupernet(IPNetwork[] ipnetworks, out IPNetwork[] supernet) 
+        {
             bool supernetted = InternalSupernet(true, ipnetworks, out supernet);
             return supernetted;
-
         }
 
 #if TRAVISCI
@@ -1606,7 +1619,6 @@ namespace System.Net
 #endif
         static bool InternalSupernet(bool trySupernet, IPNetwork[] ipnetworks, out IPNetwork[] supernet)
         {
-
             if (ipnetworks == null) {
                 if (trySupernet == false) {
                     throw new ArgumentNullException("ipnetworks");
@@ -1628,15 +1640,13 @@ namespace System.Net
 
             while (previousCount != currentCount)
             {
-
                 supernetted.Clear();
                 while (current.Count > 1)
                 {
                     IPNetwork ipn1 = current.Pop();
                     IPNetwork ipn2 = current.Peek();
 
-                    IPNetwork outNetwork = null;
-                    bool success = ipn1.TrySupernet(ipn2, out outNetwork);
+                    bool success = ipn1.TrySupernet(ipn2, out var outNetwork);
                     if (success) {
                         current.Pop();
                         current.Push(outNetwork);
@@ -1645,6 +1655,7 @@ namespace System.Net
                         supernetted.Add(ipn1);
                     }
                 }
+
                 if (current.Count == 1) {
                     supernetted.Add(current.Pop());
                 }
@@ -1652,8 +1663,8 @@ namespace System.Net
                 previousCount = currentCount;
                 currentCount = supernetted.Count;
                 current = IPNetwork.List2Stack(supernetted);
-
             }
+
             supernet = supernetted.ToArray();
             return true;
         }
@@ -1711,8 +1722,8 @@ namespace System.Net
 
 #region WideSubnet
 
-        public static IPNetwork WideSubnet(string start, string end) {
-
+        public static IPNetwork WideSubnet(string start, string end) 
+        {
             if (string.IsNullOrEmpty(start)) {
                 throw new ArgumentNullException("start");
             }
@@ -1721,13 +1732,11 @@ namespace System.Net
                 throw new ArgumentNullException("end");
             }
 
-            IPAddress startIP;
-            if (!IPAddress.TryParse(start, out startIP)) {
+            if (!IPAddress.TryParse(start, out var startIP)) {
                 throw new ArgumentException("start");
             }
 
-            IPAddress endIP;
-            if (!IPAddress.TryParse(end, out endIP)) {
+            if (!IPAddress.TryParse(end, out var endIP)) {
                 throw new ArgumentException("end");
             }
 
@@ -1743,31 +1752,30 @@ namespace System.Net
                     break;
                 }
             }
-            return ipnetwork;
 
+            return ipnetwork;
         }
 
-        public static bool TryWideSubnet(IPNetwork[] ipnetworks, out IPNetwork ipnetwork) {
-            IPNetwork ipn = null;
-            IPNetwork.InternalWideSubnet(true, ipnetworks, out ipn);
+        public static bool TryWideSubnet(IPNetwork[] ipnetworks, out IPNetwork ipnetwork) 
+        {
+            IPNetwork.InternalWideSubnet(true, ipnetworks, out var ipn);
             if (ipn == null) {
                 ipnetwork = null;
                 return false;
             }
             ipnetwork = ipn;
+
             return true;
         }
 
         public static IPNetwork WideSubnet(IPNetwork[] ipnetworks)
         {
-            IPNetwork ipn = null;
-            IPNetwork.InternalWideSubnet(false, ipnetworks, out ipn);
+            IPNetwork.InternalWideSubnet(false, ipnetworks, out var ipn);
             return ipn;
         }
 
-
-        internal static void InternalWideSubnet(bool tryWide, IPNetwork[] ipnetworks, out IPNetwork ipnetwork) {
-
+        internal static void InternalWideSubnet(bool tryWide, IPNetwork[] ipnetworks, out IPNetwork ipnetwork) 
+        {
             if (ipnetworks == null) {
                 if (tryWide == false) {
                     throw new ArgumentNullException("ipnetworks");
@@ -1775,7 +1783,6 @@ namespace System.Net
                 ipnetwork = null;
                 return;
             }
-            
 
             IPNetwork[] nnin = Array.FindAll<IPNetwork>(ipnetworks, new Predicate<IPNetwork>(
                 delegate(IPNetwork ipnet) {
@@ -1832,8 +1839,8 @@ namespace System.Net
         /// Print an ipnetwork in a clear representation string
         /// </summary>
         /// <returns></returns>
-        public string Print() {
-
+        public string Print() 
+        {
             using (var sw = new StringWriter())
             {
 
@@ -1851,8 +1858,8 @@ namespace System.Net
         }
 
         [Obsolete("static Print is deprecated, please use instance Print.")]
-        public static string Print(IPNetwork ipnetwork) {
-
+        public static string Print(IPNetwork ipnetwork) 
+        {
             if (ipnetwork == null) {
                 throw new ArgumentNullException("ipnetwork");
             }
@@ -1882,16 +1889,15 @@ namespace System.Net
         /// <param name="family"></param>
         /// <param name="cidr"></param>
         /// <returns></returns>
-        public static bool TryParseCidr(string sidr, AddressFamily family, out byte? cidr) {
-
+        public static bool TryParseCidr(string sidr, AddressFamily family, out byte? cidr) 
+        {
             byte b = 0;
             if (!byte.TryParse(sidr, out b)) {
                 cidr = null;
                 return false;
             }
 
-            IPAddress netmask = null;
-            if (!IPNetwork.TryToNetmask(b, family, out netmask)) {
+            if (!IPNetwork.TryToNetmask(b, family, out var netmask)) {
                 cidr = null;
                 return false;
             }
@@ -1922,7 +1928,6 @@ namespace System.Net
         public IPAddressCollection ListIPAddress(FilterEnum filter = FilterEnum.All) {
             return new IPAddressCollection(this, filter);
         }
-
 
         #endregion
 
@@ -2094,14 +2099,12 @@ namespace System.Net
         #endregion
 
         #region ISerializable
-
         internal struct IPNetworkInteral
         {
             public BigInteger IPAddress;
             public byte Cidr;
             public AddressFamily AddressFamily;
         }
-
 
         IPNetwork(SerializationInfo info, StreamingContext context)
         {
@@ -2111,7 +2114,6 @@ namespace System.Net
             this._ipaddress = ipnetwork._ipaddress;
             this._cidr = ipnetwork._cidr;
             this._family = ipnetwork._family;
-
         }
 
         void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
@@ -2202,7 +2204,6 @@ namespace System.Net
                 return IPNetwork.ToIPAddress(wildcardmask, this._family);
             }
         }
-
         #endregion
     }
 }
