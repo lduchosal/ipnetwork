@@ -488,8 +488,7 @@ namespace System.Net
                 return;
             }
 
-            IPAddress ip = null;
-            bool ipaddressParsed = IPAddress.TryParse(ipaddress, out ip);
+            bool ipaddressParsed = IPAddress.TryParse(ipaddress, out var ip);
             if (ipaddressParsed == false) {
                 if (tryParse == false) {
                     throw new ArgumentException("ipaddress");
@@ -498,8 +497,7 @@ namespace System.Net
                 return;
             }
 
-            IPAddress mask = null;
-            bool netmaskParsed = IPAddress.TryParse(netmask, out mask);
+            bool netmaskParsed = IPAddress.TryParse(netmask, out var mask);
             if (netmaskParsed == false) {
                 if (tryParse == false) {
                     throw new ArgumentException("netmask");
@@ -561,8 +559,6 @@ namespace System.Net
             return;
         }
 
-
-
         /// <summary>
         /// 192.168.168.100 255.255.255.0
         /// 
@@ -597,8 +593,7 @@ namespace System.Net
             }
 
             BigInteger uintIpAddress = IPNetwork.ToBigInteger(ipaddress);
-            byte? cidr2 = null;
-            bool parsed = IPNetwork.TryToCidr(netmask, out cidr2);
+            bool parsed = IPNetwork.TryToCidr(netmask, out var cidr2);
             if (parsed == false) {
                 if (tryParse == false) {
                     throw new ArgumentException("netmask");
@@ -613,8 +608,6 @@ namespace System.Net
 
             return;
         }
-
-
 
         /// <summary>
         /// 192.168.168.100/24
@@ -641,8 +634,7 @@ namespace System.Net
                 return;
             }
             
-            IPAddress ip = null;
-            bool ipaddressParsed = IPAddress.TryParse(ipaddress, out ip);
+            bool ipaddressParsed = IPAddress.TryParse(ipaddress, out var ip);
             if (ipaddressParsed == false) {
                 if (tryParse == false) {
                     throw new ArgumentException("ipaddress");
@@ -651,8 +643,7 @@ namespace System.Net
                 return;
             }
 
-            IPAddress mask = null;
-            bool parsedNetmask = IPNetwork.TryToNetmask(cidr, ip.AddressFamily, out mask);
+            bool parsedNetmask = IPNetwork.TryToNetmask(cidr, ip.AddressFamily, out var mask);
             if (parsedNetmask == false) {
                 if (tryParse == false) {
                     throw new ArgumentException("cidr");
@@ -749,7 +740,6 @@ namespace System.Net
 #endif
         }
 
-
         /// <summary>
         /// Convert a cidr to BigInteger netmask
         /// </summary>
@@ -762,7 +752,6 @@ namespace System.Net
 
             return (BigInteger)uintNetmask;
         }
-
 
         /// <summary>
         /// Convert a cidr to uint netmask
@@ -934,7 +923,6 @@ namespace System.Net
             return;
         }
 
-
         #endregion
 
         #region ToNetmask
@@ -975,7 +963,6 @@ namespace System.Net
 
             return parsed;
         }
-
 
 #if TRAVISCI
         public
@@ -1043,7 +1030,6 @@ namespace System.Net
                 .ToCharArray()
                 .Length;
         }
-
 
         /// <summary>
         /// Count bits set to 1 in netmask
@@ -1460,8 +1446,6 @@ namespace System.Net
             return ;
         }
 
-        
-
 #endregion
 
 #region Supernet
@@ -1748,13 +1732,11 @@ namespace System.Net
                 throw new ArgumentNullException("end");
             }
 
-            IPAddress startIP;
-            if (!IPAddress.TryParse(start, out startIP)) {
+            if (!IPAddress.TryParse(start, out var startIP)) {
                 throw new ArgumentException("start");
             }
 
-            IPAddress endIP;
-            if (!IPAddress.TryParse(end, out endIP)) {
+            if (!IPAddress.TryParse(end, out var endIP)) {
                 throw new ArgumentException("end");
             }
 
@@ -1791,7 +1773,6 @@ namespace System.Net
             IPNetwork.InternalWideSubnet(false, ipnetworks, out var ipn);
             return ipn;
         }
-
 
         internal static void InternalWideSubnet(bool tryWide, IPNetwork[] ipnetworks, out IPNetwork ipnetwork) 
         {
@@ -1947,7 +1928,6 @@ namespace System.Net
         public IPAddressCollection ListIPAddress(FilterEnum filter = FilterEnum.All) {
             return new IPAddressCollection(this, filter);
         }
-
 
         #endregion
 
