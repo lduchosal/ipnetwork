@@ -26,8 +26,12 @@
     <RepositoryType>git</RepositoryType>
 
 	</PropertyGroup>
-  
-  <PropertyGroup>
+	<PropertyGroup>
+		<Version>2.6.0</Version>
+	</PropertyGroup>
+
+
+	<PropertyGroup>
 	<DefineConstants Condition="'$(OS)' != 'Windows_NT'">$(DefineConstants);TRAVISCI</DefineConstants>
   </PropertyGroup>
   

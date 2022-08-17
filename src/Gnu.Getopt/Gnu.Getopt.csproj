@@ -3,7 +3,11 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup>
+	<PropertyGroup>
+		<Version>2.6.0</Version>
+	</PropertyGroup>
+
+	<PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <SignAssembly>true</SignAssembly>
     <SignAssembly Condition=" '$(OS)' != 'Windows_NT' ">false</SignAssembly>
