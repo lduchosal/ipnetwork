@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿#pragma warning disable SYSLIB0011 // Type or member is obsolete
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
@@ -119,3 +120,4 @@ namespace System.Net.TestSerialization
         }
     }
 }
+#pragma warning restore SYSLIB0011 // Type or member is obsolete

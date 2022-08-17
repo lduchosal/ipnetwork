@@ -1,6 +1,7 @@
 ﻿namespace System.Net.ConsoleApplication
 {
-    public enum CidrParseEnum {
+    public enum CidrParseEnum
+    {
         Default,
         Value,
 

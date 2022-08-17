@@ -1,6 +1,7 @@
 ﻿namespace System.Net.ConsoleApplication
 {
-    public class ProgramContext {
+    public class ProgramContext
+    {
 
         public bool IPNetwork;
         public bool Network;

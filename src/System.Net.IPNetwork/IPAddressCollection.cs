@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿// <copyright file="IPAddressCollection.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
 
@@ -7,34 +11,36 @@ namespace System.Net
     public enum FilterEnum
     {
         All,
-        Usable
+        Usable,
     }
 
     /// <summary>
-    /// 
+    ///
     /// </summary>
-    public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress> {
-
+    public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress>
+    {
         private readonly IPNetwork _ipnetwork;
         private readonly FilterEnum _filter;
         private BigInteger _enumerator;
 
-        internal IPAddressCollection(IPNetwork ipnetwork, FilterEnum filter) {
+        internal IPAddressCollection(IPNetwork ipnetwork, FilterEnum filter)
+        {
             this._ipnetwork = ipnetwork;
             this._filter = filter;
             Reset();
         }
 
-
         #region Count, Array, Enumerator
-        public BigInteger Count {
-            get {
-
+        public BigInteger Count
+        {
+            get
+            {
                 BigInteger count = _ipnetwork.Total;
                 if (this._filter == FilterEnum.Usable)
                 {
                     count -= 2;
                 }
+
                 if (count < 0)
                 {
                     count = 0;
@@ -44,11 +50,15 @@ namespace System.Net
             }
         }
 
-        public IPAddress this[BigInteger i] {
-            get {
-                if (i >= this.Count) {
+        public IPAddress this[BigInteger i]
+        {
+            get
+            {
+                if (i >= this.Count)
+                {
                     throw new ArgumentOutOfRangeException("i");
                 }
+
                 byte width = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? (byte)32 : (byte)128;
                 IPNetworkCollection ipn = this._ipnetwork.Subnet(width);
 
@@ -57,6 +67,7 @@ namespace System.Net
                 {
                     index++;
                 }
+
                 return ipn[index].Network;
             }
         }
@@ -64,14 +75,18 @@ namespace System.Net
         #endregion
 
         #region Legacy Enumeration
-        public IPAddress Current {
-            get {
+        public IPAddress Current
+        {
+            get
+            {
                 return this[_enumerator];
             }
         }
 
-        object IEnumerator.Current {
-            get {
+        object IEnumerator.Current
+        {
+            get
+            {
                 return Current;
             }
         }
@@ -79,21 +94,19 @@ namespace System.Net
         public bool MoveNext()
         {
             _enumerator++;
-            if (_enumerator >= this.Count) {
+            if (_enumerator >= this.Count)
+            {
                 return false;
             }
+
             return true;
         }
-        /// <summary>
-        /// 
-        /// </summary>
+
         public void Reset()
         {
             _enumerator = -1;
         }
-        /// <summary>
-        /// 
-        /// </summary>
+
         public void Dispose()
         {
             // nothing to dispose
@@ -101,27 +114,33 @@ namespace System.Net
         #endregion
 
         #region Enumeration
-        IEnumerator<IPAddress> IEnumerable<IPAddress>.GetEnumerator() {
+        IEnumerator<IPAddress> IEnumerable<IPAddress>.GetEnumerator()
+        {
             return new Enumerator(this);
         }
 
-        IEnumerator IEnumerable.GetEnumerator() {
+        IEnumerator IEnumerable.GetEnumerator()
+        {
             return new Enumerator(this);
         }
 
-        struct Enumerator : IEnumerator<IPAddress>
+        private struct Enumerator : IEnumerator<IPAddress>
         {
             private readonly IPAddressCollection _collection;
             private BigInteger _enumerator;
 
-            object IEnumerator.Current {
-                get {
+            object IEnumerator.Current
+            {
+                get
+                {
                     return Current;
                 }
             }
 
-            public IPAddress Current {
-                get {
+            public IPAddress Current
+            {
+                get
+                {
                     return _collection[_enumerator];
                 }
             }
@@ -134,9 +153,11 @@ namespace System.Net
             public bool MoveNext()
             {
                 _enumerator++;
-                if (_enumerator >= _collection.Count) {
+                if (_enumerator >= _collection.Count)
+                {
                     return false;
                 }
+
                 return true;
             }
 
