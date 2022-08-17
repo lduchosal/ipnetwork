@@ -7,6 +7,12 @@
       "commands": [
         "csmacnz.Coveralls"
       ]
+    },
+    "versionize": {
+      "version": "1.15.0",
+      "commands": [
+        "versionize"
+      ]
     }
   }
 }
