@@ -14,8 +14,8 @@ namespace System.Net.TestProject
         #region TryParse IPV4
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE2() {
-            
+        public void TestTryParseIPAddressNetmaskANE2() 
+        {
             IPAddress ip = null;
             bool parsed = IPNetwork.TryParse(ip, ip, out var ipnet);
 
@@ -24,8 +24,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE3() {
-            
+        public void TestTryParseIPAddressNetmaskANE3() 
+        {
             bool parsed = IPNetwork.TryParse("", 0, out var ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
@@ -33,8 +33,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE4() {
-            
+        public void TestTryParseIPAddressNetmaskANE4() 
+        {
             bool parsed = IPNetwork.TryParse(null, 0, out var ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
@@ -42,7 +42,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE5() {
+        public void TestTryParseIPAddressNetmaskANE5() 
+        {
             string n = null;
             
             bool parsed = IPNetwork.TryParse(n, n, out var ipnet);
@@ -51,24 +52,25 @@ namespace System.Net.TestProject
             Assert.AreEqual(null, ipnet, "ipnet");
         }
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE6() {
-            
+        public void TestTryParseIPAddressNetmaskANE6() 
+        {
             bool parsed = IPNetwork.TryParse(IPAddress.Parse("10.10.10.10"), null, out var ipnet);
+        
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE7() {
-            
+        public void TestTryParseIPAddressNetmaskANE7() 
+        {
             bool parsed = IPNetwork.TryParse("0.0.0.0", null, out var ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
         }
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE8() {
-            
+        public void TestTryParseIPAddressNetmaskANE8() 
+        {
             bool parsed = IPNetwork.TryParse("x.x.x.x", "x.x.x.x", out var ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
@@ -76,8 +78,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE9() {
-            
+        public void TestTryParseIPAddressNetmaskANE9() 
+        {
             bool parsed = IPNetwork.TryParse("0.0.0.0", "x.x.x.x", out var ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
@@ -85,8 +87,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE10() {
-            
+        public void TestTryParseIPAddressNetmaskANE10() 
+        {
             bool parsed = IPNetwork.TryParse("x.x.x.x", 0, out var ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
@@ -94,8 +96,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmaskANE11() {
-            
+        public void TestTryParseIPAddressNetmaskANE11() 
+        {
             bool parsed = IPNetwork.TryParse("0.0.0.0", 33, out var ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
@@ -103,8 +105,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseIPAddressNetmask() {
-
+        public void TestTryParseIPAddressNetmask() 
+        {
             string ipaddress = "192.168.168.100";
             string netmask = "255.255.255.0";
 
@@ -128,8 +130,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseString1() {
-
+        public void TestTryParseString1() 
+        {
             string ipaddress = "192.168.168.100 255.255.255.0";
 
             string network = "192.168.168.0";
@@ -153,8 +155,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseString2() {
-
+        public void TestTryParseString2() 
+        {
             string ipaddress = "192.168.168.100/24";
 
             string network = "192.168.168.0";
@@ -178,8 +180,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseString3() {
-            
+        public void TestTryParseString3() 
+        {
             string ipaddress = "0.0.0.0/0";
             
             string network = "0.0.0.0";
@@ -203,8 +205,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseString4() {
-            
+        public void TestTryParseString4() 
+        {
             string ipaddress = "0.0.0.0/32";
 
             string network = "0.0.0.0";
@@ -228,8 +230,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseString5() {
-
+        public void TestTryParseString5() 
+        {
             string ipaddress = "255.255.255.255/32";
 
             string network = "255.255.255.255";
@@ -253,7 +255,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseStringAE1() {
+        public void TestTryParseStringAE1() 
+        {
             string ipaddress = "garbage";
             bool parsed = IPNetwork.TryParse(ipaddress, out var ipnetwork);
 
@@ -261,7 +264,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseStringAE2() {
+        public void TestTryParseStringAE2() 
+        {
             string ipaddress = "0.0.0.0 0.0.1.0";
             bool parsed = IPNetwork.TryParse(ipaddress, out var ipnetwork);
 
@@ -269,7 +273,8 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestTryParseStringANE1() {
+        public void TestTryParseStringANE1() 
+        {
             string ipaddress = null;
             bool parsed = IPNetwork.TryParse(ipaddress, out var ipnetwork);
         
