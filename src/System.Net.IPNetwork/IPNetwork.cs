@@ -770,7 +770,8 @@ namespace System.Net
             var span = bytes.AsSpan();
             if (!ipaddress.TryWriteBytes(span, out _))
             {
-                if (tryParse == false) {
+                if (tryParse == false)
+                {
                     throw new ArgumentException("ipaddress");
                 }
 

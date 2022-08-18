@@ -1,4 +1,8 @@
-﻿using System;
+﻿// <copyright file="SerializeJsonTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 
@@ -80,8 +84,7 @@ namespace System.Net.TestSerialization.NetFramework
                 var result = JsonConvert.DeserializeObject<IPNetwork>(json);
             }
 
-            //  13.49 seconds(Ad hoc).
+            // 13.49 seconds(Ad hoc).
         }
-
     }
 }

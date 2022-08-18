@@ -1,4 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// <copyright file="TryParseUnitTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -26,7 +30,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestTryParseIPAddressNetmaskANE3()
         {
-            bool parsed = IPNetwork.TryParse("", 0, out var ipnet);
+            bool parsed = IPNetwork.TryParse(string.Empty, 0, out var ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
@@ -51,6 +55,7 @@ namespace System.Net.TestProject
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
         }
+
         [TestMethod]
         public void TestTryParseIPAddressNetmaskANE6()
         {
@@ -68,6 +73,7 @@ namespace System.Net.TestProject
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
         }
+
         [TestMethod]
         public void TestTryParseIPAddressNetmaskANE8()
         {

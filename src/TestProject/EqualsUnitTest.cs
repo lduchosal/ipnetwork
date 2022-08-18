@@ -1,4 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// <copyright file="EqualsUnitTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,7 +13,6 @@ namespace System.Net.TestProject
     [TestClass]
     public class EqualsUnitTest
     {
-
         #region Equals IPv4
 
         [TestMethod]
@@ -38,7 +41,7 @@ namespace System.Net.TestProject
         public void TestEquals_ipv4_3()
         {
             IPNetwork network1 = IPNetwork.Parse("192.168.0.1/24");
-            object network2 = "";
+            object network2 = string.Empty;
             bool result = network1.Equals(network2);
             bool expected = false;
 
@@ -55,7 +58,6 @@ namespace System.Net.TestProject
 
             Assert.AreEqual(expected, result, "equals");
         }
-
 
         [TestMethod]
         public void TestEquals_ipv4_5()
@@ -98,7 +100,7 @@ namespace System.Net.TestProject
         public void TestEquals_ipv6_3()
         {
             IPNetwork network1 = IPNetwork.Parse("::1/128");
-            object network2 = "";
+            object network2 = string.Empty;
             bool result = network1.Equals(network2);
             bool expected = false;
 
@@ -115,7 +117,6 @@ namespace System.Net.TestProject
 
             Assert.AreEqual(expected, result, "equals");
         }
-
 
         [TestMethod]
         public void TestEquals_ipv6_5()

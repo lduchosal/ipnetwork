@@ -1,4 +1,4 @@
-﻿// <copyright file="CidrGuess.cs" company="PlaceholderCompany">
+﻿// <copyright file="ICidrGuess.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 

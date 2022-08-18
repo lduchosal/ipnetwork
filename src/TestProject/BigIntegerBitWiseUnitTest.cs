@@ -1,4 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// <copyright file="BigIntegerBitWiseUnitTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Numerics;
 
 namespace System.Net.TestProject
@@ -6,24 +10,19 @@ namespace System.Net.TestProject
     [TestClass]
     public class BigIntegerBitWiseUnitTest
     {
-
         [TestMethod]
         public void Test1()
         {
-
             byte[] bytes = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             BigInteger reverseme = new BigInteger(bytes);
             BigInteger reversed = reverseme.PositiveReverse(4);
 
             Assert.AreEqual(0, (int)reversed);
-
-
         }
 
         [TestMethod]
         public void Test2()
         {
-
             byte[] bytes = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             BigInteger reverseme = new BigInteger(bytes);
             BigInteger reversed = reverseme.PositiveReverse(8);
@@ -37,8 +36,6 @@ namespace System.Net.TestProject
             Assert.AreEqual(0xFF, result[5]);
             Assert.AreEqual(0xFF, result[6]);
             Assert.AreEqual(0xFF, result[7]);
-
-
         }
     }
 }

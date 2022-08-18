@@ -1,4 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// <copyright file="CidrClassLessUnitTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,7 +10,7 @@ using System.Text;
 namespace System.Net.TestProject
 {
     [TestClass]
-    public class CidrClassLessTest
+    public class CidrClassLessUnitTest
     {
         #region IPV4
 
@@ -69,6 +73,7 @@ namespace System.Net.TestProject
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(32, cidr, "cidr");
         }
+
         [TestMethod]
 
         public void TestTryGuessCidrE()
@@ -121,7 +126,6 @@ namespace System.Net.TestProject
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(128, cidr, "cidr");
         }
-
 
         #endregion
 

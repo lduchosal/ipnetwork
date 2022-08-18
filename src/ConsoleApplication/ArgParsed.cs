@@ -1,9 +1,15 @@
-﻿namespace System.Net.ConsoleApplication
+﻿// <copyright file="ArgParsed.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+namespace System.Net.ConsoleApplication
 {
     public class ArgParsed
     {
-        public int Arg;
+        public int Arg { get; set; }
+
         private event ArgParsedDelegate OnArgParsed;
+
         public delegate void ArgParsedDelegate(ProgramContext ac, string arg);
 
         public void Run(ProgramContext ac, string arg)
@@ -16,8 +22,5 @@
             this.Arg = arg;
             this.OnArgParsed += onArgParsed;
         }
-
-
-
     }
 }

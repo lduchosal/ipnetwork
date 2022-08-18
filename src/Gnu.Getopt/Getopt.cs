@@ -1,3 +1,7 @@
+// <copyright file="Getopt.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
 /**************************************************************************
 /* Getopt.cs -- C#.NET port of Java port of GNU getopt from glibc 2.0.6
 /*
@@ -99,34 +103,34 @@ namespace Gnu.Getopt
     /// Here is a basic example of using Getopt:
     /// <code>
     /// Getopt g = new Getopt("testprog", args, "ab:c::d");
-    ///	
-    ///	int c;
-    ///	string arg;
-    ///	while ((c = g.getopt()) != -1)
-    ///	{
-    ///		switch(c)
-    ///		{
-    ///			case 'a':
-    ///			case 'd':
-    ///				Console.WriteLine("You picked " + (char)c );
-    ///				break;
-    ///					
-    ///			case 'b':
-    ///			case 'c':
-    ///				arg = g.Optarg;
-    ///				Console.WriteLine("You picked " + (char)c +
-    ///					" with an argument of " +
-    ///					((arg != null) ? arg : "null") );
-    ///				break;
-    ///	
-    ///			case '?':
-    ///				break; // getopt() already printed an error
-    ///	
-    ///			default:
-    ///				Console.WriteLine("getopt() returned " + c);
-    ///				break;
-    ///		}
-    ///	}
+    ///
+    ///     int c;
+    ///     string arg;
+    ///     while ((c = g.getopt()) != -1)
+    ///     {
+    ///         switch(c)
+    ///         {
+    ///             case 'a':
+    ///             case 'd':
+    ///                 Console.WriteLine("You picked " + (char)c );
+    ///                 break;
+    ///
+    ///             case 'b':
+    ///             case 'c':
+    ///                 arg = g.Optarg;
+    ///                 Console.WriteLine("You picked " + (char)c +
+    ///                     " with an argument of " +
+    ///                     ((arg != null) ? arg : "null") );
+    ///                 break;
+    ///
+    ///             case '?':
+    ///                 break; // getopt() already printed an error
+    ///
+    ///             default:
+    ///                 Console.WriteLine("getopt() returned " + c);
+    ///                 break;
+    ///         }
+    ///     }
     /// </code>
     /// In this example, a new Getopt object is created with three params. The
     /// first param is the program name. This is for printing error messages in
@@ -251,7 +255,7 @@ namespace Gnu.Getopt
     /// in full. So it is permissible to abbreviate the option name to as few
     /// characters as required to uniquely identify it. If the name can
     /// represent multiple long options, then an error message is printed and
-    /// <see cref="getopt"/> returns a '<c>?</c>'.  
+    /// <see cref="getopt"/> returns a '<c>?</c>'.
     /// </para>
     /// <para>
     /// If an invalid option is specified or a required option argument is
@@ -320,74 +324,74 @@ namespace Gnu.Getopt
     /// g.Opterr = false; // We'll do our own error handling
     ///
     /// while ((c = g.getopt()) != -1)
-    ///		switch (c)
-    ///		{
-    ///			case 0:
-    ///				arg = g.getOptarg();
-    ///				Console.WriteLine("Got long option with value '" +
-    ///					(char)(new Integer(sb.toString())).intValue()
-    ///					+ "' with argument " +
-    ///					((arg != null) ? arg : "null"));
-    ///				break;
-    ///	
-    ///			case 1:
-    ///				Console.WriteLine("I see you have return in order set and that " +
-    ///					"a non-option argv element was just found " +
-    ///					"with the value '" + g.Optarg + "'");
-    ///				break;
+    ///         switch (c)
+    ///         {
+    ///             case 0:
+    ///                 arg = g.getOptarg();
+    ///                 Console.WriteLine("Got long option with value '" +
+    ///                     (char)(new Integer(sb.toString())).intValue()
+    ///                     + "' with argument " +
+    ///                     ((arg != null) ? arg : "null"));
+    ///                 break;
     ///
-    ///			case 2:
-    ///				arg = g.getOptarg();
-    ///				Console.WriteLine("I know this, but pretend I didn't");
-    ///				Console.WriteLine("We picked option " +
-    ///					longopts[g.Longind].getName() +
-    ///					" with value " +
-    ///					((arg != null) ? arg : "null"));
-    ///				break;
-    ///	
-    ///			case 'b':
-    ///				Console.WriteLine("You picked plain old option " + (char)c);
-    ///				break;
-    ///	
-    ///			case 'c':
-    ///			case 'd':
-    ///				arg = g.getOptarg();
-    ///				Console.WriteLine("You picked option '" + (char)c +
-    ///					"' with argument " +
-    ///					((arg != null) ? arg : "null"));
-    ///				break;
-    ///	
-    ///			case 'h':
-    ///				Console.WriteLine("I see you asked for help");
-    ///				break;
-    ///	
-    ///			case 'W':
-    ///				Console.WriteLine("Hmmm. You tried a -W with an incorrect long " +
-    ///					"option name");
-    ///				break;
-    ///	
-    ///			case ':':
-    ///				Console.WriteLine("Doh! You need an argument for option " +
-    ///					(char)g.getOptopt());
-    ///				break;
-    ///	
-    ///			case '?':
-    ///				Console.WriteLine("The option '" + (char)g.getOptopt() +
-    ///					"' is not valid");
-    ///				break;
-    ///	
-    ///			default:
-    ///				Console.WriteLine("getopt() returned " + c);
-    ///				break;
-    ///		}
-    ///	
+    ///             case 1:
+    ///                 Console.WriteLine("I see you have return in order set and that " +
+    ///                     "a non-option argv element was just found " +
+    ///                     "with the value '" + g.Optarg + "'");
+    ///                 break;
+    ///
+    ///             case 2:
+    ///                 arg = g.getOptarg();
+    ///                 Console.WriteLine("I know this, but pretend I didn't");
+    ///                 Console.WriteLine("We picked option " +
+    ///                     longopts[g.Longind].getName() +
+    ///                     " with value " +
+    ///                     ((arg != null) ? arg : "null"));
+    ///                 break;
+    ///
+    ///             case 'b':
+    ///                 Console.WriteLine("You picked plain old option " + (char)c);
+    ///                 break;
+    ///
+    ///             case 'c':
+    ///             case 'd':
+    ///                 arg = g.getOptarg();
+    ///                 Console.WriteLine("You picked option '" + (char)c +
+    ///                     "' with argument " +
+    ///                     ((arg != null) ? arg : "null"));
+    ///                 break;
+    ///
+    ///             case 'h':
+    ///                 Console.WriteLine("I see you asked for help");
+    ///                 break;
+    ///
+    ///             case 'W':
+    ///                 Console.WriteLine("Hmmm. You tried a -W with an incorrect long " +
+    ///                     "option name");
+    ///                 break;
+    ///
+    ///             case ':':
+    ///                 Console.WriteLine("Doh! You need an argument for option " +
+    ///                     (char)g.getOptopt());
+    ///                 break;
+    ///
+    ///             case '?':
+    ///                 Console.WriteLine("The option '" + (char)g.getOptopt() +
+    ///                     "' is not valid");
+    ///                 break;
+    ///
+    ///             default:
+    ///                 Console.WriteLine("getopt() returned " + c);
+    ///                 break;
+    ///         }
+    ///
     /// for (int i = g.getOptind(); i &lt; argv.length ; i++)
-    ///		Console.WriteLine("Non option argv element: " + argv[i] );
+    ///         Console.WriteLine("Non option argv element: " + argv[i] );
     /// </code>
     /// <para>
     /// The set of single-character options is often in one-to-one
     /// correspondence with the set of long options. The
-    /// <see cref="digest" /> method is helpful in such cases:
+    /// <see cref="Digest" /> method is helpful in such cases:
     /// <code>
     /// LongOpt [] longOpts =
     ///   new LongOpt [7] {
@@ -453,6 +457,7 @@ namespace Gnu.Getopt
             /// the first character of the list of option characters.
             /// </summary>
             RequireOrder = 1,
+
             /// <summary>
             /// Permute is the default. We permute the contents of ARGV as we
             /// scan, so that eventually all the non-options are at the end.
@@ -460,6 +465,7 @@ namespace Gnu.Getopt
             /// programs that were not written to expect this.
             /// </summary>
             Permute = 2,
+
             /// <summary>
             /// ReturnInOrder is an option available to programs that were
             /// written to expect options and other ARGV-elements in any order
@@ -469,7 +475,7 @@ namespace Gnu.Getopt
             /// of the list of option characters selects this mode of
             /// operation.
             /// </summary>
-            ReturnInOrder = 3
+            ReturnInOrder = 3,
         }
 
         /// <summary>
@@ -477,19 +483,30 @@ namespace Gnu.Getopt
         /// given an array of LongOpts suitable for the Getopt
         /// constructor
         /// </summary>
-        public static string digest(LongOpt[] longOpts)
+        /// <param name="longOpts"></param>
+        /// <returns></returns>
+        public static string Digest(LongOpt[] longOpts)
         {
             StringBuilder sb = new StringBuilder();
             foreach (LongOpt o in longOpts)
             {
                 sb.Append((char)o.Val);
-                if (o.HasArg == Argument.Optional) sb.Append("::");
-                if (o.HasArg == Argument.Required) sb.Append(":");
+                if (o.HasArg == Argument.Optional)
+                {
+                    sb.Append("::");
+                }
+
+                if (o.HasArg == Argument.Required)
+                {
+                    sb.Append(":");
+                }
             }
+
             return sb.ToString();
         }
 
         #region Instance Variables
+
         /// <summary>
         /// For communication from <see cref="getopt"/> to the caller. When
         /// <see cref="getopt"/> finds an option that takes an argument, the
@@ -534,7 +551,7 @@ namespace Gnu.Getopt
         /// the scan where we left off.
         ///
         /// If this is zero, or a null string, it means resume the scan by
-        /// advancing to the next ARGV-element.  
+        /// advancing to the next ARGV-element.
         /// </summary>
         private string nextchar;
 
@@ -620,7 +637,9 @@ namespace Gnu.Getopt
         #endregion
 
         #region Constructors
+
         /// <summary>
+        /// Initializes a new instance of the <see cref="Getopt"/> class.
         /// Construct a basic Getopt instance with the given input data. Note
         /// that this handles short options only.
         /// </summary>
@@ -634,12 +653,13 @@ namespace Gnu.Getopt
         /// A string containing a description of the valid args for this
         /// program.
         /// </param>
-        public Getopt(string progname, string[] argv, string optstring) :
-            this(progname, argv, optstring, null, false)
+        public Getopt(string progname, string[] argv, string optstring)
+            : this(progname, argv, optstring, null, false)
         {
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Getopt"/> class.
         /// Construct a Getopt instance with given input data that is capable
         /// of parsing long options as well as short.
         /// </summary>
@@ -657,13 +677,22 @@ namespace Gnu.Getopt
         /// An array of <see cref="LongOpt"/> objects that describes the valid
         /// long args for this program.
         /// </param>
-        public Getopt(string progname, string[] argv, string optstring,
-            LongOpt[] longOptions) : this(progname, argv, optstring,
-            longOptions, false)
+        public Getopt(
+            string progname,
+            string[] argv,
+            string optstring,
+            LongOpt[] longOptions)
+            : this(
+                  progname,
+                  argv,
+                  optstring,
+                  longOptions,
+                  false)
         {
         }
 
         /// <summary>
+        /// Initializes a new instance of the <see cref="Getopt"/> class.
         /// Construct a Getopt instance with given input data that is capable
         /// of parsing long options and short options.  Contrary to what you
         /// might think, the flag <paramref name="longOnly"/> does not
@@ -690,11 +719,17 @@ namespace Gnu.Getopt
         /// true if long options that do not conflict with short options can
         /// start with a '<c>-</c>' as well as "<c>--</c>".
         /// </param>
-        public Getopt(string progname, string[] argv, string optstring,
-            LongOpt[] longOptions, bool longOnly)
+        public Getopt(
+            string progname,
+            string[] argv,
+            string optstring,
+            LongOpt[] longOptions,
+            bool longOnly)
         {
             if (optstring.Length == 0)
+            {
                 optstring = " ";
+            }
 
             // This function is essentially _getopt_initialize from GNU getopt
             this.progname = progname;
@@ -708,12 +743,12 @@ namespace Gnu.Getopt
             // "POSIXLY_CORRECT" environment variable in the C version
             try
             {
-                //if(false)
-                //{
-                //	this.posixlyCorrect = true;
-                //	this.cultureInfo = new CultureInfo("en-US");
-                //}
-                //else
+                // if(false)
+                // {
+                // this.posixlyCorrect = true;
+                // this.cultureInfo = new CultureInfo("en-US");
+                // }
+                // else
                 this.posixlyCorrect = false;
             }
             catch (Exception)
@@ -726,19 +761,24 @@ namespace Gnu.Getopt
             {
                 this.ordering = Order.ReturnInOrder;
                 if (optstring.Length > 1)
+                {
                     this.optstring = optstring.Substring(1);
+                }
             }
             else if (optstring[0] == '+')
             {
                 this.ordering = Order.RequireOrder;
                 if (optstring.Length > 1)
+                {
                     this.optstring = optstring.Substring(1);
+                }
             }
+
             // always false
             // else if (this.posixlyCorrect)
-            //{
-            //	this.ordering = Order.RequireOrder;
-            //}
+            // {
+            // this.ordering = Order.RequireOrder;
+            // }
             else
             {
                 this.ordering = Order.Permute; // The normal default case
@@ -747,6 +787,7 @@ namespace Gnu.Getopt
         #endregion
 
         #region Instance Methods
+
         /// <summary>
         /// In GNU getopt, it is possible to change the string containg valid
         /// options on the fly because it is passed as an argument to
@@ -757,11 +798,17 @@ namespace Gnu.Getopt
         /// </summary>
         public string Optstring
         {
-            get { return this.optstring; }
+            get
+            {
+                return this.optstring;
+            }
+
             set
             {
                 if (value.Length == 0)
+                {
                     value = " ";
+                }
 
                 this.optstring = value;
             }
@@ -777,7 +824,7 @@ namespace Gnu.Getopt
         /// scan.
         ///
         /// Otherwise, <c>optind</c> communicates from one call to the next how
-        /// much of ARGV has been scanned so far.  
+        /// much of ARGV has been scanned so far.
         /// </summary>
         /// <summary>
         /// This method allows the <c>optind</c> index to be set manually.
@@ -878,6 +925,7 @@ namespace Gnu.Getopt
                         argv[bottom + i] = argv[top - (middle - bottom) + i];
                         argv[top - (middle - bottom) + i] = tem;
                     }
+
                     // Exclude the moved bottom segment from further swapping.
                     top -= len;
                 }
@@ -894,14 +942,14 @@ namespace Gnu.Getopt
                         argv[bottom + i] = argv[middle + i];
                         argv[middle + i] = tem;
                     }
+
                     // Exclude the moved top segment from further swapping.
                     bottom += len;
                 }
             }
 
             // Update records for the slots the non-options now occupy.
-
-            this.firstNonopt += (this.optind - this.lastNonopt);
+            this.firstNonopt += this.optind - this.lastNonopt;
             this.lastNonopt = this.optind;
         }
 
@@ -928,7 +976,9 @@ namespace Gnu.Getopt
 
             nameend = this.nextchar.IndexOf("=");
             if (nameend == -1)
+            {
                 nameend = this.nextchar.Length;
+            }
 
             // Test all long options for either exact match or abbreviated
             // matches
@@ -965,14 +1015,17 @@ namespace Gnu.Getopt
             {
                 if (this.opterr)
                 {
-                    object[] msgArgs = new object[]{
-                        this.progname, this.argv[optind] };
+                    object[] msgArgs = new object[]
+                    {
+                        this.progname, this.argv[optind],
+                    };
                     System.Console.Error.WriteLine(
-                        this.resManager.GetString("getoptAmbigious",
-                        this.cultureInfo), msgArgs);
+                        this.resManager.GetString(
+                            "getoptAmbigious",
+                            this.cultureInfo), msgArgs);
                 }
 
-                this.nextchar = "";
+                this.nextchar = string.Empty;
                 this.optopt = 0;
                 ++this.optind;
 
@@ -988,9 +1041,13 @@ namespace Gnu.Getopt
                     if (pfound.HasArg != Argument.No)
                     {
                         if (this.nextchar.Substring(nameend).Length > 1)
+                        {
                             this.optarg = this.nextchar.Substring(nameend + 1);
+                        }
                         else
-                            this.optarg = "";
+                        {
+                            this.optarg = string.Empty;
+                        }
                     }
                     else
                     {
@@ -999,18 +1056,24 @@ namespace Gnu.Getopt
                             // -- option
                             if (argv[this.optind - 1].StartsWith("--"))
                             {
-                                object[] msgArgs = new object[]{
-                                    this.progname, pfound.Name };
+                                object[] msgArgs = new object[]
+                                {
+                                    this.progname, pfound.Name,
+                                };
                                 System.Console.Error.WriteLine(
                                     this.resManager.GetString(
                                     "getoptArguments1", this.cultureInfo),
                                     msgArgs);
                             }
+
                             // +option or -option
                             else
                             {
-                                object[] msgArgs = new object[]{ this.progname,
-                                    this.argv[optind - 1][0], pfound.Name};
+                                object[] msgArgs = new object[]
+                                {
+                                    this.progname,
+                                    this.argv[optind - 1][0], pfound.Name,
+                                };
                                 System.Console.Error.WriteLine(
                                     this.resManager.GetString(
                                     "getoptArguments2", this.cultureInfo),
@@ -1018,7 +1081,7 @@ namespace Gnu.Getopt
                             }
                         }
 
-                        this.nextchar = "";
+                        this.nextchar = string.Empty;
                         this.optopt = pfound.Val;
 
                         return '?';
@@ -1035,23 +1098,30 @@ namespace Gnu.Getopt
                     {
                         if (this.opterr)
                         {
-                            object[] msgArgs = new object[]{
-                                this.progname, this.argv[this.optind - 1]};
+                            object[] msgArgs = new object[]
+                            {
+                                this.progname, this.argv[this.optind - 1],
+                            };
                             System.Console.Error.WriteLine(
-                                this.resManager.GetString("getoptRequires",
-                                this.cultureInfo), msgArgs);
+                                this.resManager.GetString(
+                                    "getoptRequires",
+                                    this.cultureInfo), msgArgs);
                         }
 
-                        this.nextchar = "";
+                        this.nextchar = string.Empty;
                         this.optopt = pfound.Val;
                         if (this.optstring[0] == ':')
+                        {
                             return ':';
+                        }
                         else
+                        {
                             return '?';
+                        }
                     }
                 } // else if (pfound)
 
-                this.nextchar = "";
+                this.nextchar = string.Empty;
 
                 if (pfound.Flag != null)
                 {
@@ -1091,16 +1161,23 @@ namespace Gnu.Getopt
             this.optarg = null;
 
             if (this.endparse == true)
+            {
                 return -1;
+            }
 
             if ((this.nextchar == null) || (this.nextchar.Length == 0))
             {
                 // If we have just processed some options following some
                 // non-options, exchange them so that the options come first.
                 if (this.lastNonopt > this.optind)
+                {
                     this.lastNonopt = this.optind;
+                }
+
                 if (this.firstNonopt > this.optind)
+                {
                     this.firstNonopt = this.optind;
+                }
 
                 if (this.ordering == Order.Permute)
                 {
@@ -1109,9 +1186,13 @@ namespace Gnu.Getopt
                     // first.
                     if ((this.firstNonopt != this.lastNonopt) &&
                         (this.lastNonopt != this.optind))
+                    {
                         this.exchange(this.argv);
+                    }
                     else if (this.lastNonopt != this.optind)
+                    {
                         this.firstNonopt = this.optind;
+                    }
 
                     // Skip any additional non-options
                     // and extend the range of non-options previously skipped.
@@ -1119,7 +1200,9 @@ namespace Gnu.Getopt
                         ((this.argv[optind].Length == 0) ||
                         (this.argv[this.optind][0] != '-') ||
                         this.argv[optind].Equals("-")))
+                    {
                         this.optind++;
+                    }
 
                     this.lastNonopt = this.optind;
                 }
@@ -1135,9 +1218,13 @@ namespace Gnu.Getopt
 
                     if ((this.firstNonopt != this.lastNonopt) &&
                         (this.lastNonopt != this.optind))
+                    {
                         this.exchange(this.argv);
+                    }
                     else if (this.firstNonopt == this.lastNonopt)
+                    {
                         this.firstNonopt = this.optind;
+                    }
 
                     this.lastNonopt = this.argv.Length;
 
@@ -1151,7 +1238,9 @@ namespace Gnu.Getopt
                     // Set the next-arg-index to point at the non-options that
                     // we previously skipped, so the caller will digest them.
                     if (this.firstNonopt != this.lastNonopt)
+                    {
                         this.optind = this.firstNonopt;
+                    }
 
                     return -1;
                 }
@@ -1164,7 +1253,9 @@ namespace Gnu.Getopt
                     this.argv[this.optind].Equals("-"))
                 {
                     if (this.ordering == Order.RequireOrder)
+                    {
                         return -1;
+                    }
 
                     this.optarg = this.argv[optind++];
                     return 1;
@@ -1173,26 +1264,30 @@ namespace Gnu.Getopt
                 // We have found another option-ARGV-element.
                 // Skip the initial punctuation.
                 if (this.argv[optind].StartsWith("--"))
+                {
                     this.nextchar = this.argv[this.optind].Substring(2);
+                }
                 else
+                {
                     this.nextchar = this.argv[this.optind].Substring(1);
+                }
             }
 
             // Decode the current option-ARGV-element.
 
-            /*	Check whether the ARGV-element is a long option.
-				
-				If longOnly and the ARGV-element has the form "-f", where f is
-				a valid short option, don't consider it an abbreviated form of
-				a long option that starts with f. Otherwise there would be no
-				way to give the -f short option.
-				
-				On the other hand, if there's a long option "fubar" and	the
-				ARGV-element is "-fu", do consider that an abbreviation of the
-				long option, just like "--fu", and not "-f" with arg "u".
-				
-				This distinction seems to be the most useful approach.
-			*/
+            /*  Check whether the ARGV-element is a long option.
+
+                If longOnly and the ARGV-element has the form "-f", where f is
+                a valid short option, don't consider it an abbreviated form of
+                a long option that starts with f. Otherwise there would be no
+                way to give the -f short option.
+
+                On the other hand, if there's a long option "fubar" and the
+                ARGV-element is "-fu", do consider that an abbreviation of the
+                long option, just like "--fu", and not "-f" with arg "u".
+
+                This distinction seems to be the most useful approach.
+            */
             if ((this.longOptions != null) &&
                 (this.argv[this.optind].StartsWith("--") || (this.longOnly &&
                 ((this.argv[this.optind].Length > 2) ||
@@ -1201,7 +1296,9 @@ namespace Gnu.Getopt
                 int c = this.checkLongOption();
 
                 if (this.longoptHandled)
+                {
                     return c;
+                }
 
                 // Can't find it as a long option. If this is not
                 // getopt_long_only, or the option starts with "--" or is not a
@@ -1214,23 +1311,30 @@ namespace Gnu.Getopt
                     {
                         if (this.argv[this.optind].StartsWith("--"))
                         {
-                            object[] msgArgs = new object[]{
-                                this.progname, this.nextchar };
+                            object[] msgArgs = new object[]
+                            {
+                                this.progname, this.nextchar,
+                            };
                             System.Console.Error.WriteLine(
-                                this.resManager.GetString("getoptUnrecognized",
-                                this.cultureInfo), msgArgs);
+                                this.resManager.GetString(
+                                    "getoptUnrecognized",
+                                    this.cultureInfo), msgArgs);
                         }
                         else
                         {
-                            object[] msgArgs = new object[]{ this.progname,
-                                this.argv[optind][0], this.nextchar};
+                            object[] msgArgs = new object[]
+                            {
+                                this.progname,
+                                this.argv[optind][0], this.nextchar,
+                            };
                             System.Console.Error.WriteLine(
-                                this.resManager.GetString("getoptUnrecognized2",
-                                this.cultureInfo), msgArgs);
+                                this.resManager.GetString(
+                                    "getoptUnrecognized2",
+                                    this.cultureInfo), msgArgs);
                         }
                     }
 
-                    this.nextchar = "";
+                    this.nextchar = string.Empty;
                     ++this.optind;
                     this.optopt = 0;
 
@@ -1239,19 +1343,27 @@ namespace Gnu.Getopt
             } // if (longopts)
 
             // Look at and handle the next short option-character */
-            int c2 = this.nextchar[0]; //**** Do we need to check for empty str?
+            int c2 = this.nextchar[0]; // **** Do we need to check for empty str?
             if (this.nextchar.Length > 1)
+            {
                 this.nextchar = this.nextchar.Substring(1);
+            }
             else
-                this.nextchar = "";
+            {
+                this.nextchar = string.Empty;
+            }
 
             string temp = null;
             if (this.optstring.IndexOf((char)c2) != -1)
+            {
                 temp = this.optstring.Substring(
                     this.optstring.IndexOf((char)c2));
+            }
 
             if (this.nextchar.Length == 0)
+            {
                 ++this.optind;
+            }
 
             if ((temp == null) || (c2 == ':'))
             {
@@ -1260,19 +1372,25 @@ namespace Gnu.Getopt
                     if (this.posixlyCorrect)
                     {
                         // 1003.2 specifies the format of this message
-                        object[] msgArgs = new object[]{
-                            this.progname, (char) c2 };
+                        object[] msgArgs = new object[]
+                        {
+                            this.progname, (char)c2,
+                        };
                         System.Console.Error.WriteLine(
-                            this.resManager.GetString("getoptIllegal",
-                            this.cultureInfo), msgArgs);
+                            this.resManager.GetString(
+                                "getoptIllegal",
+                                this.cultureInfo), msgArgs);
                     }
                     else
                     {
-                        object[] msgArgs = new object[]{
-                            this.progname, (char) c2 };
+                        object[] msgArgs = new object[]
+                        {
+                            this.progname, (char)c2,
+                        };
                         System.Console.Error.WriteLine(
-                            this.resManager.GetString("getoptInvalid",
-                            this.cultureInfo), msgArgs);
+                            this.resManager.GetString(
+                                "getoptInvalid",
+                                this.cultureInfo), msgArgs);
                     }
                 }
 
@@ -1288,6 +1406,7 @@ namespace Gnu.Getopt
                 {
                     this.optarg = this.nextchar;
                 }
+
                 // No further cars in this argv element and no more argv
                 // elements
                 else if (this.optind == this.argv.Length)
@@ -1295,18 +1414,25 @@ namespace Gnu.Getopt
                     if (this.opterr)
                     {
                         // 1003.2 specifies the format of this message.
-                        object[] msgArgs = new object[]{
-                            this.progname, (char) c2 };
+                        object[] msgArgs = new object[]
+                        {
+                            this.progname, (char)c2,
+                        };
                         System.Console.Error.WriteLine(
-                            this.resManager.GetString("getoptRequires2",
-                            this.cultureInfo), msgArgs);
+                            this.resManager.GetString(
+                                "getoptRequires2",
+                                this.cultureInfo), msgArgs);
                     }
 
                     this.optopt = c2;
                     if (this.optstring[0] == ':')
+                    {
                         return ':';
+                    }
                     else
+                    {
                         return '?';
+                    }
                 }
                 else
                 {
@@ -1319,7 +1445,10 @@ namespace Gnu.Getopt
                 c2 = this.checkLongOption();
 
                 if (this.longoptHandled)
+                {
                     return c2;
+                }
+
                 // Let the application handle it
                 else
                 {
@@ -1332,8 +1461,8 @@ namespace Gnu.Getopt
             if ((temp.Length > 1) && (temp[1] == ':'))
             {
                 if ((temp.Length > 2) && (temp[2] == ':'))
-                // This is an option that accepts and argument optionally
                 {
+                    // This is an option that accepts and argument optionally
                     if (this.nextchar.Length != 0)
                     {
                         this.optarg = this.nextchar;
@@ -1358,19 +1487,26 @@ namespace Gnu.Getopt
                         if (this.opterr)
                         {
                             // 1003.2 specifies the format of this message
-                            object[] msgArgs = new object[]{
-                                this.progname, (char) c2};
+                            object[] msgArgs = new object[]
+                            {
+                                this.progname, (char)c2,
+                            };
                             System.Console.Error.WriteLine(
-                                this.resManager.GetString("getoptRequires2",
-                                this.cultureInfo), msgArgs);
+                                this.resManager.GetString(
+                                    "getoptRequires2",
+                                    this.cultureInfo), msgArgs);
                         }
 
                         this.optopt = c2;
 
                         if (this.optstring[0] == ':')
+                        {
                             return ':';
+                        }
                         else
+                        {
                             return '?';
+                        }
                     }
                     else
                     {
@@ -1390,8 +1526,10 @@ namespace Gnu.Getopt
                                 {
                                     // 1003.2 specifies the format of this
                                     // message
-                                    object[] msgArgs = new object[]{
-                                        this.progname, (char) c2};
+                                    object[] msgArgs = new object[]
+                                    {
+                                        this.progname, (char)c2,
+                                    };
                                     System.Console.Error.WriteLine(
                                         this.resManager.GetString(
                                         "getoptRequires2", this.cultureInfo),
@@ -1401,9 +1539,13 @@ namespace Gnu.Getopt
                                 this.optopt = c2;
 
                                 if (this.optstring[0] == ':')
+                                {
                                     return ':';
+                                }
                                 else
+                                {
                                     return '?';
+                                }
                             }
 
                             // Set new optarg and set to end. Don't permute as

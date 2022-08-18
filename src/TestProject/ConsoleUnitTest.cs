@@ -1,4 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// <copyright file="ConsoleUnitTest.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace System.Net.TestProject
 {
@@ -8,7 +12,6 @@ namespace System.Net.TestProject
     [TestClass]
     public class ConsoleUnitTest
     {
-
         [TestMethod]
         public void TestMethod1()
         {
@@ -26,6 +29,7 @@ namespace System.Net.TestProject
         {
             ConsoleApplication.Program.Main(new[] { "-N", "-n", "-m", "-c", "-b", "-f", "-l", "-u", "10.0.0.0/8" });
         }
+
         [TestMethod]
         public void TestMethod4()
         {
@@ -43,16 +47,19 @@ namespace System.Net.TestProject
         {
             ConsoleApplication.Program.Main(new[] { "-d", "24", "-x", "-S", "192.168.168.0/24", "192.168.169.1/24", "192.168.170.2/24", "192.168.171.3/24", "192.168.172.3/24", "1.1.1.1" });
         }
+
         [TestMethod]
         public void TestMethod7()
         {
             ConsoleApplication.Program.Main(new[] { "-i", "192.168.168.0/24", "192.168.169.1/24", "192.168.170.2/24", "192.168.171.3/24", "192.168.172.3/24", "1.1.1.1" });
         }
+
         [TestMethod]
         public void TestMethod8()
         {
             ConsoleApplication.Program.Main(new[] { "-d", "24", "-w", "192.168.168.0/24", "192.168.169.1/24", "192.168.170.2/24", "192.168.171.3/24", "192.168.172.3/24", "1.1.1.1" });
         }
+
         [TestMethod]
         public void TestMethod9()
         {

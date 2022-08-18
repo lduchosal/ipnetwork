@@ -1,4 +1,4 @@
-﻿// <copyright file="BigIntegerExt.cs" company="PlaceholderCompany">
+﻿// <copyright file="BigIntegerExtensions.cs" company="PlaceholderCompany">
 // Copyright (c) PlaceholderCompany. All rights reserved.
 // </copyright>
 
