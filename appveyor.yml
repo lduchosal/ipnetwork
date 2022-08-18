@@ -7,7 +7,7 @@ assembly_info:
   assembly_version: "{version}"
   assembly_file_version: "{version}"
   assembly_informational_version: "{version}"
-  
+
 dotnet_csproj:
   patch: true
   file: '**\*.csproj'
@@ -16,7 +16,7 @@ dotnet_csproj:
   assembly_version: '{version}'
   file_version: '{version}'
   informational_version: '{version}'
-  
+
 build:
   project: src/
 
