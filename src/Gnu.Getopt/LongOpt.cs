@@ -1,5 +1,5 @@
-// <copyright file="LongOpt.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+// <copyright file="LongOpt.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
 /**************************************************************************

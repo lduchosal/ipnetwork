@@ -1,5 +1,5 @@
-﻿// <copyright file="CidrClassFull.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="CidrClassFull.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
 using System.Net.Sockets;

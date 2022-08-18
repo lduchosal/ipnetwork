@@ -1,5 +1,5 @@
-﻿// <copyright file="DataContractSerializeHelper.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="DataContractSerializeHelper.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
 using System.IO;

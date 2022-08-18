@@ -1,5 +1,5 @@
-﻿// <copyright file="SerializeBinaryFormatterTest.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="SerializeBinaryFormatterTest.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
 #pragma warning disable SYSLIB0011 // Type or member is obsolete

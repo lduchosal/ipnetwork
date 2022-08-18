@@ -1,5 +1,5 @@
-﻿// <copyright file="BigIntegerBitWiseUnitTest.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="BigIntegerBitWiseUnitTest.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;

@@ -1,5 +1,5 @@
-﻿// <copyright file="ArgParsed.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="ArgParsed.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
 namespace System.Net.ConsoleApplication
