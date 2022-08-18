@@ -1,4 +1,8 @@
-﻿namespace System.Net.ConsoleApplication
+﻿// <copyright file="ActionEnum.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
+// </copyright>
+
+namespace System.Net.ConsoleApplication
 {
     public enum ActionEnum
     {
@@ -10,6 +14,6 @@
         ListIPAddress,
         ContainNetwork,
         OverlapNetwork,
-        SubstractNetwork
+        SubstractNetwork,
     }
 }

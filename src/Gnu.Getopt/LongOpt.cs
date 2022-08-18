@@ -1,3 +1,7 @@
+// <copyright file="LongOpt.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
+// </copyright>
+
 /**************************************************************************
 /* LongOpt.cs -- C#.NET port of Long option object for Getopt
 /*
@@ -38,16 +42,18 @@ namespace Gnu.Getopt
         /// This value indicates that the option takes no argument.
         /// </summary>
         No = 0,
+
         /// <summary>
         /// This value indicates that the option takes an argument that is
         /// required.
         /// </summary>
         Required = 1,
+
         /// <summary>
         /// This value indicates that the option takes an argument that is
         /// optional.
         /// </summary>
-        Optional = 2
+        Optional = 2,
     }
 
     /// <summary>
@@ -63,6 +69,7 @@ namespace Gnu.Getopt
     public class LongOpt
     {
         #region Instance Variables
+
         /// <summary>
         /// The name of the long option.
         /// </summary>
@@ -103,7 +110,9 @@ namespace Gnu.Getopt
         #endregion
 
         #region Constructors
+
         /// <summary>
+        /// Initializes a new instance of the <see cref="LongOpt"/> class.
         /// Create a new LongOpt object with the given parameter values. If the
         /// value passed as <paramref name="hasArg"/> is not valid, then an
         /// <see cref="ArgumentException"/> is thrown.
@@ -132,7 +141,10 @@ namespace Gnu.Getopt
         /// <see cref="Argument.No"/>, <see cref="Argument.Required"/> or
         /// <see cref="Argument.Optional"/>.
         /// </exception>
-        public LongOpt(string name, Argument hasArg, StringBuilder flag,
+        public LongOpt(
+            string name,
+            Argument hasArg,
+            StringBuilder flag,
             int val)
         {
             // Check for application setting "Gnu.PosixlyCorrect" to determine
@@ -155,8 +167,9 @@ namespace Gnu.Getopt
             {
                 object[] msgArgs = new object[] { hasArg };
                 throw new System.ArgumentException(string.Format(
-                    this.resManager.GetString("getopt.invalidValue",
-                    this.cultureInfo), msgArgs));
+                    this.resManager.GetString(
+                        "getopt.invalidValue",
+                        this.cultureInfo), msgArgs));
             }
 
             // Store off values

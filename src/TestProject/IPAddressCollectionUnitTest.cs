@@ -1,4 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// <copyright file="IPAddressCollectionUnitTest.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
+// </copyright>
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections;
 using System.Collections.Generic;
 using System.Numerics;
@@ -11,13 +15,11 @@ namespace System.Net.TestProject
     [TestClass]
     public class IPAddressCollectionUnitTest
     {
-
         #region ListIPAddress
 
         [TestMethod]
         public void TestAtIndexIPAddress()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
             using (var ips = ipn.ListIPAddress())
             {
@@ -30,14 +32,11 @@ namespace System.Net.TestProject
                 Assert.AreEqual("192.168.1.6", ips[6].ToString(), "6");
                 Assert.AreEqual("192.168.1.7", ips[7].ToString(), "7");
             }
-
         }
-
 
         [TestMethod]
         public void TestAtIndexIPAddress2()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
 #pragma warning disable CS0618 // Type or member is obsolete
             using (var ips = IPNetwork.ListIPAddress(ipn))
@@ -52,13 +51,11 @@ namespace System.Net.TestProject
                 Assert.AreEqual("192.168.1.6", ips[6].ToString(), "6");
                 Assert.AreEqual("192.168.1.7", ips[7].ToString(), "7");
             }
-
         }
 
         [TestMethod]
         public void TestIterateIPAddress()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
             IPAddress last = null;
             IPAddress fisrt = null;
@@ -67,36 +64,37 @@ namespace System.Net.TestProject
             {
                 foreach (var ip in ips)
                 {
-                    if (fisrt == null) fisrt = ip;
+                    if (fisrt == null)
+                    {
+                        fisrt = ip;
+                    }
+
                     last = ip;
                     count++;
                 }
+
                 Assert.IsNotNull(last, "last is null");
                 Assert.IsNotNull(fisrt, "fisrt is null");
                 Assert.AreEqual("192.168.1.0", fisrt.ToString(), "first");
                 Assert.AreEqual("192.168.1.7", last.ToString(), "last");
                 Assert.AreEqual(8, count, "count");
             }
-
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestOutOfRangeIPAddress()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
             using (var ips = ipn.ListIPAddress())
             {
                 Console.Write("This is out of range : {0} ", ips[8]);
             }
-
         }
 
         [TestMethod]
         public void TestCountIPAddress()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
             using (IPAddressCollection ips = ipn.ListIPAddress())
             {
@@ -107,7 +105,6 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestReset()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
             using (IPAddressCollection ips = ipn.ListIPAddress())
             {
@@ -118,7 +115,6 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestResetEnumerator()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
             using (var ips = ipn.ListIPAddress())
             {
@@ -127,12 +123,12 @@ namespace System.Net.TestProject
                 {
                     Assert.IsNotNull(ips.Current);
                 }
+
                 ips.Reset();
                 while (ips.MoveNext())
                 {
                     Assert.IsNotNull(ips.Current);
                 }
-
             }
         }
 
@@ -140,7 +136,6 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestEnumeratorFailed()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
             using (IEnumerator<IPAddress> ips = ipn.ListIPAddress())
             {
@@ -149,15 +144,14 @@ namespace System.Net.TestProject
                 {
                     Assert.IsNotNull(ips.Current);
                 }
-                Console.WriteLine("This is out of range : {0}", ips.Current);
 
+                Console.WriteLine("This is out of range : {0}", ips.Current);
             }
         }
 
         [TestMethod]
         public void TestEnumeratorMoveNext()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
             using (IEnumerator<IPAddress> ips = ipn.ListIPAddress())
             {
@@ -171,15 +165,12 @@ namespace System.Net.TestProject
                 Assert.IsTrue(ips.MoveNext());
                 Assert.IsFalse(ips.MoveNext());
                 Assert.IsFalse(ips.MoveNext());
-
-
             }
         }
 
         [TestMethod]
         public void TestEnumeratorMoveNext2()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/31");
             using (IEnumerator<IPAddress> ips = ipn.ListIPAddress())
             {
@@ -190,15 +181,12 @@ namespace System.Net.TestProject
                 Assert.IsTrue(ips.MoveNext());
                 Assert.IsTrue(ips.MoveNext());
                 Assert.IsFalse(ips.MoveNext());
-
-
             }
         }
 
         [TestMethod]
         public void TestEnumerableCurrent()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/31");
             IEnumerable ips = ipn.ListIPAddress();
             Assert.IsNotNull(ips.GetEnumerator());
@@ -207,7 +195,6 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestEnumeratorCurrent()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/31");
             IEnumerator ips = ipn.ListIPAddress();
             Assert.IsNotNull(ips.Current);
@@ -221,7 +208,6 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestEnumeratorCurrentOor()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/31");
             IEnumerator ips = ipn.ListIPAddress();
             Assert.IsNotNull(ips.Current);
@@ -235,7 +221,6 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestEnumeratorIterate()
         {
-
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/31");
             IEnumerator ips = ipn.ListIPAddress();
             while (ips.MoveNext())
@@ -244,16 +229,13 @@ namespace System.Net.TestProject
             }
         }
 
-
         #endregion
 
         #region IPv6
 
-
         [TestMethod]
         public void Test_ipv6_AtIndexIPAddress()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/125");
             using (var ips = ipn.ListIPAddress())
             {
@@ -266,13 +248,11 @@ namespace System.Net.TestProject
                 Assert.AreEqual("::6", ips[6].ToString(), "6");
                 Assert.AreEqual("::7", ips[7].ToString(), "7");
             }
-
         }
 
         [TestMethod]
         public void Test_ipv6_IterateIPAddress()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/125");
             IPAddress last = null;
             IPAddress fisrt = null;
@@ -281,36 +261,37 @@ namespace System.Net.TestProject
             {
                 foreach (var ip in ips)
                 {
-                    if (fisrt == null) fisrt = ip;
+                    if (fisrt == null)
+                    {
+                        fisrt = ip;
+                    }
+
                     last = ip;
                     count++;
                 }
+
                 Assert.IsNotNull(last, "last is null");
                 Assert.IsNotNull(fisrt, "fisrt is null");
                 Assert.AreEqual("::", fisrt.ToString(), "first");
                 Assert.AreEqual("::7", last.ToString(), "last");
                 Assert.AreEqual(8, count, "count");
             }
-
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Test_ipv6_OutOfRangeIPAddress()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/125");
             using (var ips = ipn.ListIPAddress())
             {
                 Console.Write("This is out of range : {0} ", ips[8]);
             }
-
         }
 
         [TestMethod]
         public void Test_ipv6_CountIPAddress()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/125");
             using (IPAddressCollection ips = ipn.ListIPAddress())
             {
@@ -321,7 +302,6 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_ipv6_CountIPAddress2()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/0");
             var max = BigInteger.Pow(2, 128);
             using (IPAddressCollection ips = ipn.ListIPAddress())
@@ -333,7 +313,6 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_ipv6_Reset()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/125");
             using (IPAddressCollection ips = ipn.ListIPAddress())
             {
@@ -344,7 +323,6 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Tes_ipv6_tResetEnumerator()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/125");
             using (IEnumerator<IPAddress> ips = ipn.ListIPAddress())
             {
@@ -353,12 +331,12 @@ namespace System.Net.TestProject
                 {
                     Assert.IsNotNull(ips.Current);
                 }
+
                 ips.Reset();
                 while (ips.MoveNext())
                 {
                     Assert.IsNotNull(ips.Current);
                 }
-
             }
         }
 
@@ -366,7 +344,6 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Test_ipv6_EnumeratorFailed()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/125");
             using (IEnumerator<IPAddress> ips = ipn.ListIPAddress())
             {
@@ -375,15 +352,14 @@ namespace System.Net.TestProject
                 {
                     Assert.IsNotNull(ips.Current);
                 }
-                Console.WriteLine("This is out of range : {0}", ips.Current);
 
+                Console.WriteLine("This is out of range : {0}", ips.Current);
             }
         }
 
         [TestMethod]
         public void Test_ipv6_EnumeratorMoveNext()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/125");
             using (IEnumerator<IPAddress> ips = ipn.ListIPAddress())
             {
@@ -397,15 +373,12 @@ namespace System.Net.TestProject
                 Assert.IsTrue(ips.MoveNext());
                 Assert.IsFalse(ips.MoveNext());
                 Assert.IsFalse(ips.MoveNext());
-
-
             }
         }
 
         [TestMethod]
         public void Test_ipv6_EnumeratorMoveNext2()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/127");
             using (IEnumerator<IPAddress> ips = ipn.ListIPAddress())
             {
@@ -416,15 +389,12 @@ namespace System.Net.TestProject
                 Assert.IsTrue(ips.MoveNext());
                 Assert.IsTrue(ips.MoveNext());
                 Assert.IsFalse(ips.MoveNext());
-
-
             }
         }
 
         [TestMethod]
         public void Test_ipv6_EnumeratorCurrent()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/127");
             IEnumerator ips = ipn.ListIPAddress();
             Assert.IsNotNull(ips.Current);
@@ -438,7 +408,6 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void Test_ipv6_EnumeratorCurrentOor()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/127");
             IEnumerator ips = ipn.ListIPAddress();
             Assert.IsNotNull(ips.Current);
@@ -452,7 +421,6 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_ipv6_EnumeratorIterate()
         {
-
             IPNetwork ipn = IPNetwork.Parse("::/127");
             IEnumerator ips = ipn.ListIPAddress();
             while (ips.MoveNext())
@@ -470,7 +438,6 @@ namespace System.Net.TestProject
 
         #endregion
 
-
         [TestMethod]
         public void Test_Usable_AtIndexIPAddress()
         {
@@ -486,7 +453,6 @@ namespace System.Net.TestProject
             }
         }
 
-
         [TestMethod]
         public void Test_Usable_IteratorIPAddress()
         {
@@ -501,7 +467,6 @@ namespace System.Net.TestProject
                 }
             }
         }
-
 
         [TestMethod]
         public void Test_Usable_AtIndexIPAddress_31()
@@ -523,7 +488,6 @@ namespace System.Net.TestProject
             }
         }
 
-
         [TestMethod]
         public void Test_All_AtIndexIPAddress()
         {
@@ -539,7 +503,6 @@ namespace System.Net.TestProject
                 Assert.AreEqual("192.168.1.6", ips[6].ToString(), "6");
                 Assert.AreEqual("192.168.1.7", ips[7].ToString(), "6");
             }
-
         }
     }
 }

@@ -1,30 +1,45 @@
-﻿namespace System.Net.ConsoleApplication
+﻿// <copyright file="ProgramContext.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
+// </copyright>
+
+namespace System.Net.ConsoleApplication
 {
     public class ProgramContext
     {
+        public bool IPNetwork { get; set; }
 
-        public bool IPNetwork;
-        public bool Network;
-        public bool Netmask;
-        public bool Cidr;
-        public bool Broadcast;
-        public bool FirstUsable;
-        public bool LastUsable;
-        public bool Usable;
-        public bool Total;
+        public bool Network { get; set; }
 
-        public CidrParseEnum CidrParse = CidrParseEnum.Value;
-        public byte CidrParsed = 32;
+        public bool Netmask { get; set; }
 
-        public IPNetwork ContainNetwork;
-        public IPNetwork OverlapNetwork;
-        public IPNetwork SubstractNetwork;
+        public bool Cidr { get; set; }
 
-        public ActionEnum Action = ActionEnum.PrintNetworks;
-        public byte SubnetCidr;
+        public bool Broadcast { get; set; }
 
-        public string[] NetworksString;
-        public IPNetwork[] Networks;
+        public bool FirstUsable { get; set; }
 
+        public bool LastUsable { get; set; }
+
+        public bool Usable { get; set; }
+
+        public bool Total { get; set; }
+
+        public CidrParseEnum CidrParse { get; set; } = CidrParseEnum.Value;
+
+        public byte CidrParsed { get; set; } = 32;
+
+        public IPNetwork ContainNetwork { get; set; }
+
+        public IPNetwork OverlapNetwork { get; set; }
+
+        public IPNetwork SubstractNetwork { get; set; }
+
+        public ActionEnum Action { get; set; } = ActionEnum.PrintNetworks;
+
+        public byte SubnetCidr { get; set; }
+
+        public string[] NetworksString { get; set; }
+
+        public IPNetwork[] Networks { get; set; }
     }
 }

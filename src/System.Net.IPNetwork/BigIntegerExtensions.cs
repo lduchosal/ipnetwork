@@ -1,5 +1,5 @@
-﻿// <copyright file="BigIntegerExt.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="BigIntegerExtensions.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
 using System.Collections.Generic;

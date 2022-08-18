@@ -1,5 +1,5 @@
-﻿// <copyright file="IPNetworkCollection.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="IPNetworkCollection.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
 using System.Collections;

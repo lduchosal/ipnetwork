@@ -1,11 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// <copyright file="IPNetworkCollectionUnitTest.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
+// </copyright>
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace System.Net.TestProject
 {
     [TestClass]
     public class IPNetworkCollectionUnitTest
     {
-
         #region ctor
 
         [TestMethod]
@@ -68,7 +71,6 @@ namespace System.Net.TestProject
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
-
                 var ipn0 = ipns.Current;
                 ipns.MoveNext();
                 ipns.Reset();
@@ -99,7 +101,6 @@ namespace System.Net.TestProject
             IPNetwork ipn = IPNetwork.Parse("192.168.1.0/30");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
-
                 ipns.MoveNext();
                 ipns.MoveNext();
                 ipns.MoveNext();

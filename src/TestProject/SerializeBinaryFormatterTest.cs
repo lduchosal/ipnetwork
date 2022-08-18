@@ -1,4 +1,8 @@
-﻿#pragma warning disable SYSLIB0011 // Type or member is obsolete
+﻿// <copyright file="SerializeBinaryFormatterTest.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
+// </copyright>
+
+#pragma warning disable SYSLIB0011 // Type or member is obsolete
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -8,9 +12,8 @@ namespace System.Net.TestSerialization
     [TestClass]
     public class SerializeBinaryFormatterTest
     {
-
         [TestMethod]
-        [Ignore] //("Assembly version is writen in binary serilaization.")
+        [Ignore] // ("Assembly version is writen in binary serilaization.")
         public void Test_Serialize_BinaryFormatter()
         {
             var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
@@ -38,7 +41,6 @@ namespace System.Net.TestSerialization
 
             var expected = IPNetwork.Parse("10.0.0.1/8");
             Assert.AreEqual(expected, result);
-
         }
 
         [TestMethod]
@@ -56,7 +58,6 @@ namespace System.Net.TestSerialization
 
             Assert.AreEqual(ipnetwork, ipnetwork2);
         }
-
 
         [TestMethod]
         [TestCategory("LongRunning")]
@@ -92,7 +93,7 @@ namespace System.Net.TestSerialization
                 mem.Position = 0;
             }
 
-            //  11.949 seconds(Ad hoc).
+            // 11.949 seconds(Ad hoc).
         }
 
         [TestMethod]
@@ -112,11 +113,9 @@ namespace System.Net.TestSerialization
                 var ipnetwork2 = serializer.Deserialize(mem);
 
                 mem.SetLength(0);
-
             }
 
             // 17.48 seconds(Ad hoc).
-
         }
     }
 }

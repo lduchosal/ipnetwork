@@ -1,5 +1,5 @@
-﻿// <copyright file="IPNetwork.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="IPNetwork.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
 using System.Collections.Generic;
@@ -770,7 +770,8 @@ namespace System.Net
             var span = bytes.AsSpan();
             if (!ipaddress.TryWriteBytes(span, out _))
             {
-                if (tryParse == false) {
+                if (tryParse == false)
+                {
                     throw new ArgumentException("ipaddress");
                 }
 

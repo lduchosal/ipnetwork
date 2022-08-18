@@ -1,17 +1,17 @@
-﻿using System.Text;
+﻿// <copyright file="SerializeXmlTest.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
+// </copyright>
+
+using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 using System.Xml.Serialization;
 
 namespace System.Net.TestSerialization.NetFramework
 {
-    /// <summary>
-    /// Summary description for SerializeXmlTest
-    /// </summary>
     [TestClass]
     public class SerializeXmlTest
     {
-
         [TestMethod]
         public void Test_Serialize_Xml()
         {
@@ -47,7 +47,6 @@ namespace System.Net.TestSerialization.NetFramework
             Assert.AreEqual(expected, result);
         }
 
-
         [TestMethod]
         public void Test_Serialize_Deserialize_Xml()
         {
@@ -66,8 +65,6 @@ namespace System.Net.TestSerialization.NetFramework
 
             Assert.AreEqual(ipnetwork, ipnetwork2);
         }
-
-
 
         [TestMethod]
         [TestCategory("LongRunning")]
@@ -106,7 +103,7 @@ namespace System.Net.TestSerialization.NetFramework
                 mem.Position = 0;
             }
 
-            //  17.98 seconds(Ad hoc).
+            // 17.98 seconds(Ad hoc).
         }
 
         [TestMethod]
@@ -126,12 +123,9 @@ namespace System.Net.TestSerialization.NetFramework
                 var ipnetwork2 = serializer.Deserialize(mem);
 
                 mem.SetLength(0);
-
             }
 
             // 17.48 seconds(Ad hoc).
-
         }
-
     }
 }

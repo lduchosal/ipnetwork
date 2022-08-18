@@ -1,4 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿// <copyright file="CidrClassFullUnitTest.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
+// </copyright>
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -69,6 +73,7 @@ namespace System.Net.TestProject
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(24, cidr, "cidr");
         }
+
         [TestMethod]
 
         public void TestTryGuessCidrE()
@@ -121,7 +126,6 @@ namespace System.Net.TestProject
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(64, cidr, "cidr");
         }
-
 
         #endregion
 
