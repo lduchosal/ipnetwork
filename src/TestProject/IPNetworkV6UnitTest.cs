@@ -2234,7 +2234,6 @@ namespace System.Net.TestProject
 #pragma warning disable 0618
             bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
 #pragma warning restore 0618
-
         }
 
         [TestMethod]
@@ -2574,6 +2573,5 @@ namespace System.Net.TestProject
         }
 
         #endregion
-
     }
 }

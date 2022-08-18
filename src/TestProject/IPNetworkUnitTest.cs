@@ -2105,7 +2105,6 @@ namespace System.Net.TestProject
 #pragma warning disable 0618
             bool result = IPNetwork.IsIANAReserved(ipnetwork);
 #pragma warning restore 0618
-
         }
 
         [TestMethod]
