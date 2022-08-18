@@ -26,23 +26,23 @@ branches:
 
 init:
   - cmd: git config --global core.autocrlf true
-  
+
 before_build:
   - cmd: dotnet --version
   - cmd: dotnet tool install --global coveralls.net
   - cmd: dotnet clean ./src
   - cmd: dotnet restore ./src --verbosity m
-  - cmd: nuget restore ./src 
-  
+  - cmd: nuget restore ./src
+
 build_script:
   - cmd: dotnet pack -c release ./src/System.Net.IPNetwork
   - cmd: dotnet build -c release ./src/ConsoleApplication
-  
+
 test_script:
   - cmd: dotnet test ./src/TestProject/TestProject.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
   - vstest.console /logger:Appveyor c:\Projects\ipnetwork\src\TestProject\bin\Debug\net5.0\TestProject.dll
   - csmacnz.Coveralls.exe --opencover -i C:\projects\ipnetwork\src\TestProject\coverage.net5.0.opencover.xml --useRelativePaths
- 
+
 # 1. Regenerate AppVeyor Api Key
 # https://www.nuget.org/account/apikeys
 # 2. Encrypt configuration data
