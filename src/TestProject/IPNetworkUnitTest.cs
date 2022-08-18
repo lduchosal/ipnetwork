@@ -1691,7 +1691,6 @@ namespace System.Net.TestProject
 #pragma warning disable 0618
             bool result = IPNetwork.Contains(ipnetwork, ipnetwork2);
 #pragma warning restore 0618
-
         }
 
         [TestMethod]
@@ -2256,7 +2255,6 @@ namespace System.Net.TestProject
 #pragma warning disable 0618
             IPNetworkCollection result = IPNetwork.Subnet(ipnetwork, cidr);
 #pragma warning restore 0618
-
         }
 
         [TestMethod]
@@ -2268,7 +2266,6 @@ namespace System.Net.TestProject
 #pragma warning disable 0618
             IPNetworkCollection result = IPNetwork.Subnet(ipnetwork, cidr);
 #pragma warning restore 0618
-
         }
 
         [TestMethod]
@@ -2451,7 +2448,6 @@ namespace System.Net.TestProject
 #pragma warning disable 0618
             bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
 #pragma warning restore 0618
-
         }
 
         [TestMethod]
@@ -2464,7 +2460,6 @@ namespace System.Net.TestProject
 #pragma warning disable 0618
             bool subnetted = IPNetwork.TrySubnet(ipnetwork, cidr, out subnets);
 #pragma warning restore 0618
-
         }
 
         [TestMethod]
@@ -2727,7 +2722,6 @@ namespace System.Net.TestProject
 #pragma warning disable 0618
             bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
 #pragma warning restore 0618
-
         }
 
         [TestMethod]
@@ -2740,7 +2734,6 @@ namespace System.Net.TestProject
 #pragma warning disable 0618
             bool result = IPNetwork.TrySupernet(network1, network2, out supernet);
 #pragma warning restore 0618
-
         }
 
         [TestMethod]
@@ -3588,10 +3581,7 @@ Usable      : 4294967294
             IEnumerable<IPNetwork> result;
             bool substracted = IPNetwork.TrySubstractNetwork(ipns.ToArray(), nsubstract, out result);
             Assert.AreEqual(true, substracted, "substracted");
-
         }
-
-
 
         #endregion
         **/
@@ -3934,6 +3924,5 @@ Usable      : 4294967294
         }
 
         #endregion
-
     }
 }

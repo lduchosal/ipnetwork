@@ -29,4 +29,3 @@ jobs:
       run: dotnet build  --no-restore -c release ./src/ConsoleApplication --no-restore
     - name: Test
       run: dotnet test --verbosity normal ./src/ConsoleApplication/ConsoleApplication.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-    
