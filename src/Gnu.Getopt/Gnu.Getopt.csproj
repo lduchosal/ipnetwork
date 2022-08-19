@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
+	<TargetFrameworks Condition="'$(COMPUTERNAME)' == 'Q'">net6.0</TargetFrameworks>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>

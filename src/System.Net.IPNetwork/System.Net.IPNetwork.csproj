@@ -2,8 +2,9 @@
 
   <PropertyGroup>
 	  <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net47;net48;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0;netstandard2.1;netcoreapp3.1;net5.0;net6.0</TargetFrameworks> 
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0;netstandard2.1;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
+	  <TargetFrameworks Condition="'$(COMPUTERNAME)' == 'Q'">net6.0</TargetFrameworks>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <PackageId>IPNetwork2</PackageId>
     <PackageVersion>2.6.0</PackageVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -30,8 +31,8 @@
   <PropertyGroup>
 	<DefineConstants Condition="'$(OS)' != 'Windows_NT'">$(DefineConstants);TRAVISCI</DefineConstants>
   </PropertyGroup>
-  
-  <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47'">
+ 
+	<ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47'">
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
