@@ -15,7 +15,7 @@ namespace System.Net.TestProject
     [TestClass]
     public class IPNetworkUnitTest
     {
-        #region ctor
+        #region Ctor
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentOutOfRangeException))]

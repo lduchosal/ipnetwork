@@ -7,6 +7,7 @@ using System.Collections.Generic;
 namespace System.Net
 {
     using System;
+    using System.Net.Sockets;
     using System.Numerics;
     using System.Text;
 
@@ -176,5 +177,74 @@ namespace System.Net
             output[output.Length - 1] = 0;
             return new BigInteger(output);
         }
+
+        #region ToIPAddress
+
+        /// <summary>
+        /// Transform a uint ipaddress into IPAddress object
+        /// </summary>
+        /// <param name="ipaddress"></param>
+        /// <param name="family"></param>
+        /// <returns></returns>
+        public static IPAddress ToIPAddress(this BigInteger ipaddress, AddressFamily family)
+        {
+            int width = family == AddressFamily.InterNetwork ? 4 : 16;
+            byte[] bytes = ipaddress.ToByteArray();
+            byte[] bytes2 = new byte[width];
+            int copy = bytes.Length > width ? width : bytes.Length;
+            Array.Copy(bytes, 0, bytes2, 0, copy);
+            Array.Reverse(bytes2);
+
+            byte[] sized = Resize(bytes2, family);
+            IPAddress ip = new IPAddress(sized);
+            return ip;
+        }
+
+#if TRAVISCI
+        public
+#else
+        internal
+#endif
+            static byte[] Resize(byte[] bytes, AddressFamily family)
+        {
+            if (family != AddressFamily.InterNetwork
+                && family != AddressFamily.InterNetworkV6)
+            {
+                throw new ArgumentException("family");
+            }
+
+            int width = family == AddressFamily.InterNetwork ? 4 : 16;
+
+            if (bytes.Length > width)
+            {
+                throw new ArgumentException("bytes");
+            }
+
+            byte[] result = new byte[width];
+            Array.Copy(bytes, 0, result, 0, bytes.Length);
+
+            return result;
+        }
+
+        #endregion
+
+        #region BitsSet
+
+        /// <summary>
+        /// Count bits set to 1 in netmask
+        /// </summary>
+        /// <see href="http://stackoverflow.com/questions/109023/best-algorithm-to-count-the-number-of-set-bits-in-a-32-bit-integer"/>
+        /// <param name="netmask"></param>
+        /// <param name="family"></param>
+        /// <returns></returns>
+        public static byte BitsSet(this BigInteger netmask, AddressFamily family)
+        {
+            string s = netmask.ToBinaryString();
+
+            return (byte)s.Replace("0", string.Empty)
+                .ToCharArray()
+                .Length;
+        }
+        #endregion
     }
 }

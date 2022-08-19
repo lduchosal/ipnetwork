@@ -44,7 +44,7 @@ namespace System.Net
                 return true;
             }
 
-            BigInteger uintIPAddress = IPNetwork.ToBigInteger(ipaddress);
+            BigInteger uintIPAddress = ipaddress.ToBigInteger();
             uintIPAddress = uintIPAddress >> 30;
             if (uintIPAddress <= 1)
             {

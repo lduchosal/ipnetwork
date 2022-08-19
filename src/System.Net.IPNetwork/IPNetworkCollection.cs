@@ -21,17 +21,17 @@ namespace System.Net
 
         private BigInteger _broadcast
         {
-            get { return IPNetwork.ToBigInteger(this._ipnetwork.Broadcast); }
+            get { return this._ipnetwork.Broadcast.ToBigInteger(); }
         }
 
         private BigInteger _lastUsable
         {
-            get { return IPNetwork.ToBigInteger(this._ipnetwork.LastUsable); }
+            get { return this._ipnetwork.LastUsable.ToBigInteger(); }
         }
 
         private BigInteger _network
         {
-            get { return IPNetwork.ToBigInteger(this._ipnetwork.Network); }
+            get { return this._ipnetwork.Network.ToBigInteger(); }
         }
 
 #if TRAVISCI

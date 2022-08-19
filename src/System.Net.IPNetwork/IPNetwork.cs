@@ -62,7 +62,7 @@ namespace System.Net
         {
             get
             {
-                return IPNetwork.ToIPAddress(this._network, this._family);
+                return this._network.ToIPAddress(this._family);
             }
         }
 
@@ -81,7 +81,7 @@ namespace System.Net
         {
             get
             {
-                return IPNetwork.ToUint(this._cidr, this._family);
+                return this._cidr.ToUint(this._family);
             }
         }
 
@@ -92,7 +92,7 @@ namespace System.Net
         {
             get
             {
-                return IPNetwork.ToIPAddress(this._netmask, this._family);
+                return this._netmask.ToIPAddress(this._family);
             }
         }
 
@@ -126,7 +126,7 @@ namespace System.Net
                     return null;
                 }
 
-                return IPNetwork.ToIPAddress(this._broadcast, this._family);
+                return this._broadcast.ToIPAddress(this._family);
             }
         }
 
@@ -140,7 +140,7 @@ namespace System.Net
                 BigInteger fisrt = this._family == Sockets.AddressFamily.InterNetworkV6
                     ? this._network
                     : (this.Usable <= 0) ? this._network : this._network + 1;
-                return IPNetwork.ToIPAddress(fisrt, this._family);
+                return fisrt.ToIPAddress(this._family);
             }
         }
 
@@ -153,8 +153,12 @@ namespace System.Net
             {
                 BigInteger last = this._family == Sockets.AddressFamily.InterNetworkV6
                     ? this._broadcast
-                    : (this.Usable <= 0) ? this._network : this._broadcast - 1;
-                return IPNetwork.ToIPAddress(last, this._family);
+                    : (this.Usable <= 0)
+                    ? this._network
+                    : this._broadcast - 1
+                    ;
+
+                return last.ToIPAddress(this._family);
             }
         }
 
@@ -229,7 +233,7 @@ namespace System.Net
                 throw new ArgumentNullException(nameof(ipaddress));
             }
 
-            var uintIpAddress = ToBigInteger(ipaddress);
+            var uintIpAddress = ipaddress.ToBigInteger();
 
             Init(uintIpAddress, ipaddress.AddressFamily, cidr);
         }
@@ -635,8 +639,8 @@ namespace System.Net
                 return;
             }
 
-            BigInteger uintIpAddress = IPNetwork.ToBigInteger(ipaddress);
-            bool parsed = IPNetwork.TryToCidr(netmask, out var cidr2);
+            BigInteger uintIpAddress = ipaddress.ToBigInteger();
+            bool parsed = netmask.TryToCidr(out var cidr2);
             if (parsed == false)
             {
                 if (tryParse == false)
@@ -696,7 +700,7 @@ namespace System.Net
                 return;
             }
 
-            bool parsedNetmask = IPNetwork.TryToNetmask(cidr, ip.AddressFamily, out var mask);
+            bool parsedNetmask = cidr.TryToNetmask(ip.AddressFamily, out var mask);
             if (parsedNetmask == false)
             {
                 if (tryParse == false)
@@ -712,418 +716,7 @@ namespace System.Net
         }
         #endregion
 
-        #region converters
-
-        #region ToUint
-
-        /// <summary>
-        /// Convert an ipadress to decimal
-        /// 0.0.0.0 -> 0
-        /// 0.0.1.0 -> 256
-        /// </summary>
-        /// <param name="ipaddress"></param>
-        /// <returns></returns>
-        public static BigInteger ToBigInteger(IPAddress ipaddress)
-        {
-            IPNetwork.InternalToBigInteger(false, ipaddress, out var uintIpAddress);
-
-            return (BigInteger)uintIpAddress;
-        }
-
-        /// <summary>
-        /// Convert an ipadress to decimal
-        /// 0.0.0.0 -> 0
-        /// 0.0.1.0 -> 256
-        /// </summary>
-        /// <param name="ipaddress"></param>
-        /// <param name="uintIpAddress"></param>
-        /// <returns></returns>
-        public static bool TryToBigInteger(IPAddress ipaddress, out BigInteger? uintIpAddress)
-        {
-            IPNetwork.InternalToBigInteger(true, ipaddress, out var uintIpAddress2);
-            bool parsed = uintIpAddress2 != null;
-            uintIpAddress = uintIpAddress2;
-
-            return parsed;
-        }
-
-#if TRAVISCI
-        public
-#else
-        internal
-#endif
-            static void InternalToBigInteger(bool tryParse, IPAddress ipaddress, out BigInteger? uintIpAddress)
-        {
-            if (ipaddress == null)
-            {
-                if (tryParse == false)
-                {
-                    throw new ArgumentNullException("ipaddress");
-                }
-
-                uintIpAddress = null;
-                return;
-            }
-
-#if NET5_0 || NETSTANDARD2_1
-            byte[] bytes = ipaddress.AddressFamily == AddressFamily.InterNetwork ? new byte[4] : new byte[16];
-            var span = bytes.AsSpan();
-            if (!ipaddress.TryWriteBytes(span, out _))
-            {
-                if (tryParse == false)
-                {
-                    throw new ArgumentException("ipaddress");
-                }
-
-                uintIpAddress = null;
-                return;
-            }
-
-            uintIpAddress = new BigInteger(span, isUnsigned: true, isBigEndian: true);
-#elif NET45 || NET46 || NET47 || NETSTANDARD20
-            byte[] bytes = ipaddress.GetAddressBytes();
-            bytes.AsSpan().Reverse();
-
-            // add trailing 0 to make unsigned
-            var unsigned = new byte[bytes.Length + 1];
-            Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
-            uintIpAddress = new BigInteger(unsigned);
-#else
-            byte[] bytes = ipaddress.GetAddressBytes();
-            Array.Reverse(bytes);
-
-            // add trailing 0 to make unsigned
-            var unsigned = new byte[bytes.Length + 1];
-            Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
-            uintIpAddress = new BigInteger(unsigned);
-#endif
-        }
-
-        /// <summary>
-        /// Convert a cidr to BigInteger netmask
-        /// </summary>
-        /// <param name="cidr"></param>
-        /// <param name="family"></param>
-        /// <returns></returns>
-        public static BigInteger ToUint(byte cidr, AddressFamily family)
-        {
-            IPNetwork.InternalToBigInteger(false, cidr, family, out var uintNetmask);
-
-            return (BigInteger)uintNetmask;
-        }
-
-        /// <summary>
-        /// Convert a cidr to uint netmask
-        /// </summary>
-        /// <param name="cidr"></param>
-        /// <param name="family"></param>
-        /// <param name="uintNetmask"></param>
-        /// <returns></returns>
-        public static bool TryToUint(byte cidr, AddressFamily family, out BigInteger? uintNetmask)
-        {
-            IPNetwork.InternalToBigInteger(true, cidr, family, out var uintNetmask2);
-            bool parsed = uintNetmask2 != null;
-            uintNetmask = uintNetmask2;
-
-            return parsed;
-        }
-
-        /// <summary>
-        /// Convert a cidr to uint netmask
-        /// </summary>
-        /// <param name="tryParse"></param>
-        /// <param name="cidr"></param>
-        /// <param name="family"></param>
-        /// <param name="uintNetmask"></param>
-        /// <returns></returns>
-#if TRAVISCI
-        public
-#else
-        internal
-#endif
-            static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamily family, out BigInteger? uintNetmask)
-        {
-            if (family == AddressFamily.InterNetwork && cidr > 32)
-            {
-                if (tryParse == false)
-                {
-                    throw new ArgumentOutOfRangeException("cidr");
-                }
-
-                uintNetmask = null;
-                return;
-            }
-
-            if (family == AddressFamily.InterNetworkV6 && cidr > 128)
-            {
-                if (tryParse == false)
-                {
-                    throw new ArgumentOutOfRangeException("cidr");
-                }
-
-                uintNetmask = null;
-                return;
-            }
-
-            if (family != AddressFamily.InterNetwork
-                && family != AddressFamily.InterNetworkV6)
-            {
-                if (tryParse == false)
-                {
-                    throw new NotSupportedException(family.ToString());
-                }
-
-                uintNetmask = null;
-                return;
-            }
-
-            if (family == AddressFamily.InterNetwork)
-            {
-                uintNetmask = cidr == 0 ? 0 : 0xffffffff << (32 - cidr);
-                return;
-            }
-
-            BigInteger mask = new BigInteger(new byte[]
-            {
-                0xff, 0xff, 0xff, 0xff,
-                0xff, 0xff, 0xff, 0xff,
-                0xff, 0xff, 0xff, 0xff,
-                0xff, 0xff, 0xff, 0xff,
-                0x00,
-            });
-
-            BigInteger masked = cidr == 0 ? 0 : mask << (128 - cidr);
-            byte[] m = masked.ToByteArray();
-            byte[] bmask = new byte[17];
-            int copy = m.Length > 16 ? 16 : m.Length;
-            Array.Copy(m, 0, bmask, 0, copy);
-            uintNetmask = new BigInteger(bmask);
-        }
-
-        #endregion
-
-        #region ToCidr
-
-        /// <summary>
-        /// Convert netmask to CIDR
-        ///  255.255.255.0 -> 24
-        ///  255.255.0.0   -> 16
-        ///  255.0.0.0     -> 8
-        /// </summary>
-        /// <param name="tryParse"></param>
-        /// <param name="netmask"></param>
-        /// <param name="family"></param>
-        /// <param name="cidr"></param>
-        /// <returns></returns>
-        private static void InternalToCidr(bool tryParse, BigInteger netmask, AddressFamily family, out byte? cidr)
-        {
-            if (!IPNetwork.InternalValidNetmask(netmask, family))
-            {
-                if (tryParse == false)
-                {
-                    throw new ArgumentException("netmask");
-                }
-
-                cidr = null;
-                return;
-            }
-
-            byte cidr2 = IPNetwork.BitsSet(netmask, family);
-            cidr = cidr2;
-
-            return;
-        }
-
-        /// <summary>
-        /// Convert netmask to CIDR
-        ///  255.255.255.0 -> 24
-        ///  255.255.0.0   -> 16
-        ///  255.0.0.0     -> 8
-        /// </summary>
-        /// <param name="netmask"></param>
-        /// <returns></returns>
-        public static byte ToCidr(IPAddress netmask)
-        {
-            IPNetwork.InternalToCidr(false, netmask, out var cidr);
-            return (byte)cidr;
-        }
-
-        /// <summary>
-        /// Convert netmask to CIDR
-        ///  255.255.255.0 -> 24
-        ///  255.255.0.0   -> 16
-        ///  255.0.0.0     -> 8
-        /// </summary>
-        /// <param name="netmask"></param>
-        /// <param name="cidr"></param>
-        /// <returns></returns>
-        public static bool TryToCidr(IPAddress netmask, out byte? cidr)
-        {
-            IPNetwork.InternalToCidr(true, netmask, out var cidr2);
-            bool parsed = cidr2 != null;
-            cidr = cidr2;
-            return parsed;
-        }
-
-        private static void InternalToCidr(bool tryParse, IPAddress netmask, out byte? cidr)
-        {
-            if (netmask == null)
-            {
-                if (tryParse == false)
-                {
-                    throw new ArgumentNullException("netmask");
-                }
-
-                cidr = null;
-                return;
-            }
-
-            bool parsed = IPNetwork.TryToBigInteger(netmask, out var uintNetmask2);
-
-            // 20180217 lduchosal
-            // impossible to reach code.
-            // if (parsed == false) {
-            //     if (tryParse == false) {
-            //         throw new ArgumentException("netmask");
-            //     }
-            //     cidr = null;
-            //     return;
-            // }
-            BigInteger uintNetmask = (BigInteger)uintNetmask2;
-
-            IPNetwork.InternalToCidr(tryParse, uintNetmask, netmask.AddressFamily, out var cidr2);
-            cidr = cidr2;
-
-            return;
-        }
-
-        #endregion
-
-        #region ToNetmask
-
-        /// <summary>
-        /// Convert CIDR to netmask
-        ///  24 -> 255.255.255.0
-        ///  16 -> 255.255.0.0
-        ///  8 -> 255.0.0.0
-        /// </summary>
-        /// <see href="http://snipplr.com/view/15557/cidr-class-for-ipv4/"/>
-        /// <param name="cidr"></param>
-        /// <param name="family"></param>
-        /// <returns></returns>
-        public static IPAddress ToNetmask(byte cidr, AddressFamily family)
-        {
-            IPNetwork.InternalToNetmask(false, cidr, family, out var netmask);
-
-            return netmask;
-        }
-
-        /// <summary>
-        /// Convert CIDR to netmask
-        ///  24 -> 255.255.255.0
-        ///  16 -> 255.255.0.0
-        ///  8 -> 255.0.0.0
-        /// </summary>
-        /// <see href="http://snipplr.com/view/15557/cidr-class-for-ipv4/"/>
-        /// <param name="cidr"></param>
-        /// <param name="family"></param>
-        /// <param name="netmask"></param>
-        /// <returns></returns>
-        public static bool TryToNetmask(byte cidr, AddressFamily family, out IPAddress netmask)
-        {
-            IPNetwork.InternalToNetmask(true, cidr, family, out var netmask2);
-            bool parsed = netmask2 != null;
-            netmask = netmask2;
-
-            return parsed;
-        }
-
-#if TRAVISCI
-        public
-#else
-        internal
-#endif
-            static void InternalToNetmask(bool tryParse, byte cidr, AddressFamily family, out IPAddress netmask)
-        {
-            if (family != AddressFamily.InterNetwork
-                && family != AddressFamily.InterNetworkV6)
-            {
-                if (tryParse == false)
-                {
-                    throw new ArgumentException("family");
-                }
-
-                netmask = null;
-                return;
-            }
-
-            // 20180217 lduchosal
-            // impossible to reach code, byte cannot be negative :
-            //
-            // if (cidr < 0) {
-            //     if (tryParse == false) {
-            //         throw new ArgumentOutOfRangeException("cidr");
-            //     }
-            //     netmask = null;
-            //     return;
-            // }
-            int maxCidr = family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
-            if (cidr > maxCidr)
-            {
-                if (tryParse == false)
-                {
-                    throw new ArgumentOutOfRangeException("cidr");
-                }
-
-                netmask = null;
-                return;
-            }
-
-            BigInteger mask = IPNetwork.ToUint(cidr, family);
-            IPAddress netmask2 = IPNetwork.ToIPAddress(mask, family);
-            netmask = netmask2;
-
-            return;
-        }
-
-        #endregion
-
-        #endregion
-
         #region utils
-
-        #region BitsSet
-
-        /// <summary>
-        /// Count bits set to 1 in netmask
-        /// </summary>
-        /// <see href="http://stackoverflow.com/questions/109023/best-algorithm-to-count-the-number-of-set-bits-in-a-32-bit-integer"/>
-        /// <param name="netmask"></param>
-        /// <param name="family"></param>
-        /// <returns></returns>
-        private static byte BitsSet(BigInteger netmask, AddressFamily family)
-        {
-            string s = netmask.ToBinaryString();
-
-            return (byte)s.Replace("0", string.Empty)
-                .ToCharArray()
-                .Length;
-        }
-
-        /// <summary>
-        /// Count bits set to 1 in netmask
-        /// </summary>
-        /// <param name="netmask"></param>
-        /// <returns></returns>
-        public static uint BitsSet(IPAddress netmask)
-        {
-            BigInteger uintNetmask = IPNetwork.ToBigInteger(netmask);
-            uint bits = IPNetwork.BitsSet(uintNetmask, netmask.AddressFamily);
-
-            return bits;
-        }
-
-        #endregion
 
         #region ValidNetmask
 
@@ -1141,7 +734,7 @@ namespace System.Net
                 throw new ArgumentNullException("netmask");
             }
 
-            BigInteger uintNetmask = IPNetwork.ToBigInteger(netmask);
+            BigInteger uintNetmask = netmask.ToBigInteger();
             bool valid = IPNetwork.InternalValidNetmask(uintNetmask, netmask.AddressFamily);
 
             return valid;
@@ -1179,56 +772,6 @@ namespace System.Net
 
         #endregion
 
-        #region ToIPAddress
-
-        /// <summary>
-        /// Transform a uint ipaddress into IPAddress object
-        /// </summary>
-        /// <param name="ipaddress"></param>
-        /// <param name="family"></param>
-        /// <returns></returns>
-        public static IPAddress ToIPAddress(BigInteger ipaddress, AddressFamily family)
-        {
-            int width = family == AddressFamily.InterNetwork ? 4 : 16;
-            byte[] bytes = ipaddress.ToByteArray();
-            byte[] bytes2 = new byte[width];
-            int copy = bytes.Length > width ? width : bytes.Length;
-            Array.Copy(bytes, 0, bytes2, 0, copy);
-            Array.Reverse(bytes2);
-
-            byte[] sized = Resize(bytes2, family);
-            IPAddress ip = new IPAddress(sized);
-            return ip;
-        }
-
-#if TRAVISCI
-        public
-#else
-        internal
-#endif
-            static byte[] Resize(byte[] bytes, AddressFamily family)
-        {
-            if (family != AddressFamily.InterNetwork
-                && family != AddressFamily.InterNetworkV6)
-            {
-                throw new ArgumentException("family");
-            }
-
-            int width = family == AddressFamily.InterNetwork ? 4 : 16;
-
-            if (bytes.Length > width)
-            {
-                throw new ArgumentException("bytes");
-            }
-
-            byte[] result = new byte[width];
-            Array.Copy(bytes, 0, result, 0, bytes.Length);
-
-            return result;
-        }
-
-        #endregion
-
         #endregion
 
         #region contains
@@ -1252,7 +795,7 @@ namespace System.Net
 
             BigInteger uintNetwork = _network;
             BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, this._netmask, this._family);
-            BigInteger uintAddress = IPNetwork.ToBigInteger(ipaddress);
+            BigInteger uintAddress = ipaddress.ToBigInteger();
 
             bool contains = uintAddress >= uintNetwork
                 && uintAddress <= uintBroadcast;
@@ -2046,7 +1589,7 @@ namespace System.Net
                 return false;
             }
 
-            if (!IPNetwork.TryToNetmask(b, family, out var netmask))
+            if (!b.TryToNetmask(family, out var netmask))
             {
                 cidr = null;
                 return false;
@@ -2379,12 +1922,90 @@ namespace System.Net
             get
             {
                 byte cidr = this._family == AddressFamily.InterNetwork ? (byte)32 : (byte)128;
-                var netmask = IPNetwork.ToUint(cidr, this._family);
+                var netmask = cidr.ToUint(this._family);
                 var wildcardmask = netmask - this._netmask;
 
-                return IPNetwork.ToIPAddress(wildcardmask, this._family);
+                return wildcardmask.ToIPAddress(this._family);
             }
         }
         #endregion
+
+        [Obsolete("BitsSet is deprecated, please use IPAddressExtensions.BitsSet")]
+        public static uint BitsSet(IPAddress ip)
+        {
+            return ip.BitsSet();
+        }
+
+        [Obsolete("ToCidr is deprecated, please use IPAddressExtensions.ToCidr")]
+        public static byte ToCidr(IPAddress ip)
+        {
+            return ip.ToCidr();
+        }
+
+        [Obsolete("ToIPAddress is deprecated, please use BigIntegerExtensions.ToIPAddress")]
+        public static IPAddress ToIPAddress(BigInteger bigint, AddressFamily family)
+        {
+            return bigint.ToIPAddress(family);
+        }
+
+        [Obsolete("ToNetmask is deprecated, please use UintExtension.ToNetmask")]
+        public static IPAddress ToNetmask(byte cidr, AddressFamily family)
+        {
+            return cidr.ToNetmask(family);
+        }
+
+        [Obsolete("ToBigInteger is deprecated, please use IPAddressExtensions.ToBigInteger")]
+        public static BigInteger ToBigInteger(IPAddress mask)
+        {
+            return mask.ToBigInteger();
+        }
+
+        [Obsolete("ToUint is deprecated, please use UintExtension.ToUint")]
+        public static BigInteger ToUint(byte cidr, AddressFamily family)
+        {
+            return cidr.ToUint(family);
+        }
+
+        [Obsolete("TryToBigInteger is deprecated, please use IPAddress.TryToBigInteger")]
+        public static bool TryToBigInteger(IPAddress mask, out BigInteger? result)
+        {
+            return mask.TryToBigInteger(out result);
+        }
+
+        [Obsolete("TryToCidr is deprecated, please use IPAddress.TryToCidr")]
+        public static bool TryToCidr(IPAddress mask, out byte? result)
+        {
+            return mask.TryToCidr(out result);
+        }
+
+        [Obsolete("TryToNetmask is deprecated, please use UintExtension.TryToNetmask")]
+        public static bool TryToNetmask(byte cidr, AddressFamily family, out IPAddress result)
+        {
+            return cidr.TryToNetmask(family, out result);
+        }
+
+        [Obsolete("InternalToBigInteger is deprecated, please use UintExtension.InternalToBigInteger")]
+        internal static void InternalToBigInteger(bool parsed, byte cidr, AddressFamily interNetwork, out BigInteger? result)
+        {
+            UintExtensions.InternalToBigInteger(parsed, cidr, interNetwork, out result);
+        }
+
+        [Obsolete("Resize is deprecated, please use BigIntegerExtensions.Resize")]
+        public static byte[] Resize(byte[] vs, AddressFamily family)
+        {
+            return BigIntegerExtensions.Resize(vs, family);
+        }
+
+        [Obsolete("TryToUint is deprecated, please use UintExtensions.TryToUint")]
+        internal static bool TryToUint(byte cidr, AddressFamily family, out BigInteger? result)
+        {
+            return cidr.TryToUint(family, out result);
+        }
+
+        [Obsolete("InternalToNetmask is deprecated, please use UintExtensions.InternalToNetmask")]
+        internal static void InternalToNetmask(bool parsed, byte cidr, AddressFamily family, out IPAddress result)
+        {
+            UintExtensions.InternalToNetmask(parsed, cidr, family, out result);
+        }
     }
 }
