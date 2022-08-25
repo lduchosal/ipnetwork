@@ -323,9 +323,28 @@ namespace System.Net
         /// Broadcast : 192.168.0.255
         /// </summary>
         /// <param name="network"></param>
+        /// <returns></returns>
+        public static IPNetwork Parse(string network)
+        {
+            IPNetwork.InternalParse(false, network, CidrGuess.ClassFull, true, out var ipnetwork);
+            return ipnetwork;
+        }
+
+        /// <summary>
+        /// 192.168.0.1/24
+        /// 192.168.0.1 255.255.255.0
+        ///
+        /// Network   : 192.168.0.0
+        /// Netmask   : 255.255.255.0
+        /// Cidr      : 24
+        /// Start     : 192.168.0.1
+        /// End       : 192.168.0.254
+        /// Broadcast : 192.168.0.255
+        /// </summary>
+        /// <param name="network"></param>
         /// <param name="sanitanize"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(string network, bool sanitanize = true)
+        public static IPNetwork Parse(string network, bool sanitanize)
         {
             IPNetwork.InternalParse(false, network, CidrGuess.ClassFull, sanitanize, out var ipnetwork);
             return ipnetwork;
@@ -344,9 +363,29 @@ namespace System.Net
         /// </summary>
         /// <param name="network"></param>
         /// <param name="cidrGuess"></param>
+        /// <returns></returns>
+        public static IPNetwork Parse(string network, ICidrGuess cidrGuess)
+        {
+            IPNetwork.InternalParse(false, network, cidrGuess, true, out var ipnetwork);
+            return ipnetwork;
+        }
+
+        /// <summary>
+        /// 192.168.0.1/24
+        /// 192.168.0.1 255.255.255.0
+        ///
+        /// Network   : 192.168.0.0
+        /// Netmask   : 255.255.255.0
+        /// Cidr      : 24
+        /// Start     : 192.168.0.1
+        /// End       : 192.168.0.254
+        /// Broadcast : 192.168.0.255
+        /// </summary>
+        /// <param name="network"></param>
+        /// <param name="cidrGuess"></param>
         /// <param name="sanitanize"></param>
         /// <returns></returns>
-        public static IPNetwork Parse(string network, ICidrGuess cidrGuess, bool sanitanize = true)
+        public static IPNetwork Parse(string network, ICidrGuess cidrGuess, bool sanitanize)
         {
             IPNetwork.InternalParse(false, network, cidrGuess, sanitanize, out var ipnetwork);
             return ipnetwork;
