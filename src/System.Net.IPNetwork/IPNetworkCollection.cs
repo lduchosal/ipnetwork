@@ -44,12 +44,12 @@ namespace System.Net
             int maxCidr = ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? 32 : 128;
             if (cidrSubnet > maxCidr)
             {
-                throw new ArgumentOutOfRangeException("cidrSubnet");
+                throw new ArgumentOutOfRangeException(nameof(cidrSubnet));
             }
 
             if (cidrSubnet < ipnetwork.Cidr)
             {
-                throw new ArgumentException("cidr");
+                throw new ArgumentException(nameof(cidrSubnet));
             }
 
             this._cidrSubnet = cidrSubnet;
@@ -74,7 +74,7 @@ namespace System.Net
             {
                 if (i >= this.Count)
                 {
-                    throw new ArgumentOutOfRangeException("i");
+                    throw new ArgumentOutOfRangeException(nameof(i));
                 }
 
                 BigInteger last = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetworkV6

@@ -32,7 +32,7 @@ namespace System.Net.ConsoleApplication
 
         public IPNetwork OverlapNetwork { get; set; }
 
-        public IPNetwork SubstractNetwork { get; set; }
+        public IPNetwork SubtractNetwork { get; set; }
 
         public ActionEnum Action { get; set; } = ActionEnum.PrintNetworks;
 

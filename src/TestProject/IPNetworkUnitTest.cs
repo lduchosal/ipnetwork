@@ -3532,13 +3532,13 @@ Usable      : 4294967294
 
         /**
          *
-        #region TrySubstractNetwork
+        #region TrySubtractNetwork
 
 
         [TestMethod]
-        public void TrySubstractNetwork1() {
+        public void TrySubtractNetwork1() {
             string[] ips = new[] { "178.82.0.0/16" };
-            string substract = "178.82.131.209/32";
+            string subtract = "178.82.131.209/32";
 
             List<IPNetwork> ipns = new List<IPNetwork>();
             Array.ForEach<string>(ips, new Action<string>(
@@ -3551,18 +3551,18 @@ Usable      : 4294967294
                 }
             ));
 
-            var nsubstract = IPNetwork.Parse(substract);
+            var nsubtract = IPNetwork.Parse(subtract);
 
             IEnumerable<IPNetwork> result;
-            bool substracted = IPNetwork.TrySubstractNetwork(ipns.ToArray(), nsubstract, out result);
-            Assert.AreEqual(true, substracted, "substracted");
+            bool subtracted = IPNetwork.TrySubtractNetwork(ipns.ToArray(), nsubtract, out result);
+            Assert.AreEqual(true, subtracted, "subtracted");
 
         }
 
         [TestMethod]
-        public void TrySubstractNetwork2() {
+        public void TrySubtractNetwork2() {
             string[] ips = new[] { "0.0.0.0/0" };
-            string substract = "1.1.1.1/32";
+            string subtract = "1.1.1.1/32";
 
             List<IPNetwork> ipns = new List<IPNetwork>();
             Array.ForEach<string>(ips, new Action<string>(
@@ -3575,11 +3575,11 @@ Usable      : 4294967294
                 }
             ));
 
-            var nsubstract = IPNetwork.Parse(substract);
+            var nsubtract = IPNetwork.Parse(subtract);
 
             IEnumerable<IPNetwork> result;
-            bool substracted = IPNetwork.TrySubstractNetwork(ipns.ToArray(), nsubstract, out result);
-            Assert.AreEqual(true, substracted, "substracted");
+            bool subtracted = IPNetwork.TrySubtractNetwork(ipns.ToArray(), nsubtract, out result);
+            Assert.AreEqual(true, subtracted, "subtracted");
         }
 
         #endregion

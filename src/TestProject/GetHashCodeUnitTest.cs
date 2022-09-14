@@ -46,7 +46,7 @@ namespace System.Net.TestProject
         #endregion
 
         [TestMethod]
-        public void TestGetHashCode_SameNetwork_DifferentIpAdress1()
+        public void TestGetHashCode_SameNetwork_DifferentIpAddress1()
         {
             IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.1.1/0");
             IPNetwork ipnetwork2 = IPNetwork.Parse("1.1.1.1/0");
@@ -56,7 +56,7 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestGetHashCode_SameNetwork_DifferentIpAdress2()
+        public void TestGetHashCode_SameNetwork_DifferentIpAddress2()
         {
             IPNetwork ipnetwork1 = IPNetwork.Parse("0.0.0.0/1");
             IPNetwork ipnetwork2 = IPNetwork.Parse("1.0.0.0/1");

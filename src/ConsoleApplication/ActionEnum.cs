@@ -14,6 +14,6 @@ namespace System.Net.ConsoleApplication
         ListIPAddress,
         ContainNetwork,
         OverlapNetwork,
-        SubstractNetwork,
+        SubtractNetwork,
     }
 }

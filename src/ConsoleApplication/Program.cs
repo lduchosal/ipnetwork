@@ -47,8 +47,8 @@ namespace System.Net.ConsoleApplication
                 /**
                  * Need a better way to do it
                  *
-                } else if (ac.Action == ActionEnum.SubstractNetwork) {
-                    Program.SubstractNetwork(ac);
+                } else if (ac.Action == ActionEnum.SubtractNetwork) {
+                    Program.SubtractNetwork(ac);
                      *
                 */
             }
@@ -90,11 +90,11 @@ namespace System.Net.ConsoleApplication
         /**
          * Need a better way to do it
          *
-        private static void SubstractNetwork(ProgramContext ac) {
+        private static void SubtractNetwork(ProgramContext ac) {
             
             IEnumerable<IPNetwork> result = null;
-            if (!IPNetwork.TrySubstractNetwork(ac.Networks, ac.SubstractNetwork, out result)) {
-                Console.WriteLine("Unable to substract subnet from these networks");
+            if (!IPNetwork.TrySubtractNetwork(ac.Networks, ac.SubtractNetwork, out result)) {
+                Console.WriteLine("Unable to subtract subnet from these networks");
             }
             
             foreach (IPNetwork ipnetwork in result.OrderBy( s => s.ToString() )) {
@@ -306,8 +306,8 @@ namespace System.Net.ConsoleApplication
                     return;
                 }
 
-                ac.Action = ActionEnum.SubstractNetwork;
-                ac.SubstractNetwork = ipnetwork;
+                ac.Action = ActionEnum.SubtractNetwork;
+                ac.SubtractNetwork = ipnetwork;
             }),
         };
 
@@ -424,7 +424,7 @@ namespace System.Net.ConsoleApplication
         {
             if (ac == null)
             {
-                throw new ArgumentNullException("ac");
+                throw new ArgumentNullException(nameof(ac));
             }
 
             return ac.IPNetwork == false
@@ -442,7 +442,7 @@ namespace System.Net.ConsoleApplication
         {
             if (ac == null)
             {
-                throw new ArgumentNullException("ac");
+                throw new ArgumentNullException(nameof(ac));
             }
 
             ac.IPNetwork = true;
@@ -488,10 +488,10 @@ namespace System.Net.ConsoleApplication
             Console.WriteLine("\t-s cidr    : split network into cidr subnets");
             Console.WriteLine("\t-w         : supernet networks into smallest possible subnets");
             Console.WriteLine("\t-W         : supernet networks into one single subnet");
-            Console.WriteLine("\t-x         : list all ipadresses in networks");
+            Console.WriteLine("\t-x         : list all ipaddresses in networks");
             Console.WriteLine("\t-C network : network contain networks");
             Console.WriteLine("\t-o network : network overlap networks");
-            Console.WriteLine("\t-S network : substract network from subnet");
+            Console.WriteLine("\t-S network : subtract network from subnet");
             Console.WriteLine(string.Empty);
             Console.WriteLine("networks  : one or more network addresses ");
             Console.WriteLine("            (1.2.3.4 10.0.0.0/8 10.0.0.0/255.0.0.0 2001:db8::/32 2001:db8:1:2:3:4:5:6/128 )");
