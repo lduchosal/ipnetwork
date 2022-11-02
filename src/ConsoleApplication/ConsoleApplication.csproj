@@ -7,6 +7,7 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
+		<CodeAnalysisRuleSet>..\.sonarlint\ipnetworkcsharp.ruleset</CodeAnalysisRuleSet>
 
 	</PropertyGroup>
 
@@ -19,6 +20,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AdditionalFiles Include="..\.sonarlint\ipnetwork\CSharp\SonarLint.xml" Link="SonarLint.xml" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="GnuGetOpt" Version="0.9.2" />
 	  <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
 	    <PrivateAssets>all</PrivateAssets>
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -27,7 +33,7 @@
 
 	
 	<ItemGroup>
-    <ProjectReference Include="..\Gnu.Getopt\Gnu.Getopt.csproj" />
+		<!-- ProjectReference Include="..\Gnu.Getopt\Gnu.Getopt.csproj" /-->
     <ProjectReference Include="..\System.Net.IPNetwork\System.Net.IPNetwork.csproj" />
   </ItemGroup>
 
