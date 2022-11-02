@@ -2,8 +2,6 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using System.Collections.Generic;
-
 namespace System.Net
 {
     using System;

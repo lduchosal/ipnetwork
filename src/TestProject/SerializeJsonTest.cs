@@ -2,7 +2,6 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 

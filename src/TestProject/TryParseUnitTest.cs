@@ -3,9 +3,6 @@
 // </copyright>
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
 
 namespace System.Net.TestProject
 {

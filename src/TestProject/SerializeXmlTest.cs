@@ -2,9 +2,9 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
+using System.Text;
 using System.Xml.Serialization;
 
 namespace System.Net.TestSerialization.NetFramework
