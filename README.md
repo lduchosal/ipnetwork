@@ -10,6 +10,17 @@
 [![CodeFactor](https://www.codefactor.io/repository/github/lduchosal/ipnetwork/badge)](https://www.codefactor.io/repository/github/lduchosal/ipnetwork)
 [![SonarCloud](https://github.com/lduchosal/ipnetwork/actions/workflows/build.yml/badge.svg)](https://github.com/lduchosal/ipnetwork/actions/workflows/build.yml)
 [![.NET](https://github.com/lduchosal/ipnetwork/actions/workflows/dotnet.yml/badge.svg)](https://github.com/lduchosal/ipnetwork/actions/workflows/dotnet.yml)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=coverage)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
+[![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=sqale_index)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=bugs)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
 
 IPNetwork command line and C# library take care of complex network, IP, IPv4, IPv6, netmask, CIDR, subnet, subnetting, supernet, and supernetting calculation for .NET developers. It works with IPv4 as well as IPv6, is written in C#, has a light and clean API, and is fully unit-tested.
 
