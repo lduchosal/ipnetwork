@@ -2,13 +2,10 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace System.Net.TestProject
 {
-    /// <summary>
-    /// Summary description for ConsoleUnitTest
-    /// </summary>
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class ConsoleUnitTest
     {

@@ -3,12 +3,13 @@
 // </copyright>
 
 #pragma warning disable SYSLIB0011 // Type or member is obsolete
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using System.Runtime.Serialization.Formatters.Binary;
 
 namespace System.Net.TestSerialization
 {
+    using System.IO;
+    using System.Runtime.Serialization.Formatters.Binary;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class SerializeBinaryFormatterTest
     {

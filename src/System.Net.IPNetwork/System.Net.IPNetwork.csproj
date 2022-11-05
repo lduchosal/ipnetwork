@@ -30,6 +30,7 @@
   <PropertyGroup>
 	<DefineConstants Condition="'$(OS)' != 'Windows_NT'">$(DefineConstants);TRAVISCI</DefineConstants>
 	<CodeAnalysisRuleSet>..\.sonarlint\ipnetworkcsharp.ruleset</CodeAnalysisRuleSet>
+	<EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
   
   <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47'">

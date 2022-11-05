@@ -8,6 +8,7 @@
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
 		<CodeAnalysisRuleSet>..\.sonarlint\ipnetworkcsharp.ruleset</CodeAnalysisRuleSet>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 
 	</PropertyGroup>
 

@@ -47,7 +47,6 @@ project.lock.json
 project.fragment.lock.json
 artifacts/
 src/.sonarqube/
-src/.sonarlint/
 **/Properties/launchSettings.json
 
 *_i.c

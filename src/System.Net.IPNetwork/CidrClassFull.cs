@@ -2,11 +2,11 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using System.Net.Sockets;
-using System.Numerics;
-
 namespace System.Net
 {
+    using System.Net.Sockets;
+    using System.Numerics;
+
     /// <summary>
     /// Class <c>CidrClassFull</c> tries to guess CIDR in a ClassFull way.
     /// </summary>
