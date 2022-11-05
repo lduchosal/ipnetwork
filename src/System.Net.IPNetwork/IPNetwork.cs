@@ -10,7 +10,6 @@ namespace System.Net
     using System.Numerics;
     using System.Runtime.Serialization;
     using System.Text.RegularExpressions;
-    using System.Xml.Serialization;
 
     /// <summary>
     /// IP Network utility class.
@@ -1737,13 +1736,13 @@ namespace System.Net
 
         #region GetHashCode
 
-        /// 20221105 : ldvhcosal
-        /// GetHashCode uses mutable attributes. That introduce undefined behaviour on Hashtable and dictionary.
-        /// 
+        // 20221105 : ldvhcosal
+        // GetHashCode uses mutable attributes. That introduce undefined behaviour on Hashtable and dictionary.
         public override int GetHashCode()
         {
             return _hashCode;
         }
+
         private int ComputeHashCode()
         {
             return string.Format(

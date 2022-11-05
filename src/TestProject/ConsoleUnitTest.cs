@@ -6,9 +6,6 @@ namespace System.Net.TestProject
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    /// <summary>
-    /// Summary description for ConsoleUnitTest
-    /// </summary>
     [TestClass]
     public class ConsoleUnitTest
     {

@@ -11,8 +11,17 @@ namespace System.Net.ConsoleApplication
     using System.Reflection;
     using Gnu.Getopt;
 
+    /// <summary>
+    /// Console app for IPNetwork.
+    /// </summary>
     public class Program
     {
+        private static readonly Dictionary<int, ArgParsed> Args = new Dictionary<int, ArgParsed>();
+
+        /// <summary>
+        /// Program entry point.
+        /// </summary>
+        /// <param name="args">program arguments.</param>
         public static void Main(string[] args)
         {
             ProgramContext ac = Program.ParseArgs(args);
@@ -87,22 +96,6 @@ namespace System.Net.ConsoleApplication
             }
         }
 
-        /**
-         * Need a better way to do it
-         *
-        private static void SubstractNetwork(ProgramContext ac) {
-            
-            IEnumerable<IPNetwork> result = null;
-            if (!IPNetwork.TrySubstractNetwork(ac.Networks, ac.SubstractNetwork, out result)) {
-                Console.WriteLine("Unable to substract subnet from these networks");
-            }
-            
-            foreach (IPNetwork ipnetwork in result.OrderBy( s => s.ToString() )) {
-                Console.WriteLine("{0}", ipnetwork);
-                //Program.PrintNetwork(ac, ipnetwork);
-            }
-        }
-        **/
         private static void WideSupernetNetworks(ProgramContext ac)
         {
             if (!IPNetwork.TryWideSubnet(ac.Networks, out var widesubnet))
@@ -141,8 +134,7 @@ namespace System.Net.ConsoleApplication
             {
                 i++;
                 int networkLength = ac.Networks.Length;
-                IPNetworkCollection ipnetworks = null;
-                if (!ipnetwork.TrySubnet(ac.SubnetCidr, out ipnetworks))
+                if (!ipnetwork.TrySubnet(ac.SubnetCidr, out IPNetworkCollection ipnetworks))
                 {
                     Console.WriteLine("Unable to subnet ipnetwork {0} into cidr {1}", ipnetwork, ac.SubnetCidr);
                     Program.PrintSeparator(networkLength, i);
@@ -231,7 +223,6 @@ namespace System.Net.ConsoleApplication
             }
         }
 
-        private static readonly Dictionary<int, ArgParsed> Args = new Dictionary<int, ArgParsed>();
         private static readonly ArgParsed[] ArgsList = new[]
         {
             new ArgParsed('i', (ac, arg) => { ac.IPNetwork = true; }),
@@ -424,7 +415,7 @@ namespace System.Net.ConsoleApplication
         {
             if (ac == null)
             {
-                throw new ArgumentNullException("ac");
+                throw new ArgumentNullException(nameof(ac));
             }
 
             return ac.IPNetwork == false
@@ -442,7 +433,7 @@ namespace System.Net.ConsoleApplication
         {
             if (ac == null)
             {
-                throw new ArgumentNullException("ac");
+                throw new ArgumentNullException(nameof(ac));
             }
 
             ac.IPNetwork = true;
