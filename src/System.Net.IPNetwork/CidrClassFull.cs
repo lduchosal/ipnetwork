@@ -5,7 +5,6 @@
 namespace System.Net
 {
     using System.Net.Sockets;
-    using System.Numerics;
 
     /// <summary>
     /// Class <c>CidrClassFull</c> tries to guess CIDR in a ClassFull way.

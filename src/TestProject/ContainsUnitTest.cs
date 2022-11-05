@@ -1,12 +1,9 @@
-﻿// <copyright file="IPNetworkUnitTest.cs" company="IPNetwork">
+﻿// <copyright file="ContainsUnitTest.cs" company="IPNetwork">
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
 namespace System.Net.TestProject
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Numerics;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>

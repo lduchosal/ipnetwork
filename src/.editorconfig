@@ -199,6 +199,13 @@ csharp_using_directive_placement = outside_namespace:silent
 dotnet_diagnostic.SA1124.severity = silent
 dotnet_diagnostic.SA1213.severity = silent
 dotnet_diagnostic.SA1617.severity = error
+csharp_preserve_single_line_blocks = true
+
+# SA1638: File header file name documentation should match file name
+dotnet_diagnostic.SA1638.severity = error
+
+# IDE0005: La directive using n'est pas nécessaire.
+dotnet_diagnostic.IDE0005.severity = error
 
 [*.vb]
 #### Styles de nommage ####
