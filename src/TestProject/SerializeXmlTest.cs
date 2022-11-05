@@ -2,13 +2,13 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.IO;
-using System.Text;
-using System.Xml.Serialization;
-
 namespace System.Net.TestSerialization.NetFramework
 {
+    using System.IO;
+    using System.Text;
+    using System.Xml.Serialization;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class SerializeXmlTest
     {

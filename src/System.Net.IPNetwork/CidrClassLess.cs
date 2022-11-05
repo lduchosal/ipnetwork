@@ -2,10 +2,10 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using System.Net.Sockets;
-
 namespace System.Net
 {
+    using System.Net.Sockets;
+
     /// <summary>
     /// Try to guess a CIDR in a ClassLess way ie. ipv4 = 32, ipv6 = 128
     /// </summary>

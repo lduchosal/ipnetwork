@@ -2,13 +2,13 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Collections.Generic;
-using System.Linq;
-using System.Numerics;
-
 namespace System.Net.TestProject
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Numerics;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     /// <summary>
     /// IPNetworkUnitTest test every single method
     /// </summary>

@@ -2,16 +2,16 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using System.Collections.Generic;
-using System.IO;
-using System.Net.Sockets;
-using System.Numerics;
-using System.Text.RegularExpressions;
-using System.Runtime.Serialization;
-using System.Xml.Serialization;
-
 namespace System.Net
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Net.Sockets;
+    using System.Numerics;
+    using System.Runtime.Serialization;
+    using System.Text.RegularExpressions;
+    using System.Xml.Serialization;
+
     /// <summary>
     /// IP Network utility class.
     /// Use IPNetwork.Parse to create instances.

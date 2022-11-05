@@ -2,15 +2,15 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using Gnu.Getopt;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Numerics;
-using System.Reflection;
-
 namespace System.Net.ConsoleApplication
 {
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.IO;
+    using System.Numerics;
+    using System.Reflection;
+    using Gnu.Getopt;
+
     public class Program
     {
         public static void Main(string[] args)

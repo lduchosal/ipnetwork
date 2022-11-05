@@ -2,12 +2,12 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
-
 namespace System.Net
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Numerics;
+
     public class IPNetworkCollection : IEnumerable<IPNetwork>, IEnumerator<IPNetwork>
     {
         private BigInteger _enumerator;
