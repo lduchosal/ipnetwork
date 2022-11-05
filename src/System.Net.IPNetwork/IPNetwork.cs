@@ -215,7 +215,6 @@ namespace System.Net
         {
             Init(ipaddress, family, cidr);
             _hashCode = ComputeHashCode();
-
         }
 
         /// <summary>
@@ -236,7 +235,6 @@ namespace System.Net
 
             Init(uintIpAddress, ipaddress.AddressFamily, cidr);
             _hashCode = ComputeHashCode();
-
         }
 
         private void Init(BigInteger ipaddress, AddressFamily family, byte cidr)

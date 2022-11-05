@@ -71,7 +71,7 @@ namespace System.Net.TestProject
             int hashCode1 = ipnetwork.GetHashCode();
             ipnetwork.Value = "255.255.255.255/32";
             int hashCode2 = ipnetwork.GetHashCode();
-        
+
             Assert.AreEqual(hashCode1, hashCode2, "hashcode");
         }
 
@@ -98,7 +98,6 @@ namespace System.Net.TestProject
             Assert.AreEqual(true, contains4, "contains4");
             Assert.AreEqual(true, contains5, "contains5");
             Assert.AreEqual(false, contains6, "contains6");
-
         }
 
         #region Equals IPv6 vs IPv4
