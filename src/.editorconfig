@@ -4,16 +4,16 @@
 dotnet_diagnostic.CS1591.severity = suggestion
 
 # SA1616: Element return value documentation should have text
-dotnet_diagnostic.SA1616.severity = suggestion
+dotnet_diagnostic.SA1616.severity = error
 
 # SA1602: Element return value documentation should have text
-dotnet_diagnostic.SA1602.severity = suggestion
+dotnet_diagnostic.SA1602.severity = error
 
 # SA1614: Element parameter documentation should have text
 dotnet_diagnostic.SA1614.severity = error
 
 # SA1617: Void return value should not be documented
-dotnet_diagnostic.SA1617.severity = suggestion
+dotnet_diagnostic.SA1617.severity = error
 
 # Default severity for analyzer diagnostics with category 'StyleCop.CSharp.OrderingRules'
 dotnet_analyzer_diagnostic.category-StyleCop.CSharp.OrderingRules.severity = suggestion
@@ -40,7 +40,7 @@ dotnet_diagnostic.SA1606.severity = suggestion
 dotnet_diagnostic.SA1623.severity = suggestion
 
 # SA1121: Use built-in type alias
-dotnet_diagnostic.SA1121.severity = suggestion
+dotnet_diagnostic.SA1121.severity = error
 
 # SA1300: Element should begin with upper-case letter
 dotnet_diagnostic.SA1300.severity = suggestion
@@ -150,6 +150,9 @@ dotnet_naming_style.pascal_case.capitalization = pascal_case
 
 # SA1208: System using directives should be placed before other using directives
 dotnet_diagnostic.SA1208.severity = error
+
+# SA1201: An element within a C# code file is out of order in relation to the other elements in the code.
+dotnet_diagnostic.SA1201.severity = silent
 
 # SA1513: Closing brace should be followed by blank line
 dotnet_diagnostic.SA1513.severity = error
