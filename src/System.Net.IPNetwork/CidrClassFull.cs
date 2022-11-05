@@ -22,12 +22,12 @@ namespace System.Net
         ///     B (CIDR /16)       10           255.255.0.0
         ///     C (CIDR /24)       11           255.255.255.0
         ///
-        /// IPV6 : 64
+        /// IPV6 : 64.
         ///
         /// </summary>
-        /// <param name="ip"></param>
-        /// <param name="cidr"></param>
-        /// <returns></returns>
+        /// <param name="ip">A string representing the CIDR to convert.</param>
+        /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
+        /// <returns>true if ip was converted successfully; otherwise, false.</returns>
         public bool TryGuessCidr(string ip, out byte cidr)
         {
             IPAddress ipaddress = null;
@@ -44,7 +44,7 @@ namespace System.Net
                 return true;
             }
 
-            BigInteger uintIPAddress = IPNetwork.ToBigInteger(ipaddress);
+            var uintIPAddress = IPNetwork.ToBigInteger(ipaddress);
             uintIPAddress = uintIPAddress >> 30;
             if (uintIPAddress <= 1)
             {

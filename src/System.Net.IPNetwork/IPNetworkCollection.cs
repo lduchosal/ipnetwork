@@ -63,7 +63,7 @@ namespace System.Net
         {
             get
             {
-                BigInteger count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
+                var count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
                 return count;
             }
         }
@@ -81,7 +81,7 @@ namespace System.Net
                     ? this._lastUsable : this._broadcast;
                 BigInteger increment = (last - this._network) / this.Count;
                 BigInteger uintNetwork = this._network + ((increment + 1) * i);
-                IPNetwork ipn = new IPNetwork(uintNetwork, this._ipnetwork.AddressFamily, this._cidrSubnet);
+                var ipn = new IPNetwork(uintNetwork, this._ipnetwork.AddressFamily, this._cidrSubnet);
                 return ipn;
             }
         }

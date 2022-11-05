@@ -24,14 +24,14 @@ namespace System.Net
         /// </returns>
         public static string ToBinaryString(this BigInteger bigint)
         {
-            var bytes = bigint.ToByteArray();
-            var idx = bytes.Length - 1;
+            byte[] bytes = bigint.ToByteArray();
+            int idx = bytes.Length - 1;
 
             // Create a StringBuilder having appropriate capacity.
             var base2 = new StringBuilder(bytes.Length * 8);
 
             // Convert first byte to binary.
-            var binary = Convert.ToString(bytes[idx], 2);
+            string binary = Convert.ToString(bytes[idx], 2);
 
             // Ensure leading zero exists if value is positive.
             if (binary[0] != '0' && bigint.Sign == 1)
@@ -74,15 +74,15 @@ namespace System.Net
         /// </returns>
         public static string ToOctalString(this BigInteger bigint)
         {
-            var bytes = bigint.ToByteArray();
-            var idx = bytes.Length - 1;
+            byte[] bytes = bigint.ToByteArray();
+            int idx = bytes.Length - 1;
 
             // Create a StringBuilder having appropriate capacity.
             var base8 = new StringBuilder(((bytes.Length / 3) + 1) * 8);
 
             // Calculate how many bytes are extra when byte array is split
             // into three-byte (24-bit) chunks.
-            var extra = bytes.Length % 3;
+            int extra = bytes.Length % 3;
 
             // If no bytes are extra, use three bytes for first chunk.
             if (extra == 0)
@@ -99,7 +99,7 @@ namespace System.Net
             }
 
             // Convert 24-bit integer to octal without adding leading zeros.
-            var octal = Convert.ToString(int24, 8);
+            string octal = Convert.ToString(int24, 8);
 
             // Ensure leading zero exists if value is positive.
             if (octal[0] != '0')
@@ -144,28 +144,29 @@ namespace System.Net
         ///
         /// Input  : 00 00 00 00
         /// Width  : 8
-        /// Result : FF FF FF FF FF FF FF FF
+        /// Result : FF FF FF FF FF FF FF FF.
         ///
         /// </summary>
-        /// <param name="input"></param>
-        /// <param name="width"></param>
-        /// <returns></returns>
+        /// <param name="input">The positive number to bitwise reverse.</param>
+        /// <param name="width">The width of the parameter.
+        /// </param>
+        /// <returns>A number representing the input bitwise reversed.</returns>
         public static BigInteger PositiveReverse(this BigInteger input, int width)
         {
-            var bytes = input.ToByteArray();
-            var length = width + 1;
+            byte[] bytes = input.ToByteArray();
+            int length = width + 1;
 
             // if the byte array is same size as output, we'll perform the operations in place
-            var output = bytes.Length != length ? new byte[length] : bytes;
+            byte[] output = bytes.Length != length ? new byte[length] : bytes;
 
             // invert all of the source bytes
-            for (var i = 0; i < bytes.Length - 1; i++)
+            for (int i = 0; i < bytes.Length - 1; i++)
             {
                 output[i] = (byte)~bytes[i];
             }
 
             // invert the remainder of the output buffer
-            for (var i = bytes.Length - 1; i < output.Length - 1; i++)
+            for (int i = bytes.Length - 1; i < output.Length - 1; i++)
             {
                 output[i] = byte.MaxValue;
             }

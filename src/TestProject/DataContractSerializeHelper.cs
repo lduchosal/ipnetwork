@@ -31,7 +31,7 @@ namespace System.Net.TestSerialization.NetFramework
                     serializer.WriteObject(xmlWriter, obj);
                 }
 
-                var result = textWriter.ToString();
+                string result = textWriter.ToString();
                 return result;
             }
         }

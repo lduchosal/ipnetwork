@@ -26,7 +26,7 @@ namespace System.Net.TestSerialization.NetFramework
             var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
             string serialized = DataContractSerializeHelper.Serialize(ipnetwork);
 
-            var result = DataContractSerializeHelper.Deserialize<IPNetwork>(serialized);
+            IPNetwork result = DataContractSerializeHelper.Deserialize<IPNetwork>(serialized);
 
             Assert.AreEqual(ipnetwork, result);
         }

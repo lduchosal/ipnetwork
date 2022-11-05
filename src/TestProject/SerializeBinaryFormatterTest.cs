@@ -19,11 +19,11 @@ namespace System.Net.TestSerialization
         {
             var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
 
-            BinaryFormatter serializer = new BinaryFormatter();
+            var serializer = new BinaryFormatter();
             var mem = new MemoryStream();
 
             serializer.Serialize(mem, ipnetwork);
-            var result = Convert.ToBase64String(mem.ToArray());
+            string result = Convert.ToBase64String(mem.ToArray());
 
             string expected = "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjIuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABRTeXN0ZW0uTmV0LklQTmV0d29yawEAAAAJSVBOZXR3b3JrAQIAAAAGAwAAAAoxMC4wLjAuMC84Cw==";
 
@@ -34,11 +34,11 @@ namespace System.Net.TestSerialization
         public void Test_Deserialize_BinaryFormatter()
         {
             string base64 = "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjIuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABRTeXN0ZW0uTmV0LklQTmV0d29yawEAAAAJSVBOZXR3b3JrAQIAAAAGAwAAAAoxMC4wLjAuMC84Cw==";
-            var bytes = Convert.FromBase64String(base64);
+            byte[] bytes = Convert.FromBase64String(base64);
             var mem = new MemoryStream(bytes);
 
-            BinaryFormatter serializer = new BinaryFormatter();
-            var result = serializer.Deserialize(mem);
+            var serializer = new BinaryFormatter();
+            object result = serializer.Deserialize(mem);
 
             var expected = IPNetwork.Parse("10.0.0.1/8");
             Assert.AreEqual(expected, result);
@@ -49,13 +49,13 @@ namespace System.Net.TestSerialization
         {
             var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
 
-            BinaryFormatter serializer = new BinaryFormatter();
+            var serializer = new BinaryFormatter();
             var mem = new MemoryStream();
 
             serializer.Serialize(mem, ipnetwork);
 
             mem.Position = 0;
-            var ipnetwork2 = serializer.Deserialize(mem);
+            object ipnetwork2 = serializer.Deserialize(mem);
 
             Assert.AreEqual(ipnetwork, ipnetwork2);
         }
@@ -83,14 +83,14 @@ namespace System.Net.TestSerialization
         public void Test_1_000_000_Deserialize_BinaryFormatter()
         {
             string base64 = "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjIuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABRTeXN0ZW0uTmV0LklQTmV0d29yawEAAAAJSVBOZXR3b3JrAQIAAAAGAwAAAAoxMC4wLjAuMC84Cw==";
-            var bytes = Convert.FromBase64String(base64);
+            byte[] bytes = Convert.FromBase64String(base64);
             var mem = new MemoryStream(bytes);
 
             var serializer = new BinaryFormatter();
 
             for (int i = 0; i < 1000000; i++)
             {
-                var result = serializer.Deserialize(mem);
+                object result = serializer.Deserialize(mem);
                 mem.Position = 0;
             }
 
@@ -103,7 +103,7 @@ namespace System.Net.TestSerialization
         {
             var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
 
-            BinaryFormatter serializer = new BinaryFormatter();
+            var serializer = new BinaryFormatter();
             var mem = new MemoryStream();
 
             for (int i = 0; i < 1000000; i++)
@@ -111,7 +111,7 @@ namespace System.Net.TestSerialization
                 serializer.Serialize(mem, ipnetwork);
 
                 mem.Position = 0;
-                var ipnetwork2 = serializer.Deserialize(mem);
+                object ipnetwork2 = serializer.Deserialize(mem);
 
                 mem.SetLength(0);
             }
