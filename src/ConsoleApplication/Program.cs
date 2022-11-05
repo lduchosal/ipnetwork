@@ -18,6 +18,85 @@ namespace System.Net.ConsoleApplication
     {
         private static readonly Dictionary<int, ArgParsed> Args = new Dictionary<int, ArgParsed>();
 
+        private static readonly ArgParsed[] ArgsList = new[]
+        {
+            new ArgParsed('i', (ac, arg) => { ac.IPNetwork = true; }),
+            new ArgParsed('n', (ac, arg) => { ac.Network = true; }),
+            new ArgParsed('m', (ac, arg) => { ac.Netmask = true; }),
+            new ArgParsed('c', (ac, arg) => { ac.Cidr = true; }),
+            new ArgParsed('b', (ac, arg) => { ac.Broadcast = true; }),
+            new ArgParsed('f', (ac, arg) => { ac.FirstUsable = true; }),
+            new ArgParsed('l', (ac, arg) => { ac.LastUsable = true; }),
+            new ArgParsed('u', (ac, arg) => { ac.Usable = true; }),
+            new ArgParsed('t', (ac, arg) => { ac.Total = true; }),
+            new ArgParsed('w', (ac, arg) => { ac.Action = ActionEnum.Supernet; }),
+            new ArgParsed('W', (ac, arg) => { ac.Action = ActionEnum.WideSupernet; }),
+            new ArgParsed('h', (ac, arg) => { ac.Action = ActionEnum.Usage; }),
+            new ArgParsed('x', (ac, arg) => { ac.Action = ActionEnum.ListIPAddress; }),
+            new ArgParsed('?', (ac, arg) => { }),
+            new ArgParsed('D', (ac, arg) => { ac.CidrParse = CidrParseEnum.Default; }),
+            new ArgParsed('d', (ac, arg) =>
+            {
+                if (!IPNetwork.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out var cidr))
+                {
+                    Console.WriteLine("Invalid cidr {0}", cidr);
+                    ac.Action = ActionEnum.Usage;
+                    return;
+                }
+
+                ac.CidrParse = CidrParseEnum.Value;
+                ac.CidrParsed = (byte)cidr;
+            }),
+            new ArgParsed('s', (ac, arg) =>
+            {
+                if (!IPNetwork.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out var cidr))
+                {
+                    Console.WriteLine("Invalid cidr {0}", cidr);
+                    ac.Action = ActionEnum.Usage;
+                    return;
+                }
+
+                ac.Action = ActionEnum.Subnet;
+                ac.SubnetCidr = (byte)cidr;
+            }),
+            new ArgParsed('C', (ac, arg) =>
+            {
+                if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out var ipnetwork))
+                {
+                    Console.WriteLine("Unable to parse ipnetwork {0}", arg);
+                    ac.Action = ActionEnum.Usage;
+                    return;
+                }
+
+                ac.Action = ActionEnum.ContainNetwork;
+                ac.ContainNetwork = ipnetwork;
+            }),
+            new ArgParsed('o', (ac, arg) =>
+            {
+                if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out var ipnetwork))
+                {
+                    Console.WriteLine("Unable to parse ipnetwork {0}", arg);
+                    ac.Action = ActionEnum.Usage;
+                    return;
+                }
+
+                ac.Action = ActionEnum.OverlapNetwork;
+                ac.OverlapNetwork = ipnetwork;
+            }),
+            new ArgParsed('S', (ac, arg) =>
+            {
+                if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out var ipnetwork))
+                {
+                    Console.WriteLine("Unable to parse ipnetwork {0}", arg);
+                    ac.Action = ActionEnum.Usage;
+                    return;
+                }
+
+                ac.Action = ActionEnum.SubstractNetwork;
+                ac.SubstractNetwork = ipnetwork;
+            }),
+        };
+
         /// <summary>
         /// Program entry point.
         /// </summary>
@@ -222,85 +301,6 @@ namespace System.Net.ConsoleApplication
                 Console.Write(sw.ToString());
             }
         }
-
-        private static readonly ArgParsed[] ArgsList = new[]
-        {
-            new ArgParsed('i', (ac, arg) => { ac.IPNetwork = true; }),
-            new ArgParsed('n', (ac, arg) => { ac.Network = true; }),
-            new ArgParsed('m', (ac, arg) => { ac.Netmask = true; }),
-            new ArgParsed('c', (ac, arg) => { ac.Cidr = true; }),
-            new ArgParsed('b', (ac, arg) => { ac.Broadcast = true; }),
-            new ArgParsed('f', (ac, arg) => { ac.FirstUsable = true; }),
-            new ArgParsed('l', (ac, arg) => { ac.LastUsable = true; }),
-            new ArgParsed('u', (ac, arg) => { ac.Usable = true; }),
-            new ArgParsed('t', (ac, arg) => { ac.Total = true; }),
-            new ArgParsed('w', (ac, arg) => { ac.Action = ActionEnum.Supernet; }),
-            new ArgParsed('W', (ac, arg) => { ac.Action = ActionEnum.WideSupernet; }),
-            new ArgParsed('h', (ac, arg) => { ac.Action = ActionEnum.Usage; }),
-            new ArgParsed('x', (ac, arg) => { ac.Action = ActionEnum.ListIPAddress; }),
-            new ArgParsed('?', (ac, arg) => { }),
-            new ArgParsed('D', (ac, arg) => { ac.CidrParse = CidrParseEnum.Default; }),
-            new ArgParsed('d', (ac, arg) =>
-            {
-                if (!IPNetwork.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out var cidr))
-                {
-                    Console.WriteLine("Invalid cidr {0}", cidr);
-                    ac.Action = ActionEnum.Usage;
-                    return;
-                }
-
-                ac.CidrParse = CidrParseEnum.Value;
-                ac.CidrParsed = (byte)cidr;
-            }),
-            new ArgParsed('s', (ac, arg) =>
-            {
-                if (!IPNetwork.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out var cidr))
-                {
-                    Console.WriteLine("Invalid cidr {0}", cidr);
-                    ac.Action = ActionEnum.Usage;
-                    return;
-                }
-
-                ac.Action = ActionEnum.Subnet;
-                ac.SubnetCidr = (byte)cidr;
-            }),
-            new ArgParsed('C', (ac, arg) =>
-            {
-                if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out var ipnetwork))
-                {
-                    Console.WriteLine("Unable to parse ipnetwork {0}", arg);
-                    ac.Action = ActionEnum.Usage;
-                    return;
-                }
-
-                ac.Action = ActionEnum.ContainNetwork;
-                ac.ContainNetwork = ipnetwork;
-            }),
-            new ArgParsed('o', (ac, arg) =>
-            {
-                if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out var ipnetwork))
-                {
-                    Console.WriteLine("Unable to parse ipnetwork {0}", arg);
-                    ac.Action = ActionEnum.Usage;
-                    return;
-                }
-
-                ac.Action = ActionEnum.OverlapNetwork;
-                ac.OverlapNetwork = ipnetwork;
-            }),
-            new ArgParsed('S', (ac, arg) =>
-            {
-                if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out var ipnetwork))
-                {
-                    Console.WriteLine("Unable to parse ipnetwork {0}", arg);
-                    ac.Action = ActionEnum.Usage;
-                    return;
-                }
-
-                ac.Action = ActionEnum.SubstractNetwork;
-                ac.SubstractNetwork = ipnetwork;
-            }),
-        };
 
         static Program()
         {

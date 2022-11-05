@@ -20,10 +20,10 @@ namespace System.Net
     {
         #region properties
 
+        private readonly int _hashCode;
         private BigInteger _ipaddress;
         private AddressFamily _family;
         private byte _cidr;
-        private readonly int _hashCode;
 
         [DataMember(Name = "IPNetwork", IsRequired = true)]
         public string Value
@@ -1736,13 +1736,16 @@ namespace System.Net
 
         #region GetHashCode
 
-        // 20221105 : ldvhcosal
-        // GetHashCode uses mutable attributes. That introduce undefined behaviour on Hashtable and dictionary.
         public override int GetHashCode()
         {
             return this._hashCode;
         }
 
+        /// <summary>
+        /// 20221105 : ldvhcosal
+        /// GetHashCode uses mutable attributes. That introduce undefined behaviour on Hashtable and dictionary.
+        /// </summary>
+        /// <returns></returns>
         private int ComputeHashCode()
         {
             return string.Format(
