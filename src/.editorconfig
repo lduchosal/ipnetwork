@@ -208,7 +208,7 @@ csharp_preserve_single_line_blocks = true
 dotnet_diagnostic.SA1638.severity = error
 
 # IDE0005: La directive using n'est pas nécessaire.
-dotnet_diagnostic.IDE0005.severity = error
+dotnet_diagnostic.IDE0005.severity = warning
 
 [*.vb]
 #### Styles de nommage ####
