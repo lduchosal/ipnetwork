@@ -22,7 +22,7 @@ dotnet_analyzer_diagnostic.category-StyleCop.CSharp.OrderingRules.severity = sug
 dotnet_diagnostic.SA1629.severity = suggestion
 
 # SA1101: Prefix local calls with this
-dotnet_diagnostic.SA1101.severity = suggestion
+dotnet_diagnostic.SA1101.severity = error
 
 # SA1124: Do not use regions
 dotnet_diagnostic.SA1124.severity = suggestion
@@ -68,6 +68,9 @@ csharp_style_namespace_declarations = block_scoped:silent
 [*.{cs,vb}]
 tab_width = 4
 indent_size = 4
+dotnet_style_readonly_field = true:suggestion
+dotnet_style_operator_placement_when_wrapping = beginning_of_line
+end_of_line = crlf
 [*.cs]
 #### Styles de nommage ####
 
@@ -124,6 +127,8 @@ dotnet_diagnostic.SA1513.severity = error
 
 # SA1008: Opening parenthesis should be spaced correctly
 dotnet_diagnostic.SA1008.severity = error
+csharp_space_around_binary_operators = before_and_after
+csharp_indent_labels = one_less_than_current
 
 [*.vb]
 #### Styles de nommage ####

@@ -172,7 +172,7 @@ namespace System.Net
 
                 byte[] mask = new byte[] { 0xff, 0xff, 0xff, 0xff, 0x00 };
                 BigInteger bmask = new BigInteger(mask);
-                BigInteger usableIps = (_cidr > 30) ? 0 : ((bmask >> _cidr) - 1);
+                BigInteger usableIps = (this._cidr > 30) ? 0 : ((bmask >> this._cidr) - 1);
                 return usableIps;
             }
         }
@@ -185,7 +185,7 @@ namespace System.Net
             get
             {
                 int max = this._family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
-                BigInteger count = BigInteger.Pow(2, max - _cidr);
+                BigInteger count = BigInteger.Pow(2, max - this._cidr);
                 return count;
             }
         }
@@ -212,8 +212,8 @@ namespace System.Net
 #endif
             IPNetwork(BigInteger ipaddress, AddressFamily family, byte cidr)
         {
-            Init(ipaddress, family, cidr);
-            _hashCode = ComputeHashCode();
+            this.Init(ipaddress, family, cidr);
+            this._hashCode = this.ComputeHashCode();
         }
 
         /// <summary>
@@ -232,8 +232,8 @@ namespace System.Net
 
             var uintIpAddress = ToBigInteger(ipaddress);
 
-            Init(uintIpAddress, ipaddress.AddressFamily, cidr);
-            _hashCode = ComputeHashCode();
+            this.Init(uintIpAddress, ipaddress.AddressFamily, cidr);
+            this._hashCode = this.ComputeHashCode();
         }
 
         private void Init(BigInteger ipaddress, AddressFamily family, byte cidr)
@@ -244,9 +244,9 @@ namespace System.Net
                 throw new ArgumentOutOfRangeException("cidr");
             }
 
-            _ipaddress = ipaddress;
-            _family = family;
-            _cidr = cidr;
+            this._ipaddress = ipaddress;
+            this._family = family;
+            this._cidr = cidr;
         }
 
         #endregion
@@ -1286,12 +1286,12 @@ namespace System.Net
                 throw new ArgumentNullException("ipaddress");
             }
 
-            if (AddressFamily != ipaddress.AddressFamily)
+            if (this.AddressFamily != ipaddress.AddressFamily)
             {
                 return false;
             }
 
-            BigInteger uintNetwork = _network;
+            BigInteger uintNetwork = this._network;
             BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, this._netmask, this._family);
             BigInteger uintAddress = IPNetwork.ToBigInteger(ipaddress);
 
@@ -1324,7 +1324,7 @@ namespace System.Net
                 throw new ArgumentNullException("network2");
             }
 
-            BigInteger uintNetwork = _network;
+            BigInteger uintNetwork = this._network;
             BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, this._netmask, this._family);
 
             BigInteger uintFirst = network2._network;
@@ -1363,8 +1363,8 @@ namespace System.Net
                 throw new ArgumentNullException("network2");
             }
 
-            BigInteger uintNetwork = _network;
-            BigInteger uintBroadcast = _broadcast;
+            BigInteger uintNetwork = this._network;
+            BigInteger uintBroadcast = this._broadcast;
 
             BigInteger uintFirst = network2._network;
             BigInteger uintLast = network2._broadcast;
@@ -1740,7 +1740,7 @@ namespace System.Net
         // GetHashCode uses mutable attributes. That introduce undefined behaviour on Hashtable and dictionary.
         public override int GetHashCode()
         {
-            return _hashCode;
+            return this._hashCode;
         }
 
         private int ComputeHashCode()
@@ -2039,14 +2039,14 @@ namespace System.Net
         {
             using (var sw = new StringWriter())
             {
-                sw.WriteLine("IPNetwork   : {0}", ToString());
-                sw.WriteLine("Network     : {0}", Network);
-                sw.WriteLine("Netmask     : {0}", Netmask);
-                sw.WriteLine("Cidr        : {0}", Cidr);
-                sw.WriteLine("Broadcast   : {0}", Broadcast);
-                sw.WriteLine("FirstUsable : {0}", FirstUsable);
-                sw.WriteLine("LastUsable  : {0}", LastUsable);
-                sw.WriteLine("Usable      : {0}", Usable);
+                sw.WriteLine("IPNetwork   : {0}", this.ToString());
+                sw.WriteLine("Network     : {0}", this.Network);
+                sw.WriteLine("Netmask     : {0}", this.Netmask);
+                sw.WriteLine("Cidr        : {0}", this.Cidr);
+                sw.WriteLine("Broadcast   : {0}", this.Broadcast);
+                sw.WriteLine("FirstUsable : {0}", this.FirstUsable);
+                sw.WriteLine("LastUsable  : {0}", this.LastUsable);
+                sw.WriteLine("Usable      : {0}", this.Usable);
 
                 return sw.ToString();
             }
@@ -2242,7 +2242,7 @@ namespace System.Net
             }
 
             // perform the comparision
-            return CompareTo(other);
+            return this.CompareTo(other);
         }
 
         #endregion

@@ -27,7 +27,7 @@ namespace System.Net
         {
             this._ipnetwork = ipnetwork;
             this._filter = filter;
-            Reset();
+            this.Reset();
         }
 
         #region Count, Array, Enumerator
@@ -35,7 +35,7 @@ namespace System.Net
         {
             get
             {
-                BigInteger count = _ipnetwork.Total;
+                BigInteger count = this._ipnetwork.Total;
                 if (this._filter == FilterEnum.Usable)
                 {
                     count -= 2;
@@ -79,7 +79,7 @@ namespace System.Net
         {
             get
             {
-                return this[_enumerator];
+                return this[this._enumerator];
             }
         }
 
@@ -87,14 +87,14 @@ namespace System.Net
         {
             get
             {
-                return Current;
+                return this.Current;
             }
         }
 
         public bool MoveNext()
         {
-            _enumerator++;
-            if (_enumerator >= this.Count)
+            this._enumerator++;
+            if (this._enumerator >= this.Count)
             {
                 return false;
             }
@@ -104,7 +104,7 @@ namespace System.Net
 
         public void Reset()
         {
-            _enumerator = -1;
+            this._enumerator = -1;
         }
 
         public void Dispose()
@@ -133,7 +133,7 @@ namespace System.Net
             {
                 get
                 {
-                    return Current;
+                    return this.Current;
                 }
             }
 
@@ -141,7 +141,7 @@ namespace System.Net
             {
                 get
                 {
-                    return _collection[_enumerator];
+                    return this._collection[this._enumerator];
                 }
             }
 
@@ -152,8 +152,8 @@ namespace System.Net
 
             public bool MoveNext()
             {
-                _enumerator++;
-                if (_enumerator >= _collection.Count)
+                this._enumerator++;
+                if (this._enumerator >= this._collection.Count)
                 {
                     return false;
                 }
@@ -163,13 +163,13 @@ namespace System.Net
 
             public void Reset()
             {
-                _enumerator = -1;
+                this._enumerator = -1;
             }
 
             public Enumerator(IPAddressCollection collection)
             {
-                _collection = collection;
-                _enumerator = -1;
+                this._collection = collection;
+                this._enumerator = -1;
             }
         }
         #endregion
