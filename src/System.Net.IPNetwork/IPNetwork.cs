@@ -24,6 +24,7 @@ namespace System.Net
         private BigInteger _ipaddress;
         private AddressFamily _family;
         private byte _cidr;
+        private readonly int _hashCode;
 
         [DataMember(Name = "IPNetwork", IsRequired = true)]
         public string Value
@@ -213,6 +214,8 @@ namespace System.Net
             IPNetwork(BigInteger ipaddress, AddressFamily family, byte cidr)
         {
             Init(ipaddress, family, cidr);
+            _hashCode = ComputeHashCode();
+
         }
 
         /// <summary>
@@ -232,6 +235,8 @@ namespace System.Net
             var uintIpAddress = ToBigInteger(ipaddress);
 
             Init(uintIpAddress, ipaddress.AddressFamily, cidr);
+            _hashCode = ComputeHashCode();
+
         }
 
         private void Init(BigInteger ipaddress, AddressFamily family, byte cidr)
@@ -1734,7 +1739,14 @@ namespace System.Net
 
         #region GetHashCode
 
+        /// 20221105 : ldvhcosal
+        /// GetHashCode uses mutable attributes. That introduce undefined behaviour on Hashtable and dictionary.
+        /// 
         public override int GetHashCode()
+        {
+            return _hashCode;
+        }
+        private int ComputeHashCode()
         {
             return string.Format(
                 "{0}|{1}|{2}",
