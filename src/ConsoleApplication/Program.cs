@@ -37,7 +37,7 @@ namespace System.Net.ConsoleApplication
             new ArgParsed('D', (ac, arg) => { ac.CidrParse = CidrParseEnum.Default; }),
             new ArgParsed('d', (ac, arg) =>
             {
-                if (!IPNetwork.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out var cidr))
+                if (!IPNetwork.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out byte? cidr))
                 {
                     Console.WriteLine("Invalid cidr {0}", cidr);
                     ac.Action = ActionEnum.Usage;
@@ -49,7 +49,7 @@ namespace System.Net.ConsoleApplication
             }),
             new ArgParsed('s', (ac, arg) =>
             {
-                if (!IPNetwork.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out var cidr))
+                if (!IPNetwork.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out byte? cidr))
                 {
                     Console.WriteLine("Invalid cidr {0}", cidr);
                     ac.Action = ActionEnum.Usage;
@@ -61,7 +61,7 @@ namespace System.Net.ConsoleApplication
             }),
             new ArgParsed('C', (ac, arg) =>
             {
-                if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out var ipnetwork))
+                if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork ipnetwork))
                 {
                     Console.WriteLine("Unable to parse ipnetwork {0}", arg);
                     ac.Action = ActionEnum.Usage;
@@ -73,7 +73,7 @@ namespace System.Net.ConsoleApplication
             }),
             new ArgParsed('o', (ac, arg) =>
             {
-                if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out var ipnetwork))
+                if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork ipnetwork))
                 {
                     Console.WriteLine("Unable to parse ipnetwork {0}", arg);
                     ac.Action = ActionEnum.Usage;
@@ -85,7 +85,7 @@ namespace System.Net.ConsoleApplication
             }),
             new ArgParsed('S', (ac, arg) =>
             {
-                if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out var ipnetwork))
+                if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork ipnetwork))
                 {
                     Console.WriteLine("Unable to parse ipnetwork {0}", arg);
                     ac.Action = ActionEnum.Usage;
@@ -177,7 +177,7 @@ namespace System.Net.ConsoleApplication
 
         private static void WideSupernetNetworks(ProgramContext ac)
         {
-            if (!IPNetwork.TryWideSubnet(ac.Networks, out var widesubnet))
+            if (!IPNetwork.TryWideSubnet(ac.Networks, out IPNetwork widesubnet))
             {
                 Console.WriteLine("Unable to wide subnet these networks");
             }
@@ -187,7 +187,7 @@ namespace System.Net.ConsoleApplication
 
         private static void SupernetNetworks(ProgramContext ac)
         {
-            if (!IPNetwork.TrySupernet(ac.Networks, out var supernet))
+            if (!IPNetwork.TrySupernet(ac.Networks, out IPNetwork[] supernet))
             {
                 Console.WriteLine("Unable to supernet these networks");
             }
@@ -313,8 +313,8 @@ namespace System.Net.ConsoleApplication
         private static ProgramContext ParseArgs(string[] args)
         {
             int c;
-            Getopt g = new Getopt("ipnetwork", args, "inmcbfltud:Dhs:wWxC:o:S:");
-            ProgramContext ac = new ProgramContext();
+            var g = new Getopt("ipnetwork", args, "inmcbfltud:Dhs:wWxC:o:S:");
+            var ac = new ProgramContext();
 
             while ((c = g.getopt()) != -1)
             {
@@ -322,7 +322,7 @@ namespace System.Net.ConsoleApplication
                 Program.Args[c].Run(ac, optArg);
             }
 
-            List<string> ipnetworks = new List<string>();
+            var ipnetworks = new List<string>();
             for (int i = g.Optind; i < args.Length; i++)
             {
                 if (!string.IsNullOrEmpty(args[i]))
@@ -369,10 +369,10 @@ namespace System.Net.ConsoleApplication
 
         private static void ParseIPNetworks(ProgramContext ac)
         {
-            List<IPNetwork> ipnetworks = new List<IPNetwork>();
+            var ipnetworks = new List<IPNetwork>();
             foreach (string ips in ac.NetworksString)
             {
-                if (!Program.TryParseIPNetwork(ips, ac.CidrParse, ac.CidrParsed, out var ipnetwork))
+                if (!Program.TryParseIPNetwork(ips, ac.CidrParse, ac.CidrParsed, out IPNetwork ipnetwork))
                 {
                     Console.WriteLine("Unable to parse ipnetwork {0}", ips);
                     continue;
@@ -453,7 +453,7 @@ namespace System.Net.ConsoleApplication
                 ?? Assembly.GetExecutingAssembly()
                 ?? Assembly.GetCallingAssembly()
                 ;
-            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             string version = fvi.FileVersion;
 
             Console.WriteLine("Usage: ipnetwork [-inmcbflu] [-d cidr|-D] [-h|-s cidr|-S|-w|-W|-x|-C network|-o network] networks ...");

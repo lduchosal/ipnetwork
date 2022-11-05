@@ -22,10 +22,10 @@ namespace System.Net.TestSerialization.NetFramework
             var serializer = new XmlSerializer(typeof(IPNetwork));
             serializer.Serialize(mem, ipnetwork);
 
-            var result = Encoding.UTF8.GetString(mem.ToArray());
+            string result = Encoding.UTF8.GetString(mem.ToArray());
 
             // string expected = $@"﻿<?xml version=""1.0"" encoding=""utf-8""?>{Environment.NewLine}<IPNetwork xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">{Environment.NewLine}  <Value>10.0.0.0/8</Value>{Environment.NewLine}</IPNetwork>";
-            var ok = result.Contains("<Value>10.0.0.0/8</Value>");
+            bool ok = result.Contains("<Value>10.0.0.0/8</Value>");
 
             Assert.IsTrue(ok, result);
         }
@@ -37,13 +37,13 @@ namespace System.Net.TestSerialization.NetFramework
 <IPNetwork xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
   <Value>10.0.0.0/8</Value>
 </IPNetwork>";
-            var bytes = Encoding.UTF8.GetBytes(xml);
+            byte[] bytes = Encoding.UTF8.GetBytes(xml);
             var mem = new MemoryStream(bytes);
 
             var serializer = new XmlSerializer(typeof(IPNetwork));
-            var result = serializer.Deserialize(mem);
+            object result = serializer.Deserialize(mem);
 
-            IPNetwork expected = IPNetwork.Parse("10.0.0.1/8");
+            var expected = IPNetwork.Parse("10.0.0.1/8");
             Assert.AreEqual(expected, result);
         }
 
@@ -61,7 +61,7 @@ namespace System.Net.TestSerialization.NetFramework
             Console.WriteLine(result);
 
             mem.Position = 0;
-            var ipnetwork2 = serializer.Deserialize(mem);
+            object ipnetwork2 = serializer.Deserialize(mem);
 
             Assert.AreEqual(ipnetwork, ipnetwork2);
         }
@@ -92,14 +92,14 @@ namespace System.Net.TestSerialization.NetFramework
 <IPNetwork xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
   <Value>10.0.0.0/8</Value>
 </IPNetwork>";
-            var bytes = Encoding.UTF8.GetBytes(xml);
+            byte[] bytes = Encoding.UTF8.GetBytes(xml);
             var mem = new MemoryStream(bytes);
 
             var serializer = new XmlSerializer(typeof(IPNetwork));
 
             for (int i = 0; i < 1000000; i++)
             {
-                var result = serializer.Deserialize(mem);
+                object result = serializer.Deserialize(mem);
                 mem.Position = 0;
             }
 
@@ -120,7 +120,7 @@ namespace System.Net.TestSerialization.NetFramework
                 serializer.Serialize(mem, ipnetwork);
 
                 mem.Position = 0;
-                var ipnetwork2 = serializer.Deserialize(mem);
+                object ipnetwork2 = serializer.Deserialize(mem);
 
                 mem.SetLength(0);
             }

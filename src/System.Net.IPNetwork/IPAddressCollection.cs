@@ -15,7 +15,7 @@ namespace System.Net
     }
 
     /// <summary>
-    ///
+    /// A collection of IP Adresses
     /// </summary>
     public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress>
     {

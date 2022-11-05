@@ -5,17 +5,17 @@
 namespace System.Net
 {
     /// <summary>
-    ///
+    /// A static helper CidrGuess class.
     /// </summary>
     public static class CidrGuess
     {
         /// <summary>
-        ///
+        /// Gets classFull guess.
         /// </summary>
         public static ICidrGuess ClassFull { get => _cidr_classfull.Value; }
 
         /// <summary>
-        ///
+        /// Gets classLess guess.
         /// </summary>
         public static ICidrGuess ClassLess { get => _cidr_classless.Value; }
 
