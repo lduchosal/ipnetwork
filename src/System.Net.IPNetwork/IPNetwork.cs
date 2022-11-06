@@ -24,6 +24,7 @@ namespace System.Net
         private BigInteger _ipaddress;
         private AddressFamily _family;
         private byte _cidr;
+        private BigInteger? __broadcast = null;
 
         [DataMember(Name = "IPNetwork", IsRequired = true)]
         public string Value
@@ -39,6 +40,7 @@ namespace System.Net
                 this._ipaddress = ipnetwork._ipaddress;
                 this._family = ipnetwork._family;
                 this._cidr = ipnetwork._cidr;
+                this.__broadcast = null;
             }
         }
 
@@ -56,7 +58,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Network address
+        /// Gets network address.
         /// </summary>
         public IPAddress Network
         {
@@ -67,7 +69,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Address Family
+        /// Gets address Family.
         /// </summary>
         public AddressFamily AddressFamily
         {
@@ -86,7 +88,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Netmask
+        /// Gets netmask.
         /// </summary>
         public IPAddress Netmask
         {
@@ -106,16 +108,26 @@ namespace System.Net
             }
         }
 
-        private static BigInteger CreateBroadcast(ref BigInteger network, BigInteger netmask, AddressFamily family)
+        private BigInteger _broadcast2
         {
-            int width = family == AddressFamily.InterNetwork ? 4 : 16;
-            BigInteger uintBroadcast = network + netmask.PositiveReverse(width);
+            get
+            {
+                if (this.__broadcast != null)
+                {
+                    return this.__broadcast.Value;
+                }
 
-            return uintBroadcast;
+                int width = this._family == Sockets.AddressFamily.InterNetwork ? 4 : 16;
+                BigInteger uintBroadcast = this._network + this._netmask.PositiveReverse(width);
+                this.__broadcast = uintBroadcast;
+
+                return this.__broadcast.Value;
+            }
         }
 
+
         /// <summary>
-        /// Broadcast address
+        /// Gets broadcast address.
         /// </summary>
         public IPAddress Broadcast
         {
@@ -131,7 +143,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// First usable IP adress in Network
+        /// Gets first usable IP adress in Network.
         /// </summary>
         public IPAddress FirstUsable
         {
@@ -145,7 +157,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Last usable IP adress in Network
+        /// Gets last usable IP adress in Network.
         /// </summary>
         public IPAddress LastUsable
         {
@@ -159,7 +171,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Number of usable IP adress in Network
+        /// Gets number of usable IP adress in Network.
         /// </summary>
         public BigInteger Usable
         {
@@ -178,7 +190,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Number of IP adress in Network
+        /// Gets number of IP adress in Network.
         /// </summary>
         public BigInteger Total
         {
@@ -191,7 +203,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// The CIDR netmask notation
+        /// Gets the CIDR netmask notation.
         /// </summary>
         public byte Cidr
         {
@@ -218,7 +230,7 @@ namespace System.Net
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IPNetwork"/> class.
-        /// Creates a new IPNetwork
+        /// Creates a new IPNetwork.
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <param name="cidr"></param>
@@ -263,7 +275,7 @@ namespace System.Net
         /// Start     : 192.168.168.1
         /// End       : 192.168.168.254
         /// Broadcast : 192.168.168.255
-        /// ```
+        /// ```.
         ///
         /// </summary>
         /// <param name="ipaddress"></param>
@@ -283,7 +295,7 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.168.1
         /// End       : 192.168.168.254
-        /// Broadcast : 192.168.168.255
+        /// Broadcast : 192.168.168.255.
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <param name="cidr"></param>
@@ -302,7 +314,7 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.168.1
         /// End       : 192.168.168.254
-        /// Broadcast : 192.168.168.255
+        /// Broadcast : 192.168.168.255.
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
@@ -322,7 +334,7 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.0.1
         /// End       : 192.168.0.254
-        /// Broadcast : 192.168.0.255
+        /// Broadcast : 192.168.0.255.
         /// </summary>
         /// <param name="network"></param>
         /// <returns></returns>
@@ -341,7 +353,7 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.0.1
         /// End       : 192.168.0.254
-        /// Broadcast : 192.168.0.255
+        /// Broadcast : 192.168.0.255.
         /// </summary>
         /// <param name="network"></param>
         /// <param name="sanitanize"></param>
@@ -361,7 +373,7 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.0.1
         /// End       : 192.168.0.254
-        /// Broadcast : 192.168.0.255
+        /// Broadcast : 192.168.0.255.
         /// </summary>
         /// <param name="network"></param>
         /// <param name="cidrGuess"></param>
@@ -381,7 +393,7 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.0.1
         /// End       : 192.168.0.254
-        /// Broadcast : 192.168.0.255
+        /// Broadcast : 192.168.0.255.
         /// </summary>
         /// <param name="network"></param>
         /// <param name="cidrGuess"></param>
@@ -405,7 +417,7 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.168.1
         /// End       : 192.168.168.254
-        /// Broadcast : 192.168.168.255
+        /// Broadcast : 192.168.168.255.
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
@@ -428,7 +440,7 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.168.1
         /// End       : 192.168.168.254
-        /// Broadcast : 192.168.168.255
+        /// Broadcast : 192.168.168.255.
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <param name="cidr"></param>
@@ -452,7 +464,7 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.0.1
         /// End       : 192.168.0.254
-        /// Broadcast : 192.168.0.255
+        /// Broadcast : 192.168.0.255.
         /// </summary>
         /// <param name="network"></param>
         /// <param name="ipnetwork"></param>
@@ -476,7 +488,7 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.0.1
         /// End       : 192.168.0.254
-        /// Broadcast : 192.168.0.255
+        /// Broadcast : 192.168.0.255.
         /// </summary>
         /// <param name="network"></param>
         /// <param name="sanitanize"></param>
@@ -500,7 +512,7 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.0.1
         /// End       : 192.168.0.254
-        /// Broadcast : 192.168.0.255
+        /// Broadcast : 192.168.0.255.
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
@@ -527,13 +539,12 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.168.1
         /// End       : 192.168.168.254
-        /// Broadcast : 192.168.168.255
+        /// Broadcast : 192.168.168.255.
         /// </summary>
         /// <param name="tryParse"></param>
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
         /// <param name="ipnetwork"></param>
-        /// <returns></returns>
         private static void InternalParse(bool tryParse, string ipaddress, string netmask, out IPNetwork ipnetwork)
         {
             if (string.IsNullOrEmpty(ipaddress))
@@ -645,13 +656,12 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.168.1
         /// End       : 192.168.168.254
-        /// Broadcast : 192.168.168.255
+        /// Broadcast : 192.168.168.255.
         /// </summary>
         /// <param name="tryParse"></param>
         /// <param name="ipaddress"></param>
         /// <param name="netmask"></param>
         /// <param name="ipnetwork"></param>
-        /// <returns></returns>
         private static void InternalParse(bool tryParse, IPAddress ipaddress, IPAddress netmask, out IPNetwork ipnetwork)
         {
             if (ipaddress == null)
@@ -705,13 +715,12 @@ namespace System.Net
         /// Cidr      : 24
         /// Start     : 192.168.168.1
         /// End       : 192.168.168.254
-        /// Broadcast : 192.168.168.255
+        /// Broadcast : 192.168.168.255.
         /// </summary>
         /// <param name="tryParse"></param>
         /// <param name="ipaddress"></param>
         /// <param name="cidr"></param>
         /// <param name="ipnetwork"></param>
-        /// <returns></returns>
         private static void InternalParse(bool tryParse, string ipaddress, byte cidr, out IPNetwork ipnetwork)
         {
             if (string.IsNullOrEmpty(ipaddress))
@@ -760,7 +769,7 @@ namespace System.Net
         /// <summary>
         /// Convert an ipadress to decimal
         /// 0.0.0.0 -> 0
-        /// 0.0.1.0 -> 256
+        /// 0.0.1.0 -> 256.
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <returns></returns>
@@ -774,7 +783,7 @@ namespace System.Net
         /// <summary>
         /// Convert an ipadress to decimal
         /// 0.0.0.0 -> 0
-        /// 0.0.1.0 -> 256
+        /// 0.0.1.0 -> 256.
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <param name="uintIpAddress"></param>
@@ -841,7 +850,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Convert a cidr to BigInteger netmask
+        /// Convert a cidr to BigInteger netmask.
         /// </summary>
         /// <param name="cidr"></param>
         /// <param name="family"></param>
@@ -854,7 +863,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Convert a cidr to uint netmask
+        /// Convert a cidr to uint netmask.
         /// </summary>
         /// <param name="cidr"></param>
         /// <param name="family"></param>
@@ -870,13 +879,12 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Convert a cidr to uint netmask
+        /// Convert a cidr to uint netmask.
         /// </summary>
         /// <param name="tryParse"></param>
         /// <param name="cidr"></param>
         /// <param name="family"></param>
         /// <param name="uintNetmask"></param>
-        /// <returns></returns>
 #if TRAVISCI
         public
 #else
@@ -949,13 +957,12 @@ namespace System.Net
         /// Convert netmask to CIDR
         ///  255.255.255.0 -> 24
         ///  255.255.0.0   -> 16
-        ///  255.0.0.0     -> 8
+        ///  255.0.0.0     -> 8.
         /// </summary>
         /// <param name="tryParse"></param>
         /// <param name="netmask"></param>
         /// <param name="family"></param>
         /// <param name="cidr"></param>
-        /// <returns></returns>
         private static void InternalToCidr(bool tryParse, BigInteger netmask, AddressFamily family, out byte? cidr)
         {
             if (!IPNetwork.InternalValidNetmask(netmask, family))
@@ -979,7 +986,7 @@ namespace System.Net
         /// Convert netmask to CIDR
         ///  255.255.255.0 -> 24
         ///  255.255.0.0   -> 16
-        ///  255.0.0.0     -> 8
+        ///  255.0.0.0     -> 8.
         /// </summary>
         /// <param name="netmask"></param>
         /// <returns></returns>
@@ -993,7 +1000,7 @@ namespace System.Net
         /// Convert netmask to CIDR
         ///  255.255.255.0 -> 24
         ///  255.255.0.0   -> 16
-        ///  255.0.0.0     -> 8
+        ///  255.0.0.0     -> 8.
         /// </summary>
         /// <param name="netmask"></param>
         /// <param name="cidr"></param>
@@ -1046,7 +1053,7 @@ namespace System.Net
         /// Convert CIDR to netmask
         ///  24 -> 255.255.255.0
         ///  16 -> 255.255.0.0
-        ///  8 -> 255.0.0.0
+        ///  8 -> 255.0.0.0.
         /// </summary>
         /// <see href="http://snipplr.com/view/15557/cidr-class-for-ipv4/"/>
         /// <param name="cidr"></param>
@@ -1063,7 +1070,7 @@ namespace System.Net
         /// Convert CIDR to netmask
         ///  24 -> 255.255.255.0
         ///  16 -> 255.255.0.0
-        ///  8 -> 255.0.0.0
+        ///  8 -> 255.0.0.0.
         /// </summary>
         /// <see href="http://snipplr.com/view/15557/cidr-class-for-ipv4/"/>
         /// <param name="cidr"></param>
@@ -1136,7 +1143,7 @@ namespace System.Net
         #region BitsSet
 
         /// <summary>
-        /// Count bits set to 1 in netmask
+        /// Count bits set to 1 in netmask.
         /// </summary>
         /// <see href="http://stackoverflow.com/questions/109023/best-algorithm-to-count-the-number-of-set-bits-in-a-32-bit-integer"/>
         /// <param name="netmask"></param>
@@ -1152,7 +1159,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Count bits set to 1 in netmask
+        /// Count bits set to 1 in netmask.
         /// </summary>
         /// <param name="netmask"></param>
         /// <returns></returns>
@@ -1223,7 +1230,7 @@ namespace System.Net
         #region ToIPAddress
 
         /// <summary>
-        /// Transform a uint ipaddress into IPAddress object
+        /// Transform a uint ipaddress into IPAddress object.
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <param name="family"></param>
@@ -1275,7 +1282,7 @@ namespace System.Net
         #region contains
 
         /// <summary>
-        /// return true if ipaddress is contained in network
+        /// return true if ipaddress is contained in network.
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <returns></returns>
@@ -1292,7 +1299,7 @@ namespace System.Net
             }
 
             BigInteger uintNetwork = this._network;
-            BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, this._netmask, this._family);
+            BigInteger uintBroadcast = this._broadcast;
             BigInteger uintAddress = IPNetwork.ToBigInteger(ipaddress);
 
             bool contains = uintAddress >= uintNetwork
@@ -1313,7 +1320,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// return true is network2 is fully contained in network
+        /// return true is network2 is fully contained in network.
         /// </summary>
         /// <param name="network2"></param>
         /// <returns></returns>
@@ -1325,10 +1332,10 @@ namespace System.Net
             }
 
             BigInteger uintNetwork = this._network;
-            BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, this._netmask, this._family);
+            BigInteger uintBroadcast = this._broadcast;
 
             BigInteger uintFirst = network2._network;
-            BigInteger uintLast = CreateBroadcast(ref uintFirst, network2._netmask, network2._family);
+            BigInteger uintLast = network2._broadcast;
 
             bool contains = uintFirst >= uintNetwork
                 && uintLast <= uintBroadcast;
@@ -1349,10 +1356,65 @@ namespace System.Net
 
         #endregion
 
+        #region contains2
+
+        /// <summary>
+        /// return true if ipaddress is contained in network.
+        /// </summary>
+        /// <param name="ipaddress"></param>
+        /// <returns></returns>
+        public bool Contains2(IPAddress ipaddress)
+        {
+            if (ipaddress == null)
+            {
+                throw new ArgumentNullException("ipaddress");
+            }
+
+            if (this.AddressFamily != ipaddress.AddressFamily)
+            {
+                return false;
+            }
+
+            BigInteger uintNetwork = this._network;
+            BigInteger uintBroadcast = this._broadcast2;
+            BigInteger uintAddress = IPNetwork.ToBigInteger(ipaddress);
+
+            bool contains = uintAddress >= uintNetwork
+                && uintAddress <= uintBroadcast;
+
+            return contains;
+        }
+
+        /// <summary>
+        /// return true is network2 is fully contained in network.
+        /// </summary>
+        /// <param name="network2"></param>
+        /// <returns></returns>
+        public bool Contains2(IPNetwork network2)
+        {
+            if (network2 == null)
+            {
+                throw new ArgumentNullException("network2");
+            }
+
+            BigInteger uintNetwork = this._network;
+            BigInteger uintBroadcast = this._broadcast2;
+
+            BigInteger uintFirst = network2._network;
+            BigInteger uintLast = network2._broadcast2;
+
+            bool contains = uintFirst >= uintNetwork
+                && uintLast <= uintBroadcast;
+
+            return contains;
+        }
+
+        #endregion
+
         #region overlap
 
         /// <summary>
-        /// return true is network2 overlap network
+        /// return true is network2 overlap network.
         /// </summary>
         /// <param name="network2"></param>
         /// <returns></returns>
@@ -1407,7 +1469,7 @@ namespace System.Net
         private static readonly Lazy<IPNetwork> _iana_cblock_reserved = new Lazy<IPNetwork>(() => IPNetwork.Parse("192.168.0.0/16"));
 
         /// <summary>
-        /// 10.0.0.0/8
+        /// Gets 10.0.0.0/8.
         /// </summary>
         /// <returns></returns>
         public static IPNetwork IANA_ABLK_RESERVED1
@@ -1419,7 +1481,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// 172.12.0.0/12
+        /// Gets 172.12.0.0/12.
         /// </summary>
         /// <returns></returns>
         public static IPNetwork IANA_BBLK_RESERVED1
@@ -1431,7 +1493,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// 192.168.0.0/16
+        /// Gets 192.168.0.0/16.
         /// </summary>
         /// <returns></returns>
         public static IPNetwork IANA_CBLK_RESERVED1
@@ -1444,7 +1506,7 @@ namespace System.Net
 
         /// <summary>
         /// return true if ipaddress is contained in
-        /// IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1
+        /// IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1.
         /// </summary>
         /// <param name="ipaddress"></param>
         /// <returns></returns>
@@ -1462,7 +1524,7 @@ namespace System.Net
 
         /// <summary>
         /// return true if ipnetwork is contained in
-        /// IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1
+        /// IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1.
         /// </summary>
         /// <returns></returns>
         public bool IsIANAReserved()
@@ -1490,7 +1552,7 @@ namespace System.Net
         /// <summary>
         /// Subnet a network into multiple nets of cidr mask
         /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
-        /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9
+        /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
         /// </summary>
         /// <param name="cidr"></param>
         /// <returns></returns>
@@ -1515,7 +1577,7 @@ namespace System.Net
         /// <summary>
         /// Subnet a network into multiple nets of cidr mask
         /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
-        /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9
+        /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
         /// </summary>
         /// <param name="cidr"></param>
         /// <param name="ipnetworkCollection"></param>
@@ -1597,7 +1659,7 @@ namespace System.Net
         /// Supernet two consecutive cidr equal subnet into a single one
         /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
         /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
-        /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24
+        /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
         /// </summary>
         /// <param name="network2"></param>
         /// <returns></returns>
@@ -1617,7 +1679,7 @@ namespace System.Net
         /// Try to supernet two consecutive cidr equal subnet into a single one
         /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
         /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
-        /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24
+        /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
         /// </summary>
         /// <param name="network2"></param>
         /// <param name="supernet"></param>
@@ -1762,7 +1824,7 @@ namespace System.Net
         /// <summary>
         /// Supernet a list of subnet
         /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
-        /// 192.168.0.0/24 + 192.168.1.0/24 + 192.168.2.0/24 + 192.168.3.0/24 = 192.168.0.0/22
+        /// 192.168.0.0/24 + 192.168.1.0/24 + 192.168.2.0/24 + 192.168.3.0/24 = 192.168.0.0/22.
         /// </summary>
         /// <param name="ipnetworks"></param>
         /// <returns></returns>
@@ -1775,7 +1837,7 @@ namespace System.Net
         /// <summary>
         /// Supernet a list of subnet
         /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
-        /// 192.168.0.0/24 + 192.168.1.0/24 + 192.168.2.0/24 + 192.168.3.0/24 = 192.168.0.0/22
+        /// 192.168.0.0/24 + 192.168.1.0/24 + 192.168.2.0/24 + 192.168.3.0/24 = 192.168.0.0/22.
         /// </summary>
         /// <param name="ipnetworks"></param>
         /// <param name="supernet"></param>
@@ -2035,7 +2097,7 @@ namespace System.Net
         #region Print
 
         /// <summary>
-        /// Print an ipnetwork in a clear representation string
+        /// Print an ipnetwork in a clear representation string.
         /// </summary>
         /// <returns></returns>
         public string Print()
@@ -2071,7 +2133,7 @@ namespace System.Net
         #region TryGuessCidr
 
         /// <summary>
-        /// Delegate to CidrGuess ClassFull guessing of cidr
+        /// Delegate to CidrGuess ClassFull guessing of cidr.
         /// </summary>
         /// <param name="ip"></param>
         /// <param name="cidr"></param>
@@ -2082,7 +2144,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Try to parse cidr. Have to be >= 0 and &lt;= 32 or 128
+        /// Try to parse cidr. Have to be >= 0 and &lt;= 32 or 128.
         /// </summary>
         /// <param name="sidr"></param>
         /// <param name="family"></param>
@@ -2112,7 +2174,7 @@ namespace System.Net
         #region ListIPAddress
 
         /// <summary>
-        /// List all ip addresses in a subnet
+        /// List all ip addresses in a subnet.
         /// </summary>
         /// <param name="ipnetwork"></param>
         /// <returns></returns>
@@ -2123,7 +2185,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// List all ip addresses in a subnet
+        /// List all ip addresses in a subnet.
         /// </summary>
         /// <param name="filter"></param>
         /// <returns></returns>
@@ -2320,7 +2382,7 @@ namespace System.Net
 
         /// <summary>
         /// Initializes a new instance of the <see cref="IPNetwork"/> class.
-        /// Created for DataContractSerialization. Better use static methods IPNetwork.Parse() to create IPNetworks
+        /// Created for DataContractSerialization. Better use static methods IPNetwork.Parse() to create IPNetworks.
         /// </summary>
         public IPNetwork()
             : this(0, AddressFamily.InterNetwork, 0)
@@ -2357,7 +2419,7 @@ namespace System.Net
         #region WildcardMask
 
         /// <summary>
-        /// Netmask Inverse
+        /// Gets netmask Inverse
         /// https://en.wikipedia.org/wiki/Wildcard_mask
         ///
         /// A wildcard mask is a mask of bits that indicates which parts of an IP address are available for examination.
@@ -2422,7 +2484,7 @@ namespace System.Net
         /// /3    224.0.0.0          31.255.255.255
         /// /2    192.0.0.0          63.255.255.255
         /// /1    128.0.0.0          127.255.255.255
-        /// /0    0.0.0.0            255.255.255.255
+        /// /0    0.0.0.0            255.255.255.255.
         ///
         /// </summary>
         public IPAddress WildcardMask

@@ -144,7 +144,7 @@ namespace System.Net
         ///
         /// Input  : 00 00 00 00
         /// Width  : 8
-        /// Result : FF FF FF FF FF FF FF FF
+        /// Result : FF FF FF FF FF FF FF FF.
         ///
         /// </summary>
         /// <param name="input"></param>

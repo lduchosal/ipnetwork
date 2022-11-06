@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.sonarlint\ipnetworkcsharp.ruleset = .sonarlint\ipnetworkcsharp.ruleset
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BenchmarkProject", "BenchmarkProject\BenchmarkProject.csproj", "{D2DF17D3-F4CE-4531-A812-E64A908A4701}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{D4A8E6B7-7902-4EA4-8CD1-3733C2529582}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4A8E6B7-7902-4EA4-8CD1-3733C2529582}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4A8E6B7-7902-4EA4-8CD1-3733C2529582}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2DF17D3-F4CE-4531-A812-E64A908A4701}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2DF17D3-F4CE-4531-A812-E64A908A4701}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2DF17D3-F4CE-4531-A812-E64A908A4701}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2DF17D3-F4CE-4531-A812-E64A908A4701}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{D4F7FF33-1DD1-4DE8-B1B1-D01B89C7D11F} = {4597D016-3B7D-47A9-BF01-83445C7F0C47}
 		{017AB983-2928-46D3-A05A-D7CF97FC6F7C} = {7F79CD80-ADCD-4125-A5CE-EF19BEE25DF5}
 		{D4A8E6B7-7902-4EA4-8CD1-3733C2529582} = {F29C77A1-AA9F-47B4-A04F-A1BD121D9242}
+		{D2DF17D3-F4CE-4531-A812-E64A908A4701} = {F29C77A1-AA9F-47B4-A04F-A1BD121D9242}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B02827A7-02C5-46F3-B4A3-798C279618E6}

@@ -22,7 +22,7 @@ namespace System.Net
         ///     B (CIDR /16)       10           255.255.0.0
         ///     C (CIDR /24)       11           255.255.255.0
         ///
-        /// IPV6 : 64
+        /// IPV6 : 64.
         ///
         /// </summary>
         /// <param name="ip"></param>

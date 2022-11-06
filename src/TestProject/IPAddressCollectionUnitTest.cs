@@ -10,7 +10,7 @@ namespace System.Net.TestProject
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     /// <summary>
-    /// IPNetworkUnitTest test every single method
+    /// IPNetworkUnitTest test every single method.
     /// </summary>
     [TestClass]
     public class IPAddressCollectionUnitTest

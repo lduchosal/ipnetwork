@@ -7,14 +7,14 @@ namespace System.Net
     using System.Net.Sockets;
 
     /// <summary>
-    /// Try to guess a CIDR in a ClassLess way ie. ipv4 = 32, ipv6 = 128
+    /// Try to guess a CIDR in a ClassLess way ie. ipv4 = 32, ipv6 = 128.
     /// </summary>
     public sealed class CidrClassLess : ICidrGuess
     {
         /// <summary>
         ///
         /// IPV4 : 32
-        /// IPV6 : 128
+        /// IPV6 : 128.
         ///
         /// </summary>
         /// <param name="ip"></param>
