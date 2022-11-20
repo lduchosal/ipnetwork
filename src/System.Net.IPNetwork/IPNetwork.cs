@@ -5,6 +5,7 @@
 namespace System.Net
 {
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.IO;
     using System.Net.Sockets;
     using System.Numerics;
@@ -20,10 +21,13 @@ namespace System.Net
     {
         #region properties
 
+        private readonly object _sync = new object();
         private readonly int _hashCode;
         private BigInteger _ipaddress;
-        private AddressFamily _family;
         private byte _cidr;
+        private BigInteger? _cachedBroadcast;
+
+        private AddressFamily _family;
 
         [DataMember(Name = "IPNetwork", IsRequired = true)]
         public string Value
@@ -39,6 +43,10 @@ namespace System.Net
                 this._ipaddress = ipnetwork._ipaddress;
                 this._family = ipnetwork._family;
                 this._cidr = ipnetwork._cidr;
+                lock (_sync)
+                {
+                    this._cachedBroadcast = null;
+                }
             }
         }
 
@@ -46,7 +54,7 @@ namespace System.Net
 
         #region accessors
 
-        private BigInteger _network
+        internal BigInteger _network
         {
             get
             {
@@ -77,7 +85,7 @@ namespace System.Net
             }
         }
 
-        private BigInteger _netmask
+        internal BigInteger _netmask
         {
             get
             {
@@ -96,22 +104,30 @@ namespace System.Net
             }
         }
 
-        private BigInteger _broadcast
+        internal BigInteger _broadcast
         {
             get
             {
-                int width = this._family == Sockets.AddressFamily.InterNetwork ? 4 : 16;
-                BigInteger uintBroadcast = this._network + this._netmask.PositiveReverse(width);
-                return uintBroadcast;
+                var cached = this._cachedBroadcast;
+                if (cached != null)
+                {
+                    return cached.Value;
+                }
+
+                lock(_sync)
+                {
+                    var cached2 = this._cachedBroadcast;
+                    if (cached2 != null)
+                    {
+                        return cached2.Value;
+                    }
+
+                    var network = this._network;
+                    var computed = CreateBroadcast(ref network, this._netmask, this._family);
+                    this._cachedBroadcast = computed;
+                    return computed;
+                }
             }
-        }
-
-        private static BigInteger CreateBroadcast(ref BigInteger network, BigInteger netmask, AddressFamily family)
-        {
-            int width = family == AddressFamily.InterNetwork ? 4 : 16;
-            BigInteger uintBroadcast = network + netmask.PositiveReverse(width);
-
-            return uintBroadcast;
         }
 
         /// <summary>
@@ -1272,28 +1288,28 @@ namespace System.Net
         /// <summary>
         /// return true if ipaddress is contained in network.
         /// </summary>
-        /// <param name="ipaddress">A string containing an ip address to convert.</param>
+        /// <param name="contains">A string containing an ip address to convert.</param>
         /// <returns>true if ipaddress is contained into the IP Network; otherwise, false.</returns>
-        public bool Contains(IPAddress ipaddress)
+        public bool Contains(IPAddress contains)
         {
-            if (ipaddress == null)
+            if (contains == null)
             {
                 throw new ArgumentNullException("ipaddress");
             }
 
-            if (this.AddressFamily != ipaddress.AddressFamily)
+            if (this.AddressFamily != contains.AddressFamily)
             {
                 return false;
             }
 
             BigInteger uintNetwork = this._network;
-            BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, this._netmask, this._family);
-            var uintAddress = IPNetwork.ToBigInteger(ipaddress);
+            BigInteger uintBroadcast = this._broadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
+            var uintAddress = IPNetwork.ToBigInteger(contains);
 
-            bool contains = uintAddress >= uintNetwork
+            bool result = uintAddress >= uintNetwork
                 && uintAddress <= uintBroadcast;
 
-            return contains;
+            return result;
         }
 
         [Obsolete("static Contains is deprecated, please use instance Contains.")]
@@ -1310,25 +1326,25 @@ namespace System.Net
         /// <summary>
         /// return true is network2 is fully contained in network.
         /// </summary>
-        /// <param name="network2">The network to test.</param>
+        /// <param name="contains">The network to test.</param>
         /// <returns>It returns the boolean value. If network2 is in IPNetwork then it returns True, otherwise returns False.</returns>
-        public bool Contains(IPNetwork network2)
+        public bool Contains(IPNetwork contains)
         {
-            if (network2 == null)
+            if (contains == null)
             {
-                throw new ArgumentNullException("network2");
+                throw new ArgumentNullException("contains");
             }
 
             BigInteger uintNetwork = this._network;
-            BigInteger uintBroadcast = CreateBroadcast(ref uintNetwork, this._netmask, this._family);
+            BigInteger uintBroadcast = this._broadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
 
-            BigInteger uintFirst = network2._network;
-            BigInteger uintLast = CreateBroadcast(ref uintFirst, network2._netmask, network2._family);
+            BigInteger uintFirst = contains._network;
+            BigInteger uintLast = contains._broadcast; // CreateBroadcast(ref uintFirst, network2._netmask, network2._family);
 
-            bool contains = uintFirst >= uintNetwork
+            bool result = uintFirst >= uintNetwork
                 && uintLast <= uintBroadcast;
 
-            return contains;
+            return result;
         }
 
         [Obsolete("static Contains is deprecated, please use instance Contains.")]
@@ -1340,6 +1356,14 @@ namespace System.Net
             }
 
             return network.Contains(network2);
+        }
+
+        private static BigInteger CreateBroadcast(ref BigInteger network, BigInteger netmask, AddressFamily family)
+        {
+            int width = family == AddressFamily.InterNetwork ? 4 : 16;
+            BigInteger uintBroadcast = network + netmask.PositiveReverse(width);
+
+            return uintBroadcast;
         }
 
         #endregion

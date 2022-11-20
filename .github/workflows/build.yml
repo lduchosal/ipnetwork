@@ -36,7 +36,6 @@ jobs:
         run: |
           New-Item -Path .\.sonar\scanner -ItemType Directory
           dotnet tool update dotnet-sonarscanner --tool-path .\.sonar\scanner
-          dotnet tool install --global dotnet-coverage
       - name: Install code-coverage
         shell: powershell
         run: |
