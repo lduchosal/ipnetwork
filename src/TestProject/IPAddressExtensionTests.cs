@@ -1,11 +1,13 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
+﻿// <copyright file="IPAddressExtensionTests.cs" company="IPNetwork">
+// Copyright (c) IPNetwork. All rights reserved.
+// </copyright>
 
 namespace System.Net.TestProject
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     /// <summary>
     /// A collection of unit tests exercising the IPAddressExtensions class.
     /// </summary>
