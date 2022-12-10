@@ -226,7 +226,7 @@ namespace System.Net
         {
             if (ipaddress == null)
             {
-                throw new ArgumentNullException(nameof(ipaddress));
+                throw new ArgumentNullException("ipaddress");
             }
 
             var uintIpAddress = ToBigInteger(ipaddress);
@@ -239,7 +239,7 @@ namespace System.Net
             var maxCidr = family == AddressFamily.InterNetwork ? 32 : 128;
             if (cidr > maxCidr)
             {
-                throw new ArgumentOutOfRangeException(nameof(cidr));
+                throw new ArgumentOutOfRangeException("cidr");
             }
 
             _ipaddress = ipaddress;
@@ -538,7 +538,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentNullException(nameof(ipaddress));
+                    throw new ArgumentNullException("ipaddress");
                 }
 
                 ipnetwork = null;
@@ -549,7 +549,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentNullException(nameof(netmask));
+                    throw new ArgumentNullException("netmask");
                 }
 
                 ipnetwork = null;
@@ -561,7 +561,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentException(nameof(ipaddress));
+                    throw new ArgumentException("ipaddress");
                 }
 
                 ipnetwork = null;
@@ -573,7 +573,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentException(nameof(netmask));
+                    throw new ArgumentException("netmask");
                 }
 
                 ipnetwork = null;
@@ -589,7 +589,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentNullException(nameof(network));
+                    throw new ArgumentNullException("network");
                 }
 
                 ipnetwork = null;
@@ -618,7 +618,7 @@ namespace System.Net
 
                 if (tryParse == false)
                 {
-                    throw new ArgumentException(nameof(network));
+                    throw new ArgumentException("network");
                 }
 
                 ipnetwork = null;
@@ -656,7 +656,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentNullException(nameof(ipaddress));
+                    throw new ArgumentNullException("ipaddress");
                 }
 
                 ipnetwork = null;
@@ -667,7 +667,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentNullException(nameof(netmask));
+                    throw new ArgumentNullException("netmask");
                 }
 
                 ipnetwork = null;
@@ -680,7 +680,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentException(nameof(netmask));
+                    throw new ArgumentException("netmask");
                 }
 
                 ipnetwork = null;
@@ -716,7 +716,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentNullException(nameof(ipaddress));
+                    throw new ArgumentNullException("ipaddress");
                 }
 
                 ipnetwork = null;
@@ -728,7 +728,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentException(nameof(ipaddress));
+                    throw new ArgumentException("ipaddress");
                 }
 
                 ipnetwork = null;
@@ -740,7 +740,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentException(nameof(cidr));
+                    throw new ArgumentException("cidr"));
                 }
 
                 ipnetwork = null;
@@ -797,7 +797,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentNullException(nameof(ipaddress));
+                    throw new ArgumentNullException("ipaddress");
                 }
 
                 uintIpAddress = null;
@@ -811,7 +811,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentException(nameof(ipaddress));
+                    throw new ArgumentException("ipaddress");
                 }
 
                 uintIpAddress = null;
@@ -886,7 +886,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(cidr));
+                    throw new ArgumentOutOfRangeException("cidr");
                 }
 
                 uintNetmask = null;
@@ -897,7 +897,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(cidr));
+                    throw new ArgumentOutOfRangeException("cidr");
                 }
 
                 uintNetmask = null;
@@ -960,7 +960,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentException(nameof(netmask));
+                    throw new ArgumentException("netmask");
                 }
 
                 cidr = null;
@@ -1010,7 +1010,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentNullException(nameof(netmask));
+                    throw new ArgumentNullException("netmask");
                 }
 
                 cidr = null;
@@ -1023,7 +1023,7 @@ namespace System.Net
             // impossible to reach code.
             // if (parsed == false) {
             //     if (tryParse == false) {
-            //         throw new ArgumentException(nameof(netmask));
+            //         throw new ArgumentException("netmask");
             //     }
             //     cidr = null;
             //     return;
@@ -1089,7 +1089,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentException(nameof(family));
+                    throw new ArgumentException("family");
                 }
 
                 netmask = null;
@@ -1101,7 +1101,7 @@ namespace System.Net
             //
             // if (cidr < 0) {
             //     if (tryParse == false) {
-            //         throw new ArgumentOutOfRangeException(nameof(cidr));
+            //         throw new ArgumentOutOfRangeException("cidr");
             //     }
             //     netmask = null;
             //     return;
@@ -1111,7 +1111,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(cidr));
+                    throw new ArgumentOutOfRangeException("cidr");
                 }
 
                 netmask = null;
@@ -1177,7 +1177,7 @@ namespace System.Net
         {
             if (netmask == null)
             {
-                throw new ArgumentNullException(nameof(netmask));
+                throw new ArgumentNullException("netmask");
             }
 
             BigInteger uintNetmask = IPNetwork.ToBigInteger(netmask);
@@ -1196,7 +1196,7 @@ namespace System.Net
             if (family != AddressFamily.InterNetwork
                 && family != AddressFamily.InterNetworkV6)
             {
-                throw new ArgumentException(nameof(family));
+                throw new ArgumentException("family");
             }
 
             var mask = family == AddressFamily.InterNetwork
@@ -1250,14 +1250,14 @@ namespace System.Net
             if (family != AddressFamily.InterNetwork
                 && family != AddressFamily.InterNetworkV6)
             {
-                throw new ArgumentException(nameof(family));
+                throw new ArgumentException("family");
             }
 
             int width = family == AddressFamily.InterNetwork ? 4 : 16;
 
             if (bytes.Length > width)
             {
-                throw new ArgumentException(nameof(bytes));
+                throw new ArgumentException("bytes");
             }
 
             byte[] result = new byte[width];
@@ -1281,7 +1281,7 @@ namespace System.Net
         {
             if (ipaddress == null)
             {
-                throw new ArgumentNullException(nameof(ipaddress));
+                throw new ArgumentNullException("ipaddress");
             }
 
             if (AddressFamily != ipaddress.AddressFamily)
@@ -1304,7 +1304,7 @@ namespace System.Net
         {
             if (network == null)
             {
-                throw new ArgumentNullException(nameof(network));
+                throw new ArgumentNullException("network");
             }
 
             return network.Contains(ipaddress);
@@ -1319,7 +1319,7 @@ namespace System.Net
         {
             if (network2 == null)
             {
-                throw new ArgumentNullException(nameof(network2));
+                throw new ArgumentNullException("network2");
             }
 
             BigInteger uintNetwork = _network;
@@ -1339,7 +1339,7 @@ namespace System.Net
         {
             if (network == null)
             {
-                throw new ArgumentNullException(nameof(network));
+                throw new ArgumentNullException("network");
             }
 
             return network.Contains(network2);
@@ -1358,7 +1358,7 @@ namespace System.Net
         {
             if (network2 == null)
             {
-                throw new ArgumentNullException(nameof(network2));
+                throw new ArgumentNullException("network2");
             }
 
             BigInteger uintNetwork = _network;
@@ -1381,7 +1381,7 @@ namespace System.Net
         {
             if (network == null)
             {
-                throw new ArgumentNullException(nameof(network));
+                throw new ArgumentNullException("network");
             }
 
             return network.Overlap(network2);
@@ -1450,7 +1450,7 @@ namespace System.Net
         {
             if (ipaddress == null)
             {
-                throw new ArgumentNullException(nameof(ipaddress));
+                throw new ArgumentNullException("ipaddress");
             }
 
             return IPNetwork.IANA_ABLK_RESERVED1.Contains(ipaddress)
@@ -1475,7 +1475,7 @@ namespace System.Net
         {
             if (ipnetwork == null)
             {
-                throw new ArgumentNullException(nameof(ipnetwork));
+                throw new ArgumentNullException("ipnetwork");
             }
 
             return ipnetwork.IsIANAReserved();
@@ -1504,7 +1504,7 @@ namespace System.Net
         {
             if (network == null)
             {
-                throw new ArgumentNullException(nameof(network));
+                throw new ArgumentNullException("network");
             }
 
             return network.Subnet(cidr);
@@ -1536,7 +1536,7 @@ namespace System.Net
         {
             if (network == null)
             {
-                throw new ArgumentNullException(nameof(network));
+                throw new ArgumentNullException("network");
             }
 
             return network.TrySubnet(cidr, out ipnetworkCollection);
@@ -1553,7 +1553,7 @@ namespace System.Net
             {
                 if (trySubnet == false)
                 {
-                    throw new ArgumentNullException(nameof(network));
+                    throw new ArgumentNullException("network");
                 }
 
                 ipnetworkCollection = null;
@@ -1565,7 +1565,7 @@ namespace System.Net
             {
                 if (trySubnet == false)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(cidr));
+                    throw new ArgumentOutOfRangeException("cidr")
                 }
 
                 ipnetworkCollection = null;
@@ -1576,7 +1576,7 @@ namespace System.Net
             {
                 if (trySubnet == false)
                 {
-                    throw new ArgumentException(nameof(cidr));
+                    throw new ArgumentException("cidr");
                 }
 
                 ipnetworkCollection = null;
@@ -1633,7 +1633,7 @@ namespace System.Net
         {
             if (network == null)
             {
-                throw new ArgumentNullException(nameof(network));
+                throw new ArgumentNullException("network");
             }
 
             return network.TrySupernet(network2, out supernet);
@@ -1650,7 +1650,7 @@ namespace System.Net
             {
                 if (trySupernet == false)
                 {
-                    throw new ArgumentNullException(nameof(network1));
+                    throw new ArgumentNullException("network1");
                 }
 
                 supernet = null;
@@ -1661,7 +1661,7 @@ namespace System.Net
             {
                 if (trySupernet == false)
                 {
-                    throw new ArgumentNullException(nameof(network2));
+                    throw new ArgumentNullException("network2");
                 }
 
                 supernet = null;
@@ -1684,7 +1684,7 @@ namespace System.Net
             {
                 if (trySupernet == false)
                 {
-                    throw new ArgumentException(nameof(cidr));
+                    throw new ArgumentException("cidr");
                 }
 
                 supernet = null;
@@ -1704,7 +1704,7 @@ namespace System.Net
             {
                 if (trySupernet == false)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(network));
+                    throw new ArgumentOutOfRangeException("network");
                 }
 
                 supernet = null;
@@ -1719,7 +1719,7 @@ namespace System.Net
             {
                 if (trySupernet == false)
                 {
-                    throw new ArgumentException(nameof(network));
+                    throw new ArgumentException("network");
                 }
 
                 supernet = null;
@@ -1785,7 +1785,7 @@ namespace System.Net
             {
                 if (trySupernet == false)
                 {
-                    throw new ArgumentNullException(nameof(ipnetworks));
+                    throw new ArgumentNullException("ipnetworks");
                 }
 
                 supernet = null;
@@ -1893,22 +1893,22 @@ namespace System.Net
         {
             if (string.IsNullOrEmpty(start))
             {
-                throw new ArgumentNullException(nameof(start));
+                throw new ArgumentNullException("start");
             }
 
             if (string.IsNullOrEmpty(end))
             {
-                throw new ArgumentNullException(nameof(end));
+                throw new ArgumentNullException("end");
             }
 
             if (!IPAddress.TryParse(start, out var startIP))
             {
-                throw new ArgumentException(nameof(start));
+                throw new ArgumentException("start");
             }
 
             if (!IPAddress.TryParse(end, out var endIP))
             {
-                throw new ArgumentException(nameof(end));
+                throw new ArgumentException("end");
             }
 
             if (startIP.AddressFamily != endIP.AddressFamily)
@@ -1956,7 +1956,7 @@ namespace System.Net
             {
                 if (tryWide == false)
                 {
-                    throw new ArgumentNullException(nameof(ipnetworks));
+                    throw new ArgumentNullException("ipnetworks");
                 }
 
                 ipnetwork = null;
@@ -1973,7 +1973,7 @@ namespace System.Net
             {
                 if (tryWide == false)
                 {
-                    throw new ArgumentException(nameof(ipnetworks));
+                    throw new ArgumentException("ipnetworks");
                 }
 
                 ipnetwork = null;
@@ -2048,7 +2048,7 @@ namespace System.Net
         {
             if (ipnetwork == null)
             {
-                throw new ArgumentNullException(nameof(ipnetwork));
+                throw new ArgumentNullException("ipnetwork");
             }
 
             return ipnetwork.Print();
@@ -2229,7 +2229,7 @@ namespace System.Net
             {
                 throw new ArgumentException(
                     "The supplied parameter is an invalid type. Please supply an IPNetwork type.",
-                    nameof(obj));
+                    "obj");
             }
 
             // perform the comparison
