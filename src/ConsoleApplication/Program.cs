@@ -424,7 +424,7 @@ namespace System.Net.ConsoleApplication
         {
             if (ac == null)
             {
-                throw new ArgumentNullException(nameof(ac));
+                throw new ArgumentNullException("ac");
             }
 
             return ac.IPNetwork == false
@@ -442,7 +442,7 @@ namespace System.Net.ConsoleApplication
         {
             if (ac == null)
             {
-                throw new ArgumentNullException(nameof(ac));
+                throw new ArgumentNullException("ac");
             }
 
             ac.IPNetwork = true;
