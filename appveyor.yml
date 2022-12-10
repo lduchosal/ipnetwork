@@ -41,9 +41,10 @@ build_script:
   - cmd: dotnet build -c release ./src/ConsoleApplication
 
 test_script:
-  - cmd: dotnet test ./src/TestProject/TestProject.csproj --settings ./src/TestProject/coverlet.runsettings 
+  - cmd: dotnet test ./src/TestProject/TestProject.csproj --settings ./src/TestProject/coverlet.runsettings -f "net6.0"
   - vstest.console /logger:Appveyor c:\Projects\ipnetwork\src\TestProject\bin\Debug\net6.0\TestProject.dll
-  - csmacnz.Coveralls.exe --opencover -i C:\projects\ipnetwork\src\TestProject\TestResults\*\coverage.opencover.xml --useRelativePaths
+  - ps: copy ./src/TestProject/TestResults/**/coverage.opencover.xml ./src/TestProject/TestResults
+  - csmacnz.Coveralls.exe --opencover -i C:\projects\ipnetwork\src\TestProject\TestResults\coverage.opencover.xml --useRelativePaths
 
 # 1. Regenerate AppVeyor Api Key
 # https://www.nuget.org/account/apikeys
