@@ -92,8 +92,8 @@ namespace System.Net.ConsoleApplication
                     return;
                 }
 
-                ac.Action = ActionEnum.SubstractNetwork;
-                ac.SubstractNetwork = ipnetwork;
+                ac.Action = ActionEnum.SubtractNetwork;
+                ac.SubtractNetwork = ipnetwork;
             }),
         };
 
