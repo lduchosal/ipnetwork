@@ -2,13 +2,10 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using System.IO;
-using System.Runtime.Serialization;
-using System.Xml;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace System.Net.TestSerialization.NetFramework
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class SerializeDataContractTest
     {
@@ -29,7 +26,7 @@ namespace System.Net.TestSerialization.NetFramework
             var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
             string serialized = DataContractSerializeHelper.Serialize(ipnetwork);
 
-            var result = DataContractSerializeHelper.Deserialize<IPNetwork>(serialized);
+            IPNetwork result = DataContractSerializeHelper.Deserialize<IPNetwork>(serialized);
 
             Assert.AreEqual(ipnetwork, result);
         }

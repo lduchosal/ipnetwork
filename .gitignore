@@ -46,6 +46,7 @@ dlldata.c
 project.lock.json
 project.fragment.lock.json
 artifacts/
+src/.sonarqube/
 **/Properties/launchSettings.json
 
 *_i.c

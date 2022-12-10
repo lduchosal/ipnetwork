@@ -2,10 +2,10 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace System.Net.TestProject
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class IPNetworkCollectionUnitTest
     {
@@ -15,14 +15,14 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestCtor1()
         {
-            IPNetworkCollection ipn = new IPNetworkCollection(IPNetwork.IANA_ABLK_RESERVED1, 33);
+            var ipn = new IPNetworkCollection(IPNetwork.IANA_ABLK_RESERVED1, 33);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestCtor2()
         {
-            IPNetworkCollection ipn = new IPNetworkCollection(IPNetwork.IANA_ABLK_RESERVED1, 2);
+            var ipn = new IPNetworkCollection(IPNetwork.IANA_ABLK_RESERVED1, 2);
         }
 
         #endregion
@@ -32,12 +32,12 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestCurrent()
         {
-            IPNetwork ipn = IPNetwork.Parse("192.168.0.0/32");
+            var ipn = IPNetwork.Parse("192.168.0.0/32");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
                 var ipnse = (Collections.IEnumerator)ipns;
                 ipnse.MoveNext();
-                var ipn0 = ipnse.Current;
+                object ipn0 = ipnse.Current;
 
                 Assert.AreEqual("192.168.0.0/32", ipn0.ToString(), "ipn0");
             }
@@ -50,13 +50,13 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestEnumerator()
         {
-            IPNetwork ipn = IPNetwork.Parse("192.168.0.0/32");
+            var ipn = IPNetwork.Parse("192.168.0.0/32");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
                 var ipnse = (Collections.IEnumerable)ipns;
-                var ee = ipnse.GetEnumerator();
+                Collections.IEnumerator ee = ipnse.GetEnumerator();
                 ee.MoveNext();
-                var ipn0 = ee.Current;
+                object ipn0 = ee.Current;
                 Assert.AreEqual("192.168.0.0/32", ipn0.ToString(), "ipn0");
             }
         }
@@ -68,13 +68,13 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestReset1()
         {
-            IPNetwork ipn = IPNetwork.Parse("192.168.1.0/29");
+            var ipn = IPNetwork.Parse("192.168.1.0/29");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
-                var ipn0 = ipns.Current;
+                IPNetwork ipn0 = ipns.Current;
                 ipns.MoveNext();
                 ipns.Reset();
-                var ipn1 = ipns.Current;
+                IPNetwork ipn1 = ipns.Current;
 
                 Assert.AreEqual(ipn0, ipn1, "reset");
             }
@@ -87,7 +87,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void MoveNext1()
         {
-            IPNetwork ipn = IPNetwork.Parse("192.168.1.0/30");
+            var ipn = IPNetwork.Parse("192.168.1.0/30");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
                 bool next = ipns.MoveNext();
@@ -98,7 +98,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void MoveNext2()
         {
-            IPNetwork ipn = IPNetwork.Parse("192.168.1.0/30");
+            var ipn = IPNetwork.Parse("192.168.1.0/30");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
                 ipns.MoveNext();

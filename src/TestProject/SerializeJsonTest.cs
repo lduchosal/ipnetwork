@@ -2,12 +2,11 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
-
 namespace System.Net.TestSerialization.NetFramework
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using Newtonsoft.Json;
+
     [TestClass]
     public class SerializeJsonTest
     {
@@ -16,7 +15,7 @@ namespace System.Net.TestSerialization.NetFramework
         {
             var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
 
-            var result = JsonConvert.SerializeObject(ipnetwork);
+            string result = JsonConvert.SerializeObject(ipnetwork);
 
             string expected = "{\"IPNetwork\":\"10.0.0.0/8\"}";
             Assert.AreEqual(expected, result);
@@ -27,9 +26,9 @@ namespace System.Net.TestSerialization.NetFramework
         {
             string json = "{\"IPNetwork\":\"10.0.0.0/8\"}";
 
-            var result = JsonConvert.DeserializeObject<IPNetwork>(json);
+            IPNetwork result = JsonConvert.DeserializeObject<IPNetwork>(json);
 
-            IPNetwork expected = IPNetwork.Parse("10.0.0.1/8");
+            var expected = IPNetwork.Parse("10.0.0.1/8");
             Assert.AreEqual(expected, result);
         }
 
@@ -38,8 +37,8 @@ namespace System.Net.TestSerialization.NetFramework
         {
             var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
 
-            var json = JsonConvert.SerializeObject(ipnetwork);
-            var result = JsonConvert.DeserializeObject<IPNetwork>(json);
+            string json = JsonConvert.SerializeObject(ipnetwork);
+            IPNetwork result = JsonConvert.DeserializeObject<IPNetwork>(json);
 
             Assert.AreEqual(ipnetwork, result);
         }
@@ -52,7 +51,7 @@ namespace System.Net.TestSerialization.NetFramework
 
             for (int i = 0; i < 1000000; i++)
             {
-                var json = JsonConvert.SerializeObject(ipnetwork);
+                string json = JsonConvert.SerializeObject(ipnetwork);
             }
 
             // 3.06 seconds(Ad hoc).
@@ -66,7 +65,7 @@ namespace System.Net.TestSerialization.NetFramework
 
             for (int i = 0; i < 1000000; i++)
             {
-                var result = JsonConvert.DeserializeObject<IPNetwork>(json);
+                IPNetwork result = JsonConvert.DeserializeObject<IPNetwork>(json);
             }
 
             // 10.20 seconds(Ad hoc).
@@ -80,8 +79,8 @@ namespace System.Net.TestSerialization.NetFramework
 
             for (int i = 0; i < 1000000; i++)
             {
-                var json = JsonConvert.SerializeObject(ipnetwork);
-                var result = JsonConvert.DeserializeObject<IPNetwork>(json);
+                string json = JsonConvert.SerializeObject(ipnetwork);
+                IPNetwork result = JsonConvert.DeserializeObject<IPNetwork>(json);
             }
 
             // 13.49 seconds(Ad hoc).

@@ -2,10 +2,10 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 namespace System.Net.TestProject
 {
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
+
     [TestClass]
     public class WildcardMaskUnitTest
     {
@@ -13,10 +13,10 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_WildcardMask_ipv4_mask_0()
         {
-            IPNetwork ipnetwork = IPNetwork.Parse("1.1.1.1/0");
+            var ipnetwork = IPNetwork.Parse("1.1.1.1/0");
 
-            var netmask = ipnetwork.Netmask.ToString();
-            var wildcardmask = ipnetwork.WildcardMask.ToString();
+            string netmask = ipnetwork.Netmask.ToString();
+            string wildcardmask = ipnetwork.WildcardMask.ToString();
 
             Assert.AreEqual("0.0.0.0", netmask, "netmask");
             Assert.AreEqual("255.255.255.255", wildcardmask, "wildcardmask");
@@ -25,10 +25,10 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_WildcardMask_ipv4_mask_32()
         {
-            IPNetwork ipnetwork = IPNetwork.Parse("1.1.1.1/32");
+            var ipnetwork = IPNetwork.Parse("1.1.1.1/32");
 
-            var netmask = ipnetwork.Netmask.ToString();
-            var wildcardmask = ipnetwork.WildcardMask.ToString();
+            string netmask = ipnetwork.Netmask.ToString();
+            string wildcardmask = ipnetwork.WildcardMask.ToString();
 
             Assert.AreEqual("255.255.255.255", netmask, "netmask");
             Assert.AreEqual("0.0.0.0", wildcardmask, "wildcardmask");
@@ -70,10 +70,10 @@ namespace System.Net.TestProject
         [DataRow("0.0.0.0", "255.255.255.255")]
         public void Test_WildcardMask_ipv4(string netmask, string expected)
         {
-            IPNetwork ipnetwork = IPNetwork.Parse($"1.1.1.1/{netmask}");
+            var ipnetwork = IPNetwork.Parse($"1.1.1.1/{netmask}");
 
-            var netmask2 = ipnetwork.Netmask.ToString();
-            var wildcardmask = ipnetwork.WildcardMask.ToString();
+            string netmask2 = ipnetwork.Netmask.ToString();
+            string wildcardmask = ipnetwork.WildcardMask.ToString();
 
             Assert.AreEqual(netmask, netmask2, "netmask");
             Assert.AreEqual(expected, wildcardmask, "wildcardmask");
@@ -115,10 +115,10 @@ namespace System.Net.TestProject
         [DataRow(0, "255.255.255.255")]
         public void Test_WildcardMask_ipv4_cidr(int cidr, string expected)
         {
-            IPNetwork ipnetwork = IPNetwork.Parse($"1.1.1.1/{cidr}");
+            var ipnetwork = IPNetwork.Parse($"1.1.1.1/{cidr}");
 
-            var cidr2 = (int)ipnetwork.Cidr;
-            var wildcardmask = ipnetwork.WildcardMask.ToString();
+            int cidr2 = (int)ipnetwork.Cidr;
+            string wildcardmask = ipnetwork.WildcardMask.ToString();
 
             Assert.AreEqual(cidr, cidr2, "netmask");
             Assert.AreEqual(expected, wildcardmask, "wildcardmask");
@@ -131,10 +131,10 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_WildcardMask_ipv6_mask_0()
         {
-            IPNetwork ipnetwork = IPNetwork.Parse("::/0");
+            var ipnetwork = IPNetwork.Parse("::/0");
 
-            var netmask = ipnetwork.Netmask.ToString();
-            var wildcardmask = ipnetwork.WildcardMask.ToString();
+            string netmask = ipnetwork.Netmask.ToString();
+            string wildcardmask = ipnetwork.WildcardMask.ToString();
 
             Assert.AreEqual("::", netmask, "netmask");
             Assert.AreEqual("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", wildcardmask, "wildcardmask");
@@ -143,10 +143,10 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_WildcardMask_ipv6_mask_128()
         {
-            IPNetwork ipnetwork = IPNetwork.Parse("::/128");
+            var ipnetwork = IPNetwork.Parse("::/128");
 
-            var netmask = ipnetwork.Netmask.ToString();
-            var wildcardmask = ipnetwork.WildcardMask.ToString();
+            string netmask = ipnetwork.Netmask.ToString();
+            string wildcardmask = ipnetwork.WildcardMask.ToString();
 
             Assert.AreEqual("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", netmask, "netmask");
             Assert.AreEqual("::", wildcardmask, "wildcardmask");
@@ -158,10 +158,10 @@ namespace System.Net.TestProject
         [DataRow("::", "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff")]
         public void Test_WildcardMask_ipv6(string netmask, string expected)
         {
-            IPNetwork ipnetwork = IPNetwork.Parse($"::/{netmask}");
+            var ipnetwork = IPNetwork.Parse($"::/{netmask}");
 
-            var netmask2 = ipnetwork.Netmask.ToString();
-            var wildcardmask = ipnetwork.WildcardMask.ToString();
+            string netmask2 = ipnetwork.Netmask.ToString();
+            string wildcardmask = ipnetwork.WildcardMask.ToString();
 
             Assert.AreEqual(netmask, netmask2, "netmask");
             Assert.AreEqual(expected, wildcardmask, "wildcardmask");
@@ -331,12 +331,12 @@ namespace System.Net.TestProject
         [DataRow(0, "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff")]
         public void Test_WildcardMask_ipv6_cidr(int cidr, string expected)
         {
-            IPNetwork ipnetwork = IPNetwork.Parse($"::/{cidr}");
+            var ipnetwork = IPNetwork.Parse($"::/{cidr}");
 
-            var cidr2 = (int)ipnetwork.Cidr;
+            int cidr2 = (int)ipnetwork.Cidr;
             var expectedipv6 = IPAddress.Parse(expected);
             var expectedcidr = IPNetwork.ToBigInteger(expectedipv6);
-            var wildcardmask = ipnetwork.WildcardMask;
+            IPAddress wildcardmask = ipnetwork.WildcardMask;
             var wildcardcidr = IPNetwork.ToBigInteger(wildcardmask);
 
             Assert.AreEqual(cidr, cidr2, "netmask");

@@ -2,12 +2,12 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
-
 namespace System.Net
 {
+    using System.Collections;
+    using System.Collections.Generic;
+    using System.Numerics;
+
     public class IPNetworkCollection : IEnumerable<IPNetwork>, IEnumerator<IPNetwork>
     {
         private BigInteger _enumerator;
@@ -81,7 +81,7 @@ namespace System.Net
                     ? this._lastUsable : this._broadcast;
                 BigInteger increment = (last - this._network) / this.Count;
                 BigInteger uintNetwork = this._network + ((increment + 1) * i);
-                IPNetwork ipn = new IPNetwork(uintNetwork, this._ipnetwork.AddressFamily, this._cidrSubnet);
+                var ipn = new IPNetwork(uintNetwork, this._ipnetwork.AddressFamily, this._cidrSubnet);
                 return ipn;
             }
         }
