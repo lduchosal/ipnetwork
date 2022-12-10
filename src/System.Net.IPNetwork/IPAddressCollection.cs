@@ -56,7 +56,7 @@ namespace System.Net
             {
                 if (i >= this.Count)
                 {
-                    throw new ArgumentOutOfRangeException(nameof(i));
+                    throw new ArgumentOutOfRangeException("i");
                 }
 
                 byte width = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? (byte)32 : (byte)128;
