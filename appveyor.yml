@@ -43,7 +43,7 @@ build_script:
 test_script:
   - cmd: dotnet test ./src/TestProject/TestProject.csproj --settings ./src/TestProject/coverlet.runsettings 
   - vstest.console /logger:Appveyor c:\Projects\ipnetwork\src\TestProject\bin\Debug\net7.0\TestProject.dll
-  - csmacnz.Coveralls.exe --opencover -i C:\projects\ipnetwork\src\TestProject\TestResults\**\coverage.opencover.xml --useRelativePaths
+  - csmacnz.Coveralls.exe --opencover -i C:/projects/ipnetwork/src/TestProject/TestResults/**/coverage.opencover.xml --useRelativePaths
 
 # 1. Regenerate AppVeyor Api Key
 # https://www.nuget.org/account/apikeys
