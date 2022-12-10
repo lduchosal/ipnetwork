@@ -740,7 +740,7 @@ namespace System.Net
             {
                 if (tryParse == false)
                 {
-                    throw new ArgumentException("cidr"));
+                    throw new ArgumentException("cidr");
                 }
 
                 ipnetwork = null;
@@ -1565,7 +1565,7 @@ namespace System.Net
             {
                 if (trySubnet == false)
                 {
-                    throw new ArgumentOutOfRangeException("cidr")
+                    throw new ArgumentOutOfRangeException("cidr");
                 }
 
                 ipnetworkCollection = null;
