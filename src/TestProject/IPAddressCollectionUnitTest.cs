@@ -58,15 +58,15 @@ namespace System.Net.TestProject
         {
             var ipn = IPNetwork.Parse("192.168.1.0/29");
             IPAddress last = null;
-            IPAddress fisrt = null;
+            IPAddress first = null;
             int count = 0;
             using (IPAddressCollection ips = ipn.ListIPAddress())
             {
                 foreach (IPAddress ip in ips)
                 {
-                    if (fisrt == null)
+                    if (first == null)
                     {
-                        fisrt = ip;
+                        first = ip;
                     }
 
                     last = ip;
@@ -74,8 +74,8 @@ namespace System.Net.TestProject
                 }
 
                 Assert.IsNotNull(last, "last is null");
-                Assert.IsNotNull(fisrt, "fisrt is null");
-                Assert.AreEqual("192.168.1.0", fisrt.ToString(), "first");
+                Assert.IsNotNull(first, "first is null");
+                Assert.AreEqual("192.168.1.0", first.ToString(), "first");
                 Assert.AreEqual("192.168.1.7", last.ToString(), "last");
                 Assert.AreEqual(8, count, "count");
             }
@@ -255,15 +255,15 @@ namespace System.Net.TestProject
         {
             var ipn = IPNetwork.Parse("::/125");
             IPAddress last = null;
-            IPAddress fisrt = null;
+            IPAddress first = null;
             int count = 0;
             using (IPAddressCollection ips = ipn.ListIPAddress())
             {
                 foreach (IPAddress ip in ips)
                 {
-                    if (fisrt == null)
+                    if (first == null)
                     {
-                        fisrt = ip;
+                        first = ip;
                     }
 
                     last = ip;
@@ -271,8 +271,8 @@ namespace System.Net.TestProject
                 }
 
                 Assert.IsNotNull(last, "last is null");
-                Assert.IsNotNull(fisrt, "fisrt is null");
-                Assert.AreEqual("::", fisrt.ToString(), "first");
+                Assert.IsNotNull(first, "first is null");
+                Assert.AreEqual("::", first.ToString(), "first");
                 Assert.AreEqual("::7", last.ToString(), "last");
                 Assert.AreEqual(8, count, "count");
             }

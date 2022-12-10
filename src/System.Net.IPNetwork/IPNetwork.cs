@@ -114,7 +114,7 @@ namespace System.Net
                     return cached.Value;
                 }
 
-                lock(_sync)
+                lock (_sync)
                 {
                     var cached2 = this._cachedBroadcast;
                     if (cached2 != null)
@@ -243,7 +243,7 @@ namespace System.Net
         {
             if (ipaddress == null)
             {
-                throw new ArgumentNullException(nameof(ipaddress));
+                throw new ArgumentNullException("ipaddress");
             }
 
             BigInteger uintIpAddress = ToBigInteger(ipaddress);

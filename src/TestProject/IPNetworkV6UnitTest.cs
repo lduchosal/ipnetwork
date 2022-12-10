@@ -1770,7 +1770,7 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
-        public void TestContains11_different_adress_family_returns_false()
+        public void TestContains11_different_address_family_returns_false()
         {
             var ipnetwork = IPNetwork.Parse("::1"); // IPv6
             var ipaddress = IPAddress.Parse("127.0.0.1"); // IPv4

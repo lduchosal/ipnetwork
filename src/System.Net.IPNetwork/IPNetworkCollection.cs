@@ -49,7 +49,7 @@ namespace System.Net
 
             if (cidrSubnet < ipnetwork.Cidr)
             {
-                throw new ArgumentException("cidr");
+                throw new ArgumentException("cidrSubnet");
             }
 
             this._cidrSubnet = cidrSubnet;
@@ -63,7 +63,7 @@ namespace System.Net
         {
             get
             {
-                var count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
+                BigInteger count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
                 return count;
             }
         }
