@@ -28,6 +28,7 @@ namespace System.Net.TestProject
         #region Parse
 
         [TestMethod]
+        [TestCategory("Parse")]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestParseIPAddressNetmaskANE2()
         {
@@ -36,6 +37,7 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
+        [TestCategory("Parse")]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestParseIPAddressNetmaskANE3()
         {
@@ -43,6 +45,7 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
+        [TestCategory("Parse")]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestParseIPAddressNetmaskANE4()
         {
@@ -50,6 +53,7 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
+        [TestCategory("Parse")]
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestParseIPAddressNetmaskANE5()
         {
@@ -58,6 +62,7 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
+        [TestCategory("Parse")]
         [ExpectedException(typeof(ArgumentException))]
         public void TestParseIPAddressNetmaskANE8()
         {
@@ -65,6 +70,7 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
+        [TestCategory("Parse")]
         [ExpectedException(typeof(ArgumentException))]
         public void TestParseIPAddressNetmaskANE9()
         {
@@ -72,6 +78,7 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
+        [TestCategory("Parse")]
         [ExpectedException(typeof(ArgumentException))]
         public void TestParseIPAddressNetmaskANE10()
         {
@@ -79,12 +86,14 @@ namespace System.Net.TestProject
         }
 
         [TestMethod]
+        [TestCategory("Parse")]
         [ExpectedException(typeof(ArgumentException))]
         public void TestParseIPAddressNetmaskANE11()
         {
             var ipnet = IPNetwork.Parse("0.0.0.0", 33);
         }
 
+        [TestCategory("Parse")]
         [TestMethod]
         public void TestParseIPAddressNetmask()
         {
@@ -108,6 +117,7 @@ namespace System.Net.TestProject
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
+        [TestCategory("Parse")]
         [TestMethod]
         public void TestParseString1()
         {
@@ -131,6 +141,7 @@ namespace System.Net.TestProject
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
+        [TestCategory("Parse")]
         [TestMethod]
         public void TestParseString2()
         {
@@ -154,6 +165,7 @@ namespace System.Net.TestProject
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
+        [TestCategory("Parse")]
         [TestMethod]
         public void TestParseString3()
         {
@@ -177,6 +189,7 @@ namespace System.Net.TestProject
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
+        [TestCategory("Parse")]
         [TestMethod]
         public void TestParseString4()
         {
@@ -200,6 +213,7 @@ namespace System.Net.TestProject
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
+        [TestCategory("Parse")]
         [TestMethod]
         public void TestParseString5()
         {
@@ -223,6 +237,7 @@ namespace System.Net.TestProject
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
+        [TestCategory("Parse")]
         [TestMethod]
         public void TestParseIPAddressNoNetmask1()
         {

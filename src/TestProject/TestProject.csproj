@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFrameworks>net462;net47;net48;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
-	  <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net6.0</TargetFrameworks>
+	  <TargetFrameworks>net462;net47;net48;netcoreapp3.1;net7.0;net6.0</TargetFrameworks>
+	  <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net7.0</TargetFrameworks>
 
 
 	  <IsPackable>false</IsPackable>
@@ -12,8 +12,6 @@
 	  <SignAssembly Condition="'$(OS)' != 'Windows_NT'">false</SignAssembly>
 
 	  <AssemblyOriginatorKeyFile>..\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
-
-	  <SonarQubeTestProject>True</SonarQubeTestProject>
 
 	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
   </PropertyGroup>
@@ -42,11 +40,11 @@
     <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net5.0|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0|AnyCPU'">
     <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net5.0|AnyCPU'">
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0|AnyCPU'">
     <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
   </PropertyGroup>
 

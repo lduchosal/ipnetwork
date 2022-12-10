@@ -29,6 +29,8 @@ init:
 
 before_build:
   - cmd: dotnet --version
+  - cmd: dotnet --list-sdks
+  - cmd: dotnet --list-runtimes
   - cmd: dotnet tool install --global coveralls.net
   - cmd: dotnet clean ./src
   - cmd: dotnet restore ./src --verbosity m
@@ -39,9 +41,9 @@ build_script:
   - cmd: dotnet build -c release ./src/ConsoleApplication
 
 test_script:
-  - cmd: dotnet test ./src/TestProject/TestProject.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
-  - vstest.console /logger:Appveyor c:\Projects\ipnetwork\src\TestProject\bin\Debug\net6.0\TestProject.dll
-  - csmacnz.Coveralls.exe --opencover -i C:\projects\ipnetwork\src\TestProject\coverage.net6.0.opencover.xml --useRelativePaths
+  - cmd: dotnet test ./src/TestProject/TestProject.csproj --settings ./src/TestProject/coverlet.runsettings 
+  - vstest.console /logger:Appveyor c:\Projects\ipnetwork\src\TestProject\bin\Debug\net7.0\TestProject.dll
+  - csmacnz.Coveralls.exe --opencover -i C:\projects\ipnetwork\src\TestProject\TestResults\**\coverage.opencover.xml --useRelativePaths
 
 # 1. Regenerate AppVeyor Api Key
 # https://www.nuget.org/account/apikeys

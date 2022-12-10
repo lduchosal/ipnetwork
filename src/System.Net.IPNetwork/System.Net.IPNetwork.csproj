@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net47;net48;netcoreapp3.1;net5.0;net6.0</TargetFrameworks>
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0;netstandard2.1;netcoreapp3.1;net5.0;net6.0</TargetFrameworks> 
+	  <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net47;net48;netcoreapp3.1;net7.0;net6.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0;netstandard2.1;netcoreapp3.1;net7.0;net6.0</TargetFrameworks> 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <PackageId>IPNetwork2</PackageId>
     <PackageVersion>2.6.0</PackageVersion>
@@ -57,34 +57,26 @@
   </ItemGroup>
   
   <ItemGroup>
-    <AdditionalFiles Include="..\.sonarlint\ipnetwork\CSharp\SonarLint.xml" Link="SonarLint.xml" />
-  </ItemGroup>
-  
-  <ItemGroup>
     <None Include="..\..\LICENSE" Pack="true" PackagePath="." />
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Memory">
-      <Version>4.5.5</Version>
+    <PackageReference Include="System.Memory" Version="4.5.5">
     </PackageReference>
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-    <PackageReference Include="System.Memory">
-      <Version>4.5.5</Version>
+    <PackageReference Include="System.Memory" Version="4.5.5">
     </PackageReference>
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
-    <PackageReference Include="System.Memory">
-      <Version>4.5.5</Version>
+    <PackageReference Include="System.Memory" Version="4.5.5">
     </PackageReference>
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'net47'">
-    <PackageReference Include="System.Memory">
-      <Version>4.5.5</Version>
+    <PackageReference Include="System.Memory" Version="4.5.5">
     </PackageReference>
   </ItemGroup>
   
