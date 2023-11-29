@@ -2,11 +2,12 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using System;
+using System.Net;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using IPNetwork2;
-
-namespace System.Net.TestProject
+namespace IPNetwork2.TestProject
 {
     /// <summary>
     /// ContainsUnitTest test every Contiains method.

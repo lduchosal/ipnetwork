@@ -4,7 +4,7 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace System.Net.TestProject
+namespace IPNetwork2.TestProject
 {
     [TestClass]
     public class ConsoleUnitTest

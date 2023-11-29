@@ -2,13 +2,14 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using System;
+using System.Net;
+using System.Net.Sockets;
 using System.Numerics;
-
-using IPNetwork2;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace System.Net.TestProject
+namespace IPNetwork2.TestProject
 {
     [TestClass]
     public class IPNetworkV6UnitTest
@@ -1508,7 +1509,7 @@ namespace System.Net.TestProject
         public void TryToNetmask1()
         {
             IPAddress result = null;
-            bool parsed = IPNetwork.TryToNetmask(0, Sockets.AddressFamily.InterNetworkV6, out result);
+            bool parsed = IPNetwork.TryToNetmask(0, AddressFamily.InterNetworkV6, out result);
             var expected = IPAddress.Parse("::");
 
             Assert.AreEqual(expected, result, "Netmask");
@@ -1519,7 +1520,7 @@ namespace System.Net.TestProject
         public void TryToNetmask2()
         {
             IPAddress result = null;
-            bool parsed = IPNetwork.TryToNetmask(33, Sockets.AddressFamily.InterNetworkV6, out result);
+            bool parsed = IPNetwork.TryToNetmask(33, AddressFamily.InterNetworkV6, out result);
             var expected = IPAddress.Parse("ffff:ffff:8000::");
 
             Assert.AreEqual(expected, result, "Netmask");
@@ -1535,7 +1536,7 @@ namespace System.Net.TestProject
         {
             byte cidr = 128;
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetworkV6).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1545,7 +1546,7 @@ namespace System.Net.TestProject
         {
             byte cidr = 127;
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe";
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetworkV6).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1555,7 +1556,7 @@ namespace System.Net.TestProject
         {
             byte cidr = 126;
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffc";
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetworkV6).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1565,7 +1566,7 @@ namespace System.Net.TestProject
         {
             byte cidr = 1;
             string netmask = "8000::";
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetworkV6).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1575,7 +1576,7 @@ namespace System.Net.TestProject
         {
             byte cidr = 0;
             string netmask = "::";
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetworkV6).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1585,7 +1586,7 @@ namespace System.Net.TestProject
         public void ToNetmaskOORE1()
         {
             byte cidr = 129;
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetworkV6).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
         }
 
         #endregion
@@ -2517,7 +2518,7 @@ namespace System.Net.TestProject
             string sidr = "0";
             byte? cidr;
             byte? result = 0;
-            bool parsed = IPNetwork.TryParseCidr(sidr, Sockets.AddressFamily.InterNetworkV6, out cidr);
+            bool parsed = IPNetwork.TryParseCidr(sidr, AddressFamily.InterNetworkV6, out cidr);
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");
@@ -2530,7 +2531,7 @@ namespace System.Net.TestProject
             byte? cidr;
             byte? result = null;
 
-            bool parsed = IPNetwork.TryParseCidr(sidr, Sockets.AddressFamily.InterNetworkV6, out cidr);
+            bool parsed = IPNetwork.TryParseCidr(sidr, AddressFamily.InterNetworkV6, out cidr);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");
@@ -2543,7 +2544,7 @@ namespace System.Net.TestProject
             byte? cidr;
             byte result = 33;
 
-            bool parsed = IPNetwork.TryParseCidr(sidr, Sockets.AddressFamily.InterNetworkV6, out cidr);
+            bool parsed = IPNetwork.TryParseCidr(sidr, AddressFamily.InterNetworkV6, out cidr);
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");
@@ -2556,7 +2557,7 @@ namespace System.Net.TestProject
             byte? cidr;
             byte result = 128;
 
-            bool parsed = IPNetwork.TryParseCidr(sidr, Sockets.AddressFamily.InterNetworkV6, out cidr);
+            bool parsed = IPNetwork.TryParseCidr(sidr, AddressFamily.InterNetworkV6, out cidr);
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");
@@ -2569,7 +2570,7 @@ namespace System.Net.TestProject
             byte? cidr;
             byte? result = null;
 
-            bool parsed = IPNetwork.TryParseCidr(sidr, Sockets.AddressFamily.InterNetworkV6, out cidr);
+            bool parsed = IPNetwork.TryParseCidr(sidr, AddressFamily.InterNetworkV6, out cidr);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");

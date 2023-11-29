@@ -2,11 +2,12 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using System;
+using System.Collections;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using IPNetwork2;
-
-namespace System.Net.TestProject
+namespace IPNetwork2.TestProject
 {
     [TestClass]
     public class IPNetworkCollectionUnitTest
@@ -37,7 +38,7 @@ namespace System.Net.TestProject
             var ipn = IPNetwork.Parse("192.168.0.0/32");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
-                var ipnse = (Collections.IEnumerator)ipns;
+                var ipnse = (IEnumerator)ipns;
                 ipnse.MoveNext();
                 object ipn0 = ipnse.Current;
 
@@ -55,8 +56,8 @@ namespace System.Net.TestProject
             var ipn = IPNetwork.Parse("192.168.0.0/32");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
-                var ipnse = (Collections.IEnumerable)ipns;
-                Collections.IEnumerator ee = ipnse.GetEnumerator();
+                var ipnse = (IEnumerable)ipns;
+                IEnumerator ee = ipnse.GetEnumerator();
                 ee.MoveNext();
                 object ipn0 = ee.Current;
                 Assert.AreEqual("192.168.0.0/32", ipn0.ToString(), "ipn0");

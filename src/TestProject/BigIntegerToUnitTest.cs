@@ -4,11 +4,9 @@
 
 using System.Numerics;
 
-using IPNetwork2;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace System.Net.TestProject
+namespace IPNetwork2.TestProject
 {
     [TestClass]
     public class BigIntegerToUnitTest

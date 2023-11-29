@@ -4,11 +4,9 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using IPNetwork2;
-
 using Newtonsoft.Json;
 
-namespace System.Net.TestSerialization.NetFramework
+namespace IPNetwork2.TestSerialization.NetFramework
 {
     [TestClass]
     public class SerializeJsonTest

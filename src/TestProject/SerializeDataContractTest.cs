@@ -2,11 +2,11 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using System;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using IPNetwork2;
-
-namespace System.Net.TestSerialization.NetFramework
+namespace IPNetwork2.TestSerialization.NetFramework
 {
     [TestClass]
     public class SerializeDataContractTest

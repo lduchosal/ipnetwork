@@ -2,15 +2,17 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using System;
+using System.Net.Sockets;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 
-using IPNetwork2;
+using System.Net;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace System.Net.TestProject
+namespace IPNetwork2.TestProject
 {
     /// <summary>
     /// IPNetworkUnitTest test every single method.
@@ -24,7 +26,7 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestCtor1()
         {
-            new IPNetwork(BigInteger.Zero, Sockets.AddressFamily.InterNetwork, 33);
+            new IPNetwork(BigInteger.Zero, AddressFamily.InterNetwork, 33);
         }
         #endregion
 
@@ -1178,13 +1180,13 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestToBigIntegerByte()
         {
-            BigInteger result = IPNetwork.ToUint(33, Sockets.AddressFamily.InterNetwork);
+            BigInteger result = IPNetwork.ToUint(33, AddressFamily.InterNetwork);
         }
 
         [TestMethod]
         public void TestToBigIntegerByte2()
         {
-            BigInteger result = IPNetwork.ToUint(32, Sockets.AddressFamily.InterNetwork);
+            BigInteger result = IPNetwork.ToUint(32, AddressFamily.InterNetwork);
             uint expected = 4294967295;
             Assert.AreEqual(expected, result, "result");
         }
@@ -1192,7 +1194,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestToBigIntegerByte3()
         {
-            BigInteger result = IPNetwork.ToUint(0, Sockets.AddressFamily.InterNetwork);
+            BigInteger result = IPNetwork.ToUint(0, AddressFamily.InterNetwork);
             uint expected = 0;
             Assert.AreEqual(expected, result, "result");
         }
@@ -1201,7 +1203,7 @@ namespace System.Net.TestProject
         public void TestToBigIntegerInternal1()
         {
             BigInteger? result = null;
-            IPNetwork.InternalToBigInteger(true, 33, Sockets.AddressFamily.InterNetwork, out result);
+            IPNetwork.InternalToBigInteger(true, 33, AddressFamily.InterNetwork, out result);
             Assert.AreEqual(null, result, "result");
         }
 
@@ -1209,7 +1211,7 @@ namespace System.Net.TestProject
         public void TestToBigIntegerInternal2()
         {
             BigInteger? result = null;
-            IPNetwork.InternalToBigInteger(true, 129, Sockets.AddressFamily.InterNetworkV6, out result);
+            IPNetwork.InternalToBigInteger(true, 129, AddressFamily.InterNetworkV6, out result);
             Assert.AreEqual(null, result, "result");
         }
 
@@ -1218,7 +1220,7 @@ namespace System.Net.TestProject
         public void TestToBigIntegerInternal3()
         {
             BigInteger? result = null;
-            IPNetwork.InternalToBigInteger(false, 129, Sockets.AddressFamily.InterNetworkV6, out result);
+            IPNetwork.InternalToBigInteger(false, 129, AddressFamily.InterNetworkV6, out result);
         }
 
         [TestMethod]
@@ -1226,14 +1228,14 @@ namespace System.Net.TestProject
         public void TestToBigIntegerInternal4()
         {
             BigInteger? result = null;
-            IPNetwork.InternalToBigInteger(false, 32, Sockets.AddressFamily.AppleTalk, out result);
+            IPNetwork.InternalToBigInteger(false, 32, AddressFamily.AppleTalk, out result);
         }
 
         [TestMethod]
         public void TestToBigIntegerInternal5()
         {
             BigInteger? result = null;
-            IPNetwork.InternalToBigInteger(true, 32, Sockets.AddressFamily.AppleTalk, out result);
+            IPNetwork.InternalToBigInteger(true, 32, AddressFamily.AppleTalk, out result);
             Assert.AreEqual(null, result, "result");
         }
 
@@ -1245,7 +1247,7 @@ namespace System.Net.TestProject
         public void TestTryToUint1()
         {
             BigInteger? result = null;
-            bool parsed = IPNetwork.TryToUint(32, Sockets.AddressFamily.InterNetwork, out result);
+            bool parsed = IPNetwork.TryToUint(32, AddressFamily.InterNetwork, out result);
 
             Assert.IsNotNull(result, "uint");
             Assert.AreEqual(true, parsed, "parsed");
@@ -1354,7 +1356,7 @@ namespace System.Net.TestProject
         public void TryToNetmask1()
         {
             IPAddress result = null;
-            bool parsed = IPNetwork.TryToNetmask(0, Sockets.AddressFamily.InterNetwork, out result);
+            bool parsed = IPNetwork.TryToNetmask(0, AddressFamily.InterNetwork, out result);
             var expected = IPAddress.Parse("0.0.0.0");
 
             Assert.AreEqual(expected, result, "Netmask");
@@ -1365,7 +1367,7 @@ namespace System.Net.TestProject
         public void TryToNetmask2()
         {
             IPAddress result = null;
-            bool parsed = IPNetwork.TryToNetmask(33, Sockets.AddressFamily.InterNetwork, out result);
+            bool parsed = IPNetwork.TryToNetmask(33, AddressFamily.InterNetwork, out result);
             IPAddress expected = null;
 
             Assert.AreEqual(expected, result, "Netmask");
@@ -1381,7 +1383,7 @@ namespace System.Net.TestProject
         {
             byte cidr = 32;
             string netmask = "255.255.255.255";
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1391,7 +1393,7 @@ namespace System.Net.TestProject
         public void ToNetmaskNonInet()
         {
             byte cidr = 0;
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.AppleTalk).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.AppleTalk).ToString();
         }
 
         [TestMethod]
@@ -1400,14 +1402,14 @@ namespace System.Net.TestProject
         {
             byte cidr = 0;
             cidr--;
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetwork).ToString();
         }
 
         [TestMethod]
         public void ToNetmaskInternal1()
         {
             IPAddress result;
-            IPNetwork.InternalToNetmask(true, 0, Sockets.AddressFamily.AppleTalk, out result);
+            IPNetwork.InternalToNetmask(true, 0, AddressFamily.AppleTalk, out result);
             Assert.AreEqual(null, result);
         }
 
@@ -1416,7 +1418,7 @@ namespace System.Net.TestProject
         {
             byte cidr = 31;
             string netmask = "255.255.255.254";
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1426,7 +1428,7 @@ namespace System.Net.TestProject
         {
             byte cidr = 30;
             string netmask = "255.255.255.252";
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1436,7 +1438,7 @@ namespace System.Net.TestProject
         {
             byte cidr = 29;
             string netmask = "255.255.255.248";
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1446,7 +1448,7 @@ namespace System.Net.TestProject
         {
             byte cidr = 1;
             string netmask = "128.0.0.0";
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1456,7 +1458,7 @@ namespace System.Net.TestProject
         {
             byte cidr = 0;
             string netmask = "0.0.0.0";
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetwork).ToString();
 
             Assert.AreEqual(netmask, result, "netmask");
         }
@@ -1466,7 +1468,7 @@ namespace System.Net.TestProject
         public void ToNetmaskOORE1()
         {
             byte cidr = 33;
-            string result = IPNetwork.ToNetmask(cidr, Sockets.AddressFamily.InterNetwork).ToString();
+            string result = IPNetwork.ToNetmask(cidr, AddressFamily.InterNetwork).ToString();
         }
 
         #endregion
@@ -1477,7 +1479,7 @@ namespace System.Net.TestProject
         public void TestToIPAddress()
         {
             var ip = new BigInteger(0);
-            var result = IPNetwork.ToIPAddress(ip, Sockets.AddressFamily.InterNetwork);
+            var result = IPNetwork.ToIPAddress(ip, AddressFamily.InterNetwork);
             Assert.AreEqual(IPAddress.Any, result, "ToIPAddress");
         }
 
@@ -1486,7 +1488,7 @@ namespace System.Net.TestProject
         public void TestToIPAddress2()
         {
             var ip = new BigInteger(0);
-            var result = IPNetwork.ToIPAddress(ip, Sockets.AddressFamily.AppleTalk);
+            var result = IPNetwork.ToIPAddress(ip, AddressFamily.AppleTalk);
         }
 
         [TestMethod]
@@ -1505,7 +1507,7 @@ namespace System.Net.TestProject
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
             });
-            var result = IPNetwork.ToIPAddress(ip, Sockets.AddressFamily.AppleTalk);
+            var result = IPNetwork.ToIPAddress(ip, AddressFamily.AppleTalk);
         }
         #endregion
 
@@ -1515,7 +1517,7 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentException))]
         public void TestValidNetmaskInvalid1()
         {
-            bool resut = IPNetwork.InternalValidNetmask(BigInteger.Zero, Sockets.AddressFamily.AppleTalk);
+            bool resut = IPNetwork.InternalValidNetmask(BigInteger.Zero, AddressFamily.AppleTalk);
         }
 
         [TestMethod]
@@ -3410,7 +3412,7 @@ Usable      : 4294967294
         [ExpectedException(typeof(ArgumentException))]
         public void TestResize1()
         {
-            byte[] resut = IPNetwork.Resize(new byte[33], Sockets.AddressFamily.InterNetwork);
+            byte[] resut = IPNetwork.Resize(new byte[33], AddressFamily.InterNetwork);
         }
 
         #endregion
@@ -3542,7 +3544,7 @@ Usable      : 4294967294
             string sidr = "0";
             byte? cidr;
             byte? result = 0;
-            bool parsed = IPNetwork.TryParseCidr(sidr, Sockets.AddressFamily.InterNetwork, out cidr);
+            bool parsed = IPNetwork.TryParseCidr(sidr, AddressFamily.InterNetwork, out cidr);
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");
@@ -3555,7 +3557,7 @@ Usable      : 4294967294
             byte? cidr;
             byte? result = null;
 
-            bool parsed = IPNetwork.TryParseCidr(sidr, Sockets.AddressFamily.InterNetwork, out cidr);
+            bool parsed = IPNetwork.TryParseCidr(sidr, AddressFamily.InterNetwork, out cidr);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");
@@ -3568,7 +3570,7 @@ Usable      : 4294967294
             byte? cidr;
             byte? result = null;
 
-            bool parsed = IPNetwork.TryParseCidr(sidr, Sockets.AddressFamily.InterNetwork, out cidr);
+            bool parsed = IPNetwork.TryParseCidr(sidr, AddressFamily.InterNetwork, out cidr);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");

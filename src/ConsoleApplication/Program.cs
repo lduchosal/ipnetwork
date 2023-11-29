@@ -2,17 +2,18 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using System.Numerics;
 using System.Reflection;
 
 using Gnu.Getopt;
 
-using IPNetwork2;
-
-namespace System.Net.ConsoleApplication
+namespace IPNetwork2.ConsoleApplication
 {
     /// <summary>
     /// Console app for IPNetwork.
@@ -40,7 +41,7 @@ namespace System.Net.ConsoleApplication
             new ArgParsed('D', (ac, arg) => { ac.CidrParse = CidrParseEnum.Default; }),
             new ArgParsed('d', (ac, arg) =>
             {
-                if (!IPNetwork.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out byte? cidr))
+                if (!IPNetwork.TryParseCidr(arg, AddressFamily.InterNetwork, out byte? cidr))
                 {
                     Console.WriteLine("Invalid cidr {0}", cidr);
                     ac.Action = ActionEnum.Usage;
@@ -52,7 +53,7 @@ namespace System.Net.ConsoleApplication
             }),
             new ArgParsed('s', (ac, arg) =>
             {
-                if (!IPNetwork.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out byte? cidr))
+                if (!IPNetwork.TryParseCidr(arg, AddressFamily.InterNetwork, out byte? cidr))
                 {
                     Console.WriteLine("Invalid cidr {0}", cidr);
                     ac.Action = ActionEnum.Usage;

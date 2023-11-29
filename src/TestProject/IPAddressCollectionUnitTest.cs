@@ -2,15 +2,15 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 using System.Numerics;
-
-using IPNetwork2;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace System.Net.TestProject
+namespace IPNetwork2.TestProject
 {
     /// <summary>
     /// IPNetworkUnitTest test every single method.

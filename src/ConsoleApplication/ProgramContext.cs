@@ -4,7 +4,7 @@
 
 using IPNetwork2;
 
-namespace System.Net.ConsoleApplication
+namespace IPNetwork2.ConsoleApplication
 {
     public class ProgramContext
     {

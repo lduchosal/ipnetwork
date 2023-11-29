@@ -1,87 +1,84 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-	  <TargetFrameworks>net462;net47;net48;netcoreapp3.1;net6.0;net8.0</TargetFrameworks>
-	  <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net6.0;net8.0</TargetFrameworks>
+	<PropertyGroup>
+		<TargetFrameworks>net462;net47;net48;netcoreapp3.1;net6.0;net8.0</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net6.0;net8.0</TargetFrameworks>
 
+		<IsPackable>false</IsPackable>
 
-	  <IsPackable>false</IsPackable>
+		<SignAssembly>True</SignAssembly>
+		<SignAssembly Condition="'$(OS)' != 'Windows_NT'">false</SignAssembly>
 
+		<AssemblyOriginatorKeyFile>..\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
 
-	  <SignAssembly>True</SignAssembly>
-	  <SignAssembly Condition="'$(OS)' != 'Windows_NT'">false</SignAssembly>
+		<EnableNETAnalyzers>true</EnableNETAnalyzers>
+	</PropertyGroup>
 
-	  <AssemblyOriginatorKeyFile>..\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
+	</PropertyGroup>
 
-	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net48|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net48|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-  </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">
+		<DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
+	</PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-  </PropertyGroup>
+	<ItemGroup>
+		<None Remove="stylecop.json" />
+	</ItemGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-  </PropertyGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="stylecop.json" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Remove="stylecop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="stylecop.json" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="coverlet.msbuild" Version="6.0.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.CodeCoverage" Version="17.8.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
-    <PackageReference Include="coverlet.collector" Version="6.0.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="System.Collections" Version="4.3.0" />
-  </ItemGroup>
-
+	<ItemGroup>
+		<PackageReference Include="coverlet.msbuild" Version="6.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.CodeCoverage" Version="17.8.0" />
+		<PackageReference Include="MSTest.TestAdapter" Version="3.1.1" />
+		<PackageReference Include="MSTest.TestFramework" Version="3.1.1" />
+		<PackageReference Include="coverlet.collector" Version="6.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="System.Collections" Version="4.3.0" />
+	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
 		<Reference Include="System" />
@@ -90,10 +87,9 @@
 		<Reference Include="System.Data" />
 	</ItemGroup>
 
-
 	<ItemGroup>
-	  <ProjectReference Include="..\ConsoleApplication\ConsoleApplication.csproj" />
-	  <ProjectReference Include="..\System.Net.IPNetwork\System.Net.IPNetwork.csproj" />
+		<ProjectReference Include="..\ConsoleApplication\ConsoleApplication.csproj" />
+		<ProjectReference Include="..\System.Net.IPNetwork\System.Net.IPNetwork.csproj" />
 	</ItemGroup>
 
 </Project>

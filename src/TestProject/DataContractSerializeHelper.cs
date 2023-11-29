@@ -6,7 +6,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Xml;
 
-namespace System.Net.TestSerialization.NetFramework
+namespace IPNetwork2.TestSerialization.NetFramework
 {
     public static class DataContractSerializeHelper
     {

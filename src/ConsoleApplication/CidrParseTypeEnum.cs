@@ -2,7 +2,7 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.ConsoleApplication
+namespace IPNetwork2.ConsoleApplication
 {
     public enum CidrParseEnum
     {

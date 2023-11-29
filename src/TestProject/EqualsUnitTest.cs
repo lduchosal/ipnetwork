@@ -4,9 +4,7 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-using IPNetwork2;
-
-namespace System.Net.TestProject
+namespace IPNetwork2.TestProject
 {
     [TestClass]
     public class EqualsUnitTest

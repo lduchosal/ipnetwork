@@ -2,34 +2,32 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<TargetFrameworks>net462;net47;net48;netcoreapp3.1;net6.0</TargetFrameworks>
-		<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net6.0</TargetFrameworks>
+		<TargetFrameworks>net462;net47;net48;netcoreapp3.1;net6.0;net8.0</TargetFrameworks>
+		<TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net6.0;net8.0</TargetFrameworks>
 		<ImplicitUsings>disable</ImplicitUsings>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
-
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <None Remove="stylecop.json" />
+		<None Remove="stylecop.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <AdditionalFiles Include="stylecop.json" />
+		<AdditionalFiles Include="stylecop.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="GnuGetOpt" Version="0.9.2.6" />
-	  <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-	    <PrivateAssets>all</PrivateAssets>
-	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-	  </PackageReference>
+		<PackageReference Include="GnuGetOpt" Version="0.9.2.6" />
+		<PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
-	
 	<ItemGroup>
 		<!-- ProjectReference Include="..\Gnu.Getopt\Gnu.Getopt.csproj" /-->
-    <ProjectReference Include="..\System.Net.IPNetwork\System.Net.IPNetwork.csproj" />
-  </ItemGroup>
+		<ProjectReference Include="..\System.Net.IPNetwork\System.Net.IPNetwork.csproj" />
+	</ItemGroup>
 
 </Project>
