@@ -2,14 +2,17 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
+
+using IPNetwork2;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 #pragma warning disable SYSLIB0011 // Type or member is obsolete
 
 namespace System.Net.TestSerialization
 {
-    using System.IO;
-    using System.Runtime.Serialization.Formatters.Binary;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     [TestClass]
     public class SerializeBinaryFormatterTest
     {

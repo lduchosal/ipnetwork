@@ -2,12 +2,15 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net
-{
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Numerics;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Net;
+using System.Net.Sockets;
+using System.Numerics;
 
+namespace IPNetwork2
+{
     public enum FilterEnum
     {
         All,
@@ -59,7 +62,7 @@ namespace System.Net
                     throw new ArgumentOutOfRangeException("i");
                 }
 
-                byte width = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? (byte)32 : (byte)128;
+                byte width = this._ipnetwork.AddressFamily == AddressFamily.InterNetwork ? (byte)32 : (byte)128;
                 IPNetworkCollection ipn = this._ipnetwork.Subnet(width);
 
                 BigInteger index = i;

@@ -2,11 +2,14 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using IPNetwork2;
+
+using Newtonsoft.Json;
+
 namespace System.Net.TestSerialization.NetFramework
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-    using Newtonsoft.Json;
-
     [TestClass]
     public class SerializeJsonTest
     {

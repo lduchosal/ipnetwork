@@ -2,7 +2,9 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net
+using System;
+
+namespace IPNetwork2
 {
     /// <summary>
     /// A static helper CidrGuess class.

@@ -2,12 +2,12 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net
-{
-    using System;
-    using System.Numerics;
-    using System.Text;
+using System;
+using System.Numerics;
+using System.Text;
 
+namespace IPNetwork2
+{
     /// <summary>
     /// Extension methods to convert <see cref="System.Numerics.BigInteger"/>
     /// instances to hexadecimal, octal, and binary strings.

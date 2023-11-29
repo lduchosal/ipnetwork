@@ -2,6 +2,8 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using IPNetwork2;
+
 namespace System.Net.ConsoleApplication
 {
     public class ProgramContext

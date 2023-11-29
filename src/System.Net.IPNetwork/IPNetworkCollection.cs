@@ -2,12 +2,14 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net
-{
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Numerics;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Net.Sockets;
+using System.Numerics;
 
+namespace IPNetwork2
+{
     public class IPNetworkCollection : IEnumerable<IPNetwork>, IEnumerator<IPNetwork>
     {
         private BigInteger _enumerator;
@@ -41,7 +43,7 @@ namespace System.Net
 #endif
         IPNetworkCollection(IPNetwork ipnetwork, byte cidrSubnet)
         {
-            int maxCidr = ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? 32 : 128;
+            int maxCidr = ipnetwork.AddressFamily == AddressFamily.InterNetwork ? 32 : 128;
             if (cidrSubnet > maxCidr)
             {
                 throw new ArgumentOutOfRangeException("cidrSubnet");
@@ -63,7 +65,7 @@ namespace System.Net
         {
             get
             {
-                BigInteger count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
+                var count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
                 return count;
             }
         }
@@ -77,7 +79,7 @@ namespace System.Net
                     throw new ArgumentOutOfRangeException("i");
                 }
 
-                BigInteger last = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetworkV6
+                BigInteger last = this._ipnetwork.AddressFamily == AddressFamily.InterNetworkV6
                     ? this._lastUsable : this._broadcast;
                 BigInteger increment = (last - this._network) / this.Count;
                 BigInteger uintNetwork = this._network + ((increment + 1) * i);

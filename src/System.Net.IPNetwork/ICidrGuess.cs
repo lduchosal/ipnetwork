@@ -2,7 +2,7 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net
+namespace IPNetwork2
 {
     /// <summary>
     ///

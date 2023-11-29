@@ -2,12 +2,15 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using System.Collections.Generic;
+using System.Linq;
+
+using IPNetwork2;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace System.Net.TestProject
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     /// <summary>
     /// A collection of unit tests exercising the IPAddressExtensions class.
     /// </summary>

@@ -2,12 +2,12 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using System.IO;
+using System.Runtime.Serialization;
+using System.Xml;
+
 namespace System.Net.TestSerialization.NetFramework
 {
-    using System.IO;
-    using System.Runtime.Serialization;
-    using System.Xml;
-
     public static class DataContractSerializeHelper
     {
         public static string Serialize<T>(T obj, bool formatting = true)

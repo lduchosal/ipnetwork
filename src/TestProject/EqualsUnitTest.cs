@@ -2,10 +2,12 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using IPNetwork2;
+
 namespace System.Net.TestProject
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     [TestClass]
     public class EqualsUnitTest
     {

@@ -2,11 +2,14 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using System.Numerics;
+
+using IPNetwork2;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 namespace System.Net.TestProject
 {
-    using System.Numerics;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
     [TestClass]
     public class BigIntegerBitWiseUnitTest
     {

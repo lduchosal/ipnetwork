@@ -2,7 +2,11 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net
+using System;
+using System.Net;
+using System.Net.Sockets;
+
+namespace IPNetwork2
 {
     /// <summary>
     /// A collection of extension functions applied to an IPAddress value.
@@ -17,14 +21,14 @@ namespace System.Net
         public static IPNetwork AsIPNetwork(this IPAddress addr)
         {
             /* IPv4? */
-            if (addr.AddressFamily == Sockets.AddressFamily.InterNetwork)
+            if (addr.AddressFamily == AddressFamily.InterNetwork)
             {
                 /* Return address as a /32 network, the size of an IPv4 address. */
                 return new IPNetwork(addr, 32);
             }
 
             /* IPV6? */
-            if (addr.AddressFamily == Sockets.AddressFamily.InterNetworkV6)
+            if (addr.AddressFamily == AddressFamily.InterNetworkV6)
             {
                 /* Return address as a /128 network, the size of an IPv6 address. */
                 return new IPNetwork(addr, 128);
