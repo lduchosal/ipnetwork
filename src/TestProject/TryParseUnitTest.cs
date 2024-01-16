@@ -18,7 +18,7 @@ namespace System.Net.TestProject
         public void TestTryParseIPAddressNetmaskANE2()
         {
             IPAddress ip = null;
-            bool parsed = IPNetwork.TryParse(ip, ip, out IPNetwork ipnet);
+            bool parsed = IPNetwork2.TryParse(ip, ip, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
@@ -27,7 +27,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestTryParseIPAddressNetmaskANE3()
         {
-            bool parsed = IPNetwork.TryParse(string.Empty, 0, out IPNetwork ipnet);
+            bool parsed = IPNetwork2.TryParse(string.Empty, 0, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
@@ -36,7 +36,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestTryParseIPAddressNetmaskANE4()
         {
-            bool parsed = IPNetwork.TryParse(null, 0, out IPNetwork ipnet);
+            bool parsed = IPNetwork2.TryParse(null, 0, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
@@ -47,7 +47,7 @@ namespace System.Net.TestProject
         {
             string n = null;
 
-            bool parsed = IPNetwork.TryParse(n, n, out IPNetwork ipnet);
+            bool parsed = IPNetwork2.TryParse(n, n, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
@@ -56,7 +56,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestTryParseIPAddressNetmaskANE6()
         {
-            bool parsed = IPNetwork.TryParse(IPAddress.Parse("10.10.10.10"), null, out IPNetwork ipnet);
+            bool parsed = IPNetwork2.TryParse(IPAddress.Parse("10.10.10.10"), null, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
@@ -65,7 +65,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestTryParseIPAddressNetmaskANE7()
         {
-            bool parsed = IPNetwork.TryParse("0.0.0.0", null, out IPNetwork ipnet);
+            bool parsed = IPNetwork2.TryParse("0.0.0.0", null, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
@@ -74,7 +74,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestTryParseIPAddressNetmaskANE8()
         {
-            bool parsed = IPNetwork.TryParse("x.x.x.x", "x.x.x.x", out IPNetwork ipnet);
+            bool parsed = IPNetwork2.TryParse("x.x.x.x", "x.x.x.x", out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
@@ -83,7 +83,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestTryParseIPAddressNetmaskANE9()
         {
-            bool parsed = IPNetwork.TryParse("0.0.0.0", "x.x.x.x", out IPNetwork ipnet);
+            bool parsed = IPNetwork2.TryParse("0.0.0.0", "x.x.x.x", out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
@@ -92,7 +92,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestTryParseIPAddressNetmaskANE10()
         {
-            bool parsed = IPNetwork.TryParse("x.x.x.x", 0, out IPNetwork ipnet);
+            bool parsed = IPNetwork2.TryParse("x.x.x.x", 0, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
@@ -101,7 +101,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestTryParseIPAddressNetmaskANE11()
         {
-            bool parsed = IPNetwork.TryParse("0.0.0.0", 33, out IPNetwork ipnet);
+            bool parsed = IPNetwork2.TryParse("0.0.0.0", 33, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
@@ -120,7 +120,7 @@ namespace System.Net.TestProject
             byte cidr = 24;
             uint usable = 254;
 
-            bool parsed = IPNetwork.TryParse(ipaddress, netmask, out IPNetwork ipnetwork);
+            bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
@@ -145,7 +145,7 @@ namespace System.Net.TestProject
             byte cidr = 24;
             uint usable = 254;
 
-            bool parsed = IPNetwork.TryParse(ipaddress, out IPNetwork ipnetwork);
+            bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
@@ -170,7 +170,7 @@ namespace System.Net.TestProject
             byte cidr = 24;
             uint usable = 254;
 
-            bool parsed = IPNetwork.TryParse(ipaddress, out IPNetwork ipnetwork);
+            bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
@@ -195,7 +195,7 @@ namespace System.Net.TestProject
             byte cidr = 0;
             uint usable = 4294967294;
 
-            bool parsed = IPNetwork.TryParse(ipaddress, out IPNetwork ipnetwork);
+            bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
@@ -220,7 +220,7 @@ namespace System.Net.TestProject
             byte cidr = 32;
             uint usable = 0;
 
-            bool parsed = IPNetwork.TryParse(ipaddress, out IPNetwork ipnetwork);
+            bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
@@ -245,7 +245,7 @@ namespace System.Net.TestProject
             byte cidr = 32;
             uint usable = 0;
 
-            bool parsed = IPNetwork.TryParse(ipaddress, out IPNetwork ipnetwork);
+            bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
@@ -261,7 +261,7 @@ namespace System.Net.TestProject
         public void TestTryParseStringAE1()
         {
             string ipaddress = "garbage";
-            bool parsed = IPNetwork.TryParse(ipaddress, out IPNetwork ipnetwork);
+            bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
             Assert.AreEqual(false, parsed, "parsed");
         }
@@ -270,7 +270,7 @@ namespace System.Net.TestProject
         public void TestTryParseStringAE2()
         {
             string ipaddress = "0.0.0.0 0.0.1.0";
-            bool parsed = IPNetwork.TryParse(ipaddress, out IPNetwork ipnetwork);
+            bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
             Assert.AreEqual(false, parsed, "parsed");
         }
@@ -279,7 +279,7 @@ namespace System.Net.TestProject
         public void TestTryParseStringANE1()
         {
             string ipaddress = null;
-            bool parsed = IPNetwork.TryParse(ipaddress, out IPNetwork ipnetwork);
+            bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
             Assert.AreEqual(false, parsed, "parsed");
         }
@@ -289,8 +289,8 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_TryParse_InvalidIpv6_return_valid_ipv6network()
         {
-            bool parsed1 = IPNetwork.TryParse("g001:02b8::/64", out IPNetwork ipnetwork1);
-            bool parsed2 = IPNetwork.TryParse("1:2b8::/64", out IPNetwork ipnetwork2);
+            bool parsed1 = IPNetwork2.TryParse("g001:02b8::/64", out IPNetwork2 ipnetwork1);
+            bool parsed2 = IPNetwork2.TryParse("1:2b8::/64", out IPNetwork2 ipnetwork2);
 
             Assert.AreEqual(true, parsed1, "parsed1");
             Assert.AreEqual(true, parsed2, "parsed2");
@@ -312,7 +312,7 @@ namespace System.Net.TestProject
         [DataRow("001:02b8::/64", false, true)]
         public void Test_TryParse(string ipnetwork, bool sanitanize, bool parsed)
         {
-            bool result = IPNetwork.TryParse(ipnetwork, sanitanize, out IPNetwork ipnetwork1);
+            bool result = IPNetwork2.TryParse(ipnetwork, sanitanize, out IPNetwork2 ipnetwork1);
 
             Assert.AreEqual(parsed, result, "parsed1");
         }

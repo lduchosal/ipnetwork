@@ -28,11 +28,11 @@ namespace System.Net.ConsoleApplication
 
         public byte CidrParsed { get; set; } = 32;
 
-        public IPNetwork ContainNetwork { get; set; }
+        public IPNetwork2 ContainNetwork { get; set; }
 
-        public IPNetwork OverlapNetwork { get; set; }
+        public IPNetwork2 OverlapNetwork { get; set; }
 
-        public IPNetwork SubtractNetwork { get; set; }
+        public IPNetwork2 SubtractNetwork { get; set; }
 
         public ActionEnum Action { get; set; } = ActionEnum.PrintNetworks;
 
@@ -40,6 +40,6 @@ namespace System.Net.ConsoleApplication
 
         public string[] NetworksString { get; set; }
 
-        public IPNetwork[] Networks { get; set; }
+        public IPNetwork2[] Networks { get; set; }
     }
 }

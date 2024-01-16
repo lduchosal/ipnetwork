@@ -13,7 +13,7 @@ namespace System.Net.TestSerialization.NetFramework
         [TestMethod]
         public void Test_Serialize_Json()
         {
-            var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
+            var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             string result = JsonConvert.SerializeObject(ipnetwork);
 
@@ -26,19 +26,19 @@ namespace System.Net.TestSerialization.NetFramework
         {
             string json = "{\"IPNetwork\":\"10.0.0.0/8\"}";
 
-            IPNetwork result = JsonConvert.DeserializeObject<IPNetwork>(json);
+            IPNetwork2 result = JsonConvert.DeserializeObject<IPNetwork2>(json);
 
-            var expected = IPNetwork.Parse("10.0.0.1/8");
+            var expected = IPNetwork2.Parse("10.0.0.1/8");
             Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
         public void Test_Serialize_Deserialize_Json()
         {
-            var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
+            var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             string json = JsonConvert.SerializeObject(ipnetwork);
-            IPNetwork result = JsonConvert.DeserializeObject<IPNetwork>(json);
+            IPNetwork2 result = JsonConvert.DeserializeObject<IPNetwork2>(json);
 
             Assert.AreEqual(ipnetwork, result);
         }
@@ -47,7 +47,7 @@ namespace System.Net.TestSerialization.NetFramework
         [TestCategory("LongRunning")]
         public void Test_1_000_000_Serialize_Json()
         {
-            var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
+            var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             for (int i = 0; i < 1000000; i++)
             {
@@ -65,7 +65,7 @@ namespace System.Net.TestSerialization.NetFramework
 
             for (int i = 0; i < 1000000; i++)
             {
-                IPNetwork result = JsonConvert.DeserializeObject<IPNetwork>(json);
+                IPNetwork2 result = JsonConvert.DeserializeObject<IPNetwork2>(json);
             }
 
             // 10.20 seconds(Ad hoc).
@@ -75,12 +75,12 @@ namespace System.Net.TestSerialization.NetFramework
         [TestCategory("LongRunning")]
         public void Test_1_000_000_Serialize_Deserialize_Json()
         {
-            var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
+            var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             for (int i = 0; i < 1000000; i++)
             {
                 string json = JsonConvert.SerializeObject(ipnetwork);
-                IPNetwork result = JsonConvert.DeserializeObject<IPNetwork>(json);
+                IPNetwork2 result = JsonConvert.DeserializeObject<IPNetwork2>(json);
             }
 
             // 13.49 seconds(Ad hoc).

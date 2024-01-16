@@ -13,7 +13,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_WildcardMask_ipv4_mask_0()
         {
-            var ipnetwork = IPNetwork.Parse("1.1.1.1/0");
+            var ipnetwork = IPNetwork2.Parse("1.1.1.1/0");
 
             string netmask = ipnetwork.Netmask.ToString();
             string wildcardmask = ipnetwork.WildcardMask.ToString();
@@ -25,7 +25,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_WildcardMask_ipv4_mask_32()
         {
-            var ipnetwork = IPNetwork.Parse("1.1.1.1/32");
+            var ipnetwork = IPNetwork2.Parse("1.1.1.1/32");
 
             string netmask = ipnetwork.Netmask.ToString();
             string wildcardmask = ipnetwork.WildcardMask.ToString();
@@ -70,7 +70,7 @@ namespace System.Net.TestProject
         [DataRow("0.0.0.0", "255.255.255.255")]
         public void Test_WildcardMask_ipv4(string netmask, string expected)
         {
-            var ipnetwork = IPNetwork.Parse($"1.1.1.1/{netmask}");
+            var ipnetwork = IPNetwork2.Parse($"1.1.1.1/{netmask}");
 
             string netmask2 = ipnetwork.Netmask.ToString();
             string wildcardmask = ipnetwork.WildcardMask.ToString();
@@ -115,7 +115,7 @@ namespace System.Net.TestProject
         [DataRow(0, "255.255.255.255")]
         public void Test_WildcardMask_ipv4_cidr(int cidr, string expected)
         {
-            var ipnetwork = IPNetwork.Parse($"1.1.1.1/{cidr}");
+            var ipnetwork = IPNetwork2.Parse($"1.1.1.1/{cidr}");
 
             int cidr2 = (int)ipnetwork.Cidr;
             string wildcardmask = ipnetwork.WildcardMask.ToString();
@@ -131,7 +131,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_WildcardMask_ipv6_mask_0()
         {
-            var ipnetwork = IPNetwork.Parse("::/0");
+            var ipnetwork = IPNetwork2.Parse("::/0");
 
             string netmask = ipnetwork.Netmask.ToString();
             string wildcardmask = ipnetwork.WildcardMask.ToString();
@@ -143,7 +143,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_WildcardMask_ipv6_mask_128()
         {
-            var ipnetwork = IPNetwork.Parse("::/128");
+            var ipnetwork = IPNetwork2.Parse("::/128");
 
             string netmask = ipnetwork.Netmask.ToString();
             string wildcardmask = ipnetwork.WildcardMask.ToString();
@@ -158,7 +158,7 @@ namespace System.Net.TestProject
         [DataRow("::", "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff")]
         public void Test_WildcardMask_ipv6(string netmask, string expected)
         {
-            var ipnetwork = IPNetwork.Parse($"::/{netmask}");
+            var ipnetwork = IPNetwork2.Parse($"::/{netmask}");
 
             string netmask2 = ipnetwork.Netmask.ToString();
             string wildcardmask = ipnetwork.WildcardMask.ToString();
@@ -331,13 +331,13 @@ namespace System.Net.TestProject
         [DataRow(0, "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff")]
         public void Test_WildcardMask_ipv6_cidr(int cidr, string expected)
         {
-            var ipnetwork = IPNetwork.Parse($"::/{cidr}");
+            var ipnetwork = IPNetwork2.Parse($"::/{cidr}");
 
             int cidr2 = (int)ipnetwork.Cidr;
             var expectedipv6 = IPAddress.Parse(expected);
-            var expectedcidr = IPNetwork.ToBigInteger(expectedipv6);
+            var expectedcidr = IPNetwork2.ToBigInteger(expectedipv6);
             IPAddress wildcardmask = ipnetwork.WildcardMask;
-            var wildcardcidr = IPNetwork.ToBigInteger(wildcardmask);
+            var wildcardcidr = IPNetwork2.ToBigInteger(wildcardmask);
 
             Assert.AreEqual(cidr, cidr2, "netmask");
             Assert.AreEqual(expectedcidr, wildcardcidr, "wildcardcidr");

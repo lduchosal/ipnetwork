@@ -43,7 +43,7 @@ namespace System.Net
                 return true;
             }
 
-            var uintIPAddress = IPNetwork.ToBigInteger(ipaddress);
+            var uintIPAddress = IPNetwork2.ToBigInteger(ipaddress);
             uintIPAddress = uintIPAddress >> 30;
             if (uintIPAddress <= 1)
             {

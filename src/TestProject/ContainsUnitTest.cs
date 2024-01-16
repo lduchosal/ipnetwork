@@ -15,7 +15,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestContains1()
         {
-            var ipnetwork = IPNetwork.Parse("192.168.0.1/24");
+            var ipnetwork = IPNetwork2.Parse("192.168.0.1/24");
             var ipaddress = IPAddress.Parse("192.168.0.100");
 
             bool result = ipnetwork.Contains(ipaddress);
@@ -27,7 +27,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestContains2()
         {
-            var ipnetwork = IPNetwork.Parse("192.168.0.1/24");
+            var ipnetwork = IPNetwork2.Parse("192.168.0.1/24");
             var ipaddress = IPAddress.Parse("10.10.10.10");
 
             bool result = ipnetwork.Contains(ipaddress);
@@ -39,8 +39,8 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestContains3()
         {
-            var ipnetwork = IPNetwork.Parse("192.168.0.1/24");
-            var ipnetwork2 = IPNetwork.Parse("192.168.0.1/24");
+            var ipnetwork = IPNetwork2.Parse("192.168.0.1/24");
+            var ipnetwork2 = IPNetwork2.Parse("192.168.0.1/24");
 
             bool result = ipnetwork.Contains(ipnetwork2);
             bool expected = true;
@@ -51,8 +51,8 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestContains4()
         {
-            var ipnetwork = IPNetwork.Parse("192.168.0.1/16");
-            var ipnetwork2 = IPNetwork.Parse("192.168.1.1/24");
+            var ipnetwork = IPNetwork2.Parse("192.168.0.1/16");
+            var ipnetwork2 = IPNetwork2.Parse("192.168.1.1/24");
 
             bool result = ipnetwork.Contains(ipnetwork2);
             bool expected = true;
@@ -63,8 +63,8 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestContains5()
         {
-            var ipnetwork = IPNetwork.Parse("192.168.0.1/16");
-            var ipnetwork2 = IPNetwork.Parse("10.10.10.0/24");
+            var ipnetwork = IPNetwork2.Parse("192.168.0.1/16");
+            var ipnetwork2 = IPNetwork2.Parse("10.10.10.0/24");
 
             bool result = ipnetwork.Contains(ipnetwork2);
             bool expected = false;
@@ -75,8 +75,8 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestContains6()
         {
-            var ipnetwork = IPNetwork.Parse("192.168.1.1/24");
-            var ipnetwork2 = IPNetwork.Parse("192.168.0.0/16");
+            var ipnetwork = IPNetwork2.Parse("192.168.1.1/24");
+            var ipnetwork2 = IPNetwork2.Parse("192.168.0.0/16");
 
             bool result = ipnetwork.Contains(ipnetwork2);
             bool expected = false;
@@ -88,22 +88,22 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestContainsStatic3()
         {
-            IPNetwork ipnetwork = null;
-            IPNetwork ipnetwork2 = null;
+            IPNetwork2 ipnetwork = null;
+            IPNetwork2 ipnetwork2 = null;
 
 #pragma warning disable 0618
-            bool result = IPNetwork.Contains(ipnetwork, ipnetwork2);
+            bool result = IPNetwork2.Contains(ipnetwork, ipnetwork2);
 #pragma warning restore 0618
         }
 
         [TestMethod]
         public void TestContainsStatic4()
         {
-            var ipnetwork = IPNetwork.IANA_CBLK_RESERVED1;
-            var ipnetwork2 = IPNetwork.IANA_CBLK_RESERVED1;
+            var ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
+            var ipnetwork2 = IPNetwork2.IANA_CBLK_RESERVED1;
 
 #pragma warning disable 0618
-            bool result = IPNetwork.Contains(ipnetwork, ipnetwork2);
+            bool result = IPNetwork2.Contains(ipnetwork, ipnetwork2);
 #pragma warning restore 0618
 
             Assert.IsTrue(result, "result");
@@ -113,8 +113,8 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestContains8()
         {
-            var ipnetwork = IPNetwork.Parse("0.0.0.0/0");
-            IPNetwork ipnetwork2 = null;
+            var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
+            IPNetwork2 ipnetwork2 = null;
 
             bool result = ipnetwork.Contains(ipnetwork2);
         }
@@ -123,22 +123,22 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestContainsStatic1()
         {
-            IPNetwork ipnetwork = null;
+            IPNetwork2 ipnetwork = null;
             IPAddress ipaddress = null;
 
 #pragma warning disable 0618
-            bool result = IPNetwork.Contains(ipnetwork, ipaddress);
+            bool result = IPNetwork2.Contains(ipnetwork, ipaddress);
 #pragma warning restore 0618
         }
 
         [TestMethod]
         public void TestContainsStatic2()
         {
-            var ipnetwork = IPNetwork.IANA_ABLK_RESERVED1;
+            var ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             var ipaddress = IPAddress.Parse("10.0.0.1");
 
 #pragma warning disable 0618
-            bool result = IPNetwork.Contains(ipnetwork, ipaddress);
+            bool result = IPNetwork2.Contains(ipnetwork, ipaddress);
 #pragma warning restore 0618
             Assert.IsTrue(result, "result");
         }
@@ -147,7 +147,7 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentNullException))]
         public void TestContains10()
         {
-            var ipnetwork = IPNetwork.Parse("0.0.0.0/0");
+            var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
             IPAddress ipaddress = null;
 
             bool result = ipnetwork.Contains(ipaddress);
@@ -164,7 +164,7 @@ namespace System.Net.TestProject
         [DataRow("192.168.1.1/24", "192.168.0.0", false)]
         public void Test_Contains2_IPAddress_Should_Match_Contains(string contains1, string contains2, bool expected)
         {
-            var ipnetwork = IPNetwork.Parse(contains1);
+            var ipnetwork = IPNetwork2.Parse(contains1);
             var ipaddress = IPAddress.Parse(contains2);
 
             bool result1 = ipnetwork.Contains(ipaddress);
@@ -184,8 +184,8 @@ namespace System.Net.TestProject
         [DataRow("192.168.1.1/24", "192.168.0.0/16", false)]
         public void Test_Contains2_IPNetwork_Should_Match_Contains(string contains1, string contains2, bool expected)
         {
-            var ipnetwork = IPNetwork.Parse(contains1);
-            var ipaddress = IPNetwork.Parse(contains2);
+            var ipnetwork = IPNetwork2.Parse(contains1);
+            var ipaddress = IPNetwork2.Parse(contains2);
 
             bool result1 = ipnetwork.Contains(ipaddress);
 
