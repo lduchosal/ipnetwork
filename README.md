@@ -22,6 +22,8 @@
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=bugs)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
 [![SecurityCodeScan](https://github.com/lduchosal/ipnetwork/actions/workflows/securitycodescan.yml/badge.svg)](https://github.com/lduchosal/ipnetwork/actions/workflows/securitycodescan.yml)
+[![Static Badge](https://img.shields.io/badge/API%20Documentation-RobiniaDocs-43bc00?logo=readme&logoColor=white)](https://www.robiniadocs.com/d/ipnetwork/)
+
 
 IPNetwork command line and C# library take care of complex network, IP, IPv4, IPv6, netmask, CIDR, subnet, subnetting, supernet, and supernetting calculation for .NET developers. It works with IPv4 as well as IPv6, is written in C#, has a light and clean API, and is fully unit-tested.
 
