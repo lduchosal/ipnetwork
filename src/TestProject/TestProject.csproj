@@ -1,12 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFrameworks>net462;net47;net48;netcoreapp3.1;net6.0;net8.0</TargetFrameworks>
+	  <TargetFrameworks>net462;net47;net48;net6.0;net8.0</TargetFrameworks>
 	  <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net8.0</TargetFrameworks>
 
-
 	  <IsPackable>false</IsPackable>
-
 
 	  <SignAssembly>True</SignAssembly>
 	  <SignAssembly Condition="'$(OS)' != 'Windows_NT'">false</SignAssembly>
@@ -29,14 +27,6 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net48|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp3.1|AnyCPU'">
-    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netcoreapp3.1|AnyCPU'">
     <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
   </PropertyGroup>
 
