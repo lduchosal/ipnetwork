@@ -42,7 +42,7 @@ PM> nuget install IPNetwork2
 ### Example 1 (IPv6)
 
 ```C#
-IPNetwork ipnetwork = IPNetwork.Parse("2001:0db8::/64");
+IPNetwork2 ipnetwork = IPNetwork2.Parse("2001:0db8::/64");
 
 Console.WriteLine("Network : {0}", ipnetwork.Network);
 Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);
@@ -70,13 +70,13 @@ Cidr : 64
 ### Example 2 (IPv6)
 
 ```C#
-IPNetwork ipnetwork = IPNetwork.Parse("2001:0db8::/64");
+IPNetwork2 ipnetwork = IPNetwork2.Parse("2001:0db8::/64");
 
 IPAddress ipaddress = IPAddress.Parse("2001:0db8::1");
 IPAddress ipaddress2 = IPAddress.Parse("2001:0db9::1");
 
-IPNetwork ipnetwork2 = IPNetwork.Parse("2001:0db8::1/128");
-IPNetwork ipnetwork3 = IPNetwork.Parse("2001:0db9::1/64");
+IPNetwork2 ipnetwork2 = IPNetwork2.Parse("2001:0db8::1/128");
+IPNetwork2 ipnetwork3 = IPNetwork2.Parse("2001:0db9::1/64");
 
 bool contains1 = ipnetwork.Contains(ipaddress);
 bool contains2 = ipnetwork.Contains(ipaddress2);
@@ -112,7 +112,7 @@ Output
 ### Example 3 (IPv6)
 
 ```C#
-IPNetwork wholeInternet = IPNetwork.Parse("::/0");
+IPNetwork2 wholeInternet = IPNetwork2.Parse("::/0");
 byte newCidr = 2;
 IPNetworkCollection subneted = wholeInternet.Subnet(newCidr);
 
@@ -121,7 +121,7 @@ Console.WriteLine("First: {0}", subneted[0]);
 Console.WriteLine("Last : {0}", subneted[subneted.Count - 1]);
 Console.WriteLine("All  :");
 
-foreach (IPNetwork ipnetwork in subneted) {
+foreach (IPNetwork2 ipnetwork in subneted) {
     Console.WriteLine("{0}", ipnetwork);
 }
 ```
@@ -144,9 +144,9 @@ c000::/2
 ### Example 4 (IPv6)
 
 ```C#
-IPNetwork ipnetwork1 = IPNetwork.Parse("2001:0db8::/32");
-IPNetwork ipnetwork2 = IPNetwork.Parse("2001:0db9::/32");
-IPNetwork[] ipnetwork3 = IPNetwork.Supernet(new[] { ipnetwork1, ipnetwork2 });
+IPNetwork2 ipnetwork1 = IPNetwork2.Parse("2001:0db8::/32");
+IPNetwork2 ipnetwork2 = IPNetwork2.Parse("2001:0db9::/32");
+IPNetwork2[] ipnetwork3 = IPNetwork2.Supernet(new[] { ipnetwork1, ipnetwork2 });
 
 Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
 ```
@@ -162,7 +162,7 @@ Output
 ### Example 5
 
 ```C#
-IPNetwork ipnetwork = IPNetwork.Parse("192.168.168.100/24");
+IPNetwork2 ipnetwork = IPNetwork2.Parse("192.168.168.100/24");
 
 Console.WriteLine("Network : {0}", ipnetwork.Network);
 Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);
@@ -190,12 +190,12 @@ Cidr : 24
 ### Example 6
 
 ```C#
-IPNetwork ipnetwork = IPNetwork.Parse("192.168.0.0/24");
+IPNetwork2 ipnetwork = IPNetwork2.Parse("192.168.0.0/24");
 IPAddress ipaddress = IPAddress.Parse("192.168.0.100");
 IPAddress ipaddress2 = IPAddress.Parse("192.168.1.100");
 
-IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.0.128/25");
-IPNetwork ipnetwork3 = IPNetwork.Parse("192.168.1.1/24");
+IPNetwork2 ipnetwork2 = IPNetwork2.Parse("192.168.0.128/25");
+IPNetwork2 ipnetwork3 = IPNetwork2.Parse("192.168.1.1/24");
 
 bool contains1 = ipnetwork.Contains(ipaddress);
 bool contains2 = ipnetwork.Contains(ipaddress2);
@@ -230,9 +230,9 @@ Output
 ### Example 7
 
 ```C#
-IPNetwork iana_a_block = IPNetwork.IANA_ABLK_RESERVED1;
-IPNetwork iana_b_block = IPNetwork.IANA_BBLK_RESERVED1;
-IPNetwork iana_c_block = IPNetwork.IANA_CBLK_RESERVED1;
+IPNetwork2 iana_a_block = IPNetwork2.IANA_ABLK_RESERVED1;
+IPNetwork2 iana_b_block = IPNetwork2.IANA_BBLK_RESERVED1;
+IPNetwork2 iana_c_block = IPNetwork2.IANA_CBLK_RESERVED1;
 
 Console.WriteLine("IANA_ABLK_RESERVED1 is {0}", iana_a_block);
 Console.WriteLine("IANA_BBLK_RESERVED1 is {0}", iana_b_block);
@@ -252,7 +252,7 @@ IANA_CBLK_RESERVED1 is 192.168.0.0/16
 ### Example 8
 
 ```C#
-IPNetwork wholeInternet = IPNetwork.Parse("0.0.0.0/0");
+IPNetwork2 wholeInternet = IPNetwork2.Parse("0.0.0.0/0");
 byte newCidr = 2;
 IPNetworkCollection subneted = wholeInternet.Subnet(newCidr);
 
@@ -261,7 +261,7 @@ Console.WriteLine("First: {0}", subneted[0]);
 Console.WriteLine("Last : {0}", subneted[subneted.Count - 1]);
 Console.WriteLine("All  :");
 
-foreach (IPNetwork ipnetwork in subneted)
+foreach (IPNetwork2 ipnetwork in subneted)
 {
     Console.WriteLine("{0}", ipnetwork);
 }
@@ -285,9 +285,9 @@ All  :
 ### Example 9
 
 ```C#
-IPNetwork ipnetwork1 = IPNetwork.Parse("192.168.0.0/24");
-IPNetwork ipnetwork2 = IPNetwork.Parse("192.168.1.0/24");
-IPNetwork[] ipnetwork3 = IPNetwork.Supernet(new[]{ipnetwork1, ipnetwork2});
+IPNetwork2 ipnetwork1 = IPNetwork2.Parse("192.168.0.0/24");
+IPNetwork2 ipnetwork2 = IPNetwork2.Parse("192.168.1.0/24");
+IPNetwork2[] ipnetwork3 = IPNetwork2.Supernet(new[]{ipnetwork1, ipnetwork2});
 
 Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
 ```
@@ -323,9 +323,9 @@ IPV6 : /128
 #### IPv4
 
 ```C#
-IPNetwork defaultParse= IPNetwork.Parse("192.168.0.0"); // default to ClassFull
-IPNetwork classFullParse = IPNetwork.Parse("192.168.0.0", CidrGuess.ClassFull);
-IPNetwork classLessParse = IPNetwork.Parse("192.168.0.0", CidrGuess.ClassLess);
+IPNetwork2 defaultParse= IPNetwork2.Parse("192.168.0.0"); // default to ClassFull
+IPNetwork2 classFullParse = IPNetwork2.Parse("192.168.0.0", CidrGuess.ClassFull);
+IPNetwork2 classLessParse = IPNetwork2.Parse("192.168.0.0", CidrGuess.ClassLess);
 
 Console.WriteLine("IPV4 Default Parse : {0}", defaultStrategy);
 Console.WriteLine("IPV4 ClassFull Parse : {0}", classFullParse);
@@ -343,9 +343,9 @@ IPV4 ClassLess Parse : 192.168.0.0/32
 #### IPv6
 
 ```C#
-IPNetwork defaultParse = IPNetwork.Parse("::1"); // default to ClassFull
-IPNetwork classFullParse = IPNetwork.Parse("::1", CidrGuess.ClassFull);
-IPNetwork classLessParse = IPNetwork.Parse("::1", CidrGuess.ClassLess);
+IPNetwork2 defaultParse = IPNetwork2.Parse("::1"); // default to ClassFull
+IPNetwork2 classFullParse = IPNetwork2.Parse("::1", CidrGuess.ClassFull);
+IPNetwork2 classLessParse = IPNetwork2.Parse("::1", CidrGuess.ClassLess);
 
 Console.WriteLine("IPV6 Default Parse : {0}", defaultParse);
 Console.WriteLine("IPV6 ClassFull Parse : {0}", classFullParse);
@@ -375,7 +375,7 @@ Below some examples :
 ```JS
 Provide at least one ipnetwork
 Usage: ipnetwork [-inmcbflu] [-d cidr|-D] [-h|-s cidr|-S|-w|-W|-x|-C network|-o network] networks ...
-Version: 2.0.1.0
+Version: 3.0.0.0
 
 Print options
         -i : network
