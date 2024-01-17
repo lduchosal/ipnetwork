@@ -118,7 +118,7 @@ namespace System.Net.TestProject
         /// <param name="ipAddr">Expected addresss.</param>
         /// <param name="net">Actual network.</param>
         /// <param name="expectedSize">Expected CIDRsize. (32 or 128.)</param>
-        private static void TestForSingleAddressNetwork(IPAddress ipAddr, IPNetwork net, int expectedSize)
+        private static void TestForSingleAddressNetwork(IPAddress ipAddr, IPNetwork2 net, int expectedSize)
         {
             Assert.AreEqual($"{ipAddr}/{expectedSize}", $"{net}");
             Assert.AreEqual(ipAddr, net.FirstUsable);

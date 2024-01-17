@@ -13,10 +13,10 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestGetHashCode_HashSet_Add1()
         {
-            var ipnetwork1 = IPNetwork.Parse("0.0.1.1/0");
-            var ipnetwork2 = IPNetwork.Parse("1.1.1.1/0");
+            var ipnetwork1 = IPNetwork2.Parse("0.0.1.1/0");
+            var ipnetwork2 = IPNetwork2.Parse("1.1.1.1/0");
 
-            var hashset = new HashSet<IPNetwork>();
+            var hashset = new HashSet<IPNetwork2>();
             bool add1 = hashset.Add(ipnetwork1);
             bool add2 = hashset.Add(ipnetwork2);
 
@@ -27,10 +27,10 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestGetHashCode_HashSet_Add2()
         {
-            var ipnetwork1 = IPNetwork.Parse("0.0.0.0/1");
-            var ipnetwork2 = IPNetwork.Parse("1.0.0.0/1");
+            var ipnetwork1 = IPNetwork2.Parse("0.0.0.0/1");
+            var ipnetwork2 = IPNetwork2.Parse("1.0.0.0/1");
 
-            var hashset = new HashSet<IPNetwork>();
+            var hashset = new HashSet<IPNetwork2>();
             bool add1 = hashset.Add(ipnetwork1);
             bool add2 = hashset.Add(ipnetwork2);
 
@@ -41,10 +41,10 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestGetHashCode_HashSet_Add3()
         {
-            var ipnetwork1 = IPNetwork.Parse("0.0.0.0/32");
-            var ipnetwork2 = IPNetwork.Parse("0.0.0.1/32");
+            var ipnetwork1 = IPNetwork2.Parse("0.0.0.0/32");
+            var ipnetwork2 = IPNetwork2.Parse("0.0.0.1/32");
 
-            var hashset = new HashSet<IPNetwork>();
+            var hashset = new HashSet<IPNetwork2>();
             bool add1 = hashset.Add(ipnetwork1);
             bool add2 = hashset.Add(ipnetwork2);
 
@@ -57,10 +57,10 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestHashSet_Add_ipv6_ipv4_0()
         {
-            var ipnetwork1 = IPNetwork.Parse("::/32");
-            var ipnetwork2 = IPNetwork.Parse("0.0.0.0/32");
+            var ipnetwork1 = IPNetwork2.Parse("::/32");
+            var ipnetwork2 = IPNetwork2.Parse("0.0.0.0/32");
 
-            var hashset = new HashSet<IPNetwork>();
+            var hashset = new HashSet<IPNetwork2>();
             bool add1 = hashset.Add(ipnetwork1);
             bool add2 = hashset.Add(ipnetwork2);
 

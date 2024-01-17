@@ -19,11 +19,11 @@ namespace System.Net
     /// </summary>
     public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress>
     {
-        private readonly IPNetwork _ipnetwork;
+        private readonly IPNetwork2 _ipnetwork;
         private readonly FilterEnum _filter;
         private BigInteger _enumerator;
 
-        internal IPAddressCollection(IPNetwork ipnetwork, FilterEnum filter)
+        internal IPAddressCollection(IPNetwork2 ipnetwork, FilterEnum filter)
         {
             this._ipnetwork = ipnetwork;
             this._filter = filter;

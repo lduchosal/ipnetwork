@@ -8,11 +8,11 @@ namespace System.Net
     using System.Collections.Generic;
     using System.Numerics;
 
-    public class IPNetworkCollection : IEnumerable<IPNetwork>, IEnumerator<IPNetwork>
+    public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwork2>
     {
         private BigInteger _enumerator;
         private byte _cidrSubnet;
-        private IPNetwork _ipnetwork;
+        private IPNetwork2 _ipnetwork;
 
         private byte _cidr
         {
@@ -21,17 +21,17 @@ namespace System.Net
 
         private BigInteger _broadcast
         {
-            get { return IPNetwork.ToBigInteger(this._ipnetwork.Broadcast); }
+            get { return IPNetwork2.ToBigInteger(this._ipnetwork.Broadcast); }
         }
 
         private BigInteger _lastUsable
         {
-            get { return IPNetwork.ToBigInteger(this._ipnetwork.LastUsable); }
+            get { return IPNetwork2.ToBigInteger(this._ipnetwork.LastUsable); }
         }
 
         private BigInteger _network
         {
-            get { return IPNetwork.ToBigInteger(this._ipnetwork.Network); }
+            get { return IPNetwork2.ToBigInteger(this._ipnetwork.Network); }
         }
 
 #if TRAVISCI
@@ -39,7 +39,7 @@ namespace System.Net
 #else
         internal
 #endif
-        IPNetworkCollection(IPNetwork ipnetwork, byte cidrSubnet)
+        IPNetworkCollection(IPNetwork2 ipnetwork, byte cidrSubnet)
         {
             int maxCidr = ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? 32 : 128;
             if (cidrSubnet > maxCidr)
@@ -68,7 +68,7 @@ namespace System.Net
             }
         }
 
-        public IPNetwork this[BigInteger i]
+        public IPNetwork2 this[BigInteger i]
         {
             get
             {
@@ -81,7 +81,7 @@ namespace System.Net
                     ? this._lastUsable : this._broadcast;
                 BigInteger increment = (last - this._network) / this.Count;
                 BigInteger uintNetwork = this._network + ((increment + 1) * i);
-                var ipn = new IPNetwork(uintNetwork, this._ipnetwork.AddressFamily, this._cidrSubnet);
+                var ipn = new IPNetwork2(uintNetwork, this._ipnetwork.AddressFamily, this._cidrSubnet);
                 return ipn;
             }
         }
@@ -90,7 +90,7 @@ namespace System.Net
 
         #region IEnumerable Members
 
-        IEnumerator<IPNetwork> IEnumerable<IPNetwork>.GetEnumerator()
+        IEnumerator<IPNetwork2> IEnumerable<IPNetwork2>.GetEnumerator()
         {
             return this;
         }
@@ -102,7 +102,7 @@ namespace System.Net
 
         #region IEnumerator<IPNetwork> Members
 
-        public IPNetwork Current
+        public IPNetwork2 Current
         {
             get { return this[this._enumerator]; }
         }

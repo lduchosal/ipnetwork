@@ -15,14 +15,14 @@ namespace System.Net.TestProject
         [ExpectedException(typeof(ArgumentOutOfRangeException))]
         public void TestCtor1()
         {
-            var ipn = new IPNetworkCollection(IPNetwork.IANA_ABLK_RESERVED1, 33);
+            var ipn = new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 33);
         }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
         public void TestCtor2()
         {
-            var ipn = new IPNetworkCollection(IPNetwork.IANA_ABLK_RESERVED1, 2);
+            var ipn = new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 2);
         }
 
         #endregion
@@ -32,7 +32,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestCurrent()
         {
-            var ipn = IPNetwork.Parse("192.168.0.0/32");
+            var ipn = IPNetwork2.Parse("192.168.0.0/32");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
                 var ipnse = (Collections.IEnumerator)ipns;
@@ -50,7 +50,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestEnumerator()
         {
-            var ipn = IPNetwork.Parse("192.168.0.0/32");
+            var ipn = IPNetwork2.Parse("192.168.0.0/32");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
                 var ipnse = (Collections.IEnumerable)ipns;
@@ -68,13 +68,13 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestReset1()
         {
-            var ipn = IPNetwork.Parse("192.168.1.0/29");
+            var ipn = IPNetwork2.Parse("192.168.1.0/29");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
-                IPNetwork ipn0 = ipns.Current;
+                IPNetwork2 ipn0 = ipns.Current;
                 ipns.MoveNext();
                 ipns.Reset();
-                IPNetwork ipn1 = ipns.Current;
+                IPNetwork2 ipn1 = ipns.Current;
 
                 Assert.AreEqual(ipn0, ipn1, "reset");
             }
@@ -87,7 +87,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void MoveNext1()
         {
-            var ipn = IPNetwork.Parse("192.168.1.0/30");
+            var ipn = IPNetwork2.Parse("192.168.1.0/30");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
                 bool next = ipns.MoveNext();
@@ -98,7 +98,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void MoveNext2()
         {
-            var ipn = IPNetwork.Parse("192.168.1.0/30");
+            var ipn = IPNetwork2.Parse("192.168.1.0/30");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
                 ipns.MoveNext();

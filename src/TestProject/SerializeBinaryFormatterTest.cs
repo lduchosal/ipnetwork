@@ -17,7 +17,7 @@ namespace System.Net.TestSerialization
         [Ignore] // ("Assembly version is writen in binary serilaization.")
         public void Test_Serialize_BinaryFormatter()
         {
-            var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
+            var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             var serializer = new BinaryFormatter();
             var mem = new MemoryStream();
@@ -25,7 +25,7 @@ namespace System.Net.TestSerialization
             serializer.Serialize(mem, ipnetwork);
             string result = Convert.ToBase64String(mem.ToArray());
 
-            string expected = "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjIuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABRTeXN0ZW0uTmV0LklQTmV0d29yawEAAAAJSVBOZXR3b3JrAQIAAAAGAwAAAAoxMC4wLjAuMC84Cw==";
+            string expected = "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjUuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABVTeXN0ZW0uTmV0LklQTmV0d29yazIBAAAACUlQTmV0d29yawECAAAABgMAAAAKMTAuMC4wLjAvOAs=";
 
             Assert.AreEqual(expected, result);
         }
@@ -33,21 +33,21 @@ namespace System.Net.TestSerialization
         [TestMethod]
         public void Test_Deserialize_BinaryFormatter()
         {
-            string base64 = "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjIuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABRTeXN0ZW0uTmV0LklQTmV0d29yawEAAAAJSVBOZXR3b3JrAQIAAAAGAwAAAAoxMC4wLjAuMC84Cw==";
+            string base64 = "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjUuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABVTeXN0ZW0uTmV0LklQTmV0d29yazIBAAAACUlQTmV0d29yawECAAAABgMAAAAKMTAuMC4wLjAvOAs=";
             byte[] bytes = Convert.FromBase64String(base64);
             var mem = new MemoryStream(bytes);
 
             var serializer = new BinaryFormatter();
             object result = serializer.Deserialize(mem);
 
-            var expected = IPNetwork.Parse("10.0.0.1/8");
+            var expected = IPNetwork2.Parse("10.0.0.1/8");
             Assert.AreEqual(expected, result);
         }
 
         [TestMethod]
         public void Test_Serialize_Deserialize_BinaryFormatter()
         {
-            var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
+            var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             var serializer = new BinaryFormatter();
             var mem = new MemoryStream();
@@ -64,7 +64,7 @@ namespace System.Net.TestSerialization
         [TestCategory("LongRunning")]
         public void Test_1_000_000_Serialize_BinaryFormatter()
         {
-            var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
+            var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             var serializer = new BinaryFormatter();
             var mem = new MemoryStream();
@@ -82,7 +82,7 @@ namespace System.Net.TestSerialization
         [TestCategory("LongRunning")]
         public void Test_1_000_000_Deserialize_BinaryFormatter()
         {
-            string base64 = "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjIuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABRTeXN0ZW0uTmV0LklQTmV0d29yawEAAAAJSVBOZXR3b3JrAQIAAAAGAwAAAAoxMC4wLjAuMC84Cw==";
+            string base64 = "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjUuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABVTeXN0ZW0uTmV0LklQTmV0d29yazIBAAAACUlQTmV0d29yawECAAAABgMAAAAKMTAuMC4wLjAvOAs=";
             byte[] bytes = Convert.FromBase64String(base64);
             var mem = new MemoryStream(bytes);
 
@@ -101,7 +101,7 @@ namespace System.Net.TestSerialization
         [TestCategory("LongRunning")]
         public void Test_1_000_000_Serialize_Deserialize_BinaryFormatter()
         {
-            var ipnetwork = IPNetwork.Parse("10.0.0.1/8");
+            var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             var serializer = new BinaryFormatter();
             var mem = new MemoryStream();
