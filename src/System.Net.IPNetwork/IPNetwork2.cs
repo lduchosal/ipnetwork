@@ -615,8 +615,8 @@ namespace System.Net
 
             if (sanitanize)
             {
-                network = Regex.Replace(network, @"[^0-9a-fA-F\.\/\s\:]+", string.Empty);
-                network = Regex.Replace(network, @"\s{2,}", " ");
+                network = Regex.Replace(network, @"[^0-9a-fA-F\.\/\s\:]+", string.Empty, RegexOptions.None, TimeSpan.FromMilliseconds(100));
+                network = Regex.Replace(network, @"\s{2,}", " ", RegexOptions.None, TimeSpan.FromMilliseconds(100));
                 network = network.Trim();
             }
 
