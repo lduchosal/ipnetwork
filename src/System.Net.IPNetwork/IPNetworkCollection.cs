@@ -8,6 +8,9 @@ namespace System.Net
     using System.Collections.Generic;
     using System.Numerics;
 
+    /// <summary>
+    /// A collection of IPNetwork2
+    /// </summary>
     public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwork2>
     {
         private BigInteger _enumerator;
@@ -59,6 +62,9 @@ namespace System.Net
 
         #region Count, Array, Enumerator
 
+        /// <summary>
+        /// Count the nnumber of IPAddresses in a IPNetworkCollection
+        /// </summary>
         public BigInteger Count
         {
             get
@@ -102,6 +108,9 @@ namespace System.Net
 
         #region IEnumerator<IPNetwork> Members
 
+        /// <summary>
+        /// Gets the current IEnumerator item
+        /// </summary>
         public IPNetwork2 Current
         {
             get { return this[this._enumerator]; }
@@ -111,6 +120,9 @@ namespace System.Net
 
         #region IDisposable Members
 
+        /// <summary>
+        /// Dispose the IPNetwork instance
+        /// </summary>
         public void Dispose()
         {
             // nothing to dispose
@@ -120,12 +132,18 @@ namespace System.Net
         #endregion
 
         #region IEnumerator Members
-
+        /// <summary>
+        /// Gets the element in the collection at the current position of the enumerator.
+        /// </summary>
         object IEnumerator.Current
         {
             get { return this.Current; }
         }
 
+        /// <summary>
+        /// Advances the enumerator to the next element of the collection.
+        /// </summary>
+        /// <returns>true if the enumerator was successfully advanced to the next element; false if the enumerator has passed the end of the collection.</returns>
         public bool MoveNext()
         {
             this._enumerator++;
@@ -137,6 +155,9 @@ namespace System.Net
             return true;
         }
 
+        /// <summary>
+        /// Sets the enumerator to its initial position, which is before the first element in the collection.
+        /// </summary>
         public void Reset()
         {
             this._enumerator = -1;
