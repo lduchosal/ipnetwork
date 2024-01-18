@@ -8,6 +8,9 @@ namespace System.Net
     using System.Collections.Generic;
     using System.Numerics;
 
+    /// <summary>
+    /// Represents a collection of IP networks based on a given parent IP network and subnet CIDR.
+    /// </summary>
     public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwork2>
     {
         private BigInteger _enumerator;
@@ -37,6 +40,14 @@ namespace System.Net
 #if TRAVISCI
         public
 #else
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IPNetworkCollection"/> class.
+        /// Represents a collection of IP networks based on a given parent IP network and subnet CIDR.
+        /// </summary>
+        /// <remarks>
+        /// This class is used to generate a collection of IP networks by dividing the given parent IP network into subnets based on the provided subnet CIDR (Classless Inter-Domain Routing
+        /// ) value.
+        /// </remarks>
         internal
 #endif
         IPNetworkCollection(IPNetwork2 ipnetwork, byte cidrSubnet)
@@ -59,6 +70,9 @@ namespace System.Net
 
         #region Count, Array, Enumerator
 
+        /// <summary>
+        /// Gets the total number of IP addresses in the subnet.
+        /// </summary>
         public BigInteger Count
         {
             get
@@ -90,11 +104,13 @@ namespace System.Net
 
         #region IEnumerable Members
 
+        /// <inheritdoc/>
         IEnumerator<IPNetwork2> IEnumerable<IPNetwork2>.GetEnumerator()
         {
             return this;
         }
 
+        /// <inheritdoc/>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this;
@@ -102,6 +118,7 @@ namespace System.Net
 
         #region IEnumerator<IPNetwork> Members
 
+        /// <inheritdoc/>
         public IPNetwork2 Current
         {
             get { return this[this._enumerator]; }
@@ -111,6 +128,14 @@ namespace System.Net
 
         #region IDisposable Members
 
+        /// <summary>
+        /// Releases all resources used by the object.
+        /// </summary>
+        /// <remarks>
+        /// This method implements the IDisposable interface and releases any resources
+        /// held by the object. In this particular implementation, there are no resources
+        /// to dispose of, so the method does nothing.
+        /// </remarks>
         public void Dispose()
         {
             // nothing to dispose
