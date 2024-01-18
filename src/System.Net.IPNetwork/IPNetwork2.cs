@@ -633,6 +633,17 @@ namespace System.Net
             string[] args = network.Split(new char[] { ' ', '/' }, splitOptions);
             byte cidr = 0;
 
+            if (args.Length == 0)
+            {
+                if (tryParse == false)
+                {
+                    throw new ArgumentNullException("network");
+                }
+                
+                ipnetwork = null;
+                return;
+            }
+            
             if (args.Length == 1)
             {
                 string cidrlessNetwork = args[0];

@@ -144,6 +144,7 @@ namespace System.Net
         /// held by the object. In this particular implementation, there are no resources
         /// to dispose of, so the method does nothing.
         /// </remarks>
+        /// </summary>
         public void Dispose()
         {
             // nothing to dispose
@@ -153,7 +154,9 @@ namespace System.Net
         #endregion
 
         #region IEnumerator Members
-
+        /// <summary>
+        /// Gets the element in the collection at the current position of the enumerator.
+        /// </summary>
         object IEnumerator.Current
         {
             get { return this.Current; }
@@ -178,7 +181,7 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Resets the state of the enumerator.
+        /// Sets the enumerator to its initial position, which is before the first element in the collection.
         /// </summary>
         public void Reset()
         {

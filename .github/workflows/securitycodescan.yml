@@ -16,7 +16,10 @@ on:
     branches: [ "master" ]
   schedule:
     - cron: '35 15 * * 1'
-
+    
+env:
+  DOTNET_ROLL_FORWARD: Major
+  
 jobs:
   SCS:
     runs-on: windows-latest
