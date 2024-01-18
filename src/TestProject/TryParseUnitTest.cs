@@ -339,7 +339,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void Test_IPNetwork_TryParse_Issue294()
         {
-            bool result = IPNetwork.TryParse("*", out IPNetwork ipaddress1);
+            bool result = IPNetwork2.TryParse("*", out IPNetwork2 ipaddress1);
             Assert.AreEqual(false, result, "parsed1");
         }
         #endregion
