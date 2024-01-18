@@ -9,7 +9,7 @@ namespace System.Net
     using System.Numerics;
 
     /// <summary>
-    /// A collection of IPNetwork2
+    /// Represents a collection of IP networks based on a given parent IP network and subnet CIDR.
     /// </summary>
     public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwork2>
     {
@@ -40,6 +40,14 @@ namespace System.Net
 #if TRAVISCI
         public
 #else
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IPNetworkCollection"/> class.
+        /// Represents a collection of IP networks based on a given parent IP network and subnet CIDR.
+        /// </summary>
+        /// <remarks>
+        /// This class is used to generate a collection of IP networks by dividing the given parent IP network into subnets based on the provided subnet CIDR (Classless Inter-Domain Routing
+        /// ) value.
+        /// </remarks>
         internal
 #endif
         IPNetworkCollection(IPNetwork2 ipnetwork, byte cidrSubnet)
@@ -63,7 +71,7 @@ namespace System.Net
         #region Count, Array, Enumerator
 
         /// <summary>
-        /// Count the nnumber of IPAddresses in a IPNetworkCollection
+        /// Gets the total number of IP addresses in the subnet.
         /// </summary>
         public BigInteger Count
         {
@@ -74,6 +82,14 @@ namespace System.Net
             }
         }
 
+        /// <summary>
+        /// Retrieves an IPNetwork2 object from the collection by index.
+        /// </summary>
+        /// <param name="i">The index of the IPNetwork2 object to retrieve.</param>
+        /// <returns>
+        /// The IPNetwork2 object at the specified index.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the specified index is greater than or equal to the Count of the collection.</exception>
         public IPNetwork2 this[BigInteger i]
         {
             get
@@ -96,11 +112,13 @@ namespace System.Net
 
         #region IEnumerable Members
 
+        /// <inheritdoc/>
         IEnumerator<IPNetwork2> IEnumerable<IPNetwork2>.GetEnumerator()
         {
             return this;
         }
 
+        /// <inheritdoc/>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this;
@@ -108,9 +126,7 @@ namespace System.Net
 
         #region IEnumerator<IPNetwork> Members
 
-        /// <summary>
-        /// Gets the current IEnumerator item
-        /// </summary>
+        /// <inheritdoc/>
         public IPNetwork2 Current
         {
             get { return this[this._enumerator]; }
@@ -121,7 +137,13 @@ namespace System.Net
         #region IDisposable Members
 
         /// <summary>
-        /// Dispose the IPNetwork instance
+        /// Releases all resources used by the object.
+        /// </summary>
+        /// <remarks>
+        /// This method implements the IDisposable interface and releases any resources
+        /// held by the object. In this particular implementation, there are no resources
+        /// to dispose of, so the method does nothing.
+        /// </remarks>
         /// </summary>
         public void Dispose()
         {
@@ -141,9 +163,12 @@ namespace System.Net
         }
 
         /// <summary>
-        /// Advances the enumerator to the next element of the collection.
+        /// Moves the enumerator to the next element in the collection.
         /// </summary>
-        /// <returns>true if the enumerator was successfully advanced to the next element; false if the enumerator has passed the end of the collection.</returns>
+        /// <returns>
+        /// <see langword="true"/> if the enumerator was successfully moved to the next element;
+        /// <see langword="false"/> if the enumerator has reached the end of the collection.
+        /// </returns>
         public bool MoveNext()
         {
             this._enumerator++;
