@@ -333,5 +333,15 @@ namespace System.Net.TestProject
         }
 
         #endregion
+        
+        #region Issue294
+        
+        [TestMethod]
+        public void Test_IPNetwork_TryParse_Issue294()
+        {
+            bool result = IPNetwork.TryParse("*", out IPNetwork ipaddress1);
+            Assert.AreEqual(false, result, "parsed1");
+        }
+        #endregion
     }
 }
