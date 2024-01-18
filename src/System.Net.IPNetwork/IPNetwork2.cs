@@ -21,7 +21,6 @@ namespace System.Net
     {
         #region properties
 
-        /// <summary
         private readonly object _sync = new object();
         private readonly int _hashCode;
         private BigInteger _ipaddress;
@@ -1304,7 +1303,7 @@ namespace System.Net
         {
             if (contains == null)
             {
-                throw new ArgumentNullException("ipaddress");
+                throw new ArgumentNullException("contains");
             }
 
             if (this.AddressFamily != contains.AddressFamily)
@@ -1466,7 +1465,7 @@ namespace System.Net
         /// <summary>
         /// Gets 10.0.0.0/8.
         /// </summary>
-        /// <returns>The IANA reserved IPNetwork 10.0.0.0/8.<returns>
+        /// <returns>The IANA reserved IPNetwork 10.0.0.0/8.</returns>
         public static IPNetwork2 IANA_ABLK_RESERVED1
         {
             get
@@ -1490,7 +1489,7 @@ namespace System.Net
         /// <summary>
         /// Gets 192.168.0.0/16.
         /// </summary>
-        /// <returns>The IANA reserved IPNetwork 192.168.0.0/16.<returns>
+        /// <returns>The IANA reserved IPNetwork 192.168.0.0/16.</returns>
         public static IPNetwork2 IANA_CBLK_RESERVED1
         {
             get
@@ -1613,6 +1612,15 @@ namespace System.Net
             return true;
         }
 
+        /// <summary>
+        /// Subnet a network into multiple nets of cidr mask
+        /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
+        /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
+        /// </summary>
+        /// <param name="network"></param>
+        /// <param name="cidr">A byte representing the CIDR to be used to subnet the current IPNetwork.</param>
+        /// <param name="ipnetworkCollection">The resulting subnetted IPNetwork.</param>
+        /// <returns>true if network was split successfully; otherwise, false.</returns>
         [Obsolete("static TrySubnet is deprecated, please use instance TrySubnet.")]
         public static bool TrySubnet(IPNetwork2 network, byte cidr, out IPNetworkCollection ipnetworkCollection)
         {
@@ -1687,6 +1695,15 @@ namespace System.Net
             return supernet;
         }
 
+        /// <summary>
+        /// Supernet two consecutive cidr equal subnet into a single one
+        /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+        /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
+        /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
+        /// </summary>
+        /// <param name="network"></param>
+        /// <param name="network2">The network to supernet with.</param>
+        /// <returns>A supernetted IP Network.</returns>
         [Obsolete("static Supernet is deprecated, please use instance Supernet.")]
         public static IPNetwork2 Supernet(IPNetwork2 network, IPNetwork2 network2)
         {
@@ -1716,6 +1733,7 @@ namespace System.Net
         /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
         /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
         /// </summary>
+        /// <param name="network"></param>
         /// <param name="network2">The network to supernet with.</param>
         /// <param name="supernet">The resulting IPNetwork.</param>
         /// <returns>true if network2 was supernetted successfully; otherwise, false.</returns>
@@ -1795,7 +1813,7 @@ namespace System.Net
             {
                 if (trySupernet == false)
                 {
-                    throw new ArgumentOutOfRangeException("network");
+                    throw new ArgumentOutOfRangeException("network1");
                 }
 
                 supernet = null;

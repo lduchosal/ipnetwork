@@ -9,11 +9,17 @@ namespace System.Net
     using System.Numerics;
 
     /// <summary>
-    /// Enum representing different filters for a collection of items.
+    /// Represents different filters for a collection of items.
     /// </summary>
     public enum FilterEnum
     {
+        /// <summary>
+        /// Every IPAdresses are returned
+        /// </summary>
         All,
+        /// <summary>
+        /// Returns only usable IPAdresses
+        /// </summary>
         Usable,
     }
 

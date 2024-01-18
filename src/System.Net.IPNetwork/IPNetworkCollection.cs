@@ -82,6 +82,14 @@ namespace System.Net
             }
         }
 
+        /// <summary>
+        /// Retrieves an IPNetwork2 object from the collection by index.
+        /// </summary>
+        /// <param name="i">The index of the IPNetwork2 object to retrieve.</param>
+        /// <returns>
+        /// The IPNetwork2 object at the specified index.
+        /// </returns>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the specified index is greater than or equal to the Count of the collection.</exception>
         public IPNetwork2 this[BigInteger i]
         {
             get
@@ -151,6 +159,13 @@ namespace System.Net
             get { return this.Current; }
         }
 
+        /// <summary>
+        /// Moves the enumerator to the next element in the collection.
+        /// </summary>
+        /// <returns>
+        /// <see langword="true"/> if the enumerator was successfully moved to the next element;
+        /// <see langword="false"/> if the enumerator has reached the end of the collection.
+        /// </returns>
         public bool MoveNext()
         {
             this._enumerator++;
@@ -162,6 +177,9 @@ namespace System.Net
             return true;
         }
 
+        /// <summary>
+        /// Resets the state of the enumerator.
+        /// </summary>
         public void Reset()
         {
             this._enumerator = -1;
