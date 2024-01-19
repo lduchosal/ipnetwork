@@ -156,10 +156,10 @@ namespace System.Net
         {
             get
             {
-                BigInteger fisrt = this._family == Sockets.AddressFamily.InterNetworkV6
+                BigInteger first = this._family == Sockets.AddressFamily.InterNetworkV6
                     ? this._network
                     : (this.Usable <= 0) ? this._network : this._network + 1;
-                return IPNetwork2.ToIPAddress(fisrt, this._family);
+                return IPNetwork2.ToIPAddress(first, this._family);
             }
         }
 
