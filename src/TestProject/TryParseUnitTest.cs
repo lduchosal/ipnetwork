@@ -317,6 +317,12 @@ namespace System.Net.TestProject
             Assert.AreEqual(parsed, result, "parsed1");
         }
 
+        /// <summary>
+        /// Test IPNetwork2.TryParse method with ip addresses or networks using classfull CIDR guessing.
+        /// </summary>
+        /// <param name="ipnetwork">A string containing an ip address to convert.</param>
+        /// <param name="sanitanize">Whether to sanitize network or not.</param>
+        /// <param name="parsed">The expected parse result.</param>
         [DataTestMethod]
         [DataRow("1.1.1.1/1", true, true)]
         [DataRow("1.1.1.1/1", false, true)]
@@ -337,18 +343,26 @@ namespace System.Net.TestProject
 
             Assert.AreEqual(parsed, result, "parsed - class unspecified");
             Assert.AreEqual(parsed, classfullResult, "parsed - classfull");
-            Assert.AreEqual(ipnetwork1.Cidr, ipnetwork2.Cidr, "cidr");
+            if (parsed)
+            {
+                Assert.AreEqual(ipnetwork1.Cidr, ipnetwork2.Cidr, "cidr");
+            }
         }
 
+        /// <summary>
+        /// Test IPNetwork2.TryParse method with plain ip addresses using classless CIDR guessing.
+        /// </summary>
+        /// <param name="ipaddress">A string containing an ip address to convert.</param>
+        /// <param name="cidr">The expected CIDR netmask notation, 32 for IPv4 and 128 for IPv6.</param>
         [DataTestMethod]
         [DataRow("10.0.0.0", 32)]
         [DataRow("::", 128)]
         [DataRow("2001:0db8::", 128)]
-        public void Test_TryParse_ClassLess(string ipnetwork, int cidr)
+        public void Test_TryParse_ClassLess(string ipaddress, int cidr)
         {
-            bool parsed = IPNetwork2.TryParse(ipnetwork, CidrGuess.ClassLess, out IPNetwork2 ipnetwork2);
+            bool parsed = IPNetwork2.TryParse(ipaddress, CidrGuess.ClassLess, out IPNetwork2 ipnetwork2);
 
-            Assert.AreEqual(true, parsed, "parsed");
+            Assert.IsTrue(parsed, "parsed");
             Assert.AreEqual(cidr, ipnetwork2.Cidr, "cidr");
         }
 
