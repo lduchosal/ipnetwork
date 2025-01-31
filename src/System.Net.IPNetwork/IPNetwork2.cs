@@ -540,6 +540,55 @@ namespace System.Net
             return parsed;
         }
 
+        /// <summary>
+        /// 192.168.0.1/24
+        /// 192.168.0.1 255.255.255.0
+        ///
+        /// Network   : 192.168.0.0
+        /// Netmask   : 255.255.255.0
+        /// Cidr      : 24
+        /// Start     : 192.168.0.1
+        /// End       : 192.168.0.254
+        /// Broadcast : 192.168.0.255.
+        /// </summary>
+        /// <param name="network">A string containing an ip network to convert.</param>
+        /// <param name="cidrGuess">A ICidrGuess implementation that will be used to guess CIDR during converion.</param>
+        /// <param name="ipnetwork">When this method returns, contains the IPNetwork value equivalent of the ip adress contained in ipaddress with the netmask corresponding to cidr, if the conversion succeeded, or null if the conversion failed. The conversion fails if the s parameter is null or Empty, is not of the correct format, or represents an invalid ip address. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.</param>
+        /// <returns>true if network was converted successfully; otherwise, false..</returns>
+        public static bool TryParse(string network, ICidrGuess cidrGuess, out IPNetwork2 ipnetwork)
+        {
+            IPNetwork2.InternalParse(true, network, cidrGuess, true, out IPNetwork2 ipnetwork2);
+            bool parsed = ipnetwork2 != null;
+            ipnetwork = ipnetwork2;
+
+            return parsed;
+        }
+
+        /// <summary>
+        /// 192.168.0.1/24
+        /// 192.168.0.1 255.255.255.0
+        ///
+        /// Network   : 192.168.0.0
+        /// Netmask   : 255.255.255.0
+        /// Cidr      : 24
+        /// Start     : 192.168.0.1
+        /// End       : 192.168.0.254
+        /// Broadcast : 192.168.0.255.
+        /// </summary>
+        /// <param name="network">A string containing an ip network to convert.</param>
+        /// <param name="cidrGuess">A ICidrGuess implementation that will be used to guess CIDR during converion.</param>
+        /// <param name="sanitanize">Whether to sanitize network or not.</param>
+        /// <param name="ipnetwork">When this method returns, contains the IPNetwork value equivalent of the ip adress contained in ipaddress with the netmask corresponding to cidr, if the conversion succeeded, or null if the conversion failed. The conversion fails if the s parameter is null or Empty, is not of the correct format, or represents an invalid ip address. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.</param>
+        /// <returns>true if network was converted successfully; otherwise, false..</returns>
+        public static bool TryParse(string network, ICidrGuess cidrGuess, bool sanitanize, out IPNetwork2 ipnetwork)
+        {
+            IPNetwork2.InternalParse(true, network, cidrGuess, sanitanize, out IPNetwork2 ipnetwork2);
+            bool parsed = ipnetwork2 != null;
+            ipnetwork = ipnetwork2;
+
+            return parsed;
+        }
+
         #endregion
 
         #region InternalParse

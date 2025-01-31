@@ -589,7 +589,7 @@ namespace System.Net.TestProject
         public void TestTryParseIPAddressNetmaskANE7()
         {
             IPNetwork2 ipnet = null;
-            bool parsed = IPNetwork2.TryParse("0.0.0.0", null, out ipnet);
+            bool parsed = IPNetwork2.TryParse("0.0.0.0", netmask: null, out ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");

@@ -65,7 +65,7 @@ namespace System.Net.TestProject
         [TestMethod]
         public void TestTryParseIPAddressNetmaskANE7()
         {
-            bool parsed = IPNetwork2.TryParse("0.0.0.0", null, out IPNetwork2 ipnet);
+            bool parsed = IPNetwork2.TryParse("0.0.0.0", netmask: null, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
@@ -315,6 +315,55 @@ namespace System.Net.TestProject
             bool result = IPNetwork2.TryParse(ipnetwork, sanitanize, out IPNetwork2 ipnetwork1);
 
             Assert.AreEqual(parsed, result, "parsed1");
+        }
+
+        /// <summary>
+        /// Test IPNetwork2.TryParse method with ip addresses or networks using classfull CIDR guessing.
+        /// </summary>
+        /// <param name="ipnetwork">A string containing an ip address to convert.</param>
+        /// <param name="sanitanize">Whether to sanitize network or not.</param>
+        /// <param name="parsed">The expected parse result.</param>
+        [DataTestMethod]
+        [DataRow("1.1.1.1/1", true, true)]
+        [DataRow("1.1.1.1/1", false, true)]
+        [DataRow("::/0", true, true)]
+        [DataRow("::/0", false, true)]
+        [DataRow("g001:02b8::/64", true, true)]
+        [DataRow("g001:02b8::/64", false, false)]
+        [DataRow("    001:02b8::/64", false, false)]
+        [DataRow("    001:02b8::/64", true, true)]
+        [DataRow("001:02b8::    /    64", true, true)]
+        [DataRow("001:02b8::    /    64", false, false)]
+        [DataRow("001:02b8::/64", true, true)]
+        [DataRow("001:02b8::/64", false, true)]
+        public void Test_TryParse_ClassFull(string ipnetwork, bool sanitanize, bool parsed)
+        {
+            bool result = IPNetwork2.TryParse(ipnetwork, sanitanize, out IPNetwork2 ipnetwork1);
+            bool classfullResult = IPNetwork2.TryParse(ipnetwork, CidrGuess.ClassFull, sanitanize, out IPNetwork2 ipnetwork2);
+
+            Assert.AreEqual(parsed, result, "parsed - class unspecified");
+            Assert.AreEqual(parsed, classfullResult, "parsed - classfull");
+            if (parsed)
+            {
+                Assert.AreEqual(ipnetwork1.Cidr, ipnetwork2.Cidr, "cidr");
+            }
+        }
+
+        /// <summary>
+        /// Test IPNetwork2.TryParse method with plain ip addresses using classless CIDR guessing.
+        /// </summary>
+        /// <param name="ipaddress">A string containing an ip address to convert.</param>
+        /// <param name="cidr">The expected CIDR netmask notation, 32 for IPv4 and 128 for IPv6.</param>
+        [DataTestMethod]
+        [DataRow("10.0.0.0", 32)]
+        [DataRow("::", 128)]
+        [DataRow("2001:0db8::", 128)]
+        public void Test_TryParse_ClassLess(string ipaddress, int cidr)
+        {
+            bool parsed = IPNetwork2.TryParse(ipaddress, CidrGuess.ClassLess, out IPNetwork2 ipnetwork2);
+
+            Assert.IsTrue(parsed, "parsed");
+            Assert.AreEqual(cidr, ipnetwork2.Cidr, "cidr");
         }
 
         [DataTestMethod]
