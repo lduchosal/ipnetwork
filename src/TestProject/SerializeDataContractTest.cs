@@ -2,16 +2,16 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestSerialization.NetFramework
-{
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace System.Net.TestSerialization.NetFramework;
 
-    [TestClass]
-    public class SerializeDataContractTest
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+[TestClass]
+public class SerializeDataContractTest
+{
+    [TestMethod]
+    public void Test_Serialize_DataContract()
     {
-        [TestMethod]
-        public void Test_Serialize_DataContract()
-        {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             string result = DataContractSerializeHelper.Serialize(ipnetwork);
@@ -19,9 +19,9 @@ namespace System.Net.TestSerialization.NetFramework
             Assert.AreEqual(expected, result);
         }
 
-        [TestMethod]
-        public void Test_Deserialize_DataContract()
-        {
+    [TestMethod]
+    public void Test_Deserialize_DataContract()
+    {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
             string serialized = DataContractSerializeHelper.Serialize(ipnetwork);
 
@@ -30,11 +30,10 @@ namespace System.Net.TestSerialization.NetFramework
             Assert.AreEqual(ipnetwork, result);
         }
 
-        [TestMethod]
-        public void Test_Empty_Constructor()
-        {
+    [TestMethod]
+    public void Test_Empty_Constructor()
+    {
             var ipnetwork = new IPNetwork2();
             Assert.AreEqual("0.0.0.0/0", ipnetwork.ToString());
         }
-    }
 }

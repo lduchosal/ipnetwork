@@ -2,19 +2,19 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestSerialization.NetFramework
-{
-    using System.IO;
-    using System.Text;
-    using System.Xml.Serialization;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace System.Net.TestSerialization.NetFramework;
 
-    [TestClass]
-    public class SerializeXmlTest
+using System.IO;
+using System.Text;
+using System.Xml.Serialization;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+[TestClass]
+public class SerializeXmlTest
+{
+    [TestMethod]
+    public void Test_Serialize_Xml()
     {
-        [TestMethod]
-        public void Test_Serialize_Xml()
-        {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             var mem = new MemoryStream();
@@ -30,9 +30,9 @@ namespace System.Net.TestSerialization.NetFramework
             Assert.IsTrue(ok, result);
         }
 
-        [TestMethod]
-        public void Test_Deserialize_Xml()
-        {
+    [TestMethod]
+    public void Test_Deserialize_Xml()
+    {
             string xml = @"<?xml version=""1.0""?>
 <IPNetwork2 xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
   <Value>10.0.0.0/8</Value>
@@ -47,9 +47,9 @@ namespace System.Net.TestSerialization.NetFramework
             Assert.AreEqual(expected, result);
         }
 
-        [TestMethod]
-        public void Test_Serialize_Deserialize_Xml()
-        {
+    [TestMethod]
+    public void Test_Serialize_Deserialize_Xml()
+    {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             var mem = new MemoryStream();
@@ -66,10 +66,10 @@ namespace System.Net.TestSerialization.NetFramework
             Assert.AreEqual(ipnetwork, ipnetwork2);
         }
 
-        [TestMethod]
-        [TestCategory("LongRunning")]
-        public void Test_1_000_000_Serialize_Xml()
-        {
+    [TestMethod]
+    [TestCategory("LongRunning")]
+    public void Test_1_000_000_Serialize_Xml()
+    {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             var serializer = new XmlSerializer(typeof(IPNetwork2));
@@ -84,10 +84,10 @@ namespace System.Net.TestSerialization.NetFramework
             // 5.13 seconds(Ad hoc).
         }
 
-        [TestMethod]
-        [TestCategory("LongRunning")]
-        public void Test_1_000_000_Deserialize_Xml()
-        {
+    [TestMethod]
+    [TestCategory("LongRunning")]
+    public void Test_1_000_000_Deserialize_Xml()
+    {
             string xml = @"<?xml version=""1.0""?>
 <IPNetwork2 xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
   <Value>10.0.0.0/8</Value>
@@ -106,10 +106,10 @@ namespace System.Net.TestSerialization.NetFramework
             // 17.98 seconds(Ad hoc).
         }
 
-        [TestMethod]
-        [TestCategory("LongRunning")]
-        public void Test_1_000_000_Serialize_Deserialize_Xml()
-        {
+    [TestMethod]
+    [TestCategory("LongRunning")]
+    public void Test_1_000_000_Serialize_Deserialize_Xml()
+    {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             var serializer = new XmlSerializer(typeof(IPNetwork2));
@@ -127,5 +127,4 @@ namespace System.Net.TestSerialization.NetFramework
 
             // 17.48 seconds(Ad hoc).
         }
-    }
 }
