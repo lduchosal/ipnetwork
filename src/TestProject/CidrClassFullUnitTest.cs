@@ -1,4 +1,4 @@
-﻿// <copyright file="CidrClassLessUnitTest.cs" company="IPNetwork">
+﻿// <copyright file="CidrClassFullUnitTest.cs" company="IPNetwork">
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
@@ -7,14 +7,14 @@ namespace System.Net.TestProject;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 [TestClass]
-public class CidrClassLessUnitTest
+public class CidrClassFullUnitTest
 {
     #region IPV4
 
     [TestMethod]
     public void TestTryGuessCidrNull()
     {
-            var cidrguess = new CidrClassLess();
+            var cidrguess = new CidrClassFull();
 
             byte cidr;
             bool parsed = cidrguess.TryGuessCidr(null, out cidr);
@@ -26,62 +26,62 @@ public class CidrClassLessUnitTest
     [TestMethod]
     public void TestTryGuessCidrA()
     {
-            var cidrguess = new CidrClassLess();
+            var cidrguess = new CidrClassFull();
 
             byte cidr;
             bool parsed = cidrguess.TryGuessCidr("10.0.0.0", out cidr);
 
             Assert.AreEqual(true, parsed, "parsed");
-            Assert.AreEqual(32, cidr, "cidr");
+            Assert.AreEqual(8, cidr, "cidr");
         }
 
     [TestMethod]
     public void TestTryGuessCidrB()
     {
-            var cidrguess = new CidrClassLess();
+            var cidrguess = new CidrClassFull();
 
             byte cidr;
             bool parsed = cidrguess.TryGuessCidr("172.0.0.0", out cidr);
 
             Assert.AreEqual(true, parsed, "parsed");
-            Assert.AreEqual(32, cidr, "cidr");
+            Assert.AreEqual(16, cidr, "cidr");
         }
 
     [TestMethod]
     public void TestTryGuessCidrC()
     {
-            var cidrguess = new CidrClassLess();
+            var cidrguess = new CidrClassFull();
 
             byte cidr;
             bool parsed = cidrguess.TryGuessCidr("192.0.0.0", out cidr);
 
             Assert.AreEqual(true, parsed, "parsed");
-            Assert.AreEqual(32, cidr, "cidr");
+            Assert.AreEqual(24, cidr, "cidr");
         }
 
     [TestMethod]
     public void TestTryGuessCidrD()
     {
-            var cidrguess = new CidrClassLess();
+            var cidrguess = new CidrClassFull();
 
             byte cidr;
             bool parsed = cidrguess.TryGuessCidr("224.0.0.0", out cidr);
 
             Assert.AreEqual(true, parsed, "parsed");
-            Assert.AreEqual(32, cidr, "cidr");
+            Assert.AreEqual(24, cidr, "cidr");
         }
 
     [TestMethod]
 
     public void TestTryGuessCidrE()
     {
-            var cidrguess = new CidrClassLess();
+            var cidrguess = new CidrClassFull();
 
             byte cidr;
             bool parsed = cidrguess.TryGuessCidr("240.0.0.0", out cidr);
 
             Assert.AreEqual(true, parsed, "parsed");
-            Assert.AreEqual(32, cidr, "cidr");
+            Assert.AreEqual(24, cidr, "cidr");
         }
 
     #endregion
@@ -91,7 +91,7 @@ public class CidrClassLessUnitTest
     [TestMethod]
     public void TestIpV6TryGuessCidrNull()
     {
-            var cidrguess = new CidrClassLess();
+            var cidrguess = new CidrClassFull();
 
             byte cidr;
             bool parsed = cidrguess.TryGuessCidr(null, out cidr);
@@ -103,25 +103,25 @@ public class CidrClassLessUnitTest
     [TestMethod]
     public void TestIpV6TryGuessCidr1()
     {
-            var cidrguess = new CidrClassLess();
+            var cidrguess = new CidrClassFull();
 
             byte cidr;
             bool parsed = cidrguess.TryGuessCidr("::", out cidr);
 
             Assert.AreEqual(true, parsed, "parsed");
-            Assert.AreEqual(128, cidr, "cidr");
+            Assert.AreEqual(64, cidr, "cidr");
         }
 
     [TestMethod]
     public void TestIpV6TryGuessCidr2()
     {
-            var cidrguess = new CidrClassLess();
+            var cidrguess = new CidrClassFull();
 
             byte cidr;
             bool parsed = cidrguess.TryGuessCidr("2001:0db8::", out cidr);
 
             Assert.AreEqual(true, parsed, "parsed");
-            Assert.AreEqual(128, cidr, "cidr");
+            Assert.AreEqual(64, cidr, "cidr");
         }
 
     #endregion

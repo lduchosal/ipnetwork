@@ -2,38 +2,84 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject;
+namespace System.Net.TestProject;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 /// <summary>
-///     ContainsUnitTest test every Contiains method.
+/// ContainsUnitTest test every Contiains method.
 /// </summary>
 [TestClass]
 public class ContainsUnitTest
 {
-    [DataTestMethod]
-    [DataRow("192.168.0.1/24", "192.168.0.1/24", true)]
-    [DataRow("192.168.0.1/16", "192.168.1.1/24", true)]
-    [DataRow("192.168.0.1/16", "10.10.10.0/24", false)]
-    [DataRow("192.168.1.1/24", "192.168.0.0/16", false)]
-    public void TestContainsNetwork(string network1, string networkOrAddress, bool expected)
+    [TestMethod]
+    public void TestContains1()
     {
-            var ipnetwork = IPNetwork2.Parse(network1);
+            var ipnetwork = IPNetwork2.Parse("192.168.0.1/24");
+            var ipaddress = IPAddress.Parse("192.168.0.100");
 
-            var ipnetwork2 = IPNetwork2.Parse(networkOrAddress);
-            bool result = ipnetwork.Contains(ipnetwork2);
+            bool result = ipnetwork.Contains(ipaddress);
+            bool expected = true;
 
             Assert.AreEqual(expected, result, "contains");
         }
 
-    [DataTestMethod]
-    [DataRow("192.168.0.1/24", "192.168.0.100", true)]
-    [DataRow("192.168.0.1/24", "10.10.10.10", false)]
-    public void TestContainsAdrress(string network1, string networkOrAddress, bool expected)
+    [TestMethod]
+    public void TestContains2()
     {
-            var ipnetwork = IPNetwork2.Parse(network1);
-            bool result;
-            var ipaddress = IPAddress.Parse(networkOrAddress);
-            result = ipnetwork.Contains(ipaddress);
+            var ipnetwork = IPNetwork2.Parse("192.168.0.1/24");
+            var ipaddress = IPAddress.Parse("10.10.10.10");
+
+            bool result = ipnetwork.Contains(ipaddress);
+            bool expected = false;
+
+            Assert.AreEqual(expected, result, "contains");
+        }
+
+    [TestMethod]
+    public void TestContains3()
+    {
+            var ipnetwork = IPNetwork2.Parse("192.168.0.1/24");
+            var ipnetwork2 = IPNetwork2.Parse("192.168.0.1/24");
+
+            bool result = ipnetwork.Contains(ipnetwork2);
+            bool expected = true;
+
+            Assert.AreEqual(expected, result, "contains");
+        }
+
+    [TestMethod]
+    public void TestContains4()
+    {
+            var ipnetwork = IPNetwork2.Parse("192.168.0.1/16");
+            var ipnetwork2 = IPNetwork2.Parse("192.168.1.1/24");
+
+            bool result = ipnetwork.Contains(ipnetwork2);
+            bool expected = true;
+
+            Assert.AreEqual(expected, result, "contains");
+        }
+
+    [TestMethod]
+    public void TestContains5()
+    {
+            var ipnetwork = IPNetwork2.Parse("192.168.0.1/16");
+            var ipnetwork2 = IPNetwork2.Parse("10.10.10.0/24");
+
+            bool result = ipnetwork.Contains(ipnetwork2);
+            bool expected = false;
+
+            Assert.AreEqual(expected, result, "contains");
+        }
+
+    [TestMethod]
+    public void TestContains6()
+    {
+            var ipnetwork = IPNetwork2.Parse("192.168.1.1/24");
+            var ipnetwork2 = IPNetwork2.Parse("192.168.0.0/16");
+
+            bool result = ipnetwork.Contains(ipnetwork2);
+            bool expected = false;
 
             Assert.AreEqual(expected, result, "contains");
         }
@@ -53,8 +99,8 @@ public class ContainsUnitTest
     [TestMethod]
     public void TestContainsStatic4()
     {
-            IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
-            IPNetwork2 ipnetwork2 = IPNetwork2.IANA_CBLK_RESERVED1;
+            var ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
+            var ipnetwork2 = IPNetwork2.IANA_CBLK_RESERVED1;
 
 #pragma warning disable 0618
             bool result = IPNetwork2.Contains(ipnetwork, ipnetwork2);
@@ -88,7 +134,7 @@ public class ContainsUnitTest
     [TestMethod]
     public void TestContainsStatic2()
     {
-            IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
+            var ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             var ipaddress = IPAddress.Parse("10.0.0.1");
 
 #pragma warning disable 0618

@@ -2,7 +2,11 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject;
+namespace System.Net.TestSerialization.NetFramework;
+
+using System.IO;
+using System.Runtime.Serialization;
+using System.Xml;
 
 public static class DataContractSerializeHelper
 {
@@ -18,7 +22,7 @@ public static class DataContractSerializeHelper
             var settings = new XmlWriterSettings
             {
                 OmitXmlDeclaration = true,
-                Indent = formatting
+                Indent = formatting,
             };
             using (var textWriter = new StringWriter())
             {

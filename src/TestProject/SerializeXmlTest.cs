@@ -2,7 +2,12 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject;
+namespace System.Net.TestSerialization.NetFramework;
+
+using System.IO;
+using System.Text;
+using System.Xml.Serialization;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 [TestClass]
 public class SerializeXmlTest

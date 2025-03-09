@@ -2,38 +2,76 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+namespace System.Net.TestProject;
 
-namespace TestProject;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 [TestClass]
 public class ConsoleUnitTest
 {
-    [DataTestMethod]
-    [DataRow(new[] { "10.0.0.0/8" })]
-    [DataRow(new[] { "-Nnmcbflu", "10.0.0.0/8" })]
-    [DataRow(new[] { "-N", "-n", "-m", "-c", "-b", "-f", "-l", "-u", "10.0.0.0/8" })]
-    [DataRow(new[] { "10.0.0.0" })]
-    [DataRow(new[] { "-s", "16", "10.0.0.0/8" })]
-    [DataRow(new[]
+    [TestMethod]
+    public void TestMethod1()
     {
-        "-d", "24", "-x", "-S", "192.168.168.0/24", "192.168.169.1/24", "192.168.170.2/24", "192.168.171.3/24",
-        "192.168.172.3/24", "1.1.1.1"
-    })]
-    [DataRow(new[]
+            ConsoleApplication.Program.Main(new[] { "10.0.0.0/8" });
+        }
+
+    [TestMethod]
+    public void TestMethod2()
     {
-        "-i", "192.168.168.0/24", "192.168.169.1/24", "192.168.170.2/24", "192.168.171.3/24", "192.168.172.3/24",
-        "1.1.1.1"
-    })]
-    [DataRow(new[]
+            ConsoleApplication.Program.Main(new[] { "-Nnmcbflu", "10.0.0.0/8" });
+        }
+
+    [TestMethod]
+    public void TestMethod3()
     {
-        "-d", "24", "-w", "192.168.168.0/24", "192.168.169.1/24", "192.168.170.2/24", "192.168.171.3/24",
-        "192.168.172.3/24", "1.1.1.1"
-    })]
-    [DataRow(new[] { ":" })]
-    [DataRow(new[] { "-C", "10.0.0.0/8", "1.1.1.1" })]
-    [DataRow(new[] { "-o", "10.0.0.0/8", "1.1.1.1" })]
-    public void TestProgramMain(string[] args)
+            ConsoleApplication.Program.Main(new[] { "-N", "-n", "-m", "-c", "-b", "-f", "-l", "-u", "10.0.0.0/8" });
+        }
+
+    [TestMethod]
+    public void TestMethod4()
     {
-            Program.Main(args);
+            ConsoleApplication.Program.Main(new[] { "10.0.0.0" });
+        }
+
+    [TestMethod]
+    public void TestMethod5()
+    {
+            ConsoleApplication.Program.Main(new[] { "-s", "16", "10.0.0.0/8" });
+        }
+
+    [TestMethod]
+    public void TestMethod6()
+    {
+            ConsoleApplication.Program.Main(new[] { "-d", "24", "-x", "-S", "192.168.168.0/24", "192.168.169.1/24", "192.168.170.2/24", "192.168.171.3/24", "192.168.172.3/24", "1.1.1.1" });
+        }
+
+    [TestMethod]
+    public void TestMethod7()
+    {
+            ConsoleApplication.Program.Main(new[] { "-i", "192.168.168.0/24", "192.168.169.1/24", "192.168.170.2/24", "192.168.171.3/24", "192.168.172.3/24", "1.1.1.1" });
+        }
+
+    [TestMethod]
+    public void TestMethod8()
+    {
+            ConsoleApplication.Program.Main(new[] { "-d", "24", "-w", "192.168.168.0/24", "192.168.169.1/24", "192.168.170.2/24", "192.168.171.3/24", "192.168.172.3/24", "1.1.1.1" });
+        }
+
+    [TestMethod]
+    public void TestMethod9()
+    {
+            ConsoleApplication.Program.Main(new[] { ":" });
+        }
+
+    [TestMethod]
+    public void TestMethod10()
+    {
+            ConsoleApplication.Program.Main(new[] { "-C", "10.0.0.0/8", "1.1.1.1" });
+        }
+
+    [TestMethod]
+    public void TestMethod11()
+    {
+            ConsoleApplication.Program.Main(new[] { "-o", "10.0.0.0/8", "1.1.1.1" });
         }
 }
