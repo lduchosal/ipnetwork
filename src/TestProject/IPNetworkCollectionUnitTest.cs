@@ -2,36 +2,36 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestProject
+namespace System.Net.TestProject;
+
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+[TestClass]
+public class IPNetworkCollectionUnitTest
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+    #region ctor
 
-    [TestClass]
-    public class IPNetworkCollectionUnitTest
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentOutOfRangeException))]
+    public void TestCtor1()
     {
-        #region ctor
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void TestCtor1()
-        {
             var ipn = new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 33);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void TestCtor2()
-        {
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void TestCtor2()
+    {
             var ipn = new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 2);
         }
 
-        #endregion
+    #endregion
 
-        #region Current
+    #region Current
 
-        [TestMethod]
-        public void TestCurrent()
-        {
+    [TestMethod]
+    public void TestCurrent()
+    {
             var ipn = IPNetwork2.Parse("192.168.0.0/32");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
@@ -43,13 +43,13 @@ namespace System.Net.TestProject
             }
         }
 
-        #endregion
+    #endregion
 
-        #region Enumerator
+    #region Enumerator
 
-        [TestMethod]
-        public void TestEnumerator()
-        {
+    [TestMethod]
+    public void TestEnumerator()
+    {
             var ipn = IPNetwork2.Parse("192.168.0.0/32");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
@@ -61,13 +61,13 @@ namespace System.Net.TestProject
             }
         }
 
-        #endregion
+    #endregion
 
-        #region Reset
+    #region Reset
 
-        [TestMethod]
-        public void TestReset1()
-        {
+    [TestMethod]
+    public void TestReset1()
+    {
             var ipn = IPNetwork2.Parse("192.168.1.0/29");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
@@ -80,13 +80,13 @@ namespace System.Net.TestProject
             }
         }
 
-        #endregion
+    #endregion
 
-        #region MoveNext
+    #region MoveNext
 
-        [TestMethod]
-        public void MoveNext1()
-        {
+    [TestMethod]
+    public void MoveNext1()
+    {
             var ipn = IPNetwork2.Parse("192.168.1.0/30");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
@@ -95,9 +95,9 @@ namespace System.Net.TestProject
             }
         }
 
-        [TestMethod]
-        public void MoveNext2()
-        {
+    [TestMethod]
+    public void MoveNext2()
+    {
             var ipn = IPNetwork2.Parse("192.168.1.0/30");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
@@ -111,6 +111,5 @@ namespace System.Net.TestProject
             }
         }
 
-        #endregion
-    }
+    #endregion
 }

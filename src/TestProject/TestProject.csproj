@@ -58,6 +58,7 @@
 
   <ItemGroup>
     <None Remove="stylecop.json" />
+    <None Remove="TestResults\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -94,6 +95,16 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\ConsoleApplication\ConsoleApplication.csproj" />
 	  <ProjectReference Include="..\System.Net.IPNetwork\System.Net.IPNetwork.csproj" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <Compile Remove="TestResults\**" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <EmbeddedResource Remove="TestResults\**" />
 	</ItemGroup>
 
 </Project>

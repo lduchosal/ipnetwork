@@ -2,17 +2,17 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestProject
-{
-    using System.Numerics;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace System.Net.TestProject;
 
-    [TestClass]
-    public class BigIntegerBitWiseUnitTest
+using System.Numerics;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+[TestClass]
+public class BigIntegerBitWiseUnitTest
+{
+    [TestMethod]
+    public void Test1()
     {
-        [TestMethod]
-        public void Test1()
-        {
             byte[] bytes = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             var reverseme = new BigInteger(bytes);
             BigInteger reversed = reverseme.PositiveReverse(4);
@@ -20,9 +20,9 @@ namespace System.Net.TestProject
             Assert.AreEqual(0, (int)reversed);
         }
 
-        [TestMethod]
-        public void Test2()
-        {
+    [TestMethod]
+    public void Test2()
+    {
             byte[] bytes = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             var reverseme = new BigInteger(bytes);
             BigInteger reversed = reverseme.PositiveReverse(8);
@@ -37,5 +37,4 @@ namespace System.Net.TestProject
             Assert.AreEqual(0xFF, result[6]);
             Assert.AreEqual(0xFF, result[7]);
         }
-    }
 }
