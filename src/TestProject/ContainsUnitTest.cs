@@ -2,92 +2,46 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestProject
+namespace TestProject;
+
+/// <summary>
+///     ContainsUnitTest test every Contiains method.
+/// </summary>
+[TestClass]
+public class ContainsUnitTest
 {
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    /// <summary>
-    /// ContainsUnitTest test every Contiains method.
-    /// </summary>
-    [TestClass]
-    public class ContainsUnitTest
+    [DataTestMethod]
+    [DataRow("192.168.0.1/24", "192.168.0.1/24", true)]
+    [DataRow("192.168.0.1/16", "192.168.1.1/24", true)]
+    [DataRow("192.168.0.1/16", "10.10.10.0/24", false)]
+    [DataRow("192.168.1.1/24", "192.168.0.0/16", false)]
+    public void TestContainsNetwork(string network1, string networkOrAddress, bool expected)
     {
-        [TestMethod]
-        public void TestContains1()
-        {
-            var ipnetwork = IPNetwork2.Parse("192.168.0.1/24");
-            var ipaddress = IPAddress.Parse("192.168.0.100");
+            var ipnetwork = IPNetwork2.Parse(network1);
 
-            bool result = ipnetwork.Contains(ipaddress);
-            bool expected = true;
-
-            Assert.AreEqual(expected, result, "contains");
-        }
-
-        [TestMethod]
-        public void TestContains2()
-        {
-            var ipnetwork = IPNetwork2.Parse("192.168.0.1/24");
-            var ipaddress = IPAddress.Parse("10.10.10.10");
-
-            bool result = ipnetwork.Contains(ipaddress);
-            bool expected = false;
-
-            Assert.AreEqual(expected, result, "contains");
-        }
-
-        [TestMethod]
-        public void TestContains3()
-        {
-            var ipnetwork = IPNetwork2.Parse("192.168.0.1/24");
-            var ipnetwork2 = IPNetwork2.Parse("192.168.0.1/24");
-
+            var ipnetwork2 = IPNetwork2.Parse(networkOrAddress);
             bool result = ipnetwork.Contains(ipnetwork2);
-            bool expected = true;
 
             Assert.AreEqual(expected, result, "contains");
         }
 
-        [TestMethod]
-        public void TestContains4()
-        {
-            var ipnetwork = IPNetwork2.Parse("192.168.0.1/16");
-            var ipnetwork2 = IPNetwork2.Parse("192.168.1.1/24");
-
-            bool result = ipnetwork.Contains(ipnetwork2);
-            bool expected = true;
-
-            Assert.AreEqual(expected, result, "contains");
-        }
-
-        [TestMethod]
-        public void TestContains5()
-        {
-            var ipnetwork = IPNetwork2.Parse("192.168.0.1/16");
-            var ipnetwork2 = IPNetwork2.Parse("10.10.10.0/24");
-
-            bool result = ipnetwork.Contains(ipnetwork2);
-            bool expected = false;
+    [DataTestMethod]
+    [DataRow("192.168.0.1/24", "192.168.0.100", true)]
+    [DataRow("192.168.0.1/24", "10.10.10.10", false)]
+    public void TestContainsAdrress(string network1, string networkOrAddress, bool expected)
+    {
+            var ipnetwork = IPNetwork2.Parse(network1);
+            bool result;
+            var ipaddress = IPAddress.Parse(networkOrAddress);
+            result = ipnetwork.Contains(ipaddress);
 
             Assert.AreEqual(expected, result, "contains");
         }
 
-        [TestMethod]
-        public void TestContains6()
-        {
-            var ipnetwork = IPNetwork2.Parse("192.168.1.1/24");
-            var ipnetwork2 = IPNetwork2.Parse("192.168.0.0/16");
-
-            bool result = ipnetwork.Contains(ipnetwork2);
-            bool expected = false;
-
-            Assert.AreEqual(expected, result, "contains");
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestContainsStatic3()
-        {
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentNullException))]
+    public void TestContainsStatic3()
+    {
             IPNetwork2 ipnetwork = null;
             IPNetwork2 ipnetwork2 = null;
 
@@ -96,11 +50,11 @@ namespace System.Net.TestProject
 #pragma warning restore 0618
         }
 
-        [TestMethod]
-        public void TestContainsStatic4()
-        {
-            var ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
-            var ipnetwork2 = IPNetwork2.IANA_CBLK_RESERVED1;
+    [TestMethod]
+    public void TestContainsStatic4()
+    {
+            IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
+            IPNetwork2 ipnetwork2 = IPNetwork2.IANA_CBLK_RESERVED1;
 
 #pragma warning disable 0618
             bool result = IPNetwork2.Contains(ipnetwork, ipnetwork2);
@@ -109,20 +63,20 @@ namespace System.Net.TestProject
             Assert.IsTrue(result, "result");
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestContains8()
-        {
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentNullException))]
+    public void TestContains8()
+    {
             var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
             IPNetwork2 ipnetwork2 = null;
 
             bool result = ipnetwork.Contains(ipnetwork2);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestContainsStatic1()
-        {
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentNullException))]
+    public void TestContainsStatic1()
+    {
             IPNetwork2 ipnetwork = null;
             IPAddress ipaddress = null;
 
@@ -131,10 +85,10 @@ namespace System.Net.TestProject
 #pragma warning restore 0618
         }
 
-        [TestMethod]
-        public void TestContainsStatic2()
-        {
-            var ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
+    [TestMethod]
+    public void TestContainsStatic2()
+    {
+            IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             var ipaddress = IPAddress.Parse("10.0.0.1");
 
 #pragma warning disable 0618
@@ -143,27 +97,27 @@ namespace System.Net.TestProject
             Assert.IsTrue(result, "result");
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestContains10()
-        {
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentNullException))]
+    public void TestContains10()
+    {
             var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
             IPAddress ipaddress = null;
 
             bool result = ipnetwork.Contains(ipaddress);
         }
 
-        [DataTestMethod]
-        [DataRow("1.1.1.0/8", "1.1.1.1", true)]
-        [DataRow("1.1.1.0/8", "2.1.1.1", false)]
-        [DataRow("192.168.0.1/24", "192.168.0.100", true)]
-        [DataRow("192.168.0.1/24", "10.10.10.10", false)]
-        [DataRow("192.168.0.1/24", "192.168.0.1", true)]
-        [DataRow("192.168.0.1/16", "192.168.1.1", true)]
-        [DataRow("192.168.0.1/16", "10.10.10.0", false)]
-        [DataRow("192.168.1.1/24", "192.168.0.0", false)]
-        public void Test_Contains2_IPAddress_Should_Match_Contains(string contains1, string contains2, bool expected)
-        {
+    [DataTestMethod]
+    [DataRow("1.1.1.0/8", "1.1.1.1", true)]
+    [DataRow("1.1.1.0/8", "2.1.1.1", false)]
+    [DataRow("192.168.0.1/24", "192.168.0.100", true)]
+    [DataRow("192.168.0.1/24", "10.10.10.10", false)]
+    [DataRow("192.168.0.1/24", "192.168.0.1", true)]
+    [DataRow("192.168.0.1/16", "192.168.1.1", true)]
+    [DataRow("192.168.0.1/16", "10.10.10.0", false)]
+    [DataRow("192.168.1.1/24", "192.168.0.0", false)]
+    public void Test_Contains2_IPAddress_Should_Match_Contains(string contains1, string contains2, bool expected)
+    {
             var ipnetwork = IPNetwork2.Parse(contains1);
             var ipaddress = IPAddress.Parse(contains2);
 
@@ -172,18 +126,18 @@ namespace System.Net.TestProject
             Assert.AreEqual(expected, result1, "contains1");
         }
 
-        [DataTestMethod]
-        [DataRow("0.0.0.0/0", "255.255.255.255", true)]
-        [DataRow("1.1.1.0/8", "1.1.1.1", true)]
-        [DataRow("1.1.1.0/8", "2.1.1.1", false)]
-        [DataRow("192.168.0.1/24", "192.168.0.100/32", true)]
-        [DataRow("192.168.0.1/24", "10.10.10.10/32", false)]
-        [DataRow("192.168.0.1/24", "192.168.0.1/24", true)]
-        [DataRow("192.168.0.1/16", "192.168.1.1/24", true)]
-        [DataRow("192.168.0.1/16", "10.10.10.0/24", false)]
-        [DataRow("192.168.1.1/24", "192.168.0.0/16", false)]
-        public void Test_Contains2_IPNetwork_Should_Match_Contains(string contains1, string contains2, bool expected)
-        {
+    [DataTestMethod]
+    [DataRow("0.0.0.0/0", "255.255.255.255", true)]
+    [DataRow("1.1.1.0/8", "1.1.1.1", true)]
+    [DataRow("1.1.1.0/8", "2.1.1.1", false)]
+    [DataRow("192.168.0.1/24", "192.168.0.100/32", true)]
+    [DataRow("192.168.0.1/24", "10.10.10.10/32", false)]
+    [DataRow("192.168.0.1/24", "192.168.0.1/24", true)]
+    [DataRow("192.168.0.1/16", "192.168.1.1/24", true)]
+    [DataRow("192.168.0.1/16", "10.10.10.0/24", false)]
+    [DataRow("192.168.1.1/24", "192.168.0.0/16", false)]
+    public void Test_Contains2_IPNetwork_Should_Match_Contains(string contains1, string contains2, bool expected)
+    {
             var ipnetwork = IPNetwork2.Parse(contains1);
             var ipaddress = IPNetwork2.Parse(contains2);
 
@@ -191,5 +145,4 @@ namespace System.Net.TestProject
 
             Assert.AreEqual(expected, result1, "contains1");
         }
-    }
 }

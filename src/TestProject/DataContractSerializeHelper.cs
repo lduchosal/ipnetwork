@@ -2,17 +2,13 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestSerialization.NetFramework
-{
-    using System.IO;
-    using System.Runtime.Serialization;
-    using System.Xml;
+namespace TestProject;
 
-    public static class DataContractSerializeHelper
+public static class DataContractSerializeHelper
+{
+    public static string Serialize<T>(T obj, bool formatting = true)
+        where T : new()
     {
-        public static string Serialize<T>(T obj, bool formatting = true)
-            where T : new()
-        {
             if (obj == null)
             {
                 return string.Empty;
@@ -22,7 +18,7 @@ namespace System.Net.TestSerialization.NetFramework
             var settings = new XmlWriterSettings
             {
                 OmitXmlDeclaration = true,
-                Indent = formatting,
+                Indent = formatting
             };
             using (var textWriter = new StringWriter())
             {
@@ -36,9 +32,9 @@ namespace System.Net.TestSerialization.NetFramework
             }
         }
 
-        public static T Deserialize<T>(string xml)
-            where T : new()
-        {
+    public static T Deserialize<T>(string xml)
+        where T : new()
+    {
             if (string.IsNullOrWhiteSpace(xml))
             {
                 return new T();
@@ -52,5 +48,4 @@ namespace System.Net.TestSerialization.NetFramework
                 return result;
             }
         }
-    }
 }

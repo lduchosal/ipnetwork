@@ -2,40 +2,25 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestProject
+namespace TestProject;
+
+[TestClass]
+public class BigIntegerBitWiseUnitTest
 {
-    using System.Numerics;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    [TestClass]
-    public class BigIntegerBitWiseUnitTest
+    [TestMethod]
+    [DataRow(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 }, 4, new byte[] { 0x0 })]
+    [DataRow(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 }, 8,
+        new byte[] { 0x0, 0x0, 0x0, 0x0, 0xFF, 0xFF, 0xFF, 0xFF, 0x0 })]
+    public void Test1(byte[] bytes, int reverseLength, byte[] expected)
     {
-        [TestMethod]
-        public void Test1()
-        {
-            byte[] bytes = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             var reverseme = new BigInteger(bytes);
-            BigInteger reversed = reverseme.PositiveReverse(4);
-
-            Assert.AreEqual(0, (int)reversed);
-        }
-
-        [TestMethod]
-        public void Test2()
-        {
-            byte[] bytes = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
-            var reverseme = new BigInteger(bytes);
-            BigInteger reversed = reverseme.PositiveReverse(8);
+            BigInteger reversed = reverseme.PositiveReverse(reverseLength);
             byte[] result = reversed.ToByteArray();
+            Assert.AreEqual(expected.Length, result.Length);
 
-            Assert.AreEqual(0x0, result[0]);
-            Assert.AreEqual(0x0, result[1]);
-            Assert.AreEqual(0x0, result[2]);
-            Assert.AreEqual(0x0, result[3]);
-            Assert.AreEqual(0xFF, result[4]);
-            Assert.AreEqual(0xFF, result[5]);
-            Assert.AreEqual(0xFF, result[6]);
-            Assert.AreEqual(0xFF, result[7]);
+            for (int i = 0; i < expected.Length; i++)
+            {
+                Assert.AreEqual(expected[i], result[i], i.ToString());
+            }
         }
-    }
 }
