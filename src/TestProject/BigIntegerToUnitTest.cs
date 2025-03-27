@@ -2,10 +2,7 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestProject;
-
-using System.Numerics;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace TestProject;
 
 [TestClass]
 public class BigIntegerToUnitTest
@@ -13,7 +10,7 @@ public class BigIntegerToUnitTest
     [TestMethod]
     public void TestToOctalString1()
     {
-            byte[] bytes = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
+            byte[] bytes = { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             var convertme = new BigInteger(bytes);
             string result = convertme.ToOctalString();
 
@@ -69,7 +66,7 @@ public class BigIntegerToUnitTest
     [TestMethod]
     public void TestToHexadecimalString1()
     {
-            byte[] bytes = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
+            byte[] bytes = { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             var convertme = new BigInteger(bytes);
             string result = convertme.ToHexadecimalString();
 
@@ -79,7 +76,7 @@ public class BigIntegerToUnitTest
     [TestMethod]
     public void TestToBinaryString1()
     {
-            byte[] bytes = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
+            byte[] bytes = { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             var convertme = new BigInteger(bytes);
             string result = convertme.ToBinaryString();
 
@@ -108,7 +105,8 @@ public class BigIntegerToUnitTest
     [TestMethod]
     public void TestToBinaryString3()
     {
-            byte[] bytes = new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
+            byte[] bytes =
+                { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
             var convertme = new BigInteger(bytes);
             string result = convertme.ToBinaryString();
 
