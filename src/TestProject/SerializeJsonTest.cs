@@ -3,14 +3,14 @@
 // </copyright>
 
 
-namespace TestProject;
-
-[TestClass]
-public class SerializeJsonTest
+namespace TestProject
 {
-    [TestMethod]
-    public void Test_Serialize_Json()
+    [TestClass]
+    public class SerializeJsonTest
     {
+        [TestMethod]
+        public void Test_Serialize_Json()
+        {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             string result = JsonConvert.SerializeObject(ipnetwork);
@@ -19,9 +19,9 @@ public class SerializeJsonTest
             Assert.AreEqual(expected, result);
         }
 
-    [TestMethod]
-    public void Test_Deserialize_Json()
-    {
+        [TestMethod]
+        public void Test_Deserialize_Json()
+        {
             string json = "{\"IPNetwork\":\"10.0.0.0/8\"}";
 
             IPNetwork2 result = JsonConvert.DeserializeObject<IPNetwork2>(json);
@@ -30,9 +30,9 @@ public class SerializeJsonTest
             Assert.AreEqual(expected, result);
         }
 
-    [TestMethod]
-    public void Test_Serialize_Deserialize_Json()
-    {
+        [TestMethod]
+        public void Test_Serialize_Deserialize_Json()
+        {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             string json = JsonConvert.SerializeObject(ipnetwork);
@@ -41,10 +41,10 @@ public class SerializeJsonTest
             Assert.AreEqual(ipnetwork, result);
         }
 
-    [TestMethod]
-    [TestCategory("LongRunning")]
-    public void Test_1_000_000_Serialize_Json()
-    {
+        [TestMethod]
+        [TestCategory("LongRunning")]
+        public void Test_1_000_000_Serialize_Json()
+        {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             for (int i = 0; i < 1000000; i++)
@@ -55,10 +55,10 @@ public class SerializeJsonTest
             // 3.06 seconds(Ad hoc).
         }
 
-    [TestMethod]
-    [TestCategory("LongRunning")]
-    public void Test_1_000_000_Deserialize_Json()
-    {
+        [TestMethod]
+        [TestCategory("LongRunning")]
+        public void Test_1_000_000_Deserialize_Json()
+        {
             string json = "{\"IPNetwork\":\"10.0.0.0/8\"}";
 
             for (int i = 0; i < 1000000; i++)
@@ -69,10 +69,10 @@ public class SerializeJsonTest
             // 10.20 seconds(Ad hoc).
         }
 
-    [TestMethod]
-    [TestCategory("LongRunning")]
-    public void Test_1_000_000_Serialize_Deserialize_Json()
-    {
+        [TestMethod]
+        [TestCategory("LongRunning")]
+        public void Test_1_000_000_Serialize_Deserialize_Json()
+        {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             for (int i = 0; i < 1000000; i++)
@@ -83,4 +83,5 @@ public class SerializeJsonTest
 
             // 13.49 seconds(Ad hoc).
         }
+    }
 }

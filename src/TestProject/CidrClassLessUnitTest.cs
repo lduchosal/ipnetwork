@@ -2,16 +2,16 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject;
-
-[TestClass]
-public class CidrClassLessUnitTest
+namespace TestProject
 {
-    #region IPV4
-
-    [TestMethod]
-    public void TestTryGuessCidrNull()
+    [TestClass]
+    public class CidrClassLessUnitTest
     {
+        #region IPV4
+
+        [TestMethod]
+        public void TestTryGuessCidrNull()
+        {
             var cidrguess = new CidrClassLess();
 
             byte cidr;
@@ -21,9 +21,9 @@ public class CidrClassLessUnitTest
             Assert.AreEqual(0, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryGuessCidrA()
-    {
+        [TestMethod]
+        public void TestTryGuessCidrA()
+        {
             var cidrguess = new CidrClassLess();
 
             byte cidr;
@@ -33,9 +33,9 @@ public class CidrClassLessUnitTest
             Assert.AreEqual(32, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryGuessCidrB()
-    {
+        [TestMethod]
+        public void TestTryGuessCidrB()
+        {
             var cidrguess = new CidrClassLess();
 
             byte cidr;
@@ -45,9 +45,9 @@ public class CidrClassLessUnitTest
             Assert.AreEqual(32, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryGuessCidrC()
-    {
+        [TestMethod]
+        public void TestTryGuessCidrC()
+        {
             var cidrguess = new CidrClassLess();
 
             byte cidr;
@@ -57,9 +57,9 @@ public class CidrClassLessUnitTest
             Assert.AreEqual(32, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryGuessCidrD()
-    {
+        [TestMethod]
+        public void TestTryGuessCidrD()
+        {
             var cidrguess = new CidrClassLess();
 
             byte cidr;
@@ -69,9 +69,9 @@ public class CidrClassLessUnitTest
             Assert.AreEqual(32, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryGuessCidrE()
-    {
+        [TestMethod]
+        public void TestTryGuessCidrE()
+        {
             var cidrguess = new CidrClassLess();
 
             byte cidr;
@@ -81,13 +81,13 @@ public class CidrClassLessUnitTest
             Assert.AreEqual(32, cidr, "cidr");
         }
 
-    #endregion
+        #endregion
 
-    #region IPV6
+        #region IPV6
 
-    [TestMethod]
-    public void TestIpV6TryGuessCidrNull()
-    {
+        [TestMethod]
+        public void TestIpV6TryGuessCidrNull()
+        {
             var cidrguess = new CidrClassLess();
 
             byte cidr;
@@ -97,9 +97,9 @@ public class CidrClassLessUnitTest
             Assert.AreEqual(0, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestIpV6TryGuessCidr1()
-    {
+        [TestMethod]
+        public void TestIpV6TryGuessCidr1()
+        {
             var cidrguess = new CidrClassLess();
 
             byte cidr;
@@ -109,9 +109,9 @@ public class CidrClassLessUnitTest
             Assert.AreEqual(128, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestIpV6TryGuessCidr2()
-    {
+        [TestMethod]
+        public void TestIpV6TryGuessCidr2()
+        {
             var cidrguess = new CidrClassLess();
 
             byte cidr;
@@ -121,5 +121,6 @@ public class CidrClassLessUnitTest
             Assert.AreEqual(128, cidr, "cidr");
         }
 
-    #endregion
+        #endregion
+    }
 }

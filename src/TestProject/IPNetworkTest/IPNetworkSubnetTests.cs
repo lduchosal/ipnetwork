@@ -2,15 +2,15 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject.IPNetworkTest;
-
-[TestClass]
-public class IPNetworkSubnetTests
+namespace TestProject.IPNetworkTest
 {
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void TestSubnet1()
+    [TestClass]
+    public class IPNetworkSubnetTests
     {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestSubnet1()
+        {
             IPNetwork2 ipnetwork = null;
             byte cidr = 9;
 
@@ -19,12 +19,12 @@ public class IPNetworkSubnetTests
 #pragma warning restore 0618
         }
 
-    /// <summary>
-    ///     Tests Subnet functionality with Subnet Static1.
-    /// </summary>
-    [TestMethod]
-    public void TestSubnetStatic1()
-    {
+        /// <summary>
+        ///     Tests Subnet functionality with Subnet Static1.
+        /// </summary>
+        [TestMethod]
+        public void TestSubnetStatic1()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             byte cidr = 9;
 
@@ -33,32 +33,32 @@ public class IPNetworkSubnetTests
 #pragma warning restore 0618
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    public void TestSubnet3()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestSubnet3()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             byte cidr = 55;
 
             IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
-    public void TestSubnet4()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestSubnet4()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             byte cidr = 1;
 
             IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
         }
 
-    /// <summary>
-    ///     Tests Subnet functionality with Subnet5.
-    /// </summary>
-    [TestMethod]
-    public void TestSubnet5()
-    {
+        /// <summary>
+        ///     Tests Subnet functionality with Subnet5.
+        /// </summary>
+        [TestMethod]
+        public void TestSubnet5()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             byte cidr = 9;
 
@@ -68,12 +68,12 @@ public class IPNetworkSubnetTests
             Assert.AreEqual("10.128.0.0/9", subnets[1].ToString(), "subnet2");
         }
 
-    /// <summary>
-    ///     Tests Subnet functionality with Subnet6.
-    /// </summary>
-    [TestMethod]
-    public void TestSubnet6()
-    {
+        /// <summary>
+        ///     Tests Subnet functionality with Subnet6.
+        /// </summary>
+        [TestMethod]
+        public void TestSubnet6()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
             byte cidr = 20;
 
@@ -97,12 +97,12 @@ public class IPNetworkSubnetTests
             Assert.AreEqual("192.168.240.0/20", subnets[15].ToString(), "subnet16");
         }
 
-    /// <summary>
-    ///     Tests Subnet functionality with Subnet7.
-    /// </summary>
-    [TestMethod]
-    public void TestSubnet7()
-    {
+        /// <summary>
+        ///     Tests Subnet functionality with Subnet7.
+        /// </summary>
+        [TestMethod]
+        public void TestSubnet7()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
             byte cidr = 24;
 
@@ -112,12 +112,12 @@ public class IPNetworkSubnetTests
             Assert.AreEqual("192.168.255.0/24", subnets[255].ToString(), "subnet16");
         }
 
-    /// <summary>
-    ///     Tests Subnet functionality with Subnet8.
-    /// </summary>
-    [TestMethod]
-    public void TestSubnet8()
-    {
+        /// <summary>
+        ///     Tests Subnet functionality with Subnet8.
+        /// </summary>
+        [TestMethod]
+        public void TestSubnet8()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
             byte cidr = 24;
 
@@ -127,12 +127,12 @@ public class IPNetworkSubnetTests
             Assert.AreEqual("192.168.255.0/24", subnets[255].ToString(), "subnet256");
         }
 
-    /// <summary>
-    ///     Tests Subnet functionality with Subnet9.
-    /// </summary>
-    [TestMethod]
-    public void TestSubnet9()
-    {
+        /// <summary>
+        ///     Tests Subnet functionality with Subnet9.
+        /// </summary>
+        [TestMethod]
+        public void TestSubnet9()
+        {
             var ipnetwork = IPNetwork2.Parse("192.168.0.0/24");
             byte cidr = 32;
 
@@ -142,12 +142,12 @@ public class IPNetworkSubnetTests
             Assert.AreEqual("192.168.0.255/32", subnets[255].ToString(), "subnet256");
         }
 
-    /// <summary>
-    ///     Tests Subnet functionality with Subnet_Example8.
-    /// </summary>
-    [TestMethod]
-    public void TestSubnet_Example8()
-    {
+        /// <summary>
+        ///     Tests Subnet functionality with Subnet_Example8.
+        /// </summary>
+        [TestMethod]
+        public void TestSubnet_Example8()
+        {
             var wholeInternet = IPNetwork2.Parse("0.0.0.0/0");
             byte newCidr = 2;
             IPNetworkCollection subneted = wholeInternet.Subnet(newCidr);
@@ -163,12 +163,12 @@ public class IPNetworkSubnetTests
             }
         }
 
-    /// <summary>
-    ///     Tests Subnet functionality with Subnet10.
-    /// </summary>
-    [TestMethod]
-    public void TestSubnet10()
-    {
+        /// <summary>
+        ///     Tests Subnet functionality with Subnet10.
+        /// </summary>
+        [TestMethod]
+        public void TestSubnet10()
+        {
             var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
             byte cidr = 32;
 
@@ -179,12 +179,12 @@ public class IPNetworkSubnetTests
             Assert.AreEqual("255.255.255.255/32", subnets[4294967295].ToString(), "subnet256");
         }
 
-    /// <summary>
-    ///     Tests Subnet functionality with Subnet12.
-    /// </summary>
-    [TestMethod]
-    public void TestSubnet12()
-    {
+        /// <summary>
+        ///     Tests Subnet functionality with Subnet12.
+        /// </summary>
+        [TestMethod]
+        public void TestSubnet12()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
             byte cidr = 20;
             int i = -1;
@@ -196,13 +196,14 @@ public class IPNetworkSubnetTests
             }
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    public void TestSubnet13()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestSubnet13()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
             byte cidr = 20;
             IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
             IPNetwork2 error = subnets[1000];
         }
+    }
 }

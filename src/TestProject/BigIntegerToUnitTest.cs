@@ -2,14 +2,14 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject;
-
-[TestClass]
-public class BigIntegerToUnitTest
+namespace TestProject
 {
-    [TestMethod]
-    public void TestToOctalString1()
+    [TestClass]
+    public class BigIntegerToUnitTest
     {
+        [TestMethod]
+        public void TestToOctalString1()
+        {
             byte[] bytes = { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             var convertme = new BigInteger(bytes);
             string result = convertme.ToOctalString();
@@ -17,9 +17,9 @@ public class BigIntegerToUnitTest
             Assert.AreEqual("037777777777", result);
         }
 
-    [TestMethod]
-    public void TestToOctalString3()
-    {
+        [TestMethod]
+        public void TestToOctalString3()
+        {
             var bigi = BigInteger.Parse("1048576");
             bigi++;
             string result = bigi.ToOctalString();
@@ -27,9 +27,9 @@ public class BigIntegerToUnitTest
             Assert.AreEqual("04000001", result);
         }
 
-    [TestMethod]
-    public void TestToOctalString01()
-    {
+        [TestMethod]
+        public void TestToOctalString01()
+        {
             BigInteger bigi = BigInteger.Zero;
             bigi++;
             string result = bigi.ToOctalString();
@@ -37,9 +37,9 @@ public class BigIntegerToUnitTest
             Assert.AreEqual("01", result);
         }
 
-    [TestMethod]
-    public void TestToOctalString02()
-    {
+        [TestMethod]
+        public void TestToOctalString02()
+        {
             BigInteger bigi = BigInteger.Zero;
             bigi--;
             string result = bigi.ToOctalString();
@@ -47,9 +47,9 @@ public class BigIntegerToUnitTest
             Assert.AreEqual("377", result);
         }
 
-    [TestMethod]
-    public void TestToOctalString03()
-    {
+        [TestMethod]
+        public void TestToOctalString03()
+        {
             BigInteger bigi = BigInteger.Zero;
             bigi--;
             bigi--;
@@ -63,9 +63,9 @@ public class BigIntegerToUnitTest
             Assert.AreEqual("371", result);
         }
 
-    [TestMethod]
-    public void TestToHexadecimalString1()
-    {
+        [TestMethod]
+        public void TestToHexadecimalString1()
+        {
             byte[] bytes = { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             var convertme = new BigInteger(bytes);
             string result = convertme.ToHexadecimalString();
@@ -73,9 +73,9 @@ public class BigIntegerToUnitTest
             Assert.AreEqual("0FFFFFFFF", result);
         }
 
-    [TestMethod]
-    public void TestToBinaryString1()
-    {
+        [TestMethod]
+        public void TestToBinaryString1()
+        {
             byte[] bytes = { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 };
             var convertme = new BigInteger(bytes);
             string result = convertme.ToBinaryString();
@@ -83,9 +83,9 @@ public class BigIntegerToUnitTest
             Assert.AreEqual("011111111111111111111111111111111", result);
         }
 
-    [TestMethod]
-    public void TestToBinaryString01()
-    {
+        [TestMethod]
+        public void TestToBinaryString01()
+        {
             BigInteger bigi = BigInteger.Zero;
             bigi++;
             string result = bigi.ToBinaryString();
@@ -93,18 +93,18 @@ public class BigIntegerToUnitTest
             Assert.AreEqual("01", result);
         }
 
-    [TestMethod]
-    public void TestToBinaryString2()
-    {
+        [TestMethod]
+        public void TestToBinaryString2()
+        {
             var convertme = new BigInteger(-1);
             string result = convertme.ToBinaryString();
 
             Assert.AreEqual("11111111", result);
         }
 
-    [TestMethod]
-    public void TestToBinaryString3()
-    {
+        [TestMethod]
+        public void TestToBinaryString3()
+        {
             byte[] bytes =
                 { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF };
             var convertme = new BigInteger(bytes);
@@ -112,4 +112,5 @@ public class BigIntegerToUnitTest
 
             Assert.AreEqual("11111111", result);
         }
+    }
 }

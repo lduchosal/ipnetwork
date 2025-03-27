@@ -2,44 +2,44 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject;
-
-[TestClass]
-public class IPNetworkV6UnitTest
+namespace TestProject
 {
-    #region Parse
-
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
-    public void TestParseIPAddressNetmaskAne8()
+    [TestClass]
+    public class IPNetworkV6UnitTest
     {
+        #region Parse
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestParseIPAddressNetmaskAne8()
+        {
             var ipnet = IPNetwork2.Parse("xxxx::", "xxxx::");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
-    public void TestParseIPAddressNetmaskAne9()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestParseIPAddressNetmaskAne9()
+        {
             var ipnet = IPNetwork2.Parse("::", "xxxx::");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
-    public void TestParseIPAddressNetmaskAne10()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestParseIPAddressNetmaskAne10()
+        {
             var ipnet = IPNetwork2.Parse("xxxx::", 0);
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
-    public void TestParseIPAddressNetmaskAne11()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestParseIPAddressNetmaskAne11()
+        {
             var ipnet = IPNetwork2.Parse("::", 129);
         }
 
-    [TestMethod]
-    public void TestParsev6_128()
-    {
+        [TestMethod]
+        public void TestParsev6_128()
+        {
             IPNetwork2 ipnetwork = null;
             string ipaddress = "2001:db8::";
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";
@@ -64,9 +64,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParsev6_127()
-    {
+        [TestMethod]
+        public void TestParsev6_127()
+        {
             IPNetwork2 ipnetwork = null;
             string ipaddress = "2001:db8::";
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe";
@@ -91,9 +91,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParsev6_126()
-    {
+        [TestMethod]
+        public void TestParsev6_126()
+        {
             IPNetwork2 ipnetwork = null;
             string ipaddress = "2001:db8::";
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffc";
@@ -118,9 +118,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParsev6_125()
-    {
+        [TestMethod]
+        public void TestParsev6_125()
+        {
             IPNetwork2 ipnetwork = null;
             string ipaddress = "2001:db8::";
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fff8";
@@ -145,9 +145,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParsev6_124()
-    {
+        [TestMethod]
+        public void TestParsev6_124()
+        {
             IPNetwork2 ipnetwork = null;
             string ipaddress = "2001:db8::";
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fff0";
@@ -172,9 +172,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParsev6_123()
-    {
+        [TestMethod]
+        public void TestParsev6_123()
+        {
             IPNetwork2 ipnetwork = null;
             string ipaddress = "2001:0db8::";
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffe0";
@@ -199,9 +199,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParsev6_112()
-    {
+        [TestMethod]
+        public void TestParsev6_112()
+        {
             IPNetwork2 ipnetwork = null;
             string ipaddress = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:0000";
@@ -226,9 +226,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParsev6_64()
-    {
+        [TestMethod]
+        public void TestParsev6_64()
+        {
             IPNetwork2 ipnetwork = null;
             string ipaddress = "ffff:ffff:ffff:ffff:1234:1234:1234:1234";
             string netmask = "ffff:ffff:ffff:ffff:0000:0000:0000:0000";
@@ -253,9 +253,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParsev6_16()
-    {
+        [TestMethod]
+        public void TestParsev6_16()
+        {
             IPNetwork2 ipnetwork = null;
             string ipaddress = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";
             string netmask = "ffff:0000:0000:0000:0000:0000:0000:0000";
@@ -280,9 +280,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParsev6_EDGE()
-    {
+        [TestMethod]
+        public void TestParsev6_EDGE()
+        {
             IPNetwork2 ipnetwork = null;
             string ipaddress = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";
@@ -305,13 +305,13 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    #endregion
+        #endregion
 
-    #region ParseString
+        #region ParseString
 
-    [TestMethod]
-    public void TestParseString1()
-    {
+        [TestMethod]
+        public void TestParseString1()
+        {
             string ipaddress = "2001:0db8:: ffff:ffff:ffff:ffff:ffff:ffff:ffff:fff0";
 
             string network = "2001:db8::";
@@ -331,9 +331,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseString3()
-    {
+        [TestMethod]
+        public void TestParseString3()
+        {
             string ipaddress = ":: ::";
 
             string network = "::";
@@ -353,9 +353,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseString4()
-    {
+        [TestMethod]
+        public void TestParseString4()
+        {
             string ipaddress = "::/0";
 
             string network = "::";
@@ -375,9 +375,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseString5()
-    {
+        [TestMethod]
+        public void TestParseString5()
+        {
             string ipaddress = "::/32";
 
             string network = "::";
@@ -397,9 +397,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseString6()
-    {
+        [TestMethod]
+        public void TestParseString6()
+        {
             string ipaddress = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff/128";
 
             string network = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";
@@ -419,9 +419,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseString7_Uppercase_ipv6_must_parse()
-    {
+        [TestMethod]
+        public void TestParseString7_Uppercase_ipv6_must_parse()
+        {
             string ipaddress = "2FFF:FFFF:123::/60";
 
             string network = "2fff:ffff:123::";
@@ -442,9 +442,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseString8_Uppercase_ipv6_must_parse()
-    {
+        [TestMethod]
+        public void TestParseString8_Uppercase_ipv6_must_parse()
+        {
             string ipaddress = "2FFF:FFFE:123::/60";
 
             string network = "2fff:fffe:123::";
@@ -465,9 +465,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseString9_Uppercase_ipv6_must_parse()
-    {
+        [TestMethod]
+        public void TestParseString9_Uppercase_ipv6_must_parse()
+        {
             string ipaddress = "2FFF:FFFC:123::/60";
 
             string network = "2fff:fffc:123::";
@@ -488,9 +488,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseString10_Uppercase_ipv6_must_parse()
-    {
+        [TestMethod]
+        public void TestParseString10_Uppercase_ipv6_must_parse()
+        {
             string ipaddress = "2FFF:FFFA:123::/60";
 
             string network = "2fff:fffa:123::";
@@ -511,9 +511,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseString11_Uppercase_ipv6_must_parse()
-    {
+        [TestMethod]
+        public void TestParseString11_Uppercase_ipv6_must_parse()
+        {
             string ipaddress = "FFFF:FFF1:123::/60";
 
             string network = "ffff:fff1:123::";
@@ -534,9 +534,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseIPAddressNoNetmask1()
-    {
+        [TestMethod]
+        public void TestParseIPAddressNoNetmask1()
+        {
             string ipaddress = "2001:0db8::";
             var ipnetwork = IPNetwork2.Parse(ipaddress);
 
@@ -556,9 +556,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseIPAddressNoNetmask4()
-    {
+        [TestMethod]
+        public void TestParseIPAddressNoNetmask4()
+        {
             string ipaddress = "::";
             var ipnetwork = IPNetwork2.Parse(ipaddress);
 
@@ -578,9 +578,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseIPAddressNoNetmask5()
-    {
+        [TestMethod]
+        public void TestParseIPAddressNoNetmask5()
+        {
             string ipaddress = "2001:0db8::1";
             var ipnetwork = IPNetwork2.Parse(ipaddress);
 
@@ -600,9 +600,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseIPAddressNoNetmask1_ClassFull()
-    {
+        [TestMethod]
+        public void TestParseIPAddressNoNetmask1_ClassFull()
+        {
             string ipaddress = "2001:0db8::";
             ICidrGuess cidrGess = CidrGuess.ClassFull;
 
@@ -624,9 +624,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseIPAddressNoNetmask4_ClassFull()
-    {
+        [TestMethod]
+        public void TestParseIPAddressNoNetmask4_ClassFull()
+        {
             string ipaddress = "::";
             ICidrGuess cidrGess = CidrGuess.ClassFull;
 
@@ -648,9 +648,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseIPAddressNoNetmask5_ClassFull()
-    {
+        [TestMethod]
+        public void TestParseIPAddressNoNetmask5_ClassFull()
+        {
             string ipaddress = "2001:0db8::1";
             ICidrGuess cidrGess = CidrGuess.ClassFull;
 
@@ -672,9 +672,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseIPAddressNoNetmask1_ClassLess()
-    {
+        [TestMethod]
+        public void TestParseIPAddressNoNetmask1_ClassLess()
+        {
             string ipaddress = "2001:0db8::";
             ICidrGuess cidrGess = CidrGuess.ClassLess;
 
@@ -696,9 +696,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseIPAddressNoNetmask4_ClassLess()
-    {
+        [TestMethod]
+        public void TestParseIPAddressNoNetmask4_ClassLess()
+        {
             string ipaddress = "::";
             ICidrGuess cidrGess = CidrGuess.ClassLess;
 
@@ -720,9 +720,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestParseIPAddressNoNetmask5_ClassLess()
-    {
+        [TestMethod]
+        public void TestParseIPAddressNoNetmask5_ClassLess()
+        {
             string ipaddress = "2001:0db8::1";
             ICidrGuess cidrGess = CidrGuess.ClassLess;
 
@@ -744,37 +744,37 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
-    public void TestParseStringAe1()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestParseStringAe1()
+        {
             string ipaddress = "garbage";
             var ipnetwork = IPNetwork2.Parse(ipaddress);
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
-    public void TestParseStringAe2()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestParseStringAe2()
+        {
             string ipaddress = "0:0:0:0:0:0:1:0:0 0:1:2:3:4:5:6:7:8";
             var ipnetwork = IPNetwork2.Parse(ipaddress);
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void TestParseStringAne1()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestParseStringAne1()
+        {
             string ipaddress = null;
             var ipnetwork = IPNetwork2.Parse(ipaddress);
         }
 
-    #endregion
+        #endregion
 
-    #region ParseStringString
+        #region ParseStringString
 
-    [TestMethod]
-    public void TestParseStringString1()
-    {
+        [TestMethod]
+        public void TestParseStringString1()
+        {
             string ipaddress = "2001:0db8::";
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fff0";
 
@@ -782,33 +782,33 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual("2001:db8::/124", ipnetwork.ToString(), "network");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void TestParseStringString3()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestParseStringString3()
+        {
             string ipaddress = "2001:0db8::";
             string netmask = null;
 
             var ipnetwork = IPNetwork2.Parse(ipaddress, netmask);
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void TestParseStringString5()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestParseStringString5()
+        {
             string ipaddress = "2001:0db8::";
             string netmask = string.Empty;
 
             var ipnetwork = IPNetwork2.Parse(ipaddress, netmask);
         }
 
-    #endregion
+        #endregion
 
-    #region ParseIpIp
+        #region ParseIpIp
 
-    [TestMethod]
-    public void ParseIpIp1()
-    {
+        [TestMethod]
+        public void ParseIpIp1()
+        {
             string ipaddress = "2001:0db8::";
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fff0";
             var ip = IPAddress.Parse(ipaddress);
@@ -817,59 +817,59 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual("2001:db8::/124", ipnetwork.ToString(), "network");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void ParseIpIp3()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ParseIpIp3()
+        {
             string ipaddress = "2001:0db8::";
             var ip = IPAddress.Parse(ipaddress);
             IPAddress netm = null;
             var ipnetwork = IPNetwork2.Parse(ip, netm);
         }
 
-    #endregion
+        #endregion
 
-    #region CtorWithIpAndCidr
+        #region CtorWithIpAndCidr
 
-    [TestMethod]
-    public void CtorWithIpAndCidr1()
-    {
+        [TestMethod]
+        public void CtorWithIpAndCidr1()
+        {
             string ipaddress = "2001:0db8::";
             var ip = IPAddress.Parse(ipaddress);
             var ipnetwork = new IPNetwork2(ip, 124);
             Assert.AreEqual("2001:db8::/124", ipnetwork.ToString(), "network");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    public void CtorWithIpAndCidr2()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void CtorWithIpAndCidr2()
+        {
             string ipaddress = "2001:db8::";
             var ip = IPAddress.Parse(ipaddress);
             var ipnetwork = new IPNetwork2(ip, 129);
         }
 
-    #endregion
+        #endregion
 
-    #region ToCidr
+        #region ToCidr
 
-    [TestMethod]
-    public void TestToCidrAe()
-    {
+        [TestMethod]
+        public void TestToCidrAe()
+        {
             byte cidr = IPNetwork2.ToCidr(IPAddress.IPv6Any);
             Assert.AreEqual(0, cidr, "cidr");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
-    public void TestToCidrAe2()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestToCidrAe2()
+        {
             IPNetwork2.ToCidr(IPAddress.Parse("2001:db8:3:4:5:6:7:8"));
         }
 
-    [TestMethod]
-    public void TestToCidr128()
-    {
+        [TestMethod]
+        public void TestToCidr128()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff");
             byte cidr = 128;
             int result = IPNetwork2.ToCidr(mask);
@@ -877,9 +877,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr127()
-    {
+        [TestMethod]
+        public void TestToCidr127()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe");
             byte cidr = 127;
             int result = IPNetwork2.ToCidr(mask);
@@ -887,9 +887,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr126()
-    {
+        [TestMethod]
+        public void TestToCidr126()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffc");
             byte cidr = 126;
             int result = IPNetwork2.ToCidr(mask);
@@ -897,9 +897,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr125()
-    {
+        [TestMethod]
+        public void TestToCidr125()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fff8");
             byte cidr = 125;
             int result = IPNetwork2.ToCidr(mask);
@@ -907,9 +907,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr124()
-    {
+        [TestMethod]
+        public void TestToCidr124()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fff0");
             byte cidr = 124;
             int result = IPNetwork2.ToCidr(mask);
@@ -917,9 +917,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr123()
-    {
+        [TestMethod]
+        public void TestToCidr123()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffe0");
             byte cidr = 123;
             int result = IPNetwork2.ToCidr(mask);
@@ -927,9 +927,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr122()
-    {
+        [TestMethod]
+        public void TestToCidr122()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffc0");
             byte cidr = 122;
             int result = IPNetwork2.ToCidr(mask);
@@ -937,9 +937,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr121()
-    {
+        [TestMethod]
+        public void TestToCidr121()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff80");
             byte cidr = 121;
             int result = IPNetwork2.ToCidr(mask);
@@ -947,9 +947,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr120()
-    {
+        [TestMethod]
+        public void TestToCidr120()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00");
             byte cidr = 120;
             int result = IPNetwork2.ToCidr(mask);
@@ -957,9 +957,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr119()
-    {
+        [TestMethod]
+        public void TestToCidr119()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fe00");
             byte cidr = 119;
             int result = IPNetwork2.ToCidr(mask);
@@ -967,9 +967,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr118()
-    {
+        [TestMethod]
+        public void TestToCidr118()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fc00");
             byte cidr = 118;
             int result = IPNetwork2.ToCidr(mask);
@@ -977,9 +977,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr117()
-    {
+        [TestMethod]
+        public void TestToCidr117()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:f800");
             byte cidr = 117;
             int result = IPNetwork2.ToCidr(mask);
@@ -987,9 +987,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr116()
-    {
+        [TestMethod]
+        public void TestToCidr116()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:f000");
             byte cidr = 116;
             int result = IPNetwork2.ToCidr(mask);
@@ -997,9 +997,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr115()
-    {
+        [TestMethod]
+        public void TestToCidr115()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:e000");
             byte cidr = 115;
             int result = IPNetwork2.ToCidr(mask);
@@ -1007,9 +1007,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr114()
-    {
+        [TestMethod]
+        public void TestToCidr114()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:c000");
             byte cidr = 114;
             int result = IPNetwork2.ToCidr(mask);
@@ -1017,9 +1017,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr113()
-    {
+        [TestMethod]
+        public void TestToCidr113()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:8000");
             byte cidr = 113;
             int result = IPNetwork2.ToCidr(mask);
@@ -1027,9 +1027,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr112()
-    {
+        [TestMethod]
+        public void TestToCidr112()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:0000");
             byte cidr = 112;
             int result = IPNetwork2.ToCidr(mask);
@@ -1037,9 +1037,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr111()
-    {
+        [TestMethod]
+        public void TestToCidr111()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:fffe:0");
             byte cidr = 111;
             int result = IPNetwork2.ToCidr(mask);
@@ -1047,9 +1047,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr110()
-    {
+        [TestMethod]
+        public void TestToCidr110()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:fffc:0");
             byte cidr = 110;
             int result = IPNetwork2.ToCidr(mask);
@@ -1057,9 +1057,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr109()
-    {
+        [TestMethod]
+        public void TestToCidr109()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:fff8:0");
             byte cidr = 109;
             int result = IPNetwork2.ToCidr(mask);
@@ -1067,9 +1067,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr108()
-    {
+        [TestMethod]
+        public void TestToCidr108()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:fff0:0");
             byte cidr = 108;
             int result = IPNetwork2.ToCidr(mask);
@@ -1077,9 +1077,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr001()
-    {
+        [TestMethod]
+        public void TestToCidr001()
+        {
             var mask = IPAddress.Parse("8000::");
             byte cidr = 1;
             int result = IPNetwork2.ToCidr(mask);
@@ -1087,9 +1087,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestToCidr000()
-    {
+        [TestMethod]
+        public void TestToCidr000()
+        {
             var mask = IPAddress.Parse("::");
             byte cidr = 0;
             int result = IPNetwork2.ToCidr(mask);
@@ -1097,13 +1097,13 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    #endregion
+        #endregion
 
-    #region TryToCidr
+        #region TryToCidr
 
-    [TestMethod]
-    public void TestTryToCidr128()
-    {
+        [TestMethod]
+        public void TestTryToCidr128()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff");
             byte cidr = 128;
             byte? result = 0;
@@ -1113,9 +1113,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr127()
-    {
+        [TestMethod]
+        public void TestTryToCidr127()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe");
             byte cidr = 127;
             byte? result = 0;
@@ -1125,9 +1125,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr126()
-    {
+        [TestMethod]
+        public void TestTryToCidr126()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffc");
             byte cidr = 126;
             byte? result = 0;
@@ -1137,9 +1137,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr125()
-    {
+        [TestMethod]
+        public void TestTryToCidr125()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fff8");
             byte cidr = 125;
             byte? result = 0;
@@ -1149,9 +1149,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr124()
-    {
+        [TestMethod]
+        public void TestTryToCidr124()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fff0");
             byte cidr = 124;
             byte? result = 0;
@@ -1161,9 +1161,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr123()
-    {
+        [TestMethod]
+        public void TestTryToCidr123()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffe0");
             byte cidr = 123;
             byte? result = 0;
@@ -1173,9 +1173,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr122()
-    {
+        [TestMethod]
+        public void TestTryToCidr122()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffc0");
             byte cidr = 122;
             byte? result = 0;
@@ -1185,9 +1185,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr121()
-    {
+        [TestMethod]
+        public void TestTryToCidr121()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff80");
             byte cidr = 121;
             byte? result = 0;
@@ -1197,9 +1197,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr120()
-    {
+        [TestMethod]
+        public void TestTryToCidr120()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ff00");
             byte cidr = 120;
             byte? result = 0;
@@ -1209,9 +1209,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr119()
-    {
+        [TestMethod]
+        public void TestTryToCidr119()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fe00");
             byte cidr = 119;
             byte? result = 0;
@@ -1221,9 +1221,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr118()
-    {
+        [TestMethod]
+        public void TestTryToCidr118()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fc00");
             byte cidr = 118;
             byte? result = 0;
@@ -1233,9 +1233,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr117()
-    {
+        [TestMethod]
+        public void TestTryToCidr117()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:f800");
             byte cidr = 117;
             byte? result = 0;
@@ -1245,9 +1245,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr116()
-    {
+        [TestMethod]
+        public void TestTryToCidr116()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:f000");
             byte cidr = 116;
             byte? result = 0;
@@ -1257,9 +1257,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr115()
-    {
+        [TestMethod]
+        public void TestTryToCidr115()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:e000");
             byte cidr = 115;
             byte? result = 0;
@@ -1269,9 +1269,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr114()
-    {
+        [TestMethod]
+        public void TestTryToCidr114()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:c000");
             byte cidr = 114;
             byte? result = 0;
@@ -1281,9 +1281,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr113()
-    {
+        [TestMethod]
+        public void TestTryToCidr113()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:8000");
             byte cidr = 113;
             byte? result = 0;
@@ -1293,9 +1293,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr112()
-    {
+        [TestMethod]
+        public void TestTryToCidr112()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:0000");
             byte cidr = 112;
             byte? result = 0;
@@ -1305,9 +1305,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr111()
-    {
+        [TestMethod]
+        public void TestTryToCidr111()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:fffe:0");
             byte cidr = 111;
             byte? result = 0;
@@ -1317,9 +1317,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr110()
-    {
+        [TestMethod]
+        public void TestTryToCidr110()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:fffc:0");
             byte cidr = 110;
             byte? result = 0;
@@ -1329,9 +1329,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr109()
-    {
+        [TestMethod]
+        public void TestTryToCidr109()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:fff8:0");
             byte cidr = 109;
             byte? result = 0;
@@ -1341,9 +1341,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr108()
-    {
+        [TestMethod]
+        public void TestTryToCidr108()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:fff0:0");
             byte cidr = 108;
             byte? result = 0;
@@ -1353,9 +1353,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr001()
-    {
+        [TestMethod]
+        public void TestTryToCidr001()
+        {
             var mask = IPAddress.Parse("8000::");
             byte cidr = 1;
             byte? result = 0;
@@ -1365,9 +1365,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryToCidr000()
-    {
+        [TestMethod]
+        public void TestTryToCidr000()
+        {
             var mask = IPAddress.Parse("::");
             byte cidr = 0;
             byte? result = 0;
@@ -1377,13 +1377,13 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(cidr, result, "cidr");
         }
 
-    #endregion
+        #endregion
 
-    #region ToBigInteger
+        #region ToBigInteger
 
-    [TestMethod]
-    public void TestToBigInteger32()
-    {
+        [TestMethod]
+        public void TestToBigInteger32()
+        {
             var mask = IPAddress.Parse("::f");
             uint uintMask = 0xf;
             var result = IPNetwork2.ToBigInteger(mask);
@@ -1391,9 +1391,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(uintMask, result, "uint");
         }
 
-    [TestMethod]
-    public void TestToBigInteger24()
-    {
+        [TestMethod]
+        public void TestToBigInteger24()
+        {
             var mask = IPAddress.Parse("::fff");
             uint uintMask = 0xfff;
             BigInteger? result = IPNetwork2.ToBigInteger(mask);
@@ -1401,9 +1401,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(uintMask, result, "uint");
         }
 
-    [TestMethod]
-    public void TestToBigInteger16()
-    {
+        [TestMethod]
+        public void TestToBigInteger16()
+        {
             var mask = IPAddress.Parse("::ff");
             uint uintMask = 0xff;
             BigInteger? result = IPNetwork2.ToBigInteger(mask);
@@ -1411,9 +1411,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(uintMask, result, "uint");
         }
 
-    [TestMethod]
-    public void TestToBigInteger8()
-    {
+        [TestMethod]
+        public void TestToBigInteger8()
+        {
             var mask = IPAddress.Parse("::ff00:0");
             uint uintMask = 0xff000000;
             BigInteger? result = IPNetwork2.ToBigInteger(mask);
@@ -1421,9 +1421,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(uintMask, result, "uint");
         }
 
-    [TestMethod]
-    public void TestToBigInteger0()
-    {
+        [TestMethod]
+        public void TestToBigInteger0()
+        {
             var mask = IPAddress.Parse("::");
             uint uintMask = 0x00000000;
             BigInteger? result = IPNetwork2.ToBigInteger(mask);
@@ -1431,13 +1431,13 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(uintMask, result, "uint");
         }
 
-    #endregion
+        #endregion
 
-    #region TryToBigInteger
+        #region TryToBigInteger
 
-    [TestMethod]
-    public void TestTryToBigInteger32()
-    {
+        [TestMethod]
+        public void TestTryToBigInteger32()
+        {
             var mask = IPAddress.Parse("::ffff:ffff");
             uint uintMask = 0xffffffff;
             BigInteger? result = null;
@@ -1447,9 +1447,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(true, parsed, "parsed");
         }
 
-    [TestMethod]
-    public void TestTryToBigInteger24()
-    {
+        [TestMethod]
+        public void TestTryToBigInteger24()
+        {
             var mask = IPAddress.Parse("::ffff:ff00");
             uint uintMask = 0xffffff00;
             BigInteger? result = null;
@@ -1459,9 +1459,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(true, parsed, "parsed");
         }
 
-    [TestMethod]
-    public void TestTryToBigInteger16()
-    {
+        [TestMethod]
+        public void TestTryToBigInteger16()
+        {
             var mask = IPAddress.Parse("::ffff:0");
             uint uintMask = 0xffff0000;
             BigInteger? result = null;
@@ -1471,9 +1471,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(true, parsed, "parsed");
         }
 
-    [TestMethod]
-    public void TestTryToBigInteger8()
-    {
+        [TestMethod]
+        public void TestTryToBigInteger8()
+        {
             var mask = IPAddress.Parse("::ff00:0");
             uint uintMask = 0xff000000;
 
@@ -1484,9 +1484,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(true, parsed, "parsed");
         }
 
-    [TestMethod]
-    public void TestTryToBigInteger0()
-    {
+        [TestMethod]
+        public void TestTryToBigInteger0()
+        {
             var mask = IPAddress.Parse("::");
             uint uintMask = 0x00000000;
             BigInteger? result = null;
@@ -1496,13 +1496,13 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(true, parsed, "parsed");
         }
 
-    #endregion
+        #endregion
 
-    #region TryToNetmask
+        #region TryToNetmask
 
-    [TestMethod]
-    public void TryToNetmask1()
-    {
+        [TestMethod]
+        public void TryToNetmask1()
+        {
             IPAddress result = null;
             bool parsed = IPNetwork2.TryToNetmask(0, AddressFamily.InterNetworkV6, out result);
             var expected = IPAddress.Parse("::");
@@ -1511,9 +1511,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(true, parsed, "parsed");
         }
 
-    [TestMethod]
-    public void TryToNetmask2()
-    {
+        [TestMethod]
+        public void TryToNetmask2()
+        {
             IPAddress result = null;
             bool parsed = IPNetwork2.TryToNetmask(33, AddressFamily.InterNetworkV6, out result);
             var expected = IPAddress.Parse("ffff:ffff:8000::");
@@ -1522,13 +1522,13 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(true, parsed, "parsed");
         }
 
-    #endregion
+        #endregion
 
-    #region ToNetmask
+        #region ToNetmask
 
-    [TestMethod]
-    public void ToNetmask128()
-    {
+        [TestMethod]
+        public void ToNetmask128()
+        {
             byte cidr = 128;
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff";
             string result = IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
@@ -1536,9 +1536,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(netmask, result, "netmask");
         }
 
-    [TestMethod]
-    public void ToNetmask31()
-    {
+        [TestMethod]
+        public void ToNetmask31()
+        {
             byte cidr = 127;
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffe";
             string result = IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
@@ -1546,9 +1546,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(netmask, result, "netmask");
         }
 
-    [TestMethod]
-    public void ToNetmask30()
-    {
+        [TestMethod]
+        public void ToNetmask30()
+        {
             byte cidr = 126;
             string netmask = "ffff:ffff:ffff:ffff:ffff:ffff:ffff:fffc";
             string result = IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
@@ -1556,9 +1556,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(netmask, result, "netmask");
         }
 
-    [TestMethod]
-    public void ToNetmask1()
-    {
+        [TestMethod]
+        public void ToNetmask1()
+        {
             byte cidr = 1;
             string netmask = "8000::";
             string result = IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
@@ -1566,9 +1566,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(netmask, result, "netmask");
         }
 
-    [TestMethod]
-    public void ToNetmask0()
-    {
+        [TestMethod]
+        public void ToNetmask0()
+        {
             byte cidr = 0;
             string netmask = "::";
             string result = IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
@@ -1576,21 +1576,21 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(netmask, result, "netmask");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    public void ToNetmaskOore1()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ToNetmaskOore1()
+        {
             byte cidr = 129;
             string result = IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
         }
 
-    #endregion
+        #endregion
 
-    #region ValidNetmask
+        #region ValidNetmask
 
-    [TestMethod]
-    public void TestValidNetmask0()
-    {
+        [TestMethod]
+        public void TestValidNetmask0()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff");
             bool expected = true;
             bool result = IPNetwork2.ValidNetmask(mask);
@@ -1598,9 +1598,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "ValidNetmask");
         }
 
-    [TestMethod]
-    public void TestValidNetmask1()
-    {
+        [TestMethod]
+        public void TestValidNetmask1()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fff0");
             bool expected = true;
             bool result = IPNetwork2.ValidNetmask(mask);
@@ -1608,9 +1608,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "ValidNetmask");
         }
 
-    [TestMethod]
-    public void TestValidNetmask2()
-    {
+        [TestMethod]
+        public void TestValidNetmask2()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:0000");
             bool expected = true;
             bool result = IPNetwork2.ValidNetmask(mask);
@@ -1618,9 +1618,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "ValidNetmask");
         }
 
-    [TestMethod]
-    public void TestValidNetmaskEae1()
-    {
+        [TestMethod]
+        public void TestValidNetmaskEae1()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:0000:ffff");
             bool expected = false;
             bool result = IPNetwork2.ValidNetmask(mask);
@@ -1628,9 +1628,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "ValidNetmask");
         }
 
-    [TestMethod]
-    public void TestValidNetmaskEae3()
-    {
+        [TestMethod]
+        public void TestValidNetmaskEae3()
+        {
             var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:0000:0001");
             bool expected = false;
             bool result = IPNetwork2.ValidNetmask(mask);
@@ -1638,13 +1638,13 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "ValidNetmask");
         }
 
-    #endregion
+        #endregion
 
-    #region BitsSet
+        #region BitsSet
 
-    [TestMethod]
-    public void TestBitsSet128()
-    {
+        [TestMethod]
+        public void TestBitsSet128()
+        {
             var ip = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff");
             uint bits = 128;
             uint result = IPNetwork2.BitsSet(ip);
@@ -1652,9 +1652,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(bits, result, "BitsSet");
         }
 
-    [TestMethod]
-    public void TestBitsSet120()
-    {
+        [TestMethod]
+        public void TestBitsSet120()
+        {
             var ip = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fff0");
             uint bits = 124;
             uint result = IPNetwork2.BitsSet(ip);
@@ -1662,9 +1662,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(bits, result, "BitsSet");
         }
 
-    [TestMethod]
-    public void TestBitsSet16()
-    {
+        [TestMethod]
+        public void TestBitsSet16()
+        {
             var ip = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:0000");
             uint bits = 112;
             uint result = IPNetwork2.BitsSet(ip);
@@ -1672,9 +1672,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(bits, result, "BitsSet");
         }
 
-    [TestMethod]
-    public void TestBitsSet4()
-    {
+        [TestMethod]
+        public void TestBitsSet4()
+        {
             var ip = IPAddress.Parse("f0f0:f0f0:f0f0:f0f0:f0f0:f0f0:f0f0:f0f0");
             uint bits = 64;
             uint result = IPNetwork2.BitsSet(ip);
@@ -1682,13 +1682,13 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(bits, result, "BitsSet");
         }
 
-    #endregion
+        #endregion
 
-    #region Contains
+        #region Contains
 
-    [TestMethod]
-    public void TestContains1()
-    {
+        [TestMethod]
+        public void TestContains1()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:0db8::/64");
             var ipaddress = IPAddress.Parse("2001:0db8::1");
 
@@ -1698,9 +1698,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "contains");
         }
 
-    [TestMethod]
-    public void TestContains2()
-    {
+        [TestMethod]
+        public void TestContains2()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:0db8::/64");
             var ipaddress = IPAddress.Parse("2001:0db8:0:1::");
 
@@ -1710,9 +1710,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "contains");
         }
 
-    [TestMethod]
-    public void TestContains3()
-    {
+        [TestMethod]
+        public void TestContains3()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:0db8::/64");
             var ipnetwork2 = IPNetwork2.Parse("2001:0db8::/64");
 
@@ -1722,9 +1722,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "contains");
         }
 
-    [TestMethod]
-    public void TestContains4()
-    {
+        [TestMethod]
+        public void TestContains4()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:0db8::/64");
             var ipnetwork2 = IPNetwork2.Parse("2001:0db8::/65");
 
@@ -1734,9 +1734,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "contains");
         }
 
-    [TestMethod]
-    public void TestContains5()
-    {
+        [TestMethod]
+        public void TestContains5()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:0db8::/64");
             var ipnetwork2 = IPNetwork2.Parse("2001:0db8:1::/65");
 
@@ -1746,9 +1746,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "contains");
         }
 
-    [TestMethod]
-    public void TestContains6()
-    {
+        [TestMethod]
+        public void TestContains6()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:0db8::/64");
             var ipnetwork2 = IPNetwork2.Parse("2001:0db8::/63");
 
@@ -1758,19 +1758,19 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "contains");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void TestContains10()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestContains10()
+        {
             var ipnetwork = IPNetwork2.Parse("::/0");
             IPAddress ipaddress = null;
 
             bool result = ipnetwork.Contains(ipaddress);
         }
 
-    [TestMethod]
-    public void TestContains11_different_address_family_returns_false()
-    {
+        [TestMethod]
+        public void TestContains11_different_address_family_returns_false()
+        {
             var ipnetwork = IPNetwork2.Parse("::1"); // IPv6
             var ipaddress = IPAddress.Parse("127.0.0.1"); // IPv4
 
@@ -1778,22 +1778,22 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(false, result, "contains");
         }
 
-    #endregion
+        #endregion
 
-    #region Overlap
+        #region Overlap
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void TestOverlap2()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestOverlap2()
+        {
             var network1 = IPNetwork2.Parse("2001:0db8::/0");
             IPNetwork2 network2 = null;
             network1.Overlap(network2);
         }
 
-    [TestMethod]
-    public void TestOverlap3()
-    {
+        [TestMethod]
+        public void TestOverlap3()
+        {
             var network1 = IPNetwork2.Parse("2001:0db8::/64");
             var network2 = IPNetwork2.Parse("2001:0db8::/64");
             bool result = network1.Overlap(network2);
@@ -1802,9 +1802,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "overlap");
         }
 
-    [TestMethod]
-    public void TestOverlap4()
-    {
+        [TestMethod]
+        public void TestOverlap4()
+        {
             var network1 = IPNetwork2.Parse("2001:0db8::/64");
             var network2 = IPNetwork2.Parse("2001:0db8:0:0:1::/65");
             bool result = network1.Overlap(network2);
@@ -1813,9 +1813,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "overlap");
         }
 
-    [TestMethod]
-    public void TestOverlap5()
-    {
+        [TestMethod]
+        public void TestOverlap5()
+        {
             var network1 = IPNetwork2.Parse("2001:0db8:0:1::/68");
             var network2 = IPNetwork2.Parse("2001:0db8:0:2::/68");
             bool result = network1.Overlap(network2);
@@ -1824,9 +1824,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "overlap");
         }
 
-    [TestMethod]
-    public void TestOverlap6()
-    {
+        [TestMethod]
+        public void TestOverlap6()
+        {
             var network1 = IPNetwork2.Parse("2001:0db8:0:1::/68");
             var network2 = IPNetwork2.Parse("2001:0db8:0:2::/62");
             bool result = network1.Overlap(network2);
@@ -1835,13 +1835,13 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "overlap");
         }
 
-    #endregion
+        #endregion
 
-    #region Examples
+        #region Examples
 
-    [TestMethod]
-    public void Example1()
-    {
+        [TestMethod]
+        public void Example1()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:0db8::/64");
 
             Console.WriteLine("Network : {0}", ipnetwork.Network);
@@ -1853,9 +1853,9 @@ public class IPNetworkV6UnitTest
             Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
         }
 
-    [TestMethod]
-    public void Example2()
-    {
+        [TestMethod]
+        public void Example2()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:0db8::/64");
 
             var ipaddress = IPAddress.Parse("2001:0db8::1");
@@ -1881,9 +1881,9 @@ public class IPNetworkV6UnitTest
             Console.WriteLine("{0} overlap {1} : {2}", ipnetwork, ipnetwork3, overlap2);
         }
 
-    [TestMethod]
-    public void Example4()
-    {
+        [TestMethod]
+        public void Example4()
+        {
             var wholeInternet = IPNetwork2.Parse("::/0");
             byte newCidr = 2;
             IPNetworkCollection subneted = wholeInternet.Subnet(newCidr);
@@ -1899,9 +1899,9 @@ public class IPNetworkV6UnitTest
             }
         }
 
-    [TestMethod]
-    public void Example5()
-    {
+        [TestMethod]
+        public void Example5()
+        {
             var ipnetwork1 = IPNetwork2.Parse("2001:0db8::/64");
             var ipnetwork2 = IPNetwork2.Parse("2001:0db9::/64");
             IPNetwork2[] ipnetwork3 = IPNetwork2.Supernet(new[] { ipnetwork1, ipnetwork2 });
@@ -1909,9 +1909,9 @@ public class IPNetworkV6UnitTest
             Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
         }
 
-    [TestMethod]
-    public void Example6()
-    {
+        [TestMethod]
+        public void Example6()
+        {
             var ipnetwork = IPNetwork2.Parse("fe80::202:b3ff:fe1e:8329/24");
 
             var ipaddress = IPAddress.Parse("2001:db8::");
@@ -1924,9 +1924,9 @@ public class IPNetworkV6UnitTest
             Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress2, contains2);
         }
 
-    [TestMethod]
-    public void Example8()
-    {
+        [TestMethod]
+        public void Example8()
+        {
             var network = IPNetwork2.Parse("::/124");
             IPNetworkCollection ips = network.Subnet(128);
 
@@ -1936,9 +1936,9 @@ public class IPNetworkV6UnitTest
             }
         }
 
-    [TestMethod]
-    public void Example11()
-    {
+        [TestMethod]
+        public void Example11()
+        {
             var defaultParse = IPNetwork2.Parse("::1");
             var classFullParse = IPNetwork2.Parse("::1", CidrGuess.ClassFull);
             var classLessParse = IPNetwork2.Parse("::1", CidrGuess.ClassLess);
@@ -1948,13 +1948,13 @@ public class IPNetworkV6UnitTest
             Console.WriteLine("IPV6 ClassLess Parse : {0}", classLessParse);
         }
 
-    #endregion
+        #endregion
 
-    #region ToString
+        #region ToString
 
-    [TestMethod]
-    public void TestToString()
-    {
+        [TestMethod]
+        public void TestToString()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:0db8:0000:0000:0000:0000:0000:0000/32");
             string expected = "2001:db8::/32";
             string result = ipnetwork.ToString();
@@ -1962,9 +1962,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "ToString");
         }
 
-    [TestMethod]
-    public void TestToString1()
-    {
+        [TestMethod]
+        public void TestToString1()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:0db8:1:2:3:4:5:6/32");
             string expected = "2001:db8::/32";
             string result = ipnetwork.ToString();
@@ -1972,9 +1972,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "ToString");
         }
 
-    [TestMethod]
-    public void TestToString2()
-    {
+        [TestMethod]
+        public void TestToString2()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:0db8:1:2:3:4:5:6/64");
             string expected = "2001:db8:1:2::/64";
             string result = ipnetwork.ToString();
@@ -1982,9 +1982,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "ToString");
         }
 
-    [TestMethod]
-    public void TestToString3()
-    {
+        [TestMethod]
+        public void TestToString3()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:0db8:1:2:3:4:5:6/100");
             string expected = "2001:db8:1:2:3:4::/100";
             string result = ipnetwork.ToString();
@@ -1992,33 +1992,33 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(expected, result, "ToString");
         }
 
-    #endregion
+        #endregion
 
-    #region Subnet
+        #region Subnet
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    public void TestSubnet3()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestSubnet3()
+        {
             var ipnetwork = IPNetwork2.Parse("::");
             byte cidr = 129;
 
             IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
-    public void TestSubnet4()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestSubnet4()
+        {
             var ipnetwork = IPNetwork2.Parse("::");
             byte cidr = 1;
 
             IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
         }
 
-    [TestMethod]
-    public void TestSubnet5()
-    {
+        [TestMethod]
+        public void TestSubnet5()
+        {
             var ipnetwork = IPNetwork2.Parse("1:1:1:1:1:1:1:1");
             byte cidr = 65;
 
@@ -2028,9 +2028,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual("1:1:1:1:8000::/65", subnets[1].ToString(), "subnet2");
         }
 
-    [TestMethod]
-    public void TestSubnet6()
-    {
+        [TestMethod]
+        public void TestSubnet6()
+        {
             var ipnetwork = IPNetwork2.Parse("1:1:1:1:1:1:1:1");
             byte cidr = 68;
 
@@ -2054,9 +2054,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual("1:1:1:1:f000::/68", subnets[15].ToString(), "subnet16");
         }
 
-    [TestMethod]
-    public void TestSubnet7()
-    {
+        [TestMethod]
+        public void TestSubnet7()
+        {
             var ipnetwork = IPNetwork2.Parse("1:1:1:1:1:1:1:1");
             byte cidr = 72;
 
@@ -2066,9 +2066,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual("1:1:1:1:ff00::/72", subnets[255].ToString(), "subnet256");
         }
 
-    [TestMethod]
-    public void TestSubnet9()
-    {
+        [TestMethod]
+        public void TestSubnet9()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:db08:1:1:1:1:1:1");
             byte cidr = 128;
             var count = BigInteger.Pow(2, ipnetwork.Cidr);
@@ -2079,9 +2079,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual("2001:db08:1:1:ffff:ffff:ffff:ffff/128", subnets[count - 1].ToString(), "last");
         }
 
-    [TestMethod]
-    public void TestSubnet10()
-    {
+        [TestMethod]
+        public void TestSubnet10()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:db08::/0");
             byte cidr = 128;
             var count = BigInteger.Pow(2, 128 - ipnetwork.Cidr);
@@ -2093,9 +2093,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff/128", subnets[count - 1].ToString(), "last");
         }
 
-    [TestMethod]
-    public void TestSubnet12()
-    {
+        [TestMethod]
+        public void TestSubnet12()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:db08::/64");
             byte cidr = 70;
             int i = -1;
@@ -2107,19 +2107,19 @@ public class IPNetworkV6UnitTest
             }
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
-    public void TestSubnet13()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void TestSubnet13()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:db08::/64");
             byte cidr = 70;
             IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
             IPNetwork2 error = subnets[1000];
         }
 
-    [TestMethod]
-    public void TestSubnet14()
-    {
+        [TestMethod]
+        public void TestSubnet14()
+        {
             var network = IPNetwork2.Parse("15.0.0.0/8");
             IPNetworkCollection subnets = network.Subnet(12);
             Assert.AreEqual(subnets[0].ToString(), "15.0.0.0/12", "subnets[0]");
@@ -2133,13 +2133,13 @@ public class IPNetworkV6UnitTest
             }
         }
 
-    #endregion
+        #endregion
 
-    #region TrySubnet
+        #region TrySubnet
 
-    [TestMethod]
-    public void TestTrySubnet3()
-    {
+        [TestMethod]
+        public void TestTrySubnet3()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:db08::/64");
             byte cidr = 255;
 
@@ -2149,9 +2149,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(false, subnetted, "subnetted");
         }
 
-    [TestMethod]
-    public void TestTrySubnet4()
-    {
+        [TestMethod]
+        public void TestTrySubnet4()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:db08::/64");
             byte cidr = 63;
 
@@ -2161,9 +2161,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(false, subnetted, "subnetted");
         }
 
-    [TestMethod]
-    public void TestTrySubnet5()
-    {
+        [TestMethod]
+        public void TestTrySubnet5()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:db8::/64");
             byte cidr = 65;
 
@@ -2176,9 +2176,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual("2001:db8:0:0:8000::/65", subnets[1].ToString(), "subnet2");
         }
 
-    [TestMethod]
-    public void TestTrySubnet6()
-    {
+        [TestMethod]
+        public void TestTrySubnet6()
+        {
             var ipnetwork = IPNetwork2.Parse("2001:db8::/64");
             byte cidr = 68;
 
@@ -2205,13 +2205,13 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual("2001:db8:0:0:f000::/68", subnets[15].ToString(), "subnet16");
         }
 
-    #endregion
+        #endregion
 
-    #region TrySupernet
+        #region TrySupernet
 
-    [TestMethod]
-    public void TestTrySupernet1()
-    {
+        [TestMethod]
+        public void TestTrySupernet1()
+        {
             var network1 = IPNetwork2.Parse("2001:db8::/65");
             var network2 = IPNetwork2.Parse("2001:db8:0:0:8000::/65");
             var supernetExpected = IPNetwork2.Parse("2001:db8::/64");
@@ -2223,10 +2223,10 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(supernetExpected, supernet, "supernet");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void TestTrySupernet2()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestTrySupernet2()
+        {
             IPNetwork2 network1 = null;
             var network2 = IPNetwork2.Parse("2001:db8::/64");
             IPNetwork2 supernet;
@@ -2235,9 +2235,9 @@ public class IPNetworkV6UnitTest
 #pragma warning restore 0618
         }
 
-    [TestMethod]
-    public void TestTrySupernet3()
-    {
+        [TestMethod]
+        public void TestTrySupernet3()
+        {
             var network1 = IPNetwork2.Parse("2001:db8::/64");
             IPNetwork2 network2 = null;
             IPNetwork2 supernetExpected = null;
@@ -2249,9 +2249,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    [TestMethod]
-    public void TestTrySupernet4()
-    {
+        [TestMethod]
+        public void TestTrySupernet4()
+        {
             var network1 = IPNetwork2.Parse("2001:db8::/64");
             var network2 = IPNetwork2.Parse("2001:db9::/65");
             IPNetwork2 supernetExpected = null;
@@ -2263,9 +2263,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    [TestMethod]
-    public void TestTrySupernet5()
-    {
+        [TestMethod]
+        public void TestTrySupernet5()
+        {
             var network1 = IPNetwork2.Parse("2001:db8::/64");
             var network2 = IPNetwork2.Parse("2001:dba::/64");
             IPNetwork2 supernetExpected = null;
@@ -2277,9 +2277,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    [TestMethod]
-    public void TestTrySupernet6()
-    {
+        [TestMethod]
+        public void TestTrySupernet6()
+        {
             var network1 = IPNetwork2.Parse("2001:db8::/64");
             var network2 = IPNetwork2.Parse("2001:db8::1/65");
             var supernetExpected = IPNetwork2.Parse("2001:db8::/64");
@@ -2291,9 +2291,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    [TestMethod]
-    public void TestTrySupernet8()
-    {
+        [TestMethod]
+        public void TestTrySupernet8()
+        {
             var network1 = IPNetwork2.Parse("2001:db0::/64");
             var network2 = IPNetwork2.Parse("2001:dbf::/64");
             IPNetwork2 supernetExpected = null;
@@ -2305,9 +2305,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    [TestMethod]
-    public void TestTrySupernet9()
-    {
+        [TestMethod]
+        public void TestTrySupernet9()
+        {
             var network1 = IPNetwork2.Parse("192.168.1.1/24");
             var network2 = IPNetwork2.Parse("192.168.2.1/24");
             IPNetwork2[] network3 = { network1, network2 };
@@ -2321,9 +2321,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    [TestMethod]
-    public void TestTrySupernet10()
-    {
+        [TestMethod]
+        public void TestTrySupernet10()
+        {
             var network1 = IPNetwork2.Parse("2001:db8:0000::/65");
             var network2 = IPNetwork2.Parse("2001:db8:0:0:8000::/65");
             IPNetwork2[] network3 = { network1, network2 };
@@ -2336,9 +2336,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    [TestMethod]
-    public void TestTrySupernet11()
-    {
+        [TestMethod]
+        public void TestTrySupernet11()
+        {
             IPNetwork2[] network3 = null;
             IPNetwork2[] supernetExpected = { IPNetwork2.Parse("2001:db8::/64") };
             IPNetwork2[] supernet;
@@ -2349,13 +2349,13 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    #endregion
+        #endregion
 
-    #region TryGuessCidr
+        #region TryGuessCidr
 
-    [TestMethod]
-    public void TestTryGuessCidrNull()
-    {
+        [TestMethod]
+        public void TestTryGuessCidrNull()
+        {
             byte cidr;
             bool parsed = IPNetwork2.TryGuessCidr(null, out cidr);
 
@@ -2363,9 +2363,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(0, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryGuessCidr1()
-    {
+        [TestMethod]
+        public void TestTryGuessCidr1()
+        {
             byte cidr;
             bool parsed = IPNetwork2.TryGuessCidr("::", out cidr);
 
@@ -2373,9 +2373,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(64, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryGuessCidr2()
-    {
+        [TestMethod]
+        public void TestTryGuessCidr2()
+        {
             byte cidr;
             bool parsed = IPNetwork2.TryGuessCidr("2001:0db8::", out cidr);
 
@@ -2383,133 +2383,133 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(64, cidr, "cidr");
         }
 
-    #endregion
+        #endregion
 
-    #region Count
+        #region Count
 
-    [TestMethod]
-    public void Total32()
-    {
+        [TestMethod]
+        public void Total32()
+        {
             var network = IPNetwork2.Parse("::/128");
             int total = 1;
             Assert.AreEqual(total, network.Total, "Total");
         }
 
-    [TestMethod]
-    public void Total31()
-    {
+        [TestMethod]
+        public void Total31()
+        {
             var network = IPNetwork2.Parse("::/127");
             int total = 2;
             Assert.AreEqual(total, network.Total, "Total");
         }
 
-    [TestMethod]
-    public void Total30()
-    {
+        [TestMethod]
+        public void Total30()
+        {
             var network = IPNetwork2.Parse("::/126");
             int total = 4;
             Assert.AreEqual(total, network.Total, "Total");
         }
 
-    [TestMethod]
-    public void Total24()
-    {
+        [TestMethod]
+        public void Total24()
+        {
             var network = IPNetwork2.Parse("::/120");
             int total = 256;
             Assert.AreEqual(total, network.Total, "Total");
         }
 
-    [TestMethod]
-    public void Total16()
-    {
+        [TestMethod]
+        public void Total16()
+        {
             var network = IPNetwork2.Parse("::/112");
             int total = 65536;
             Assert.AreEqual(total, network.Total, "Total");
         }
 
-    [TestMethod]
-    public void Total8()
-    {
+        [TestMethod]
+        public void Total8()
+        {
             var network = IPNetwork2.Parse("::/104");
             int total = 16777216;
             Assert.AreEqual(total, network.Total, "Total");
         }
 
-    [TestMethod]
-    public void Total0()
-    {
+        [TestMethod]
+        public void Total0()
+        {
             var network = IPNetwork2.Parse("::/0");
             var total = BigInteger.Pow(2, 128);
             Assert.AreEqual(total, network.Total, "Total");
         }
 
-    #endregion
+        #endregion
 
-    #region Usable
+        #region Usable
 
-    [TestMethod]
-    public void Usable32()
-    {
+        [TestMethod]
+        public void Usable32()
+        {
             var network = IPNetwork2.Parse("::/128");
             uint usable = 1;
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
-    [TestMethod]
-    public void Usable31()
-    {
+        [TestMethod]
+        public void Usable31()
+        {
             var network = IPNetwork2.Parse("::/127");
             uint usable = 2;
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
-    [TestMethod]
-    public void Usable30()
-    {
+        [TestMethod]
+        public void Usable30()
+        {
             var network = IPNetwork2.Parse("::/126");
             uint usable = 4;
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
-    [TestMethod]
-    public void Usable24()
-    {
+        [TestMethod]
+        public void Usable24()
+        {
             var network = IPNetwork2.Parse("::/120");
             uint usable = 256;
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
-    [TestMethod]
-    public void Usable16()
-    {
+        [TestMethod]
+        public void Usable16()
+        {
             var network = IPNetwork2.Parse("::/112");
             uint usable = 65536;
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
-    [TestMethod]
-    public void Usable8()
-    {
+        [TestMethod]
+        public void Usable8()
+        {
             var network = IPNetwork2.Parse("::/104");
             uint usable = 16777216;
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
-    [TestMethod]
-    public void Usable0()
-    {
+        [TestMethod]
+        public void Usable0()
+        {
             var network = IPNetwork2.Parse("::/0");
             var usable = BigInteger.Pow(2, 128);
             Assert.AreEqual(usable, network.Usable, "Usable");
         }
 
-    #endregion
+        #endregion
 
-    #region TryParseCidr
+        #region TryParseCidr
 
-    [TestMethod]
-    public void TryParseCidr1()
-    {
+        [TestMethod]
+        public void TryParseCidr1()
+        {
             string sidr = "0";
             byte? cidr;
             byte? result = 0;
@@ -2519,9 +2519,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(result, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TryParseCidr2()
-    {
+        [TestMethod]
+        public void TryParseCidr2()
+        {
             string sidr = "sadsd";
             byte? cidr;
             byte? result = null;
@@ -2532,9 +2532,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(result, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TryParseCidr33()
-    {
+        [TestMethod]
+        public void TryParseCidr33()
+        {
             string sidr = "33";
             byte? cidr;
             byte result = 33;
@@ -2545,9 +2545,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(result, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TryParseCidr128()
-    {
+        [TestMethod]
+        public void TryParseCidr128()
+        {
             string sidr = "128";
             byte? cidr;
             byte result = 128;
@@ -2558,9 +2558,9 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(result, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TryParseCidr129()
-    {
+        [TestMethod]
+        public void TryParseCidr129()
+        {
             string sidr = "129";
             byte? cidr;
             byte? result = null;
@@ -2571,5 +2571,6 @@ public class IPNetworkV6UnitTest
             Assert.AreEqual(result, cidr, "cidr");
         }
 
-    #endregion
+        #endregion
+    }
 }

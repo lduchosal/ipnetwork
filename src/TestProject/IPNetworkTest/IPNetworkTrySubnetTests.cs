@@ -2,34 +2,34 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject.IPNetworkTest;
-
-[TestClass]
-public class IPNetworkTrySubnetTests
+namespace TestProject.IPNetworkTest
 {
-    /// <summary>
-    ///     Tests Try Subnet functionality with Internal Subnet1.
-    /// </summary>
-    [TestMethod]
-    public void TestInternalSubnet1()
+    [TestClass]
+    public class IPNetworkTrySubnetTests
     {
+        /// <summary>
+        ///     Tests Try Subnet functionality with Internal Subnet1.
+        /// </summary>
+        [TestMethod]
+        public void TestInternalSubnet1()
+        {
             IPNetworkCollection subnets = null;
             IPNetwork2.InternalSubnet(true, null, 0, out subnets);
             Assert.AreEqual(null, subnets, "subnets");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void TestInternalSubnet2()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestInternalSubnet2()
+        {
             IPNetworkCollection subnets = null;
             IPNetwork2.InternalSubnet(false, null, 0, out subnets);
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void TestTrySubnet1()
-    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestTrySubnet1()
+        {
             IPNetwork2 ipnetwork = null;
             byte cidr = 9;
 
@@ -39,12 +39,12 @@ public class IPNetworkTrySubnetTests
 #pragma warning restore 0618
         }
 
-    /// <summary>
-    ///     Tests Try Subnet functionality with Try Subnet Static1.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySubnetStatic1()
-    {
+        /// <summary>
+        ///     Tests Try Subnet functionality with Try Subnet Static1.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySubnetStatic1()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             byte cidr = 9;
 
@@ -54,12 +54,12 @@ public class IPNetworkTrySubnetTests
 #pragma warning restore 0618
         }
 
-    /// <summary>
-    ///     Tests Try Subnet functionality with Try Subnet3.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySubnet3()
-    {
+        /// <summary>
+        ///     Tests Try Subnet functionality with Try Subnet3.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySubnet3()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             byte cidr = 55;
 
@@ -69,12 +69,12 @@ public class IPNetworkTrySubnetTests
             Assert.AreEqual(false, subnetted, "subnetted");
         }
 
-    /// <summary>
-    ///     Tests Try Subnet functionality with Try Subnet4.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySubnet4()
-    {
+        /// <summary>
+        ///     Tests Try Subnet functionality with Try Subnet4.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySubnet4()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             byte cidr = 1;
 
@@ -84,12 +84,12 @@ public class IPNetworkTrySubnetTests
             Assert.AreEqual(false, subnetted, "subnetted");
         }
 
-    /// <summary>
-    ///     Tests Try Subnet functionality with Try Subnet5.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySubnet5()
-    {
+        /// <summary>
+        ///     Tests Try Subnet functionality with Try Subnet5.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySubnet5()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             byte cidr = 9;
 
@@ -102,12 +102,12 @@ public class IPNetworkTrySubnetTests
             Assert.AreEqual("10.128.0.0/9", subnets[1].ToString(), "subnet2");
         }
 
-    /// <summary>
-    ///     Tests Try Subnet functionality with Try Subnet6.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySubnet6()
-    {
+        /// <summary>
+        ///     Tests Try Subnet functionality with Try Subnet6.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySubnet6()
+        {
             IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
             byte cidr = 20;
 
@@ -133,4 +133,5 @@ public class IPNetworkTrySubnetTests
             Assert.AreEqual("192.168.224.0/20", subnets[14].ToString(), "subnet15");
             Assert.AreEqual("192.168.240.0/20", subnets[15].ToString(), "subnet16");
         }
+    }
 }

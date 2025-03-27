@@ -2,111 +2,112 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject.IPNetworkTest;
-
-[TestClass]
-public class IPNetworkCompareTests
+namespace TestProject.IPNetworkTest
 {
-    /// <summary>
-    ///     Tests Compare functionality with Compare To1.
-    /// </summary>
-    [TestMethod]
-    public void TestCompareTo1()
+    [TestClass]
+    public class IPNetworkCompareTests
     {
-        var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
-        var ipn2 = IPNetwork2.Parse("10.0.0.2/16");
+        /// <summary>
+        ///     Tests Compare functionality with Compare To1.
+        /// </summary>
+        [TestMethod]
+        public void TestCompareTo1()
+        {
+            var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
+            var ipn2 = IPNetwork2.Parse("10.0.0.2/16");
 
-        int comparison = ipn1.CompareTo(ipn2);
+            int comparison = ipn1.CompareTo(ipn2);
 
-        Assert.AreEqual(0, comparison, "compare");
-    }
+            Assert.AreEqual(0, comparison, "compare");
+        }
 
-    /// <summary>
-    ///     Tests Compare functionality with Compare To2.
-    /// </summary>
-    [TestMethod]
-    public void TestCompareTo2()
-    {
-        var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
-        object ipn2 = IPNetwork2.Parse("10.0.0.2/16");
+        /// <summary>
+        ///     Tests Compare functionality with Compare To2.
+        /// </summary>
+        [TestMethod]
+        public void TestCompareTo2()
+        {
+            var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
+            object ipn2 = IPNetwork2.Parse("10.0.0.2/16");
 
-        int comparison = ipn1.CompareTo(ipn2);
+            int comparison = ipn1.CompareTo(ipn2);
 
-        Assert.AreEqual(0, comparison, "compare");
-    }
+            Assert.AreEqual(0, comparison, "compare");
+        }
 
-    /// <summary>
-    ///     Tests Compare functionality with Compare To3.
-    /// </summary>
-    [TestMethod]
-    public void TestCompareTo3()
-    {
-        var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
-        object ipn2 = null;
+        /// <summary>
+        ///     Tests Compare functionality with Compare To3.
+        /// </summary>
+        [TestMethod]
+        public void TestCompareTo3()
+        {
+            var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
+            object ipn2 = null;
 
-        int comparison = ipn1.CompareTo(ipn2);
+            int comparison = ipn1.CompareTo(ipn2);
 
-        Assert.AreEqual(1, comparison, "compare");
-    }
+            Assert.AreEqual(1, comparison, "compare");
+        }
 
-    /// <summary>
-    ///     Tests Compare functionality with Compare To4.
-    /// </summary>
-    [TestMethod]
-    public void TestCompareTo4()
-    {
-        var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
-        IPNetwork2 ipn2 = null;
+        /// <summary>
+        ///     Tests Compare functionality with Compare To4.
+        /// </summary>
+        [TestMethod]
+        public void TestCompareTo4()
+        {
+            var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
+            IPNetwork2 ipn2 = null;
 
-        int comparison = ipn1.CompareTo(ipn2);
+            int comparison = ipn1.CompareTo(ipn2);
 
-        Assert.AreEqual(1, comparison, "compare");
-    }
+            Assert.AreEqual(1, comparison, "compare");
+        }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
-    public void TestCompareTo5()
-    {
-        var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
-        string ipn2 = string.Empty;
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void TestCompareTo5()
+        {
+            var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
+            string ipn2 = string.Empty;
 
-        int comparison = ipn1.CompareTo(ipn2);
-    }
+            int comparison = ipn1.CompareTo(ipn2);
+        }
 
-    /// <summary>
-    ///     Tests Compare functionality with Compare To6.
-    /// </summary>
-    [TestMethod]
-    public void TestCompareTo6()
-    {
-        var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
-        int comparison = ipn1.CompareTo(ipn1);
+        /// <summary>
+        ///     Tests Compare functionality with Compare To6.
+        /// </summary>
+        [TestMethod]
+        public void TestCompareTo6()
+        {
+            var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
+            int comparison = ipn1.CompareTo(ipn1);
 
-        Assert.AreEqual(0, comparison, "compare");
-    }
+            Assert.AreEqual(0, comparison, "compare");
+        }
 
-    /// <summary>
-    ///     Tests Compare functionality with Compare1.
-    /// </summary>
-    [TestMethod]
-    public void TestCompare1()
-    {
-        var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
-        int comparison = IPNetwork2.Compare(null, ipn1);
+        /// <summary>
+        ///     Tests Compare functionality with Compare1.
+        /// </summary>
+        [TestMethod]
+        public void TestCompare1()
+        {
+            var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
+            int comparison = IPNetwork2.Compare(null, ipn1);
 
-        Assert.AreEqual(-1, comparison, "compare");
-    }
+            Assert.AreEqual(-1, comparison, "compare");
+        }
 
-    /// <summary>
-    ///     Tests Compare functionality with Compare2.
-    /// </summary>
-    [TestMethod]
-    public void TestCompare2()
-    {
-        var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
-        var ipn2 = IPNetwork2.Parse("20.0.0.1/16");
-        int comparison = IPNetwork2.Compare(ipn1, ipn2);
+        /// <summary>
+        ///     Tests Compare functionality with Compare2.
+        /// </summary>
+        [TestMethod]
+        public void TestCompare2()
+        {
+            var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
+            var ipn2 = IPNetwork2.Parse("20.0.0.1/16");
+            int comparison = IPNetwork2.Compare(ipn1, ipn2);
 
-        Assert.AreEqual(-1, comparison, "compare");
+            Assert.AreEqual(-1, comparison, "compare");
+        }
     }
 }

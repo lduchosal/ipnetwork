@@ -2,14 +2,14 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject;
-
-[TestClass]
-public class CidrClassFullIpv4UnitTest
+namespace TestProject
 {
-    [TestMethod]
-    public void TestTryGuessCidrNull()
+    [TestClass]
+    public class CidrClassFullIpv4UnitTest
     {
+        [TestMethod]
+        public void TestTryGuessCidrNull()
+        {
             var cidrguess = new CidrClassFull();
 
             byte cidr;
@@ -19,9 +19,9 @@ public class CidrClassFullIpv4UnitTest
             Assert.AreEqual(0, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryGuessCidrA()
-    {
+        [TestMethod]
+        public void TestTryGuessCidrA()
+        {
             var cidrguess = new CidrClassFull();
 
             byte cidr;
@@ -31,9 +31,9 @@ public class CidrClassFullIpv4UnitTest
             Assert.AreEqual(8, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryGuessCidrB()
-    {
+        [TestMethod]
+        public void TestTryGuessCidrB()
+        {
             var cidrguess = new CidrClassFull();
 
             byte cidr;
@@ -43,9 +43,9 @@ public class CidrClassFullIpv4UnitTest
             Assert.AreEqual(16, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryGuessCidrC()
-    {
+        [TestMethod]
+        public void TestTryGuessCidrC()
+        {
             var cidrguess = new CidrClassFull();
 
             byte cidr;
@@ -55,9 +55,9 @@ public class CidrClassFullIpv4UnitTest
             Assert.AreEqual(24, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryGuessCidrD()
-    {
+        [TestMethod]
+        public void TestTryGuessCidrD()
+        {
             var cidrguess = new CidrClassFull();
 
             byte cidr;
@@ -67,9 +67,9 @@ public class CidrClassFullIpv4UnitTest
             Assert.AreEqual(24, cidr, "cidr");
         }
 
-    [TestMethod]
-    public void TestTryGuessCidrE()
-    {
+        [TestMethod]
+        public void TestTryGuessCidrE()
+        {
             var cidrguess = new CidrClassFull();
 
             byte cidr;
@@ -78,4 +78,5 @@ public class CidrClassFullIpv4UnitTest
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(24, cidr, "cidr");
         }
+    }
 }

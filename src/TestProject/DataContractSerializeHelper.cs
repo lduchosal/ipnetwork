@@ -2,13 +2,13 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject;
-
-public static class DataContractSerializeHelper
+namespace TestProject
 {
-    public static string Serialize<T>(T obj, bool formatting = true)
-        where T : new()
+    public static class DataContractSerializeHelper
     {
+        public static string Serialize<T>(T obj, bool formatting = true)
+            where T : new()
+        {
             if (obj == null)
             {
                 return string.Empty;
@@ -32,9 +32,9 @@ public static class DataContractSerializeHelper
             }
         }
 
-    public static T Deserialize<T>(string xml)
-        where T : new()
-    {
+        public static T Deserialize<T>(string xml)
+            where T : new()
+        {
             if (string.IsNullOrWhiteSpace(xml))
             {
                 return new T();
@@ -48,4 +48,5 @@ public static class DataContractSerializeHelper
                 return result;
             }
         }
+    }
 }
