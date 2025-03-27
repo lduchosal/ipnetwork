@@ -2,13 +2,26 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestProject;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace TestProject;
 
 [TestClass]
 public class EqualsUnitTest
 {
+    #region Equals IPv6 vs IPv4
+
+    [TestMethod]
+    public void TestEquals_ipv6_ipv4_0()
+    {
+            var network1 = IPNetwork2.Parse("::/32");
+            var network2 = IPNetwork2.Parse("0.0.0.0/32");
+            bool result = network1.Equals(network2);
+            bool expected = false;
+
+            Assert.AreEqual(expected, result, "equals");
+        }
+
+    #endregion
+
     #region Equals IPv4
 
     [TestMethod]
@@ -119,21 +132,6 @@ public class EqualsUnitTest
     {
             var network1 = IPNetwork2.Parse("::1/128");
             var network2 = IPNetwork2.Parse("::10/128");
-            bool result = network1.Equals(network2);
-            bool expected = false;
-
-            Assert.AreEqual(expected, result, "equals");
-        }
-
-    #endregion
-
-    #region Equals IPv6 vs IPv4
-
-    [TestMethod]
-    public void TestEquals_ipv6_ipv4_0()
-    {
-            var network1 = IPNetwork2.Parse("::/32");
-            var network2 = IPNetwork2.Parse("0.0.0.0/32");
             bool result = network1.Equals(network2);
             bool expected = false;
 
