@@ -2,30 +2,21 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject;
-
-/// <summary>
-///     IPNetworkUnitTest test every single method.
-/// </summary>
-[TestClass]
-public class TryParseUnitTest
+namespace System.Net.TestProject
 {
-    #region Issue294
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    [TestMethod]
-    public void Test_IPNetwork_TryParse_Issue294()
+    /// <summary>
+    /// IPNetworkUnitTest test every single method.
+    /// </summary>
+    [TestClass]
+    public class TryParseUnitTest
     {
-            bool result = IPNetwork2.TryParse("*", out IPNetwork2 ipaddress1);
-            Assert.AreEqual(false, result, "parsed1");
-        }
+        #region TryParse IPV4
 
-    #endregion
-
-    #region TryParse IPV4
-
-    [TestMethod]
-    public void TestTryParseIPAddressNetmaskAne2()
-    {
+        [TestMethod]
+        public void TestTryParseIPAddressNetmaskANE2()
+        {
             IPAddress ip = null;
             bool parsed = IPNetwork2.TryParse(ip, ip, out IPNetwork2 ipnet);
 
@@ -33,27 +24,27 @@ public class TryParseUnitTest
             Assert.AreEqual(null, ipnet, "ipnet");
         }
 
-    [TestMethod]
-    public void TestTryParseIPAddressNetmaskAne3()
-    {
+        [TestMethod]
+        public void TestTryParseIPAddressNetmaskANE3()
+        {
             bool parsed = IPNetwork2.TryParse(string.Empty, 0, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
         }
 
-    [TestMethod]
-    public void TestTryParseIPAddressNetmaskAne4()
-    {
+        [TestMethod]
+        public void TestTryParseIPAddressNetmaskANE4()
+        {
             bool parsed = IPNetwork2.TryParse(null, 0, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
         }
 
-    [TestMethod]
-    public void TestTryParseIPAddressNetmaskAne5()
-    {
+        [TestMethod]
+        public void TestTryParseIPAddressNetmaskANE5()
+        {
             string n = null;
 
             bool parsed = IPNetwork2.TryParse(n, n, out IPNetwork2 ipnet);
@@ -62,63 +53,63 @@ public class TryParseUnitTest
             Assert.AreEqual(null, ipnet, "ipnet");
         }
 
-    [TestMethod]
-    public void TestTryParseIPAddressNetmaskAne6()
-    {
+        [TestMethod]
+        public void TestTryParseIPAddressNetmaskANE6()
+        {
             bool parsed = IPNetwork2.TryParse(IPAddress.Parse("10.10.10.10"), null, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
         }
 
-    [TestMethod]
-    public void TestTryParseIPAddressNetmaskAne7()
-    {
+        [TestMethod]
+        public void TestTryParseIPAddressNetmaskANE7()
+        {
             bool parsed = IPNetwork2.TryParse("0.0.0.0", null, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
         }
 
-    [TestMethod]
-    public void TestTryParseIPAddressNetmaskAne8()
-    {
+        [TestMethod]
+        public void TestTryParseIPAddressNetmaskANE8()
+        {
             bool parsed = IPNetwork2.TryParse("x.x.x.x", "x.x.x.x", out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
         }
 
-    [TestMethod]
-    public void TestTryParseIPAddressNetmaskAne9()
-    {
+        [TestMethod]
+        public void TestTryParseIPAddressNetmaskANE9()
+        {
             bool parsed = IPNetwork2.TryParse("0.0.0.0", "x.x.x.x", out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
         }
 
-    [TestMethod]
-    public void TestTryParseIPAddressNetmaskAne10()
-    {
+        [TestMethod]
+        public void TestTryParseIPAddressNetmaskANE10()
+        {
             bool parsed = IPNetwork2.TryParse("x.x.x.x", 0, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
         }
 
-    [TestMethod]
-    public void TestTryParseIPAddressNetmaskAne11()
-    {
+        [TestMethod]
+        public void TestTryParseIPAddressNetmaskANE11()
+        {
             bool parsed = IPNetwork2.TryParse("0.0.0.0", 33, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
         }
 
-    [TestMethod]
-    public void TestTryParseIPAddressNetmask()
-    {
+        [TestMethod]
+        public void TestTryParseIPAddressNetmask()
+        {
             string ipaddress = "192.168.168.100";
             string netmask = "255.255.255.0";
 
@@ -141,9 +132,9 @@ public class TryParseUnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestTryParseString1()
-    {
+        [TestMethod]
+        public void TestTryParseString1()
+        {
             string ipaddress = "192.168.168.100 255.255.255.0";
 
             string network = "192.168.168.0";
@@ -166,9 +157,9 @@ public class TryParseUnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestTryParseString2()
-    {
+        [TestMethod]
+        public void TestTryParseString2()
+        {
             string ipaddress = "192.168.168.100/24";
 
             string network = "192.168.168.0";
@@ -191,9 +182,9 @@ public class TryParseUnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestTryParseString3()
-    {
+        [TestMethod]
+        public void TestTryParseString3()
+        {
             string ipaddress = "0.0.0.0/0";
 
             string network = "0.0.0.0";
@@ -216,9 +207,9 @@ public class TryParseUnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestTryParseString4()
-    {
+        [TestMethod]
+        public void TestTryParseString4()
+        {
             string ipaddress = "0.0.0.0/32";
 
             string network = "0.0.0.0";
@@ -241,9 +232,9 @@ public class TryParseUnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestTryParseString5()
-    {
+        [TestMethod]
+        public void TestTryParseString5()
+        {
             string ipaddress = "255.255.255.255/32";
 
             string network = "255.255.255.255";
@@ -266,40 +257,38 @@ public class TryParseUnitTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestMethod]
-    public void TestTryParseStringAe1()
-    {
+        [TestMethod]
+        public void TestTryParseStringAE1()
+        {
             string ipaddress = "garbage";
             bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
             Assert.AreEqual(false, parsed, "parsed");
         }
 
-    [TestMethod]
-    public void TestTryParseStringAe2()
-    {
+        [TestMethod]
+        public void TestTryParseStringAE2()
+        {
             string ipaddress = "0.0.0.0 0.0.1.0";
             bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
             Assert.AreEqual(false, parsed, "parsed");
         }
 
-    [TestMethod]
-    public void TestTryParseStringAne1()
-    {
+        [TestMethod]
+        public void TestTryParseStringANE1()
+        {
             string ipaddress = null;
             bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
             Assert.AreEqual(false, parsed, "parsed");
         }
+        #endregion
 
-    #endregion
-
-    #region TryParse
-
-    [TestMethod]
-    public void Test_TryParse_InvalidIpv6_return_valid_ipv6network()
-    {
+        #region TryParse
+        [TestMethod]
+        public void Test_TryParse_InvalidIpv6_return_valid_ipv6network()
+        {
             bool parsed1 = IPNetwork2.TryParse("g001:02b8::/64", out IPNetwork2 ipnetwork1);
             bool parsed2 = IPNetwork2.TryParse("1:2b8::/64", out IPNetwork2 ipnetwork2);
 
@@ -308,40 +297,51 @@ public class TryParseUnitTest
             Assert.AreEqual(ipnetwork1, ipnetwork2, "ipnetwork1 == ipnetwork2");
         }
 
-    [DataTestMethod]
-    [DataRow("1.1.1.1/1", true, true)]
-    [DataRow("1.1.1.1/1", false, true)]
-    [DataRow("::/0", true, true)]
-    [DataRow("::/0", false, true)]
-    [DataRow("g001:02b8::/64", true, true)]
-    [DataRow("g001:02b8::/64", false, false)]
-    [DataRow("    001:02b8::/64", false, false)]
-    [DataRow("    001:02b8::/64", true, true)]
-    [DataRow("001:02b8::    /    64", true, true)]
-    [DataRow("001:02b8::    /    64", false, false)]
-    [DataRow("001:02b8::/64", true, true)]
-    [DataRow("001:02b8::/64", false, true)]
-    public void Test_TryParse(string ipnetwork, bool sanitanize, bool parsed)
-    {
+        [DataTestMethod]
+        [DataRow("1.1.1.1/1", true, true)]
+        [DataRow("1.1.1.1/1", false, true)]
+        [DataRow("::/0", true, true)]
+        [DataRow("::/0", false, true)]
+        [DataRow("g001:02b8::/64", true, true)]
+        [DataRow("g001:02b8::/64", false, false)]
+        [DataRow("    001:02b8::/64", false, false)]
+        [DataRow("    001:02b8::/64", true, true)]
+        [DataRow("001:02b8::    /    64", true, true)]
+        [DataRow("001:02b8::    /    64", false, false)]
+        [DataRow("001:02b8::/64", true, true)]
+        [DataRow("001:02b8::/64", false, true)]
+        public void Test_TryParse(string ipnetwork, bool sanitanize, bool parsed)
+        {
             bool result = IPNetwork2.TryParse(ipnetwork, sanitanize, out IPNetwork2 ipnetwork1);
 
             Assert.AreEqual(parsed, result, "parsed1");
         }
 
-    [DataTestMethod]
-    [DataRow("1.1.1.1", true)]
-    [DataRow("::", true)]
-    [DataRow("001:02b8::", true)]
-    [DataRow("g001:02b8::", false)]
-    [DataRow(" 001:02b8::", false)]
-    [DataRow(" 001:02b8:: ", false)]
-    [DataRow("001:02b8:: ", false)]
-    public void Test_IPAddress_TryParse(string ipaddress, bool parsed)
-    {
+        [DataTestMethod]
+        [DataRow("1.1.1.1", true)]
+        [DataRow("::", true)]
+        [DataRow("001:02b8::", true)]
+        [DataRow("g001:02b8::", false)]
+        [DataRow(" 001:02b8::", false)]
+        [DataRow(" 001:02b8:: ", false)]
+        [DataRow("001:02b8:: ", false)]
+        public void Test_IPAddress_TryParse(string ipaddress, bool parsed)
+        {
             bool result = IPAddress.TryParse(ipaddress, out IPAddress ipaddress1);
 
             Assert.AreEqual(parsed, result, "parsed1");
         }
 
-    #endregion
+        #endregion
+        
+        #region Issue294
+        
+        [TestMethod]
+        public void Test_IPNetwork_TryParse_Issue294()
+        {
+            bool result = IPNetwork2.TryParse("*", out IPNetwork2 ipaddress1);
+            Assert.AreEqual(false, result, "parsed1");
+        }
+        #endregion
+    }
 }

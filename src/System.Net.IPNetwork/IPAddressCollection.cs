@@ -8,14 +8,23 @@ namespace System.Net
     using System.Collections.Generic;
     using System.Numerics;
 
+    /// <summary>
+    /// Represents different filters for a collection of items.
+    /// </summary>
     public enum FilterEnum
     {
+        /// <summary>
+        /// Every IPAdresses are returned
+        /// </summary>
         All,
+        /// <summary>
+        /// Returns only usable IPAdresses
+        /// </summary>
         Usable,
     }
 
     /// <summary>
-    /// A collection of IP Adresses
+    /// Represents a collection of IP addresses within a specific IP network.
     /// </summary>
     public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress>
     {
@@ -31,6 +40,13 @@ namespace System.Net
         }
 
         #region Count, Array, Enumerator
+
+        /// <summary>
+        /// Gets the count of IP addresses within the network.
+        /// </summary>
+        /// <value>
+        /// The count of IP addresses within the network.
+        /// </value>
         public BigInteger Count
         {
             get
@@ -50,6 +66,12 @@ namespace System.Net
             }
         }
 
+        /// <summary>
+        /// Gets the IP address corresponding to the given index from the IPNetwork collection.
+        /// </summary>
+        /// <param name="i">The index of the IP address to retrieve.</param>
+        /// <returns>The IP address corresponding to the given index.</returns>
+        /// <exception cref="ArgumentOutOfRangeException">Thrown when the given index is greater than or equal to the Count property of the IPNetwork collection.</exception>
         public IPAddress this[BigInteger i]
         {
             get
@@ -75,6 +97,11 @@ namespace System.Net
         #endregion
 
         #region Legacy Enumeration
+
+        /// <summary>
+        /// Gets the current <see cref="IPAddress"/> from the collection.
+        /// </summary>
+        /// <returns>The current <see cref="IPAddress"/>.</returns>
         public IPAddress Current
         {
             get
@@ -91,6 +118,7 @@ namespace System.Net
             }
         }
 
+        /// <inheritdoc />
         public bool MoveNext()
         {
             this._enumerator++;
@@ -102,11 +130,13 @@ namespace System.Net
             return true;
         }
 
+        /// <inheritdoc />
         public void Reset()
         {
             this._enumerator = -1;
         }
 
+        /// <inheritdoc />
         public void Dispose()
         {
             // nothing to dispose

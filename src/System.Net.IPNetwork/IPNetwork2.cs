@@ -29,6 +29,9 @@ namespace System.Net
 
         private AddressFamily _family;
 
+        /// <summary>
+        /// Gets or sets the value of the IPNetwork property.
+        /// </summary>
         [DataMember(Name = "IPNetwork", IsRequired = true)]
         public string Value
         {
@@ -153,10 +156,10 @@ namespace System.Net
         {
             get
             {
-                BigInteger fisrt = this._family == Sockets.AddressFamily.InterNetworkV6
+                BigInteger first = this._family == Sockets.AddressFamily.InterNetworkV6
                     ? this._network
                     : (this.Usable <= 0) ? this._network : this._network + 1;
-                return IPNetwork2.ToIPAddress(fisrt, this._family);
+                return IPNetwork2.ToIPAddress(first, this._family);
             }
         }
 
@@ -224,6 +227,12 @@ namespace System.Net
 #if TRAVISCI
         public
 #else
+        /// <summary>
+        /// Initializes a new instance of the <see cref="IPNetwork2"/> class with the specified IP address, address family, and CIDR.
+        /// </summary>
+        /// <param name="ipaddress">The IP address of the network.</param>
+        /// <param name="family">The address family of the network.</param>
+        /// <param name="cidr">The CIDR (Classless Inter-Domain Routing) notation of the network.</param>
         internal
 #endif
             IPNetwork2(BigInteger ipaddress, AddressFamily family, byte cidr)
@@ -1305,7 +1314,7 @@ namespace System.Net
         {
             if (contains == null)
             {
-                throw new ArgumentNullException("ipaddress");
+                throw new ArgumentNullException("contains");
             }
 
             if (this.AddressFamily != contains.AddressFamily)
@@ -1323,6 +1332,14 @@ namespace System.Net
             return result;
         }
 
+        /// <summary>
+        /// Determines whether the given IP address is part of the given IP network.
+        /// </summary>
+        /// <param name="network">The IP network.</param>
+        /// <param name="ipaddress">The IP address.</param>
+        /// <returns>
+        /// <c>true</c> if the IP address is part of the IP network; otherwise, <c>false</c>.
+        /// </returns>
         [Obsolete("static Contains is deprecated, please use instance Contains.")]
         public static bool Contains(IPNetwork2 network, IPAddress ipaddress)
         {
@@ -1358,6 +1375,14 @@ namespace System.Net
             return result;
         }
 
+        /// <summary>
+        /// Determines if the given <paramref name="network"/> contains the specified <paramref name="network2"/>.
+        /// </summary>
+        /// <param name="network">The network to check for containment.</param>
+        /// <param name="network2">The network to check if it is contained.</param>
+        /// <returns>
+        /// <c>true</c> if the <paramref name="network"/> contains the <paramref name="network2"/>; otherwise, <c>false</c>.
+        /// </returns>
         [Obsolete("static Contains is deprecated, please use instance Contains.")]
         public static bool Contains(IPNetwork2 network, IPNetwork2 network2)
         {
@@ -1408,6 +1433,12 @@ namespace System.Net
             return overlap;
         }
 
+        /// <summary>
+        /// Determines if two IPNetwork2 objects overlap each other.
+        /// </summary>
+        /// <param name="network">The first IPNetwork2 object.</param>
+        /// <param name="network2">The second IPNetwork2 object.</param>
+        /// <returns>Returns true if the two IPNetwork2 objects overlap, otherwise false.</returns>
         [Obsolete("static Overlap is deprecated, please use instance Overlap.")]
         public static bool Overlap(IPNetwork2 network, IPNetwork2 network2)
         {
@@ -1423,6 +1454,12 @@ namespace System.Net
 
         #region ToString
 
+        /// <summary>
+        /// Returns a string representation of the object.
+        /// </summary>
+        /// <returns>
+        /// A string representation of the object which includes the Network and Cidr values separated by a "/".
+        /// </returns>
         public override string ToString()
         {
             return string.Format("{0}/{1}", this.Network, this.Cidr);
@@ -1439,7 +1476,7 @@ namespace System.Net
         /// <summary>
         /// Gets 10.0.0.0/8.
         /// </summary>
-        /// <returns>The IANA reserved IPNetwork 10.0.0.0/8.<returns>
+        /// <returns>The IANA reserved IPNetwork 10.0.0.0/8.</returns>
         public static IPNetwork2 IANA_ABLK_RESERVED1
         {
             get
@@ -1463,7 +1500,7 @@ namespace System.Net
         /// <summary>
         /// Gets 192.168.0.0/16.
         /// </summary>
-        /// <returns>The IANA reserved IPNetwork 192.168.0.0/16.<returns>
+        /// <returns>The IANA reserved IPNetwork 192.168.0.0/16.</returns>
         public static IPNetwork2 IANA_CBLK_RESERVED1
         {
             get
@@ -1502,6 +1539,21 @@ namespace System.Net
                 || IPNetwork2.IANA_CBLK_RESERVED1.Contains(this);
         }
 
+        /// <summary>
+        /// Determines whether the specified IP network is reserved according to the IANA Reserved ranges.
+        /// </summary>
+        /// <param name="ipnetwork">The IP network to check.</param>
+        /// <returns>
+        /// <c>true</c> if the specified IP network is reserved according to the IANA Reserved ranges; otherwise, <c>false</c>.
+        /// </returns>
+        /// <remarks>
+        /// <para>
+        /// This method is obsolete and should not be used. Please use the instance method <see cref="IsIANAReserved"/> instead.
+        /// </para>
+        /// <para>
+        /// Throws an <see cref="ArgumentNullException"/> if <paramref name="ipnetwork"/> is <c>null</c>.
+        /// </para>
+        /// </remarks>
         [Obsolete("static IsIANAReserved is deprecated, please use instance IsIANAReserved.")]
         public static bool IsIANAReserved(IPNetwork2 ipnetwork)
         {
@@ -1531,6 +1583,14 @@ namespace System.Net
             return ipnetworkCollection;
         }
 
+        /// <summary>
+        /// Subnet method is used to divide the given IP network into subnets with the specified CIDR.
+        /// </summary>
+        /// <param name="network">The IP network to be subnetted.</param>
+        /// <param name="cidr">The CIDR (Classless Inter-Domain Routing) value used to subnet the network.</param>
+        /// <returns>
+        /// A collection of subnets created from the given network using the specified CIDR.
+        /// </returns>
         [Obsolete("static Subnet is deprecated, please use instance Subnet.")]
         public static IPNetworkCollection Subnet(IPNetwork2 network, byte cidr)
         {
@@ -1563,6 +1623,15 @@ namespace System.Net
             return true;
         }
 
+        /// <summary>
+        /// Subnet a network into multiple nets of cidr mask
+        /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
+        /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
+        /// </summary>
+        /// <param name="network"></param>
+        /// <param name="cidr">A byte representing the CIDR to be used to subnet the current IPNetwork.</param>
+        /// <param name="ipnetworkCollection">The resulting subnetted IPNetwork.</param>
+        /// <returns>true if network was split successfully; otherwise, false.</returns>
         [Obsolete("static TrySubnet is deprecated, please use instance TrySubnet.")]
         public static bool TrySubnet(IPNetwork2 network, byte cidr, out IPNetworkCollection ipnetworkCollection)
         {
@@ -1637,6 +1706,15 @@ namespace System.Net
             return supernet;
         }
 
+        /// <summary>
+        /// Supernet two consecutive cidr equal subnet into a single one
+        /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+        /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
+        /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
+        /// </summary>
+        /// <param name="network"></param>
+        /// <param name="network2">The network to supernet with.</param>
+        /// <returns>A supernetted IP Network.</returns>
         [Obsolete("static Supernet is deprecated, please use instance Supernet.")]
         public static IPNetwork2 Supernet(IPNetwork2 network, IPNetwork2 network2)
         {
@@ -1660,6 +1738,16 @@ namespace System.Net
             return parsed;
         }
 
+        /// <summary>
+        /// Try to supernet two consecutive cidr equal subnet into a single one
+        /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+        /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
+        /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
+        /// </summary>
+        /// <param name="network"></param>
+        /// <param name="network2">The network to supernet with.</param>
+        /// <param name="supernet">The resulting IPNetwork.</param>
+        /// <returns>true if network2 was supernetted successfully; otherwise, false.</returns>
         [Obsolete("static TrySupernet is deprecated, please use instance TrySupernet.")]
         public static bool TrySupernet(IPNetwork2 network, IPNetwork2 network2, out IPNetwork2 supernet)
         {
@@ -1736,7 +1824,7 @@ namespace System.Net
             {
                 if (trySupernet == false)
                 {
-                    throw new ArgumentOutOfRangeException("network");
+                    throw new ArgumentOutOfRangeException("network1");
                 }
 
                 supernet = null;
@@ -1766,6 +1854,7 @@ namespace System.Net
 
         #region GetHashCode
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             return this._hashCode;
@@ -1931,6 +2020,15 @@ namespace System.Net
 
         #region WideSubnet
 
+        /// <summary>
+        /// Finds the widest subnet that can contain both the start and end IP addresses.
+        /// </summary>
+        /// <param name="start">The starting IP address.</param>
+        /// <param name="end">The ending IP address.</param>
+        /// <returns>The widest subnet that contains both the start and end IP addresses.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when either the start or end IP address is null or empty.</exception>
+        /// <exception cref="ArgumentException">Thrown when the start or end IP addresses are not valid.</exception>
+        /// <exception cref="NotSupportedException">Thrown when the start and end IP addresses have different address families.</exception>
         public static IPNetwork2 WideSubnet(string start, string end)
         {
             if (string.IsNullOrEmpty(start))
@@ -1972,6 +2070,12 @@ namespace System.Net
             return ipnetwork;
         }
 
+        /// <summary>
+        /// Attempts to find the widest subnet that contains both the start and end IP addresses. objects.
+        /// </summary>
+        /// <param name="ipnetworks">An array of IPNetwork2 objects to wide subnet.</param>
+        /// <param name="ipnetwork">When this method returns, contains the wide subnet of the IPNetwork2 objects, if wide subnet was successful; otherwise, null.</param>
+        /// <returns>true if wide subnet was successful; otherwise, false.</returns>
         public static bool TryWideSubnet(IPNetwork2[] ipnetworks, out IPNetwork2 ipnetwork)
         {
             IPNetwork2.InternalWideSubnet(true, ipnetworks, out IPNetwork2 ipn);
@@ -1986,6 +2090,9 @@ namespace System.Net
             return true;
         }
 
+        /// <summary>
+        /// Finds the widest subnet from an array of IP networks. </summary> <param name="ipnetworks">An array of IPNetwork2 objects representing the IP networks.</param> <returns>The widest subnet as an IPNetwork2 object.</returns>
+        /// /
         public static IPNetwork2 WideSubnet(IPNetwork2[] ipnetworks)
         {
             IPNetwork2.InternalWideSubnet(false, ipnetworks, out IPNetwork2 ipn);
@@ -2085,6 +2192,10 @@ namespace System.Net
             }
         }
 
+        /// <summary>
+        /// Print an ipnetwork in a clear representation string.
+        /// </summary>
+        /// <returns>Dump an IPNetwork representation as string.</returns>
         [Obsolete("static Print is deprecated, please use instance Print.")]
         public static string Print(IPNetwork2 ipnetwork)
         {
@@ -2166,6 +2277,17 @@ namespace System.Net
 
         #region IComparable<IPNetwork> Members
 
+        /// <summary>
+        /// Compares two IPNetwork2 instances.
+        /// </summary>
+        /// <param name="left">The first IPNetwork2 instance to compare.</param>
+        /// <param name="right">The second IPNetwork2 instance to compare.</param>
+        /// <returns>
+        /// A value indicating the relative order of the two IPNetwork2 instances.
+        /// Zero if the instances are equal.
+        /// A negative value if <paramref name="left"/> is less than <paramref name="right"/>.
+        /// A positive value if <paramref name="left"/> is greater than <paramref name="right"/>.
+        /// </returns>
         public static int Compare(IPNetwork2 left, IPNetwork2 right)
         {
             // two null IPNetworks are equal
