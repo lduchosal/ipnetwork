@@ -2,13 +2,13 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject;
-
-[TestClass]
-public class HashSetUnitTest
+namespace TestProject
 {
-    [TestMethod]
-    public void TestGetHashCode_HashSet_Add1()
+    [TestClass]
+    public class HashSetUnitTest
+    {
+        [TestMethod]
+        public void TestGetHashCode_HashSet_Add1()
     {
             var ipnetwork1 = IPNetwork2.Parse("0.0.1.1/0");
             var ipnetwork2 = IPNetwork2.Parse("1.1.1.1/0");
@@ -21,8 +21,8 @@ public class HashSetUnitTest
             Assert.IsFalse(add2, "add2");
         }
 
-    [TestMethod]
-    public void TestGetHashCode_HashSet_Add2()
+        [TestMethod]
+        public void TestGetHashCode_HashSet_Add2()
     {
             var ipnetwork1 = IPNetwork2.Parse("0.0.0.0/1");
             var ipnetwork2 = IPNetwork2.Parse("1.0.0.0/1");
@@ -34,4 +34,5 @@ public class HashSetUnitTest
             Assert.IsTrue(add1, "add1");
             Assert.IsFalse(add2, "add2");
         }
+    }
 }

@@ -2,16 +2,16 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject.IPNetworkTest;
-
-[TestClass]
-public class IPNetworkTrySupernetTests
+namespace TestProject.IPNetworkTest
 {
-    /// <summary>
-    ///     Tests Try Supernet functionality with Try Supernet1.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernet1()
+    [TestClass]
+    public class IPNetworkTrySupernetTests
+    {
+        /// <summary>
+        ///     Tests Try Supernet functionality with Try Supernet1.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySupernet1()
     {
             var network1 = IPNetwork2.Parse("192.168.0.1/24");
             var network2 = IPNetwork2.Parse("192.168.1.1/24");
@@ -24,9 +24,9 @@ public class IPNetworkTrySupernetTests
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void TestTrySupernet2()
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestTrySupernet2()
     {
             IPNetwork2 network1 = null;
             var network2 = IPNetwork2.Parse("192.168.1.1/24");
@@ -37,11 +37,11 @@ public class IPNetworkTrySupernetTests
 #pragma warning restore 0618
         }
 
-    /// <summary>
-    ///     Tests Try Supernet functionality with Try Supernet Static2.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernetStatic2()
+        /// <summary>
+        ///     Tests Try Supernet functionality with Try Supernet Static2.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySupernetStatic2()
     {
             IPNetwork2 network1 = IPNetwork2.IANA_ABLK_RESERVED1;
             var network2 = IPNetwork2.Parse("192.168.1.1/24");
@@ -52,11 +52,11 @@ public class IPNetworkTrySupernetTests
 #pragma warning restore 0618
         }
 
-    /// <summary>
-    ///     Tests Try Supernet functionality with Try Supernet3.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernet3()
+        /// <summary>
+        ///     Tests Try Supernet functionality with Try Supernet3.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySupernet3()
     {
             var network1 = IPNetwork2.Parse("192.168.1.1/24");
             IPNetwork2 network2 = null;
@@ -69,11 +69,11 @@ public class IPNetworkTrySupernetTests
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    /// <summary>
-    ///     Tests Try Supernet functionality with Try Supernet4.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernet4()
+        /// <summary>
+        ///     Tests Try Supernet functionality with Try Supernet4.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySupernet4()
     {
             var network1 = IPNetwork2.Parse("192.168.0.1/24");
             var network2 = IPNetwork2.Parse("192.168.1.1/25");
@@ -86,11 +86,11 @@ public class IPNetworkTrySupernetTests
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    /// <summary>
-    ///     Tests Try Supernet functionality with Try Supernet5.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernet5()
+        /// <summary>
+        ///     Tests Try Supernet functionality with Try Supernet5.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySupernet5()
     {
             var network1 = IPNetwork2.Parse("192.168.0.1/24");
             var network2 = IPNetwork2.Parse("192.168.5.1/24");
@@ -103,11 +103,11 @@ public class IPNetworkTrySupernetTests
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    /// <summary>
-    ///     Tests Try Supernet functionality with Try Supernet6.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernet6()
+        /// <summary>
+        ///     Tests Try Supernet functionality with Try Supernet6.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySupernet6()
     {
             var network1 = IPNetwork2.Parse("192.168.0.1/24");
             var network2 = IPNetwork2.Parse("192.168.0.1/25");
@@ -120,11 +120,11 @@ public class IPNetworkTrySupernetTests
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    /// <summary>
-    ///     Tests Try Supernet functionality with Try Supernet7.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernet7()
+        /// <summary>
+        ///     Tests Try Supernet functionality with Try Supernet7.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySupernet7()
     {
             var network1 = IPNetwork2.Parse("192.168.0.1/25");
             var network2 = IPNetwork2.Parse("192.168.0.1/24");
@@ -137,11 +137,11 @@ public class IPNetworkTrySupernetTests
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    /// <summary>
-    ///     Tests Try Supernet functionality with Try Supernet8.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernet8()
+        /// <summary>
+        ///     Tests Try Supernet functionality with Try Supernet8.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySupernet8()
     {
             var network1 = IPNetwork2.Parse("192.168.1.1/24");
             var network2 = IPNetwork2.Parse("192.168.2.1/24");
@@ -154,11 +154,11 @@ public class IPNetworkTrySupernetTests
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    /// <summary>
-    ///     Tests Try Supernet functionality with Try Supernet9.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernet9()
+        /// <summary>
+        ///     Tests Try Supernet functionality with Try Supernet9.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySupernet9()
     {
             var network1 = IPNetwork2.Parse("192.168.1.1/24");
             var network2 = IPNetwork2.Parse("192.168.2.1/24");
@@ -173,11 +173,11 @@ public class IPNetworkTrySupernetTests
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    /// <summary>
-    ///     Tests Try Supernet functionality with Try Supernet10.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernet10()
+        /// <summary>
+        ///     Tests Try Supernet functionality with Try Supernet10.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySupernet10()
     {
             var network1 = IPNetwork2.Parse("192.168.0.1/24");
             var network2 = IPNetwork2.Parse("192.168.1.1/24");
@@ -191,11 +191,11 @@ public class IPNetworkTrySupernetTests
             Assert.AreEqual(parsed, result, "parsed");
         }
 
-    /// <summary>
-    ///     Tests Try Supernet functionality with Try Supernet11.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernet11()
+        /// <summary>
+        ///     Tests Try Supernet functionality with Try Supernet11.
+        /// </summary>
+        [TestMethod]
+        public void TestTrySupernet11()
     {
             IPNetwork2[] network3 = null;
             IPNetwork2[] supernetExpected = { IPNetwork2.Parse("192.168.0.0/23") };
@@ -206,4 +206,5 @@ public class IPNetworkTrySupernetTests
             Assert.AreEqual(null, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
         }
+    }
 }
