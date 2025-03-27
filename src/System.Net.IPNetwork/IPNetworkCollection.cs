@@ -112,13 +112,11 @@ namespace System.Net
 
         #region IEnumerable Members
 
-        /// <inheritdoc/>
         IEnumerator<IPNetwork2> IEnumerable<IPNetwork2>.GetEnumerator()
         {
             return this;
         }
 
-        /// <inheritdoc/>
         IEnumerator IEnumerable.GetEnumerator()
         {
             return this;
