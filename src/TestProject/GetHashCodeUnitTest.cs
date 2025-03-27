@@ -2,48 +2,12 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestProject;
 
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace TestProject;
 
 [TestClass]
 public class GetHashCodeUnitTest
 {
-    #region GetHashCode
-
-    [TestMethod]
-    public void TestGetHashCode1()
-    {
-            var ipnetwork1 = IPNetwork2.Parse("0.0.1.1/0");
-            var ipnetwork2 = IPNetwork2.Parse("0.0.1.1/0");
-            int hashCode1 = ipnetwork1.GetHashCode();
-            int hashCode2 = ipnetwork2.GetHashCode();
-            Assert.AreEqual(hashCode1, hashCode2, "hashcode");
-        }
-
-    [TestMethod]
-    public void TestGetHashCode2()
-    {
-            var ipnetwork1 = IPNetwork2.Parse("0.0.0.0/1");
-            var ipnetwork2 = IPNetwork2.Parse("0.0.0.0/1");
-            int hashCode1 = ipnetwork1.GetHashCode();
-            int hashCode2 = ipnetwork2.GetHashCode();
-            Assert.AreEqual(hashCode1, hashCode2, "hashcode");
-        }
-
-    [TestMethod]
-    public void TestGetHashCode3()
-    {
-            var ipnetwork1 = IPNetwork2.Parse("0.0.0.0/32");
-            var ipnetwork2 = IPNetwork2.Parse("0.0.0.0/32");
-            int hashCode1 = ipnetwork1.GetHashCode();
-            int hashCode2 = ipnetwork2.GetHashCode();
-            Assert.AreEqual(hashCode1, hashCode2, "hashcode");
-        }
-
-    #endregion
-
     [TestMethod]
     public void TestGetHashCode_SameNetwork_DifferentIpAddress1()
     {
@@ -112,6 +76,40 @@ public class GetHashCodeUnitTest
             int hashCode2 = network2.GetHashCode();
 
             Assert.AreNotEqual(hashCode1, hashCode2, "hashcode");
+        }
+
+    #endregion
+
+    #region GetHashCode
+
+    [TestMethod]
+    public void TestGetHashCode1()
+    {
+            var ipnetwork1 = IPNetwork2.Parse("0.0.1.1/0");
+            var ipnetwork2 = IPNetwork2.Parse("0.0.1.1/0");
+            int hashCode1 = ipnetwork1.GetHashCode();
+            int hashCode2 = ipnetwork2.GetHashCode();
+            Assert.AreEqual(hashCode1, hashCode2, "hashcode");
+        }
+
+    [TestMethod]
+    public void TestGetHashCode2()
+    {
+            var ipnetwork1 = IPNetwork2.Parse("0.0.0.0/1");
+            var ipnetwork2 = IPNetwork2.Parse("0.0.0.0/1");
+            int hashCode1 = ipnetwork1.GetHashCode();
+            int hashCode2 = ipnetwork2.GetHashCode();
+            Assert.AreEqual(hashCode1, hashCode2, "hashcode");
+        }
+
+    [TestMethod]
+    public void TestGetHashCode3()
+    {
+            var ipnetwork1 = IPNetwork2.Parse("0.0.0.0/32");
+            var ipnetwork2 = IPNetwork2.Parse("0.0.0.0/32");
+            int hashCode1 = ipnetwork1.GetHashCode();
+            int hashCode2 = ipnetwork2.GetHashCode();
+            Assert.AreEqual(hashCode1, hashCode2, "hashcode");
         }
 
     #endregion

@@ -2,9 +2,7 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestSerialization.NetFramework;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace TestProject;
 
 [TestClass]
 public class SerializeDataContractTest
@@ -15,7 +13,8 @@ public class SerializeDataContractTest
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
             string result = DataContractSerializeHelper.Serialize(ipnetwork);
-            string expected = $"<IPNetwork2 xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:x=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://schemas.datacontract.org/2004/07/System.Net\">{Environment.NewLine}  <IPNetwork i:type=\"x:string\" xmlns=\"\">10.0.0.0/8</IPNetwork>{Environment.NewLine}</IPNetwork2>";
+            string expected =
+                $"<IPNetwork2 xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:x=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://schemas.datacontract.org/2004/07/System.Net\">{Environment.NewLine}  <IPNetwork i:type=\"x:string\" xmlns=\"\">10.0.0.0/8</IPNetwork>{Environment.NewLine}</IPNetwork2>";
             Assert.AreEqual(expected, result);
         }
 

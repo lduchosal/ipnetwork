@@ -2,64 +2,64 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestProject;
-
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace TestProject;
 
 /// <summary>
-/// A collection of unit tests exercising the IPAddressExtensions class.
+///     A collection of unit tests exercising the IPAddressExtensions class.
 /// </summary>
 [TestClass]
 public class IPAddressExtensionTests
 {
     /// <summary>
-    /// Test converting a variety of IPv4 addreses into single-address networks.
+    ///     Test converting a variety of IPv4 addreses into single-address networks.
     /// </summary>
     [TestMethod]
     public void IPAddressToIPNetwork_SingleAddress_IPv4()
-        => IPAddressToIPNetwork_SingleAddress_Internal(
-            4,
-            "0.0.0.0",
-            "0.0.0.1",
-            "0.255.255.254",
-            "0.255.255.255",
-            "1.0.0.0",
-            "1.1.1.1",
-            "123.45.67.89",
-            "126.255.255.254",
-            "126.255.255.255",
-            "127.0.0.0",
-            "127.0.0.1",
-            "127.255.255.254",
-            "127.255.255.255",
-            "192.168.0.0",
-            "192.168.0.1",
-            "192.168.0.254",
-            "192.168.0.255",
-            "192.168.255.255",
-            "239.255.255.255",
-            "240.0.0.0",
-            "255.255.255.255");
+    {
+            IPAddressToIPNetwork_SingleAddress_Internal(
+                4,
+                "0.0.0.0",
+                "0.0.0.1",
+                "0.255.255.254",
+                "0.255.255.255",
+                "1.0.0.0",
+                "1.1.1.1",
+                "123.45.67.89",
+                "126.255.255.254",
+                "126.255.255.255",
+                "127.0.0.0",
+                "127.0.0.1",
+                "127.255.255.254",
+                "127.255.255.255",
+                "192.168.0.0",
+                "192.168.0.1",
+                "192.168.0.254",
+                "192.168.0.255",
+                "192.168.255.255",
+                "239.255.255.255",
+                "240.0.0.0",
+                "255.255.255.255");
+        }
 
     /// <summary>
-    /// Test converting a variety of IPv6 addreses into single-address networks.
+    ///     Test converting a variety of IPv6 addreses into single-address networks.
     /// </summary>
     [TestMethod]
     public void IPAddressToIPNetwork_SingleAddress_IPv6()
-        => IPAddressToIPNetwork_SingleAddress_Internal(
-            16,
-            "::1",
-            "::",
-            "::1234:ABCD",
-            "1234::ABCD",
-            "1234:ABCD::",
-            "1:2:3:4:5:6:7:8",
-            "FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF");
+    {
+            IPAddressToIPNetwork_SingleAddress_Internal(
+                16,
+                "::1",
+                "::",
+                "::1234:ABCD",
+                "1234::ABCD",
+                "1234:ABCD::",
+                "1:2:3:4:5:6:7:8",
+                "FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF");
+        }
 
     /// <summary>
-    /// Shared test case, called upon by the above two test cases.
+    ///     Shared test case, called upon by the above two test cases.
     /// </summary>
     /// <param name="byteCount">Number of bytes in the type of address being tester.</param>
     /// <param name="interestingAddrs">A collection of interesting IP addresses to include in the test.</param>
@@ -67,16 +67,14 @@ public class IPAddressExtensionTests
         int byteCount,
         params string[] interestingAddrs)
     {
-           /* Start the collection of test cases with the
-
-      interesting addresses from the caller. */
+           /* Start the collection of test cases with the addresses from the caller. */
             var addrs = interestingAddrs.ToList();
 
             /* Populate with random but deterministic addresses. */
             addrs.AddRange(RandomIPs(byteCount));
 
             /* Loop through all of the test cases. */
-            foreach (var ipAddr in addrs.Select(IPAddress.Parse))
+            foreach (IPAddress ipAddr in addrs.Select(IPAddress.Parse))
             {
                 /* Convert to network, then pass the network object to a checker. */
                 TestForSingleAddressNetwork(
@@ -87,17 +85,15 @@ public class IPAddressExtensionTests
         }
 
     /// <summary>
-    /// Generate random but deterministic IPs.
+    ///     Generate random but deterministic IPs.
     /// </summary>
     /// <param name="byteCount">4 for IPv4. 16 for IPv6.</param>
     /// <returns>Collection of random IP addresses.</returns>
     private static IEnumerable<string> RandomIPs(int byteCount)
     {
            /* Start from a fixed starting byte array.
-
-      Using a GUID's bytes so the sequence will be unique, with the first
-
-      byte XOR'd with the byte count so the two sequences will be different. */
+        ing a GUID's bytes so the sequence will be unique, with the first
+        te XOR'd with the byte count so the two sequences will be different. */
             byte[] hashInput = Guid.Parse("12f2c3ba-7bd1-4ec3-922c-a5625b8f5dd5").ToByteArray();
             hashInput[0] ^= (byte)byteCount;
 
@@ -105,7 +101,7 @@ public class IPAddressExtensionTests
             foreach (int i in Enumerable.Range(1, 1000))
             {
                 /* Hash the current interation to get a new block of deterministic bytes. */
-                using (var hash = System.Security.Cryptography.SHA256.Create())
+                using (var hash = SHA256.Create())
                 {
                     hashInput = hash.ComputeHash(hashInput);
                 }
@@ -116,7 +112,7 @@ public class IPAddressExtensionTests
         }
 
     /// <summary>
-    /// Test if a single address network is valid.
+    ///     Test if a single address network is valid.
     /// </summary>
     /// <param name="ipAddr">Expected addresss.</param>
     /// <param name="net">Actual network.</param>

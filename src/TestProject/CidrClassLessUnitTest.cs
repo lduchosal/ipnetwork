@@ -2,9 +2,7 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.TestProject;
-
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+namespace TestProject;
 
 [TestClass]
 public class CidrClassLessUnitTest
@@ -72,7 +70,6 @@ public class CidrClassLessUnitTest
         }
 
     [TestMethod]
-
     public void TestTryGuessCidrE()
     {
             var cidrguess = new CidrClassLess();

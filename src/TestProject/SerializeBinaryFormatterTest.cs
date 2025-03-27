@@ -2,13 +2,11 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+
 #pragma warning disable SYSLIB0011 // Type or member is obsolete
 
-namespace System.Net.TestSerialization;
-
-using System.IO;
+namespace TestProject;
 using System.Runtime.Serialization.Formatters.Binary;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 [TestClass]
 public class SerializeBinaryFormatterTest
@@ -25,7 +23,8 @@ public class SerializeBinaryFormatterTest
             serializer.Serialize(mem, ipnetwork);
             string result = Convert.ToBase64String(mem.ToArray());
 
-            string expected = "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjUuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABVTeXN0ZW0uTmV0LklQTmV0d29yazIBAAAACUlQTmV0d29yawECAAAABgMAAAAKMTAuMC4wLjAvOAs=";
+            string expected =
+                "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjUuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABVTeXN0ZW0uTmV0LklQTmV0d29yazIBAAAACUlQTmV0d29yawECAAAABgMAAAAKMTAuMC4wLjAvOAs=";
 
             Assert.AreEqual(expected, result);
         }
@@ -33,7 +32,8 @@ public class SerializeBinaryFormatterTest
     [TestMethod]
     public void Test_Deserialize_BinaryFormatter()
     {
-            string base64 = "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjUuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABVTeXN0ZW0uTmV0LklQTmV0d29yazIBAAAACUlQTmV0d29yawECAAAABgMAAAAKMTAuMC4wLjAvOAs=";
+            string base64 =
+                "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjUuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABVTeXN0ZW0uTmV0LklQTmV0d29yazIBAAAACUlQTmV0d29yawECAAAABgMAAAAKMTAuMC4wLjAvOAs=";
             byte[] bytes = Convert.FromBase64String(base64);
             var mem = new MemoryStream(bytes);
 
@@ -82,7 +82,8 @@ public class SerializeBinaryFormatterTest
     [TestCategory("LongRunning")]
     public void Test_1_000_000_Deserialize_BinaryFormatter()
     {
-            string base64 = "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjUuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABVTeXN0ZW0uTmV0LklQTmV0d29yazIBAAAACUlQTmV0d29yawECAAAABgMAAAAKMTAuMC4wLjAvOAs=";
+            string base64 =
+                "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjUuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABVTeXN0ZW0uTmV0LklQTmV0d29yazIBAAAACUlQTmV0d29yawECAAAABgMAAAAKMTAuMC4wLjAvOAs=";
             byte[] bytes = Convert.FromBase64String(base64);
             var mem = new MemoryStream(bytes);
 
