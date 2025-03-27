@@ -74,7 +74,7 @@ public class TryParseUnitTest
     [TestMethod]
     public void TestTryParseIPAddressNetmaskAne7()
     {
-            bool parsed = IPNetwork2.TryParse("0.0.0.0", null, out IPNetwork2 ipnet);
+            bool parsed = IPNetwork2.TryParse("0.0.0.0", netmask:null, out IPNetwork2 ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");

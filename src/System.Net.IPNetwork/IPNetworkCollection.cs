@@ -77,7 +77,7 @@ namespace System.Net
         {
             get
             {
-                BigInteger count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
+                var count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
                 return count;
             }
         }
