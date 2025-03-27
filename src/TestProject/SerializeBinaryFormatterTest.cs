@@ -5,15 +5,16 @@
 
 #pragma warning disable SYSLIB0011 // Type or member is obsolete
 
-namespace TestProject;
-using System.Runtime.Serialization.Formatters.Binary;
-
-[TestClass]
-public class SerializeBinaryFormatterTest
+namespace TestProject
 {
-    [TestMethod]
-    [Ignore] // ("Assembly version is writen in binary serilaization.")
-    public void Test_Serialize_BinaryFormatter()
+    using System.Runtime.Serialization.Formatters.Binary;
+
+    [TestClass]
+    public class SerializeBinaryFormatterTest
+    {
+        [TestMethod]
+        [Ignore] // ("Assembly version is writen in binary serilaization.")
+        public void Test_Serialize_BinaryFormatter()
     {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
@@ -29,8 +30,8 @@ public class SerializeBinaryFormatterTest
             Assert.AreEqual(expected, result);
         }
 
-    [TestMethod]
-    public void Test_Deserialize_BinaryFormatter()
+        [TestMethod]
+        public void Test_Deserialize_BinaryFormatter()
     {
             string base64 =
                 "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjUuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABVTeXN0ZW0uTmV0LklQTmV0d29yazIBAAAACUlQTmV0d29yawECAAAABgMAAAAKMTAuMC4wLjAvOAs=";
@@ -44,8 +45,8 @@ public class SerializeBinaryFormatterTest
             Assert.AreEqual(expected, result);
         }
 
-    [TestMethod]
-    public void Test_Serialize_Deserialize_BinaryFormatter()
+        [TestMethod]
+        public void Test_Serialize_Deserialize_BinaryFormatter()
     {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
@@ -60,9 +61,9 @@ public class SerializeBinaryFormatterTest
             Assert.AreEqual(ipnetwork, ipnetwork2);
         }
 
-    [TestMethod]
-    [TestCategory("LongRunning")]
-    public void Test_1_000_000_Serialize_BinaryFormatter()
+        [TestMethod]
+        [TestCategory("LongRunning")]
+        public void Test_1_000_000_Serialize_BinaryFormatter()
     {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
@@ -78,9 +79,9 @@ public class SerializeBinaryFormatterTest
             // 5.13 seconds(Ad hoc).
         }
 
-    [TestMethod]
-    [TestCategory("LongRunning")]
-    public void Test_1_000_000_Deserialize_BinaryFormatter()
+        [TestMethod]
+        [TestCategory("LongRunning")]
+        public void Test_1_000_000_Deserialize_BinaryFormatter()
     {
             string base64 =
                 "AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uTmV0LklQTmV0d29yaywgVmVyc2lvbj0yLjUuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPTcxNzM0M2NjMmMyNWVkY2YFAQAAABVTeXN0ZW0uTmV0LklQTmV0d29yazIBAAAACUlQTmV0d29yawECAAAABgMAAAAKMTAuMC4wLjAvOAs=";
@@ -98,9 +99,9 @@ public class SerializeBinaryFormatterTest
             // 11.949 seconds(Ad hoc).
         }
 
-    [TestMethod]
-    [TestCategory("LongRunning")]
-    public void Test_1_000_000_Serialize_Deserialize_BinaryFormatter()
+        [TestMethod]
+        [TestCategory("LongRunning")]
+        public void Test_1_000_000_Serialize_Deserialize_BinaryFormatter()
     {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
@@ -119,5 +120,6 @@ public class SerializeBinaryFormatterTest
 
             // 17.48 seconds(Ad hoc).
         }
-}
+    }
 #pragma warning restore SYSLIB0011 // Type or member is obsolete
+}

@@ -2,14 +2,14 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject.IPNetworkTest;
-
-[TestClass]
-public class IPNetworkOverlapTests
+namespace TestProject.IPNetworkTest
 {
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void TestOverlap1()
+    [TestClass]
+    public class IPNetworkOverlapTests
+    {
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestOverlap1()
     {
             IPNetwork2 network1 = null;
             IPNetwork2 network2 = null;
@@ -19,11 +19,11 @@ public class IPNetworkOverlapTests
 #pragma warning restore 0618
         }
 
-    /// <summary>
-    ///     Tests Overlap functionality with Overlap Static2.
-    /// </summary>
-    [TestMethod]
-    public void TestOverlapStatic2()
+        /// <summary>
+        ///     Tests Overlap functionality with Overlap Static2.
+        /// </summary>
+        [TestMethod]
+        public void TestOverlapStatic2()
     {
             IPNetwork2 network1 = IPNetwork2.IANA_ABLK_RESERVED1;
             IPNetwork2 network2 = IPNetwork2.IANA_ABLK_RESERVED1;
@@ -35,20 +35,20 @@ public class IPNetworkOverlapTests
             Assert.IsTrue(result, "result");
         }
 
-    [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
-    public void TestOverlap2()
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TestOverlap2()
     {
             var network1 = IPNetwork2.Parse("10.0.0.0/0");
             IPNetwork2 network2 = null;
             network1.Overlap(network2);
         }
 
-    /// <summary>
-    ///     Tests Overlap functionality with Overlap3.
-    /// </summary>
-    [TestMethod]
-    public void TestOverlap3()
+        /// <summary>
+        ///     Tests Overlap functionality with Overlap3.
+        /// </summary>
+        [TestMethod]
+        public void TestOverlap3()
     {
             var network1 = IPNetwork2.Parse("10.0.0.0/0");
             var network2 = IPNetwork2.Parse("10.0.0.0/0");
@@ -58,11 +58,11 @@ public class IPNetworkOverlapTests
             Assert.AreEqual(expected, result, "overlap");
         }
 
-    /// <summary>
-    ///     Tests Overlap functionality with Overlap4.
-    /// </summary>
-    [TestMethod]
-    public void TestOverlap4()
+        /// <summary>
+        ///     Tests Overlap functionality with Overlap4.
+        /// </summary>
+        [TestMethod]
+        public void TestOverlap4()
     {
             var network1 = IPNetwork2.Parse("10.10.0.0/16");
             var network2 = IPNetwork2.Parse("10.10.1.0/24");
@@ -72,11 +72,11 @@ public class IPNetworkOverlapTests
             Assert.AreEqual(expected, result, "overlap");
         }
 
-    /// <summary>
-    ///     Tests Overlap functionality with Overlap5.
-    /// </summary>
-    [TestMethod]
-    public void TestOverlap5()
+        /// <summary>
+        ///     Tests Overlap functionality with Overlap5.
+        /// </summary>
+        [TestMethod]
+        public void TestOverlap5()
     {
             var network1 = IPNetwork2.Parse("10.10.0.0/24");
             var network2 = IPNetwork2.Parse("10.10.1.0/24");
@@ -86,11 +86,11 @@ public class IPNetworkOverlapTests
             Assert.AreEqual(expected, result, "overlap");
         }
 
-    /// <summary>
-    ///     Tests Overlap functionality with Overlap6.
-    /// </summary>
-    [TestMethod]
-    public void TestOverlap6()
+        /// <summary>
+        ///     Tests Overlap functionality with Overlap6.
+        /// </summary>
+        [TestMethod]
+        public void TestOverlap6()
     {
             var network1 = IPNetwork2.Parse("10.10.1.0/24");
             var network2 = IPNetwork2.Parse("10.10.0.0/16");
@@ -99,4 +99,5 @@ public class IPNetworkOverlapTests
 
             Assert.AreEqual(expected, result, "overlap");
         }
+    }
 }

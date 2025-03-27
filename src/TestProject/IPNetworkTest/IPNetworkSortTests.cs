@@ -2,16 +2,16 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject.IPNetworkTest;
-
-[TestClass]
-public class IPNetworkSortTests
+namespace TestProject.IPNetworkTest
 {
-    /// <summary>
-    ///     Tests Sort functionality with Sort1.
-    /// </summary>
-    [TestMethod]
-    public void TestSort1()
+    [TestClass]
+    public class IPNetworkSortTests
+    {
+        /// <summary>
+        ///     Tests Sort functionality with Sort1.
+        /// </summary>
+        [TestMethod]
+        public void TestSort1()
     {
             string[] ips = { "1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0" };
             var ipns = new List<IPNetwork2>();
@@ -31,11 +31,11 @@ public class IPNetworkSortTests
             Assert.AreEqual("255.255.255.255/32", ipns[3].ToString(), "3");
         }
 
-    /// <summary>
-    ///     Tests Sort functionality with Sort2.
-    /// </summary>
-    [TestMethod]
-    public void TestSort2()
+        /// <summary>
+        ///     Tests Sort functionality with Sort2.
+        /// </summary>
+        [TestMethod]
+        public void TestSort2()
     {
             string[] ips = { "0.0.0.100/32", "0.0.0.0/24" };
             var ipns = new List<IPNetwork2>();
@@ -52,4 +52,5 @@ public class IPNetworkSortTests
             Assert.AreEqual("0.0.0.0/24", ipns[0].ToString(), "0");
             Assert.AreEqual("0.0.0.100/32", ipns[1].ToString(), "1");
         }
+    }
 }
