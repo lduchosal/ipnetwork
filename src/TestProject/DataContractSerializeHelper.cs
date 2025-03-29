@@ -4,8 +4,18 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test serialization.
+/// </summary>
 public static class DataContractSerializeHelper
 {
+    /// <summary>
+    /// Serialize.
+    /// </summary>
+    /// <param name="obj">The object to serialize.</param>
+    /// <param name="formatting">Should it be formtted.</param>
+    /// <typeparam name="T">Type of object.</typeparam>
+    /// <returns>A string representing the object.</returns>
     public static string Serialize<T>(T obj, bool formatting = true)
         where T : new()
     {
@@ -18,7 +28,7 @@ public static class DataContractSerializeHelper
             var settings = new XmlWriterSettings
             {
                 OmitXmlDeclaration = true,
-                Indent = formatting
+                Indent = formatting,
             };
             using (var textWriter = new StringWriter())
             {
@@ -32,6 +42,12 @@ public static class DataContractSerializeHelper
             }
         }
 
+    /// <summary>
+    /// Deserialize.
+    /// </summary>
+    /// <param name="xml">The xml string representing the object.</param>
+    /// <typeparam name="T">The type of the object.</typeparam>
+    /// <returns>The object.</returns>
     public static T Deserialize<T>(string xml)
         where T : new()
     {

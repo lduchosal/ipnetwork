@@ -4,21 +4,19 @@
 
 namespace System.Net;
 
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Numerics;
 using System.Reflection;
 using Gnu.Getopt;
 
-
-using System.Collections.Generic;
-
 /// <summary>
 /// Console app for IPNetwork.
 /// </summary>
 public class Program
 {
-    private static readonly Dictionary<int, ArgParsed> Args = new();
+    private static readonly Dictionary<int, ArgParsed> Args = new ();
 
     private static readonly ArgParsed[] ArgsList = new[]
     {

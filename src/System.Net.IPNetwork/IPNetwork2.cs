@@ -21,13 +21,13 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
 {
     #region properties
 
-    private readonly object _sync = new();
-    private readonly int _hashCode;
-    private BigInteger _ipaddress;
-    private byte _cidr;
-    private BigInteger? _cachedBroadcast;
+    private readonly object sync = new ();
+    private readonly int hashCode;
+    private BigInteger ipaddress;
+    private byte cidr;
+    private BigInteger? cachedBroadcast;
 
-    private AddressFamily _family;
+    private AddressFamily family;
 
     /// <summary>
     /// Gets or sets the value of the IPNetwork property.
@@ -43,12 +43,12 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         set
         {
             var ipnetwork = IPNetwork2.Parse(value);
-            this._ipaddress = ipnetwork._ipaddress;
-            this._family = ipnetwork._family;
-            this._cidr = ipnetwork._cidr;
-            lock (_sync)
+            this.ipaddress = ipnetwork.ipaddress;
+            this.family = ipnetwork.family;
+            this.cidr = ipnetwork.cidr;
+            lock (this.sync)
             {
-                this._cachedBroadcast = null;
+                this.cachedBroadcast = null;
             }
         }
     }
@@ -56,15 +56,15 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     #endregion
 
     #region accessors
-    
+
     /// <summary>
     /// Gets the network address calculated by applying the subnet mask to the IP address.
     /// </summary>
-    internal BigInteger _network
+    internal BigInteger InternalNetwork
     {
         get
         {
-            BigInteger uintNetwork = this._ipaddress & this._netmask;
+            BigInteger uintNetwork = this.ipaddress & this.InternalNetmask;
             return uintNetwork;
         }
     }
@@ -76,7 +76,7 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     {
         get
         {
-            return IPNetwork2.ToIPAddress(this._network, this._family);
+            return IPNetwork2.ToIPAddress(this.InternalNetwork, this.family);
         }
     }
 
@@ -87,18 +87,18 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     {
         get
         {
-            return this._family;
+            return this.family;
         }
     }
 
     /// <summary>
     /// Gets the netmask as a BigInteger representation based on the CIDR and address family.
     /// </summary>
-    internal BigInteger _netmask
+    internal BigInteger InternalNetmask
     {
         get
         {
-            return IPNetwork2.ToUint(this._cidr, this._family);
+            return IPNetwork2.ToUint(this.cidr, this.family);
         }
     }
 
@@ -109,34 +109,34 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     {
         get
         {
-            return IPNetwork2.ToIPAddress(this._netmask, this._family);
+            return IPNetwork2.ToIPAddress(this.InternalNetmask, this.family);
         }
     }
 
     /// <summary>
     /// Gets the broadcast address calculated from the network address and the netmask.
     /// </summary>
-    internal BigInteger _broadcast
+    internal BigInteger InternalBroadcast
     {
         get
         {
-            var cached = this._cachedBroadcast;
+            var cached = this.cachedBroadcast;
             if (cached != null)
             {
                 return cached.Value;
             }
 
-            lock (_sync)
+            lock (this.sync)
             {
-                var cached2 = this._cachedBroadcast;
+                var cached2 = this.cachedBroadcast;
                 if (cached2 != null)
                 {
                     return cached2.Value;
                 }
 
-                var network = this._network;
-                var computed = CreateBroadcast(ref network, this._netmask, this._family);
-                this._cachedBroadcast = computed;
+                var network = this.InternalNetwork;
+                var computed = CreateBroadcast(ref network, this.InternalNetmask, this.family);
+                this.cachedBroadcast = computed;
                 return computed;
             }
         }
@@ -149,12 +149,12 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     {
         get
         {
-            if (this._family == Sockets.AddressFamily.InterNetworkV6)
+            if (this.family == Sockets.AddressFamily.InterNetworkV6)
             {
                 return null;
             }
 
-            return IPNetwork2.ToIPAddress(this._broadcast, this._family);
+            return IPNetwork2.ToIPAddress(this.InternalBroadcast, this.family);
         }
     }
 
@@ -165,10 +165,12 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     {
         get
         {
-            BigInteger first = this._family == Sockets.AddressFamily.InterNetworkV6
-                ? this._network
-                : (this.Usable <= 0) ? this._network : this._network + 1;
-            return IPNetwork2.ToIPAddress(first, this._family);
+            BigInteger first = this.family == Sockets.AddressFamily.InterNetworkV6
+                ? this.InternalNetwork
+                : (this.Usable <= 0)
+                    ? this.InternalNetwork
+                    : this.InternalNetwork + 1;
+            return IPNetwork2.ToIPAddress(first, this.family);
         }
     }
 
@@ -179,10 +181,12 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     {
         get
         {
-            BigInteger last = this._family == Sockets.AddressFamily.InterNetworkV6
-                ? this._broadcast
-                : (this.Usable <= 0) ? this._network : this._broadcast - 1;
-            return IPNetwork2.ToIPAddress(last, this._family);
+            BigInteger last = this.family == Sockets.AddressFamily.InterNetworkV6
+                ? this.InternalBroadcast
+                : (this.Usable <= 0)
+                    ? this.InternalNetwork
+                    : this.InternalBroadcast - 1;
+            return IPNetwork2.ToIPAddress(last, this.family);
         }
     }
 
@@ -193,14 +197,14 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     {
         get
         {
-            if (this._family == Sockets.AddressFamily.InterNetworkV6)
+            if (this.family == Sockets.AddressFamily.InterNetworkV6)
             {
                 return this.Total;
             }
 
             byte[] mask = new byte[] { 0xff, 0xff, 0xff, 0xff, 0x00 };
             var bmask = new BigInteger(mask);
-            BigInteger usableIps = (this._cidr > 30) ? 0 : ((bmask >> this._cidr) - 1);
+            BigInteger usableIps = (this.cidr > 30) ? 0 : ((bmask >> this.cidr) - 1);
             return usableIps;
         }
     }
@@ -212,8 +216,8 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     {
         get
         {
-            int max = this._family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
-            var count = BigInteger.Pow(2, max - this._cidr);
+            int max = this.family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
+            var count = BigInteger.Pow(2, max - this.cidr);
             return count;
         }
     }
@@ -225,7 +229,7 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     {
         get
         {
-            return this._cidr;
+            return this.cidr;
         }
     }
 
@@ -240,14 +244,14 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     /// <param name="family">The address family of the network.</param>
     /// <param name="cidr">The CIDR (Classless Inter-Domain Routing) notation of the network.</param>
 #if TRAVISCI
-    public 
+    public
 #else
-    internal 
+    internal
 #endif
         IPNetwork2(BigInteger ipaddress, AddressFamily family, byte cidr)
     {
         this.Init(ipaddress, family, cidr);
-        this._hashCode = this.ComputeHashCode();
+        this.hashCode = this.ComputeHashCode();
     }
 
     /// <summary>
@@ -267,7 +271,7 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         BigInteger uintIpAddress = ToBigInteger(ipaddress);
 
         this.Init(uintIpAddress, ipaddress.AddressFamily, cidr);
-        this._hashCode = this.ComputeHashCode();
+        this.hashCode = this.ComputeHashCode();
     }
 
     private void Init(BigInteger ipaddress, AddressFamily family, byte cidr)
@@ -278,9 +282,9 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
             throw new ArgumentOutOfRangeException("cidr");
         }
 
-        this._ipaddress = ipaddress;
-        this._family = family;
-        this._cidr = cidr;
+        this.ipaddress = ipaddress;
+        this.family = family;
+        this.cidr = cidr;
     }
 
     #endregion
@@ -697,11 +701,11 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
             {
                 throw new ArgumentNullException("network");
             }
-                
+
             ipnetwork = null;
             return;
         }
-            
+
         if (args.Length == 1)
         {
             string cidrlessNetwork = args[0];
@@ -842,6 +846,7 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
 
         IPNetwork2.InternalParse(tryParse, ip, mask, out ipnetwork);
     }
+
     #endregion
 
     #region converters
@@ -898,29 +903,29 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
             return;
         }
 
-#if NET5_0 || NETSTANDARD2_1
-            byte[] bytes = ipaddress.AddressFamily == AddressFamily.InterNetwork ? new byte[4] : new byte[16];
-            Span<byte> span = bytes.AsSpan();
-            if (!ipaddress.TryWriteBytes(span, out _))
+#if NETSTANDARD2_1
+        byte[] bytes = ipaddress.AddressFamily == AddressFamily.InterNetwork ? new byte[4] : new byte[16];
+        Span<byte> span = bytes.AsSpan();
+        if (!ipaddress.TryWriteBytes(span, out _))
+        {
+            if (tryParse == false)
             {
-                if (tryParse == false)
-                {
-                    throw new ArgumentException("ipaddress");
-                }
-
-                uintIpAddress = null;
-                return;
+                throw new ArgumentException("ipaddress");
             }
 
-            uintIpAddress = new BigInteger(span, isUnsigned: true, isBigEndian: true);
-#elif NET45 || NET46 || NET47 || NETSTANDARD20
-            byte[] bytes = ipaddress.GetAddressBytes();
-            bytes.AsSpan().Reverse();
+            uintIpAddress = null;
+            return;
+        }
 
-            // add trailing 0 to make unsigned
-            byte[] unsigned = new byte[bytes.Length + 1];
-            Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
-            uintIpAddress = new BigInteger(unsigned);
+        uintIpAddress = new BigInteger(span, isUnsigned: true, isBigEndian: true);
+#elif NETSTANDARD20
+        byte[] bytes = ipaddress.GetAddressBytes();
+        bytes.AsSpan().Reverse();
+
+        // add trailing 0 to make unsigned
+        byte[] unsigned = new byte[bytes.Length + 1];
+        Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
+        uintIpAddress = new BigInteger(unsigned);
 #else
         byte[] bytes = ipaddress.GetAddressBytes();
         Array.Reverse(bytes);
@@ -968,7 +973,7 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
     /// <param name="family">Either IPv4 or IPv6.</param>
     /// <param name="uintNetmask">A number representing the netmask.</param>
-internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamily family, out BigInteger? uintNetmask)
+    internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamily family, out BigInteger? uintNetmask)
     {
         if (family == AddressFamily.InterNetwork && cidr > 32)
         {
@@ -1233,6 +1238,7 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     /// </summary>
     /// <param name="netmask">A number representing the netmask to count bits from.</param>
     /// <returns>The number of bytes set to 1.</returns>
+    [CLSCompliant(false)]
     public static uint BitsSet(IPAddress netmask)
     {
         var uintNetmask = IPNetwork2.ToBigInteger(netmask);
@@ -1373,8 +1379,8 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
             return false;
         }
 
-        BigInteger uintNetwork = this._network;
-        BigInteger uintBroadcast = this._broadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
+        BigInteger uintNetwork = this.InternalNetwork;
+        BigInteger uintBroadcast = this.InternalBroadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
         var uintAddress = IPNetwork2.ToBigInteger(contains);
 
         bool result = uintAddress >= uintNetwork
@@ -1414,11 +1420,12 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
             throw new ArgumentNullException("contains");
         }
 
-        BigInteger uintNetwork = this._network;
-        BigInteger uintBroadcast = this._broadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
+        BigInteger uintNetwork = this.InternalNetwork;
+        BigInteger uintBroadcast = this.InternalBroadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
 
-        BigInteger uintFirst = contains._network;
-        BigInteger uintLast = contains._broadcast; // CreateBroadcast(ref uintFirst, network2._netmask, network2._family);
+        BigInteger uintFirst = contains.InternalNetwork;
+        BigInteger
+            uintLast = contains.InternalBroadcast; // CreateBroadcast(ref uintFirst, network2._netmask, network2._family);
 
         bool result = uintFirst >= uintNetwork
                       && uintLast <= uintBroadcast;
@@ -1469,11 +1476,11 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
             throw new ArgumentNullException("network2");
         }
 
-        BigInteger uintNetwork = this._network;
-        BigInteger uintBroadcast = this._broadcast;
+        BigInteger uintNetwork = this.InternalNetwork;
+        BigInteger uintBroadcast = this.InternalBroadcast;
 
-        BigInteger uintFirst = network2._network;
-        BigInteger uintLast = network2._broadcast;
+        BigInteger uintFirst = network2.InternalNetwork;
+        BigInteger uintLast = network2.InternalBroadcast;
 
         bool overlap =
             (uintFirst >= uintNetwork && uintFirst <= uintBroadcast)
@@ -1520,9 +1527,9 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
 
     #region IANA block
 
-    private static readonly Lazy<IPNetwork2> _iana_ablock_reserved = new(() => IPNetwork2.Parse("10.0.0.0/8"));
-    private static readonly Lazy<IPNetwork2> _iana_bblock_reserved = new(() => IPNetwork2.Parse("172.16.0.0/12"));
-    private static readonly Lazy<IPNetwork2> _iana_cblock_reserved = new(() => IPNetwork2.Parse("192.168.0.0/16"));
+    private static readonly Lazy<IPNetwork2> IanaAblockReserved = new (() => IPNetwork2.Parse("10.0.0.0/8"));
+    private static readonly Lazy<IPNetwork2> IanaBblockReserved = new (() => IPNetwork2.Parse("172.16.0.0/12"));
+    private static readonly Lazy<IPNetwork2> IanaCblockReserved = new (() => IPNetwork2.Parse("192.168.0.0/16"));
 
     /// <summary>
     /// Gets 10.0.0.0/8.
@@ -1532,7 +1539,7 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     {
         get
         {
-            return _iana_ablock_reserved.Value;
+            return IanaAblockReserved.Value;
         }
     }
 
@@ -1544,7 +1551,7 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     {
         get
         {
-            return _iana_bblock_reserved.Value;
+            return IanaBblockReserved.Value;
         }
     }
 
@@ -1556,7 +1563,7 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     {
         get
         {
-            return _iana_cblock_reserved.Value;
+            return IanaCblockReserved.Value;
         }
     }
 
@@ -1679,7 +1686,7 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
     /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
     /// </summary>
-    /// <param name="network"></param>
+    /// <param name="network">The network.</param>
     /// <param name="cidr">A byte representing the CIDR to be used to subnet the current IPNetwork.</param>
     /// <param name="ipnetworkCollection">The resulting subnetted IPNetwork.</param>
     /// <returns>true if network was split successfully; otherwise, false.</returns>
@@ -1714,7 +1721,7 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
             return;
         }
 
-        int maxCidr = network._family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
+        int maxCidr = network.family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
         if (cidr > maxCidr)
         {
             if (trySubnet == false)
@@ -1765,7 +1772,7 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
     /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
     /// </summary>
-    /// <param name="network"></param>
+    /// <param name="network">the network.</param>
     /// <param name="network2">The network to supernet with.</param>
     /// <returns>A supernetted IP Network.</returns>
     [Obsolete("static Supernet is deprecated, please use instance Supernet.")]
@@ -1797,7 +1804,7 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
     /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
     /// </summary>
-    /// <param name="network"></param>
+    /// <param name="network">the network.</param>
     /// <param name="network2">The network to supernet with.</param>
     /// <param name="supernet">The resulting IPNetwork.</param>
     /// <returns>true if network2 was supernetted successfully; otherwise, false.</returns>
@@ -1819,7 +1826,11 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     /// <param name="network1">The first IP network.</param>
     /// <param name="network2">The second IP network.</param>
     /// <param name="supernet">The resulting supernet if the merge is successful; otherwise, null.</param>
-    internal static void InternalSupernet(bool trySupernet, IPNetwork2 network1, IPNetwork2 network2, out IPNetwork2 supernet)
+    internal static void InternalSupernet(
+        bool trySupernet,
+        IPNetwork2 network1,
+        IPNetwork2 network2,
+        out IPNetwork2 supernet)
     {
         if (network1 == null)
         {
@@ -1845,17 +1856,17 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
 
         if (network1.Contains(network2))
         {
-            supernet = new IPNetwork2(network1._network, network1._family, network1.Cidr);
+            supernet = new IPNetwork2(network1.InternalNetwork, network1.family, network1.Cidr);
             return;
         }
 
         if (network2.Contains(network1))
         {
-            supernet = new IPNetwork2(network2._network, network2._family, network2.Cidr);
+            supernet = new IPNetwork2(network2.InternalNetwork, network2.family, network2.Cidr);
             return;
         }
 
-        if (network1._cidr != network2._cidr)
+        if (network1.cidr != network2.cidr)
         {
             if (trySupernet == false)
             {
@@ -1866,8 +1877,8 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
             return;
         }
 
-        IPNetwork2 first = (network1._network < network2._network) ? network1 : network2;
-        IPNetwork2 last = (network1._network > network2._network) ? network1 : network2;
+        IPNetwork2 first = (network1.InternalNetwork < network2.InternalNetwork) ? network1 : network2;
+        IPNetwork2 last = (network1.InternalNetwork > network2.InternalNetwork) ? network1 : network2;
 
         // Starting from here :
         // network1 and network2 have the same cidr,
@@ -1875,7 +1886,7 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
         // network2 does not contain network1,
         // first is the lower subnet
         // last is the higher subnet
-        if ((first._broadcast + 1) != last._network)
+        if ((first.InternalBroadcast + 1) != last.InternalNetwork)
         {
             if (trySupernet == false)
             {
@@ -1886,11 +1897,11 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
             return;
         }
 
-        BigInteger uintSupernet = first._network;
-        byte cidrSupernet = (byte)(first._cidr - 1);
+        BigInteger uintSupernet = first.InternalNetwork;
+        byte cidrSupernet = (byte)(first.cidr - 1);
 
-        var networkSupernet = new IPNetwork2(uintSupernet, first._family, cidrSupernet);
-        if (networkSupernet._network != first._network)
+        var networkSupernet = new IPNetwork2(uintSupernet, first.family, cidrSupernet);
+        if (networkSupernet.InternalNetwork != first.InternalNetwork)
         {
             if (trySupernet == false)
             {
@@ -1912,7 +1923,7 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     /// <inheritdoc />
     public override int GetHashCode()
     {
-        return this._hashCode;
+        return this.hashCode;
     }
 
     /// <summary>
@@ -1924,9 +1935,9 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     {
         return string.Format(
             "{0}|{1}|{2}",
-            this._family.GetHashCode(),
-            this._network.GetHashCode(),
-            this._cidr.GetHashCode()).GetHashCode();
+            this.family.GetHashCode(),
+            this.InternalNetwork.GetHashCode(),
+            this.cidr.GetHashCode()).GetHashCode();
     }
 
     #endregion
@@ -2045,10 +2056,10 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
         ipns.Sort(new Comparison<IPNetwork2>(
             delegate(IPNetwork2 ipn1, IPNetwork2 ipn2)
             {
-                int networkCompare = ipn1._network.CompareTo(ipn2._network);
+                int networkCompare = ipn1.InternalNetwork.CompareTo(ipn2.InternalNetwork);
                 if (networkCompare == 0)
                 {
-                    int cidrCompare = ipn1._cidr.CompareTo(ipn2._cidr);
+                    int cidrCompare = ipn1.cidr.CompareTo(ipn2.cidr);
                     return cidrCompare;
                 }
 
@@ -2201,22 +2212,22 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
 
         Array.Sort<IPNetwork2>(nnin);
         IPNetwork2 nnin0 = nnin[0];
-        BigInteger uintNnin0 = nnin0._ipaddress;
+        BigInteger uintNnin0 = nnin0.ipaddress;
 
         IPNetwork2 nninX = nnin[nnin.Length - 1];
         IPAddress ipaddressX = nninX.Broadcast;
 
-        AddressFamily family = ipnetworks[0]._family;
+        AddressFamily family = ipnetworks[0].family;
         foreach (IPNetwork2 ipnx in ipnetworks)
         {
-            if (ipnx._family != family)
+            if (ipnx.family != family)
             {
                 throw new ArgumentException("MixedAddressFamily");
             }
         }
 
         var ipn = new IPNetwork2(0, family, 0);
-        for (byte cidr = nnin0._cidr; cidr >= 0; cidr--)
+        for (byte cidr = nnin0.cidr; cidr >= 0; cidr--)
         {
             var wideSubnet = new IPNetwork2(uintNnin0, family, cidr);
             if (wideSubnet.Contains(ipaddressX))
@@ -2258,7 +2269,9 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     /// <summary>
     /// Print an ipnetwork in a clear representation string.
     /// </summary>
+    /// <param name="ipnetwork">The ipnetwork.</param>
     /// <returns>Dump an IPNetwork representation as string.</returns>
+    /// <exception cref="ArgumentNullException">When arg is null.</exception>
     [Obsolete("static Print is deprecated, please use instance Print.")]
     public static string Print(IPNetwork2 ipnetwork)
     {
@@ -2377,21 +2390,21 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
         }
 
         // first test family
-        int result = left._family.CompareTo(right._family);
+        int result = left.family.CompareTo(right.family);
         if (result != 0)
         {
             return result;
         }
 
         // second test the network
-        result = left._network.CompareTo(right._network);
+        result = left.InternalNetwork.CompareTo(right.InternalNetwork);
         if (result != 0)
         {
             return result;
         }
 
         // then test the cidr
-        result = left._cidr.CompareTo(right._cidr);
+        result = left.cidr.CompareTo(right.cidr);
         return result;
     }
 
@@ -2532,7 +2545,7 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     #endregion
 
     #region ISerializable
-    
+
     /// <summary>
     /// Represents an internal structure to hold an IP address, its CIDR value, and address family.
     /// Used for internal operations within the IPNetwork2 class.
@@ -2543,12 +2556,12 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
         /// Represents the IP address value.
         /// </summary>
         public BigInteger IPAddress;
-        
+
         /// <summary>
         /// Represents the CIDR (Classless Inter-Domain Routing) value.
         /// </summary>
         public byte Cidr;
-        
+
         /// <summary>
         /// Represents the address family (IPv4 or IPv6).
         /// </summary>
@@ -2560,9 +2573,9 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
         string sipnetwork = (string)info.GetValue("IPNetwork", typeof(string));
         var ipnetwork = IPNetwork2.Parse(sipnetwork);
 
-        this._ipaddress = ipnetwork._ipaddress;
-        this._cidr = ipnetwork._cidr;
-        this._family = ipnetwork._family;
+        this.ipaddress = ipnetwork.ipaddress;
+        this.cidr = ipnetwork.cidr;
+        this.family = ipnetwork.family;
     }
 
     /// <inheritdoc/>
@@ -2648,12 +2661,13 @@ internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamil
     {
         get
         {
-            byte cidr = this._family == AddressFamily.InterNetwork ? (byte)32 : (byte)128;
-            BigInteger netmask = IPNetwork2.ToUint(cidr, this._family);
-            BigInteger wildcardmask = netmask - this._netmask;
+            byte cidr = this.family == AddressFamily.InterNetwork ? (byte)32 : (byte)128;
+            BigInteger netmask = IPNetwork2.ToUint(cidr, this.family);
+            BigInteger wildcardmask = netmask - this.InternalNetmask;
 
-            return IPNetwork2.ToIPAddress(wildcardmask, this._family);
+            return IPNetwork2.ToIPAddress(wildcardmask, this.family);
         }
     }
+
     #endregion
 }
