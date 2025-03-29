@@ -18,7 +18,7 @@ public class TryParseUnitTest
     [TestMethod]
     public void Test_IPNetwork_TryParse_Issue294()
     {
-        bool result = IPNetwork2.TryParse("*", out IPNetwork2 ipaddress1);
+        bool result = IPNetwork2.TryParse("*", out IPNetwork2 _);
         Assert.AreEqual(false, result, "parsed1");
     }
 
@@ -324,7 +324,7 @@ public class TryParseUnitTest
     public void TestTryParseStringAe1()
     {
         string ipaddress = "garbage";
-        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 _);
 
         Assert.AreEqual(false, parsed, "parsed");
     }
@@ -336,7 +336,7 @@ public class TryParseUnitTest
     public void TestTryParseStringAe2()
     {
         string ipaddress = "0.0.0.0 0.0.1.0";
-        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 _);
 
         Assert.AreEqual(false, parsed, "parsed");
     }
@@ -348,7 +348,7 @@ public class TryParseUnitTest
     public void TestTryParseStringAne1()
     {
         string ipaddress = null;
-        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 _);
 
         Assert.AreEqual(false, parsed, "parsed");
     }
@@ -392,7 +392,7 @@ public class TryParseUnitTest
     [DataRow("001:02b8::/64", false, true)]
     public void Test_TryParse(string ipnetwork, bool sanitanize, bool parsed)
     {
-        bool result = IPNetwork2.TryParse(ipnetwork, sanitanize, out IPNetwork2 ipnetwork1);
+        bool result = IPNetwork2.TryParse(ipnetwork, sanitanize, out IPNetwork2 _);
 
         Assert.AreEqual(parsed, result, "parsed1");
     }
@@ -412,7 +412,7 @@ public class TryParseUnitTest
     [DataRow("001:02b8:: ", false)]
     public void Test_IPAddress_TryParse(string ipaddress, bool parsed)
     {
-        bool result = IPAddress.TryParse(ipaddress, out IPAddress ipaddress1);
+        bool result = IPAddress.TryParse(ipaddress, out IPAddress _);
 
         Assert.AreEqual(parsed, result, "parsed1");
     }

@@ -64,8 +64,8 @@ public class IPNetworkParseTests
     [ExpectedException(typeof(ArgumentException))]
     public void TestParseIPAddressNetmaskAne8()
     {
-            var ipnet = IPNetwork2.Parse("x.x.x.x", "x.x.x.x");
-        }
+        IPNetwork2.Parse("x.x.x.x", "x.x.x.x");
+    }
 
     /// <summary>
     /// Test.
@@ -75,8 +75,8 @@ public class IPNetworkParseTests
     [ExpectedException(typeof(ArgumentException))]
     public void TestParseIPAddressNetmaskAne9()
     {
-            var ipnet = IPNetwork2.Parse("0.0.0.0", "x.x.x.x");
-        }
+        IPNetwork2.Parse("0.0.0.0", "x.x.x.x");
+    }
 
     /// <summary>
     /// Test.
@@ -86,8 +86,8 @@ public class IPNetworkParseTests
     [ExpectedException(typeof(ArgumentException))]
     public void TestParseIPAddressNetmaskAne10()
     {
-            var ipnet = IPNetwork2.Parse("x.x.x.x", 0);
-        }
+        IPNetwork2.Parse("x.x.x.x", 0);
+    }
 
     /// <summary>
     /// Test.
@@ -97,8 +97,8 @@ public class IPNetworkParseTests
     [ExpectedException(typeof(ArgumentException))]
     public void TestParseIPAddressNetmaskAne11()
     {
-            var ipnet = IPNetwork2.Parse("0.0.0.0", 33);
-        }
+        IPNetwork2.Parse("0.0.0.0", 33);
+    }
 
     /// <summary>
     /// Tests Parse functionality with Parse IPAddress Netmask.
@@ -565,8 +565,7 @@ public class IPNetworkParseTests
     public void TestParseIPAddressNoNetmask127001()
     {
             string ipaddress = "127.0.0.1";
-            IPNetwork2 result = null;
-            IPNetwork2.TryParse(ipaddress, out result);
+            IPNetwork2.TryParse(ipaddress, out IPNetwork2 result);
             Assert.AreEqual(result.Cidr, 8);
         }
 
@@ -577,9 +576,9 @@ public class IPNetworkParseTests
     [ExpectedException(typeof(ArgumentException))]
     public void TestParseStringAe1()
     {
-            string ipaddress = "garbage";
-            var ipnetwork = IPNetwork2.Parse(ipaddress);
-        }
+        string ipaddress = "garbage";
+        IPNetwork2.Parse(ipaddress);
+    }
 
     /// <summary>
     /// Test.
@@ -588,9 +587,9 @@ public class IPNetworkParseTests
     [ExpectedException(typeof(ArgumentException))]
     public void TestParseStringAe2()
     {
-            string ipaddress = "0.0.0.0 0.0.1.0";
-            var ipnetwork = IPNetwork2.Parse(ipaddress);
-        }
+        string ipaddress = "0.0.0.0 0.0.1.0";
+        IPNetwork2.Parse(ipaddress);
+    }
 
     /// <summary>
     /// Test.
@@ -599,7 +598,7 @@ public class IPNetworkParseTests
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringAne1()
     {
-            string ipaddress = null;
-            var ipnetwork = IPNetwork2.Parse(ipaddress);
-        }
+        string ipaddress = null;
+        IPNetwork2.Parse(ipaddress);
+    }
 }

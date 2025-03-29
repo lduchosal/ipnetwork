@@ -76,7 +76,7 @@ public class IPNetworkCompareTests
         var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
         string ipn2 = string.Empty;
 
-        int comparison = ipn1.CompareTo(ipn2);
+        ipn1.CompareTo(ipn2);
     }
 
     /// <summary>

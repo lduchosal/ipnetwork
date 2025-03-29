@@ -33,7 +33,7 @@ public class IPNetworkParseStringStringTests
             string ipaddress = null;
             string netmask = null;
 
-            var ipnetwork = IPNetwork2.Parse(ipaddress, netmask);
+            IPNetwork2.Parse(ipaddress, netmask);
         }
 
     /// <summary>
@@ -46,7 +46,7 @@ public class IPNetworkParseStringStringTests
             string ipaddress = "192.168.168.100";
             string netmask = null;
 
-            var ipnetwork = IPNetwork2.Parse(ipaddress, netmask);
+            IPNetwork2.Parse(ipaddress, netmask);
         }
 
     /// <summary>
@@ -59,7 +59,7 @@ public class IPNetworkParseStringStringTests
             string ipaddress = string.Empty;
             string netmask = string.Empty;
 
-            var ipnetwork = IPNetwork2.Parse(ipaddress, netmask);
+            IPNetwork2.Parse(ipaddress, netmask);
         }
 
     /// <summary>
@@ -72,6 +72,6 @@ public class IPNetworkParseStringStringTests
             string ipaddress = "192.168.168.100";
             string netmask = string.Empty;
 
-            var ipnetwork = IPNetwork2.Parse(ipaddress, netmask);
+            IPNetwork2.Parse(ipaddress, netmask);
         }
 }

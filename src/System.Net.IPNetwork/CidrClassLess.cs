@@ -22,21 +22,20 @@ public sealed class CidrClassLess : ICidrGuess
     /// <returns>true if ip was converted successfully; otherwise, false.</returns>
     public bool TryGuessCidr(string ip, out byte cidr)
     {
-            IPAddress ipaddress = null;
-            bool parsed = IPAddress.TryParse(string.Format("{0}", ip), out ipaddress);
-            if (parsed == false)
-            {
-                cidr = 0;
-                return false;
-            }
+        bool parsed = IPAddress.TryParse(string.Format("{0}", ip), out IPAddress ipaddress);
+        if (parsed == false)
+        {
+            cidr = 0;
+            return false;
+        }
 
-            if (ipaddress.AddressFamily == AddressFamily.InterNetworkV6)
-            {
-                cidr = 128;
-                return true;
-            }
-
-            cidr = 32;
+        if (ipaddress.AddressFamily == AddressFamily.InterNetworkV6)
+        {
+            cidr = 128;
             return true;
         }
+
+        cidr = 32;
+        return true;
+    }
 }

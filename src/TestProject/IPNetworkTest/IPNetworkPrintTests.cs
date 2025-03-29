@@ -38,11 +38,11 @@ Usable      : 4294967294
     [ExpectedException(typeof(ArgumentNullException))]
     public void PrintNull()
     {
-            IPNetwork2 ipn = null;
+        IPNetwork2 ipn = null;
 #pragma warning disable 0618
-            string print = IPNetwork2.Print(ipn);
+        IPNetwork2.Print(ipn);
 #pragma warning restore 0618
-        }
+    }
 
     /// <summary>
     ///     Tests Print functionality.
@@ -50,9 +50,9 @@ Usable      : 4294967294
     [TestMethod]
     public void PrintStatic()
     {
-            IPNetwork2 ipn = IPNetwork2.IANA_ABLK_RESERVED1;
+        IPNetwork2 ipn = IPNetwork2.IANA_ABLK_RESERVED1;
 #pragma warning disable 0618
-            string print = IPNetwork2.Print(ipn);
+        IPNetwork2.Print(ipn);
 #pragma warning restore 0618
-        }
+    }
 }

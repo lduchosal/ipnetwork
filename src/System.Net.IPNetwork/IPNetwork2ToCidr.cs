@@ -56,7 +56,7 @@ public sealed partial class IPNetwork2
             return;
         }
 
-        bool parsed = IPNetwork2.TryToBigInteger(netmask, out BigInteger? uintNetmask2);
+        IPNetwork2.TryToBigInteger(netmask, out BigInteger? uintNetmask2);
 
         // 20180217 lduchosal
         // impossible to reach code.

@@ -28,9 +28,9 @@ public class IPNetworkToIPAddressTests
     [ExpectedException(typeof(ArgumentException))]
     public void TestToIPAddress2()
     {
-            var ip = new BigInteger(0);
-            var result = IPNetwork2.ToIPAddress(ip, AddressFamily.AppleTalk);
-        }
+        var ip = new BigInteger(0);
+        IPNetwork2.ToIPAddress(ip, AddressFamily.AppleTalk);
+    }
 
     /// <summary>
     /// Test.
@@ -39,7 +39,7 @@ public class IPNetworkToIPAddressTests
     [ExpectedException(typeof(ArgumentException))]
     public void TestToIPAddress3()
     {
-            var ip = new BigInteger(new byte[]
+        var ip = new BigInteger(new byte[]
             {
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
@@ -51,6 +51,6 @@ public class IPNetworkToIPAddressTests
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
             });
-            var result = IPNetwork2.ToIPAddress(ip, AddressFamily.AppleTalk);
-        }
+        IPNetwork2.ToIPAddress(ip, AddressFamily.AppleTalk);
+    }
 }

@@ -20,8 +20,7 @@ public class CidrClassLessUnitTest
     {
         var cidrguess = new CidrClassLess();
 
-        byte cidr;
-        bool parsed = cidrguess.TryGuessCidr(null, out cidr);
+        bool parsed = cidrguess.TryGuessCidr(null, out byte cidr);
 
         Assert.AreEqual(false, parsed, "parsed");
         Assert.AreEqual(0, cidr, "cidr");
@@ -35,8 +34,7 @@ public class CidrClassLessUnitTest
     {
         var cidrguess = new CidrClassLess();
 
-        byte cidr;
-        bool parsed = cidrguess.TryGuessCidr("10.0.0.0", out cidr);
+        bool parsed = cidrguess.TryGuessCidr("10.0.0.0", out byte cidr);
 
         Assert.AreEqual(true, parsed, "parsed");
         Assert.AreEqual(32, cidr, "cidr");
@@ -50,8 +48,7 @@ public class CidrClassLessUnitTest
     {
         var cidrguess = new CidrClassLess();
 
-        byte cidr;
-        bool parsed = cidrguess.TryGuessCidr("172.0.0.0", out cidr);
+        bool parsed = cidrguess.TryGuessCidr("172.0.0.0", out byte cidr);
 
         Assert.AreEqual(true, parsed, "parsed");
         Assert.AreEqual(32, cidr, "cidr");
@@ -65,8 +62,7 @@ public class CidrClassLessUnitTest
     {
         var cidrguess = new CidrClassLess();
 
-        byte cidr;
-        bool parsed = cidrguess.TryGuessCidr("192.0.0.0", out cidr);
+        bool parsed = cidrguess.TryGuessCidr("192.0.0.0", out byte cidr);
 
         Assert.AreEqual(true, parsed, "parsed");
         Assert.AreEqual(32, cidr, "cidr");
@@ -80,8 +76,7 @@ public class CidrClassLessUnitTest
     {
         var cidrguess = new CidrClassLess();
 
-        byte cidr;
-        bool parsed = cidrguess.TryGuessCidr("224.0.0.0", out cidr);
+        bool parsed = cidrguess.TryGuessCidr("224.0.0.0", out byte cidr);
 
         Assert.AreEqual(true, parsed, "parsed");
         Assert.AreEqual(32, cidr, "cidr");
@@ -95,8 +90,7 @@ public class CidrClassLessUnitTest
     {
         var cidrguess = new CidrClassLess();
 
-        byte cidr;
-        bool parsed = cidrguess.TryGuessCidr("240.0.0.0", out cidr);
+        bool parsed = cidrguess.TryGuessCidr("240.0.0.0", out byte cidr);
 
         Assert.AreEqual(true, parsed, "parsed");
         Assert.AreEqual(32, cidr, "cidr");
@@ -114,8 +108,7 @@ public class CidrClassLessUnitTest
     {
         var cidrguess = new CidrClassLess();
 
-        byte cidr;
-        bool parsed = cidrguess.TryGuessCidr(null, out cidr);
+        bool parsed = cidrguess.TryGuessCidr(null, out byte cidr);
 
         Assert.AreEqual(false, parsed, "parsed");
         Assert.AreEqual(0, cidr, "cidr");
@@ -129,8 +122,7 @@ public class CidrClassLessUnitTest
     {
         var cidrguess = new CidrClassLess();
 
-        byte cidr;
-        bool parsed = cidrguess.TryGuessCidr("::", out cidr);
+        bool parsed = cidrguess.TryGuessCidr("::", out byte cidr);
 
         Assert.AreEqual(true, parsed, "parsed");
         Assert.AreEqual(128, cidr, "cidr");
@@ -144,8 +136,7 @@ public class CidrClassLessUnitTest
     {
         var cidrguess = new CidrClassLess();
 
-        byte cidr;
-        bool parsed = cidrguess.TryGuessCidr("2001:0db8::", out cidr);
+        bool parsed = cidrguess.TryGuessCidr("2001:0db8::", out byte cidr);
 
         Assert.AreEqual(true, parsed, "parsed");
         Assert.AreEqual(128, cidr, "cidr");

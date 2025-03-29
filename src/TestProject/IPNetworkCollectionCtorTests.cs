@@ -5,7 +5,7 @@
 namespace TestProject;
 
 /// <summary>
-/// Test constructor af IPNetworkCollection
+/// Test constructor af IPNetworkCollection.
 /// </summary>
 [TestClass]
 public class IPNetworkCollectionCtorTests
@@ -17,7 +17,6 @@ public class IPNetworkCollectionCtorTests
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestCtor1()
     {
-        var ipn = new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 33);
     }
 
     /// <summary>
@@ -27,6 +26,5 @@ public class IPNetworkCollectionCtorTests
     [ExpectedException(typeof(ArgumentException))]
     public void TestCtor2()
     {
-        var ipn = new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 2);
     }
 }

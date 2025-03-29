@@ -19,9 +19,8 @@ public class IPNetworkTrySupernetTests
             var network1 = IPNetwork2.Parse("192.168.0.1/24");
             var network2 = IPNetwork2.Parse("192.168.1.1/24");
             var supernetExpected = IPNetwork2.Parse("192.168.0.0/23");
-            IPNetwork2 supernet;
             bool parsed = true;
-            bool result = network1.TrySupernet(network2, out supernet);
+            bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -39,7 +38,7 @@ public class IPNetworkTrySupernetTests
             IPNetwork2 supernet;
 
 #pragma warning disable 0618
-            bool result = IPNetwork2.TrySupernet(network1, network2, out supernet);
+            IPNetwork2.TrySupernet(network1, network2, out supernet);
 #pragma warning restore 0618
         }
 
@@ -54,7 +53,7 @@ public class IPNetworkTrySupernetTests
             IPNetwork2 supernet;
 
 #pragma warning disable 0618
-            bool result = IPNetwork2.TrySupernet(network1, network2, out supernet);
+            IPNetwork2.TrySupernet(network1, network2, out supernet);
 #pragma warning restore 0618
         }
 
@@ -67,9 +66,8 @@ public class IPNetworkTrySupernetTests
             var network1 = IPNetwork2.Parse("192.168.1.1/24");
             IPNetwork2 network2 = null;
             IPNetwork2 supernetExpected = null;
-            IPNetwork2 supernet;
             bool parsed = false;
-            bool result = network1.TrySupernet(network2, out supernet);
+            bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -84,9 +82,8 @@ public class IPNetworkTrySupernetTests
             var network1 = IPNetwork2.Parse("192.168.0.1/24");
             var network2 = IPNetwork2.Parse("192.168.1.1/25");
             IPNetwork2 supernetExpected = null;
-            IPNetwork2 supernet;
             bool parsed = false;
-            bool result = network1.TrySupernet(network2, out supernet);
+            bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -101,9 +98,8 @@ public class IPNetworkTrySupernetTests
             var network1 = IPNetwork2.Parse("192.168.0.1/24");
             var network2 = IPNetwork2.Parse("192.168.5.1/24");
             IPNetwork2 supernetExpected = null;
-            IPNetwork2 supernet;
             bool parsed = false;
-            bool result = network1.TrySupernet(network2, out supernet);
+            bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -118,9 +114,8 @@ public class IPNetworkTrySupernetTests
             var network1 = IPNetwork2.Parse("192.168.0.1/24");
             var network2 = IPNetwork2.Parse("192.168.0.1/25");
             var supernetExpected = IPNetwork2.Parse("192.168.0.0/24");
-            IPNetwork2 supernet;
             bool parsed = true;
-            bool result = network1.TrySupernet(network2, out supernet);
+            bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -135,9 +130,8 @@ public class IPNetworkTrySupernetTests
             var network1 = IPNetwork2.Parse("192.168.0.1/25");
             var network2 = IPNetwork2.Parse("192.168.0.1/24");
             var supernetExpected = IPNetwork2.Parse("192.168.0.0/24");
-            IPNetwork2 supernet;
             bool parsed = true;
-            bool result = network1.TrySupernet(network2, out supernet);
+            bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -152,9 +146,8 @@ public class IPNetworkTrySupernetTests
             var network1 = IPNetwork2.Parse("192.168.1.1/24");
             var network2 = IPNetwork2.Parse("192.168.2.1/24");
             IPNetwork2 supernetExpected = null;
-            IPNetwork2 supernet;
             bool parsed = false;
-            bool result = network1.TrySupernet(network2, out supernet);
+            bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
             Assert.AreEqual(supernetExpected, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -170,9 +163,8 @@ public class IPNetworkTrySupernetTests
             var network2 = IPNetwork2.Parse("192.168.2.1/24");
             IPNetwork2[] network3 = { network1, network2 };
             IPNetwork2[] supernetExpected = { network1, network2 };
-            IPNetwork2[] supernet;
             bool parsed = true;
-            bool result = IPNetwork2.TrySupernet(network3, out supernet);
+            bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
             Assert.AreEqual(supernetExpected[0], supernet[0], "supernet");
             Assert.AreEqual(supernetExpected[1], supernet[1], "supernet");
@@ -189,9 +181,8 @@ public class IPNetworkTrySupernetTests
             var network2 = IPNetwork2.Parse("192.168.1.1/24");
             IPNetwork2[] network3 = { network1, network2 };
             IPNetwork2[] supernetExpected = { IPNetwork2.Parse("192.168.0.0/23") };
-            IPNetwork2[] supernet;
             bool parsed = true;
-            bool result = IPNetwork2.TrySupernet(network3, out supernet);
+            bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
             Assert.AreEqual(supernetExpected[0], supernet[0], "supernet");
             Assert.AreEqual(parsed, result, "parsed");
@@ -204,10 +195,9 @@ public class IPNetworkTrySupernetTests
     public void TestTrySupernet11()
     {
             IPNetwork2[] network3 = null;
-            IPNetwork2[] supernetExpected = { IPNetwork2.Parse("192.168.0.0/23") };
-            IPNetwork2[] supernet;
+            _ = new[] { IPNetwork2.Parse("192.168.0.0/23") };
             bool parsed = false;
-            bool result = IPNetwork2.TrySupernet(network3, out supernet);
+            bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
             Assert.AreEqual(null, supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
