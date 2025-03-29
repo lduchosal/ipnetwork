@@ -20,16 +20,14 @@ public class IPNetworkTryWideSubnetTests
         var ipns = new List<IPNetwork2>();
         foreach (string ip in ips)
         {
-            IPNetwork2 ipn;
-            if (IPNetwork2.TryParse(ip, 32, out ipn))
+            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
             {
                 ipns.Add(ipn);
             }
         }
 
-        IPNetwork2 ipnetwork = null;
-        bool wide = IPNetwork2.TryWideSubnet(ipns.ToArray(), out ipnetwork);
-        Assert.AreEqual(true, wide, "wide");
+        bool wide = IPNetwork2.TryWideSubnet(ipns.ToArray(), out IPNetwork2 ipnetwork);
+        Assert.IsTrue(wide, "wide");
         Assert.AreEqual("0.0.0.0/0", ipnetwork.ToString(), "ipnetwork");
     }
 
@@ -43,16 +41,14 @@ public class IPNetworkTryWideSubnetTests
         var ipns = new List<IPNetwork2>();
         foreach (string ip in ips)
         {
-            IPNetwork2 ipn;
-            if (IPNetwork2.TryParse(ip, 32, out ipn))
+            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
             {
                 ipns.Add(ipn);
             }
         }
 
-        IPNetwork2 ipnetwork = null;
-        bool wide = IPNetwork2.TryWideSubnet(ipns.ToArray(), out ipnetwork);
-        Assert.AreEqual(true, wide, "wide");
+        bool wide = IPNetwork2.TryWideSubnet(ipns.ToArray(), out IPNetwork2 ipnetwork);
+        Assert.IsTrue(wide, "wide");
         Assert.AreEqual("0.0.0.0/4", ipnetwork.ToString(), "ipnetwork");
     }
 
@@ -66,16 +62,14 @@ public class IPNetworkTryWideSubnetTests
         var ipns = new List<IPNetwork2>();
         foreach (string ip in ips)
         {
-            IPNetwork2 ipn;
-            if (IPNetwork2.TryParse(ip, 32, out ipn))
+            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
             {
                 ipns.Add(ipn);
             }
         }
 
-        IPNetwork2 ipnetwork = null;
-        bool wide = IPNetwork2.TryWideSubnet(ipns.ToArray(), out ipnetwork);
-        Assert.AreEqual(false, wide, "wide");
+        bool wide = IPNetwork2.TryWideSubnet(ipns.ToArray(), out IPNetwork2 _);
+        Assert.IsFalse(wide, "wide");
     }
 
     /// <summary>
@@ -88,16 +82,14 @@ public class IPNetworkTryWideSubnetTests
         var ipns = new List<IPNetwork2>();
         foreach (string ip in ips)
         {
-            IPNetwork2 ipn;
-            if (IPNetwork2.TryParse(ip, 32, out ipn))
+            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
             {
                 ipns.Add(ipn);
             }
         }
 
-        IPNetwork2 ipnetwork = null;
-        bool wide = IPNetwork2.TryWideSubnet(ipns.ToArray(), out ipnetwork);
-        Assert.AreEqual(true, wide, "wide");
+        bool wide = IPNetwork2.TryWideSubnet(ipns.ToArray(), out IPNetwork2 ipnetwork);
+        Assert.IsTrue(wide, "wide");
         Assert.AreEqual("1.1.1.1/32", ipnetwork.ToString(), "ipnetwork");
     }
 
@@ -107,8 +99,7 @@ public class IPNetworkTryWideSubnetTests
     [TestMethod]
     public void TryWideSubnetNull()
     {
-        IPNetwork2 ipnetwork = null;
-        bool wide = IPNetwork2.TryWideSubnet(null, out ipnetwork);
-        Assert.AreEqual(false, wide, "wide");
+        bool wide = IPNetwork2.TryWideSubnet(null, out IPNetwork2 _);
+        Assert.IsFalse(wide, "wide");
     }
 }

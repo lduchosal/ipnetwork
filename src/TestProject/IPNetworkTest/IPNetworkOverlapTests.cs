@@ -21,7 +21,7 @@ public class IPNetworkOverlapTests
             IPNetwork2 network2 = null;
 
 #pragma warning disable 0618
-            bool result = IPNetwork2.Overlap(network1, network2);
+            IPNetwork2.Overlap(network1, network2);
 #pragma warning restore 0618
         }
 

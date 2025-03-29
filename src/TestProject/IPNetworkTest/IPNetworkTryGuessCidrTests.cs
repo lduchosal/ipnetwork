@@ -16,12 +16,11 @@ public class IPNetworkTryGuessCidrTests
     [TestMethod]
     public void TestTryGuessCidrNull()
     {
-            byte cidr;
-            bool parsed = IPNetwork2.TryGuessCidr(null, out cidr);
+        bool parsed = IPNetwork2.TryGuessCidr(null, out byte cidr);
 
-            Assert.AreEqual(false, parsed, "parsed");
-            Assert.AreEqual(0, cidr, "cidr");
-        }
+        Assert.IsFalse(parsed, "parsed");
+        Assert.AreEqual(0, cidr, "cidr");
+    }
 
     /// <summary>
     ///     Tests Try Guess Cidr functionality with Try Guess Cidr A.
@@ -29,12 +28,11 @@ public class IPNetworkTryGuessCidrTests
     [TestMethod]
     public void TestTryGuessCidrA()
     {
-            byte cidr;
-            bool parsed = IPNetwork2.TryGuessCidr("10.0.0.0", out cidr);
+        bool parsed = IPNetwork2.TryGuessCidr("10.0.0.0", out byte cidr);
 
-            Assert.AreEqual(true, parsed, "parsed");
-            Assert.AreEqual(8, cidr, "cidr");
-        }
+        Assert.IsTrue(parsed, "parsed");
+        Assert.AreEqual(8, cidr, "cidr");
+    }
 
     /// <summary>
     ///     Tests Try Guess Cidr functionality with Try Guess Cidr B.
@@ -42,12 +40,11 @@ public class IPNetworkTryGuessCidrTests
     [TestMethod]
     public void TestTryGuessCidrB()
     {
-            byte cidr;
-            bool parsed = IPNetwork2.TryGuessCidr("172.0.0.0", out cidr);
+        bool parsed = IPNetwork2.TryGuessCidr("172.0.0.0", out byte cidr);
 
-            Assert.AreEqual(true, parsed, "parsed");
-            Assert.AreEqual(16, cidr, "cidr");
-        }
+        Assert.IsTrue(parsed, "parsed");
+        Assert.AreEqual(16, cidr, "cidr");
+    }
 
     /// <summary>
     ///     Tests Try Guess Cidr functionality with Try Guess Cidr C.
@@ -55,12 +52,11 @@ public class IPNetworkTryGuessCidrTests
     [TestMethod]
     public void TestTryGuessCidrC()
     {
-            byte cidr;
-            bool parsed = IPNetwork2.TryGuessCidr("192.0.0.0", out cidr);
+        bool parsed = IPNetwork2.TryGuessCidr("192.0.0.0", out byte cidr);
 
-            Assert.AreEqual(true, parsed, "parsed");
-            Assert.AreEqual(24, cidr, "cidr");
-        }
+        Assert.IsTrue(parsed, "parsed");
+        Assert.AreEqual(24, cidr, "cidr");
+    }
 
     /// <summary>
     ///     Tests Try Guess Cidr functionality with Try Guess Cidr D.
@@ -68,12 +64,11 @@ public class IPNetworkTryGuessCidrTests
     [TestMethod]
     public void TestTryGuessCidrD()
     {
-            byte cidr;
-            bool parsed = IPNetwork2.TryGuessCidr("224.0.0.0", out cidr);
+        bool parsed = IPNetwork2.TryGuessCidr("224.0.0.0", out byte cidr);
 
-            Assert.AreEqual(true, parsed, "parsed");
-            Assert.AreEqual(24, cidr, "cidr");
-        }
+        Assert.IsTrue(parsed, "parsed");
+        Assert.AreEqual(24, cidr, "cidr");
+    }
 
     /// <summary>
     ///     Tests Try Guess Cidr functionality with Try Guess Cidr E.
@@ -81,10 +76,9 @@ public class IPNetworkTryGuessCidrTests
     [TestMethod]
     public void TestTryGuessCidrE()
     {
-            byte cidr;
-            bool parsed = IPNetwork2.TryGuessCidr("240.0.0.0", out cidr);
+        bool parsed = IPNetwork2.TryGuessCidr("240.0.0.0", out byte cidr);
 
-            Assert.AreEqual(true, parsed, "parsed");
-            Assert.AreEqual(24, cidr, "cidr");
-        }
+        Assert.IsTrue(parsed, "parsed");
+        Assert.AreEqual(24, cidr, "cidr");
+    }
 }

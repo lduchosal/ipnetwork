@@ -61,7 +61,7 @@ public class ContainsUnitTest
             IPNetwork2 ipnetwork2 = null;
 
 #pragma warning disable 0618
-            bool result = IPNetwork2.Contains(ipnetwork, ipnetwork2);
+            IPNetwork2.Contains(ipnetwork, ipnetwork2);
 #pragma warning restore 0618
         }
 
@@ -91,7 +91,7 @@ public class ContainsUnitTest
             var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
             IPNetwork2 ipnetwork2 = null;
 
-            bool result = ipnetwork.Contains(ipnetwork2);
+            ipnetwork.Contains(ipnetwork2);
         }
 
     /// <summary>
@@ -105,7 +105,7 @@ public class ContainsUnitTest
             IPAddress ipaddress = null;
 
 #pragma warning disable 0618
-            bool result = IPNetwork2.Contains(ipnetwork, ipaddress);
+            IPNetwork2.Contains(ipnetwork, ipaddress);
 #pragma warning restore 0618
         }
 
@@ -134,7 +134,7 @@ public class ContainsUnitTest
             var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
             IPAddress ipaddress = null;
 
-            bool result = ipnetwork.Contains(ipaddress);
+            ipnetwork.Contains(ipaddress);
         }
 
     /// <summary>

@@ -51,9 +51,9 @@ public class IPNetworkSupernetArrayTests
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestTrySupernetArray2()
     {
-            IPNetwork2[] ipnetworks = null;
-            IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
-        }
+        IPNetwork2[] ipnetworks = null;
+        IPNetwork2.Supernet(ipnetworks);
+    }
 
     /// <summary>
     ///     Tests Supernet Array functionality with Try Supernet Array3.

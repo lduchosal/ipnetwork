@@ -20,7 +20,7 @@ public class IPNetworkCollectionMoveNextTests
             using (IPNetworkCollection ipns = ipn.Subnet(32))
             {
                 bool next = ipns.MoveNext();
-                Assert.AreEqual(true, next, "next");
+                Assert.IsTrue(next, "next");
             }
         }
 
@@ -39,7 +39,7 @@ public class IPNetworkCollectionMoveNextTests
                 ipns.MoveNext();
                 bool next = ipns.MoveNext();
 
-                Assert.AreEqual(false, next, "next");
+                Assert.IsFalse(next, "next");
             }
         }
 }

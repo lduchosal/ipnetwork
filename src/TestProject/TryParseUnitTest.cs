@@ -18,8 +18,8 @@ public class TryParseUnitTest
     [TestMethod]
     public void Test_IPNetwork_TryParse_Issue294()
     {
-        bool result = IPNetwork2.TryParse("*", out IPNetwork2 ipaddress1);
-        Assert.AreEqual(false, result, "parsed1");
+        bool result = IPNetwork2.TryParse("*", out IPNetwork2 _);
+        Assert.IsFalse(result, "parsed1");
     }
 
     #endregion
@@ -35,7 +35,7 @@ public class TryParseUnitTest
         IPAddress ip = null;
         bool parsed = IPNetwork2.TryParse(ip, ip, out IPNetwork2 ipnet);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
         Assert.AreEqual(null, ipnet, "ipnet");
     }
 
@@ -47,7 +47,7 @@ public class TryParseUnitTest
     {
         bool parsed = IPNetwork2.TryParse(string.Empty, 0, out IPNetwork2 ipnet);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
         Assert.AreEqual(null, ipnet, "ipnet");
     }
 
@@ -59,7 +59,7 @@ public class TryParseUnitTest
     {
         bool parsed = IPNetwork2.TryParse(null, 0, out IPNetwork2 ipnet);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
         Assert.AreEqual(null, ipnet, "ipnet");
     }
 
@@ -73,7 +73,7 @@ public class TryParseUnitTest
 
         bool parsed = IPNetwork2.TryParse(n, n, out IPNetwork2 ipnet);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
         Assert.AreEqual(null, ipnet, "ipnet");
     }
 
@@ -85,7 +85,7 @@ public class TryParseUnitTest
     {
         bool parsed = IPNetwork2.TryParse(IPAddress.Parse("10.10.10.10"), null, out IPNetwork2 ipnet);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
         Assert.AreEqual(null, ipnet, "ipnet");
     }
 
@@ -97,7 +97,7 @@ public class TryParseUnitTest
     {
         bool parsed = IPNetwork2.TryParse("0.0.0.0", netmask: null, out IPNetwork2 ipnet);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
         Assert.AreEqual(null, ipnet, "ipnet");
     }
 
@@ -109,7 +109,7 @@ public class TryParseUnitTest
     {
         bool parsed = IPNetwork2.TryParse("x.x.x.x", "x.x.x.x", out IPNetwork2 ipnet);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
         Assert.AreEqual(null, ipnet, "ipnet");
     }
 
@@ -121,7 +121,7 @@ public class TryParseUnitTest
     {
         bool parsed = IPNetwork2.TryParse("0.0.0.0", "x.x.x.x", out IPNetwork2 ipnet);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
         Assert.AreEqual(null, ipnet, "ipnet");
     }
 
@@ -133,7 +133,7 @@ public class TryParseUnitTest
     {
         bool parsed = IPNetwork2.TryParse("x.x.x.x", 0, out IPNetwork2 ipnet);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
         Assert.AreEqual(null, ipnet, "ipnet");
     }
 
@@ -145,7 +145,7 @@ public class TryParseUnitTest
     {
         bool parsed = IPNetwork2.TryParse("0.0.0.0", 33, out IPNetwork2 ipnet);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
         Assert.AreEqual(null, ipnet, "ipnet");
     }
 
@@ -167,7 +167,7 @@ public class TryParseUnitTest
 
         bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
 
-        Assert.AreEqual(true, parsed, "parsed");
+        Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
@@ -195,7 +195,7 @@ public class TryParseUnitTest
 
         bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
-        Assert.AreEqual(true, parsed, "parsed");
+        Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
@@ -223,7 +223,7 @@ public class TryParseUnitTest
 
         bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
-        Assert.AreEqual(true, parsed, "parsed");
+        Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
@@ -251,7 +251,7 @@ public class TryParseUnitTest
 
         bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
-        Assert.AreEqual(true, parsed, "parsed");
+        Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
@@ -279,7 +279,7 @@ public class TryParseUnitTest
 
         bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
-        Assert.AreEqual(true, parsed, "parsed");
+        Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
@@ -307,7 +307,7 @@ public class TryParseUnitTest
 
         bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
-        Assert.AreEqual(true, parsed, "parsed");
+        Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
@@ -324,9 +324,9 @@ public class TryParseUnitTest
     public void TestTryParseStringAe1()
     {
         string ipaddress = "garbage";
-        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 _);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
     }
 
     /// <summary>
@@ -336,9 +336,9 @@ public class TryParseUnitTest
     public void TestTryParseStringAe2()
     {
         string ipaddress = "0.0.0.0 0.0.1.0";
-        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 _);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
     }
 
     /// <summary>
@@ -348,9 +348,9 @@ public class TryParseUnitTest
     public void TestTryParseStringAne1()
     {
         string ipaddress = null;
-        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 _);
 
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
     }
 
     #endregion
@@ -366,8 +366,8 @@ public class TryParseUnitTest
         bool parsed1 = IPNetwork2.TryParse("g001:02b8::/64", out IPNetwork2 ipnetwork1);
         bool parsed2 = IPNetwork2.TryParse("1:2b8::/64", out IPNetwork2 ipnetwork2);
 
-        Assert.AreEqual(true, parsed1, "parsed1");
-        Assert.AreEqual(true, parsed2, "parsed2");
+        Assert.IsTrue(parsed1, "parsed1");
+        Assert.IsTrue(parsed2, "parsed2");
         Assert.AreEqual(ipnetwork1, ipnetwork2, "ipnetwork1 == ipnetwork2");
     }
 
@@ -392,7 +392,7 @@ public class TryParseUnitTest
     [DataRow("001:02b8::/64", false, true)]
     public void Test_TryParse(string ipnetwork, bool sanitanize, bool parsed)
     {
-        bool result = IPNetwork2.TryParse(ipnetwork, sanitanize, out IPNetwork2 ipnetwork1);
+        bool result = IPNetwork2.TryParse(ipnetwork, sanitanize, out IPNetwork2 _);
 
         Assert.AreEqual(parsed, result, "parsed1");
     }
@@ -412,7 +412,7 @@ public class TryParseUnitTest
     [DataRow("001:02b8:: ", false)]
     public void Test_IPAddress_TryParse(string ipaddress, bool parsed)
     {
-        bool result = IPAddress.TryParse(ipaddress, out IPAddress ipaddress1);
+        bool result = IPAddress.TryParse(ipaddress, out IPAddress _);
 
         Assert.AreEqual(parsed, result, "parsed1");
     }

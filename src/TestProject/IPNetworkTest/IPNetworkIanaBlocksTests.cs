@@ -108,7 +108,7 @@ public class IPNetworkIanaBlocksTests
     {
         IPNetwork2 ipnetwork = null;
 #pragma warning disable 0618
-        bool result = IPNetwork2.IsIANAReserved(ipnetwork);
+        IPNetwork2.IsIANAReserved(ipnetwork);
 #pragma warning restore 0618
     }
 

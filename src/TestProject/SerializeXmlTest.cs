@@ -112,7 +112,7 @@ public class SerializeXmlTest
 
             for (int i = 0; i < 1000000; i++)
             {
-                object result = serializer.Deserialize(mem);
+                serializer.Deserialize(mem);
                 mem.Position = 0;
             }
 
@@ -136,7 +136,7 @@ public class SerializeXmlTest
                 serializer.Serialize(mem, ipnetwork);
 
                 mem.Position = 0;
-                object ipnetwork2 = serializer.Deserialize(mem);
+                serializer.Deserialize(mem);
 
                 mem.SetLength(0);
             }

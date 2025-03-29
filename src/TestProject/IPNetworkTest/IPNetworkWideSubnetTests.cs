@@ -20,8 +20,7 @@ public class IPNetworkWideSubnetTests
             var ipns = new List<IPNetwork2>();
             foreach (string ip in ips)
             {
-                IPNetwork2 ipn;
-                if (IPNetwork2.TryParse(ip, 32, out ipn))
+                if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
                 {
                     ipns.Add(ipn);
                 }
@@ -41,8 +40,7 @@ public class IPNetworkWideSubnetTests
             var ipns = new List<IPNetwork2>();
             foreach (string ip in ips)
             {
-                IPNetwork2 ipn;
-                if (IPNetwork2.TryParse(ip, 32, out ipn))
+                if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
                 {
                     ipns.Add(ipn);
                 }
@@ -59,8 +57,8 @@ public class IPNetworkWideSubnetTests
     [ExpectedException(typeof(ArgumentNullException))]
     public void WideSubnetNull()
     {
-            var ipnetwork = IPNetwork2.WideSubnet(null);
-        }
+        IPNetwork2.WideSubnet(null);
+    }
 
     /// <summary>
     ///     Tests WideSubnet with invalid IP addresses to ensure it throws ArgumentException.
@@ -73,14 +71,13 @@ public class IPNetworkWideSubnetTests
             var ipns = new List<IPNetwork2>();
             foreach (string ip in ips)
             {
-                IPNetwork2 ipn;
-                if (IPNetwork2.TryParse(ip, 32, out ipn))
+                if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
                 {
                     ipns.Add(ipn);
                 }
             }
 
-            var ipnetwork = IPNetwork2.WideSubnet(ipns.ToArray());
+            IPNetwork2.WideSubnet(ipns.ToArray());
         }
 
     /// <summary>
@@ -90,11 +87,11 @@ public class IPNetworkWideSubnetTests
     [ExpectedException(typeof(ArgumentException))]
     public void WideSubnetMixed()
     {
-            var ipns = new List<IPNetwork2>
+        var ipns = new List<IPNetwork2>
             {
                 IPNetwork2.IANA_ABLK_RESERVED1,
                 IPNetwork2.Parse("2001:0db8::/64"),
             };
-            var ipnetwork = IPNetwork2.WideSubnet(ipns.ToArray());
-        }
+        IPNetwork2.WideSubnet(ipns.ToArray());
+    }
 }

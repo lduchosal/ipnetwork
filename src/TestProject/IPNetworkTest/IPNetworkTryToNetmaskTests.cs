@@ -16,12 +16,11 @@ public class IPNetworkTryToNetmaskTests
     [TestMethod]
     public void TryToNetmask1()
     {
-        IPAddress result = null;
-        bool parsed = IPNetwork2.TryToNetmask(0, AddressFamily.InterNetwork, out result);
+        bool parsed = IPNetwork2.TryToNetmask(0, AddressFamily.InterNetwork, out IPAddress result);
         var expected = IPAddress.Parse("0.0.0.0");
 
         Assert.AreEqual(expected, result, "Netmask");
-        Assert.AreEqual(true, parsed, "parsed");
+        Assert.IsTrue(parsed, "parsed");
     }
 
     /// <summary>
@@ -30,11 +29,10 @@ public class IPNetworkTryToNetmaskTests
     [TestMethod]
     public void TryToNetmask2()
     {
-        IPAddress result = null;
-        bool parsed = IPNetwork2.TryToNetmask(33, AddressFamily.InterNetwork, out result);
+        bool parsed = IPNetwork2.TryToNetmask(33, AddressFamily.InterNetwork, out IPAddress result);
         IPAddress expected = null;
 
         Assert.AreEqual(expected, result, "Netmask");
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
     }
 }

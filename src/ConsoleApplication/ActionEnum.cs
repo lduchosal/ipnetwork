@@ -5,7 +5,7 @@
 namespace System.Net;
 
 /// <summary>
-/// Switch and actions
+/// Switch and actions.
 /// </summary>
 public enum ActionEnum
 {

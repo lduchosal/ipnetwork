@@ -21,7 +21,7 @@ public class IPNetworkOperatorTests
 
         bool greater = ipn1 > ipn2;
 
-        Assert.AreEqual(false, greater, "greater");
+        Assert.IsFalse(greater, "greater");
     }
 
     /// <summary>
@@ -35,7 +35,7 @@ public class IPNetworkOperatorTests
 
         bool greater = ipn1 > ipn2;
 
-        Assert.AreEqual(true, greater, "greater");
+        Assert.IsTrue(greater, "greater");
     }
 
     /// <summary>
@@ -49,7 +49,7 @@ public class IPNetworkOperatorTests
 
         bool lower = ipn1 < ipn2;
 
-        Assert.AreEqual(true, lower, "lower");
+        Assert.IsTrue(lower, "lower");
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ public class IPNetworkOperatorTests
 
         bool lower = ipn1 < ipn2;
 
-        Assert.AreEqual(false, lower, "lower");
+        Assert.IsFalse(lower, "lower");
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ public class IPNetworkOperatorTests
 
         bool different = ipn1 != ipn2;
 
-        Assert.AreEqual(true, different, "different");
+        Assert.IsTrue(different, "different");
     }
 
     /// <summary>
@@ -91,7 +91,7 @@ public class IPNetworkOperatorTests
 
         bool different = ipn1 != ipn2;
 
-        Assert.AreEqual(false, different, "different");
+        Assert.IsFalse(different, "different");
     }
 
     /// <summary>
@@ -105,7 +105,7 @@ public class IPNetworkOperatorTests
 
         bool eq = ipn1 == ipn2;
 
-        Assert.AreEqual(false, eq, "eq");
+        Assert.IsFalse(eq, "eq");
     }
 
     /// <summary>
@@ -119,6 +119,6 @@ public class IPNetworkOperatorTests
 
         bool eq = ipn1 == ipn2;
 
-        Assert.AreEqual(true, eq, "eq");
+        Assert.IsTrue(eq, "eq");
     }
 }

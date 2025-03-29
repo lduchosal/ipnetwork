@@ -5,7 +5,7 @@
 namespace TestProject;
 
 /// <summary>
-/// Test constructor af IPNetworkCollection
+/// Test constructor af IPNetworkCollection.
 /// </summary>
 [TestClass]
 public class IPNetworkCollectionCtorTests

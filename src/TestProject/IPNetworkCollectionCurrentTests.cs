@@ -5,7 +5,7 @@
 namespace TestProject;
 
 /// <summary>
-/// Test IPNetworkCollection Current
+/// Test IPNetworkCollection Current.
 /// </summary>
 [TestClass]
 public class IPNetworkCollectionCurrentTests
