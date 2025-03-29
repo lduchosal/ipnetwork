@@ -5,6 +5,10 @@
 namespace System.Net;
 
 using System.IO;
+
+/// <summary>
+/// Print.
+/// </summary>
 public sealed partial class IPNetwork2
 {
     /// <summary>

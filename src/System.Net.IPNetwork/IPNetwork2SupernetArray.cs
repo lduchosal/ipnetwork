@@ -6,6 +6,9 @@ namespace System.Net;
 
 using System.Collections.Generic;
 
+/// <summary>
+/// SupernetArray.
+/// </summary>
 public sealed partial class IPNetwork2
 {
     /// <summary>

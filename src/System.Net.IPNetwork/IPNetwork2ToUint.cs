@@ -7,6 +7,9 @@ namespace System.Net;
 using System.Net.Sockets;
 using System.Numerics;
 
+/// <summary>
+/// ToUint.
+/// </summary>
 public sealed partial class IPNetwork2
 {
     /// <summary>

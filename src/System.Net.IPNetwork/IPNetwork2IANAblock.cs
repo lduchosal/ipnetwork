@@ -4,6 +4,9 @@
 
 namespace System.Net;
 
+/// <summary>
+/// IANA Blocks.
+/// </summary>
 public sealed partial class IPNetwork2
 {
     private static readonly Lazy<IPNetwork2> IanaAblockReserved = new (() => IPNetwork2.Parse("10.0.0.0/8"));
