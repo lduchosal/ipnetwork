@@ -11,7 +11,7 @@ namespace TestProject.IPNetworkTest;
 public class IPNetworkResizeTests
 {
     /// <summary>
-    /// Resize a too big network.
+    /// Resize a too big ipnetowkr 
     /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]

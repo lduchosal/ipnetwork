@@ -56,7 +56,10 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     #endregion
 
     #region accessors
-
+    
+    /// <summary>
+    /// Gets the network address calculated by applying the subnet mask to the IP address.
+    /// </summary>
     internal BigInteger _network
     {
         get
@@ -88,6 +91,9 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         }
     }
 
+    /// <summary>
+    /// Gets the netmask as a BigInteger representation based on the CIDR and address family.
+    /// </summary>
     internal BigInteger _netmask
     {
         get
@@ -107,6 +113,9 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         }
     }
 
+    /// <summary>
+    /// Gets the broadcast address calculated from the network address and the netmask.
+    /// </summary>
     internal BigInteger _broadcast
     {
         get
@@ -224,16 +233,16 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
 
     #region constructor
 
+    /// <summary>
+    /// Initializes a new instance of the <see cref="IPNetwork2"/> class with the specified IP address, address family, and CIDR.
+    /// </summary>
+    /// <param name="ipaddress">The IP address of the network.</param>
+    /// <param name="family">The address family of the network.</param>
+    /// <param name="cidr">The CIDR (Classless Inter-Domain Routing) notation of the network.</param>
 #if TRAVISCI
-    public
+    public 
 #else
-        /// <summary>
-        /// Initializes a new instance of the <see cref="IPNetwork2"/> class with the specified IP address, address family, and CIDR.
-        /// </summary>
-        /// <param name="ipaddress">The IP address of the network.</param>
-        /// <param name="family">The address family of the network.</param>
-        /// <param name="cidr">The CIDR (Classless Inter-Domain Routing) notation of the network.</param>
-        internal
+    internal 
 #endif
         IPNetwork2(BigInteger ipaddress, AddressFamily family, byte cidr)
     {
@@ -870,12 +879,13 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         return parsed;
     }
 
-#if TRAVISCI
-    public
-#else
-        internal
-#endif
-        static void InternalToBigInteger(bool tryParse, IPAddress ipaddress, out BigInteger? uintIpAddress)
+    /// <summary>
+    /// Converts an IPAddress to a nullable BigInteger representation.
+    /// </summary>
+    /// <param name="tryParse">Indicates whether the method should handle errors silently (true) or throw exceptions (false).</param>
+    /// <param name="ipaddress">The IPAddress to convert.</param>
+    /// <param name="uintIpAddress">The resulting BigInteger representation of the IP address, or null if conversion fails and tryParse is true.</param>
+    internal static void InternalToBigInteger(bool tryParse, IPAddress ipaddress, out BigInteger? uintIpAddress)
     {
         if (ipaddress == null)
         {
@@ -958,12 +968,7 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
     /// <param name="family">Either IPv4 or IPv6.</param>
     /// <param name="uintNetmask">A number representing the netmask.</param>
-#if TRAVISCI
-    public
-#else
-        internal
-#endif
-        static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamily family, out BigInteger? uintNetmask)
+internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamily family, out BigInteger? uintNetmask)
     {
         if (family == AddressFamily.InterNetwork && cidr > 32)
         {
@@ -1159,12 +1164,14 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         return parsed;
     }
 
-#if TRAVISCI
-    public
-#else
-        internal
-#endif
-        static void InternalToNetmask(bool tryParse, byte cidr, AddressFamily family, out IPAddress netmask)
+    /// <summary>
+    /// Converts a CIDR value to its corresponding IPAddress netmask.
+    /// </summary>
+    /// <param name="tryParse">If true, handles errors silently; otherwise, throws exceptions.</param>
+    /// <param name="cidr">The CIDR value to convert.</param>
+    /// <param name="family">The address family (IPv4 or IPv6).</param>
+    /// <param name="netmask">The resulting IPAddress netmask.</param>
+    internal static void InternalToNetmask(bool tryParse, byte cidr, AddressFamily family, out IPAddress netmask)
     {
         if (family != AddressFamily.InterNetwork
             && family != AddressFamily.InterNetworkV6)
@@ -1178,16 +1185,6 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
             return;
         }
 
-        // 20180217 lduchosal
-        // impossible to reach code, byte cannot be negative :
-        //
-        // if (cidr < 0) {
-        //     if (tryParse == false) {
-        //         throw new ArgumentOutOfRangeException("cidr");
-        //     }
-        //     netmask = null;
-        //     return;
-        // }
         int maxCidr = family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
         if (cidr > maxCidr)
         {
@@ -1268,12 +1265,15 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         return valid;
     }
 
-#if TRAVISCI
-    public
-#else
-        internal
-#endif
-        static bool InternalValidNetmask(BigInteger netmask, AddressFamily family)
+    /// <summary>
+    /// Determines whether a given BigInteger netmask is valid for the specified address family.
+    /// </summary>
+    /// <param name="netmask">The netmask represented as a BigInteger.</param>
+    /// <param name="family">The address family (IPv4 or IPv6).</param>
+    /// <returns>
+    /// <c>true</c> if the netmask is valid; otherwise, <c>false</c>.
+    /// </returns>
+    internal static bool InternalValidNetmask(BigInteger netmask, AddressFamily family)
     {
         if (family != AddressFamily.InterNetwork
             && family != AddressFamily.InterNetworkV6)
@@ -1322,12 +1322,14 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         return ip;
     }
 
-#if TRAVISCI
-    public
-#else
-        internal
-#endif
-        static byte[] Resize(byte[] bytes, AddressFamily family)
+    /// <summary>
+    /// Resizes the given byte array to match the expected width for the specified address family (IPv4 or IPv6).
+    /// Pads with zeros if the array is shorter than required.
+    /// </summary>
+    /// <param name="bytes">The byte array to resize.</param>
+    /// <param name="family">The address family (IPv4 or IPv6).</param>
+    /// <returns>A byte array resized to the appropriate length for the address family.</returns>
+    internal static byte[] Resize(byte[] bytes, AddressFamily family)
     {
         if (family != AddressFamily.InterNetwork
             && family != AddressFamily.InterNetworkV6)
@@ -1692,12 +1694,14 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         return network.TrySubnet(cidr, out ipnetworkCollection);
     }
 
-#if TRAVISCI
-    public
-#else
-        internal
-#endif
-        static void InternalSubnet(bool trySubnet, IPNetwork2 network, byte cidr, out IPNetworkCollection ipnetworkCollection)
+    /// <summary>
+    /// Splits a given IP network into smaller subnets of the specified CIDR size.
+    /// </summary>
+    /// <param name="trySubnet">Indicates whether to throw exceptions or return null on failure.</param>
+    /// <param name="network">The IP network to be subnetted.</param>
+    /// <param name="cidr">The CIDR value used to define the new subnet size.</param>
+    /// <param name="ipnetworkCollection">The resulting collection of subnets, or null if the operation fails and trySubnet is true.</param>
+    internal static void InternalSubnet(bool trySubnet, IPNetwork2 network, byte cidr, out IPNetworkCollection ipnetworkCollection)
     {
         if (network == null)
         {
@@ -1808,12 +1812,14 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         return network.TrySupernet(network2, out supernet);
     }
 
-#if TRAVISCI
-    public
-#else
-        internal
-#endif
-        static void InternalSupernet(bool trySupernet, IPNetwork2 network1, IPNetwork2 network2, out IPNetwork2 supernet)
+    /// <summary>
+    /// Attempts to merge two adjacent IP networks with equal CIDR values into a single supernet.
+    /// </summary>
+    /// <param name="trySupernet">If true, suppresses exceptions on failure; otherwise, throws.</param>
+    /// <param name="network1">The first IP network.</param>
+    /// <param name="network2">The second IP network.</param>
+    /// <param name="supernet">The resulting supernet if the merge is successful; otherwise, null.</param>
+    internal static void InternalSupernet(bool trySupernet, IPNetwork2 network1, IPNetwork2 network2, out IPNetwork2 supernet)
     {
         if (network1 == null)
         {
@@ -1954,12 +1960,14 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         return supernetted;
     }
 
-#if TRAVISCI
-    public
-#else
-        internal
-#endif
-        static bool InternalSupernet(bool trySupernet, IPNetwork2[] ipnetworks, out IPNetwork2[] supernet)
+    /// <summary>
+    /// Attempts to merge an array of adjacent IP networks with equal CIDR values into the smallest possible set of supernets.
+    /// </summary>
+    /// <param name="trySupernet">If true, suppresses exceptions on failure; otherwise, throws.</param>
+    /// <param name="ipnetworks">The array of IP networks to attempt to merge.</param>
+    /// <param name="supernet">The resulting array of merged supernets if successful; otherwise, the original input.</param>
+    /// <returns><c>true</c> if supernetting was successful; otherwise, <c>false</c>.</returns>
+    internal static bool InternalSupernet(bool trySupernet, IPNetwork2[] ipnetworks, out IPNetwork2[] supernet)
     {
         if (ipnetworks == null)
         {
@@ -2148,6 +2156,12 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         return ipn;
     }
 
+    /// <summary>
+    /// Attempts to find the widest subnet that includes all given IPNetwork2 instances.
+    /// </summary>
+    /// <param name="tryWide">If true, suppresses exceptions on invalid input; otherwise, throws.</param>
+    /// <param name="ipnetworks">The array of IPNetwork2 instances to encompass within the widest subnet.</param>
+    /// <param name="ipnetwork">The resulting widest IPNetwork2 subnet, or null if unsuccessful and tryWide is true.</param>
     internal static void InternalWideSubnet(bool tryWide, IPNetwork2[] ipnetworks, out IPNetwork2 ipnetwork)
     {
         if (ipnetworks == null)
@@ -2518,10 +2532,26 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     #endregion
 
     #region ISerializable
+    
+    /// <summary>
+    /// Represents an internal structure to hold an IP address, its CIDR value, and address family.
+    /// Used for internal operations within the IPNetwork2 class.
+    /// </summary>
     internal struct IPNetworkInteral
     {
+        /// <summary>
+        /// Represents the IP address value.
+        /// </summary>
         public BigInteger IPAddress;
+        
+        /// <summary>
+        /// Represents the CIDR (Classless Inter-Domain Routing) value.
+        /// </summary>
         public byte Cidr;
+        
+        /// <summary>
+        /// Represents the address family (IPv4 or IPv6).
+        /// </summary>
         public AddressFamily AddressFamily;
     }
 
@@ -2535,6 +2565,7 @@ public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
         this._family = ipnetwork._family;
     }
 
+    /// <inheritdoc/>
     void ISerializable.GetObjectData(SerializationInfo info, StreamingContext context)
     {
         info.AddValue("IPNetwork", this.ToString());

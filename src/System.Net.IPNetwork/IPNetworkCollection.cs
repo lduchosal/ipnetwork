@@ -48,25 +48,25 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
 #if TRAVISCI
     public
 #else
-        internal
+    internal 
 #endif
         IPNetworkCollection(IPNetwork2 ipnetwork, byte cidrSubnet)
     {
-            int maxCidr = ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? 32 : 128;
-            if (cidrSubnet > maxCidr)
-            {
-                throw new ArgumentOutOfRangeException("cidrSubnet");
-            }
-
-            if (cidrSubnet < ipnetwork.Cidr)
-            {
-                throw new ArgumentException("cidrSubnet");
-            }
-
-            this._cidrSubnet = cidrSubnet;
-            this._ipnetwork = ipnetwork;
-            this._enumerator = -1;
+        int maxCidr = ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? 32 : 128;
+        if (cidrSubnet > maxCidr)
+        {
+            throw new ArgumentOutOfRangeException("cidrSubnet");
         }
+
+        if (cidrSubnet < ipnetwork.Cidr)
+        {
+            throw new ArgumentException("cidrSubnet");
+        }
+
+        this._cidrSubnet = cidrSubnet;
+        this._ipnetwork = ipnetwork;
+        this._enumerator = -1;
+    }
 
     #region Count, Array, Enumerator
 
@@ -77,9 +77,9 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     {
         get
         {
-                var count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
-                return count;
-            }
+            var count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
+            return count;
+        }
     }
 
     /// <summary>
@@ -94,33 +94,36 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     {
         get
         {
-                if (i >= this.Count)
-                {
-                    throw new ArgumentOutOfRangeException("i");
-                }
-
-                BigInteger last = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetworkV6
-                    ? this._lastUsable : this._broadcast;
-                BigInteger increment = (last - this._network) / this.Count;
-                BigInteger uintNetwork = this._network + ((increment + 1) * i);
-                var ipn = new IPNetwork2(uintNetwork, this._ipnetwork.AddressFamily, this._cidrSubnet);
-                return ipn;
+            if (i >= this.Count)
+            {
+                throw new ArgumentOutOfRangeException("i");
             }
+
+            BigInteger last = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetworkV6
+                ? this._lastUsable
+                : this._broadcast;
+            BigInteger increment = (last - this._network) / this.Count;
+            BigInteger uintNetwork = this._network + ((increment + 1) * i);
+            var ipn = new IPNetwork2(uintNetwork, this._ipnetwork.AddressFamily, this._cidrSubnet);
+            return ipn;
+        }
     }
 
     #endregion
 
     #region IEnumerable Members
 
+    /// <inheritdoc/>
     IEnumerator<IPNetwork2> IEnumerable<IPNetwork2>.GetEnumerator()
     {
-            return this;
-        }
+        return this;
+    }
 
+    /// <inheritdoc/>
     IEnumerator IEnumerable.GetEnumerator()
     {
-            return this;
-        }
+        return this;
+    }
 
     #region IEnumerator<IPNetwork> Members
 
@@ -144,9 +147,9 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     /// </remarks>
     public void Dispose()
     {
-            // nothing to dispose
-            return;
-        }
+        // nothing to dispose
+        return;
+    }
 
     #endregion
 
@@ -169,22 +172,22 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     /// </returns>
     public bool MoveNext()
     {
-            this._enumerator++;
-            if (this._enumerator >= this.Count)
-            {
-                return false;
-            }
-
-            return true;
+        this._enumerator++;
+        if (this._enumerator >= this.Count)
+        {
+            return false;
         }
+
+        return true;
+    }
 
     /// <summary>
     /// Sets the enumerator to its initial position, which is before the first element in the collection.
     /// </summary>
     public void Reset()
     {
-            this._enumerator = -1;
-        }
+        this._enumerator = -1;
+    }
 
     #endregion
 
