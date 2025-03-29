@@ -2,13 +2,13 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject
+namespace TestProject;
+
+[TestClass]
+public class SerializeDataContractTest
 {
-    [TestClass]
-    public class SerializeDataContractTest
-    {
-        [TestMethod]
-        public void Test_Serialize_DataContract()
+    [TestMethod]
+    public void Test_Serialize_DataContract()
     {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
@@ -18,8 +18,8 @@ namespace TestProject
             Assert.AreEqual(expected, result);
         }
 
-        [TestMethod]
-        public void Test_Deserialize_DataContract()
+    [TestMethod]
+    public void Test_Deserialize_DataContract()
     {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
             string serialized = DataContractSerializeHelper.Serialize(ipnetwork);
@@ -29,11 +29,10 @@ namespace TestProject
             Assert.AreEqual(ipnetwork, result);
         }
 
-        [TestMethod]
-        public void Test_Empty_Constructor()
+    [TestMethod]
+    public void Test_Empty_Constructor()
     {
             var ipnetwork = new IPNetwork2();
             Assert.AreEqual("0.0.0.0/0", ipnetwork.ToString());
         }
-    }
 }

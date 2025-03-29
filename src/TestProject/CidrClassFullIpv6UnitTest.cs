@@ -2,13 +2,13 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject
+namespace TestProject;
+
+[TestClass]
+public class CidrClassFullIpv6UnitTest
 {
-    [TestClass]
-    public class CidrClassFullIpv6UnitTest
-    {
-        [TestMethod]
-        public void TestIpV6TryGuessCidrNull()
+    [TestMethod]
+    public void TestIpV6TryGuessCidrNull()
     {
             var cidrguess = new CidrClassFull();
 
@@ -19,8 +19,8 @@ namespace TestProject
             Assert.AreEqual(0, cidr, "cidr");
         }
 
-        [TestMethod]
-        public void TestIpV6TryGuessCidr1()
+    [TestMethod]
+    public void TestIpV6TryGuessCidr1()
     {
             var cidrguess = new CidrClassFull();
 
@@ -31,8 +31,8 @@ namespace TestProject
             Assert.AreEqual(64, cidr, "cidr");
         }
 
-        [TestMethod]
-        public void TestIpV6TryGuessCidr2()
+    [TestMethod]
+    public void TestIpV6TryGuessCidr2()
     {
             var cidrguess = new CidrClassFull();
 
@@ -42,5 +42,4 @@ namespace TestProject
             Assert.AreEqual(true, parsed, "parsed");
             Assert.AreEqual(64, cidr, "cidr");
         }
-    }
 }

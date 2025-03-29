@@ -19,7 +19,7 @@ namespace System.Net
         /// </summary>
         public static ICidrGuess ClassLess { get => _cidr_classless.Value; }
 
-        private static readonly Lazy<ICidrGuess> _cidr_classless = new Lazy<ICidrGuess>(() => new CidrClassLess());
-        private static readonly Lazy<ICidrGuess> _cidr_classfull = new Lazy<ICidrGuess>(() => new CidrClassFull());
+        private static readonly Lazy<ICidrGuess> _cidr_classless = new(() => new CidrClassLess());
+        private static readonly Lazy<ICidrGuess> _cidr_classfull = new(() => new CidrClassFull());
     }
 }

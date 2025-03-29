@@ -2,83 +2,83 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject.IPNetworkTest
+namespace TestProject.IPNetworkTest;
+
+[TestClass]
+public class IPNetworkParseTests
 {
-    [TestClass]
-    public class IPNetworkParseTests
-    {
-        [TestMethod]
-        [TestCategory("Parse")]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseIPAddressNetmaskAne2()
+    [TestMethod]
+    [TestCategory("Parse")]
+    [ExpectedException(typeof(ArgumentNullException))]
+    public void TestParseIPAddressNetmaskAne2()
     {
             IPAddress ip = null;
             IPNetwork2.Parse(ip, ip);
         }
 
-        [TestMethod]
-        [TestCategory("Parse")]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseIPAddressNetmaskAne3()
+    [TestMethod]
+    [TestCategory("Parse")]
+    [ExpectedException(typeof(ArgumentNullException))]
+    public void TestParseIPAddressNetmaskAne3()
     {
             IPNetwork2.Parse(string.Empty, 0);
         }
 
-        [TestMethod]
-        [TestCategory("Parse")]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseIPAddressNetmaskAne4()
+    [TestMethod]
+    [TestCategory("Parse")]
+    [ExpectedException(typeof(ArgumentNullException))]
+    public void TestParseIPAddressNetmaskAne4()
     {
             IPNetwork2.Parse(null, 0);
         }
 
-        [TestMethod]
-        [TestCategory("Parse")]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseIPAddressNetmaskAne5()
+    [TestMethod]
+    [TestCategory("Parse")]
+    [ExpectedException(typeof(ArgumentNullException))]
+    public void TestParseIPAddressNetmaskAne5()
     {
             string n = null;
             IPNetwork2.Parse(n, n);
         }
 
-        [TestMethod]
-        [TestCategory("Parse")]
-        [ExpectedException(typeof(ArgumentException))]
-        public void TestParseIPAddressNetmaskAne8()
+    [TestMethod]
+    [TestCategory("Parse")]
+    [ExpectedException(typeof(ArgumentException))]
+    public void TestParseIPAddressNetmaskAne8()
     {
             var ipnet = IPNetwork2.Parse("x.x.x.x", "x.x.x.x");
         }
 
-        [TestMethod]
-        [TestCategory("Parse")]
-        [ExpectedException(typeof(ArgumentException))]
-        public void TestParseIPAddressNetmaskAne9()
+    [TestMethod]
+    [TestCategory("Parse")]
+    [ExpectedException(typeof(ArgumentException))]
+    public void TestParseIPAddressNetmaskAne9()
     {
             var ipnet = IPNetwork2.Parse("0.0.0.0", "x.x.x.x");
         }
 
-        [TestMethod]
-        [TestCategory("Parse")]
-        [ExpectedException(typeof(ArgumentException))]
-        public void TestParseIPAddressNetmaskAne10()
+    [TestMethod]
+    [TestCategory("Parse")]
+    [ExpectedException(typeof(ArgumentException))]
+    public void TestParseIPAddressNetmaskAne10()
     {
             var ipnet = IPNetwork2.Parse("x.x.x.x", 0);
         }
 
-        [TestMethod]
-        [TestCategory("Parse")]
-        [ExpectedException(typeof(ArgumentException))]
-        public void TestParseIPAddressNetmaskAne11()
+    [TestMethod]
+    [TestCategory("Parse")]
+    [ExpectedException(typeof(ArgumentException))]
+    public void TestParseIPAddressNetmaskAne11()
     {
             var ipnet = IPNetwork2.Parse("0.0.0.0", 33);
         }
 
-        [TestCategory("Parse")]
-        /// <summary>
-        /// Tests Parse functionality with Parse IPAddress Netmask.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNetmask()
+    [TestCategory("Parse")]
+    /// <summary>
+    /// Tests Parse functionality with Parse IPAddress Netmask.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNetmask()
     {
             string ipaddress = "192.168.168.100";
             string netmask = "255.255.255.0";
@@ -100,12 +100,12 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        [TestCategory("Parse")]
-        /// <summary>
-        /// Tests Parse functionality with Parse String1.
-        /// </summary>
-        [TestMethod]
-        public void TestParseString1()
+    [TestCategory("Parse")]
+    /// <summary>
+    /// Tests Parse functionality with Parse String1.
+    /// </summary>
+    [TestMethod]
+    public void TestParseString1()
     {
             string ipaddress = "192.168.168.100 255.255.255.0";
 
@@ -127,12 +127,12 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        [TestCategory("Parse")]
-        /// <summary>
-        /// Tests Parse functionality with Parse String2.
-        /// </summary>
-        [TestMethod]
-        public void TestParseString2()
+    [TestCategory("Parse")]
+    /// <summary>
+    /// Tests Parse functionality with Parse String2.
+    /// </summary>
+    [TestMethod]
+    public void TestParseString2()
     {
             string ipaddress = "192.168.168.100/24";
 
@@ -154,12 +154,12 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        [TestCategory("Parse")]
-        /// <summary>
-        /// Tests Parse functionality with Parse String3.
-        /// </summary>
-        [TestMethod]
-        public void TestParseString3()
+    [TestCategory("Parse")]
+    /// <summary>
+    /// Tests Parse functionality with Parse String3.
+    /// </summary>
+    [TestMethod]
+    public void TestParseString3()
     {
             string ipaddress = "0.0.0.0/0";
 
@@ -181,12 +181,12 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        [TestCategory("Parse")]
-        /// <summary>
-        /// Tests Parse functionality with Parse String4.
-        /// </summary>
-        [TestMethod]
-        public void TestParseString4()
+    [TestCategory("Parse")]
+    /// <summary>
+    /// Tests Parse functionality with Parse String4.
+    /// </summary>
+    [TestMethod]
+    public void TestParseString4()
     {
             string ipaddress = "0.0.0.0/32";
 
@@ -208,12 +208,12 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        [TestCategory("Parse")]
-        /// <summary>
-        /// Tests Parse functionality with Parse String5.
-        /// </summary>
-        [TestMethod]
-        public void TestParseString5()
+    [TestCategory("Parse")]
+    /// <summary>
+    /// Tests Parse functionality with Parse String5.
+    /// </summary>
+    [TestMethod]
+    public void TestParseString5()
     {
             string ipaddress = "255.255.255.255/32";
 
@@ -235,12 +235,12 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        [TestCategory("Parse")]
-        /// <summary>
-        /// Tests Parse functionality with Parse IPAddress No Netmask1.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNoNetmask1()
+    [TestCategory("Parse")]
+    /// <summary>
+    /// Tests Parse functionality with Parse IPAddress No Netmask1.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNoNetmask1()
     {
             string ipaddress = "10.0.0.0";
 
@@ -262,11 +262,11 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        /// <summary>
-        ///     Tests Parse functionality.
-        /// </summary>
-        [TestMethod]
-        public void When_Parse_254_128_0_0_Should_Succeed()
+    /// <summary>
+    ///     Tests Parse functionality.
+    /// </summary>
+    [TestMethod]
+    public void When_Parse_254_128_0_0_Should_Succeed()
     {
             string ipaddress = "254.128.0.0";
 
@@ -288,11 +288,11 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        /// <summary>
-        ///     Tests Parse functionality with Parse IPAddress No Netmask2.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNoNetmask2()
+    /// <summary>
+    ///     Tests Parse functionality with Parse IPAddress No Netmask2.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNoNetmask2()
     {
             string ipaddress = "172.0.0.0";
 
@@ -314,11 +314,11 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        /// <summary>
-        ///     Tests Parse functionality with Parse IPAddress No Netmask3.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNoNetmask3()
+    /// <summary>
+    ///     Tests Parse functionality with Parse IPAddress No Netmask3.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNoNetmask3()
     {
             string ipaddress = "192.0.0.0";
 
@@ -340,11 +340,11 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        /// <summary>
-        ///     Tests Parse functionality with Parse IPAddress No Netmask1_Class Full.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNoNetmask1_ClassFull()
+    /// <summary>
+    ///     Tests Parse functionality with Parse IPAddress No Netmask1_Class Full.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNoNetmask1_ClassFull()
     {
             string ipaddress = "10.0.0.0";
             ICidrGuess guessCidr = CidrGuess.ClassFull;
@@ -368,11 +368,11 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        /// <summary>
-        ///     Tests Parse functionality with Parse IPAddress No Netmask2_Class Full.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNoNetmask2_ClassFull()
+    /// <summary>
+    ///     Tests Parse functionality with Parse IPAddress No Netmask2_Class Full.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNoNetmask2_ClassFull()
     {
             string ipaddress = "172.0.0.0";
             ICidrGuess guessCidr = CidrGuess.ClassFull;
@@ -396,11 +396,11 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        /// <summary>
-        ///     Tests Parse functionality with Parse IPAddress No Netmask3_Class Full.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNoNetmask3_ClassFull()
+    /// <summary>
+    ///     Tests Parse functionality with Parse IPAddress No Netmask3_Class Full.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNoNetmask3_ClassFull()
     {
             string ipaddress = "192.0.0.0";
             ICidrGuess guessCidr = CidrGuess.ClassFull;
@@ -424,11 +424,11 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        /// <summary>
-        ///     Tests Parse functionality with Parse IPAddress No Netmask1_Class Less.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNoNetmask1_ClassLess()
+    /// <summary>
+    ///     Tests Parse functionality with Parse IPAddress No Netmask1_Class Less.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNoNetmask1_ClassLess()
     {
             string ipaddress = "10.0.0.0";
             ICidrGuess guessCidr = CidrGuess.ClassLess;
@@ -452,11 +452,11 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        /// <summary>
-        ///     Tests Parse functionality with Parse IPAddress No Netmask2_Class Less.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNoNetmask2_ClassLess()
+    /// <summary>
+    ///     Tests Parse functionality with Parse IPAddress No Netmask2_Class Less.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNoNetmask2_ClassLess()
     {
             string ipaddress = "172.0.0.0";
             ICidrGuess guessCidr = CidrGuess.ClassLess;
@@ -480,11 +480,11 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        /// <summary>
-        ///     Tests Parse functionality with Parse IPAddress No Netmask3_Class Less.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNoNetmask3_ClassLess()
+    /// <summary>
+    ///     Tests Parse functionality with Parse IPAddress No Netmask3_Class Less.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNoNetmask3_ClassLess()
     {
             string ipaddress = "192.0.0.0";
             ICidrGuess guessCidr = CidrGuess.ClassLess;
@@ -508,11 +508,11 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-        /// <summary>
-        ///     Tests Parse functionality with Parse IPAddress No Netmask4.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNoNetmask4()
+    /// <summary>
+    ///     Tests Parse functionality with Parse IPAddress No Netmask4.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNoNetmask4()
     {
             string ipaddress = "224.0.0.0";
             var ipnetwork = IPNetwork2.Parse(ipaddress);
@@ -520,22 +520,22 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual("224.0.0.0/24", ipnetwork.ToString(), "Network");
         }
 
-        /// <summary>
-        ///     Tests Parse functionality with Parse IPAddress No Netmask5.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNoNetmask5()
+    /// <summary>
+    ///     Tests Parse functionality with Parse IPAddress No Netmask5.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNoNetmask5()
     {
             string ipaddress = "240.0.0.0";
             var ipnetwork = IPNetwork2.Parse(ipaddress);
             Assert.AreEqual("240.0.0.0/24", ipnetwork.ToString(), "Network");
         }
 
-        /// <summary>
-        ///     Tests Parse functionality with Parse IPAddress No Netmask127001.
-        /// </summary>
-        [TestMethod]
-        public void TestParseIPAddressNoNetmask127001()
+    /// <summary>
+    ///     Tests Parse functionality with Parse IPAddress No Netmask127001.
+    /// </summary>
+    [TestMethod]
+    public void TestParseIPAddressNoNetmask127001()
     {
             string ipaddress = "127.0.0.1";
             IPNetwork2 result = null;
@@ -543,28 +543,27 @@ namespace TestProject.IPNetworkTest
             Assert.AreEqual(result.Cidr, 8);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void TestParseStringAe1()
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void TestParseStringAe1()
     {
             string ipaddress = "garbage";
             var ipnetwork = IPNetwork2.Parse(ipaddress);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void TestParseStringAe2()
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void TestParseStringAe2()
     {
             string ipaddress = "0.0.0.0 0.0.1.0";
             var ipnetwork = IPNetwork2.Parse(ipaddress);
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void TestParseStringAne1()
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentNullException))]
+    public void TestParseStringAne1()
     {
             string ipaddress = null;
             var ipnetwork = IPNetwork2.Parse(ipaddress);
         }
-    }
 }

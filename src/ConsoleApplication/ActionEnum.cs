@@ -2,18 +2,17 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.ConsoleApplication
+namespace System.Net;
+
+public enum ActionEnum
 {
-    public enum ActionEnum
-    {
-        Usage,
-        PrintNetworks,
-        Subnet,
-        Supernet,
-        WideSupernet,
-        ListIPAddress,
-        ContainNetwork,
-        OverlapNetwork,
-        SubtractNetwork,
-    }
+    Usage,
+    PrintNetworks,
+    Subnet,
+    Supernet,
+    WideSupernet,
+    ListIPAddress,
+    ContainNetwork,
+    OverlapNetwork,
+    SubtractNetwork,
 }

@@ -2,16 +2,16 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject.IPNetworkTest
+namespace TestProject.IPNetworkTest;
+
+[TestClass]
+public class IPNetworkPrintTests
 {
-    [TestClass]
-    public class IPNetworkPrintTests
-    {
-        /// <summary>
-        ///     Tests Print functionality.
-        /// </summary>
-        [TestMethod]
-        public void Print()
+    /// <summary>
+    ///     Tests Print functionality.
+    /// </summary>
+    [TestMethod]
+    public void Print()
     {
             var ipn = IPNetwork2.Parse("0.0.0.0/0");
             string print = ipn.Print().Replace("\r", string.Empty);
@@ -28,9 +28,9 @@ Usable      : 4294967294
             Assert.AreEqual(expected, print, "Print");
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void PrintNull()
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentNullException))]
+    public void PrintNull()
     {
             IPNetwork2 ipn = null;
 #pragma warning disable 0618
@@ -38,16 +38,15 @@ Usable      : 4294967294
 #pragma warning restore 0618
         }
 
-        /// <summary>
-        ///     Tests Print functionality.
-        /// </summary>
-        [TestMethod]
-        public void PrintStatic()
+    /// <summary>
+    ///     Tests Print functionality.
+    /// </summary>
+    [TestMethod]
+    public void PrintStatic()
     {
             IPNetwork2 ipn = IPNetwork2.IANA_ABLK_RESERVED1;
 #pragma warning disable 0618
             string print = IPNetwork2.Print(ipn);
 #pragma warning restore 0618
         }
-    }
 }

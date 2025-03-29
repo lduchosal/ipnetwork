@@ -14,6 +14,8 @@
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
 
         <Version>3.1.0</Version>
+
+        <LangVersion>latestmajor</LangVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">

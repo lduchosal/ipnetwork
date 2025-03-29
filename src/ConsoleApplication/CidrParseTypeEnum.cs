@@ -2,11 +2,10 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net.ConsoleApplication
+namespace System.Net;
+
+public enum CidrParseEnum
 {
-    public enum CidrParseEnum
-    {
-        Default,
-        Value,
-    }
+    Default,
+    Value,
 }

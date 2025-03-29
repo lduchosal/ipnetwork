@@ -5,7 +5,6 @@
 namespace System.Net
 {
     using System.Collections.Generic;
-    using System.ComponentModel;
     using System.IO;
     using System.Net.Sockets;
     using System.Numerics;
@@ -21,7 +20,7 @@ namespace System.Net
     {
         #region properties
 
-        private readonly object _sync = new object();
+        private readonly object _sync = new();
         private readonly int _hashCode;
         private BigInteger _ipaddress;
         private byte _cidr;
@@ -1518,9 +1517,9 @@ namespace System.Net
 
         #region IANA block
 
-        private static readonly Lazy<IPNetwork2> _iana_ablock_reserved = new Lazy<IPNetwork2>(() => IPNetwork2.Parse("10.0.0.0/8"));
-        private static readonly Lazy<IPNetwork2> _iana_bblock_reserved = new Lazy<IPNetwork2>(() => IPNetwork2.Parse("172.16.0.0/12"));
-        private static readonly Lazy<IPNetwork2> _iana_cblock_reserved = new Lazy<IPNetwork2>(() => IPNetwork2.Parse("192.168.0.0/16"));
+        private static readonly Lazy<IPNetwork2> _iana_ablock_reserved = new(() => IPNetwork2.Parse("10.0.0.0/8"));
+        private static readonly Lazy<IPNetwork2> _iana_bblock_reserved = new(() => IPNetwork2.Parse("172.16.0.0/12"));
+        private static readonly Lazy<IPNetwork2> _iana_cblock_reserved = new(() => IPNetwork2.Parse("192.168.0.0/16"));
 
         /// <summary>
         /// Gets 10.0.0.0/8.

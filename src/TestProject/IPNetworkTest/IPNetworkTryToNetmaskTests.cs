@@ -2,16 +2,16 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject.IPNetworkTest
+namespace TestProject.IPNetworkTest;
+
+[TestClass]
+public class IPNetworkTryToNetmaskTests
 {
-    [TestClass]
-    public class IPNetworkTryToNetmaskTests
-    {
-        /// <summary>
-        ///     Tests Try To Netmask functionality with a /1 network.
-        /// </summary>
-        [TestMethod]
-        public void TryToNetmask1()
+    /// <summary>
+    ///     Tests Try To Netmask functionality with a /1 network.
+    /// </summary>
+    [TestMethod]
+    public void TryToNetmask1()
     {
         IPAddress result = null;
         bool parsed = IPNetwork2.TryToNetmask(0, AddressFamily.InterNetwork, out result);
@@ -21,11 +21,11 @@ namespace TestProject.IPNetworkTest
         Assert.AreEqual(true, parsed, "parsed");
     }
 
-        /// <summary>
-        ///     Tests Try To Netmask functionality with a /2 network.
-        /// </summary>
-        [TestMethod]
-        public void TryToNetmask2()
+    /// <summary>
+    ///     Tests Try To Netmask functionality with a /2 network.
+    /// </summary>
+    [TestMethod]
+    public void TryToNetmask2()
     {
         IPAddress result = null;
         bool parsed = IPNetwork2.TryToNetmask(33, AddressFamily.InterNetwork, out result);
@@ -33,6 +33,5 @@ namespace TestProject.IPNetworkTest
 
         Assert.AreEqual(expected, result, "Netmask");
         Assert.AreEqual(false, parsed, "parsed");
-    }
     }
 }
