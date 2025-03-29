@@ -13,28 +13,28 @@ using System.Numerics;
 /// </summary>
 public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwork2>
 {
-    private BigInteger _enumerator;
-    private byte _cidrSubnet;
-    private IPNetwork2 _ipnetwork;
+    private readonly byte cidrSubnet;
+    private readonly IPNetwork2 ipnetwork;
+    private BigInteger enumerator;
 
-    private byte _cidr
+    private byte Cidr
     {
-        get { return this._ipnetwork.Cidr; }
+        get { return this.ipnetwork.Cidr; }
     }
 
-    private BigInteger _broadcast
+    private BigInteger Broadcast
     {
-        get { return IPNetwork2.ToBigInteger(this._ipnetwork.Broadcast); }
+        get { return IPNetwork2.ToBigInteger(this.ipnetwork.Broadcast); }
     }
 
-    private BigInteger _lastUsable
+    private BigInteger LastUsable
     {
-        get { return IPNetwork2.ToBigInteger(this._ipnetwork.LastUsable); }
+        get { return IPNetwork2.ToBigInteger(this.ipnetwork.LastUsable); }
     }
 
-    private BigInteger _network
+    private BigInteger Network
     {
-        get { return IPNetwork2.ToBigInteger(this._ipnetwork.Network); }
+        get { return IPNetwork2.ToBigInteger(this.ipnetwork.Network); }
     }
 
     /// <summary>
@@ -45,6 +45,10 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     /// This class is used to generate a collection of IP networks by dividing the given parent IP network into subnets based on the provided subnet CIDR (Classless Inter-Domain Routing
     /// ) value.
     /// </remarks>
+    /// <param name="ipnetwork">The network.</param>
+    /// <param name="cidrSubnet">The subnet.</param>
+    /// <exception cref="ArgumentOutOfRangeException">Cidr is out of range.</exception>
+    /// <exception cref="ArgumentException">Network is invalid.</exception>
 #if TRAVISCI
     public
 #else
@@ -63,9 +67,9 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
             throw new ArgumentException("cidrSubnet");
         }
 
-        this._cidrSubnet = cidrSubnet;
-        this._ipnetwork = ipnetwork;
-        this._enumerator = -1;
+        this.cidrSubnet = cidrSubnet;
+        this.ipnetwork = ipnetwork;
+        this.enumerator = -1;
     }
 
     #region Count, Array, Enumerator
@@ -77,7 +81,7 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     {
         get
         {
-            var count = BigInteger.Pow(2, this._cidrSubnet - this._cidr);
+            var count = BigInteger.Pow(2, this.cidrSubnet - this.Cidr);
             return count;
         }
     }
@@ -99,12 +103,12 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
                 throw new ArgumentOutOfRangeException("i");
             }
 
-            BigInteger last = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetworkV6
-                ? this._lastUsable
-                : this._broadcast;
-            BigInteger increment = (last - this._network) / this.Count;
-            BigInteger uintNetwork = this._network + ((increment + 1) * i);
-            var ipn = new IPNetwork2(uintNetwork, this._ipnetwork.AddressFamily, this._cidrSubnet);
+            BigInteger last = this.ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetworkV6
+                ? this.LastUsable
+                : this.Broadcast;
+            BigInteger increment = (last - this.Network) / this.Count;
+            BigInteger uintNetwork = this.Network + ((increment + 1) * i);
+            var ipn = new IPNetwork2(uintNetwork, this.ipnetwork.AddressFamily, this.cidrSubnet);
             return ipn;
         }
     }
@@ -130,7 +134,7 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     /// <inheritdoc/>
     public IPNetwork2 Current
     {
-        get { return this[this._enumerator]; }
+        get { return this[this.enumerator]; }
     }
 
     #endregion
@@ -172,8 +176,8 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     /// </returns>
     public bool MoveNext()
     {
-        this._enumerator++;
-        if (this._enumerator >= this.Count)
+        this.enumerator++;
+        if (this.enumerator >= this.Count)
         {
             return false;
         }
@@ -186,7 +190,7 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     /// </summary>
     public void Reset()
     {
-        this._enumerator = -1;
+        this.enumerator = -1;
     }
 
     #endregion
