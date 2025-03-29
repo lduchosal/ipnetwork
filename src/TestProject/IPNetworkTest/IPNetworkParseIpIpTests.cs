@@ -5,7 +5,7 @@
 namespace TestProject.IPNetworkTest;
 
 /// <summary>
-/// Test parse ip
+/// Test parse ip.
 /// </summary>
 [TestClass]
 public class IPNetworkParseIpIpTests
@@ -33,7 +33,7 @@ public class IPNetworkParseIpIpTests
     {
             IPAddress ip = null;
             IPAddress netm = null;
-            var ipnetwork = IPNetwork2.Parse(ip, netm);
+            IPNetwork2.Parse(ip, netm);
         }
 
     /// <summary>
@@ -46,6 +46,6 @@ public class IPNetworkParseIpIpTests
             string ipaddress = "192.168.168.100";
             var ip = IPAddress.Parse(ipaddress);
             IPAddress netm = null;
-            var ipnetwork = IPNetwork2.Parse(ip, netm);
+            IPNetwork2.Parse(ip, netm);
         }
 }

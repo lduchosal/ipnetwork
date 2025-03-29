@@ -149,8 +149,7 @@ public static class BigIntegerExtensions
     ///
     /// </summary>
     /// <param name="input">The positive number to bitwise reverse.</param>
-    /// <param name="width">The width of the parameter.
-    /// </param>
+    /// <param name="width">The width of the parameter.</param>
     /// <returns>A number representing the input bitwise reversed.</returns>
     public static BigInteger PositiveReverse(this BigInteger input, int width)
     {

@@ -20,8 +20,7 @@ public class IPNetworkSortTests
             var ipns = new List<IPNetwork2>();
             foreach (string ip in ips)
             {
-                IPNetwork2 ipn;
-                if (IPNetwork2.TryParse(ip, 32, out ipn))
+                if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
                 {
                     ipns.Add(ipn);
                 }
@@ -44,8 +43,7 @@ public class IPNetworkSortTests
             var ipns = new List<IPNetwork2>();
             foreach (string ip in ips)
             {
-                IPNetwork2 ipn;
-                if (IPNetwork2.TryParse(ip, out ipn))
+                if (IPNetwork2.TryParse(ip, out IPNetwork2 ipn))
                 {
                     ipns.Add(ipn);
                 }

@@ -17,6 +17,6 @@ public class IPNetworkResizeTests
     [ExpectedException(typeof(ArgumentException))]
     public void TestResize1()
     {
-            byte[] resut = IPNetwork2.Resize(new byte[33], AddressFamily.InterNetwork);
-        }
+        IPNetwork2.Resize(new byte[33], AddressFamily.InterNetwork);
+    }
 }

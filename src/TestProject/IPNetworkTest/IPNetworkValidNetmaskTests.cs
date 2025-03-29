@@ -17,7 +17,7 @@ public class IPNetworkValidNetmaskTests
     [ExpectedException(typeof(ArgumentException))]
     public void TestValidNetmaskInvalid1()
     {
-        bool resut = IPNetwork2.InternalValidNetmask(BigInteger.Zero, AddressFamily.AppleTalk);
+        IPNetwork2.InternalValidNetmask(BigInteger.Zero, AddressFamily.AppleTalk);
     }
 
     /// <summary>

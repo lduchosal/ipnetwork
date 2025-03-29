@@ -178,7 +178,7 @@ public class IPNetworkExamplesTests
         var network = IPNetwork2.Parse("192.168.0.0/24");
         var network2 = IPNetwork2.Parse("192.168.10.0/24");
 
-        bool supernetted = network.TrySupernet(network2, out IPNetwork2 ipnetwork);
+        bool supernetted = network.TrySupernet(network2, out IPNetwork2 _);
         Assert.AreEqual(false, supernetted);
     }
 

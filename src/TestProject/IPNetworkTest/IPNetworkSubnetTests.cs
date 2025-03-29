@@ -21,7 +21,7 @@ public class IPNetworkSubnetTests
             byte cidr = 9;
 
 #pragma warning disable 0618
-            IPNetworkCollection result = IPNetwork2.Subnet(ipnetwork, cidr);
+            IPNetwork2.Subnet(ipnetwork, cidr);
 #pragma warning restore 0618
         }
 
@@ -35,7 +35,7 @@ public class IPNetworkSubnetTests
             byte cidr = 9;
 
 #pragma warning disable 0618
-            IPNetworkCollection result = IPNetwork2.Subnet(ipnetwork, cidr);
+            IPNetwork2.Subnet(ipnetwork, cidr);
 #pragma warning restore 0618
         }
 
@@ -49,7 +49,7 @@ public class IPNetworkSubnetTests
             IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             byte cidr = 55;
 
-            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
+            ipnetwork.Subnet(cidr);
         }
 
     /// <summary>
@@ -62,7 +62,7 @@ public class IPNetworkSubnetTests
             IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             byte cidr = 1;
 
-            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
+            ipnetwork.Subnet(cidr);
         }
 
     /// <summary>
@@ -218,6 +218,5 @@ public class IPNetworkSubnetTests
             IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
             byte cidr = 20;
             IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
-            IPNetwork2 error = subnets[1000];
-        }
+    }
 }

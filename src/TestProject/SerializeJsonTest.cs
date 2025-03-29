@@ -63,7 +63,7 @@ public class SerializeJsonTest
 
             for (int i = 0; i < 1000000; i++)
             {
-                string json = JsonConvert.SerializeObject(ipnetwork);
+                JsonConvert.SerializeObject(ipnetwork);
             }
 
             // 3.06 seconds(Ad hoc).
@@ -80,7 +80,7 @@ public class SerializeJsonTest
 
             for (int i = 0; i < 1000000; i++)
             {
-                IPNetwork2 result = JsonConvert.DeserializeObject<IPNetwork2>(json);
+                JsonConvert.DeserializeObject<IPNetwork2>(json);
             }
 
             // 10.20 seconds(Ad hoc).
@@ -98,7 +98,7 @@ public class SerializeJsonTest
             for (int i = 0; i < 1000000; i++)
             {
                 string json = JsonConvert.SerializeObject(ipnetwork);
-                IPNetwork2 result = JsonConvert.DeserializeObject<IPNetwork2>(json);
+                JsonConvert.DeserializeObject<IPNetwork2>(json);
             }
 
             // 13.49 seconds(Ad hoc).

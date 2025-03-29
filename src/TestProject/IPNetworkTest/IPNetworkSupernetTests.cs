@@ -16,8 +16,7 @@ public class IPNetworkSupernetTests
     [TestMethod]
     public void TestSupernetInternal1()
     {
-        IPNetwork2 result;
-        IPNetwork2.InternalSupernet(true, null, null, out result);
+        IPNetwork2.InternalSupernet(true, null, null, out IPNetwork2 result);
 
         Assert.AreEqual(null, result, "supernet");
     }
@@ -101,7 +100,7 @@ public class IPNetworkSupernetTests
     {
         IPNetwork2 network1 = null;
         var network2 = IPNetwork2.Parse("192.168.1.1/24");
-        IPNetwork2 supernet = network1.Supernet(network2);
+        network1.Supernet(network2);
     }
 
     /// <summary>
@@ -113,7 +112,7 @@ public class IPNetworkSupernetTests
     {
         var network1 = IPNetwork2.Parse("192.168.1.1/24");
         IPNetwork2 network2 = null;
-        IPNetwork2 supernet = network1.Supernet(network2);
+        network1.Supernet(network2);
     }
 
     /// <summary>
@@ -125,7 +124,7 @@ public class IPNetworkSupernetTests
     {
         var network1 = IPNetwork2.Parse("192.168.0.1/24");
         var network2 = IPNetwork2.Parse("192.168.1.1/25");
-        IPNetwork2 supernet = network1.Supernet(network2);
+        network1.Supernet(network2);
     }
 
     /// <summary>
@@ -137,7 +136,7 @@ public class IPNetworkSupernetTests
     {
         var network1 = IPNetwork2.Parse("192.168.0.1/24");
         var network2 = IPNetwork2.Parse("192.168.5.1/24");
-        IPNetwork2 supernet = network1.Supernet(network2);
+        network1.Supernet(network2);
     }
 
     /// <summary>
@@ -193,7 +192,7 @@ public class IPNetworkSupernetTests
     {
         var network1 = IPNetwork2.Parse("192.168.1.1/24");
         var network2 = IPNetwork2.Parse("192.168.2.1/24");
-        IPNetwork2 supernet = network1.Supernet(network2);
+        network1.Supernet(network2);
     }
 
     /// <summary>

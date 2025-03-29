@@ -31,14 +31,13 @@ public sealed partial class IPNetwork2
     /// <returns>true if cidr was converted successfully; otherwise, false.</returns>
     public static bool TryParseCidr(string sidr, AddressFamily family, out byte? cidr)
     {
-        byte b = 0;
-        if (!byte.TryParse(sidr, out b))
+        if (!byte.TryParse(sidr, out byte b))
         {
             cidr = null;
             return false;
         }
 
-        if (!IPNetwork2.TryToNetmask(b, family, out IPAddress netmask))
+        if (!IPNetwork2.TryToNetmask(b, family, out IPAddress _))
         {
             cidr = null;
             return false;
