@@ -17,7 +17,6 @@ public enum FilterEnum
     /// Every IPAdresses are returned
     /// </summary>
     All,
-
     /// <summary>
     /// Returns only usable IPAdresses
     /// </summary>
@@ -29,21 +28,16 @@ public enum FilterEnum
 /// </summary>
 public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress>
 {
-    private readonly IPNetwork2 ipnetwork;
-    private readonly FilterEnum filter;
-    private BigInteger enumerator;
+    private readonly IPNetwork2 _ipnetwork;
+    private readonly FilterEnum _filter;
+    private BigInteger _enumerator;
 
-    /// <summary>
-    /// Initializes a new instance of the <see cref="IPAddressCollection"/> class.
-    /// </summary>
-    /// <param name="ipnetwork">The network.</param>
-    /// <param name="filter">The filter.</param>
     internal IPAddressCollection(IPNetwork2 ipnetwork, FilterEnum filter)
     {
-        this.ipnetwork = ipnetwork;
-        this.filter = filter;
-        this.Reset();
-    }
+            this._ipnetwork = ipnetwork;
+            this._filter = filter;
+            this.Reset();
+        }
 
     #region Count, Array, Enumerator
 
@@ -57,19 +51,19 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
     {
         get
         {
-            BigInteger count = this.ipnetwork.Total;
-            if (this.filter == FilterEnum.Usable)
-            {
-                count -= 2;
-            }
+                BigInteger count = this._ipnetwork.Total;
+                if (this._filter == FilterEnum.Usable)
+                {
+                    count -= 2;
+                }
 
-            if (count < 0)
-            {
-                count = 0;
-            }
+                if (count < 0)
+                {
+                    count = 0;
+                }
 
-            return count;
-        }
+                return count;
+            }
     }
 
     /// <summary>
@@ -82,22 +76,22 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
     {
         get
         {
-            if (i >= this.Count)
-            {
-                throw new ArgumentOutOfRangeException("i");
+                if (i >= this.Count)
+                {
+                    throw new ArgumentOutOfRangeException("i");
+                }
+
+                byte width = this._ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? (byte)32 : (byte)128;
+                IPNetworkCollection ipn = this._ipnetwork.Subnet(width);
+
+                BigInteger index = i;
+                if (this._filter == FilterEnum.Usable)
+                {
+                    index++;
+                }
+
+                return ipn[index].Network;
             }
-
-            byte width = this.ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? (byte)32 : (byte)128;
-            IPNetworkCollection ipn = this.ipnetwork.Subnet(width);
-
-            BigInteger index = i;
-            if (this.filter == FilterEnum.Usable)
-            {
-                index++;
-            }
-
-            return ipn[index].Network;
-        }
     }
 
     #endregion
@@ -112,89 +106,23 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
     {
         get
         {
-            return this[this.enumerator];
-        }
+                return this[this._enumerator];
+            }
     }
 
-    /// <inheritdoc/>
     object IEnumerator.Current
     {
         get
         {
-            return this.Current;
-        }
+                return this.Current;
+            }
     }
 
     /// <inheritdoc />
     public bool MoveNext()
     {
-        this.enumerator++;
-        if (this.enumerator >= this.Count)
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    /// <inheritdoc />
-    public void Reset()
-    {
-        this.enumerator = -1;
-    }
-
-    /// <inheritdoc />
-    public void Dispose()
-    {
-        // nothing to dispose
-    }
-
-    #endregion
-
-    #region Enumeration
-
-    /// <inheritdoc/>
-    IEnumerator<IPAddress> IEnumerable<IPAddress>.GetEnumerator()
-    {
-        return new Enumerator(this);
-    }
-
-    /// <inheritdoc/>
-    IEnumerator IEnumerable.GetEnumerator()
-    {
-        return new Enumerator(this);
-    }
-
-    private struct Enumerator : IEnumerator<IPAddress>
-    {
-        private readonly IPAddressCollection collection;
-        private BigInteger enumerator;
-
-        object IEnumerator.Current
-        {
-            get
-            {
-                return this.Current;
-            }
-        }
-
-        public IPAddress Current
-        {
-            get
-            {
-                return this.collection[this.enumerator];
-            }
-        }
-
-        public void Dispose()
-        {
-            // nothing to dispose
-        }
-
-        public bool MoveNext()
-        {
-            this.enumerator++;
-            if (this.enumerator >= this.collection.Count)
+            this._enumerator++;
+            if (this._enumerator >= this.Count)
             {
                 return false;
             }
@@ -202,17 +130,77 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
             return true;
         }
 
+    /// <inheritdoc />
+    public void Reset()
+    {
+            this._enumerator = -1;
+        }
+
+    /// <inheritdoc />
+    public void Dispose()
+    {
+            // nothing to dispose
+        }
+    #endregion
+
+    #region Enumeration
+    IEnumerator<IPAddress> IEnumerable<IPAddress>.GetEnumerator()
+    {
+            return new Enumerator(this);
+        }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+            return new Enumerator(this);
+        }
+
+    private struct Enumerator : IEnumerator<IPAddress>
+    {
+        private readonly IPAddressCollection _collection;
+        private BigInteger _enumerator;
+
+        object IEnumerator.Current
+        {
+            get
+            {
+                    return this.Current;
+                }
+        }
+
+        public IPAddress Current
+        {
+            get
+            {
+                    return this._collection[this._enumerator];
+                }
+        }
+
+        public void Dispose()
+        {
+                // nothing to dispose
+            }
+
+        public bool MoveNext()
+        {
+                this._enumerator++;
+                if (this._enumerator >= this._collection.Count)
+                {
+                    return false;
+                }
+
+                return true;
+            }
+
         public void Reset()
         {
-            this.enumerator = -1;
-        }
+                this._enumerator = -1;
+            }
 
         public Enumerator(IPAddressCollection collection)
         {
-            this.collection = collection;
-            this.enumerator = -1;
-        }
+                this._collection = collection;
+                this._enumerator = -1;
+            }
     }
-
     #endregion
 }
