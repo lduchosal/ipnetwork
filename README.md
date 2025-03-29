@@ -7,7 +7,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/lduchosal/ipnetwork/badge.svg?branch=master)](https://coveralls.io/github/lduchosal/ipnetwork?branch=master)
 ![GitHub last commit](https://img.shields.io/github/last-commit/lduchosal/ipnetwork)
 [![CodeFactor](https://www.codefactor.io/repository/github/lduchosal/ipnetwork/badge)](https://www.codefactor.io/repository/github/lduchosal/ipnetwork)
-[![SonarCloud](https://github.com/lduchosal/ipnetwork/actions/workflows/build.yml/badge.svg)](https://github.com/lduchosal/ipnetwork/actions/workflows/build.yml)
+[![SonarCloud](https://github.com/lduchosal/ipnetwork/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/lduchosal/ipnetwork/actions/workflows/sonarcloud.yml)
 [![.NET](https://github.com/lduchosal/ipnetwork/actions/workflows/dotnet.yml/badge.svg)](https://github.com/lduchosal/ipnetwork/actions/workflows/dotnet.yml)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
