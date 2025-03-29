@@ -953,7 +953,7 @@ public class IPNetworkV6UnitTest
     {
         string ipaddress = "2001:db8::";
         var ip = IPAddress.Parse(ipaddress);
-        var _ = new IPNetwork2(ip, 129);
+        var ipn = new IPNetwork2(ip, 129);
     }
 
     #endregion

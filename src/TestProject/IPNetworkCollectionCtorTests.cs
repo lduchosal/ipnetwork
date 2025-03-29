@@ -17,7 +17,7 @@ public class IPNetworkCollectionCtorTests
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestCtor1()
     {
-        var _ = new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 33);
+        var ipn = new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 33);
     }
 
     /// <summary>
@@ -27,6 +27,6 @@ public class IPNetworkCollectionCtorTests
     [ExpectedException(typeof(ArgumentException))]
     public void TestCtor2()
     {
-        var _ = new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 2);
+        var ipn = new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 2);
     }
 }

@@ -49,7 +49,8 @@ public sealed partial class IPNetwork2
         }
 
         var ipnetwork = new IPNetwork2(0, startIP.AddressFamily, 0);
-        for (byte cidr = 32; true; cidr--)
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+        for (byte cidr = 32; cidr >= 0; cidr--)
         {
             var wideSubnet = IPNetwork2.Parse(start, cidr);
             if (wideSubnet.Contains(endIP))
@@ -151,7 +152,8 @@ public sealed partial class IPNetwork2
         }
 
         var ipn = new IPNetwork2(0, family, 0);
-        for (byte cidr = nnin0.cidr; true; cidr--)
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalse
+        for (byte cidr = nnin0.cidr; cidr >= 0; cidr--)
         {
             var wideSubnet = new IPNetwork2(uintNnin0, family, cidr);
             if (wideSubnet.Contains(ipaddressX))
