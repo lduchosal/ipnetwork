@@ -18,35 +18,6 @@ public sealed partial class IPNetwork2
     ///  255.255.0.0   -> 16
     ///  255.0.0.0     -> 8.
     /// </summary>
-    /// <param name="tryParse">Whether to throw exception or not during conversion.</param>
-    /// <param name="netmask">A number representing the netmask to convert.</param>
-    /// <param name="family">Either IPv4 or IPv6.</param>
-    /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
-    private static void InternalToCidr(bool tryParse, BigInteger netmask, AddressFamily family, out byte? cidr)
-    {
-        if (!IPNetwork2.InternalValidNetmask(netmask, family))
-        {
-            if (tryParse == false)
-            {
-                throw new ArgumentException("netmask");
-            }
-
-            cidr = null;
-            return;
-        }
-
-        byte cidr2 = IPNetwork2.BitsSet(netmask, family);
-        cidr = cidr2;
-
-        return;
-    }
-
-    /// <summary>
-    /// Convert netmask to CIDR
-    ///  255.255.255.0 -> 24
-    ///  255.255.0.0   -> 16
-    ///  255.0.0.0     -> 8.
-    /// </summary>
     /// <param name="netmask">An IPAdress representing the CIDR to convert.</param>
     /// <returns>A byte representing the CIDR converted from the netmask.</returns>
     public static byte ToCidr(IPAddress netmask)
@@ -99,6 +70,35 @@ public sealed partial class IPNetwork2
         var uintNetmask = (BigInteger)uintNetmask2;
 
         IPNetwork2.InternalToCidr(tryParse, uintNetmask, netmask.AddressFamily, out byte? cidr2);
+        cidr = cidr2;
+
+        return;
+    }
+
+    /// <summary>
+    /// Convert netmask to CIDR
+    ///  255.255.255.0 -> 24
+    ///  255.255.0.0   -> 16
+    ///  255.0.0.0     -> 8.
+    /// </summary>
+    /// <param name="tryParse">Whether to throw exception or not during conversion.</param>
+    /// <param name="netmask">A number representing the netmask to convert.</param>
+    /// <param name="family">Either IPv4 or IPv6.</param>
+    /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
+    private static void InternalToCidr(bool tryParse, BigInteger netmask, AddressFamily family, out byte? cidr)
+    {
+        if (!IPNetwork2.InternalValidNetmask(netmask, family))
+        {
+            if (tryParse == false)
+            {
+                throw new ArgumentException("netmask");
+            }
+
+            cidr = null;
+            return;
+        }
+
+        byte cidr2 = IPNetwork2.BitsSet(netmask, family);
         cidr = cidr2;
 
         return;

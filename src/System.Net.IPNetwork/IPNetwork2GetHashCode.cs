@@ -4,6 +4,9 @@
 
 namespace System.Net;
 
+/// <summary>
+/// GetHashcode.
+/// </summary>
 public sealed partial class IPNetwork2
 {
     /// <inheritdoc />

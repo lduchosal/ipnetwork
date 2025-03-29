@@ -44,59 +44,6 @@ public sealed partial class IPNetwork2
     }
 
     /// <summary>
-    /// Converts an IPAddress to a nullable BigInteger representation.
-    /// </summary>
-    /// <param name="tryParse">Indicates whether the method should handle errors silently (true) or throw exceptions (false).</param>
-    /// <param name="ipaddress">The IPAddress to convert.</param>
-    /// <param name="uintIpAddress">The resulting BigInteger representation of the IP address, or null if conversion fails and tryParse is true.</param>
-    internal static void InternalToBigInteger(bool tryParse, IPAddress ipaddress, out BigInteger? uintIpAddress)
-    {
-        if (ipaddress == null)
-        {
-            if (tryParse == false)
-            {
-                throw new ArgumentNullException("ipaddress");
-            }
-
-            uintIpAddress = null;
-            return;
-        }
-
-#if NETSTANDARD2_1
-        byte[] bytes = ipaddress.AddressFamily == AddressFamily.InterNetwork ? new byte[4] : new byte[16];
-        Span<byte> span = bytes.AsSpan();
-        if (!ipaddress.TryWriteBytes(span, out _))
-        {
-            if (tryParse == false)
-            {
-                throw new ArgumentException("ipaddress");
-            }
-
-            uintIpAddress = null;
-            return;
-        }
-
-        uintIpAddress = new BigInteger(span, isUnsigned: true, isBigEndian: true);
-#elif NETSTANDARD20
-        byte[] bytes = ipaddress.GetAddressBytes();
-        bytes.AsSpan().Reverse();
-
-        // add trailing 0 to make unsigned
-        byte[] unsigned = new byte[bytes.Length + 1];
-        Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
-        uintIpAddress = new BigInteger(unsigned);
-#else
-        byte[] bytes = ipaddress.GetAddressBytes();
-        Array.Reverse(bytes);
-
-        // add trailing 0 to make unsigned
-        byte[] unsigned = new byte[bytes.Length + 1];
-        Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
-        uintIpAddress = new BigInteger(unsigned);
-#endif
-    }
-
-    /// <summary>
     /// Convert a cidr to BigInteger netmask.
     /// </summary>
     /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
@@ -189,5 +136,58 @@ public sealed partial class IPNetwork2
         int copy = m.Length > 16 ? 16 : m.Length;
         Array.Copy(m, 0, bmask, 0, copy);
         uintNetmask = new BigInteger(bmask);
+    }
+
+    /// <summary>
+    /// Converts an IPAddress to a nullable BigInteger representation.
+    /// </summary>
+    /// <param name="tryParse">Indicates whether the method should handle errors silently (true) or throw exceptions (false).</param>
+    /// <param name="ipaddress">The IPAddress to convert.</param>
+    /// <param name="uintIpAddress">The resulting BigInteger representation of the IP address, or null if conversion fails and tryParse is true.</param>
+    internal static void InternalToBigInteger(bool tryParse, IPAddress ipaddress, out BigInteger? uintIpAddress)
+    {
+        if (ipaddress == null)
+        {
+            if (tryParse == false)
+            {
+                throw new ArgumentNullException("ipaddress");
+            }
+
+            uintIpAddress = null;
+            return;
+        }
+
+#if NETSTANDARD2_1
+        byte[] bytes = ipaddress.AddressFamily == AddressFamily.InterNetwork ? new byte[4] : new byte[16];
+        Span<byte> span = bytes.AsSpan();
+        if (!ipaddress.TryWriteBytes(span, out _))
+        {
+            if (tryParse == false)
+            {
+                throw new ArgumentException("ipaddress");
+            }
+
+            uintIpAddress = null;
+            return;
+        }
+
+        uintIpAddress = new BigInteger(span, isUnsigned: true, isBigEndian: true);
+#elif NETSTANDARD20
+        byte[] bytes = ipaddress.GetAddressBytes();
+        bytes.AsSpan().Reverse();
+
+        // add trailing 0 to make unsigned
+        byte[] unsigned = new byte[bytes.Length + 1];
+        Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
+        uintIpAddress = new BigInteger(unsigned);
+#else
+        byte[] bytes = ipaddress.GetAddressBytes();
+        Array.Reverse(bytes);
+
+        // add trailing 0 to make unsigned
+        byte[] unsigned = new byte[bytes.Length + 1];
+        Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
+        uintIpAddress = new BigInteger(unsigned);
+#endif
     }
 }

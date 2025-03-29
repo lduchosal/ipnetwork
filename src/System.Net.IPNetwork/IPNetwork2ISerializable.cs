@@ -8,6 +8,9 @@ using System.Net.Sockets;
 using System.Numerics;
 using System.Runtime.Serialization;
 
+/// <summary>
+/// ISerializable.
+/// </summary>
 public sealed partial class IPNetwork2
 {
     /// <summary>

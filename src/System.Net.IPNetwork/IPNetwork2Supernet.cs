@@ -17,20 +17,6 @@ public sealed partial class IPNetwork2
     /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
     /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
     /// </summary>
-    /// <param name="network2">The network to supernet with.</param>
-    /// <returns>A supernetted IP Network.</returns>
-    public IPNetwork2 Supernet(IPNetwork2 network2)
-    {
-        IPNetwork2.InternalSupernet(false, this, network2, out IPNetwork2 supernet);
-        return supernet;
-    }
-
-    /// <summary>
-    /// Supernet two consecutive cidr equal subnet into a single one
-    /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
-    /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
-    /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
-    /// </summary>
     /// <param name="network">the network.</param>
     /// <param name="network2">The network to supernet with.</param>
     /// <returns>A supernetted IP Network.</returns>
@@ -38,23 +24,6 @@ public sealed partial class IPNetwork2
     public static IPNetwork2 Supernet(IPNetwork2 network, IPNetwork2 network2)
     {
         return network.Supernet(network2);
-    }
-
-    /// <summary>
-    /// Try to supernet two consecutive cidr equal subnet into a single one
-    /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
-    /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
-    /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
-    /// </summary>
-    /// <param name="network2">The network to supernet with.</param>
-    /// <param name="supernet">The resulting IPNetwork.</param>
-    /// <returns>true if network2 was supernetted successfully; otherwise, false.</returns>
-    public bool TrySupernet(IPNetwork2 network2, out IPNetwork2 supernet)
-    {
-        IPNetwork2.InternalSupernet(true, this, network2, out IPNetwork2 outSupernet);
-        bool parsed = outSupernet != null;
-        supernet = outSupernet;
-        return parsed;
     }
 
     /// <summary>
@@ -76,6 +45,37 @@ public sealed partial class IPNetwork2
         }
 
         return network.TrySupernet(network2, out supernet);
+    }
+
+    /// <summary>
+    /// Supernet two consecutive cidr equal subnet into a single one
+    /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+    /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
+    /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
+    /// </summary>
+    /// <param name="network2">The network to supernet with.</param>
+    /// <returns>A supernetted IP Network.</returns>
+    public IPNetwork2 Supernet(IPNetwork2 network2)
+    {
+        IPNetwork2.InternalSupernet(false, this, network2, out IPNetwork2 supernet);
+        return supernet;
+    }
+
+    /// <summary>
+    /// Try to supernet two consecutive cidr equal subnet into a single one
+    /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+    /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
+    /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
+    /// </summary>
+    /// <param name="network2">The network to supernet with.</param>
+    /// <param name="supernet">The resulting IPNetwork.</param>
+    /// <returns>true if network2 was supernetted successfully; otherwise, false.</returns>
+    public bool TrySupernet(IPNetwork2 network2, out IPNetwork2 supernet)
+    {
+        IPNetwork2.InternalSupernet(true, this, network2, out IPNetwork2 outSupernet);
+        bool parsed = outSupernet != null;
+        supernet = outSupernet;
+        return parsed;
     }
 
     /// <summary>

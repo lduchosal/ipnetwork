@@ -14,6 +14,23 @@ public sealed partial class IPNetwork2
     /// <summary>
     /// Print an ipnetwork in a clear representation string.
     /// </summary>
+    /// <param name="ipnetwork">The ipnetwork.</param>
+    /// <returns>Dump an IPNetwork representation as string.</returns>
+    /// <exception cref="ArgumentNullException">When arg is null.</exception>
+    [Obsolete("static Print is deprecated, please use instance Print.")]
+    public static string Print(IPNetwork2 ipnetwork)
+    {
+        if (ipnetwork == null)
+        {
+            throw new ArgumentNullException("ipnetwork");
+        }
+
+        return ipnetwork.Print();
+    }
+
+    /// <summary>
+    /// Print an ipnetwork in a clear representation string.
+    /// </summary>
     /// <returns>Dump an IPNetwork representation as string.</returns>
     public string Print()
     {
@@ -30,22 +47,5 @@ public sealed partial class IPNetwork2
 
             return sw.ToString();
         }
-    }
-
-    /// <summary>
-    /// Print an ipnetwork in a clear representation string.
-    /// </summary>
-    /// <param name="ipnetwork">The ipnetwork.</param>
-    /// <returns>Dump an IPNetwork representation as string.</returns>
-    /// <exception cref="ArgumentNullException">When arg is null.</exception>
-    [Obsolete("static Print is deprecated, please use instance Print.")]
-    public static string Print(IPNetwork2 ipnetwork)
-    {
-        if (ipnetwork == null)
-        {
-            throw new ArgumentNullException("ipnetwork");
-        }
-
-        return ipnetwork.Print();
     }
 }
