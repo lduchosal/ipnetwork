@@ -2,28 +2,29 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net
-{
-    using System;
-    using System.Numerics;
-    using System.Text;
+namespace System.Net;
 
+using System;
+using System.Numerics;
+using System.Text;
+
+/// <summary>
+/// Extension methods to convert <see cref="System.Numerics.BigInteger"/>
+/// instances to hexadecimal, octal, and binary strings.
+/// </summary>
+[CLSCompliant(true)]
+public static class BigIntegerExtensions
+{
     /// <summary>
-    /// Extension methods to convert <see cref="System.Numerics.BigInteger"/>
-    /// instances to hexadecimal, octal, and binary strings.
+    /// Converts a <see cref="BigInteger"/> to a binary string.
     /// </summary>
-    public static class BigIntegerExtensions
+    /// <param name="bigint">A <see cref="BigInteger"/>.</param>
+    /// <returns>
+    /// A <see cref="string"/> containing a binary
+    /// representation of the supplied <see cref="BigInteger"/>.
+    /// </returns>
+    public static string ToBinaryString(this BigInteger bigint)
     {
-        /// <summary>
-        /// Converts a <see cref="BigInteger"/> to a binary string.
-        /// </summary>
-        /// <param name="bigint">A <see cref="BigInteger"/>.</param>
-        /// <returns>
-        /// A <see cref="string"/> containing a binary
-        /// representation of the supplied <see cref="BigInteger"/>.
-        /// </returns>
-        public static string ToBinaryString(this BigInteger bigint)
-        {
             byte[] bytes = bigint.ToByteArray();
             int idx = bytes.Length - 1;
 
@@ -51,29 +52,29 @@ namespace System.Net
             return base2.ToString();
         }
 
-        /// <summary>
-        /// Converts a <see cref="BigInteger"/> to a hexadecimal string.
-        /// </summary>
-        /// <param name="bigint">A <see cref="BigInteger"/>.</param>
-        /// <returns>
-        /// A <see cref="string"/> containing a hexadecimal
-        /// representation of the supplied <see cref="BigInteger"/>.
-        /// </returns>
-        public static string ToHexadecimalString(this BigInteger bigint)
-        {
+    /// <summary>
+    /// Converts a <see cref="BigInteger"/> to a hexadecimal string.
+    /// </summary>
+    /// <param name="bigint">A <see cref="BigInteger"/>.</param>
+    /// <returns>
+    /// A <see cref="string"/> containing a hexadecimal
+    /// representation of the supplied <see cref="BigInteger"/>.
+    /// </returns>
+    public static string ToHexadecimalString(this BigInteger bigint)
+    {
             return bigint.ToString("X");
         }
 
-        /// <summary>
-        /// Converts a <see cref="BigInteger"/> to a octal string.
-        /// </summary>
-        /// <param name="bigint">A <see cref="BigInteger"/>.</param>
-        /// <returns>
-        /// A <see cref="string"/> containing an octal
-        /// representation of the supplied <see cref="BigInteger"/>.
-        /// </returns>
-        public static string ToOctalString(this BigInteger bigint)
-        {
+    /// <summary>
+    /// Converts a <see cref="BigInteger"/> to a octal string.
+    /// </summary>
+    /// <param name="bigint">A <see cref="BigInteger"/>.</param>
+    /// <returns>
+    /// A <see cref="string"/> containing an octal
+    /// representation of the supplied <see cref="BigInteger"/>.
+    /// </returns>
+    public static string ToOctalString(this BigInteger bigint)
+    {
             byte[] bytes = bigint.ToByteArray();
             int idx = bytes.Length - 1;
 
@@ -123,36 +124,36 @@ namespace System.Net
             return base8.ToString();
         }
 
-        /// <summary>
-        ///
-        /// Reverse a Positive BigInteger ONLY
-        /// Bitwise ~ operator
-        ///
-        /// Input  : FF FF FF FF
-        /// Width  : 4
-        /// Result : 00 00 00 00
-        ///
-        ///
-        /// Input  : 00 00 00 00
-        /// Width  : 4
-        /// Result : FF FF FF FF
-        ///
-        /// Input  : FF FF FF FF
-        /// Width  : 8
-        /// Result : FF FF FF FF 00 00 00 00
-        ///
-        ///
-        /// Input  : 00 00 00 00
-        /// Width  : 8
-        /// Result : FF FF FF FF FF FF FF FF.
-        ///
-        /// </summary>
-        /// <param name="input">The positive number to bitwise reverse.</param>
-        /// <param name="width">The width of the parameter.
-        /// </param>
-        /// <returns>A number representing the input bitwise reversed.</returns>
-        public static BigInteger PositiveReverse(this BigInteger input, int width)
-        {
+    /// <summary>
+    ///
+    /// Reverse a Positive BigInteger ONLY
+    /// Bitwise ~ operator
+    ///
+    /// Input  : FF FF FF FF
+    /// Width  : 4
+    /// Result : 00 00 00 00
+    ///
+    ///
+    /// Input  : 00 00 00 00
+    /// Width  : 4
+    /// Result : FF FF FF FF
+    ///
+    /// Input  : FF FF FF FF
+    /// Width  : 8
+    /// Result : FF FF FF FF 00 00 00 00
+    ///
+    ///
+    /// Input  : 00 00 00 00
+    /// Width  : 8
+    /// Result : FF FF FF FF FF FF FF FF.
+    ///
+    /// </summary>
+    /// <param name="input">The positive number to bitwise reverse.</param>
+    /// <param name="width">The width of the parameter.
+    /// </param>
+    /// <returns>A number representing the input bitwise reversed.</returns>
+    public static BigInteger PositiveReverse(this BigInteger input, int width)
+    {
             byte[] bytes = input.ToByteArray();
             int length = width + 1;
 
@@ -175,5 +176,4 @@ namespace System.Net
             output[output.Length - 1] = 0;
             return new BigInteger(output);
         }
-    }
 }

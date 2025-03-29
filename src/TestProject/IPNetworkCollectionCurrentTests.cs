@@ -4,9 +4,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test IPNetworkCollection Current
+/// </summary>
 [TestClass]
 public class IPNetworkCollectionCurrentTests
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestCurrent()
     {

@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Tests with the IANA blocks.
+/// </summary>
 [TestClass]
 public class IPNetworkIanaBlocksTests
 {
@@ -85,6 +88,9 @@ public class IPNetworkIanaBlocksTests
         Assert.AreEqual(expected, result, "IANA");
     }
 
+    /// <summary>
+    /// Test is a null ipaddress is in IANA block.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestIana7()
@@ -93,6 +99,9 @@ public class IPNetworkIanaBlocksTests
         IPNetwork2.IsIANAReserved(ipaddress);
     }
 
+    /// <summary>
+    /// Test is a null ipnetwork is in IANA block.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestIana8()

@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class IPNetworkTrySupernetTests
 {
@@ -24,6 +27,9 @@ public class IPNetworkTrySupernetTests
             Assert.AreEqual(parsed, result, "parsed");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestTrySupernet2()

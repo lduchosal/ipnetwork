@@ -4,11 +4,17 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class CidrClassLessUnitTest
 {
     #region IPV4
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestTryGuessCidrNull()
     {
@@ -21,6 +27,9 @@ public class CidrClassLessUnitTest
         Assert.AreEqual(0, cidr, "cidr");
     }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestTryGuessCidrA()
     {
@@ -33,6 +42,9 @@ public class CidrClassLessUnitTest
         Assert.AreEqual(32, cidr, "cidr");
     }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestTryGuessCidrB()
     {
@@ -45,6 +57,9 @@ public class CidrClassLessUnitTest
         Assert.AreEqual(32, cidr, "cidr");
     }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestTryGuessCidrC()
     {
@@ -57,6 +72,9 @@ public class CidrClassLessUnitTest
         Assert.AreEqual(32, cidr, "cidr");
     }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestTryGuessCidrD()
     {
@@ -69,6 +87,9 @@ public class CidrClassLessUnitTest
         Assert.AreEqual(32, cidr, "cidr");
     }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestTryGuessCidrE()
     {
@@ -85,6 +106,9 @@ public class CidrClassLessUnitTest
 
     #region IPV6
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestIpV6TryGuessCidrNull()
     {
@@ -97,6 +121,9 @@ public class CidrClassLessUnitTest
         Assert.AreEqual(0, cidr, "cidr");
     }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestIpV6TryGuessCidr1()
     {
@@ -109,6 +136,9 @@ public class CidrClassLessUnitTest
         Assert.AreEqual(128, cidr, "cidr");
     }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestIpV6TryGuessCidr2()
     {

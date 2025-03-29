@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test Ctor.
+/// </summary>
 [TestClass]
 public class IPNetworkCtorWithIpAndCidrTests
 {
@@ -19,6 +22,9 @@ public class IPNetworkCtorWithIpAndCidrTests
         Assert.AreEqual("192.168.168.0/24", ipnetwork.ToString(), "network");
     }
 
+    /// <summary>
+    ///     Tests Ctor With null ip.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void CtorWithIpAndCidr2()
@@ -27,6 +33,9 @@ public class IPNetworkCtorWithIpAndCidrTests
         var ipnetwork = new IPNetwork2(ip, 24);
     }
 
+    /// <summary>
+    ///     Tests Ctor With too big cidr.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void CtorWithIpAndCidr3()

@@ -4,9 +4,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class IPNetworkCollectionMoveNextTests
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void MoveNext1()
     {
@@ -18,6 +24,9 @@ public class IPNetworkCollectionMoveNextTests
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void MoveNext2()
     {

@@ -93,7 +93,7 @@ public class IPNetworkWideSubnetTests
             var ipns = new List<IPNetwork2>
             {
                 IPNetwork2.IANA_ABLK_RESERVED1,
-                IPNetwork2.Parse("2001:0db8::/64")
+                IPNetwork2.Parse("2001:0db8::/64"),
             };
             var ipnetwork = IPNetwork2.WideSubnet(ipns.ToArray());
         }

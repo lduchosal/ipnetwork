@@ -4,9 +4,18 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class WildcardMaskIPv4UnitTest
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
+    /// <param name="cidr">The cidr.</param>
+    /// <param name="thenNetmask">The resulting netmask.</param>
+    /// <param name="andWildcardmask">And the resulting wildcard.</param>
     [DataTestMethod]
     [DataRow(0, "0.0.0.0", "255.255.255.255")]
     [DataRow(32, "255.255.255.255", "0.0.0.0")]
@@ -21,6 +30,11 @@ public class WildcardMaskIPv4UnitTest
             Assert.AreEqual(andWildcardmask, wildcardmask, "wildcardmask");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
+    /// <param name="netmask">The netmask.</param>
+    /// <param name="expected">The expected netmask.</param>
     [DataTestMethod]
     [DataRow("255.255.255.255", "0.0.0.0")]
     [DataRow("255.255.255.254", "0.0.0.1")]
@@ -66,6 +80,11 @@ public class WildcardMaskIPv4UnitTest
             Assert.AreEqual(expected, wildcardmask, "wildcardmask");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
+    /// <param name="cidr">The cidr.</param>
+    /// <param name="expected">The resulting netmask.</param>
     [DataTestMethod]
     [DataRow(32, "0.0.0.0")]
     [DataRow(31, "0.0.0.1")]

@@ -4,9 +4,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class IPNetworkCollectionResetTests
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestReset1()
     {

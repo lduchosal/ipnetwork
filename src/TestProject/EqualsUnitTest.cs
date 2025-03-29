@@ -4,11 +4,17 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class EqualsUnitTest
 {
     #region Equals IPv6 vs IPv4
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEquals_ipv6_ipv4_0()
     {
@@ -24,6 +30,9 @@ public class EqualsUnitTest
 
     #region Equals IPv4
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEquals_ipv4_1()
     {
@@ -35,6 +44,9 @@ public class EqualsUnitTest
             Assert.AreEqual(expected, result, "equals");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEquals_ipv4_2()
     {
@@ -46,6 +58,9 @@ public class EqualsUnitTest
             Assert.AreEqual(expected, result, "equals");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEquals_ipv4_3()
     {
@@ -57,6 +72,9 @@ public class EqualsUnitTest
             Assert.AreEqual(expected, result, "equals");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEquals_ipv4_4()
     {
@@ -68,6 +86,9 @@ public class EqualsUnitTest
             Assert.AreEqual(expected, result, "equals");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEquals_ipv4_5()
     {
@@ -83,6 +104,9 @@ public class EqualsUnitTest
 
     #region Equals IPv6
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEquals_ipv6_1()
     {
@@ -94,6 +118,9 @@ public class EqualsUnitTest
             Assert.AreEqual(expected, result, "equals");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEquals_ipv6_2()
     {
@@ -105,6 +132,9 @@ public class EqualsUnitTest
             Assert.AreEqual(expected, result, "equals");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEquals_ipv6_3()
     {
@@ -116,6 +146,9 @@ public class EqualsUnitTest
             Assert.AreEqual(expected, result, "equals");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEquals_ipv6_4()
     {
@@ -127,6 +160,9 @@ public class EqualsUnitTest
             Assert.AreEqual(expected, result, "equals");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEquals_ipv6_5()
     {

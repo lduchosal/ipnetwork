@@ -4,9 +4,15 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test Ctor.
+/// </summary>
 [TestClass]
 public class IPNetworkCtorTests
 {
+    /// <summary>
+    /// Test Ctor with too big of a CIDR.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestCtor1()

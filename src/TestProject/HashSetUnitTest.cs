@@ -4,9 +4,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class HashSetUnitTest
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestGetHashCode_HashSet_Add1()
     {
@@ -21,6 +27,9 @@ public class HashSetUnitTest
             Assert.IsFalse(add2, "add2");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestGetHashCode_HashSet_Add2()
     {

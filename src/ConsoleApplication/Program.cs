@@ -4,21 +4,19 @@
 
 namespace System.Net;
 
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Numerics;
 using System.Reflection;
 using Gnu.Getopt;
 
-
-using System.Collections.Generic;
-
 /// <summary>
 /// Console app for IPNetwork.
 /// </summary>
 public class Program
 {
-    private static readonly Dictionary<int, ArgParsed> Args = new();
+    private static readonly Dictionary<int, ArgParsed> Args = new ();
 
     private static readonly ArgParsed[] ArgsList = new[]
     {
@@ -408,10 +406,7 @@ public class Program
 
     private static bool PrintNoValue(ProgramContext ac)
     {
-        if (ac == null)
-        {
-            throw new ArgumentNullException(nameof(ac));
-        }
+        ArgumentNullException.ThrowIfNull(ac);
 
         return ac.IPNetwork == false
                && ac.Network == false
@@ -426,10 +421,7 @@ public class Program
 
     private static void PrintAll(ProgramContext ac)
     {
-        if (ac == null)
-        {
-            throw new ArgumentNullException(nameof(ac));
-        }
+        ArgumentNullException.ThrowIfNull(ac);
 
         ac.IPNetwork = true;
         ac.Network = true;

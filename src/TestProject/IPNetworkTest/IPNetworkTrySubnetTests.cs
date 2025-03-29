@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test parsing of collection of subnet.
+/// </summary>
 [TestClass]
 public class IPNetworkTrySubnetTests
 {
@@ -18,6 +21,9 @@ public class IPNetworkTrySubnetTests
             Assert.AreEqual(null, subnets, "subnets");
         }
 
+    /// <summary>
+    /// Test a null collection.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestInternalSubnet2()
@@ -26,6 +32,9 @@ public class IPNetworkTrySubnetTests
             IPNetwork2.InternalSubnet(false, null, 0, out subnets);
         }
 
+    /// <summary>
+    /// Test a null network
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestTrySubnet1()
@@ -33,9 +42,8 @@ public class IPNetworkTrySubnetTests
             IPNetwork2 ipnetwork = null;
             byte cidr = 9;
 
-            IPNetworkCollection subnets = null;
 #pragma warning disable 0618
-            bool subnetted = IPNetwork2.TrySubnet(ipnetwork, cidr, out subnets);
+            bool subnetted = IPNetwork2.TrySubnet(ipnetwork, cidr, out var _);
 #pragma warning restore 0618
         }
 

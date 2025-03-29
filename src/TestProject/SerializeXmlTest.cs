@@ -4,9 +4,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class SerializeXmlTest
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_Serialize_Xml()
     {
@@ -25,6 +31,9 @@ public class SerializeXmlTest
             Assert.IsTrue(ok, result);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_Deserialize_Xml()
     {
@@ -42,6 +51,9 @@ public class SerializeXmlTest
             Assert.AreEqual(expected, result);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_Serialize_Deserialize_Xml()
     {
@@ -61,6 +73,9 @@ public class SerializeXmlTest
             Assert.AreEqual(ipnetwork, ipnetwork2);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("LongRunning")]
     public void Test_1_000_000_Serialize_Xml()
@@ -79,6 +94,9 @@ public class SerializeXmlTest
             // 5.13 seconds(Ad hoc).
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("LongRunning")]
     public void Test_1_000_000_Deserialize_Xml()
@@ -101,6 +119,9 @@ public class SerializeXmlTest
             // 17.98 seconds(Ad hoc).
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("LongRunning")]
     public void Test_1_000_000_Serialize_Deserialize_Xml()

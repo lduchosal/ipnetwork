@@ -4,6 +4,9 @@
 
 namespace System.Net;
 
+/// <summary>
+/// Switch and actions
+/// </summary>
 public enum ActionEnum
 {
     Usage,

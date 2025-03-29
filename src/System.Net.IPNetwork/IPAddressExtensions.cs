@@ -2,20 +2,20 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net
+namespace System.Net;
+
+/// <summary>
+/// A collection of extension functions applied to an IPAddress value.
+/// </summary>
+public static class IPAddressExtensions
 {
     /// <summary>
-    /// A collection of extension functions applied to an IPAddress value.
+    /// Convert an IPAddress value into a single-address IPNetwork for that address.
     /// </summary>
-    public static class IPAddressExtensions
+    /// <param name="addr">IPAddress to convert.</param>
+    /// <returns>IPNetwork object covering that IPAddress only.</returns>
+    public static IPNetwork2 AsIPNetwork(this IPAddress addr)
     {
-        /// <summary>
-        /// Convert an IPAddress value into a single-address IPNetwork for that address.
-        /// </summary>
-        /// <param name="addr">IPAddress to convert.</param>
-        /// <returns>IPNetwork object covering that IPAddress only.</returns>
-        public static IPNetwork2 AsIPNetwork(this IPAddress addr)
-        {
             /* IPv4? */
             if (addr.AddressFamily == Sockets.AddressFamily.InterNetwork)
             {
@@ -34,5 +34,4 @@ namespace System.Net
             throw new ArgumentException(
                 $"AsIPNetwork does not support addresses in the {addr.AddressFamily} family.");
         }
-    }
 }

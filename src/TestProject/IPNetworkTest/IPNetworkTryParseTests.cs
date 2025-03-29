@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class IPNetworkTryParseTests
 {
@@ -80,7 +83,7 @@ public class IPNetworkTryParseTests
     public void TestTryParseIPAddressNetmaskAne7()
     {
             IPNetwork2 ipnet = null;
-            bool parsed = IPNetwork2.TryParse("0.0.0.0", netmask:null, out ipnet);
+            bool parsed = IPNetwork2.TryParse("0.0.0.0", netmask: null, out ipnet);
 
             Assert.AreEqual(false, parsed, "parsed");
             Assert.AreEqual(null, ipnet, "ipnet");
