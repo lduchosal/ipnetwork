@@ -1,4 +1,4 @@
-name: SonarCloud
+name: SonarQube
 on:
   push:
     branches:
@@ -10,28 +10,28 @@ jobs:
     name: Build and analyze
     runs-on: windows-latest
     steps:
-      - name: Set up JDK 11
+      - name: Set up JDK 17
         uses: actions/setup-java@v4
         with:
-          distribution: 'temurin'
           java-version: 17
-      - uses: actions/checkout@v2
+          distribution: 'zulu' # Alternative distribution options are available.
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
-      - name: Cache SonarCloud packages
-        uses: actions/cache@v3
+      - name: Cache SonarQube Cloud packages
+        uses: actions/cache@v4
         with:
           path: ~\sonar\cache
           key: ${{ runner.os }}-sonar
           restore-keys: ${{ runner.os }}-sonar
-      - name: Cache SonarCloud scanner
+      - name: Cache SonarQube Cloud scanner
         id: cache-sonar-scanner
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: .\.sonar\scanner
           key: ${{ runner.os }}-sonar-scanner
           restore-keys: ${{ runner.os }}-sonar-scanner
-      - name: Install SonarCloud scanner
+      - name: Install SonarQube Cloud scanner
         if: steps.cache-sonar-scanner.outputs.cache-hit != 'true'
         shell: powershell
         run: |
@@ -52,4 +52,4 @@ jobs:
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"lduchosal_ipnetwork" /o:"lduchosal" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.scanner.scanAll=false /d:sonar.cs.vscoveragexml.reportsPaths=coverage.xml
           dotnet build --no-incremental src
           dotnet-coverage collect 'dotnet test src/TestProject' -f xml  -o 'coverage.xml'
-          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
+          .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
