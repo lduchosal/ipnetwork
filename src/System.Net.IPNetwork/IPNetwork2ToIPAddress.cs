@@ -7,9 +7,6 @@ namespace System.Net;
 using System.Net.Sockets;
 using System.Numerics;
 
-/// <summary>
-/// ToIPAddress.
-/// </summary>
 public sealed partial class IPNetwork2
 {
     /// <summary>

@@ -6,9 +6,6 @@ namespace System.Net;
 
 using System.Net.Sockets;
 
-/// <summary>
-/// TryGuessCidr.
-/// </summary>
 public sealed partial class IPNetwork2
 {
     /// <summary>

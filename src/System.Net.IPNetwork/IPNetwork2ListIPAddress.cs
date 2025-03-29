@@ -4,11 +4,8 @@
 
 namespace System.Net;
 
-/// <summary>
-/// ListIPAddress.
-/// </summary>
 public sealed partial class IPNetwork2
-{
+{    
     /// <summary>
     /// List all ip addresses in a subnet.
     /// </summary>

@@ -7,9 +7,6 @@ namespace System.Net;
 using System.Numerics;
 using System.Net.Sockets;
 
-/// <summary>
-/// WildcardNetmask.
-/// </summary>
 public sealed partial class IPNetwork2
 {
     /// <summary>

@@ -4,11 +4,22 @@
 
 namespace System.Net;
 
-/// <summary>
-/// Subnet.
-/// </summary>
 public sealed partial class IPNetwork2
 {
+    /// <summary>
+    /// Subnet a network into multiple nets of cidr mask
+    /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
+    /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
+    /// </summary>
+    /// <param name="cidr">A byte representing the CIDR to be used to subnet the current IPNetwork.</param>
+    /// <returns>A IPNetworkCollection splitted by CIDR.</returns>
+    public IPNetworkCollection Subnet(byte cidr)
+    {
+        IPNetwork2.InternalSubnet(false, this, cidr, out IPNetworkCollection ipnetworkCollection);
+
+        return ipnetworkCollection;
+    }
+
     /// <summary>
     /// Subnet method is used to divide the given IP network into subnets with the specified CIDR.
     /// </summary>
@@ -26,26 +37,6 @@ public sealed partial class IPNetwork2
         }
 
         return network.Subnet(cidr);
-    }
-
-    /// <summary>
-    /// Subnet a network into multiple nets of cidr mask
-    /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
-    /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
-    /// </summary>
-    /// <param name="network">The network.</param>
-    /// <param name="cidr">A byte representing the CIDR to be used to subnet the current IPNetwork.</param>
-    /// <param name="ipnetworkCollection">The resulting subnetted IPNetwork.</param>
-    /// <returns>true if network was split successfully; otherwise, false.</returns>
-    [Obsolete("static TrySubnet is deprecated, please use instance TrySubnet.")]
-    public static bool TrySubnet(IPNetwork2 network, byte cidr, out IPNetworkCollection ipnetworkCollection)
-    {
-        if (network == null)
-        {
-            throw new ArgumentNullException("network");
-        }
-
-        return network.TrySubnet(cidr, out ipnetworkCollection);
     }
 
     /// <summary>
@@ -74,13 +65,19 @@ public sealed partial class IPNetwork2
     /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
     /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
     /// </summary>
+    /// <param name="network">The network.</param>
     /// <param name="cidr">A byte representing the CIDR to be used to subnet the current IPNetwork.</param>
-    /// <returns>A IPNetworkCollection splitted by CIDR.</returns>
-    public IPNetworkCollection Subnet(byte cidr)
+    /// <param name="ipnetworkCollection">The resulting subnetted IPNetwork.</param>
+    /// <returns>true if network was split successfully; otherwise, false.</returns>
+    [Obsolete("static TrySubnet is deprecated, please use instance TrySubnet.")]
+    public static bool TrySubnet(IPNetwork2 network, byte cidr, out IPNetworkCollection ipnetworkCollection)
     {
-        IPNetwork2.InternalSubnet(false, this, cidr, out IPNetworkCollection ipnetworkCollection);
+        if (network == null)
+        {
+            throw new ArgumentNullException("network");
+        }
 
-        return ipnetworkCollection;
+        return network.TrySubnet(cidr, out ipnetworkCollection);
     }
 
     /// <summary>

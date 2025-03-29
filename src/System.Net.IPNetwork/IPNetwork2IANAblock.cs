@@ -4,9 +4,6 @@
 
 namespace System.Net;
 
-/// <summary>
-/// IANA Blocks.
-/// </summary>
 public sealed partial class IPNetwork2
 {
     private static readonly Lazy<IPNetwork2> IanaAblockReserved = new (() => IPNetwork2.Parse("10.0.0.0/8"));
@@ -68,6 +65,18 @@ public sealed partial class IPNetwork2
     }
 
     /// <summary>
+    /// return true if ipnetwork is contained in
+    /// IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1.
+    /// </summary>
+    /// <returns>true if the ipnetwork is a IANA reserverd IP Netowkr ; otherwise, false.</returns>
+    public bool IsIANAReserved()
+    {
+        return IPNetwork2.IANA_ABLK_RESERVED1.Contains(this)
+               || IPNetwork2.IANA_BBLK_RESERVED1.Contains(this)
+               || IPNetwork2.IANA_CBLK_RESERVED1.Contains(this);
+    }
+
+    /// <summary>
     /// Determines whether the specified IP network is reserved according to the IANA Reserved ranges.
     /// </summary>
     /// <param name="ipnetwork">The IP network to check.</param>
@@ -76,7 +85,7 @@ public sealed partial class IPNetwork2
     /// </returns>
     /// <remarks>
     /// <para>
-    /// This method is obsolete and should not be used. Please use the instance method, see IsIANAReserved" instead.
+    /// This method is obsolete and should not be used. Please use the instance method <see cref="IsIANAReserved"/> instead.
     /// </para>
     /// <para>
     /// Throws an <see cref="ArgumentNullException"/> if <paramref name="ipnetwork"/> is <c>null</c>.
@@ -91,17 +100,5 @@ public sealed partial class IPNetwork2
         }
 
         return ipnetwork.IsIANAReserved();
-    }
-
-    /// <summary>
-    /// return true if ipnetwork is contained in
-    /// IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1.
-    /// </summary>
-    /// <returns>true if the ipnetwork is a IANA reserverd IP Netowkr ; otherwise, false.</returns>
-    public bool IsIANAReserved()
-    {
-        return IPNetwork2.IANA_ABLK_RESERVED1.Contains(this)
-               || IPNetwork2.IANA_BBLK_RESERVED1.Contains(this)
-               || IPNetwork2.IANA_CBLK_RESERVED1.Contains(this);
     }
 }
