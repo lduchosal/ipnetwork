@@ -29,8 +29,7 @@ public sealed class CidrClassFull : ICidrGuess
     /// <returns>true if ip was converted successfully; otherwise, false.</returns>
     public bool TryGuessCidr(string ip, out byte cidr)
     {
-            IPAddress ipaddress = null;
-            bool parsed = IPAddress.TryParse(string.Format("{0}", ip), out ipaddress);
+            bool parsed = IPAddress.TryParse(string.Format("{0}", ip), out var ipaddress);
             if (parsed == false)
             {
                 cidr = 0;
