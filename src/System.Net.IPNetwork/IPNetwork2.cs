@@ -14,4 +14,14 @@ using System.Runtime.Serialization;
 [CLSCompliant(true)]
 public sealed partial class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
 {
+    /// <summary>
+    /// Returns a string representation of the object.
+    /// </summary>
+    /// <returns>
+    /// A string representation of the object which includes the Network and Cidr values separated by a "/".
+    /// </returns>
+    public override string ToString()
+    {
+        return string.Format("{0}/{1}", this.Network, this.Cidr);
+    }
 }

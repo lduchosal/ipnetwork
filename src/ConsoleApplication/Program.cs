@@ -406,10 +406,7 @@ public class Program
 
     private static bool PrintNoValue(ProgramContext ac)
     {
-        if (ac == null)
-        {
-            throw new ArgumentNullException(nameof(ac));
-        }
+        ArgumentNullException.ThrowIfNull(ac);
 
         return ac.IPNetwork == false
                && ac.Network == false
@@ -424,10 +421,7 @@ public class Program
 
     private static void PrintAll(ProgramContext ac)
     {
-        if (ac == null)
-        {
-            throw new ArgumentNullException(nameof(ac));
-        }
+        ArgumentNullException.ThrowIfNull(ac);
 
         ac.IPNetwork = true;
         ac.Network = true;

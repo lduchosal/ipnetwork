@@ -7,6 +7,9 @@ namespace System.Net;
 using System.Net.Sockets;
 using System.Numerics;
 
+/// <summary>
+/// Contains.
+/// </summary>
 public sealed partial class IPNetwork2
 {
     /// <summary>
@@ -14,6 +17,7 @@ public sealed partial class IPNetwork2
     /// </summary>
     /// <param name="contains">A string containing an ip address to convert.</param>
     /// <returns>true if ipaddress is contained into the IP Network; otherwise, false.</returns>
+    [System.CLSCompliant(false)]
     public bool Contains(IPAddress contains)
     {
         if (contains == null)

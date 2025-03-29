@@ -6,6 +6,9 @@ namespace System.Net;
 
 using System.Numerics;
 
+/// <summary>
+/// supernet.
+/// </summary>
 public sealed partial class IPNetwork2
 {
     /// <summary>
