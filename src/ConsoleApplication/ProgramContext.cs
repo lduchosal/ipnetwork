@@ -4,6 +4,9 @@
 
 namespace System.Net;
 
+/// <summary>
+/// The execution context.
+/// </summary>
 public class ProgramContext
 {
     public bool IPNetwork { get; set; }
