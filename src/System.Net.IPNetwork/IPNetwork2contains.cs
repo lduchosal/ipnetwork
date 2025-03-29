@@ -13,34 +13,6 @@ using System.Numerics;
 public sealed partial class IPNetwork2
 {
     /// <summary>
-    /// return true if ipaddress is contained in network.
-    /// </summary>
-    /// <param name="contains">A string containing an ip address to convert.</param>
-    /// <returns>true if ipaddress is contained into the IP Network; otherwise, false.</returns>
-    [System.CLSCompliant(false)]
-    public bool Contains(IPAddress contains)
-    {
-        if (contains == null)
-        {
-            throw new ArgumentNullException("contains");
-        }
-
-        if (this.AddressFamily != contains.AddressFamily)
-        {
-            return false;
-        }
-
-        BigInteger uintNetwork = this.InternalNetwork;
-        BigInteger uintBroadcast = this.InternalBroadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
-        var uintAddress = IPNetwork2.ToBigInteger(contains);
-
-        bool result = uintAddress >= uintNetwork
-                      && uintAddress <= uintBroadcast;
-
-        return result;
-    }
-
-    /// <summary>
     /// Determines whether the given IP address is part of the given IP network.
     /// </summary>
     /// <param name="network">The IP network.</param>
@@ -60,31 +32,6 @@ public sealed partial class IPNetwork2
     }
 
     /// <summary>
-    /// return true is network2 is fully contained in network.
-    /// </summary>
-    /// <param name="contains">The network to test.</param>
-    /// <returns>It returns the boolean value. If network2 is in IPNetwork then it returns True, otherwise returns False.</returns>
-    public bool Contains(IPNetwork2 contains)
-    {
-        if (contains == null)
-        {
-            throw new ArgumentNullException("contains");
-        }
-
-        BigInteger uintNetwork = this.InternalNetwork;
-        BigInteger uintBroadcast = this.InternalBroadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
-
-        BigInteger uintFirst = contains.InternalNetwork;
-        BigInteger
-            uintLast = contains.InternalBroadcast; // CreateBroadcast(ref uintFirst, network2._netmask, network2._family);
-
-        bool result = uintFirst >= uintNetwork
-                      && uintLast <= uintBroadcast;
-
-        return result;
-    }
-
-    /// <summary>
     /// Determines if the given <paramref name="network"/> contains the specified <paramref name="network2"/>.
     /// </summary>
     /// <param name="network">The network to check for containment.</param>
@@ -101,6 +48,62 @@ public sealed partial class IPNetwork2
         }
 
         return network.Contains(network2);
+    }
+
+    /// <summary>
+    /// return true if ipaddress is contained in network.
+    /// </summary>
+    /// <param name="contains">A string containing an ip address to convert.</param>
+    /// <returns>true if ipaddress is contained into the IP Network; otherwise, false.</returns>
+    [System.CLSCompliant(false)]
+    public bool Contains(IPAddress contains)
+    {
+        if (contains == null)
+        {
+            throw new ArgumentNullException("contains");
+        }
+
+        if (this.AddressFamily != contains.AddressFamily)
+        {
+            return false;
+        }
+
+        BigInteger uintNetwork = this.InternalNetwork;
+        BigInteger
+            uintBroadcast = this.InternalBroadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
+        var uintAddress = IPNetwork2.ToBigInteger(contains);
+
+        bool result = uintAddress >= uintNetwork
+                      && uintAddress <= uintBroadcast;
+
+        return result;
+    }
+
+    /// <summary>
+    /// return true is network2 is fully contained in network.
+    /// </summary>
+    /// <param name="contains">The network to test.</param>
+    /// <returns>It returns the boolean value. If network2 is in IPNetwork then it returns True, otherwise returns False.</returns>
+    public bool Contains(IPNetwork2 contains)
+    {
+        if (contains == null)
+        {
+            throw new ArgumentNullException("contains");
+        }
+
+        BigInteger uintNetwork = this.InternalNetwork;
+        BigInteger
+            uintBroadcast = this.InternalBroadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
+
+        BigInteger uintFirst = contains.InternalNetwork;
+        BigInteger
+            uintLast = contains
+                .InternalBroadcast; // CreateBroadcast(ref uintFirst, network2._netmask, network2._family);
+
+        bool result = uintFirst >= uintNetwork
+                      && uintLast <= uintBroadcast;
+
+        return result;
     }
 
     private static BigInteger CreateBroadcast(ref BigInteger network, BigInteger netmask, AddressFamily family)

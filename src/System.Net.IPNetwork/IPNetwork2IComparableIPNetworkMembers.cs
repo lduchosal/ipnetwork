@@ -4,6 +4,9 @@
 
 namespace System.Net;
 
+/// <summary>
+/// IComparable.
+/// </summary>
 public sealed partial class IPNetwork2
 {
     /// <summary>
