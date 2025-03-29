@@ -37,9 +37,6 @@ namespace System.Net
             get { return IPNetwork2.ToBigInteger(this._ipnetwork.Network); }
         }
 
-#if TRAVISCI
-        public
-#else
         /// <summary>
         /// Initializes a new instance of the <see cref="IPNetworkCollection"/> class.
         /// Represents a collection of IP networks based on a given parent IP network and subnet CIDR.
@@ -48,6 +45,9 @@ namespace System.Net
         /// This class is used to generate a collection of IP networks by dividing the given parent IP network into subnets based on the provided subnet CIDR (Classless Inter-Domain Routing
         /// ) value.
         /// </remarks>
+#if TRAVISCI
+        public
+#else
         internal
 #endif
         IPNetworkCollection(IPNetwork2 ipnetwork, byte cidrSubnet)
@@ -142,7 +142,6 @@ namespace System.Net
         /// held by the object. In this particular implementation, there are no resources
         /// to dispose of, so the method does nothing.
         /// </remarks>
-        /// </summary>
         public void Dispose()
         {
             // nothing to dispose
@@ -152,6 +151,7 @@ namespace System.Net
         #endregion
 
         #region IEnumerator Members
+
         /// <summary>
         /// Gets the element in the collection at the current position of the enumerator.
         /// </summary>
