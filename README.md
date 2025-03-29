@@ -1,6 +1,5 @@
 # IPNetwork 
 
-[![Travis-CI Build Status](https://travis-ci.org/lduchosal/ipnetwork.svg?branch=master)](https://travis-ci.org/lduchosal/ipnetwork)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/lduchosal/ipnetwork?branch=master&svg=true)](https://ci.appveyor.com/project/lduchosal/ipnetwork/branch/master)
 [![Nuget](https://img.shields.io/badge/nuget-ipnetwork2-blue.svg)](https://www.nuget.org/packages/ipnetwork2)
 [![Nuget](https://img.shields.io/nuget/dt/IPNetwork2)](https://www.nuget.org/packages/ipnetwork2)
