@@ -2,13 +2,13 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject
+namespace TestProject;
+
+[TestClass]
+public class IPNetworkCollectionEnumeratorTests
 {
-    [TestClass]
-    public class IPNetworkCollectionEnumeratorTests
-    {
-        [TestMethod]
-        public void TestEnumerator()
+    [TestMethod]
+    public void TestEnumerator()
     {
             var ipn = IPNetwork2.Parse("192.168.0.0/32");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
@@ -20,5 +20,4 @@ namespace TestProject
                 Assert.AreEqual("192.168.0.0/32", ipn0.ToString(), "ipn0");
             }
         }
-    }
 }

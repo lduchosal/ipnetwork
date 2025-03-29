@@ -2,13 +2,13 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject
+namespace TestProject;
+
+[TestClass]
+public class HashSetUnitTestEqualsIPv6VsIPv4
 {
-    [TestClass]
-    public class HashSetUnitTestEqualsIPv6VsIPv4
-    {
-        [TestMethod]
-        public void TestHashSet_Add_ipv6_ipv4_0()
+    [TestMethod]
+    public void TestHashSet_Add_ipv6_ipv4_0()
     {
             var ipnetwork1 = IPNetwork2.Parse("::/32");
             var ipnetwork2 = IPNetwork2.Parse("0.0.0.0/32");
@@ -20,5 +20,4 @@ namespace TestProject
             Assert.IsTrue(add1, "add1");
             Assert.IsTrue(add2, "add2");
         }
-    }
 }

@@ -2,13 +2,13 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject
+namespace TestProject;
+
+[TestClass]
+public class IPNetworkCollectionMoveNextTests
 {
-    [TestClass]
-    public class IPNetworkCollectionMoveNextTests
-    {
-        [TestMethod]
-        public void MoveNext1()
+    [TestMethod]
+    public void MoveNext1()
     {
             var ipn = IPNetwork2.Parse("192.168.1.0/30");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
@@ -18,8 +18,8 @@ namespace TestProject
             }
         }
 
-        [TestMethod]
-        public void MoveNext2()
+    [TestMethod]
+    public void MoveNext2()
     {
             var ipn = IPNetwork2.Parse("192.168.1.0/30");
             using (IPNetworkCollection ipns = ipn.Subnet(32))
@@ -33,5 +33,4 @@ namespace TestProject
                 Assert.AreEqual(false, next, "next");
             }
         }
-    }
 }

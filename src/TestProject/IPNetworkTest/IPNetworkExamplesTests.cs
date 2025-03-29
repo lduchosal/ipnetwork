@@ -2,16 +2,16 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace TestProject.IPNetworkTest
+namespace TestProject.IPNetworkTest;
+
+[TestClass]
+public class IPNetworkExamplesTests
 {
-    [TestClass]
-    public class IPNetworkExamplesTests
-    {
-        /// <summary>
-        ///     Tests Examples functionality with a /1 network.
-        /// </summary>
-        [TestMethod]
-        public void Example1()
+    /// <summary>
+    ///     Tests Examples functionality with a /1 network.
+    /// </summary>
+    [TestMethod]
+    public void Example1()
     {
         var ipnetwork = IPNetwork2.Parse("192.168.168.100/24");
 
@@ -24,11 +24,11 @@ namespace TestProject.IPNetworkTest
         Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
     }
 
-        /// <summary>
-        ///     Tests Examples functionality with a /2 network.
-        /// </summary>
-        [TestMethod]
-        public void Example2()
+    /// <summary>
+    ///     Tests Examples functionality with a /2 network.
+    /// </summary>
+    [TestMethod]
+    public void Example2()
     {
         var ipnetwork = IPNetwork2.Parse("192.168.0.0/24");
         var ipaddress = IPAddress.Parse("192.168.0.100");
@@ -54,11 +54,11 @@ namespace TestProject.IPNetworkTest
         Console.WriteLine("{0} overlap {1} : {2}", ipnetwork, ipnetwork3, overlap2);
     }
 
-        /// <summary>
-        ///     Tests Examples functionality.
-        /// </summary>
-        [TestMethod]
-        public void Example2B()
+    /// <summary>
+    ///     Tests Examples functionality.
+    /// </summary>
+    [TestMethod]
+    public void Example2B()
     {
         var ipnetwork1 = IPNetwork2.Parse("10.1.0.0/16");
         var ipnetwork2 = IPNetwork2.Parse("192.168.1.0/24");
@@ -79,11 +79,11 @@ namespace TestProject.IPNetworkTest
         Console.WriteLine("{0} contains {1} : {2}", ipnetwork2, ipaddress4, contains4);
     }
 
-        /// <summary>
-        ///     Tests Examples functionality with a /3 network.
-        /// </summary>
-        [TestMethod]
-        public void Example3()
+    /// <summary>
+    ///     Tests Examples functionality with a /3 network.
+    /// </summary>
+    [TestMethod]
+    public void Example3()
     {
         IPNetwork2 ianaABlock = IPNetwork2.IANA_ABLK_RESERVED1;
         IPNetwork2 ianaBBlock = IPNetwork2.IANA_BBLK_RESERVED1;
@@ -94,11 +94,11 @@ namespace TestProject.IPNetworkTest
         Console.WriteLine("IANA_CBLK_RESERVED1 is {0}", ianaCBlock);
     }
 
-        /// <summary>
-        ///     Tests Examples functionality with a /4 network.
-        /// </summary>
-        [TestMethod]
-        public void Example4()
+    /// <summary>
+    ///     Tests Examples functionality with a /4 network.
+    /// </summary>
+    [TestMethod]
+    public void Example4()
     {
         var wholeInternet = IPNetwork2.Parse("0.0.0.0/0");
         byte newCidr = 2;
@@ -115,11 +115,11 @@ namespace TestProject.IPNetworkTest
         }
     }
 
-        /// <summary>
-        ///     Tests Examples functionality with a /5 network.
-        /// </summary>
-        [TestMethod]
-        public void Example5()
+    /// <summary>
+    ///     Tests Examples functionality with a /5 network.
+    /// </summary>
+    [TestMethod]
+    public void Example5()
     {
         var ipnetwork1 = IPNetwork2.Parse("192.168.0.0/24");
         var ipnetwork2 = IPNetwork2.Parse("192.168.1.0/24");
@@ -128,11 +128,11 @@ namespace TestProject.IPNetworkTest
         Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
     }
 
-        /// <summary>
-        ///     Tests Examples functionality with a /7 network.
-        /// </summary>
-        [TestMethod]
-        public void Example7()
+    /// <summary>
+    ///     Tests Examples functionality with a /7 network.
+    /// </summary>
+    [TestMethod]
+    public void Example7()
     {
         var ipnetwork = IPNetwork2.Parse("192.168.168.100/24");
 
@@ -146,11 +146,11 @@ namespace TestProject.IPNetworkTest
         Console.WriteLine("{0} contains {1} : {2}", ipnetwork, ipaddress2, contains2);
     }
 
-        /// <summary>
-        ///     Tests Examples functionality with a /9 network.
-        /// </summary>
-        [TestMethod]
-        public void Example9()
+    /// <summary>
+    ///     Tests Examples functionality with a /9 network.
+    /// </summary>
+    [TestMethod]
+    public void Example9()
     {
         var network = IPNetwork2.Parse("192.168.0.1");
         var network2 = IPNetwork2.Parse("192.168.0.254");
@@ -166,11 +166,11 @@ namespace TestProject.IPNetworkTest
         Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
     }
 
-        /// <summary>
-        ///     Tests Examples with invalid input to ensure proper error handling.
-        /// </summary>
-        [TestMethod]
-        public void When_TrySupernet_192_168_0_0_cidr24_add_192_168_10_0_cidr24_Then_Should_Invalid()
+    /// <summary>
+    ///     Tests Examples with invalid input to ensure proper error handling.
+    /// </summary>
+    [TestMethod]
+    public void When_TrySupernet_192_168_0_0_cidr24_add_192_168_10_0_cidr24_Then_Should_Invalid()
     {
         var network = IPNetwork2.Parse("192.168.0.0/24");
         var network2 = IPNetwork2.Parse("192.168.10.0/24");
@@ -179,11 +179,11 @@ namespace TestProject.IPNetworkTest
         Assert.AreEqual(false, supernetted);
     }
 
-        /// <summary>
-        ///     Tests Examples with invalid input to ensure proper error handling.
-        /// </summary>
-        [TestMethod]
-        public void When_TryWideSubnet_192_168_0_0_cidr24_add_192_168_10_0_cidr24_Then_Should_Invalid()
+    /// <summary>
+    ///     Tests Examples with invalid input to ensure proper error handling.
+    /// </summary>
+    [TestMethod]
+    public void When_TryWideSubnet_192_168_0_0_cidr24_add_192_168_10_0_cidr24_Then_Should_Invalid()
     {
         var network = IPNetwork2.Parse("192.168.0.0/24");
         var network2 = IPNetwork2.Parse("192.168.10.0/24");
@@ -201,11 +201,11 @@ namespace TestProject.IPNetworkTest
         Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
     }
 
-        /// <summary>
-        ///     Tests Examples functionality with a /10 network.
-        /// </summary>
-        [TestMethod]
-        public void Example10()
+    /// <summary>
+    ///     Tests Examples functionality with a /10 network.
+    /// </summary>
+    [TestMethod]
+    public void Example10()
     {
         var ipnetwork = IPNetwork2.Parse("192.168.0.1/25");
 
@@ -218,11 +218,11 @@ namespace TestProject.IPNetworkTest
         Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
     }
 
-        /// <summary>
-        ///     Tests Examples functionality with a /11 network.
-        /// </summary>
-        [TestMethod]
-        public void Example11()
+    /// <summary>
+    ///     Tests Examples functionality with a /11 network.
+    /// </summary>
+    [TestMethod]
+    public void Example11()
     {
         var defaultParse = IPNetwork2.Parse("192.168.0.0"); // default to ClassFull
         var classFullParse = IPNetwork2.Parse("192.168.0.0", CidrGuess.ClassFull);
@@ -231,6 +231,5 @@ namespace TestProject.IPNetworkTest
         Console.WriteLine("IPV4 Default Parse : {0}", defaultParse);
         Console.WriteLine("IPV4 ClassFull Parse : {0}", classFullParse);
         Console.WriteLine("IPV4 ClassLess Parse : {0}", classLessParse);
-    }
     }
 }
