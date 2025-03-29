@@ -4,6 +4,9 @@
 
 namespace System.Net;
 
+/// <summary>
+/// CidrParseEnum.
+/// </summary>
 public enum CidrParseEnum
 {
     Default,
