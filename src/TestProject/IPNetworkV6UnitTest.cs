@@ -953,6 +953,7 @@ public class IPNetworkV6UnitTest
     {
         string ipaddress = "2001:db8::";
         var ip = IPAddress.Parse(ipaddress);
+        var _ = new IPNetwork2(ip, 129);
     }
 
     #endregion
@@ -1869,10 +1870,9 @@ public class IPNetworkV6UnitTest
     public void TestValidNetmask0()
     {
         var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff");
-        bool expected = true;
         bool result = IPNetwork2.ValidNetmask(mask);
 
-        Assert.AreEqual(expected, result, "ValidNetmask");
+        Assert.AreEqual(true, result, "ValidNetmask");
     }
 
     /// <summary>
@@ -1882,10 +1882,9 @@ public class IPNetworkV6UnitTest
     public void TestValidNetmask1()
     {
         var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:fff0");
-        bool expected = true;
         bool result = IPNetwork2.ValidNetmask(mask);
 
-        Assert.AreEqual(expected, result, "ValidNetmask");
+        Assert.AreEqual(true, result, "ValidNetmask");
     }
 
     /// <summary>
@@ -1895,10 +1894,9 @@ public class IPNetworkV6UnitTest
     public void TestValidNetmask2()
     {
         var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:ffff:0000");
-        bool expected = true;
         bool result = IPNetwork2.ValidNetmask(mask);
 
-        Assert.AreEqual(expected, result, "ValidNetmask");
+        Assert.AreEqual(true, result, "ValidNetmask");
     }
 
     /// <summary>
@@ -1908,10 +1906,9 @@ public class IPNetworkV6UnitTest
     public void TestValidNetmaskEae1()
     {
         var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:0000:ffff");
-        bool expected = false;
         bool result = IPNetwork2.ValidNetmask(mask);
 
-        Assert.AreEqual(expected, result, "ValidNetmask");
+        Assert.AreEqual(false, result, "ValidNetmask");
     }
 
     /// <summary>
@@ -1921,10 +1918,9 @@ public class IPNetworkV6UnitTest
     public void TestValidNetmaskEae3()
     {
         var mask = IPAddress.Parse("ffff:ffff:ffff:ffff:ffff:ffff:0000:0001");
-        bool expected = false;
         bool result = IPNetwork2.ValidNetmask(mask);
 
-        Assert.AreEqual(expected, result, "ValidNetmask");
+        Assert.AreEqual(false, result, "ValidNetmask");
     }
 
     #endregion
@@ -1997,9 +1993,8 @@ public class IPNetworkV6UnitTest
         var ipaddress = IPAddress.Parse("2001:0db8::1");
 
         bool result = ipnetwork.Contains(ipaddress);
-        bool expected = true;
 
-        Assert.AreEqual(expected, result, "contains");
+        Assert.AreEqual(true, result, "contains");
     }
 
     /// <summary>
@@ -2012,9 +2007,8 @@ public class IPNetworkV6UnitTest
         var ipaddress = IPAddress.Parse("2001:0db8:0:1::");
 
         bool result = ipnetwork.Contains(ipaddress);
-        bool expected = false;
 
-        Assert.AreEqual(expected, result, "contains");
+        Assert.AreEqual(false, result, "contains");
     }
 
     /// <summary>
@@ -2027,9 +2021,8 @@ public class IPNetworkV6UnitTest
         var ipnetwork2 = IPNetwork2.Parse("2001:0db8::/64");
 
         bool result = ipnetwork.Contains(ipnetwork2);
-        bool expected = true;
 
-        Assert.AreEqual(expected, result, "contains");
+        Assert.AreEqual(true, result, "contains");
     }
 
     /// <summary>
@@ -2042,9 +2035,8 @@ public class IPNetworkV6UnitTest
         var ipnetwork2 = IPNetwork2.Parse("2001:0db8::/65");
 
         bool result = ipnetwork.Contains(ipnetwork2);
-        bool expected = true;
 
-        Assert.AreEqual(expected, result, "contains");
+        Assert.AreEqual(true, result, "contains");
     }
 
     /// <summary>
@@ -2057,9 +2049,8 @@ public class IPNetworkV6UnitTest
         var ipnetwork2 = IPNetwork2.Parse("2001:0db8:1::/65");
 
         bool result = ipnetwork.Contains(ipnetwork2);
-        bool expected = false;
 
-        Assert.AreEqual(expected, result, "contains");
+        Assert.AreEqual(false, result, "contains");
     }
 
     /// <summary>
@@ -2072,9 +2063,8 @@ public class IPNetworkV6UnitTest
         var ipnetwork2 = IPNetwork2.Parse("2001:0db8::/63");
 
         bool result = ipnetwork.Contains(ipnetwork2);
-        bool expected = false;
 
-        Assert.AreEqual(expected, result, "contains");
+        Assert.AreEqual(false, result, "contains");
     }
 
     /// <summary>
@@ -2128,9 +2118,8 @@ public class IPNetworkV6UnitTest
         var network1 = IPNetwork2.Parse("2001:0db8::/64");
         var network2 = IPNetwork2.Parse("2001:0db8::/64");
         bool result = network1.Overlap(network2);
-        bool expected = true;
 
-        Assert.AreEqual(expected, result, "overlap");
+        Assert.AreEqual(true, result, "overlap");
     }
 
     /// <summary>
@@ -2142,9 +2131,8 @@ public class IPNetworkV6UnitTest
         var network1 = IPNetwork2.Parse("2001:0db8::/64");
         var network2 = IPNetwork2.Parse("2001:0db8:0:0:1::/65");
         bool result = network1.Overlap(network2);
-        bool expected = true;
 
-        Assert.AreEqual(expected, result, "overlap");
+        Assert.AreEqual(true, result, "overlap");
     }
 
     /// <summary>
@@ -2156,9 +2144,8 @@ public class IPNetworkV6UnitTest
         var network1 = IPNetwork2.Parse("2001:0db8:0:1::/68");
         var network2 = IPNetwork2.Parse("2001:0db8:0:2::/68");
         bool result = network1.Overlap(network2);
-        bool expected = false;
 
-        Assert.AreEqual(expected, result, "overlap");
+        Assert.AreEqual(false, result, "overlap");
     }
 
     /// <summary>
@@ -2170,9 +2157,8 @@ public class IPNetworkV6UnitTest
         var network1 = IPNetwork2.Parse("2001:0db8:0:1::/68");
         var network2 = IPNetwork2.Parse("2001:0db8:0:2::/62");
         bool result = network1.Overlap(network2);
-        bool expected = true;
 
-        Assert.AreEqual(expected, result, "overlap");
+        Assert.AreEqual(true, result, "overlap");
     }
 
     #endregion
@@ -2514,6 +2500,7 @@ public class IPNetworkV6UnitTest
         var ipnetwork = IPNetwork2.Parse("2001:db08::/64");
         byte cidr = 70;
         IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
+        IPNetwork2 error = subnets[1000];
     }
 
     /// <summary>
@@ -2628,10 +2615,9 @@ public class IPNetworkV6UnitTest
         var network1 = IPNetwork2.Parse("2001:db8::/65");
         var network2 = IPNetwork2.Parse("2001:db8:0:0:8000::/65");
         var supernetExpected = IPNetwork2.Parse("2001:db8::/64");
-        bool supernetted = true;
         bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
-        Assert.AreEqual(supernetted, result, "supernetted");
+        Assert.AreEqual(true, result, "supernetted");
         Assert.AreEqual(supernetExpected, supernet, "supernet");
     }
 
@@ -2659,11 +2645,10 @@ public class IPNetworkV6UnitTest
         var network1 = IPNetwork2.Parse("2001:db8::/64");
         IPNetwork2 network2 = null;
         IPNetwork2 supernetExpected = null;
-        bool parsed = false;
         bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
         Assert.AreEqual(supernetExpected, supernet, "supernet");
-        Assert.AreEqual(parsed, result, "parsed");
+        Assert.AreEqual(false, result, "parsed");
     }
 
     /// <summary>
@@ -2675,11 +2660,10 @@ public class IPNetworkV6UnitTest
         var network1 = IPNetwork2.Parse("2001:db8::/64");
         var network2 = IPNetwork2.Parse("2001:db9::/65");
         IPNetwork2 supernetExpected = null;
-        bool parsed = false;
         bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
         Assert.AreEqual(supernetExpected, supernet, "supernet");
-        Assert.AreEqual(parsed, result, "parsed");
+        Assert.AreEqual(false, result, "parsed");
     }
 
     /// <summary>
@@ -2691,11 +2675,10 @@ public class IPNetworkV6UnitTest
         var network1 = IPNetwork2.Parse("2001:db8::/64");
         var network2 = IPNetwork2.Parse("2001:dba::/64");
         IPNetwork2 supernetExpected = null;
-        bool parsed = false;
         bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
         Assert.AreEqual(supernetExpected, supernet, "supernet");
-        Assert.AreEqual(parsed, result, "parsed");
+        Assert.AreEqual(false, result, "parsed");
     }
 
     /// <summary>
@@ -2707,11 +2690,10 @@ public class IPNetworkV6UnitTest
         var network1 = IPNetwork2.Parse("2001:db8::/64");
         var network2 = IPNetwork2.Parse("2001:db8::1/65");
         var supernetExpected = IPNetwork2.Parse("2001:db8::/64");
-        bool parsed = true;
         bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
         Assert.AreEqual(supernetExpected, supernet, "supernet");
-        Assert.AreEqual(parsed, result, "parsed");
+        Assert.AreEqual(true, result, "parsed");
     }
 
     /// <summary>
@@ -2723,11 +2705,10 @@ public class IPNetworkV6UnitTest
         var network1 = IPNetwork2.Parse("2001:db0::/64");
         var network2 = IPNetwork2.Parse("2001:dbf::/64");
         IPNetwork2 supernetExpected = null;
-        bool parsed = false;
         bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
 
         Assert.AreEqual(supernetExpected, supernet, "supernet");
-        Assert.AreEqual(parsed, result, "parsed");
+        Assert.AreEqual(false, result, "parsed");
     }
 
     /// <summary>
@@ -2740,12 +2721,11 @@ public class IPNetworkV6UnitTest
         var network2 = IPNetwork2.Parse("192.168.2.1/24");
         IPNetwork2[] network3 = { network1, network2 };
         IPNetwork2[] supernetExpected = { network1, network2 };
-        bool parsed = true;
         bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
         Assert.AreEqual(supernetExpected[0], supernet[0], "supernet");
         Assert.AreEqual(supernetExpected[1], supernet[1], "supernet");
-        Assert.AreEqual(parsed, result, "parsed");
+        Assert.AreEqual(true, result, "parsed");
     }
 
     /// <summary>
@@ -2758,11 +2738,10 @@ public class IPNetworkV6UnitTest
         var network2 = IPNetwork2.Parse("2001:db8:0:0:8000::/65");
         IPNetwork2[] network3 = { network1, network2 };
         IPNetwork2[] supernetExpected = { IPNetwork2.Parse("2001:db8::/64") };
-        bool parsed = true;
         bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
         Assert.AreEqual(supernetExpected[0], supernet[0], "supernet");
-        Assert.AreEqual(parsed, result, "parsed");
+        Assert.AreEqual(true, result, "parsed");
     }
 
     /// <summary>
@@ -2773,11 +2752,10 @@ public class IPNetworkV6UnitTest
     {
         IPNetwork2[] network3 = null;
         _ = new[] { IPNetwork2.Parse("2001:db8::/64") };
-        bool parsed = false;
         bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
         Assert.AreEqual(null, supernet, "supernet");
-        Assert.AreEqual(parsed, result, "parsed");
+        Assert.AreEqual(false, result, "parsed");
     }
 
     #endregion

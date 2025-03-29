@@ -29,6 +29,8 @@ public class IPNetworkCtorWithIpAndCidrTests
     [ExpectedException(typeof(ArgumentNullException))]
     public void CtorWithIpAndCidr2()
     {
+        IPAddress ip = null;
+        var ipnetwork = new IPNetwork2(ip, 24);
     }
 
     /// <summary>
@@ -40,5 +42,6 @@ public class IPNetworkCtorWithIpAndCidrTests
     {
         string ipaddress = "192.168.168.100";
         var ip = IPAddress.Parse(ipaddress);
+        var ipnetwork = new IPNetwork2(ip, 33);
     }
 }
