@@ -2,33 +2,33 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net
-{
-    using System.Net.Sockets;
+namespace System.Net;
 
+using System.Net.Sockets;
+
+/// <summary>
+/// Class <c>CidrClassFull</c> tries to guess CIDR in a ClassFull way.
+/// </summary>
+public sealed class CidrClassFull : ICidrGuess
+{
     /// <summary>
-    /// Class <c>CidrClassFull</c> tries to guess CIDR in a ClassFull way.
+    ///
+    /// IPV4 :
+    ///
+    /// Class              Leading bits    Default netmask
+    ///     A (CIDR /8)        00           255.0.0.0
+    ///     A (CIDR /8)        01           255.0.0.0
+    ///     B (CIDR /16)       10           255.255.0.0
+    ///     C (CIDR /24)       11           255.255.255.0
+    ///
+    /// IPV6 : 64.
+    ///
     /// </summary>
-    public sealed class CidrClassFull : ICidrGuess
+    /// <param name="ip">A string representing the CIDR to convert.</param>
+    /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
+    /// <returns>true if ip was converted successfully; otherwise, false.</returns>
+    public bool TryGuessCidr(string ip, out byte cidr)
     {
-        /// <summary>
-        ///
-        /// IPV4 :
-        ///
-        /// Class              Leading bits    Default netmask
-        ///     A (CIDR /8)        00           255.0.0.0
-        ///     A (CIDR /8)        01           255.0.0.0
-        ///     B (CIDR /16)       10           255.255.0.0
-        ///     C (CIDR /24)       11           255.255.255.0
-        ///
-        /// IPV6 : 64.
-        ///
-        /// </summary>
-        /// <param name="ip">A string representing the CIDR to convert.</param>
-        /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
-        /// <returns>true if ip was converted successfully; otherwise, false.</returns>
-        public bool TryGuessCidr(string ip, out byte cidr)
-        {
             IPAddress ipaddress = null;
             bool parsed = IPAddress.TryParse(string.Format("{0}", ip), out ipaddress);
             if (parsed == false)
@@ -64,5 +64,4 @@ namespace System.Net
             cidr = 0;
             return false;
         }
-    }
 }

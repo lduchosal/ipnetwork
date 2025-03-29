@@ -2,55 +2,55 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
-namespace System.Net
+namespace System.Net;
+
+using System.Collections;
+using System.Collections.Generic;
+using System.Numerics;
+
+/// <summary>
+/// Represents different filters for a collection of items.
+/// </summary>
+public enum FilterEnum
 {
-    using System.Collections;
-    using System.Collections.Generic;
-    using System.Numerics;
-
     /// <summary>
-    /// Represents different filters for a collection of items.
+    /// Every IPAdresses are returned
     /// </summary>
-    public enum FilterEnum
-    {
-        /// <summary>
-        /// Every IPAdresses are returned
-        /// </summary>
-        All,
-        /// <summary>
-        /// Returns only usable IPAdresses
-        /// </summary>
-        Usable,
-    }
-
+    All,
     /// <summary>
-    /// Represents a collection of IP addresses within a specific IP network.
+    /// Returns only usable IPAdresses
     /// </summary>
-    public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress>
-    {
-        private readonly IPNetwork2 _ipnetwork;
-        private readonly FilterEnum _filter;
-        private BigInteger _enumerator;
+    Usable,
+}
 
-        internal IPAddressCollection(IPNetwork2 ipnetwork, FilterEnum filter)
-        {
+/// <summary>
+/// Represents a collection of IP addresses within a specific IP network.
+/// </summary>
+public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress>
+{
+    private readonly IPNetwork2 _ipnetwork;
+    private readonly FilterEnum _filter;
+    private BigInteger _enumerator;
+
+    internal IPAddressCollection(IPNetwork2 ipnetwork, FilterEnum filter)
+    {
             this._ipnetwork = ipnetwork;
             this._filter = filter;
             this.Reset();
         }
 
-        #region Count, Array, Enumerator
+    #region Count, Array, Enumerator
 
-        /// <summary>
-        /// Gets the count of IP addresses within the network.
-        /// </summary>
-        /// <value>
-        /// The count of IP addresses within the network.
-        /// </value>
-        public BigInteger Count
+    /// <summary>
+    /// Gets the count of IP addresses within the network.
+    /// </summary>
+    /// <value>
+    /// The count of IP addresses within the network.
+    /// </value>
+    public BigInteger Count
+    {
+        get
         {
-            get
-            {
                 BigInteger count = this._ipnetwork.Total;
                 if (this._filter == FilterEnum.Usable)
                 {
@@ -64,18 +64,18 @@ namespace System.Net
 
                 return count;
             }
-        }
+    }
 
-        /// <summary>
-        /// Gets the IP address corresponding to the given index from the IPNetwork collection.
-        /// </summary>
-        /// <param name="i">The index of the IP address to retrieve.</param>
-        /// <returns>The IP address corresponding to the given index.</returns>
-        /// <exception cref="ArgumentOutOfRangeException">Thrown when the given index is greater than or equal to the Count property of the IPNetwork collection.</exception>
-        public IPAddress this[BigInteger i]
+    /// <summary>
+    /// Gets the IP address corresponding to the given index from the IPNetwork collection.
+    /// </summary>
+    /// <param name="i">The index of the IP address to retrieve.</param>
+    /// <returns>The IP address corresponding to the given index.</returns>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the given index is greater than or equal to the Count property of the IPNetwork collection.</exception>
+    public IPAddress this[BigInteger i]
+    {
+        get
         {
-            get
-            {
                 if (i >= this.Count)
                 {
                     throw new ArgumentOutOfRangeException("i");
@@ -92,35 +92,35 @@ namespace System.Net
 
                 return ipn[index].Network;
             }
-        }
+    }
 
-        #endregion
+    #endregion
 
-        #region Legacy Enumeration
+    #region Legacy Enumeration
 
-        /// <summary>
-        /// Gets the current <see cref="IPAddress"/> from the collection.
-        /// </summary>
-        /// <returns>The current <see cref="IPAddress"/>.</returns>
-        public IPAddress Current
+    /// <summary>
+    /// Gets the current <see cref="IPAddress"/> from the collection.
+    /// </summary>
+    /// <returns>The current <see cref="IPAddress"/>.</returns>
+    public IPAddress Current
+    {
+        get
         {
-            get
-            {
                 return this[this._enumerator];
             }
-        }
+    }
 
-        object IEnumerator.Current
+    object IEnumerator.Current
+    {
+        get
         {
-            get
-            {
                 return this.Current;
             }
-        }
+    }
 
-        /// <inheritdoc />
-        public bool MoveNext()
-        {
+    /// <inheritdoc />
+    public bool MoveNext()
+    {
             this._enumerator++;
             if (this._enumerator >= this.Count)
             {
@@ -130,58 +130,58 @@ namespace System.Net
             return true;
         }
 
-        /// <inheritdoc />
-        public void Reset()
-        {
+    /// <inheritdoc />
+    public void Reset()
+    {
             this._enumerator = -1;
         }
 
-        /// <inheritdoc />
-        public void Dispose()
-        {
+    /// <inheritdoc />
+    public void Dispose()
+    {
             // nothing to dispose
         }
-        #endregion
+    #endregion
 
-        #region Enumeration
-        IEnumerator<IPAddress> IEnumerable<IPAddress>.GetEnumerator()
-        {
+    #region Enumeration
+    IEnumerator<IPAddress> IEnumerable<IPAddress>.GetEnumerator()
+    {
             return new Enumerator(this);
         }
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
+    IEnumerator IEnumerable.GetEnumerator()
+    {
             return new Enumerator(this);
         }
 
-        private struct Enumerator : IEnumerator<IPAddress>
-        {
-            private readonly IPAddressCollection _collection;
-            private BigInteger _enumerator;
+    private struct Enumerator : IEnumerator<IPAddress>
+    {
+        private readonly IPAddressCollection _collection;
+        private BigInteger _enumerator;
 
-            object IEnumerator.Current
+        object IEnumerator.Current
+        {
+            get
             {
-                get
-                {
                     return this.Current;
                 }
-            }
+        }
 
-            public IPAddress Current
+        public IPAddress Current
+        {
+            get
             {
-                get
-                {
                     return this._collection[this._enumerator];
                 }
-            }
+        }
 
-            public void Dispose()
-            {
+        public void Dispose()
+        {
                 // nothing to dispose
             }
 
-            public bool MoveNext()
-            {
+        public bool MoveNext()
+        {
                 this._enumerator++;
                 if (this._enumerator >= this._collection.Count)
                 {
@@ -191,17 +191,16 @@ namespace System.Net
                 return true;
             }
 
-            public void Reset()
-            {
+        public void Reset()
+        {
                 this._enumerator = -1;
             }
 
-            public Enumerator(IPAddressCollection collection)
-            {
+        public Enumerator(IPAddressCollection collection)
+        {
                 this._collection = collection;
                 this._enumerator = -1;
             }
-        }
-        #endregion
     }
+    #endregion
 }
