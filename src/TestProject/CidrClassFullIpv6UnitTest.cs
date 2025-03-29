@@ -20,7 +20,7 @@ public class CidrClassFullIpv6UnitTest
 
             bool parsed = cidrguess.TryGuessCidr(null, out byte cidr);
 
-            Assert.AreEqual(false, parsed, "parsed");
+            Assert.IsFalse(parsed, "parsed");
             Assert.AreEqual(0, cidr, "cidr");
         }
 
@@ -34,7 +34,7 @@ public class CidrClassFullIpv6UnitTest
 
             bool parsed = cidrguess.TryGuessCidr("::", out byte cidr);
 
-            Assert.AreEqual(true, parsed, "parsed");
+            Assert.IsTrue(parsed, "parsed");
             Assert.AreEqual(64, cidr, "cidr");
         }
 
@@ -48,7 +48,7 @@ public class CidrClassFullIpv6UnitTest
 
             bool parsed = cidrguess.TryGuessCidr("2001:0db8::", out byte cidr);
 
-            Assert.AreEqual(true, parsed, "parsed");
+            Assert.IsTrue(parsed, "parsed");
             Assert.AreEqual(64, cidr, "cidr");
         }
 }

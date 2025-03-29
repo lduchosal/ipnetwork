@@ -70,12 +70,12 @@ public class GetHashCodeUnitTest
             bool contains5 = dic.ContainsKey(ipnetwork);
             bool contains6 = dic.ContainsKey(ipnetwork2);
 
-            Assert.AreEqual(false, contains1, "contains1");
-            Assert.AreEqual(false, contains2, "contains2");
-            Assert.AreEqual(true, contains3, "contains3");
-            Assert.AreEqual(true, contains4, "contains4");
-            Assert.AreEqual(true, contains5, "contains5");
-            Assert.AreEqual(false, contains6, "contains6");
+            Assert.IsFalse(contains1, "contains1");
+            Assert.IsFalse(contains2, "contains2");
+            Assert.IsTrue(contains3, "contains3");
+            Assert.IsTrue(contains4, "contains4");
+            Assert.IsTrue(contains5, "contains5");
+            Assert.IsFalse(contains6, "contains6");
         }
 
     #region Equals IPv6 vs IPv4

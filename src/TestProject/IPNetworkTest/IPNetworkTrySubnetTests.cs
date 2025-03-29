@@ -67,7 +67,7 @@ public class IPNetworkTrySubnetTests
 
         bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection _);
 
-        Assert.AreEqual(false, subnetted, "subnetted");
+        Assert.IsFalse(subnetted, "subnetted");
     }
 
     /// <summary>
@@ -81,7 +81,7 @@ public class IPNetworkTrySubnetTests
 
         bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection _);
 
-        Assert.AreEqual(false, subnetted, "subnetted");
+        Assert.IsFalse(subnetted, "subnetted");
     }
 
     /// <summary>
@@ -95,7 +95,7 @@ public class IPNetworkTrySubnetTests
 
         bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection subnets);
 
-        Assert.AreEqual(true, subnetted, "subnetted");
+        Assert.IsTrue(subnetted, "subnetted");
         Assert.AreEqual(2, subnets.Count, "count");
         Assert.AreEqual("10.0.0.0/9", subnets[0].ToString(), "subnet1");
         Assert.AreEqual("10.128.0.0/9", subnets[1].ToString(), "subnet2");
@@ -112,7 +112,7 @@ public class IPNetworkTrySubnetTests
 
         bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection subnets);
 
-        Assert.AreEqual(true, subnetted, "subnetted");
+        Assert.IsTrue(subnetted, "subnetted");
         Assert.AreEqual(16, subnets.Count, "count");
         Assert.AreEqual("192.168.0.0/20", subnets[0].ToString(), "subnet1");
         Assert.AreEqual("192.168.16.0/20", subnets[1].ToString(), "subnet2");

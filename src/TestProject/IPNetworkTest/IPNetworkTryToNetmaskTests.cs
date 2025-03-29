@@ -20,7 +20,7 @@ public class IPNetworkTryToNetmaskTests
         var expected = IPAddress.Parse("0.0.0.0");
 
         Assert.AreEqual(expected, result, "Netmask");
-        Assert.AreEqual(true, parsed, "parsed");
+        Assert.IsTrue(parsed, "parsed");
     }
 
     /// <summary>
@@ -33,6 +33,6 @@ public class IPNetworkTryToNetmaskTests
         IPAddress expected = null;
 
         Assert.AreEqual(expected, result, "Netmask");
-        Assert.AreEqual(false, parsed, "parsed");
+        Assert.IsFalse(parsed, "parsed");
     }
 }

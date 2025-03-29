@@ -22,7 +22,7 @@ public class EqualsUnitTest
             var network2 = IPNetwork2.Parse("0.0.0.0/32");
             bool result = network1.Equals(network2);
 
-            Assert.AreEqual(false, result, "equals");
+            Assert.IsFalse(result, "equals");
         }
 
     #endregion
@@ -39,7 +39,7 @@ public class EqualsUnitTest
             var network2 = IPNetwork2.Parse("192.168.0.1/24");
             bool result = network1.Equals(network2);
 
-            Assert.AreEqual(true, result, "equals");
+            Assert.IsTrue(result, "equals");
         }
 
     /// <summary>
@@ -52,7 +52,7 @@ public class EqualsUnitTest
             IPNetwork2 network2 = null;
             bool result = network1.Equals(network2);
 
-            Assert.AreEqual(false, result, "equals");
+            Assert.IsFalse(result, "equals");
         }
 
     /// <summary>
@@ -65,7 +65,7 @@ public class EqualsUnitTest
             object network2 = string.Empty;
             bool result = network1.Equals(network2);
 
-            Assert.AreEqual(false, result, "equals");
+            Assert.IsFalse(result, "equals");
         }
 
     /// <summary>
@@ -78,7 +78,7 @@ public class EqualsUnitTest
             var network2 = IPNetwork2.Parse("192.168.0.1/25");
             bool result = network1.Equals(network2);
 
-            Assert.AreEqual(false, result, "equals");
+            Assert.IsFalse(result, "equals");
         }
 
     /// <summary>
@@ -91,7 +91,7 @@ public class EqualsUnitTest
             var network2 = IPNetwork2.Parse("192.168.1.1/24");
             bool result = network1.Equals(network2);
 
-            Assert.AreEqual(false, result, "equals");
+            Assert.IsFalse(result, "equals");
         }
 
     #endregion
@@ -108,7 +108,7 @@ public class EqualsUnitTest
             var network2 = IPNetwork2.Parse("::1/128");
             bool result = network1.Equals(network2);
 
-            Assert.AreEqual(true, result, "equals");
+            Assert.IsTrue(result, "equals");
         }
 
     /// <summary>
@@ -121,7 +121,7 @@ public class EqualsUnitTest
             IPNetwork2 network2 = null;
             bool result = network1.Equals(network2);
 
-            Assert.AreEqual(false, result, "equals");
+            Assert.IsFalse(result, "equals");
         }
 
     /// <summary>
@@ -134,7 +134,7 @@ public class EqualsUnitTest
             object network2 = string.Empty;
             bool result = network1.Equals(network2);
 
-            Assert.AreEqual(false, result, "equals");
+            Assert.IsFalse(result, "equals");
         }
 
     /// <summary>
@@ -147,7 +147,7 @@ public class EqualsUnitTest
             var network2 = IPNetwork2.Parse("::1/127");
             bool result = network1.Equals(network2);
 
-            Assert.AreEqual(false, result, "equals");
+            Assert.IsFalse(result, "equals");
         }
 
     /// <summary>
@@ -160,7 +160,7 @@ public class EqualsUnitTest
             var network2 = IPNetwork2.Parse("::10/128");
             bool result = network1.Equals(network2);
 
-            Assert.AreEqual(false, result, "equals");
+            Assert.IsFalse(result, "equals");
         }
 
     #endregion

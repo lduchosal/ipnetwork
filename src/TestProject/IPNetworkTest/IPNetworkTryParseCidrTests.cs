@@ -20,7 +20,7 @@ public class IPNetworkTryParseCidrTests
             byte? result = 0;
             bool parsed = IPNetwork2.TryParseCidr(sidr, AddressFamily.InterNetwork, out byte? cidr);
 
-            Assert.AreEqual(true, parsed, "parsed");
+            Assert.IsTrue(parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");
         }
 
@@ -35,7 +35,7 @@ public class IPNetworkTryParseCidrTests
 
             bool parsed = IPNetwork2.TryParseCidr(sidr, AddressFamily.InterNetwork, out byte? cidr);
 
-            Assert.AreEqual(false, parsed, "parsed");
+            Assert.IsFalse(parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");
         }
 
@@ -50,7 +50,7 @@ public class IPNetworkTryParseCidrTests
 
             bool parsed = IPNetwork2.TryParseCidr(sidr, AddressFamily.InterNetwork, out byte? cidr);
 
-            Assert.AreEqual(false, parsed, "parsed");
+            Assert.IsFalse(parsed, "parsed");
             Assert.AreEqual(result, cidr, "cidr");
         }
 }
