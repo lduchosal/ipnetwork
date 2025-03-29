@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-	  <TargetFrameworks>netstandard2.0;netstandard2.1;net462;net47;net48;net6.0;net8.0</TargetFrameworks>
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0;netstandard2.1;net6.0;net8.0</TargetFrameworks> 
+	  <TargetFrameworks>netstandard2.0;netstandard2.1;net8.0;net9.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">netstandard2.0;netstandard2.1;net8.0;net9.0</TargetFrameworks> 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 	  <PackageId>IPNetwork2</PackageId>
-    <PackageVersion>3.0.0</PackageVersion>
+    <PackageVersion>3.1.0</PackageVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PackageLicenseUrl>https://github.com/lduchosal/ipnetwork/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/lduchosal/ipnetwork</PackageProjectUrl>
