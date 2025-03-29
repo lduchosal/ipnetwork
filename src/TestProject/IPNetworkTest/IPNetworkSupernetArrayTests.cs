@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class IPNetworkSupernetArrayTests
 {
@@ -41,6 +44,9 @@ public class IPNetworkSupernetArrayTests
             Assert.AreEqual(expected.Length, result.Length, "supernetarray");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestTrySupernetArray2()
@@ -138,14 +144,14 @@ public class IPNetworkSupernetArrayTests
                 IPNetwork2.Parse("192.168.1.0/24"),
                 IPNetwork2.Parse("192.168.2.0/24"),
                 IPNetwork2.Parse("10.0.1.1/24"),
-                IPNetwork2.Parse("192.168.3.0/24")
+                IPNetwork2.Parse("192.168.3.0/24"),
             };
 
             IPNetwork2[] expected =
             {
                 IPNetwork2.Parse("10.0.1.0/24"),
                 IPNetwork2.Parse("10.0.2.0/24"),
-                IPNetwork2.Parse("192.168.0/22")
+                IPNetwork2.Parse("192.168.0/22"),
             };
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
@@ -170,13 +176,13 @@ public class IPNetworkSupernetArrayTests
                 IPNetwork2.Parse("192.168.2.0/24"),
                 IPNetwork2.Parse("10.0.1.1/24"),
                 IPNetwork2.Parse("192.168.3.0/24"),
-                IPNetwork2.Parse("10.6.6.6/8")
+                IPNetwork2.Parse("10.6.6.6/8"),
             };
 
             IPNetwork2[] expected =
             {
                 IPNetwork2.Parse("10.0.0.0/8"),
-                IPNetwork2.Parse("192.168.0/22")
+                IPNetwork2.Parse("192.168.0/22"),
             };
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
@@ -202,14 +208,14 @@ public class IPNetworkSupernetArrayTests
                 IPNetwork2.Parse("192.168.3.0/24"),
                 IPNetwork2.Parse("10.6.6.6/8"),
                 IPNetwork2.Parse("11.6.6.6/8"),
-                IPNetwork2.Parse("12.6.6.6/8")
+                IPNetwork2.Parse("12.6.6.6/8"),
             };
 
             IPNetwork2[] expected =
             {
                 IPNetwork2.Parse("10.0.0.0/7"),
                 IPNetwork2.Parse("12.0.0.0/8"),
-                IPNetwork2.Parse("192.168.0/22")
+                IPNetwork2.Parse("192.168.0/22"),
             };
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
@@ -229,12 +235,12 @@ public class IPNetworkSupernetArrayTests
             IPNetwork2[] ipnetworks =
             {
                 IPNetwork2.Parse("10.0.2.2/24"),
-                IPNetwork2.Parse("10.0.2.2/23")
+                IPNetwork2.Parse("10.0.2.2/23"),
             };
 
             IPNetwork2[] expected =
             {
-                IPNetwork2.Parse("10.0.2.2/23")
+                IPNetwork2.Parse("10.0.2.2/23"),
             };
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);

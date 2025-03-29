@@ -11,6 +11,9 @@ namespace TestProject;
 [TestClass]
 public class IPAddressCollectionUnitTest
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_Usable_AtIndexIPAddress()
     {
@@ -26,6 +29,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_Usable_IteratorIPAddress()
     {
@@ -41,6 +47,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_Usable_AtIndexIPAddress_31()
     {
@@ -51,6 +60,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_Usable_AtIndexIPAddress_32()
     {
@@ -61,6 +73,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_All_AtIndexIPAddress()
     {
@@ -80,6 +95,9 @@ public class IPAddressCollectionUnitTest
 
     #region ListIPAddress
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestAtIndexIPAddress()
     {
@@ -97,6 +115,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestAtIndexIPAddress2()
     {
@@ -116,6 +137,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestIterateIPAddress()
     {
@@ -144,6 +168,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestOutOfRangeIPAddress()
@@ -155,6 +182,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestCountIPAddress()
     {
@@ -165,6 +195,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestReset()
     {
@@ -175,6 +208,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestResetEnumerator()
     {
@@ -195,6 +231,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestEnumeratorFailed()
@@ -212,6 +251,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEnumeratorMoveNext()
     {
@@ -231,6 +273,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEnumeratorMoveNext2()
     {
@@ -247,6 +292,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEnumerableCurrent()
     {
@@ -255,6 +303,9 @@ public class IPAddressCollectionUnitTest
             Assert.IsNotNull(ips.GetEnumerator());
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEnumeratorCurrent()
     {
@@ -267,6 +318,9 @@ public class IPAddressCollectionUnitTest
             Assert.IsFalse(ips.MoveNext());
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestEnumeratorCurrentOor()
@@ -281,6 +335,9 @@ public class IPAddressCollectionUnitTest
             Console.WriteLine("This is out of range : {0} ", ips.Current);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEnumeratorIterate()
     {
@@ -296,6 +353,9 @@ public class IPAddressCollectionUnitTest
 
     #region IPv6
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_ipv6_AtIndexIPAddress()
     {
@@ -313,6 +373,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_ipv6_IterateIPAddress()
     {
@@ -341,6 +404,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void Test_ipv6_OutOfRangeIPAddress()
@@ -352,6 +418,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_ipv6_CountIPAddress()
     {
@@ -362,6 +431,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_ipv6_CountIPAddress2()
     {
@@ -373,6 +445,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_ipv6_Reset()
     {
@@ -383,6 +458,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Tes_ipv6_tResetEnumerator()
     {
@@ -403,6 +481,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void Test_ipv6_EnumeratorFailed()
@@ -420,6 +501,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_ipv6_EnumeratorMoveNext()
     {
@@ -439,6 +523,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_ipv6_EnumeratorMoveNext2()
     {
@@ -455,6 +542,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_ipv6_EnumeratorCurrent()
     {
@@ -467,6 +557,9 @@ public class IPAddressCollectionUnitTest
             Assert.IsFalse(ips.MoveNext());
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void Test_ipv6_EnumeratorCurrentOor()
@@ -481,6 +574,9 @@ public class IPAddressCollectionUnitTest
             Console.WriteLine("This is out of range : {0} ", ips.Current);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_ipv6_EnumeratorIterate()
     {
@@ -492,6 +588,9 @@ public class IPAddressCollectionUnitTest
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_ipv6_DefaultNetmask()
     {

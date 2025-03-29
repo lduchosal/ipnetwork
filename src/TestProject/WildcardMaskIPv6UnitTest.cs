@@ -4,9 +4,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class WildcardMaskIPv6UnitTest
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_WildcardMask_ipv6_mask_0()
     {
@@ -19,6 +25,9 @@ public class WildcardMaskIPv6UnitTest
             Assert.AreEqual("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", wildcardmask, "wildcardmask");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_WildcardMask_ipv6_mask_128()
     {
@@ -31,6 +40,11 @@ public class WildcardMaskIPv6UnitTest
             Assert.AreEqual("::", wildcardmask, "wildcardmask");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
+    /// <param name="netmask">The netmask.</param>
+    /// <param name="expected">The resulting netmask.</param>
     [DataTestMethod]
     [DataRow("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", "::")]
     [DataRow("ffff:ffff:ffff:ffff::", "::ffff:ffff:ffff:ffff")]
@@ -46,6 +60,11 @@ public class WildcardMaskIPv6UnitTest
             Assert.AreEqual(expected, wildcardmask, "wildcardmask");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
+    /// <param name="cidr">The cidr.</param>
+    /// <param name="expected">The resulting netmask.</param>
     [DataTestMethod]
     [DataRow(128, "::")]
     [DataRow(127, "::1")]

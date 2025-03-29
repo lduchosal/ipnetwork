@@ -4,9 +4,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class HashSetUnitTestHashCodeAdd3
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestGetHashCode_HashSet_Add3()
     {

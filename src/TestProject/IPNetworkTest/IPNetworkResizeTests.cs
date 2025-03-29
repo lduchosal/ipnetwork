@@ -4,9 +4,15 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test resize fuctionnalities.
+/// </summary>
 [TestClass]
 public class IPNetworkResizeTests
 {
+    /// <summary>
+    /// Resize a too big ipnetowkr 
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void TestResize1()

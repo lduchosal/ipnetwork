@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class IPNetworkTryParseTests
 {

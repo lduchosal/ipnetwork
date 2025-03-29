@@ -10,6 +10,12 @@ namespace TestProject;
 [TestClass]
 public class ContainsUnitTest
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
+    /// <param name="network1">The network.</param>
+    /// <param name="networkOrAddress">The netmask.</param>
+    /// <param name="expected">The result.</param>
     [DataTestMethod]
     [DataRow("192.168.0.1/24", "192.168.0.1/24", true)]
     [DataRow("192.168.0.1/16", "192.168.1.1/24", true)]
@@ -25,6 +31,12 @@ public class ContainsUnitTest
             Assert.AreEqual(expected, result, "contains");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
+    /// <param name="network1">The network.</param>
+    /// <param name="networkOrAddress">An address in the netmask.</param>
+    /// <param name="expected">Contained.</param>
     [DataTestMethod]
     [DataRow("192.168.0.1/24", "192.168.0.100", true)]
     [DataRow("192.168.0.1/24", "10.10.10.10", false)]
@@ -38,6 +50,9 @@ public class ContainsUnitTest
             Assert.AreEqual(expected, result, "contains");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestContainsStatic3()
@@ -50,6 +65,9 @@ public class ContainsUnitTest
 #pragma warning restore 0618
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestContainsStatic4()
     {
@@ -63,6 +81,9 @@ public class ContainsUnitTest
             Assert.IsTrue(result, "result");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestContains8()
@@ -73,6 +94,9 @@ public class ContainsUnitTest
             bool result = ipnetwork.Contains(ipnetwork2);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestContainsStatic1()
@@ -85,6 +109,9 @@ public class ContainsUnitTest
 #pragma warning restore 0618
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestContainsStatic2()
     {
@@ -97,6 +124,9 @@ public class ContainsUnitTest
             Assert.IsTrue(result, "result");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestContains10()
@@ -107,6 +137,12 @@ public class ContainsUnitTest
             bool result = ipnetwork.Contains(ipaddress);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
+    /// <param name="contains1">The network.</param>
+    /// <param name="contains2">Contains the IPAddress.</param>
+    /// <param name="expected">Result, true if contains.</param>
     [DataTestMethod]
     [DataRow("1.1.1.0/8", "1.1.1.1", true)]
     [DataRow("1.1.1.0/8", "2.1.1.1", false)]
@@ -126,6 +162,12 @@ public class ContainsUnitTest
             Assert.AreEqual(expected, result1, "contains1");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
+    /// <param name="contains1">The network.</param>
+    /// <param name="contains2">Contains the IPAddress.</param>
+    /// <param name="expected">Result, true if contains.</param>
     [DataTestMethod]
     [DataRow("0.0.0.0/0", "255.255.255.255", true)]
     [DataRow("1.1.1.0/8", "1.1.1.1", true)]

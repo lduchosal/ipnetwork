@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Tests Supernet functionality.
+/// </summary>
 [TestClass]
 public class IPNetworkSupernetTests
 {
@@ -13,12 +16,15 @@ public class IPNetworkSupernetTests
     [TestMethod]
     public void TestSupernetInternal1()
     {
-            IPNetwork2 result;
-            IPNetwork2.InternalSupernet(true, null, null, out result);
+        IPNetwork2 result;
+        IPNetwork2.InternalSupernet(true, null, null, out result);
 
-            Assert.AreEqual(null, result, "supernet");
-        }
+        Assert.AreEqual(null, result, "supernet");
+    }
 
+    /// <summary>
+    /// Tests Supernet functionality with null.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestSupernetInternal2()
@@ -27,6 +33,10 @@ public class IPNetworkSupernetTests
             IPNetwork2.InternalSupernet(false, null, null, out result);
         }
 
+
+    /// <summary>
+    /// Tests Supernet functionality with Issue33__TestSupernet__Bug_or_default_behavior.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void Issue33__TestSupernet__Bug_or_default_behavior()
@@ -83,6 +93,9 @@ public class IPNetworkSupernetTests
             Assert.AreEqual(expected, supernet, "supernet");
         }
 
+    /// <summary>
+    /// Test to supernet a null network1.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(NullReferenceException))]
     public void TestSupernet2()
@@ -91,7 +104,10 @@ public class IPNetworkSupernetTests
             var network2 = IPNetwork2.Parse("192.168.1.1/24");
             IPNetwork2 supernet = network1.Supernet(network2);
         }
-
+    
+    /// <summary>
+    /// Test to supernet a null network2.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestSupernet3()
@@ -101,6 +117,9 @@ public class IPNetworkSupernetTests
             IPNetwork2 supernet = network1.Supernet(network2);
         }
 
+    /// <summary>
+    /// Test to supernet overlapping networks.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void TestSupernet4()
@@ -110,6 +129,9 @@ public class IPNetworkSupernetTests
             IPNetwork2 supernet = network1.Supernet(network2);
         }
 
+    /// <summary>
+    /// Test to supernet non overlapping networks.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestSupernet5()
@@ -163,6 +185,9 @@ public class IPNetworkSupernetTests
             Assert.AreEqual(expected, supernet, "supernet");
         }
 
+    /// <summary>
+    /// Test to supernet continuous networks.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void TestSupernet8()

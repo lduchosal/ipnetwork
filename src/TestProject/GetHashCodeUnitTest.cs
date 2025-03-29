@@ -5,9 +5,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class GetHashCodeUnitTest
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestGetHashCode_SameNetwork_DifferentIpAddress1()
     {
@@ -18,6 +24,9 @@ public class GetHashCodeUnitTest
             Assert.AreEqual(hashCode1, hashCode2, "hashcode");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestGetHashCode_SameNetwork_DifferentIpAddress2()
     {
@@ -28,6 +37,9 @@ public class GetHashCodeUnitTest
             Assert.AreEqual(hashCode1, hashCode2, "hashcode");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestGetHashCode_Refactor__to_not_reference_mutable_fields()
     {
@@ -39,6 +51,9 @@ public class GetHashCodeUnitTest
             Assert.AreEqual(hashCode1, hashCode2, "hashcode");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestGetHashCode_Dictionary_failed()
     {
@@ -66,6 +81,9 @@ public class GetHashCodeUnitTest
 
     #region Equals IPv6 vs IPv4
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestGetHashCode_ipv6_ipv4_0()
     {
@@ -82,6 +100,9 @@ public class GetHashCodeUnitTest
 
     #region GetHashCode
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestGetHashCode1()
     {
@@ -92,6 +113,9 @@ public class GetHashCodeUnitTest
             Assert.AreEqual(hashCode1, hashCode2, "hashcode");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestGetHashCode2()
     {
@@ -102,6 +126,9 @@ public class GetHashCodeUnitTest
             Assert.AreEqual(hashCode1, hashCode2, "hashcode");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestGetHashCode3()
     {

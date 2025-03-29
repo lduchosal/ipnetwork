@@ -4,9 +4,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class IPNetworkCollectionEnumeratorTests
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestEnumerator()
     {

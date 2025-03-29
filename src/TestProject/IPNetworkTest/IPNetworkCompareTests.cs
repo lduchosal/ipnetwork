@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test compare methods.
+/// </summary>
 [TestClass]
 public class IPNetworkCompareTests
 {
@@ -63,6 +66,9 @@ public class IPNetworkCompareTests
         Assert.AreEqual(1, comparison, "compare");
     }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void TestCompareTo5()

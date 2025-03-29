@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test BigInterger conversions.
+/// </summary>
 [TestClass]
 public class IPNetworkToBigIntegerTests
 {
@@ -72,6 +75,9 @@ public class IPNetworkToBigIntegerTests
             Assert.AreEqual(uintMask, result, "uint");
         }
 
+    /// <summary>
+    /// Try to convert from null.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestToBigIntegerAne()
@@ -79,6 +85,9 @@ public class IPNetworkToBigIntegerTests
             BigInteger? result = IPNetwork2.ToBigInteger(null);
         }
 
+    /// <summary>
+    /// Try to convert from null IPAddress.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestToBigIntegerAne3()
@@ -98,6 +107,9 @@ public class IPNetworkToBigIntegerTests
             Assert.AreEqual(expected, result, "result");
         }
 
+    /// <summary>
+    /// Try to convert from invalid cidr.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestToBigIntegerByte()
@@ -149,6 +161,9 @@ public class IPNetworkToBigIntegerTests
             Assert.AreEqual(null, result, "result");
         }
 
+    /// <summary>
+    /// Try to convert from invalid IPV6 cidr.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestToBigIntegerInternal3()
@@ -157,6 +172,9 @@ public class IPNetworkToBigIntegerTests
             IPNetwork2.InternalToBigInteger(false, 129, AddressFamily.InterNetworkV6, out result);
         }
 
+    /// <summary>
+    /// Try to convert from invalid AddressFamily.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(NotSupportedException))]
     public void TestToBigIntegerInternal4()

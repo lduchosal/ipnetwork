@@ -4,9 +4,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class CidrClassFullIpv4UnitTest
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestTryGuessCidrNull()
     {
@@ -19,6 +25,9 @@ public class CidrClassFullIpv4UnitTest
             Assert.AreEqual(0, cidr, "cidr");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestTryGuessCidrA()
     {
@@ -31,6 +40,9 @@ public class CidrClassFullIpv4UnitTest
             Assert.AreEqual(8, cidr, "cidr");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestTryGuessCidrB()
     {
@@ -43,6 +55,9 @@ public class CidrClassFullIpv4UnitTest
             Assert.AreEqual(16, cidr, "cidr");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestTryGuessCidrC()
     {
@@ -55,6 +70,9 @@ public class CidrClassFullIpv4UnitTest
             Assert.AreEqual(24, cidr, "cidr");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestTryGuessCidrD()
     {
@@ -67,6 +85,9 @@ public class CidrClassFullIpv4UnitTest
             Assert.AreEqual(24, cidr, "cidr");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestTryGuessCidrE()
     {

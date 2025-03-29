@@ -4,9 +4,15 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class IPNetworkParseTests
 {
+    /// <summary>
+    /// Test parse ip and netmask and network.
+    /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
     [ExpectedException(typeof(ArgumentNullException))]
@@ -16,6 +22,9 @@ public class IPNetworkParseTests
             IPNetwork2.Parse(ip, ip);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
     [ExpectedException(typeof(ArgumentNullException))]
@@ -24,6 +33,9 @@ public class IPNetworkParseTests
             IPNetwork2.Parse(string.Empty, 0);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
     [ExpectedException(typeof(ArgumentNullException))]
@@ -32,6 +44,9 @@ public class IPNetworkParseTests
             IPNetwork2.Parse(null, 0);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
     [ExpectedException(typeof(ArgumentNullException))]
@@ -41,6 +56,9 @@ public class IPNetworkParseTests
             IPNetwork2.Parse(n, n);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
     [ExpectedException(typeof(ArgumentException))]
@@ -49,6 +67,9 @@ public class IPNetworkParseTests
             var ipnet = IPNetwork2.Parse("x.x.x.x", "x.x.x.x");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
     [ExpectedException(typeof(ArgumentException))]
@@ -57,6 +78,9 @@ public class IPNetworkParseTests
             var ipnet = IPNetwork2.Parse("0.0.0.0", "x.x.x.x");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
     [ExpectedException(typeof(ArgumentException))]
@@ -65,6 +89,9 @@ public class IPNetworkParseTests
             var ipnet = IPNetwork2.Parse("x.x.x.x", 0);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
     [ExpectedException(typeof(ArgumentException))]
@@ -73,10 +100,10 @@ public class IPNetworkParseTests
             var ipnet = IPNetwork2.Parse("0.0.0.0", 33);
         }
 
-    [TestCategory("Parse")]
     /// <summary>
     /// Tests Parse functionality with Parse IPAddress Netmask.
     /// </summary>
+    [TestCategory("Parse")]
     [TestMethod]
     public void TestParseIPAddressNetmask()
     {
@@ -100,10 +127,10 @@ public class IPNetworkParseTests
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestCategory("Parse")]
     /// <summary>
     /// Tests Parse functionality with Parse String1.
     /// </summary>
+    [TestCategory("Parse")]
     [TestMethod]
     public void TestParseString1()
     {
@@ -127,10 +154,10 @@ public class IPNetworkParseTests
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestCategory("Parse")]
     /// <summary>
     /// Tests Parse functionality with Parse String2.
     /// </summary>
+    [TestCategory("Parse")]
     [TestMethod]
     public void TestParseString2()
     {
@@ -154,10 +181,10 @@ public class IPNetworkParseTests
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestCategory("Parse")]
     /// <summary>
     /// Tests Parse functionality with Parse String3.
     /// </summary>
+    [TestCategory("Parse")]
     [TestMethod]
     public void TestParseString3()
     {
@@ -181,10 +208,10 @@ public class IPNetworkParseTests
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestCategory("Parse")]
     /// <summary>
     /// Tests Parse functionality with Parse String4.
     /// </summary>
+    [TestCategory("Parse")]
     [TestMethod]
     public void TestParseString4()
     {
@@ -208,10 +235,10 @@ public class IPNetworkParseTests
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestCategory("Parse")]
     /// <summary>
     /// Tests Parse functionality with Parse String5.
     /// </summary>
+    [TestCategory("Parse")]
     [TestMethod]
     public void TestParseString5()
     {
@@ -235,10 +262,10 @@ public class IPNetworkParseTests
             Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
         }
 
-    [TestCategory("Parse")]
     /// <summary>
     /// Tests Parse functionality with Parse IPAddress No Netmask1.
     /// </summary>
+    [TestCategory("Parse")]
     [TestMethod]
     public void TestParseIPAddressNoNetmask1()
     {
@@ -543,6 +570,9 @@ public class IPNetworkParseTests
             Assert.AreEqual(result.Cidr, 8);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void TestParseStringAe1()
@@ -551,6 +581,9 @@ public class IPNetworkParseTests
             var ipnetwork = IPNetwork2.Parse(ipaddress);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void TestParseStringAe2()
@@ -559,6 +592,9 @@ public class IPNetworkParseTests
             var ipnetwork = IPNetwork2.Parse(ipaddress);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringAne1()

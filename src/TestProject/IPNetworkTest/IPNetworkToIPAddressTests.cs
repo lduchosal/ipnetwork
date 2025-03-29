@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class IPNetworkToIPAddressTests
 {
@@ -18,6 +21,9 @@ public class IPNetworkToIPAddressTests
             Assert.AreEqual(IPAddress.Any, result, "ToIPAddress");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void TestToIPAddress2()
@@ -26,6 +32,9 @@ public class IPNetworkToIPAddressTests
             var result = IPNetwork2.ToIPAddress(ip, AddressFamily.AppleTalk);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void TestToIPAddress3()
@@ -40,7 +49,7 @@ public class IPNetworkToIPAddressTests
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-                0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+                0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
             });
             var result = IPNetwork2.ToIPAddress(ip, AddressFamily.AppleTalk);
         }

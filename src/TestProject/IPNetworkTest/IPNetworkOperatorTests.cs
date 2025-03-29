@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Tests with operators.
+/// </summary>
 [TestClass]
 public class IPNetworkOperatorTests
 {

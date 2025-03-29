@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test parse ip
+/// </summary>
 [TestClass]
 public class IPNetworkParseIpIpTests
 {
@@ -21,6 +24,9 @@ public class IPNetworkParseIpIpTests
             Assert.AreEqual("192.168.168.0/24", ipnetwork.ToString(), "network");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void ParseIpIp2()
@@ -30,6 +36,9 @@ public class IPNetworkParseIpIpTests
             var ipnetwork = IPNetwork2.Parse(ip, netm);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void ParseIpIp3()

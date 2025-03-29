@@ -4,9 +4,15 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class IPNetworkSubnetTests
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestSubnet1()
@@ -33,6 +39,9 @@ public class IPNetworkSubnetTests
 #pragma warning restore 0618
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestSubnet3()
@@ -43,6 +52,9 @@ public class IPNetworkSubnetTests
             IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentException))]
     public void TestSubnet4()
@@ -196,6 +208,9 @@ public class IPNetworkSubnetTests
             }
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestSubnet13()

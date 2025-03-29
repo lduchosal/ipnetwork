@@ -4,9 +4,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class HashSetUnitTestEqualsIPv6VsIPv4
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void TestHashSet_Add_ipv6_ipv4_0()
     {

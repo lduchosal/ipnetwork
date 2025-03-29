@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test parse string.
+/// </summary>
 [TestClass]
 public class IPNetworkParseStringStringTests
 {
@@ -20,6 +23,9 @@ public class IPNetworkParseStringStringTests
             Assert.AreEqual("192.168.168.0/24", ipnetwork.ToString(), "network");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringString2()
@@ -30,6 +36,9 @@ public class IPNetworkParseStringStringTests
             var ipnetwork = IPNetwork2.Parse(ipaddress, netmask);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringString3()
@@ -40,6 +49,9 @@ public class IPNetworkParseStringStringTests
             var ipnetwork = IPNetwork2.Parse(ipaddress, netmask);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringString4()
@@ -50,6 +62,9 @@ public class IPNetworkParseStringStringTests
             var ipnetwork = IPNetwork2.Parse(ipaddress, netmask);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringString5()

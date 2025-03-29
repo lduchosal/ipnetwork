@@ -5,9 +5,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class SerializeJsonTest
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_Serialize_Json()
     {
@@ -19,6 +25,9 @@ public class SerializeJsonTest
             Assert.AreEqual(expected, result);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_Deserialize_Json()
     {
@@ -30,6 +39,9 @@ public class SerializeJsonTest
             Assert.AreEqual(expected, result);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void Test_Serialize_Deserialize_Json()
     {
@@ -41,6 +53,9 @@ public class SerializeJsonTest
             Assert.AreEqual(ipnetwork, result);
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("LongRunning")]
     public void Test_1_000_000_Serialize_Json()
@@ -55,6 +70,9 @@ public class SerializeJsonTest
             // 3.06 seconds(Ad hoc).
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("LongRunning")]
     public void Test_1_000_000_Deserialize_Json()
@@ -69,6 +87,9 @@ public class SerializeJsonTest
             // 10.20 seconds(Ad hoc).
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [TestCategory("LongRunning")]
     public void Test_1_000_000_Serialize_Deserialize_Json()

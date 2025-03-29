@@ -4,9 +4,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test serialization with DataContractSerializeHelper.
+/// </summary>
 [TestClass]
 public class SerializeDataContractTest
 {
+    /// <summary>
+    /// Test serilaization.
+    /// </summary>
     [TestMethod]
     public void Test_Serialize_DataContract()
     {
@@ -17,7 +23,10 @@ public class SerializeDataContractTest
                 $"<IPNetwork2 xmlns:i=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:x=\"http://www.w3.org/2001/XMLSchema\" xmlns=\"http://schemas.datacontract.org/2004/07/System.Net\">{Environment.NewLine}  <IPNetwork i:type=\"x:string\" xmlns=\"\">10.0.0.0/8</IPNetwork>{Environment.NewLine}</IPNetwork2>";
             Assert.AreEqual(expected, result);
         }
-
+    
+    /// <summary>
+    /// Test Deserilaization.
+    /// </summary>
     [TestMethod]
     public void Test_Deserialize_DataContract()
     {
@@ -29,6 +38,9 @@ public class SerializeDataContractTest
             Assert.AreEqual(ipnetwork, result);
         }
 
+    /// <summary>
+    /// Test empty constructor.
+    /// </summary>
     [TestMethod]
     public void Test_Empty_Constructor()
     {

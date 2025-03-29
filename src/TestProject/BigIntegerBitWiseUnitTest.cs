@@ -4,9 +4,15 @@
 
 namespace TestProject;
 
+/// <summary>
+/// Test.
+/// </summary>
 [TestClass]
 public class BigIntegerBitWiseUnitTest
 {
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [DataRow(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 }, 4, new byte[] { 0x0 })]
     [DataRow(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 }, 8,

@@ -4,6 +4,9 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Tests that show how to use the lib.
+/// </summary>
 [TestClass]
 public class IPNetworkExamplesTests
 {

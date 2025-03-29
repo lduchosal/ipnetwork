@@ -4,9 +4,15 @@
 
 namespace TestProject.IPNetworkTest;
 
+/// <summary>
+/// Test overlap.
+/// </summary>
 [TestClass]
 public class IPNetworkOverlapTests
 {
+    /// <summary>
+    /// Test overlap.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestOverlap1()
@@ -35,6 +41,9 @@ public class IPNetworkOverlapTests
             Assert.IsTrue(result, "result");
         }
 
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     [ExpectedException(typeof(ArgumentNullException))]
     public void TestOverlap2()

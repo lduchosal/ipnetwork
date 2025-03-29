@@ -19,7 +19,7 @@
     <owners>Luc Dvchosal</owners>
     <copyright>Copyright 2025</copyright>
     <SignAssembly>True</SignAssembly>
-    <SignAssembly Condition=" '$(OS)' != 'Windows_NT' ">false</SignAssembly>
+    <SignAssembly Condition=" '$(OS)' != 'Windows_NT' ">true</SignAssembly>
     <AssemblyOriginatorKeyFile>System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
     <RepositoryUrl>https://github.com/lduchosal/ipnetwork.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>

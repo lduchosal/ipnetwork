@@ -13,6 +13,9 @@ public class IPAddressExtensionTests
     /// <summary>
     ///     Test converting a variety of IPv4 addreses into single-address networks.
     /// </summary>
+    /// <summary>
+    /// Test.
+    /// </summary>
     [TestMethod]
     public void IPAddressToIPNetwork_SingleAddress_IPv4()
     {
