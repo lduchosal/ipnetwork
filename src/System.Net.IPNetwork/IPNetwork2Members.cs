@@ -4,8 +4,8 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
 using System.Numerics;
+using System.Net.Sockets;
 using System.Runtime.Serialization;
 
 /// <summary>

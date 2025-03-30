@@ -10,8 +10,6 @@ namespace TestProject;
 [TestClass]
 public class CidrClassLessUnitTest
 {
-    #region IPV4
-
     /// <summary>
     /// Test.
     /// </summary>
@@ -96,10 +94,6 @@ public class CidrClassLessUnitTest
         Assert.AreEqual(32, cidr, "cidr");
     }
 
-    #endregion
-
-    #region IPV6
-
     /// <summary>
     /// Test.
     /// </summary>
@@ -141,6 +135,4 @@ public class CidrClassLessUnitTest
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(128, cidr, "cidr");
     }
-
-    #endregion
 }

@@ -82,8 +82,6 @@ public class IPAddressCollectionUnitTest
         Assert.AreEqual("192.168.1.7", ips[7].ToString(), "6");
     }
 
-    #region ListIPAddress
-
     /// <summary>
     /// Test.
     /// </summary>
@@ -313,10 +311,6 @@ public class IPAddressCollectionUnitTest
         }
     }
 
-    #endregion
-
-    #region IPv6
-
     /// <summary>
     /// Test.
     /// </summary>
@@ -537,6 +531,4 @@ public class IPAddressCollectionUnitTest
         var ipnetwork = IPNetwork2.Parse("::1");
         Assert.AreEqual(64, ipnetwork.Cidr, "Cidr");
     }
-
-    #endregion
 }

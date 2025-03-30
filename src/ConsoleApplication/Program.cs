@@ -4,12 +4,12 @@
 
 namespace System.Net;
 
+using Gnu.Getopt;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Numerics;
 using System.Reflection;
-using Gnu.Getopt;
 
 /// <summary>
 /// Console app for IPNetwork.

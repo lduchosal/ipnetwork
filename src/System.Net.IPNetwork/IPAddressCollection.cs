@@ -45,8 +45,6 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
         this.Reset();
     }
 
-    #region Count, Array, Enumerator
-
     /// <summary>
     /// Gets the count of IP addresses within the network.
     /// </summary>
@@ -100,10 +98,6 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
         }
     }
 
-    #endregion
-
-    #region Legacy Enumeration
-
     /// <summary>
     /// Gets the current <see cref="IPAddress"/> from the collection.
     /// </summary>
@@ -148,10 +142,6 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
     {
         // nothing to dispose
     }
-
-    #endregion
-
-    #region Enumeration
 
     /// <inheritdoc/>
     IEnumerator<IPAddress> IEnumerable<IPAddress>.GetEnumerator()
@@ -213,6 +203,4 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
             this.enumerator = -1;
         }
     }
-
-    #endregion
 }

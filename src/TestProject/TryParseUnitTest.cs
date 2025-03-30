@@ -10,8 +10,6 @@ namespace TestProject;
 [TestClass]
 public class TryParseUnitTest
 {
-    #region Issue294
-
     /// <summary>
     /// Test.
     /// </summary>
@@ -21,10 +19,6 @@ public class TryParseUnitTest
         bool result = IPNetwork2.TryParse("*", out IPNetwork2 _);
         Assert.IsFalse(result, "parsed1");
     }
-
-    #endregion
-
-    #region TryParse IPV4
 
     /// <summary>
     /// Test.
@@ -353,10 +347,6 @@ public class TryParseUnitTest
         Assert.IsFalse(parsed, "parsed");
     }
 
-    #endregion
-
-    #region TryParse
-
     /// <summary>
     /// Test.
     /// </summary>
@@ -416,6 +406,4 @@ public class TryParseUnitTest
 
         Assert.AreEqual(parsed, result, "parsed1");
     }
-
-    #endregion
 }
