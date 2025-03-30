@@ -80,27 +80,19 @@
         </PackageReference>
         <PackageReference Include="System.Collections" Version="4.3.0"/>
     </ItemGroup>
-
-
     <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
         <Reference Include="System"/>
         <Reference Include="System.Core"/>
         <Reference Include="Microsoft.CSharp"/>
         <Reference Include="System.Data"/>
     </ItemGroup>
-
-
     <ItemGroup>
         <ProjectReference Include="..\ConsoleApplication\ConsoleApplication.csproj"/>
         <ProjectReference Include="..\System.Net.IPNetwork\System.Net.IPNetwork.csproj"/>
     </ItemGroup>
-
-
     <ItemGroup>
         <Compile Remove="TestResults\**"/>
     </ItemGroup>
-
-
     <ItemGroup>
         <EmbeddedResource Remove="TestResults\**"/>
     </ItemGroup>
