@@ -11,7 +11,8 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>https://github.com/lduchosal/ipnetwork/pulls?q=is%3Apr</PackageReleaseNotes>
     <PackageTags>ipnetwork network ip ipv4 ipv6 netmask cidr subnet subnetting supernet supernetting calculation</PackageTags>
-
+    <PackageReadmeFile></PackageReadmeFile>
+    <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
     <Title>IPNetwork utility classes for .Net</Title>
     <Description>IPNetwork C# library take care of complex network, ip, ipv4, ipv6, netmask, cidr, subnet, subnetting, supernet and supernetting calculation for .Net developpers. It works with IPv4 and IPv6 as well. It is written in C# for .NetStandard and coreclr and has a light and clean API and is fully unit tested.</Description>
     <PackageSummary>IPNetwork utility classes for .Net</PackageSummary>
@@ -37,7 +38,6 @@
   
   <PropertyGroup>
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	<PackageReadmeFile></PackageReadmeFile>
   </PropertyGroup>
   
   <ItemGroup>
