@@ -37,7 +37,7 @@
   
   <PropertyGroup>
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	<PackageReadmeFile>..\..\README.md</PackageReadmeFile>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
   
   <ItemGroup>
