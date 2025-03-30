@@ -126,7 +126,7 @@ public class IPNetworkExamplesTests
     {
         var ipnetwork1 = IPNetwork2.Parse("192.168.0.0/24");
         var ipnetwork2 = IPNetwork2.Parse("192.168.1.0/24");
-        IPNetwork2[] ipnetwork3 = IPNetwork2.Supernet(new[] { ipnetwork1, ipnetwork2 });
+        IPNetwork2[] ipnetwork3 = IPNetwork2.Supernet([ipnetwork1, ipnetwork2]);
 
         Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
     }
@@ -191,7 +191,7 @@ public class IPNetworkExamplesTests
         var network = IPNetwork2.Parse("192.168.0.0/24");
         var network2 = IPNetwork2.Parse("192.168.10.0/24");
 
-        bool wideSubnetted = IPNetwork2.TryWideSubnet(new[] { network, network2 }, out IPNetwork2 ipnetwork);
+        bool wideSubnetted = IPNetwork2.TryWideSubnet([network, network2], out IPNetwork2 ipnetwork);
         Assert.IsTrue(wideSubnetted);
         Assert.AreEqual("192.168.0.0/20", ipnetwork.ToString());
 

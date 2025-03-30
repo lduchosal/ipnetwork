@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using System.Numerics;
+using Numerics;
 
 /// <summary>
 /// Overlap.
@@ -22,7 +22,7 @@ public sealed partial class IPNetwork2
     {
         if (network == null)
         {
-            throw new ArgumentNullException("network");
+            throw new ArgumentNullException(nameof(network));
         }
 
         return network.Overlap(network2);
@@ -37,7 +37,7 @@ public sealed partial class IPNetwork2
     {
         if (network2 == null)
         {
-            throw new ArgumentNullException("network2");
+            throw new ArgumentNullException(nameof(network2));
         }
 
         BigInteger uintNetwork = this.InternalNetwork;

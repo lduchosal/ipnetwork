@@ -4,8 +4,8 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
-using System.Numerics;
+using Sockets;
+using Numerics;
 
 /// <summary>
 /// Contains.
@@ -25,7 +25,7 @@ public sealed partial class IPNetwork2
     {
         if (network == null)
         {
-            throw new ArgumentNullException("network");
+            throw new ArgumentNullException(nameof(network));
         }
 
         return network.Contains(ipaddress);
@@ -44,7 +44,7 @@ public sealed partial class IPNetwork2
     {
         if (network == null)
         {
-            throw new ArgumentNullException("network");
+            throw new ArgumentNullException(nameof(network));
         }
 
         return network.Contains(network2);
@@ -55,12 +55,12 @@ public sealed partial class IPNetwork2
     /// </summary>
     /// <param name="contains">A string containing an ip address to convert.</param>
     /// <returns>true if ipaddress is contained into the IP Network; otherwise, false.</returns>
-    [System.CLSCompliant(false)]
+    [CLSCompliant(false)]
     public bool Contains(IPAddress contains)
     {
         if (contains == null)
         {
-            throw new ArgumentNullException("contains");
+            throw new ArgumentNullException(nameof(contains));
         }
 
         if (this.AddressFamily != contains.AddressFamily)
@@ -71,7 +71,7 @@ public sealed partial class IPNetwork2
         BigInteger uintNetwork = this.InternalNetwork;
         BigInteger
             uintBroadcast = this.InternalBroadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
-        var uintAddress = IPNetwork2.ToBigInteger(contains);
+        var uintAddress = ToBigInteger(contains);
 
         bool result = uintAddress >= uintNetwork
                       && uintAddress <= uintBroadcast;
@@ -88,7 +88,7 @@ public sealed partial class IPNetwork2
     {
         if (contains == null)
         {
-            throw new ArgumentNullException("contains");
+            throw new ArgumentNullException(nameof(contains));
         }
 
         BigInteger uintNetwork = this.InternalNetwork;

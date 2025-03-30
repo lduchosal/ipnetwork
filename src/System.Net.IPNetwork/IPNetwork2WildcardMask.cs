@@ -4,8 +4,8 @@
 
 namespace System.Net;
 
-using System.Numerics;
-using System.Net.Sockets;
+using Numerics;
+using Sockets;
 
 /// <summary>
 /// WildcardNetmask.
@@ -86,10 +86,10 @@ public sealed partial class IPNetwork2
         get
         {
             byte cidr = this.family == AddressFamily.InterNetwork ? (byte)32 : (byte)128;
-            BigInteger netmask = IPNetwork2.ToUint(cidr, this.family);
+            BigInteger netmask = ToUint(cidr, this.family);
             BigInteger wildcardmask = netmask - this.InternalNetmask;
 
-            return IPNetwork2.ToIPAddress(wildcardmask, this.family);
+            return ToIPAddress(wildcardmask, this.family);
         }
     }
 }

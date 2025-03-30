@@ -16,7 +16,7 @@ public class IPNetworkTryWideSubnetTests
     [TestMethod]
     public void TryWideSubnet1()
     {
-        string[] ips = { "1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0" };
+        string[] ips = ["1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0"];
         var ipns = new List<IPNetwork2>();
         foreach (string ip in ips)
         {
@@ -37,7 +37,7 @@ public class IPNetworkTryWideSubnetTests
     [TestMethod]
     public void TryWideSubnet2()
     {
-        string[] ips = { "1.1.1.1", "10.0.0.0", "2.2.2.2", "0.0.0.0" };
+        string[] ips = ["1.1.1.1", "10.0.0.0", "2.2.2.2", "0.0.0.0"];
         var ipns = new List<IPNetwork2>();
         foreach (string ip in ips)
         {
@@ -58,7 +58,7 @@ public class IPNetworkTryWideSubnetTests
     [TestMethod]
     public void TryWideSubnet3()
     {
-        string[] ips = { "a", "b", "c", "d" };
+        string[] ips = ["a", "b", "c", "d"];
         var ipns = new List<IPNetwork2>();
         foreach (string ip in ips)
         {
@@ -78,7 +78,7 @@ public class IPNetworkTryWideSubnetTests
     [TestMethod]
     public void TryWideSubnet4()
     {
-        string[] ips = { "a", "b", "1.1.1.1", "d" };
+        string[] ips = ["a", "b", "1.1.1.1", "d"];
         var ipns = new List<IPNetwork2>();
         foreach (string ip in ips)
         {

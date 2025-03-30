@@ -4,8 +4,8 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
-using System.Numerics;
+using Sockets;
+using Numerics;
 
 /// <summary>
 /// WideSubnet.
@@ -25,12 +25,12 @@ public sealed partial class IPNetwork2
     {
         if (string.IsNullOrEmpty(start))
         {
-            throw new ArgumentNullException("start");
+            throw new ArgumentNullException(nameof(start));
         }
 
         if (string.IsNullOrEmpty(end))
         {
-            throw new ArgumentNullException("end");
+            throw new ArgumentNullException(nameof(end));
         }
 
         if (!IPAddress.TryParse(start, out IPAddress startIP))
@@ -49,10 +49,11 @@ public sealed partial class IPNetwork2
         }
 
         var ipnetwork = new IPNetwork2(0, startIP.AddressFamily, 0);
+
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
         for (byte cidr = 32; cidr >= 0; cidr--)
         {
-            var wideSubnet = IPNetwork2.Parse(start, cidr);
+            var wideSubnet = Parse(start, cidr);
             if (wideSubnet.Contains(endIP))
             {
                 ipnetwork = wideSubnet;
@@ -71,7 +72,7 @@ public sealed partial class IPNetwork2
     /// <returns>true if wide subnet was successful; otherwise, false.</returns>
     public static bool TryWideSubnet(IPNetwork2[] ipnetworks, out IPNetwork2 ipnetwork)
     {
-        IPNetwork2.InternalWideSubnet(true, ipnetworks, out IPNetwork2 ipn);
+        InternalWideSubnet(true, ipnetworks, out IPNetwork2 ipn);
         if (ipn == null)
         {
             ipnetwork = null;
@@ -88,7 +89,7 @@ public sealed partial class IPNetwork2
     /// /
     public static IPNetwork2 WideSubnet(IPNetwork2[] ipnetworks)
     {
-        IPNetwork2.InternalWideSubnet(false, ipnetworks, out IPNetwork2 ipn);
+        InternalWideSubnet(false, ipnetworks, out IPNetwork2 ipn);
         return ipn;
     }
 
@@ -104,18 +105,14 @@ public sealed partial class IPNetwork2
         {
             if (tryWide == false)
             {
-                throw new ArgumentNullException("ipnetworks");
+                throw new ArgumentNullException(nameof(ipnetworks));
             }
 
             ipnetwork = null;
             return;
         }
 
-        IPNetwork2[] nnin = Array.FindAll<IPNetwork2>(ipnetworks, new Predicate<IPNetwork2>(
-            delegate(IPNetwork2 ipnet)
-            {
-                return ipnet != null;
-            }));
+        IPNetwork2[] nnin = Array.FindAll(ipnetworks, ipnet => ipnet != null);
 
         if (nnin.Length <= 0)
         {
@@ -135,7 +132,7 @@ public sealed partial class IPNetwork2
             return;
         }
 
-        Array.Sort<IPNetwork2>(nnin);
+        Array.Sort(nnin);
         IPNetwork2 nnin0 = nnin[0];
         BigInteger uintNnin0 = nnin0.ipaddress;
 
@@ -152,6 +149,7 @@ public sealed partial class IPNetwork2
         }
 
         var ipn = new IPNetwork2(0, family, 0);
+
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
         for (byte cidr = nnin0.cidr; cidr >= 0; cidr--)
         {
@@ -164,6 +162,5 @@ public sealed partial class IPNetwork2
         }
 
         ipnetwork = ipn;
-        return;
     }
 }

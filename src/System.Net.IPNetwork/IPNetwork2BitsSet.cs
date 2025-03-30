@@ -4,8 +4,8 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
-using System.Numerics;
+using Sockets;
+using Numerics;
 
 /// <summary>
 /// BitSet.
@@ -20,8 +20,8 @@ public sealed partial class IPNetwork2
     [CLSCompliant(false)]
     public static uint BitsSet(IPAddress netmask)
     {
-        var uintNetmask = IPNetwork2.ToBigInteger(netmask);
-        uint bits = IPNetwork2.BitsSet(uintNetmask, netmask.AddressFamily);
+        var uintNetmask = ToBigInteger(netmask);
+        uint bits = BitsSet(uintNetmask, netmask.AddressFamily);
 
         return bits;
     }

@@ -4,37 +4,37 @@
 
 namespace System.Net;
 
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Numerics;
-using System.Reflection;
+using Collections.Generic;
+using Diagnostics;
+using IO;
+using Numerics;
+using Reflection;
 using Gnu.Getopt;
 
 /// <summary>
 /// Console app for IPNetwork.
 /// </summary>
-public class Program
+public static class Program
 {
     private static readonly Dictionary<int, ArgParsed> Args = new ();
 
-    private static readonly ArgParsed[] ArgsList = new[]
-    {
-        new ArgParsed('i', (ac, arg) => { ac.IPNetwork = true; }),
-        new ArgParsed('n', (ac, arg) => { ac.Network = true; }),
-        new ArgParsed('m', (ac, arg) => { ac.Netmask = true; }),
-        new ArgParsed('c', (ac, arg) => { ac.Cidr = true; }),
-        new ArgParsed('b', (ac, arg) => { ac.Broadcast = true; }),
-        new ArgParsed('f', (ac, arg) => { ac.FirstUsable = true; }),
-        new ArgParsed('l', (ac, arg) => { ac.LastUsable = true; }),
-        new ArgParsed('u', (ac, arg) => { ac.Usable = true; }),
-        new ArgParsed('t', (ac, arg) => { ac.Total = true; }),
-        new ArgParsed('w', (ac, arg) => { ac.Action = ActionEnum.Supernet; }),
-        new ArgParsed('W', (ac, arg) => { ac.Action = ActionEnum.WideSupernet; }),
-        new ArgParsed('h', (ac, arg) => { ac.Action = ActionEnum.Usage; }),
-        new ArgParsed('x', (ac, arg) => { ac.Action = ActionEnum.ListIPAddress; }),
-        new ArgParsed('?', (ac, arg) => { }),
-        new ArgParsed('D', (ac, arg) => { ac.CidrParse = CidrParseEnum.Default; }),
+    private static readonly ArgParsed[] ArgsList =
+    [
+        new ArgParsed('i', (ac, _) => { ac.IPNetwork = true; }),
+        new ArgParsed('n', (ac, _) => { ac.Network = true; }),
+        new ArgParsed('m', (ac, _) => { ac.Netmask = true; }),
+        new ArgParsed('c', (ac, _) => { ac.Cidr = true; }),
+        new ArgParsed('b', (ac, _) => { ac.Broadcast = true; }),
+        new ArgParsed('f', (ac, _) => { ac.FirstUsable = true; }),
+        new ArgParsed('l', (ac, _) => { ac.LastUsable = true; }),
+        new ArgParsed('u', (ac, _) => { ac.Usable = true; }),
+        new ArgParsed('t', (ac, _) => { ac.Total = true; }),
+        new ArgParsed('w', (ac, _) => { ac.Action = ActionEnum.Supernet; }),
+        new ArgParsed('W', (ac, _) => { ac.Action = ActionEnum.WideSupernet; }),
+        new ArgParsed('h', (ac, _) => { ac.Action = ActionEnum.Usage; }),
+        new ArgParsed('x', (ac, _) => { ac.Action = ActionEnum.ListIPAddress; }),
+        new ArgParsed('?', (_, _) => { }),
+        new ArgParsed('D', (ac, _) => { ac.CidrParse = CidrParseEnum.Default; }),
         new ArgParsed('d', (ac, arg) =>
         {
             if (!IPNetwork2.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out byte? cidr))
@@ -45,7 +45,7 @@ public class Program
             }
 
             ac.CidrParse = CidrParseEnum.Value;
-            ac.CidrParsed = (byte)cidr;
+            ac.CidrParsed = (byte)cidr!;
         }),
         new ArgParsed('s', (ac, arg) =>
         {
@@ -57,11 +57,11 @@ public class Program
             }
 
             ac.Action = ActionEnum.Subnet;
-            ac.SubnetCidr = (byte)cidr;
+            ac.SubnetCidr = (byte)cidr!;
         }),
         new ArgParsed('C', (ac, arg) =>
         {
-            if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2 ipnetwork))
+            if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2 ipnetwork))
             {
                 Console.WriteLine("Unable to parse ipnetwork {0}", arg);
                 ac.Action = ActionEnum.Usage;
@@ -73,7 +73,7 @@ public class Program
         }),
         new ArgParsed('o', (ac, arg) =>
         {
-            if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2 ipnetwork))
+            if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2 ipnetwork))
             {
                 Console.WriteLine("Unable to parse ipnetwork {0}", arg);
                 ac.Action = ActionEnum.Usage;
@@ -85,7 +85,7 @@ public class Program
         }),
         new ArgParsed('S', (ac, arg) =>
         {
-            if (!Program.TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2 ipnetwork))
+            if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2 ipnetwork))
             {
                 Console.WriteLine("Unable to parse ipnetwork {0}", arg);
                 ac.Action = ActionEnum.Usage;
@@ -94,8 +94,8 @@ public class Program
 
             ac.Action = ActionEnum.SubtractNetwork;
             ac.SubtractNetwork = ipnetwork;
-        }),
-    };
+        })
+    ];
 
     /// <summary>
     /// Program entry point.
@@ -103,39 +103,36 @@ public class Program
     /// <param name="args">program arguments.</param>
     public static void Main(string[] args)
     {
-        ProgramContext ac = Program.ParseArgs(args);
+        ProgramContext ac = ParseArgs(args);
 
-        if (ac.Action == ActionEnum.Subnet)
+        switch (ac.Action)
         {
-            Program.SubnetNetworks(ac);
-        }
-        else if (ac.Action == ActionEnum.Supernet)
-        {
-            Program.SupernetNetworks(ac);
-        }
-        else if (ac.Action == ActionEnum.WideSupernet)
-        {
-            Program.WideSupernetNetworks(ac);
-        }
-        else if (ac.Action == ActionEnum.PrintNetworks)
-        {
-            Program.PrintNetworks(ac);
-        }
-        else if (ac.Action == ActionEnum.ContainNetwork)
-        {
-            Program.ContainNetwork(ac);
-        }
-        else if (ac.Action == ActionEnum.OverlapNetwork)
-        {
-            Program.OverlapNetwork(ac);
-        }
-        else if (ac.Action == ActionEnum.ListIPAddress)
-        {
-            Program.ListIPAddress(ac);
-        }
-        else
-        {
-            Program.Usage();
+            case ActionEnum.Subnet:
+                SubnetNetworks(ac);
+                break;
+            case ActionEnum.Supernet:
+                SupernetNetworks(ac);
+                break;
+            case ActionEnum.WideSupernet:
+                WideSupernetNetworks(ac);
+                break;
+            case ActionEnum.PrintNetworks:
+                PrintNetworks(ac);
+                break;
+            case ActionEnum.ContainNetwork:
+                ContainNetwork(ac);
+                break;
+            case ActionEnum.OverlapNetwork:
+                OverlapNetwork(ac);
+                break;
+            case ActionEnum.ListIPAddress:
+                ListIPAddress(ac);
+                break;
+            case ActionEnum.Usage:
+            case ActionEnum.SubtractNetwork:
+            default:
+                Usage();
+                break;
         }
     }
 
@@ -175,7 +172,7 @@ public class Program
             Console.WriteLine("Unable to wide subnet these networks");
         }
 
-        Program.PrintNetwork(ac, widesubnet);
+        PrintNetwork(ac, widesubnet);
     }
 
     private static void SupernetNetworks(ProgramContext ac)
@@ -185,7 +182,7 @@ public class Program
             Console.WriteLine("Unable to supernet these networks");
         }
 
-        Program.PrintNetworks(ac, supernet, supernet.Length);
+        PrintNetworks(ac, supernet, supernet.Length);
     }
 
     private static void PrintNetworks(ProgramContext ac, IEnumerable<IPNetwork2> ipnetworks, BigInteger networkLength)
@@ -194,8 +191,8 @@ public class Program
         foreach (IPNetwork2 ipn in ipnetworks)
         {
             i++;
-            Program.PrintNetwork(ac, ipn);
-            Program.PrintSeparator(networkLength, i);
+            PrintNetwork(ac, ipn);
+            PrintSeparator(networkLength, i);
         }
     }
 
@@ -209,12 +206,12 @@ public class Program
             if (!ipnetwork.TrySubnet(ac.SubnetCidr, out IPNetworkCollection ipnetworks))
             {
                 Console.WriteLine("Unable to subnet ipnetwork {0} into cidr {1}", ipnetwork, ac.SubnetCidr);
-                Program.PrintSeparator(networkLength, i);
+                PrintSeparator(networkLength, i);
                 continue;
             }
 
-            Program.PrintNetworks(ac, ipnetworks, ipnetworks.Count);
-            Program.PrintSeparator(networkLength, i);
+            PrintNetworks(ac, ipnetworks, ipnetworks.Count);
+            PrintSeparator(networkLength, i);
         }
     }
 
@@ -237,69 +234,67 @@ public class Program
         foreach (IPNetwork2 ipnetwork in ac.Networks)
         {
             i++;
-            Program.PrintNetwork(ac, ipnetwork);
-            Program.PrintSeparator(ac.Networks.Length, i);
+            PrintNetwork(ac, ipnetwork);
+            PrintSeparator(ac.Networks.Length, i);
         }
     }
 
     private static void PrintNetwork(ProgramContext ac, IPNetwork2 ipn)
     {
-        using (var sw = new StringWriter())
+        using var sw = new StringWriter();
+        if (ac.IPNetwork)
         {
-            if (ac.IPNetwork)
-            {
-                sw.WriteLine("IPNetwork   : {0}", ipn.ToString());
-            }
-
-            if (ac.Network)
-            {
-                sw.WriteLine("Network     : {0}", ipn.Network.ToString());
-            }
-
-            if (ac.Netmask)
-            {
-                sw.WriteLine("Netmask     : {0}", ipn.Netmask.ToString());
-            }
-
-            if (ac.Cidr)
-            {
-                sw.WriteLine("Cidr        : {0}", ipn.Cidr);
-            }
-
-            if (ac.Broadcast)
-            {
-                sw.WriteLine("Broadcast   : {0}", ipn.Broadcast.ToString());
-            }
-
-            if (ac.FirstUsable)
-            {
-                sw.WriteLine("FirstUsable : {0}", ipn.FirstUsable.ToString());
-            }
-
-            if (ac.LastUsable)
-            {
-                sw.WriteLine("LastUsable  : {0}", ipn.LastUsable.ToString());
-            }
-
-            if (ac.Usable)
-            {
-                sw.WriteLine("Usable      : {0}", ipn.Usable);
-            }
-
-            if (ac.Total)
-            {
-                sw.WriteLine("Total       : {0}", ipn.Total);
-            }
-
-            Console.Write(sw.ToString());
+            sw.WriteLine("IPNetwork   : {0}", ipn);
         }
+
+        if (ac.Network)
+        {
+            sw.WriteLine("Network     : {0}", ipn.Network.ToString());
+        }
+
+        if (ac.Netmask)
+        {
+            sw.WriteLine("Netmask     : {0}", ipn.Netmask.ToString());
+        }
+
+        if (ac.Cidr)
+        {
+            sw.WriteLine("Cidr        : {0}", ipn.Cidr);
+        }
+
+        if (ac.Broadcast)
+        {
+            sw.WriteLine("Broadcast   : {0}", ipn.Broadcast.ToString());
+        }
+
+        if (ac.FirstUsable)
+        {
+            sw.WriteLine("FirstUsable : {0}", ipn.FirstUsable.ToString());
+        }
+
+        if (ac.LastUsable)
+        {
+            sw.WriteLine("LastUsable  : {0}", ipn.LastUsable.ToString());
+        }
+
+        if (ac.Usable)
+        {
+            sw.WriteLine("Usable      : {0}", ipn.Usable);
+        }
+
+        if (ac.Total)
+        {
+            sw.WriteLine("Total       : {0}", ipn.Total);
+        }
+
+        Console.Write(sw.ToString());
     }
 
     static Program()
     {
-        foreach (ArgParsed ap in Program.ArgsList)
+        foreach (ArgParsed ap in ArgsList)
         {
-            Program.Args.Add(ap.Arg, ap);
+            Args.Add(ap.Arg, ap);
         }
     }
 
@@ -312,7 +307,7 @@ public class Program
         while ((c = g.getopt()) != -1)
         {
             string optArg = g.Optarg;
-            Program.Args[c].Run(ac, optArg);
+            Args[c].Run(ac, optArg);
         }
 
         var ipnetworks = new List<string>();
@@ -325,7 +320,7 @@ public class Program
         }
 
         ac.NetworksString = ipnetworks.ToArray();
-        Program.ParseIPNetworks(ac);
+        ParseIPNetworks(ac);
 
         if (ac.Networks.Length == 0)
         {
@@ -347,14 +342,14 @@ public class Program
             ac.Action = ActionEnum.Usage;
         }
 
-        if (Program.PrintNoValue(ac))
+        if (PrintNoValue(ac))
         {
-            Program.PrintAll(ac);
+            PrintAll(ac);
         }
 
         if (g.Optind == 0)
         {
-            Program.PrintAll(ac);
+            PrintAll(ac);
         }
 
         return ac;
@@ -365,7 +360,7 @@ public class Program
         var ipnetworks = new List<IPNetwork2>();
         foreach (string ips in ac.NetworksString)
         {
-            if (!Program.TryParseIPNetwork(ips, ac.CidrParse, ac.CidrParsed, out IPNetwork2 ipnetwork))
+            if (!TryParseIPNetwork(ips, ac.CidrParse, ac.CidrParsed, out IPNetwork2 ipnetwork))
             {
                 Console.WriteLine("Unable to parse ipnetwork {0}", ips);
                 continue;
@@ -380,23 +375,23 @@ public class Program
     private static bool TryParseIPNetwork(string ip, CidrParseEnum cidrParseEnum, byte cidr, out IPNetwork2 ipn)
     {
         IPNetwork2 ipnetwork = null;
-        if (cidrParseEnum == CidrParseEnum.Default)
+        switch (cidrParseEnum)
         {
-            if (!IPNetwork2.TryParse(ip, out ipnetwork))
-            {
+            case CidrParseEnum.Default when !IPNetwork2.TryParse(ip, out ipnetwork):
                 ipn = null;
                 return false;
-            }
-        }
-        else if (cidrParseEnum == CidrParseEnum.Value)
-        {
-            if (!IPNetwork2.TryParse(ip, cidr, out ipnetwork))
+            case CidrParseEnum.Value:
             {
-                if (!IPNetwork2.TryParse(ip, out ipnetwork))
+                if (!IPNetwork2.TryParse(ip, cidr, out ipnetwork))
                 {
-                    ipn = null;
-                    return false;
+                    if (!IPNetwork2.TryParse(ip, out ipnetwork))
+                    {
+                        ipn = null;
+                        return false;
+                    }
                 }
+
+                break;
             }
         }
 
@@ -438,7 +433,6 @@ public class Program
     {
         Assembly assembly = Assembly.GetEntryAssembly()
                             ?? Assembly.GetExecutingAssembly()
-                            ?? Assembly.GetCallingAssembly()
             ;
         var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
         string version = fvi.FileVersion;

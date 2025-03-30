@@ -95,7 +95,7 @@ public sealed partial class IPNetwork2
         {
             throw new ArgumentException(
                 "The supplied parameter is an invalid type. Please supply an IPNetwork type.",
-                "obj");
+                nameof(obj));
         }
 
         // perform the comparision

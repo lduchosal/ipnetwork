@@ -10,7 +10,7 @@ namespace System.Net;
 public class ArgParsed
 {
     /// <summary>
-    /// Position.
+    /// Gets or sets position.
     /// </summary>
     public int Arg { get; set; }
 
@@ -19,6 +19,8 @@ public class ArgParsed
     /// <summary>
     /// An arg has been parsed.
     /// </summary>
+    /// <param name="ac">The context.</param>
+    /// <param name="arg">The arg.</param>
     public delegate void ArgParsedDelegate(ProgramContext ac, string arg);
 
     /// <summary>

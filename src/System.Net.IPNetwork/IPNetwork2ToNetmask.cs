@@ -4,8 +4,8 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
-using System.Numerics;
+using Sockets;
+using Numerics;
 
 /// <summary>
 /// ToNetmask.
@@ -24,7 +24,7 @@ public sealed partial class IPNetwork2
     /// <returns>An IPAdress representing cidr.</returns>
     public static IPAddress ToNetmask(byte cidr, AddressFamily family)
     {
-        IPNetwork2.InternalToNetmask(false, cidr, family, out IPAddress netmask);
+        InternalToNetmask(false, cidr, family, out IPAddress netmask);
 
         return netmask;
     }
@@ -42,7 +42,7 @@ public sealed partial class IPNetwork2
     /// <returns>true if cidr was converted successfully; otherwise, false.</returns>
     public static bool TryToNetmask(byte cidr, AddressFamily family, out IPAddress netmask)
     {
-        IPNetwork2.InternalToNetmask(true, cidr, family, out IPAddress netmask2);
+        InternalToNetmask(true, cidr, family, out IPAddress netmask2);
         bool parsed = netmask2 != null;
         netmask = netmask2;
 
@@ -70,22 +70,20 @@ public sealed partial class IPNetwork2
             return;
         }
 
-        int maxCidr = family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
+        int maxCidr = family == AddressFamily.InterNetwork ? 32 : 128;
         if (cidr > maxCidr)
         {
             if (tryParse == false)
             {
-                throw new ArgumentOutOfRangeException("cidr");
+                throw new ArgumentOutOfRangeException(nameof(cidr));
             }
 
             netmask = null;
             return;
         }
 
-        BigInteger mask = IPNetwork2.ToUint(cidr, family);
-        var netmask2 = IPNetwork2.ToIPAddress(mask, family);
+        BigInteger mask = ToUint(cidr, family);
+        var netmask2 = ToIPAddress(mask, family);
         netmask = netmask2;
-
-        return;
     }
 }

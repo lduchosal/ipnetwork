@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net9.0</TargetFrameworks>
+        <TargetFramework>net9.0</TargetFramework>
         <IsPackable>false</IsPackable>
         <SignAssembly>True</SignAssembly>
         <SignAssembly Condition="'$(OS)' != 'Windows_NT'">true</SignAssembly>
@@ -9,6 +9,7 @@
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
         <Version>3.1.0</Version>
         <LangVersion>latestmajor</LangVersion>
+        <NoWarn>SA1010</NoWarn>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">

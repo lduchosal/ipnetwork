@@ -17,13 +17,11 @@ public class IPNetworkCollectionCurrentTests
     public void TestCurrent()
     {
             var ipn = IPNetwork2.Parse("192.168.0.0/32");
-            using (IPNetworkCollection ipns = ipn.Subnet(32))
-            {
-                var ipnse = (IEnumerator)ipns;
-                ipnse.MoveNext();
-                object ipn0 = ipnse.Current;
+            using IPNetworkCollection ipns = ipn.Subnet(32);
+            var ipnse = (IEnumerator)ipns;
+            ipnse.MoveNext();
+            object ipn0 = ipnse.Current;
 
-                Assert.AreEqual("192.168.0.0/32", ipn0.ToString(), "ipn0");
-            }
-        }
+            Assert.AreEqual("192.168.0.0/32", ipn0.ToString(), "ipn0");
+    }
 }

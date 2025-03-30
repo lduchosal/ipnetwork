@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
+using Sockets;
 
 /// <summary>
 /// Class <c>CidrClassFull</c> tries to guess CIDR in a ClassFull way.
@@ -29,7 +29,7 @@ public sealed class CidrClassFull : ICidrGuess
     /// <returns>true if ip was converted successfully; otherwise, false.</returns>
     public bool TryGuessCidr(string ip, out byte cidr)
     {
-            bool parsed = IPAddress.TryParse(string.Format("{0}", ip), out var ipaddress);
+            bool parsed = IPAddress.TryParse($"{ip}", out var ipaddress);
             if (parsed == false)
             {
                 cidr = 0;
@@ -49,12 +49,14 @@ public sealed class CidrClassFull : ICidrGuess
                 cidr = 8;
                 return true;
             }
-            else if (uintIPAddress <= 2)
+
+            if (uintIPAddress <= 2)
             {
                 cidr = 16;
                 return true;
             }
-            else if (uintIPAddress <= 3)
+
+            if (uintIPAddress <= 3)
             {
                 cidr = 24;
                 return true;

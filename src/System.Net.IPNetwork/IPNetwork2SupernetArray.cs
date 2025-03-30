@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using System.Collections.Generic;
+using Collections.Generic;
 
 /// <summary>
 /// SupernetArray.
@@ -51,7 +51,7 @@ public sealed partial class IPNetwork2
         {
             if (trySupernet == false)
             {
-                throw new ArgumentNullException("ipnetworks");
+                throw new ArgumentNullException(nameof(ipnetworks));
             }
 
             supernet = null;
@@ -60,13 +60,13 @@ public sealed partial class IPNetwork2
 
         if (ipnetworks.Length <= 0)
         {
-            supernet = new IPNetwork2[0];
+            supernet = [];
             return true;
         }
 
         var supernetted = new List<IPNetwork2>();
-        List<IPNetwork2> ipns = IPNetwork2.Array2List(ipnetworks);
-        Stack<IPNetwork2> current = IPNetwork2.List2Stack(ipns);
+        List<IPNetwork2> ipns = Array2List(ipnetworks);
+        Stack<IPNetwork2> current = List2Stack(ipns);
         int previousCount = 0;
         int currentCount = current.Count;
 
@@ -97,7 +97,7 @@ public sealed partial class IPNetwork2
 
             previousCount = currentCount;
             currentCount = supernetted.Count;
-            current = IPNetwork2.List2Stack(supernetted);
+            current = List2Stack(supernetted);
         }
 
         supernet = supernetted.ToArray();
@@ -107,11 +107,10 @@ public sealed partial class IPNetwork2
     private static Stack<IPNetwork2> List2Stack(List<IPNetwork2> list)
     {
         var stack = new Stack<IPNetwork2>();
-        list.ForEach(new Action<IPNetwork2>(
-            delegate(IPNetwork2 ipn)
-            {
-                stack.Push(ipn);
-            }));
+        list.ForEach(delegate(IPNetwork2 ipn)
+        {
+            stack.Push(ipn);
+        });
         return stack;
     }
 
@@ -119,19 +118,18 @@ public sealed partial class IPNetwork2
     {
         var ipns = new List<IPNetwork2>();
         ipns.AddRange(array);
-        IPNetwork2.RemoveNull(ipns);
-        ipns.Sort(new Comparison<IPNetwork2>(
-            delegate(IPNetwork2 ipn1, IPNetwork2 ipn2)
+        RemoveNull(ipns);
+        ipns.Sort(delegate(IPNetwork2 ipn1, IPNetwork2 ipn2)
+        {
+            int networkCompare = ipn1.InternalNetwork.CompareTo(ipn2.InternalNetwork);
+            if (networkCompare == 0)
             {
-                int networkCompare = ipn1.InternalNetwork.CompareTo(ipn2.InternalNetwork);
-                if (networkCompare == 0)
-                {
-                    int cidrCompare = ipn1.cidr.CompareTo(ipn2.cidr);
-                    return cidrCompare;
-                }
+                int cidrCompare = ipn1.cidr.CompareTo(ipn2.cidr);
+                return cidrCompare;
+            }
 
-                return networkCompare;
-            }));
+            return networkCompare;
+        });
         ipns.Reverse();
 
         return ipns;
@@ -139,15 +137,14 @@ public sealed partial class IPNetwork2
 
     private static void RemoveNull(List<IPNetwork2> ipns)
     {
-        ipns.RemoveAll(new Predicate<IPNetwork2>(
-            delegate(IPNetwork2 ipn)
+        ipns.RemoveAll(delegate(IPNetwork2 ipn)
+        {
+            if (ipn == null)
             {
-                if (ipn == null)
-                {
-                    return true;
-                }
+                return true;
+            }
 
-                return false;
-            }));
+            return false;
+        });
     }
 }

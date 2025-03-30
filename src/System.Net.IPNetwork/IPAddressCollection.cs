@@ -4,9 +4,9 @@
 
 namespace System.Net;
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
+using Collections;
+using Collections.Generic;
+using Numerics;
 
 /// <summary>
 /// Represents different filters for a collection of items.
@@ -84,7 +84,7 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
         {
             if (i >= this.Count)
             {
-                throw new ArgumentOutOfRangeException("i");
+                throw new ArgumentOutOfRangeException(nameof(i));
             }
 
             byte width = this.ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? (byte)32 : (byte)128;

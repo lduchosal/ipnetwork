@@ -56,7 +56,7 @@ public class IPNetworkSupernetTests
         var network1 = IPNetwork2.Parse("192.168.0.0/24");
         var network2 = IPNetwork2.Parse("192.168.2.0/24");
         var expected = IPNetwork2.Parse("192.168.0.0/22");
-        var widenetwork = IPNetwork2.WideSubnet(new[] { network1, network2 });
+        var widenetwork = IPNetwork2.WideSubnet([network1, network2]);
 
         Assert.AreEqual(expected, widenetwork, "widesubnet");
     }
@@ -206,7 +206,7 @@ public class IPNetworkSupernetTests
         var ipnetwork3 = IPNetwork2.Parse("200.16.2.0/24");
         var ipnetwork4 = IPNetwork2.Parse("200.16.3.0/24");
 
-        IPNetwork2 result = IPNetwork2.Supernet(new[] { ipnetwork1, ipnetwork2, ipnetwork3, ipnetwork4 })[0];
+        IPNetwork2 result = IPNetwork2.Supernet([ipnetwork1, ipnetwork2, ipnetwork3, ipnetwork4])[0];
         var expected = IPNetwork2.Parse("200.16.0.0/22");
 
         Assert.AreEqual(expected, result, "supernet");
@@ -221,7 +221,7 @@ public class IPNetworkSupernetTests
         var ipnetwork1 = IPNetwork2.Parse("1.1.0.0/24");
         var ipnetwork2 = IPNetwork2.Parse("1.2.1.0/24");
 
-        IPNetwork2 result = IPNetwork2.Supernet(new[] { ipnetwork1, ipnetwork2 })[0];
+        IPNetwork2 result = IPNetwork2.Supernet([ipnetwork1, ipnetwork2])[0];
         var expected = IPNetwork2.Parse("1.1.0.0/24");
 
         Assert.AreEqual(expected, result, "supernet");

@@ -4,8 +4,8 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
-using System.Numerics;
+using Sockets;
+using Numerics;
 
 /// <summary>
 /// ToUint.
@@ -21,7 +21,7 @@ public sealed partial class IPNetwork2
     /// <returns>A number representing the ipaddress.</returns>
     public static BigInteger ToBigInteger(IPAddress ipaddress)
     {
-        IPNetwork2.InternalToBigInteger(false, ipaddress, out BigInteger? uintIpAddress);
+        InternalToBigInteger(false, ipaddress, out BigInteger? uintIpAddress);
 
         return (BigInteger)uintIpAddress;
     }
@@ -36,7 +36,7 @@ public sealed partial class IPNetwork2
     /// <returns>true if ipaddress was converted successfully; otherwise, false.</returns>
     public static bool TryToBigInteger(IPAddress ipaddress, out BigInteger? uintIpAddress)
     {
-        IPNetwork2.InternalToBigInteger(true, ipaddress, out BigInteger? uintIpAddress2);
+        InternalToBigInteger(true, ipaddress, out BigInteger? uintIpAddress2);
         bool parsed = uintIpAddress2 != null;
         uintIpAddress = uintIpAddress2;
 
@@ -51,7 +51,7 @@ public sealed partial class IPNetwork2
     /// <returns>A number representing the netmask exprimed in CIDR.</returns>
     public static BigInteger ToUint(byte cidr, AddressFamily family)
     {
-        IPNetwork2.InternalToBigInteger(false, cidr, family, out BigInteger? uintNetmask);
+        InternalToBigInteger(false, cidr, family, out BigInteger? uintNetmask);
 
         return (BigInteger)uintNetmask;
     }
@@ -65,7 +65,7 @@ public sealed partial class IPNetwork2
     /// <returns>true if cidr was converted successfully; otherwise, false.</returns>
     public static bool TryToUint(byte cidr, AddressFamily family, out BigInteger? uintNetmask)
     {
-        IPNetwork2.InternalToBigInteger(true, cidr, family, out BigInteger? uintNetmask2);
+        InternalToBigInteger(true, cidr, family, out BigInteger? uintNetmask2);
         bool parsed = uintNetmask2 != null;
         uintNetmask = uintNetmask2;
 
@@ -85,7 +85,7 @@ public sealed partial class IPNetwork2
         {
             if (tryParse == false)
             {
-                throw new ArgumentOutOfRangeException("cidr");
+                throw new ArgumentOutOfRangeException(nameof(cidr));
             }
 
             uintNetmask = null;
@@ -96,7 +96,7 @@ public sealed partial class IPNetwork2
         {
             if (tryParse == false)
             {
-                throw new ArgumentOutOfRangeException("cidr");
+                throw new ArgumentOutOfRangeException(nameof(cidr));
             }
 
             uintNetmask = null;
@@ -121,14 +121,13 @@ public sealed partial class IPNetwork2
             return;
         }
 
-        var mask = new BigInteger(new byte[]
-        {
+        var mask = new BigInteger([
             0xff, 0xff, 0xff, 0xff,
             0xff, 0xff, 0xff, 0xff,
             0xff, 0xff, 0xff, 0xff,
             0xff, 0xff, 0xff, 0xff,
-            0x00,
-        });
+            0x00
+        ]);
 
         BigInteger masked = cidr == 0 ? 0 : mask << (128 - cidr);
         byte[] m = masked.ToByteArray();
@@ -150,7 +149,7 @@ public sealed partial class IPNetwork2
         {
             if (tryParse == false)
             {
-                throw new ArgumentNullException("ipaddress");
+                throw new ArgumentNullException(nameof(ipaddress));
             }
 
             uintIpAddress = null;

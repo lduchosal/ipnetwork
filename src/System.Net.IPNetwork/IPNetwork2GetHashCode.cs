@@ -22,10 +22,6 @@ public sealed partial class IPNetwork2
     /// <returns>An number representing the hashCode.</returns>
     private int ComputeHashCode()
     {
-        return string.Format(
-            "{0}|{1}|{2}",
-            this.family.GetHashCode(),
-            this.InternalNetwork.GetHashCode(),
-            this.cidr.GetHashCode()).GetHashCode();
+        return $"{this.family.GetHashCode()}|{this.InternalNetwork.GetHashCode()}|{this.cidr.GetHashCode()}".GetHashCode();
     }
 }

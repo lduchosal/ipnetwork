@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using System.Text.RegularExpressions;
+using Text.RegularExpressions;
 
 /// <summary>
 /// The InternalParse methodes.
@@ -31,7 +31,7 @@ public partial class IPNetwork2
         {
             if (tryParse == false)
             {
-                throw new ArgumentNullException("ipaddress");
+                throw new ArgumentNullException(nameof(ipaddress));
             }
 
             ipnetwork = null;
@@ -42,7 +42,7 @@ public partial class IPNetwork2
         {
             if (tryParse == false)
             {
-                throw new ArgumentNullException("netmask");
+                throw new ArgumentNullException(nameof(netmask));
             }
 
             ipnetwork = null;
@@ -92,7 +92,7 @@ public partial class IPNetwork2
         {
             if (tryParse == false)
             {
-                throw new ArgumentNullException("network");
+                throw new ArgumentNullException(nameof(network));
             }
 
             ipnetwork = null;
@@ -107,14 +107,13 @@ public partial class IPNetwork2
         }
 
         StringSplitOptions splitOptions = sanitanize ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None;
-        string[] args = network.Split(new char[] { ' ', '/' }, splitOptions);
-        byte cidr = 0;
+        string[] args = network.Split([' ', '/'], splitOptions);
 
         if (args.Length == 0)
         {
             if (tryParse == false)
             {
-                throw new ArgumentNullException("network");
+                throw new ArgumentNullException(nameof(network));
             }
 
             ipnetwork = null;
@@ -124,7 +123,7 @@ public partial class IPNetwork2
         if (args.Length == 1)
         {
             string cidrlessNetwork = args[0];
-            if (cidrGuess.TryGuessCidr(cidrlessNetwork, out cidr))
+            if (cidrGuess.TryGuessCidr(cidrlessNetwork, out byte cidr))
             {
                 InternalParse(tryParse, cidrlessNetwork, cidr, out ipnetwork);
                 return;
@@ -139,14 +138,13 @@ public partial class IPNetwork2
             return;
         }
 
-        if (byte.TryParse(args[1], out cidr))
+        if (byte.TryParse(args[1], out byte cidr1))
         {
-            InternalParse(tryParse, args[0], cidr, out ipnetwork);
+            InternalParse(tryParse, args[0], cidr1, out ipnetwork);
             return;
         }
 
         InternalParse(tryParse, args[0], args[1], out ipnetwork);
-        return;
     }
 
     /// <summary>
@@ -169,7 +167,7 @@ public partial class IPNetwork2
         {
             if (tryParse == false)
             {
-                throw new ArgumentNullException("ipaddress");
+                throw new ArgumentNullException(nameof(ipaddress));
             }
 
             ipnetwork = null;
@@ -180,15 +178,15 @@ public partial class IPNetwork2
         {
             if (tryParse == false)
             {
-                throw new ArgumentNullException("netmask");
+                throw new ArgumentNullException(nameof(netmask));
             }
 
             ipnetwork = null;
             return;
         }
 
-        var uintIpAddress = IPNetwork2.ToBigInteger(ipaddress);
-        bool parsed = IPNetwork2.TryToCidr(netmask, out byte? cidr2);
+        var uintIpAddress = ToBigInteger(ipaddress);
+        bool parsed = TryToCidr(netmask, out byte? cidr2);
         if (parsed == false)
         {
             if (tryParse == false)
@@ -200,12 +198,10 @@ public partial class IPNetwork2
             return;
         }
 
-        byte cidr = (byte)cidr2;
+        byte cidr = (byte)cidr2!;
 
         var ipnet = new IPNetwork2(uintIpAddress, ipaddress.AddressFamily, cidr);
         ipnetwork = ipnet;
-
-        return;
     }
 
     /// <summary>
@@ -228,7 +224,7 @@ public partial class IPNetwork2
         {
             if (tryParse == false)
             {
-                throw new ArgumentNullException("ipaddress");
+                throw new ArgumentNullException(nameof(ipaddress));
             }
 
             ipnetwork = null;
@@ -247,7 +243,7 @@ public partial class IPNetwork2
             return;
         }
 
-        bool parsedNetmask = IPNetwork2.TryToNetmask(cidr, ip.AddressFamily, out IPAddress mask);
+        bool parsedNetmask = TryToNetmask(cidr, ip.AddressFamily, out IPAddress mask);
         if (parsedNetmask == false)
         {
             if (tryParse == false)

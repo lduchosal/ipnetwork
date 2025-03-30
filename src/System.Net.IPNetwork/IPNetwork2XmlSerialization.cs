@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
+using Sockets;
 
 /// <summary>
 /// Serialization.

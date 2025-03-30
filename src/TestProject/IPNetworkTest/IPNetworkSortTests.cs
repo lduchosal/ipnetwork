@@ -16,7 +16,7 @@ public class IPNetworkSortTests
     [TestMethod]
     public void TestSort1()
     {
-            string[] ips = { "1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0" };
+            string[] ips = ["1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0"];
             var ipns = new List<IPNetwork2>();
             foreach (string ip in ips)
             {
@@ -39,7 +39,7 @@ public class IPNetworkSortTests
     [TestMethod]
     public void TestSort2()
     {
-            string[] ips = { "0.0.0.100/32", "0.0.0.0/24" };
+            string[] ips = ["0.0.0.100/32", "0.0.0.0/24"];
             var ipns = new List<IPNetwork2>();
             foreach (string ip in ips)
             {

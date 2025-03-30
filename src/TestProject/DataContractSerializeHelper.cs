@@ -30,17 +30,15 @@ public static class DataContractSerializeHelper
                 OmitXmlDeclaration = true,
                 Indent = formatting,
             };
-            using (var textWriter = new StringWriter())
+            using var textWriter = new StringWriter();
+            using (var xmlWriter = XmlWriter.Create(textWriter, settings))
             {
-                using (var xmlWriter = XmlWriter.Create(textWriter, settings))
-                {
-                    serializer.WriteObject(xmlWriter, obj);
-                }
-
-                string result = textWriter.ToString();
-                return result;
+                serializer.WriteObject(xmlWriter, obj);
             }
-        }
+
+            string result = textWriter.ToString();
+            return result;
+    }
 
     /// <summary>
     /// Deserialize.
@@ -56,12 +54,10 @@ public static class DataContractSerializeHelper
                 return new T();
             }
 
-            using (var textReader = new StringReader(xml))
-            using (var xmlReader = XmlReader.Create(textReader))
-            {
-                var serializer = new DataContractSerializer(typeof(T));
-                var result = (T)serializer.ReadObject(xmlReader);
-                return result;
-            }
-        }
+            using var textReader = new StringReader(xml);
+            using var xmlReader = XmlReader.Create(textReader);
+            var serializer = new DataContractSerializer(typeof(T));
+            var result = (T)serializer.ReadObject(xmlReader);
+            return result;
+    }
 }

@@ -25,6 +25,7 @@
     <RepositoryType>git</RepositoryType>
     <RootNamespace>System.Net</RootNamespace>
     <LangVersion>latestmajor</LangVersion>
+    <NoWarn>SA1010</NoWarn>
 
 	</PropertyGroup>
   

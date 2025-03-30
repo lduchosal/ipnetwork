@@ -4,8 +4,8 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
-using System.Numerics;
+using Sockets;
+using Numerics;
 
 /// <summary>
 /// The constructors of IPNetwork2.
@@ -40,7 +40,7 @@ public partial class IPNetwork2
     {
         if (ipaddress == null)
         {
-            throw new ArgumentNullException("ipaddress");
+            throw new ArgumentNullException(nameof(ipaddress));
         }
 
         BigInteger uintIpAddress = ToBigInteger(ipaddress);
@@ -49,16 +49,16 @@ public partial class IPNetwork2
         this.hashCode = this.ComputeHashCode();
     }
 
-    private void Init(BigInteger ipaddress, AddressFamily family, byte cidr)
+    private void Init(BigInteger ipaddress1, AddressFamily family1, byte cidr1)
     {
-        int maxCidr = family == AddressFamily.InterNetwork ? 32 : 128;
-        if (cidr > maxCidr)
+        int maxCidr = family1 == AddressFamily.InterNetwork ? 32 : 128;
+        if (cidr1 > maxCidr)
         {
-            throw new ArgumentOutOfRangeException("cidr");
+            throw new ArgumentOutOfRangeException(nameof(cidr1));
         }
 
-        this.ipaddress = ipaddress;
-        this.family = family;
-        this.cidr = cidr;
+        this.ipaddress = ipaddress1;
+        this.family = family1;
+        this.cidr = cidr1;
     }
 }

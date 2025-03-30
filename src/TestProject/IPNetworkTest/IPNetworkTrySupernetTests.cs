@@ -161,8 +161,8 @@ public class IPNetworkTrySupernetTests
     {
             var network1 = IPNetwork2.Parse("192.168.1.1/24");
             var network2 = IPNetwork2.Parse("192.168.2.1/24");
-            IPNetwork2[] network3 = { network1, network2 };
-            IPNetwork2[] supernetExpected = { network1, network2 };
+            IPNetwork2[] network3 = [network1, network2];
+            IPNetwork2[] supernetExpected = [network1, network2];
             bool parsed = true;
             bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
@@ -179,8 +179,8 @@ public class IPNetworkTrySupernetTests
     {
             var network1 = IPNetwork2.Parse("192.168.0.1/24");
             var network2 = IPNetwork2.Parse("192.168.1.1/24");
-            IPNetwork2[] network3 = { network1, network2 };
-            IPNetwork2[] supernetExpected = { IPNetwork2.Parse("192.168.0.0/23") };
+            IPNetwork2[] network3 = [network1, network2];
+            IPNetwork2[] supernetExpected = [IPNetwork2.Parse("192.168.0.0/23")];
             bool parsed = true;
             bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 

@@ -2242,7 +2242,7 @@ public class IPNetworkV6UnitTest
     {
         var ipnetwork1 = IPNetwork2.Parse("2001:0db8::/64");
         var ipnetwork2 = IPNetwork2.Parse("2001:0db9::/64");
-        IPNetwork2[] ipnetwork3 = IPNetwork2.Supernet(new[] { ipnetwork1, ipnetwork2 });
+        IPNetwork2[] ipnetwork3 = IPNetwork2.Supernet([ipnetwork1, ipnetwork2]);
 
         Console.WriteLine("{0} + {1} = {2}", ipnetwork1, ipnetwork2, ipnetwork3[0]);
     }
@@ -2719,8 +2719,8 @@ public class IPNetworkV6UnitTest
     {
         var network1 = IPNetwork2.Parse("192.168.1.1/24");
         var network2 = IPNetwork2.Parse("192.168.2.1/24");
-        IPNetwork2[] network3 = { network1, network2 };
-        IPNetwork2[] supernetExpected = { network1, network2 };
+        IPNetwork2[] network3 = [network1, network2];
+        IPNetwork2[] supernetExpected = [network1, network2];
         bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
         Assert.AreEqual(supernetExpected[0], supernet[0], "supernet");
@@ -2736,8 +2736,8 @@ public class IPNetworkV6UnitTest
     {
         var network1 = IPNetwork2.Parse("2001:db8:0000::/65");
         var network2 = IPNetwork2.Parse("2001:db8:0:0:8000::/65");
-        IPNetwork2[] network3 = { network1, network2 };
-        IPNetwork2[] supernetExpected = { IPNetwork2.Parse("2001:db8::/64") };
+        IPNetwork2[] network3 = [network1, network2];
+        IPNetwork2[] supernetExpected = [IPNetwork2.Parse("2001:db8::/64")];
         bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
         Assert.AreEqual(supernetExpected[0], supernet[0], "supernet");

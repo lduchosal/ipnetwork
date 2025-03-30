@@ -4,9 +4,9 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
-using System.Numerics;
-using System.Runtime.Serialization;
+using Sockets;
+using Numerics;
+using Runtime.Serialization;
 
 /// <summary>
 /// Properties and members of IPNetwork2.
@@ -22,7 +22,7 @@ public partial class IPNetwork2
     private AddressFamily family;
 
     /// <summary>
-    /// Gets or sets the value of the IPNetwork property.
+    /// Gets or sets a value indicating whether gets or sets the value of the IPNetwork property.
     /// </summary>
     [DataMember(Name = "IPNetwork", IsRequired = true)]
     public string Value
@@ -34,7 +34,7 @@ public partial class IPNetwork2
 
         set
         {
-            var ipnetwork = IPNetwork2.Parse(value);
+            var ipnetwork = Parse(value);
             this.ipaddress = ipnetwork.ipaddress;
             this.family = ipnetwork.family;
             this.cidr = ipnetwork.cidr;
@@ -52,7 +52,7 @@ public partial class IPNetwork2
     {
         get
         {
-            return IPNetwork2.ToIPAddress(this.InternalNetwork, this.family);
+            return ToIPAddress(this.InternalNetwork, this.family);
         }
     }
 
@@ -74,7 +74,7 @@ public partial class IPNetwork2
     {
         get
         {
-            return IPNetwork2.ToIPAddress(this.InternalNetmask, this.family);
+            return ToIPAddress(this.InternalNetmask, this.family);
         }
     }
 
@@ -85,12 +85,12 @@ public partial class IPNetwork2
     {
         get
         {
-            if (this.family == Sockets.AddressFamily.InterNetworkV6)
+            if (this.family == AddressFamily.InterNetworkV6)
             {
                 return null;
             }
 
-            return IPNetwork2.ToIPAddress(this.InternalBroadcast, this.family);
+            return ToIPAddress(this.InternalBroadcast, this.family);
         }
     }
 
@@ -101,12 +101,12 @@ public partial class IPNetwork2
     {
         get
         {
-            BigInteger first = this.family == Sockets.AddressFamily.InterNetworkV6
+            BigInteger first = this.family == AddressFamily.InterNetworkV6
                 ? this.InternalNetwork
                 : (this.Usable <= 0)
                     ? this.InternalNetwork
                     : this.InternalNetwork + 1;
-            return IPNetwork2.ToIPAddress(first, this.family);
+            return ToIPAddress(first, this.family);
         }
     }
 
@@ -117,12 +117,12 @@ public partial class IPNetwork2
     {
         get
         {
-            BigInteger last = this.family == Sockets.AddressFamily.InterNetworkV6
+            BigInteger last = this.family == AddressFamily.InterNetworkV6
                 ? this.InternalBroadcast
                 : (this.Usable <= 0)
                     ? this.InternalNetwork
                     : this.InternalBroadcast - 1;
-            return IPNetwork2.ToIPAddress(last, this.family);
+            return ToIPAddress(last, this.family);
         }
     }
 
@@ -133,12 +133,12 @@ public partial class IPNetwork2
     {
         get
         {
-            if (this.family == Sockets.AddressFamily.InterNetworkV6)
+            if (this.family == AddressFamily.InterNetworkV6)
             {
                 return this.Total;
             }
 
-            byte[] mask = new byte[] { 0xff, 0xff, 0xff, 0xff, 0x00 };
+            byte[] mask = [0xff, 0xff, 0xff, 0xff, 0x00];
             var bmask = new BigInteger(mask);
             BigInteger usableIps = (this.cidr > 30) ? 0 : ((bmask >> this.cidr) - 1);
             return usableIps;
@@ -152,7 +152,7 @@ public partial class IPNetwork2
     {
         get
         {
-            int max = this.family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
+            int max = this.family == AddressFamily.InterNetwork ? 32 : 128;
             var count = BigInteger.Pow(2, max - this.cidr);
             return count;
         }
@@ -217,7 +217,7 @@ public partial class IPNetwork2
     {
         get
         {
-            return IPNetwork2.ToUint(this.cidr, this.family);
+            return ToUint(this.cidr, this.family);
         }
     }
 }

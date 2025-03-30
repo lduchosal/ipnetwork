@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using System.Numerics;
+using Numerics;
 
 /// <summary>
 /// supernet.
@@ -41,7 +41,7 @@ public sealed partial class IPNetwork2
     {
         if (network == null)
         {
-            throw new ArgumentNullException("network");
+            throw new ArgumentNullException(nameof(network));
         }
 
         return network.TrySupernet(network2, out supernet);
@@ -57,7 +57,7 @@ public sealed partial class IPNetwork2
     /// <returns>A supernetted IP Network.</returns>
     public IPNetwork2 Supernet(IPNetwork2 network2)
     {
-        IPNetwork2.InternalSupernet(false, this, network2, out IPNetwork2 supernet);
+        InternalSupernet(false, this, network2, out IPNetwork2 supernet);
         return supernet;
     }
 
@@ -72,7 +72,7 @@ public sealed partial class IPNetwork2
     /// <returns>true if network2 was supernetted successfully; otherwise, false.</returns>
     public bool TrySupernet(IPNetwork2 network2, out IPNetwork2 supernet)
     {
-        IPNetwork2.InternalSupernet(true, this, network2, out IPNetwork2 outSupernet);
+        InternalSupernet(true, this, network2, out IPNetwork2 outSupernet);
         bool parsed = outSupernet != null;
         supernet = outSupernet;
         return parsed;
@@ -95,7 +95,7 @@ public sealed partial class IPNetwork2
         {
             if (trySupernet == false)
             {
-                throw new ArgumentNullException("network1");
+                throw new ArgumentNullException(nameof(network1));
             }
 
             supernet = null;
@@ -106,7 +106,7 @@ public sealed partial class IPNetwork2
         {
             if (trySupernet == false)
             {
-                throw new ArgumentNullException("network2");
+                throw new ArgumentNullException(nameof(network2));
             }
 
             supernet = null;
@@ -149,7 +149,7 @@ public sealed partial class IPNetwork2
         {
             if (trySupernet == false)
             {
-                throw new ArgumentOutOfRangeException("network1");
+                throw new ArgumentOutOfRangeException(nameof(network1));
             }
 
             supernet = null;
@@ -172,6 +172,5 @@ public sealed partial class IPNetwork2
         }
 
         supernet = networkSupernet;
-        return;
     }
 }

@@ -21,8 +21,8 @@ public class IPNetworkSupernetArrayTests
             var ipnetwork3 = IPNetwork2.Parse("192.168.2.0/24");
             var ipnetwork4 = IPNetwork2.Parse("192.168.3.0/24");
 
-            IPNetwork2[] ipnetworks = { ipnetwork1, ipnetwork2, ipnetwork3, ipnetwork4 };
-            IPNetwork2[] expected = { IPNetwork2.Parse("192.168.0.0/22") };
+            IPNetwork2[] ipnetworks = [ipnetwork1, ipnetwork2, ipnetwork3, ipnetwork4];
+            IPNetwork2[] expected = [IPNetwork2.Parse("192.168.0.0/22")];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
@@ -36,8 +36,8 @@ public class IPNetworkSupernetArrayTests
     [TestMethod]
     public void TestTrySupernetArray1()
     {
-            IPNetwork2[] ipnetworks = { };
-            IPNetwork2[] expected = { };
+            IPNetwork2[] ipnetworks = [];
+            IPNetwork2[] expected = [];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
@@ -66,8 +66,8 @@ public class IPNetworkSupernetArrayTests
             IPNetwork2 ipnetwork3 = null;
             IPNetwork2 ipnetwork4 = null;
 
-            IPNetwork2[] ipnetworks = { ipnetwork1, ipnetwork2, ipnetwork3, ipnetwork4 };
-            IPNetwork2[] expected = { };
+            IPNetwork2[] ipnetworks = [ipnetwork1, ipnetwork2, ipnetwork3, ipnetwork4];
+            IPNetwork2[] expected = [];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
@@ -85,7 +85,7 @@ public class IPNetworkSupernetArrayTests
             IPNetwork2[] ipnetworks = subnetted.ToArray();
             Assert.AreEqual(256, ipnetworks.Length, "subnet");
 
-            IPNetwork2[] expected = { IPNetwork2.Parse("192.168.0.0/24") };
+            IPNetwork2[] expected = [IPNetwork2.Parse("192.168.0.0/24")];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
@@ -104,7 +104,7 @@ public class IPNetworkSupernetArrayTests
             IPNetwork2[] ipnetworks = subnetted.ToArray();
             Assert.AreEqual(256, ipnetworks.Length, "subnet");
 
-            IPNetwork2[] expected = { IPNetwork2.Parse("192.168.0.0/16") };
+            IPNetwork2[] expected = [IPNetwork2.Parse("192.168.0.0/16")];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
@@ -123,7 +123,7 @@ public class IPNetworkSupernetArrayTests
             IPNetwork2[] ipnetworks = subnetted.ToArray();
             Assert.AreEqual(65536, ipnetworks.Length, "subnet");
 
-            IPNetwork2[] expected = { IPNetwork2.Parse("192.0.0.0/8") };
+            IPNetwork2[] expected = [IPNetwork2.Parse("192.0.0.0/8")];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
@@ -138,21 +138,21 @@ public class IPNetworkSupernetArrayTests
     public void TestTrySupernetArray7()
     {
             IPNetwork2[] ipnetworks =
-            {
+            [
                 IPNetwork2.Parse("10.0.2.2/24"),
                 IPNetwork2.Parse("192.168.0.0/24"),
                 IPNetwork2.Parse("192.168.1.0/24"),
                 IPNetwork2.Parse("192.168.2.0/24"),
                 IPNetwork2.Parse("10.0.1.1/24"),
-                IPNetwork2.Parse("192.168.3.0/24"),
-            };
+                IPNetwork2.Parse("192.168.3.0/24")
+            ];
 
             IPNetwork2[] expected =
-            {
+            [
                 IPNetwork2.Parse("10.0.1.0/24"),
                 IPNetwork2.Parse("10.0.2.0/24"),
-                IPNetwork2.Parse("192.168.0/22"),
-            };
+                IPNetwork2.Parse("192.168.0/22")
+            ];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
@@ -169,21 +169,21 @@ public class IPNetworkSupernetArrayTests
     public void TestTrySupernetArray8()
     {
             IPNetwork2[] ipnetworks =
-            {
+            [
                 IPNetwork2.Parse("10.0.2.2/24"),
                 IPNetwork2.Parse("192.168.0.0/24"),
                 IPNetwork2.Parse("192.168.1.0/24"),
                 IPNetwork2.Parse("192.168.2.0/24"),
                 IPNetwork2.Parse("10.0.1.1/24"),
                 IPNetwork2.Parse("192.168.3.0/24"),
-                IPNetwork2.Parse("10.6.6.6/8"),
-            };
+                IPNetwork2.Parse("10.6.6.6/8")
+            ];
 
             IPNetwork2[] expected =
-            {
+            [
                 IPNetwork2.Parse("10.0.0.0/8"),
-                IPNetwork2.Parse("192.168.0/22"),
-            };
+                IPNetwork2.Parse("192.168.0/22")
+            ];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
@@ -199,7 +199,7 @@ public class IPNetworkSupernetArrayTests
     public void TestTrySupernetArray9()
     {
             IPNetwork2[] ipnetworks =
-            {
+            [
                 IPNetwork2.Parse("10.0.2.2/24"),
                 IPNetwork2.Parse("192.168.0.0/24"),
                 IPNetwork2.Parse("192.168.1.0/24"),
@@ -208,15 +208,15 @@ public class IPNetworkSupernetArrayTests
                 IPNetwork2.Parse("192.168.3.0/24"),
                 IPNetwork2.Parse("10.6.6.6/8"),
                 IPNetwork2.Parse("11.6.6.6/8"),
-                IPNetwork2.Parse("12.6.6.6/8"),
-            };
+                IPNetwork2.Parse("12.6.6.6/8")
+            ];
 
             IPNetwork2[] expected =
-            {
+            [
                 IPNetwork2.Parse("10.0.0.0/7"),
                 IPNetwork2.Parse("12.0.0.0/8"),
-                IPNetwork2.Parse("192.168.0/22"),
-            };
+                IPNetwork2.Parse("192.168.0/22")
+            ];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
@@ -233,15 +233,15 @@ public class IPNetworkSupernetArrayTests
     public void TestTrySupernetArray10()
     {
             IPNetwork2[] ipnetworks =
-            {
+            [
                 IPNetwork2.Parse("10.0.2.2/24"),
-                IPNetwork2.Parse("10.0.2.2/23"),
-            };
+                IPNetwork2.Parse("10.0.2.2/23")
+            ];
 
             IPNetwork2[] expected =
-            {
-                IPNetwork2.Parse("10.0.2.2/23"),
-            };
+            [
+                IPNetwork2.Parse("10.0.2.2/23")
+            ];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 

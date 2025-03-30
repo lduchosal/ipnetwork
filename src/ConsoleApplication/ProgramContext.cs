@@ -10,92 +10,92 @@ namespace System.Net;
 public class ProgramContext
 {
     /// <summary>
-    /// Get or set the IPNetwork.
+    /// Gets or sets a value indicating whether gets or sets the  IPNetwork.
     /// </summary>
     public bool IPNetwork { get; set; }
 
     /// <summary>
-    /// Get or set the Network.
+    /// Gets or sets a value indicating whether gets or sets the Network.
     /// </summary>
     public bool Network { get; set; }
 
     /// <summary>
-    /// Get or set the Netmask.
+    /// Gets or sets a value indicating whether gets or sets the Netmask.
     /// </summary>
     public bool Netmask { get; set; }
 
     /// <summary>
-    /// Get or set the Cidr.
+    /// Gets or sets a value indicating whether gets or sets the Cidr.
     /// </summary>
     public bool Cidr { get; set; }
 
     /// <summary>
-    /// Get or set the Broadcast.
+    /// Gets or sets a value indicating whether gets or sets the Broadcast.
     /// </summary>
     public bool Broadcast { get; set; }
 
     /// <summary>
-    /// Get or set the FirstUsable.
+    /// Gets or sets a value indicating whether gets or sets the FirstUsable.
     /// </summary>
     public bool FirstUsable { get; set; }
 
     /// <summary>
-    /// Get or set the LastUsable.
+    /// Gets or sets a value indicating whether gets or sets the LastUsable.
     /// </summary>
     public bool LastUsable { get; set; }
 
     /// <summary>
-    /// Get or set the Usable.
+    /// Gets or sets a value indicating whether gets or sets the Usable.
     /// </summary>
     public bool Usable { get; set; }
 
     /// <summary>
-    /// Get or set the Total.
+    /// Gets or sets a value indicating whether gets or sets the Total.
     /// </summary>
     public bool Total { get; set; }
 
     /// <summary>
-    /// Get or set the CidrParse.
+    /// Gets or sets a value indicating whether gets or sets the CidrParse.
     /// </summary>
     public CidrParseEnum CidrParse { get; set; } = CidrParseEnum.Value;
 
     /// <summary>
-    /// Get or set the CidrParsed.
+    /// Gets or sets a value indicating whether gets or sets the CidrParsed.
     /// </summary>
     public byte CidrParsed { get; set; } = 32;
 
     /// <summary>
-    /// Get or set the ContainNetwork.
+    /// Gets or sets a value indicating whether gets or sets the ContainNetwork.
     /// </summary>
     public IPNetwork2 ContainNetwork { get; set; }
 
     /// <summary>
-    /// Get or set the OverlapNetwork.
+    /// Gets or sets a value indicating whether gets or sets the OverlapNetwork.
     /// </summary>
     public IPNetwork2 OverlapNetwork { get; set; }
 
     /// <summary>
-    /// Get or set the SubtractNetwork.
+    /// Gets or sets a value indicating whether gets or sets the SubtractNetwork.
     /// </summary>
     public IPNetwork2 SubtractNetwork { get; set; }
 
     /// <summary>
-    /// Get or set the Action.
+    /// Gets or sets a value indicating whether gets or sets the Action.
     /// </summary>
     public ActionEnum Action { get; set; } = ActionEnum.PrintNetworks;
 
     /// <summary>
-    /// Get or set the SubnetCidr.
+    /// Gets or sets a value indicating whether gets or sets the SubnetCidr.
     /// </summary>
     public byte SubnetCidr { get; set; }
 
     /// <summary>
-    /// Get or set the NetworksString.
+    /// Gets or sets a value indicating whether gets or sets the NetworksString.
     /// </summary>
     public string[] NetworksString { get; set; }
 
     /// <summary>
-    /// Get or set the Networks.
+    /// Gets or sets a value indicating whether gets or sets the Networks.
     /// </summary>
     public IPNetwork2[] Networks { get; set; }
 }

@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
+using Sockets;
 
 /// <summary>
 /// Try to guess a CIDR in a ClassLess way ie. ipv4 = 32, ipv6 = 128.
@@ -22,7 +22,7 @@ public sealed class CidrClassLess : ICidrGuess
     /// <returns>true if ip was converted successfully; otherwise, false.</returns>
     public bool TryGuessCidr(string ip, out byte cidr)
     {
-        bool parsed = IPAddress.TryParse(string.Format("{0}", ip), out IPAddress ipaddress);
+        bool parsed = IPAddress.TryParse($"{ip}", out IPAddress ipaddress);
         if (parsed == false)
         {
             cidr = 0;

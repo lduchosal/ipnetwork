@@ -4,9 +4,9 @@
 
 namespace System.Net;
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
+using Collections;
+using Collections.Generic;
+using Numerics;
 
 /// <summary>
 /// Represents a collection of IP networks based on a given parent IP network and subnet CIDR.
@@ -59,7 +59,7 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
         int maxCidr = ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? 32 : 128;
         if (cidrSubnet > maxCidr)
         {
-            throw new ArgumentOutOfRangeException("cidrSubnet");
+            throw new ArgumentOutOfRangeException(nameof(cidrSubnet));
         }
 
         if (cidrSubnet < ipnetwork.Cidr)
@@ -100,7 +100,7 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
         {
             if (i >= this.Count)
             {
-                throw new ArgumentOutOfRangeException("i");
+                throw new ArgumentOutOfRangeException(nameof(i));
             }
 
             BigInteger last = this.ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetworkV6
@@ -152,7 +152,6 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     public void Dispose()
     {
         // nothing to dispose
-        return;
     }
 
     #endregion

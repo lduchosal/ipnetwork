@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using System.Runtime.Serialization;
+using Runtime.Serialization;
 
 /// <summary>
 /// IP Network utility class.
@@ -22,6 +22,6 @@ public sealed partial class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
     /// </returns>
     public override string ToString()
     {
-        return string.Format("{0}/{1}", this.Network, this.Cidr);
+        return $"{this.Network}/{this.Cidr}";
     }
 }

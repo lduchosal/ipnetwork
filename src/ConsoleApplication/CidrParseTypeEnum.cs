@@ -9,6 +9,13 @@ namespace System.Net;
 /// </summary>
 public enum CidrParseEnum
 {
+    /// <summary>
+    /// Default value,
+    /// </summary>
     Default,
+
+    /// <summary>
+    /// The other.
+    /// </summary>
     Value,
 }

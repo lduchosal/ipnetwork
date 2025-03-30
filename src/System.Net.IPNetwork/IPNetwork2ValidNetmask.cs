@@ -4,8 +4,8 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
-using System.Numerics;
+using Sockets;
+using Numerics;
 
 /// <summary>
 /// ValidNetmask.
@@ -23,11 +23,11 @@ public sealed partial class IPNetwork2
     {
         if (netmask == null)
         {
-            throw new ArgumentNullException("netmask");
+            throw new ArgumentNullException(nameof(netmask));
         }
 
-        var uintNetmask = IPNetwork2.ToBigInteger(netmask);
-        bool valid = IPNetwork2.InternalValidNetmask(uintNetmask, netmask.AddressFamily);
+        var uintNetmask = ToBigInteger(netmask);
+        bool valid = InternalValidNetmask(uintNetmask, netmask.AddressFamily);
 
         return valid;
     }
@@ -50,14 +50,13 @@ public sealed partial class IPNetwork2
 
         BigInteger mask = family == AddressFamily.InterNetwork
             ? new BigInteger(0x0ffffffff)
-            : new BigInteger(new byte[]
-            {
+            : new BigInteger([
                 0xff, 0xff, 0xff, 0xff,
                 0xff, 0xff, 0xff, 0xff,
                 0xff, 0xff, 0xff, 0xff,
                 0xff, 0xff, 0xff, 0xff,
-                0x00,
-            });
+                0x00
+            ]);
 
         BigInteger neg = (~netmask) & mask;
         bool isNetmask = ((neg + 1) & neg) == 0;

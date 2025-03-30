@@ -9,9 +9,9 @@ namespace System.Net;
 /// </summary>
 public sealed partial class IPNetwork2
 {
-    private static readonly Lazy<IPNetwork2> IanaAblockReserved = new (() => IPNetwork2.Parse("10.0.0.0/8"));
-    private static readonly Lazy<IPNetwork2> IanaBblockReserved = new (() => IPNetwork2.Parse("172.16.0.0/12"));
-    private static readonly Lazy<IPNetwork2> IanaCblockReserved = new (() => IPNetwork2.Parse("192.168.0.0/16"));
+    private static readonly Lazy<IPNetwork2> IanaAblockReserved = new (() => Parse("10.0.0.0/8"));
+    private static readonly Lazy<IPNetwork2> IanaBblockReserved = new (() => Parse("172.16.0.0/12"));
+    private static readonly Lazy<IPNetwork2> IanaCblockReserved = new (() => Parse("192.168.0.0/16"));
 
     /// <summary>
     /// Gets 10.0.0.0/8.
@@ -59,12 +59,12 @@ public sealed partial class IPNetwork2
     {
         if (ipaddress == null)
         {
-            throw new ArgumentNullException("ipaddress");
+            throw new ArgumentNullException(nameof(ipaddress));
         }
 
-        return IPNetwork2.IANA_ABLK_RESERVED1.Contains(ipaddress)
-               || IPNetwork2.IANA_BBLK_RESERVED1.Contains(ipaddress)
-               || IPNetwork2.IANA_CBLK_RESERVED1.Contains(ipaddress);
+        return IANA_ABLK_RESERVED1.Contains(ipaddress)
+               || IANA_BBLK_RESERVED1.Contains(ipaddress)
+               || IANA_CBLK_RESERVED1.Contains(ipaddress);
     }
 
     /// <summary>
@@ -87,7 +87,7 @@ public sealed partial class IPNetwork2
     {
         if (ipnetwork == null)
         {
-            throw new ArgumentNullException("ipnetwork");
+            throw new ArgumentNullException(nameof(ipnetwork));
         }
 
         return ipnetwork.IsIANAReserved();
@@ -100,8 +100,8 @@ public sealed partial class IPNetwork2
     /// <returns>true if the ipnetwork is a IANA reserverd IP Netowkr ; otherwise, false.</returns>
     public bool IsIANAReserved()
     {
-        return IPNetwork2.IANA_ABLK_RESERVED1.Contains(this)
-               || IPNetwork2.IANA_BBLK_RESERVED1.Contains(this)
-               || IPNetwork2.IANA_CBLK_RESERVED1.Contains(this);
+        return IANA_ABLK_RESERVED1.Contains(this)
+               || IANA_BBLK_RESERVED1.Contains(this)
+               || IANA_CBLK_RESERVED1.Contains(this);
     }
 }

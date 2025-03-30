@@ -22,7 +22,7 @@ public sealed partial class IPNetwork2
     {
         if (network == null)
         {
-            throw new ArgumentNullException("network");
+            throw new ArgumentNullException(nameof(network));
         }
 
         return network.Subnet(cidr);
@@ -42,7 +42,7 @@ public sealed partial class IPNetwork2
     {
         if (network == null)
         {
-            throw new ArgumentNullException("network");
+            throw new ArgumentNullException(nameof(network));
         }
 
         return network.TrySubnet(cidr, out ipnetworkCollection);
@@ -53,12 +53,12 @@ public sealed partial class IPNetwork2
     /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
     /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
     /// </summary>
-    /// <param name="cidr">A byte representing the CIDR to be used to subnet the current IPNetwork.</param>
+    /// <param name="cidr1">A byte representing the CIDR to be used to subnet the current IPNetwork.</param>
     /// <param name="ipnetworkCollection">The resulting subnetted IPNetwork.</param>
     /// <returns>true if network was split successfully; otherwise, false.</returns>
-    public bool TrySubnet(byte cidr, out IPNetworkCollection ipnetworkCollection)
+    public bool TrySubnet(byte cidr1, out IPNetworkCollection ipnetworkCollection)
     {
-        IPNetwork2.InternalSubnet(true, this, cidr, out IPNetworkCollection inc);
+        InternalSubnet(true, this, cidr1, out IPNetworkCollection inc);
         if (inc == null)
         {
             ipnetworkCollection = null;
@@ -74,11 +74,11 @@ public sealed partial class IPNetwork2
     /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
     /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
     /// </summary>
-    /// <param name="cidr">A byte representing the CIDR to be used to subnet the current IPNetwork.</param>
+    /// <param name="cidr1">A byte representing the CIDR to be used to subnet the current IPNetwork.</param>
     /// <returns>A IPNetworkCollection splitted by CIDR.</returns>
-    public IPNetworkCollection Subnet(byte cidr)
+    public IPNetworkCollection Subnet(byte cidr1)
     {
-        IPNetwork2.InternalSubnet(false, this, cidr, out IPNetworkCollection ipnetworkCollection);
+        InternalSubnet(false, this, cidr1, out IPNetworkCollection ipnetworkCollection);
 
         return ipnetworkCollection;
     }
@@ -96,7 +96,7 @@ public sealed partial class IPNetwork2
         {
             if (trySubnet == false)
             {
-                throw new ArgumentNullException("network");
+                throw new ArgumentNullException(nameof(network));
             }
 
             ipnetworkCollection = null;
@@ -108,7 +108,7 @@ public sealed partial class IPNetwork2
         {
             if (trySubnet == false)
             {
-                throw new ArgumentOutOfRangeException("cidr");
+                throw new ArgumentOutOfRangeException(nameof(cidr));
             }
 
             ipnetworkCollection = null;
@@ -127,6 +127,5 @@ public sealed partial class IPNetwork2
         }
 
         ipnetworkCollection = new IPNetworkCollection(network, cidr);
-        return;
     }
 }

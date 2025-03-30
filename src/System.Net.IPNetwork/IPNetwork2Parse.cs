@@ -46,7 +46,7 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in ipaddress/cidr.</returns>
     public static IPNetwork2 Parse(string ipaddress, byte cidr)
     {
-        IPNetwork2.InternalParse(false, ipaddress, cidr, out IPNetwork2 ipnetwork);
+        InternalParse(false, ipaddress, cidr, out IPNetwork2 ipnetwork);
         return ipnetwork;
     }
 
@@ -65,7 +65,7 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in ipaddress/netmask.</returns>
     public static IPNetwork2 Parse(IPAddress ipaddress, IPAddress netmask)
     {
-        IPNetwork2.InternalParse(false, ipaddress, netmask, out IPNetwork2 ipnetwork);
+        InternalParse(false, ipaddress, netmask, out IPNetwork2 ipnetwork);
         return ipnetwork;
     }
 
@@ -84,7 +84,7 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
     public static IPNetwork2 Parse(string network)
     {
-        IPNetwork2.InternalParse(false, network, CidrGuess.ClassFull, true, out IPNetwork2 ipnetwork);
+        InternalParse(false, network, CidrGuess.ClassFull, true, out IPNetwork2 ipnetwork);
         return ipnetwork;
     }
 
@@ -104,7 +104,7 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
     public static IPNetwork2 Parse(string network, bool sanitanize)
     {
-        IPNetwork2.InternalParse(false, network, CidrGuess.ClassFull, sanitanize, out IPNetwork2 ipnetwork);
+        InternalParse(false, network, CidrGuess.ClassFull, sanitanize, out IPNetwork2 ipnetwork);
         return ipnetwork;
     }
 
@@ -124,7 +124,7 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
     public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess)
     {
-        IPNetwork2.InternalParse(false, network, cidrGuess, true, out IPNetwork2 ipnetwork);
+        InternalParse(false, network, cidrGuess, true, out IPNetwork2 ipnetwork);
         return ipnetwork;
     }
 
@@ -145,7 +145,7 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
     public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess, bool sanitanize)
     {
-        IPNetwork2.InternalParse(false, network, cidrGuess, sanitanize, out IPNetwork2 ipnetwork);
+        InternalParse(false, network, cidrGuess, sanitanize, out IPNetwork2 ipnetwork);
         return ipnetwork;
     }
 }
