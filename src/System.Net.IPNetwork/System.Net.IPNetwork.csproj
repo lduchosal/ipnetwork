@@ -6,7 +6,6 @@
     <PackageId>IPNetwork2</PackageId>
     <PackageVersion>3.1.0</PackageVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <PackageLicenseUrl>https://github.com/lduchosal/ipnetwork/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/lduchosal/ipnetwork</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>https://github.com/lduchosal/ipnetwork/pulls?q=is%3Apr</PackageReleaseNotes>
