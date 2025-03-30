@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using Text.RegularExpressions;
+using System.Text.RegularExpressions;
 
 /// <summary>
 /// The InternalParse methodes.

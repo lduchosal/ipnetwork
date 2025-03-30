@@ -4,9 +4,9 @@
 
 namespace System.Net;
 
-using Collections;
-using Collections.Generic;
-using Numerics;
+using System.Collections;
+using System.Collections.Generic;
+using System.Numerics;
 
 /// <summary>
 /// Represents different filters for a collection of items.

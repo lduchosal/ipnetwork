@@ -4,9 +4,9 @@
 
 namespace System.Net;
 
-using Sockets;
-using Numerics;
-using Runtime.Serialization;
+using System.Net.Sockets;
+using System.Numerics;
+using System.Runtime.Serialization;
 
 /// <summary>
 /// Properties and members of IPNetwork2.

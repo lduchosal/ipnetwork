@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using Numerics;
+using System.Numerics;
 
 /// <summary>
 /// Overlap.

@@ -4,9 +4,9 @@
 
 namespace System.Net;
 
-using Collections;
-using Collections.Generic;
-using Numerics;
+using System.Collections;
+using System.Collections.Generic;
+using System.Numerics;
 
 /// <summary>
 /// Represents a collection of IP networks based on a given parent IP network and subnet CIDR.

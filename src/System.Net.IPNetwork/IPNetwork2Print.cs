@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using IO;
+using System.IO;
 
 /// <summary>
 /// Print.

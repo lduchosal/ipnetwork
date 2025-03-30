@@ -4,8 +4,8 @@
 
 namespace System.Net;
 
-using Sockets;
-using Numerics;
+using System.Net.Sockets;
+using System.Numerics;
 
 /// <summary>
 /// WideSubnet.

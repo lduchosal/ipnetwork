@@ -5,8 +5,8 @@
 namespace System.Net;
 
 using System;
-using Numerics;
-using Text;
+using System.Numerics;
+using System.Text;
 
 /// <summary>
 /// Extension methods to convert <see cref="System.Numerics.BigInteger"/>

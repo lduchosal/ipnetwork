@@ -4,11 +4,11 @@
 
 namespace System.Net;
 
-using Collections.Generic;
-using Diagnostics;
-using IO;
-using Numerics;
-using Reflection;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
+using System.Numerics;
+using System.Reflection;
 using Gnu.Getopt;
 
 /// <summary>

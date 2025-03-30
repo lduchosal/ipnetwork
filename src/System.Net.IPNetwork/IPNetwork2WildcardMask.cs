@@ -4,8 +4,8 @@
 
 namespace System.Net;
 
-using Numerics;
-using Sockets;
+using System.Numerics;
+using System.Net.Sockets;
 
 /// <summary>
 /// WildcardNetmask.
