@@ -82,6 +82,6 @@ public class IPNetworkV6ToNetmaskTests
     public void ToNetmaskOore1()
     {
         byte cidr = 129;
-        IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetworkV6).ToString();
+        IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetworkV6);
     }
 }

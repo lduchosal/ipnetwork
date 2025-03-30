@@ -38,7 +38,7 @@ public class IPNetworkTrySubnetTests
     public void TestTrySubnet1()
     {
 #pragma warning disable 0618
-        IPNetwork2.TrySubnet(null, 9, out var _);
+        IPNetwork2.TrySubnet(null, 9, out _);
 #pragma warning restore 0618
     }
 

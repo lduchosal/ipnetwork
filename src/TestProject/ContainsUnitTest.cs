@@ -43,9 +43,8 @@ public class ContainsUnitTest
     public void TestContainsAdrress(string network1, string networkOrAddress, bool expected)
     {
             var ipnetwork = IPNetwork2.Parse(network1);
-            bool result;
             var ipaddress = IPAddress.Parse(networkOrAddress);
-            result = ipnetwork.Contains(ipaddress);
+            bool result = ipnetwork.Contains(ipaddress);
 
             Assert.AreEqual(expected, result, "contains");
         }

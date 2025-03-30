@@ -13,6 +13,9 @@ public class BigIntegerBitWiseUnitTest
     /// <summary>
     /// Test.
     /// </summary>
+    /// <param name="bytes">the input bytes.</param>
+    /// <param name="reverseLength">The reverse length.</param>
+    /// <param name="expected">The expected result.</param>
     [TestMethod]
     [DataRow(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 }, 4, new byte[] { 0x0 })]
     [DataRow(new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0x00 }, 8, new byte[] { 0x0, 0x0, 0x0, 0x0, 0xFF, 0xFF, 0xFF, 0xFF, 0x0, })]
