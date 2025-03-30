@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using Collections.Generic;
+using System.Collections.Generic;
 
 /// <summary>
 /// SupernetArray.

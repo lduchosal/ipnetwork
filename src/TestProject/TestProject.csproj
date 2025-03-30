@@ -10,57 +10,16 @@
         <Version>3.1.0</Version>
         <LangVersion>latestmajor</LangVersion>
         <NoWarn>SA1010</NoWarn>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net47|AnyCPU'">
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net47|AnyCPU'">
-        <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net48|AnyCPU'">
-        <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net48|AnyCPU'">
-        <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0|AnyCPU'">
-        <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0|AnyCPU'">
-        <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net6.0|AnyCPU'">
-        <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net6.0|AnyCPU'">
-        <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|AnyCPU'">
-        <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-        <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">
-        <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
-        <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove="stylecop.json"/>
         <None Remove="TestResults\**"/>
-    </ItemGroup>
-
-    <ItemGroup>
-        <AdditionalFiles Include="stylecop.json"/>
     </ItemGroup>
 
     <ItemGroup>
@@ -74,10 +33,6 @@
         <PackageReference Include="coverlet.collector" Version="6.0.0"/>
         <PackageReference Include="Newtonsoft.Json" Version="13.0.3"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
-        <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
         <PackageReference Include="System.Collections" Version="4.3.0"/>
     </ItemGroup>
     <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
