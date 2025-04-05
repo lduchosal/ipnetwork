@@ -1,27 +1,28 @@
-#
-name: "docfx"
+name: DocFX
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ master ]
   pull_request:
-    branches: [ "master" ]
-  schedule:
-    - cron: '39 16 * * 5'
-    
+    branches: [ master ]
+
 jobs:
   generate_and_publish_docs:
     runs-on: ubuntu-latest
     name: Generate and publish the docs
     steps:
-    - uses: actions/checkout@v1
-      name: Checkout code
-    - uses: nunit/docfx-action@v2.4.0
-      name: Build Documentation
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
       with:
-        args: doc/docfx.json
+        dotnet-version: 9.0.x
+    - name: Install dependencies
+      run: dotnet tool install --global docfx
+    - name: Build Documentation
+      working-directory: ./doc
+      run: docfx docfx.json
     - uses: maxheld83/ghpages@master
       name: Publish Documentation on GitHub Pages
       env:
-        BUILD_DIR: _site # docfx's default output directory is _site
+        BUILD_DIR: doc/_site # docfx's default output directory is _site
         GH_PAT: ${{ secrets.GH_PAT }} # See https://github.com/maxheld83/ghpages
