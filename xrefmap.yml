@@ -1,0 +1,1362 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: System.Net
+  name: System.Net
+  href: api/System.Net.html
+  commentId: N:System.Net
+  fullName: System.Net
+  nameWithType: System.Net
+- uid: System.Net.BigIntegerExtensions
+  name: BigIntegerExtensions
+  href: api/System.Net.BigIntegerExtensions.html
+  commentId: T:System.Net.BigIntegerExtensions
+  fullName: System.Net.BigIntegerExtensions
+  nameWithType: BigIntegerExtensions
+- uid: System.Net.BigIntegerExtensions.PositiveReverse(System.Numerics.BigInteger,System.Int32)
+  name: PositiveReverse(BigInteger, int)
+  href: api/System.Net.BigIntegerExtensions.html#System_Net_BigIntegerExtensions_PositiveReverse_System_Numerics_BigInteger_System_Int32_
+  commentId: M:System.Net.BigIntegerExtensions.PositiveReverse(System.Numerics.BigInteger,System.Int32)
+  name.vb: PositiveReverse(BigInteger, Integer)
+  fullName: System.Net.BigIntegerExtensions.PositiveReverse(System.Numerics.BigInteger, int)
+  fullName.vb: System.Net.BigIntegerExtensions.PositiveReverse(System.Numerics.BigInteger, Integer)
+  nameWithType: BigIntegerExtensions.PositiveReverse(BigInteger, int)
+  nameWithType.vb: BigIntegerExtensions.PositiveReverse(BigInteger, Integer)
+- uid: System.Net.BigIntegerExtensions.PositiveReverse*
+  name: PositiveReverse
+  href: api/System.Net.BigIntegerExtensions.html#System_Net_BigIntegerExtensions_PositiveReverse_
+  commentId: Overload:System.Net.BigIntegerExtensions.PositiveReverse
+  isSpec: "True"
+  fullName: System.Net.BigIntegerExtensions.PositiveReverse
+  nameWithType: BigIntegerExtensions.PositiveReverse
+- uid: System.Net.BigIntegerExtensions.ToBinaryString(System.Numerics.BigInteger)
+  name: ToBinaryString(BigInteger)
+  href: api/System.Net.BigIntegerExtensions.html#System_Net_BigIntegerExtensions_ToBinaryString_System_Numerics_BigInteger_
+  commentId: M:System.Net.BigIntegerExtensions.ToBinaryString(System.Numerics.BigInteger)
+  fullName: System.Net.BigIntegerExtensions.ToBinaryString(System.Numerics.BigInteger)
+  nameWithType: BigIntegerExtensions.ToBinaryString(BigInteger)
+- uid: System.Net.BigIntegerExtensions.ToBinaryString*
+  name: ToBinaryString
+  href: api/System.Net.BigIntegerExtensions.html#System_Net_BigIntegerExtensions_ToBinaryString_
+  commentId: Overload:System.Net.BigIntegerExtensions.ToBinaryString
+  isSpec: "True"
+  fullName: System.Net.BigIntegerExtensions.ToBinaryString
+  nameWithType: BigIntegerExtensions.ToBinaryString
+- uid: System.Net.BigIntegerExtensions.ToHexadecimalString(System.Numerics.BigInteger)
+  name: ToHexadecimalString(BigInteger)
+  href: api/System.Net.BigIntegerExtensions.html#System_Net_BigIntegerExtensions_ToHexadecimalString_System_Numerics_BigInteger_
+  commentId: M:System.Net.BigIntegerExtensions.ToHexadecimalString(System.Numerics.BigInteger)
+  fullName: System.Net.BigIntegerExtensions.ToHexadecimalString(System.Numerics.BigInteger)
+  nameWithType: BigIntegerExtensions.ToHexadecimalString(BigInteger)
+- uid: System.Net.BigIntegerExtensions.ToHexadecimalString*
+  name: ToHexadecimalString
+  href: api/System.Net.BigIntegerExtensions.html#System_Net_BigIntegerExtensions_ToHexadecimalString_
+  commentId: Overload:System.Net.BigIntegerExtensions.ToHexadecimalString
+  isSpec: "True"
+  fullName: System.Net.BigIntegerExtensions.ToHexadecimalString
+  nameWithType: BigIntegerExtensions.ToHexadecimalString
+- uid: System.Net.BigIntegerExtensions.ToOctalString(System.Numerics.BigInteger)
+  name: ToOctalString(BigInteger)
+  href: api/System.Net.BigIntegerExtensions.html#System_Net_BigIntegerExtensions_ToOctalString_System_Numerics_BigInteger_
+  commentId: M:System.Net.BigIntegerExtensions.ToOctalString(System.Numerics.BigInteger)
+  fullName: System.Net.BigIntegerExtensions.ToOctalString(System.Numerics.BigInteger)
+  nameWithType: BigIntegerExtensions.ToOctalString(BigInteger)
+- uid: System.Net.BigIntegerExtensions.ToOctalString*
+  name: ToOctalString
+  href: api/System.Net.BigIntegerExtensions.html#System_Net_BigIntegerExtensions_ToOctalString_
+  commentId: Overload:System.Net.BigIntegerExtensions.ToOctalString
+  isSpec: "True"
+  fullName: System.Net.BigIntegerExtensions.ToOctalString
+  nameWithType: BigIntegerExtensions.ToOctalString
+- uid: System.Net.CidrClassFull
+  name: CidrClassFull
+  href: api/System.Net.CidrClassFull.html
+  commentId: T:System.Net.CidrClassFull
+  fullName: System.Net.CidrClassFull
+  nameWithType: CidrClassFull
+- uid: System.Net.CidrClassFull.TryGuessCidr(System.String,System.Byte@)
+  name: TryGuessCidr(string, out byte)
+  href: api/System.Net.CidrClassFull.html#System_Net_CidrClassFull_TryGuessCidr_System_String_System_Byte__
+  commentId: M:System.Net.CidrClassFull.TryGuessCidr(System.String,System.Byte@)
+  name.vb: TryGuessCidr(String, Byte)
+  fullName: System.Net.CidrClassFull.TryGuessCidr(string, out byte)
+  fullName.vb: System.Net.CidrClassFull.TryGuessCidr(String, Byte)
+  nameWithType: CidrClassFull.TryGuessCidr(string, out byte)
+  nameWithType.vb: CidrClassFull.TryGuessCidr(String, Byte)
+- uid: System.Net.CidrClassFull.TryGuessCidr*
+  name: TryGuessCidr
+  href: api/System.Net.CidrClassFull.html#System_Net_CidrClassFull_TryGuessCidr_
+  commentId: Overload:System.Net.CidrClassFull.TryGuessCidr
+  isSpec: "True"
+  fullName: System.Net.CidrClassFull.TryGuessCidr
+  nameWithType: CidrClassFull.TryGuessCidr
+- uid: System.Net.CidrClassLess
+  name: CidrClassLess
+  href: api/System.Net.CidrClassLess.html
+  commentId: T:System.Net.CidrClassLess
+  fullName: System.Net.CidrClassLess
+  nameWithType: CidrClassLess
+- uid: System.Net.CidrClassLess.TryGuessCidr(System.String,System.Byte@)
+  name: TryGuessCidr(string, out byte)
+  href: api/System.Net.CidrClassLess.html#System_Net_CidrClassLess_TryGuessCidr_System_String_System_Byte__
+  commentId: M:System.Net.CidrClassLess.TryGuessCidr(System.String,System.Byte@)
+  name.vb: TryGuessCidr(String, Byte)
+  fullName: System.Net.CidrClassLess.TryGuessCidr(string, out byte)
+  fullName.vb: System.Net.CidrClassLess.TryGuessCidr(String, Byte)
+  nameWithType: CidrClassLess.TryGuessCidr(string, out byte)
+  nameWithType.vb: CidrClassLess.TryGuessCidr(String, Byte)
+- uid: System.Net.CidrClassLess.TryGuessCidr*
+  name: TryGuessCidr
+  href: api/System.Net.CidrClassLess.html#System_Net_CidrClassLess_TryGuessCidr_
+  commentId: Overload:System.Net.CidrClassLess.TryGuessCidr
+  isSpec: "True"
+  fullName: System.Net.CidrClassLess.TryGuessCidr
+  nameWithType: CidrClassLess.TryGuessCidr
+- uid: System.Net.CidrGuess
+  name: CidrGuess
+  href: api/System.Net.CidrGuess.html
+  commentId: T:System.Net.CidrGuess
+  fullName: System.Net.CidrGuess
+  nameWithType: CidrGuess
+- uid: System.Net.CidrGuess.ClassFull
+  name: ClassFull
+  href: api/System.Net.CidrGuess.html#System_Net_CidrGuess_ClassFull
+  commentId: P:System.Net.CidrGuess.ClassFull
+  fullName: System.Net.CidrGuess.ClassFull
+  nameWithType: CidrGuess.ClassFull
+- uid: System.Net.CidrGuess.ClassFull*
+  name: ClassFull
+  href: api/System.Net.CidrGuess.html#System_Net_CidrGuess_ClassFull_
+  commentId: Overload:System.Net.CidrGuess.ClassFull
+  isSpec: "True"
+  fullName: System.Net.CidrGuess.ClassFull
+  nameWithType: CidrGuess.ClassFull
+- uid: System.Net.CidrGuess.ClassLess
+  name: ClassLess
+  href: api/System.Net.CidrGuess.html#System_Net_CidrGuess_ClassLess
+  commentId: P:System.Net.CidrGuess.ClassLess
+  fullName: System.Net.CidrGuess.ClassLess
+  nameWithType: CidrGuess.ClassLess
+- uid: System.Net.CidrGuess.ClassLess*
+  name: ClassLess
+  href: api/System.Net.CidrGuess.html#System_Net_CidrGuess_ClassLess_
+  commentId: Overload:System.Net.CidrGuess.ClassLess
+  isSpec: "True"
+  fullName: System.Net.CidrGuess.ClassLess
+  nameWithType: CidrGuess.ClassLess
+- uid: System.Net.FilterEnum
+  name: FilterEnum
+  href: api/System.Net.FilterEnum.html
+  commentId: T:System.Net.FilterEnum
+  fullName: System.Net.FilterEnum
+  nameWithType: FilterEnum
+- uid: System.Net.FilterEnum.All
+  name: All
+  href: api/System.Net.FilterEnum.html#System_Net_FilterEnum_All
+  commentId: F:System.Net.FilterEnum.All
+  fullName: System.Net.FilterEnum.All
+  nameWithType: FilterEnum.All
+- uid: System.Net.FilterEnum.Usable
+  name: Usable
+  href: api/System.Net.FilterEnum.html#System_Net_FilterEnum_Usable
+  commentId: F:System.Net.FilterEnum.Usable
+  fullName: System.Net.FilterEnum.Usable
+  nameWithType: FilterEnum.Usable
+- uid: System.Net.ICidrGuess
+  name: ICidrGuess
+  href: api/System.Net.ICidrGuess.html
+  commentId: T:System.Net.ICidrGuess
+  fullName: System.Net.ICidrGuess
+  nameWithType: ICidrGuess
+- uid: System.Net.ICidrGuess.TryGuessCidr(System.String,System.Byte@)
+  name: TryGuessCidr(string, out byte)
+  href: api/System.Net.ICidrGuess.html#System_Net_ICidrGuess_TryGuessCidr_System_String_System_Byte__
+  commentId: M:System.Net.ICidrGuess.TryGuessCidr(System.String,System.Byte@)
+  name.vb: TryGuessCidr(String, Byte)
+  fullName: System.Net.ICidrGuess.TryGuessCidr(string, out byte)
+  fullName.vb: System.Net.ICidrGuess.TryGuessCidr(String, Byte)
+  nameWithType: ICidrGuess.TryGuessCidr(string, out byte)
+  nameWithType.vb: ICidrGuess.TryGuessCidr(String, Byte)
+- uid: System.Net.ICidrGuess.TryGuessCidr*
+  name: TryGuessCidr
+  href: api/System.Net.ICidrGuess.html#System_Net_ICidrGuess_TryGuessCidr_
+  commentId: Overload:System.Net.ICidrGuess.TryGuessCidr
+  isSpec: "True"
+  fullName: System.Net.ICidrGuess.TryGuessCidr
+  nameWithType: ICidrGuess.TryGuessCidr
+- uid: System.Net.IPAddressCollection
+  name: IPAddressCollection
+  href: api/System.Net.IPAddressCollection.html
+  commentId: T:System.Net.IPAddressCollection
+  fullName: System.Net.IPAddressCollection
+  nameWithType: IPAddressCollection
+- uid: System.Net.IPAddressCollection.Count
+  name: Count
+  href: api/System.Net.IPAddressCollection.html#System_Net_IPAddressCollection_Count
+  commentId: P:System.Net.IPAddressCollection.Count
+  fullName: System.Net.IPAddressCollection.Count
+  nameWithType: IPAddressCollection.Count
+- uid: System.Net.IPAddressCollection.Count*
+  name: Count
+  href: api/System.Net.IPAddressCollection.html#System_Net_IPAddressCollection_Count_
+  commentId: Overload:System.Net.IPAddressCollection.Count
+  isSpec: "True"
+  fullName: System.Net.IPAddressCollection.Count
+  nameWithType: IPAddressCollection.Count
+- uid: System.Net.IPAddressCollection.Current
+  name: Current
+  href: api/System.Net.IPAddressCollection.html#System_Net_IPAddressCollection_Current
+  commentId: P:System.Net.IPAddressCollection.Current
+  fullName: System.Net.IPAddressCollection.Current
+  nameWithType: IPAddressCollection.Current
+- uid: System.Net.IPAddressCollection.Current*
+  name: Current
+  href: api/System.Net.IPAddressCollection.html#System_Net_IPAddressCollection_Current_
+  commentId: Overload:System.Net.IPAddressCollection.Current
+  isSpec: "True"
+  fullName: System.Net.IPAddressCollection.Current
+  nameWithType: IPAddressCollection.Current
+- uid: System.Net.IPAddressCollection.Dispose
+  name: Dispose()
+  href: api/System.Net.IPAddressCollection.html#System_Net_IPAddressCollection_Dispose
+  commentId: M:System.Net.IPAddressCollection.Dispose
+  fullName: System.Net.IPAddressCollection.Dispose()
+  nameWithType: IPAddressCollection.Dispose()
+- uid: System.Net.IPAddressCollection.Dispose*
+  name: Dispose
+  href: api/System.Net.IPAddressCollection.html#System_Net_IPAddressCollection_Dispose_
+  commentId: Overload:System.Net.IPAddressCollection.Dispose
+  isSpec: "True"
+  fullName: System.Net.IPAddressCollection.Dispose
+  nameWithType: IPAddressCollection.Dispose
+- uid: System.Net.IPAddressCollection.Item(System.Numerics.BigInteger)
+  name: this[BigInteger]
+  href: api/System.Net.IPAddressCollection.html#System_Net_IPAddressCollection_Item_System_Numerics_BigInteger_
+  commentId: P:System.Net.IPAddressCollection.Item(System.Numerics.BigInteger)
+  name.vb: this[](BigInteger)
+  fullName: System.Net.IPAddressCollection.this[System.Numerics.BigInteger]
+  fullName.vb: System.Net.IPAddressCollection.this[](System.Numerics.BigInteger)
+  nameWithType: IPAddressCollection.this[BigInteger]
+  nameWithType.vb: IPAddressCollection.this[](BigInteger)
+- uid: System.Net.IPAddressCollection.Item*
+  name: this
+  href: api/System.Net.IPAddressCollection.html#System_Net_IPAddressCollection_Item_
+  commentId: Overload:System.Net.IPAddressCollection.Item
+  isSpec: "True"
+  name.vb: this[]
+  fullName: System.Net.IPAddressCollection.this
+  fullName.vb: System.Net.IPAddressCollection.this[]
+  nameWithType: IPAddressCollection.this
+  nameWithType.vb: IPAddressCollection.this[]
+- uid: System.Net.IPAddressCollection.MoveNext
+  name: MoveNext()
+  href: api/System.Net.IPAddressCollection.html#System_Net_IPAddressCollection_MoveNext
+  commentId: M:System.Net.IPAddressCollection.MoveNext
+  fullName: System.Net.IPAddressCollection.MoveNext()
+  nameWithType: IPAddressCollection.MoveNext()
+- uid: System.Net.IPAddressCollection.MoveNext*
+  name: MoveNext
+  href: api/System.Net.IPAddressCollection.html#System_Net_IPAddressCollection_MoveNext_
+  commentId: Overload:System.Net.IPAddressCollection.MoveNext
+  isSpec: "True"
+  fullName: System.Net.IPAddressCollection.MoveNext
+  nameWithType: IPAddressCollection.MoveNext
+- uid: System.Net.IPAddressCollection.Reset
+  name: Reset()
+  href: api/System.Net.IPAddressCollection.html#System_Net_IPAddressCollection_Reset
+  commentId: M:System.Net.IPAddressCollection.Reset
+  fullName: System.Net.IPAddressCollection.Reset()
+  nameWithType: IPAddressCollection.Reset()
+- uid: System.Net.IPAddressCollection.Reset*
+  name: Reset
+  href: api/System.Net.IPAddressCollection.html#System_Net_IPAddressCollection_Reset_
+  commentId: Overload:System.Net.IPAddressCollection.Reset
+  isSpec: "True"
+  fullName: System.Net.IPAddressCollection.Reset
+  nameWithType: IPAddressCollection.Reset
+- uid: System.Net.IPAddressExtensions
+  name: IPAddressExtensions
+  href: api/System.Net.IPAddressExtensions.html
+  commentId: T:System.Net.IPAddressExtensions
+  fullName: System.Net.IPAddressExtensions
+  nameWithType: IPAddressExtensions
+- uid: System.Net.IPAddressExtensions.AsIPNetwork(System.Net.IPAddress)
+  name: AsIPNetwork(IPAddress)
+  href: api/System.Net.IPAddressExtensions.html#System_Net_IPAddressExtensions_AsIPNetwork_System_Net_IPAddress_
+  commentId: M:System.Net.IPAddressExtensions.AsIPNetwork(System.Net.IPAddress)
+  fullName: System.Net.IPAddressExtensions.AsIPNetwork(System.Net.IPAddress)
+  nameWithType: IPAddressExtensions.AsIPNetwork(IPAddress)
+- uid: System.Net.IPAddressExtensions.AsIPNetwork*
+  name: AsIPNetwork
+  href: api/System.Net.IPAddressExtensions.html#System_Net_IPAddressExtensions_AsIPNetwork_
+  commentId: Overload:System.Net.IPAddressExtensions.AsIPNetwork
+  isSpec: "True"
+  fullName: System.Net.IPAddressExtensions.AsIPNetwork
+  nameWithType: IPAddressExtensions.AsIPNetwork
+- uid: System.Net.IPNetwork2
+  name: IPNetwork2
+  href: api/System.Net.IPNetwork2.html
+  commentId: T:System.Net.IPNetwork2
+  fullName: System.Net.IPNetwork2
+  nameWithType: IPNetwork2
+- uid: System.Net.IPNetwork2.#ctor
+  name: IPNetwork2()
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2__ctor
+  commentId: M:System.Net.IPNetwork2.#ctor
+  name.vb: New()
+  fullName: System.Net.IPNetwork2.IPNetwork2()
+  fullName.vb: System.Net.IPNetwork2.New()
+  nameWithType: IPNetwork2.IPNetwork2()
+  nameWithType.vb: IPNetwork2.New()
+- uid: System.Net.IPNetwork2.#ctor(System.Net.IPAddress,System.Byte)
+  name: IPNetwork2(IPAddress, byte)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2__ctor_System_Net_IPAddress_System_Byte_
+  commentId: M:System.Net.IPNetwork2.#ctor(System.Net.IPAddress,System.Byte)
+  name.vb: New(IPAddress, Byte)
+  fullName: System.Net.IPNetwork2.IPNetwork2(System.Net.IPAddress, byte)
+  fullName.vb: System.Net.IPNetwork2.New(System.Net.IPAddress, Byte)
+  nameWithType: IPNetwork2.IPNetwork2(IPAddress, byte)
+  nameWithType.vb: IPNetwork2.New(IPAddress, Byte)
+- uid: System.Net.IPNetwork2.#ctor*
+  name: IPNetwork2
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2__ctor_
+  commentId: Overload:System.Net.IPNetwork2.#ctor
+  isSpec: "True"
+  name.vb: New
+  fullName: System.Net.IPNetwork2.IPNetwork2
+  fullName.vb: System.Net.IPNetwork2.New
+  nameWithType: IPNetwork2.IPNetwork2
+  nameWithType.vb: IPNetwork2.New
+- uid: System.Net.IPNetwork2.AddressFamily
+  name: AddressFamily
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_AddressFamily
+  commentId: P:System.Net.IPNetwork2.AddressFamily
+  fullName: System.Net.IPNetwork2.AddressFamily
+  nameWithType: IPNetwork2.AddressFamily
+- uid: System.Net.IPNetwork2.AddressFamily*
+  name: AddressFamily
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_AddressFamily_
+  commentId: Overload:System.Net.IPNetwork2.AddressFamily
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.AddressFamily
+  nameWithType: IPNetwork2.AddressFamily
+- uid: System.Net.IPNetwork2.BitsSet(System.Net.IPAddress)
+  name: BitsSet(IPAddress)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_BitsSet_System_Net_IPAddress_
+  commentId: M:System.Net.IPNetwork2.BitsSet(System.Net.IPAddress)
+  fullName: System.Net.IPNetwork2.BitsSet(System.Net.IPAddress)
+  nameWithType: IPNetwork2.BitsSet(IPAddress)
+- uid: System.Net.IPNetwork2.BitsSet*
+  name: BitsSet
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_BitsSet_
+  commentId: Overload:System.Net.IPNetwork2.BitsSet
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.BitsSet
+  nameWithType: IPNetwork2.BitsSet
+- uid: System.Net.IPNetwork2.Broadcast
+  name: Broadcast
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Broadcast
+  commentId: P:System.Net.IPNetwork2.Broadcast
+  fullName: System.Net.IPNetwork2.Broadcast
+  nameWithType: IPNetwork2.Broadcast
+- uid: System.Net.IPNetwork2.Broadcast*
+  name: Broadcast
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Broadcast_
+  commentId: Overload:System.Net.IPNetwork2.Broadcast
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Broadcast
+  nameWithType: IPNetwork2.Broadcast
+- uid: System.Net.IPNetwork2.Cidr
+  name: Cidr
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Cidr
+  commentId: P:System.Net.IPNetwork2.Cidr
+  fullName: System.Net.IPNetwork2.Cidr
+  nameWithType: IPNetwork2.Cidr
+- uid: System.Net.IPNetwork2.Cidr*
+  name: Cidr
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Cidr_
+  commentId: Overload:System.Net.IPNetwork2.Cidr
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Cidr
+  nameWithType: IPNetwork2.Cidr
+- uid: System.Net.IPNetwork2.Compare(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name: Compare(IPNetwork2, IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Compare_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.Compare(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.Compare(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.Compare(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.Compare*
+  name: Compare
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Compare_
+  commentId: Overload:System.Net.IPNetwork2.Compare
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Compare
+  nameWithType: IPNetwork2.Compare
+- uid: System.Net.IPNetwork2.CompareTo(System.Net.IPNetwork2)
+  name: CompareTo(IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_CompareTo_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.CompareTo(System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.CompareTo(System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.CompareTo(IPNetwork2)
+- uid: System.Net.IPNetwork2.CompareTo(System.Object)
+  name: CompareTo(object)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_CompareTo_System_Object_
+  commentId: M:System.Net.IPNetwork2.CompareTo(System.Object)
+  name.vb: CompareTo(Object)
+  fullName: System.Net.IPNetwork2.CompareTo(object)
+  fullName.vb: System.Net.IPNetwork2.CompareTo(Object)
+  nameWithType: IPNetwork2.CompareTo(object)
+  nameWithType.vb: IPNetwork2.CompareTo(Object)
+- uid: System.Net.IPNetwork2.CompareTo*
+  name: CompareTo
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_CompareTo_
+  commentId: Overload:System.Net.IPNetwork2.CompareTo
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.CompareTo
+  nameWithType: IPNetwork2.CompareTo
+- uid: System.Net.IPNetwork2.Contains(System.Net.IPAddress)
+  name: Contains(IPAddress)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Contains_System_Net_IPAddress_
+  commentId: M:System.Net.IPNetwork2.Contains(System.Net.IPAddress)
+  fullName: System.Net.IPNetwork2.Contains(System.Net.IPAddress)
+  nameWithType: IPNetwork2.Contains(IPAddress)
+- uid: System.Net.IPNetwork2.Contains(System.Net.IPNetwork2)
+  name: Contains(IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Contains_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.Contains(System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.Contains(System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.Contains(IPNetwork2)
+- uid: System.Net.IPNetwork2.Contains(System.Net.IPNetwork2,System.Net.IPAddress)
+  name: Contains(IPNetwork2, IPAddress)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Contains_System_Net_IPNetwork2_System_Net_IPAddress_
+  commentId: M:System.Net.IPNetwork2.Contains(System.Net.IPNetwork2,System.Net.IPAddress)
+  fullName: System.Net.IPNetwork2.Contains(System.Net.IPNetwork2, System.Net.IPAddress)
+  nameWithType: IPNetwork2.Contains(IPNetwork2, IPAddress)
+- uid: System.Net.IPNetwork2.Contains(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name: Contains(IPNetwork2, IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Contains_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.Contains(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.Contains(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.Contains(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.Contains*
+  name: Contains
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Contains_
+  commentId: Overload:System.Net.IPNetwork2.Contains
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Contains
+  nameWithType: IPNetwork2.Contains
+- uid: System.Net.IPNetwork2.Equals(System.Net.IPNetwork2)
+  name: Equals(IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Equals_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.Equals(System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.Equals(System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.Equals(IPNetwork2)
+- uid: System.Net.IPNetwork2.Equals(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name: Equals(IPNetwork2, IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Equals_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.Equals(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.Equals(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.Equals(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.Equals(System.Object)
+  name: Equals(object)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Equals_System_Object_
+  commentId: M:System.Net.IPNetwork2.Equals(System.Object)
+  name.vb: Equals(Object)
+  fullName: System.Net.IPNetwork2.Equals(object)
+  fullName.vb: System.Net.IPNetwork2.Equals(Object)
+  nameWithType: IPNetwork2.Equals(object)
+  nameWithType.vb: IPNetwork2.Equals(Object)
+- uid: System.Net.IPNetwork2.Equals*
+  name: Equals
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Equals_
+  commentId: Overload:System.Net.IPNetwork2.Equals
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Equals
+  nameWithType: IPNetwork2.Equals
+- uid: System.Net.IPNetwork2.FirstUsable
+  name: FirstUsable
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_FirstUsable
+  commentId: P:System.Net.IPNetwork2.FirstUsable
+  fullName: System.Net.IPNetwork2.FirstUsable
+  nameWithType: IPNetwork2.FirstUsable
+- uid: System.Net.IPNetwork2.FirstUsable*
+  name: FirstUsable
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_FirstUsable_
+  commentId: Overload:System.Net.IPNetwork2.FirstUsable
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.FirstUsable
+  nameWithType: IPNetwork2.FirstUsable
+- uid: System.Net.IPNetwork2.GetHashCode
+  name: GetHashCode()
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_GetHashCode
+  commentId: M:System.Net.IPNetwork2.GetHashCode
+  fullName: System.Net.IPNetwork2.GetHashCode()
+  nameWithType: IPNetwork2.GetHashCode()
+- uid: System.Net.IPNetwork2.GetHashCode*
+  name: GetHashCode
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_GetHashCode_
+  commentId: Overload:System.Net.IPNetwork2.GetHashCode
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.GetHashCode
+  nameWithType: IPNetwork2.GetHashCode
+- uid: System.Net.IPNetwork2.IANA_ABLK_RESERVED1
+  name: IANA_ABLK_RESERVED1
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_IANA_ABLK_RESERVED1
+  commentId: P:System.Net.IPNetwork2.IANA_ABLK_RESERVED1
+  fullName: System.Net.IPNetwork2.IANA_ABLK_RESERVED1
+  nameWithType: IPNetwork2.IANA_ABLK_RESERVED1
+- uid: System.Net.IPNetwork2.IANA_ABLK_RESERVED1*
+  name: IANA_ABLK_RESERVED1
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_IANA_ABLK_RESERVED1_
+  commentId: Overload:System.Net.IPNetwork2.IANA_ABLK_RESERVED1
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.IANA_ABLK_RESERVED1
+  nameWithType: IPNetwork2.IANA_ABLK_RESERVED1
+- uid: System.Net.IPNetwork2.IANA_BBLK_RESERVED1
+  name: IANA_BBLK_RESERVED1
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_IANA_BBLK_RESERVED1
+  commentId: P:System.Net.IPNetwork2.IANA_BBLK_RESERVED1
+  fullName: System.Net.IPNetwork2.IANA_BBLK_RESERVED1
+  nameWithType: IPNetwork2.IANA_BBLK_RESERVED1
+- uid: System.Net.IPNetwork2.IANA_BBLK_RESERVED1*
+  name: IANA_BBLK_RESERVED1
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_IANA_BBLK_RESERVED1_
+  commentId: Overload:System.Net.IPNetwork2.IANA_BBLK_RESERVED1
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.IANA_BBLK_RESERVED1
+  nameWithType: IPNetwork2.IANA_BBLK_RESERVED1
+- uid: System.Net.IPNetwork2.IANA_CBLK_RESERVED1
+  name: IANA_CBLK_RESERVED1
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_IANA_CBLK_RESERVED1
+  commentId: P:System.Net.IPNetwork2.IANA_CBLK_RESERVED1
+  fullName: System.Net.IPNetwork2.IANA_CBLK_RESERVED1
+  nameWithType: IPNetwork2.IANA_CBLK_RESERVED1
+- uid: System.Net.IPNetwork2.IANA_CBLK_RESERVED1*
+  name: IANA_CBLK_RESERVED1
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_IANA_CBLK_RESERVED1_
+  commentId: Overload:System.Net.IPNetwork2.IANA_CBLK_RESERVED1
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.IANA_CBLK_RESERVED1
+  nameWithType: IPNetwork2.IANA_CBLK_RESERVED1
+- uid: System.Net.IPNetwork2.IsIANAReserved
+  name: IsIANAReserved()
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_IsIANAReserved
+  commentId: M:System.Net.IPNetwork2.IsIANAReserved
+  fullName: System.Net.IPNetwork2.IsIANAReserved()
+  nameWithType: IPNetwork2.IsIANAReserved()
+- uid: System.Net.IPNetwork2.IsIANAReserved(System.Net.IPAddress)
+  name: IsIANAReserved(IPAddress)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_IsIANAReserved_System_Net_IPAddress_
+  commentId: M:System.Net.IPNetwork2.IsIANAReserved(System.Net.IPAddress)
+  fullName: System.Net.IPNetwork2.IsIANAReserved(System.Net.IPAddress)
+  nameWithType: IPNetwork2.IsIANAReserved(IPAddress)
+- uid: System.Net.IPNetwork2.IsIANAReserved(System.Net.IPNetwork2)
+  name: IsIANAReserved(IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_IsIANAReserved_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.IsIANAReserved(System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.IsIANAReserved(System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.IsIANAReserved(IPNetwork2)
+- uid: System.Net.IPNetwork2.IsIANAReserved*
+  name: IsIANAReserved
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_IsIANAReserved_
+  commentId: Overload:System.Net.IPNetwork2.IsIANAReserved
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.IsIANAReserved
+  nameWithType: IPNetwork2.IsIANAReserved
+- uid: System.Net.IPNetwork2.LastUsable
+  name: LastUsable
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_LastUsable
+  commentId: P:System.Net.IPNetwork2.LastUsable
+  fullName: System.Net.IPNetwork2.LastUsable
+  nameWithType: IPNetwork2.LastUsable
+- uid: System.Net.IPNetwork2.LastUsable*
+  name: LastUsable
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_LastUsable_
+  commentId: Overload:System.Net.IPNetwork2.LastUsable
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.LastUsable
+  nameWithType: IPNetwork2.LastUsable
+- uid: System.Net.IPNetwork2.ListIPAddress(System.Net.FilterEnum)
+  name: ListIPAddress(FilterEnum)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ListIPAddress_System_Net_FilterEnum_
+  commentId: M:System.Net.IPNetwork2.ListIPAddress(System.Net.FilterEnum)
+  fullName: System.Net.IPNetwork2.ListIPAddress(System.Net.FilterEnum)
+  nameWithType: IPNetwork2.ListIPAddress(FilterEnum)
+- uid: System.Net.IPNetwork2.ListIPAddress(System.Net.IPNetwork2)
+  name: ListIPAddress(IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ListIPAddress_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.ListIPAddress(System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.ListIPAddress(System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.ListIPAddress(IPNetwork2)
+- uid: System.Net.IPNetwork2.ListIPAddress*
+  name: ListIPAddress
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ListIPAddress_
+  commentId: Overload:System.Net.IPNetwork2.ListIPAddress
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.ListIPAddress
+  nameWithType: IPNetwork2.ListIPAddress
+- uid: System.Net.IPNetwork2.Netmask
+  name: Netmask
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Netmask
+  commentId: P:System.Net.IPNetwork2.Netmask
+  fullName: System.Net.IPNetwork2.Netmask
+  nameWithType: IPNetwork2.Netmask
+- uid: System.Net.IPNetwork2.Netmask*
+  name: Netmask
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Netmask_
+  commentId: Overload:System.Net.IPNetwork2.Netmask
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Netmask
+  nameWithType: IPNetwork2.Netmask
+- uid: System.Net.IPNetwork2.Network
+  name: Network
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Network
+  commentId: P:System.Net.IPNetwork2.Network
+  fullName: System.Net.IPNetwork2.Network
+  nameWithType: IPNetwork2.Network
+- uid: System.Net.IPNetwork2.Network*
+  name: Network
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Network_
+  commentId: Overload:System.Net.IPNetwork2.Network
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Network
+  nameWithType: IPNetwork2.Network
+- uid: System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2)
+  name: Overlap(IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Overlap_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.Overlap(IPNetwork2)
+- uid: System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name: Overlap(IPNetwork2, IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Overlap_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.Overlap(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.Overlap*
+  name: Overlap
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Overlap_
+  commentId: Overload:System.Net.IPNetwork2.Overlap
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Overlap
+  nameWithType: IPNetwork2.Overlap
+- uid: System.Net.IPNetwork2.Parse(System.Net.IPAddress,System.Net.IPAddress)
+  name: Parse(IPAddress, IPAddress)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Parse_System_Net_IPAddress_System_Net_IPAddress_
+  commentId: M:System.Net.IPNetwork2.Parse(System.Net.IPAddress,System.Net.IPAddress)
+  fullName: System.Net.IPNetwork2.Parse(System.Net.IPAddress, System.Net.IPAddress)
+  nameWithType: IPNetwork2.Parse(IPAddress, IPAddress)
+- uid: System.Net.IPNetwork2.Parse(System.String)
+  name: Parse(string)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Parse_System_String_
+  commentId: M:System.Net.IPNetwork2.Parse(System.String)
+  name.vb: Parse(String)
+  fullName: System.Net.IPNetwork2.Parse(string)
+  fullName.vb: System.Net.IPNetwork2.Parse(String)
+  nameWithType: IPNetwork2.Parse(string)
+  nameWithType.vb: IPNetwork2.Parse(String)
+- uid: System.Net.IPNetwork2.Parse(System.String,System.Boolean)
+  name: Parse(string, bool)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Parse_System_String_System_Boolean_
+  commentId: M:System.Net.IPNetwork2.Parse(System.String,System.Boolean)
+  name.vb: Parse(String, Boolean)
+  fullName: System.Net.IPNetwork2.Parse(string, bool)
+  fullName.vb: System.Net.IPNetwork2.Parse(String, Boolean)
+  nameWithType: IPNetwork2.Parse(string, bool)
+  nameWithType.vb: IPNetwork2.Parse(String, Boolean)
+- uid: System.Net.IPNetwork2.Parse(System.String,System.Byte)
+  name: Parse(string, byte)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Parse_System_String_System_Byte_
+  commentId: M:System.Net.IPNetwork2.Parse(System.String,System.Byte)
+  name.vb: Parse(String, Byte)
+  fullName: System.Net.IPNetwork2.Parse(string, byte)
+  fullName.vb: System.Net.IPNetwork2.Parse(String, Byte)
+  nameWithType: IPNetwork2.Parse(string, byte)
+  nameWithType.vb: IPNetwork2.Parse(String, Byte)
+- uid: System.Net.IPNetwork2.Parse(System.String,System.Net.ICidrGuess)
+  name: Parse(string, ICidrGuess)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Parse_System_String_System_Net_ICidrGuess_
+  commentId: M:System.Net.IPNetwork2.Parse(System.String,System.Net.ICidrGuess)
+  name.vb: Parse(String, ICidrGuess)
+  fullName: System.Net.IPNetwork2.Parse(string, System.Net.ICidrGuess)
+  fullName.vb: System.Net.IPNetwork2.Parse(String, System.Net.ICidrGuess)
+  nameWithType: IPNetwork2.Parse(string, ICidrGuess)
+  nameWithType.vb: IPNetwork2.Parse(String, ICidrGuess)
+- uid: System.Net.IPNetwork2.Parse(System.String,System.Net.ICidrGuess,System.Boolean)
+  name: Parse(string, ICidrGuess, bool)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Parse_System_String_System_Net_ICidrGuess_System_Boolean_
+  commentId: M:System.Net.IPNetwork2.Parse(System.String,System.Net.ICidrGuess,System.Boolean)
+  name.vb: Parse(String, ICidrGuess, Boolean)
+  fullName: System.Net.IPNetwork2.Parse(string, System.Net.ICidrGuess, bool)
+  fullName.vb: System.Net.IPNetwork2.Parse(String, System.Net.ICidrGuess, Boolean)
+  nameWithType: IPNetwork2.Parse(string, ICidrGuess, bool)
+  nameWithType.vb: IPNetwork2.Parse(String, ICidrGuess, Boolean)
+- uid: System.Net.IPNetwork2.Parse(System.String,System.String)
+  name: Parse(string, string)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Parse_System_String_System_String_
+  commentId: M:System.Net.IPNetwork2.Parse(System.String,System.String)
+  name.vb: Parse(String, String)
+  fullName: System.Net.IPNetwork2.Parse(string, string)
+  fullName.vb: System.Net.IPNetwork2.Parse(String, String)
+  nameWithType: IPNetwork2.Parse(string, string)
+  nameWithType.vb: IPNetwork2.Parse(String, String)
+- uid: System.Net.IPNetwork2.Parse*
+  name: Parse
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Parse_
+  commentId: Overload:System.Net.IPNetwork2.Parse
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Parse
+  nameWithType: IPNetwork2.Parse
+- uid: System.Net.IPNetwork2.Print
+  name: Print()
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Print
+  commentId: M:System.Net.IPNetwork2.Print
+  fullName: System.Net.IPNetwork2.Print()
+  nameWithType: IPNetwork2.Print()
+- uid: System.Net.IPNetwork2.Print(System.Net.IPNetwork2)
+  name: Print(IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Print_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.Print(System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.Print(System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.Print(IPNetwork2)
+- uid: System.Net.IPNetwork2.Print*
+  name: Print
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Print_
+  commentId: Overload:System.Net.IPNetwork2.Print
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Print
+  nameWithType: IPNetwork2.Print
+- uid: System.Net.IPNetwork2.Subnet(System.Byte)
+  name: Subnet(byte)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Subnet_System_Byte_
+  commentId: M:System.Net.IPNetwork2.Subnet(System.Byte)
+  name.vb: Subnet(Byte)
+  fullName: System.Net.IPNetwork2.Subnet(byte)
+  fullName.vb: System.Net.IPNetwork2.Subnet(Byte)
+  nameWithType: IPNetwork2.Subnet(byte)
+  nameWithType.vb: IPNetwork2.Subnet(Byte)
+- uid: System.Net.IPNetwork2.Subnet(System.Net.IPNetwork2,System.Byte)
+  name: Subnet(IPNetwork2, byte)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Subnet_System_Net_IPNetwork2_System_Byte_
+  commentId: M:System.Net.IPNetwork2.Subnet(System.Net.IPNetwork2,System.Byte)
+  name.vb: Subnet(IPNetwork2, Byte)
+  fullName: System.Net.IPNetwork2.Subnet(System.Net.IPNetwork2, byte)
+  fullName.vb: System.Net.IPNetwork2.Subnet(System.Net.IPNetwork2, Byte)
+  nameWithType: IPNetwork2.Subnet(IPNetwork2, byte)
+  nameWithType.vb: IPNetwork2.Subnet(IPNetwork2, Byte)
+- uid: System.Net.IPNetwork2.Subnet*
+  name: Subnet
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Subnet_
+  commentId: Overload:System.Net.IPNetwork2.Subnet
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Subnet
+  nameWithType: IPNetwork2.Subnet
+- uid: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2)
+  name: Supernet(IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Supernet_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.Supernet(IPNetwork2)
+- uid: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name: Supernet(IPNetwork2, IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Supernet_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  fullName: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.Supernet(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2[])
+  name: Supernet(IPNetwork2[])
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Supernet_System_Net_IPNetwork2___
+  commentId: M:System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2[])
+  name.vb: Supernet(IPNetwork2())
+  fullName: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2[])
+  fullName.vb: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2())
+  nameWithType: IPNetwork2.Supernet(IPNetwork2[])
+  nameWithType.vb: IPNetwork2.Supernet(IPNetwork2())
+- uid: System.Net.IPNetwork2.Supernet*
+  name: Supernet
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Supernet_
+  commentId: Overload:System.Net.IPNetwork2.Supernet
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Supernet
+  nameWithType: IPNetwork2.Supernet
+- uid: System.Net.IPNetwork2.ToBigInteger(System.Net.IPAddress)
+  name: ToBigInteger(IPAddress)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToBigInteger_System_Net_IPAddress_
+  commentId: M:System.Net.IPNetwork2.ToBigInteger(System.Net.IPAddress)
+  fullName: System.Net.IPNetwork2.ToBigInteger(System.Net.IPAddress)
+  nameWithType: IPNetwork2.ToBigInteger(IPAddress)
+- uid: System.Net.IPNetwork2.ToBigInteger*
+  name: ToBigInteger
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToBigInteger_
+  commentId: Overload:System.Net.IPNetwork2.ToBigInteger
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.ToBigInteger
+  nameWithType: IPNetwork2.ToBigInteger
+- uid: System.Net.IPNetwork2.ToCidr(System.Net.IPAddress)
+  name: ToCidr(IPAddress)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToCidr_System_Net_IPAddress_
+  commentId: M:System.Net.IPNetwork2.ToCidr(System.Net.IPAddress)
+  fullName: System.Net.IPNetwork2.ToCidr(System.Net.IPAddress)
+  nameWithType: IPNetwork2.ToCidr(IPAddress)
+- uid: System.Net.IPNetwork2.ToCidr*
+  name: ToCidr
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToCidr_
+  commentId: Overload:System.Net.IPNetwork2.ToCidr
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.ToCidr
+  nameWithType: IPNetwork2.ToCidr
+- uid: System.Net.IPNetwork2.ToIPAddress(System.Numerics.BigInteger,System.Net.Sockets.AddressFamily)
+  name: ToIPAddress(BigInteger, AddressFamily)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToIPAddress_System_Numerics_BigInteger_System_Net_Sockets_AddressFamily_
+  commentId: M:System.Net.IPNetwork2.ToIPAddress(System.Numerics.BigInteger,System.Net.Sockets.AddressFamily)
+  fullName: System.Net.IPNetwork2.ToIPAddress(System.Numerics.BigInteger, System.Net.Sockets.AddressFamily)
+  nameWithType: IPNetwork2.ToIPAddress(BigInteger, AddressFamily)
+- uid: System.Net.IPNetwork2.ToIPAddress*
+  name: ToIPAddress
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToIPAddress_
+  commentId: Overload:System.Net.IPNetwork2.ToIPAddress
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.ToIPAddress
+  nameWithType: IPNetwork2.ToIPAddress
+- uid: System.Net.IPNetwork2.ToNetmask(System.Byte,System.Net.Sockets.AddressFamily)
+  name: ToNetmask(byte, AddressFamily)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToNetmask_System_Byte_System_Net_Sockets_AddressFamily_
+  commentId: M:System.Net.IPNetwork2.ToNetmask(System.Byte,System.Net.Sockets.AddressFamily)
+  name.vb: ToNetmask(Byte, AddressFamily)
+  fullName: System.Net.IPNetwork2.ToNetmask(byte, System.Net.Sockets.AddressFamily)
+  fullName.vb: System.Net.IPNetwork2.ToNetmask(Byte, System.Net.Sockets.AddressFamily)
+  nameWithType: IPNetwork2.ToNetmask(byte, AddressFamily)
+  nameWithType.vb: IPNetwork2.ToNetmask(Byte, AddressFamily)
+- uid: System.Net.IPNetwork2.ToNetmask*
+  name: ToNetmask
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToNetmask_
+  commentId: Overload:System.Net.IPNetwork2.ToNetmask
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.ToNetmask
+  nameWithType: IPNetwork2.ToNetmask
+- uid: System.Net.IPNetwork2.ToString
+  name: ToString()
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToString
+  commentId: M:System.Net.IPNetwork2.ToString
+  fullName: System.Net.IPNetwork2.ToString()
+  nameWithType: IPNetwork2.ToString()
+- uid: System.Net.IPNetwork2.ToString*
+  name: ToString
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToString_
+  commentId: Overload:System.Net.IPNetwork2.ToString
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.ToString
+  nameWithType: IPNetwork2.ToString
+- uid: System.Net.IPNetwork2.ToUint(System.Byte,System.Net.Sockets.AddressFamily)
+  name: ToUint(byte, AddressFamily)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToUint_System_Byte_System_Net_Sockets_AddressFamily_
+  commentId: M:System.Net.IPNetwork2.ToUint(System.Byte,System.Net.Sockets.AddressFamily)
+  name.vb: ToUint(Byte, AddressFamily)
+  fullName: System.Net.IPNetwork2.ToUint(byte, System.Net.Sockets.AddressFamily)
+  fullName.vb: System.Net.IPNetwork2.ToUint(Byte, System.Net.Sockets.AddressFamily)
+  nameWithType: IPNetwork2.ToUint(byte, AddressFamily)
+  nameWithType.vb: IPNetwork2.ToUint(Byte, AddressFamily)
+- uid: System.Net.IPNetwork2.ToUint*
+  name: ToUint
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToUint_
+  commentId: Overload:System.Net.IPNetwork2.ToUint
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.ToUint
+  nameWithType: IPNetwork2.ToUint
+- uid: System.Net.IPNetwork2.Total
+  name: Total
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Total
+  commentId: P:System.Net.IPNetwork2.Total
+  fullName: System.Net.IPNetwork2.Total
+  nameWithType: IPNetwork2.Total
+- uid: System.Net.IPNetwork2.Total*
+  name: Total
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Total_
+  commentId: Overload:System.Net.IPNetwork2.Total
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Total
+  nameWithType: IPNetwork2.Total
+- uid: System.Net.IPNetwork2.TryGuessCidr(System.String,System.Byte@)
+  name: TryGuessCidr(string, out byte)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryGuessCidr_System_String_System_Byte__
+  commentId: M:System.Net.IPNetwork2.TryGuessCidr(System.String,System.Byte@)
+  name.vb: TryGuessCidr(String, Byte)
+  fullName: System.Net.IPNetwork2.TryGuessCidr(string, out byte)
+  fullName.vb: System.Net.IPNetwork2.TryGuessCidr(String, Byte)
+  nameWithType: IPNetwork2.TryGuessCidr(string, out byte)
+  nameWithType.vb: IPNetwork2.TryGuessCidr(String, Byte)
+- uid: System.Net.IPNetwork2.TryGuessCidr*
+  name: TryGuessCidr
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryGuessCidr_
+  commentId: Overload:System.Net.IPNetwork2.TryGuessCidr
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.TryGuessCidr
+  nameWithType: IPNetwork2.TryGuessCidr
+- uid: System.Net.IPNetwork2.TryParse(System.Net.IPAddress,System.Net.IPAddress,System.Net.IPNetwork2@)
+  name: TryParse(IPAddress, IPAddress, out IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryParse_System_Net_IPAddress_System_Net_IPAddress_System_Net_IPNetwork2__
+  commentId: M:System.Net.IPNetwork2.TryParse(System.Net.IPAddress,System.Net.IPAddress,System.Net.IPNetwork2@)
+  name.vb: TryParse(IPAddress, IPAddress, IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(System.Net.IPAddress, System.Net.IPAddress, out System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(System.Net.IPAddress, System.Net.IPAddress, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(IPAddress, IPAddress, out IPNetwork2)
+  nameWithType.vb: IPNetwork2.TryParse(IPAddress, IPAddress, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse(System.String,System.Boolean,System.Net.IPNetwork2@)
+  name: TryParse(string, bool, out IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryParse_System_String_System_Boolean_System_Net_IPNetwork2__
+  commentId: M:System.Net.IPNetwork2.TryParse(System.String,System.Boolean,System.Net.IPNetwork2@)
+  name.vb: TryParse(String, Boolean, IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(string, bool, out System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(String, Boolean, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(string, bool, out IPNetwork2)
+  nameWithType.vb: IPNetwork2.TryParse(String, Boolean, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse(System.String,System.Byte,System.Net.IPNetwork2@)
+  name: TryParse(string, byte, out IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryParse_System_String_System_Byte_System_Net_IPNetwork2__
+  commentId: M:System.Net.IPNetwork2.TryParse(System.String,System.Byte,System.Net.IPNetwork2@)
+  name.vb: TryParse(String, Byte, IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(string, byte, out System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(String, Byte, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(string, byte, out IPNetwork2)
+  nameWithType.vb: IPNetwork2.TryParse(String, Byte, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse(System.String,System.Net.ICidrGuess,System.Boolean,System.Net.IPNetwork2@)
+  name: TryParse(string, ICidrGuess, bool, out IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryParse_System_String_System_Net_ICidrGuess_System_Boolean_System_Net_IPNetwork2__
+  commentId: M:System.Net.IPNetwork2.TryParse(System.String,System.Net.ICidrGuess,System.Boolean,System.Net.IPNetwork2@)
+  name.vb: TryParse(String, ICidrGuess, Boolean, IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(string, System.Net.ICidrGuess, bool, out System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(String, System.Net.ICidrGuess, Boolean, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(string, ICidrGuess, bool, out IPNetwork2)
+  nameWithType.vb: IPNetwork2.TryParse(String, ICidrGuess, Boolean, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse(System.String,System.Net.ICidrGuess,System.Net.IPNetwork2@)
+  name: TryParse(string, ICidrGuess, out IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryParse_System_String_System_Net_ICidrGuess_System_Net_IPNetwork2__
+  commentId: M:System.Net.IPNetwork2.TryParse(System.String,System.Net.ICidrGuess,System.Net.IPNetwork2@)
+  name.vb: TryParse(String, ICidrGuess, IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(string, System.Net.ICidrGuess, out System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(String, System.Net.ICidrGuess, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(string, ICidrGuess, out IPNetwork2)
+  nameWithType.vb: IPNetwork2.TryParse(String, ICidrGuess, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse(System.String,System.Net.IPNetwork2@)
+  name: TryParse(string, out IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryParse_System_String_System_Net_IPNetwork2__
+  commentId: M:System.Net.IPNetwork2.TryParse(System.String,System.Net.IPNetwork2@)
+  name.vb: TryParse(String, IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(string, out System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(String, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(string, out IPNetwork2)
+  nameWithType.vb: IPNetwork2.TryParse(String, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse(System.String,System.String,System.Net.IPNetwork2@)
+  name: TryParse(string, string, out IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryParse_System_String_System_String_System_Net_IPNetwork2__
+  commentId: M:System.Net.IPNetwork2.TryParse(System.String,System.String,System.Net.IPNetwork2@)
+  name.vb: TryParse(String, String, IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(string, string, out System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(String, String, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(string, string, out IPNetwork2)
+  nameWithType.vb: IPNetwork2.TryParse(String, String, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse*
+  name: TryParse
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryParse_
+  commentId: Overload:System.Net.IPNetwork2.TryParse
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.TryParse
+  nameWithType: IPNetwork2.TryParse
+- uid: System.Net.IPNetwork2.TryParseCidr(System.String,System.Net.Sockets.AddressFamily,System.Nullable{System.Byte}@)
+  name: TryParseCidr(string, AddressFamily, out byte?)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryParseCidr_System_String_System_Net_Sockets_AddressFamily_System_Nullable_System_Byte___
+  commentId: M:System.Net.IPNetwork2.TryParseCidr(System.String,System.Net.Sockets.AddressFamily,System.Nullable{System.Byte}@)
+  name.vb: TryParseCidr(String, AddressFamily, Byte?)
+  fullName: System.Net.IPNetwork2.TryParseCidr(string, System.Net.Sockets.AddressFamily, out byte?)
+  fullName.vb: System.Net.IPNetwork2.TryParseCidr(String, System.Net.Sockets.AddressFamily, Byte?)
+  nameWithType: IPNetwork2.TryParseCidr(string, AddressFamily, out byte?)
+  nameWithType.vb: IPNetwork2.TryParseCidr(String, AddressFamily, Byte?)
+- uid: System.Net.IPNetwork2.TryParseCidr*
+  name: TryParseCidr
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryParseCidr_
+  commentId: Overload:System.Net.IPNetwork2.TryParseCidr
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.TryParseCidr
+  nameWithType: IPNetwork2.TryParseCidr
+- uid: System.Net.IPNetwork2.TrySubnet(System.Byte,System.Net.IPNetworkCollection@)
+  name: TrySubnet(byte, out IPNetworkCollection)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TrySubnet_System_Byte_System_Net_IPNetworkCollection__
+  commentId: M:System.Net.IPNetwork2.TrySubnet(System.Byte,System.Net.IPNetworkCollection@)
+  name.vb: TrySubnet(Byte, IPNetworkCollection)
+  fullName: System.Net.IPNetwork2.TrySubnet(byte, out System.Net.IPNetworkCollection)
+  fullName.vb: System.Net.IPNetwork2.TrySubnet(Byte, System.Net.IPNetworkCollection)
+  nameWithType: IPNetwork2.TrySubnet(byte, out IPNetworkCollection)
+  nameWithType.vb: IPNetwork2.TrySubnet(Byte, IPNetworkCollection)
+- uid: System.Net.IPNetwork2.TrySubnet(System.Net.IPNetwork2,System.Byte,System.Net.IPNetworkCollection@)
+  name: TrySubnet(IPNetwork2, byte, out IPNetworkCollection)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TrySubnet_System_Net_IPNetwork2_System_Byte_System_Net_IPNetworkCollection__
+  commentId: M:System.Net.IPNetwork2.TrySubnet(System.Net.IPNetwork2,System.Byte,System.Net.IPNetworkCollection@)
+  name.vb: TrySubnet(IPNetwork2, Byte, IPNetworkCollection)
+  fullName: System.Net.IPNetwork2.TrySubnet(System.Net.IPNetwork2, byte, out System.Net.IPNetworkCollection)
+  fullName.vb: System.Net.IPNetwork2.TrySubnet(System.Net.IPNetwork2, Byte, System.Net.IPNetworkCollection)
+  nameWithType: IPNetwork2.TrySubnet(IPNetwork2, byte, out IPNetworkCollection)
+  nameWithType.vb: IPNetwork2.TrySubnet(IPNetwork2, Byte, IPNetworkCollection)
+- uid: System.Net.IPNetwork2.TrySubnet*
+  name: TrySubnet
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TrySubnet_
+  commentId: Overload:System.Net.IPNetwork2.TrySubnet
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.TrySubnet
+  nameWithType: IPNetwork2.TrySubnet
+- uid: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2,System.Net.IPNetwork2,System.Net.IPNetwork2@)
+  name: TrySupernet(IPNetwork2, IPNetwork2, out IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TrySupernet_System_Net_IPNetwork2_System_Net_IPNetwork2_System_Net_IPNetwork2__
+  commentId: M:System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2,System.Net.IPNetwork2,System.Net.IPNetwork2@)
+  name.vb: TrySupernet(IPNetwork2, IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2, System.Net.IPNetwork2, out System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2, System.Net.IPNetwork2, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.TrySupernet(IPNetwork2, IPNetwork2, out IPNetwork2)
+  nameWithType.vb: IPNetwork2.TrySupernet(IPNetwork2, IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2,System.Net.IPNetwork2@)
+  name: TrySupernet(IPNetwork2, out IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TrySupernet_System_Net_IPNetwork2_System_Net_IPNetwork2__
+  commentId: M:System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2,System.Net.IPNetwork2@)
+  name.vb: TrySupernet(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2, out System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.TrySupernet(IPNetwork2, out IPNetwork2)
+  nameWithType.vb: IPNetwork2.TrySupernet(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2[],System.Net.IPNetwork2[]@)
+  name: TrySupernet(IPNetwork2[], out IPNetwork2[])
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TrySupernet_System_Net_IPNetwork2___System_Net_IPNetwork2____
+  commentId: M:System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2[],System.Net.IPNetwork2[]@)
+  name.vb: TrySupernet(IPNetwork2(), IPNetwork2())
+  fullName: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2[], out System.Net.IPNetwork2[])
+  fullName.vb: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2(), System.Net.IPNetwork2())
+  nameWithType: IPNetwork2.TrySupernet(IPNetwork2[], out IPNetwork2[])
+  nameWithType.vb: IPNetwork2.TrySupernet(IPNetwork2(), IPNetwork2())
+- uid: System.Net.IPNetwork2.TrySupernet*
+  name: TrySupernet
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TrySupernet_
+  commentId: Overload:System.Net.IPNetwork2.TrySupernet
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.TrySupernet
+  nameWithType: IPNetwork2.TrySupernet
+- uid: System.Net.IPNetwork2.TryToBigInteger(System.Net.IPAddress,System.Nullable{System.Numerics.BigInteger}@)
+  name: TryToBigInteger(IPAddress, out BigInteger?)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryToBigInteger_System_Net_IPAddress_System_Nullable_System_Numerics_BigInteger___
+  commentId: M:System.Net.IPNetwork2.TryToBigInteger(System.Net.IPAddress,System.Nullable{System.Numerics.BigInteger}@)
+  name.vb: TryToBigInteger(IPAddress, BigInteger?)
+  fullName: System.Net.IPNetwork2.TryToBigInteger(System.Net.IPAddress, out System.Numerics.BigInteger?)
+  fullName.vb: System.Net.IPNetwork2.TryToBigInteger(System.Net.IPAddress, System.Numerics.BigInteger?)
+  nameWithType: IPNetwork2.TryToBigInteger(IPAddress, out BigInteger?)
+  nameWithType.vb: IPNetwork2.TryToBigInteger(IPAddress, BigInteger?)
+- uid: System.Net.IPNetwork2.TryToBigInteger*
+  name: TryToBigInteger
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryToBigInteger_
+  commentId: Overload:System.Net.IPNetwork2.TryToBigInteger
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.TryToBigInteger
+  nameWithType: IPNetwork2.TryToBigInteger
+- uid: System.Net.IPNetwork2.TryToCidr(System.Net.IPAddress,System.Nullable{System.Byte}@)
+  name: TryToCidr(IPAddress, out byte?)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryToCidr_System_Net_IPAddress_System_Nullable_System_Byte___
+  commentId: M:System.Net.IPNetwork2.TryToCidr(System.Net.IPAddress,System.Nullable{System.Byte}@)
+  name.vb: TryToCidr(IPAddress, Byte?)
+  fullName: System.Net.IPNetwork2.TryToCidr(System.Net.IPAddress, out byte?)
+  fullName.vb: System.Net.IPNetwork2.TryToCidr(System.Net.IPAddress, Byte?)
+  nameWithType: IPNetwork2.TryToCidr(IPAddress, out byte?)
+  nameWithType.vb: IPNetwork2.TryToCidr(IPAddress, Byte?)
+- uid: System.Net.IPNetwork2.TryToCidr*
+  name: TryToCidr
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryToCidr_
+  commentId: Overload:System.Net.IPNetwork2.TryToCidr
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.TryToCidr
+  nameWithType: IPNetwork2.TryToCidr
+- uid: System.Net.IPNetwork2.TryToNetmask(System.Byte,System.Net.Sockets.AddressFamily,System.Net.IPAddress@)
+  name: TryToNetmask(byte, AddressFamily, out IPAddress)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryToNetmask_System_Byte_System_Net_Sockets_AddressFamily_System_Net_IPAddress__
+  commentId: M:System.Net.IPNetwork2.TryToNetmask(System.Byte,System.Net.Sockets.AddressFamily,System.Net.IPAddress@)
+  name.vb: TryToNetmask(Byte, AddressFamily, IPAddress)
+  fullName: System.Net.IPNetwork2.TryToNetmask(byte, System.Net.Sockets.AddressFamily, out System.Net.IPAddress)
+  fullName.vb: System.Net.IPNetwork2.TryToNetmask(Byte, System.Net.Sockets.AddressFamily, System.Net.IPAddress)
+  nameWithType: IPNetwork2.TryToNetmask(byte, AddressFamily, out IPAddress)
+  nameWithType.vb: IPNetwork2.TryToNetmask(Byte, AddressFamily, IPAddress)
+- uid: System.Net.IPNetwork2.TryToNetmask*
+  name: TryToNetmask
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryToNetmask_
+  commentId: Overload:System.Net.IPNetwork2.TryToNetmask
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.TryToNetmask
+  nameWithType: IPNetwork2.TryToNetmask
+- uid: System.Net.IPNetwork2.TryToUint(System.Byte,System.Net.Sockets.AddressFamily,System.Nullable{System.Numerics.BigInteger}@)
+  name: TryToUint(byte, AddressFamily, out BigInteger?)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryToUint_System_Byte_System_Net_Sockets_AddressFamily_System_Nullable_System_Numerics_BigInteger___
+  commentId: M:System.Net.IPNetwork2.TryToUint(System.Byte,System.Net.Sockets.AddressFamily,System.Nullable{System.Numerics.BigInteger}@)
+  name.vb: TryToUint(Byte, AddressFamily, BigInteger?)
+  fullName: System.Net.IPNetwork2.TryToUint(byte, System.Net.Sockets.AddressFamily, out System.Numerics.BigInteger?)
+  fullName.vb: System.Net.IPNetwork2.TryToUint(Byte, System.Net.Sockets.AddressFamily, System.Numerics.BigInteger?)
+  nameWithType: IPNetwork2.TryToUint(byte, AddressFamily, out BigInteger?)
+  nameWithType.vb: IPNetwork2.TryToUint(Byte, AddressFamily, BigInteger?)
+- uid: System.Net.IPNetwork2.TryToUint*
+  name: TryToUint
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryToUint_
+  commentId: Overload:System.Net.IPNetwork2.TryToUint
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.TryToUint
+  nameWithType: IPNetwork2.TryToUint
+- uid: System.Net.IPNetwork2.TryWideSubnet(System.Net.IPNetwork2[],System.Net.IPNetwork2@)
+  name: TryWideSubnet(IPNetwork2[], out IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryWideSubnet_System_Net_IPNetwork2___System_Net_IPNetwork2__
+  commentId: M:System.Net.IPNetwork2.TryWideSubnet(System.Net.IPNetwork2[],System.Net.IPNetwork2@)
+  name.vb: TryWideSubnet(IPNetwork2(), IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryWideSubnet(System.Net.IPNetwork2[], out System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryWideSubnet(System.Net.IPNetwork2(), System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.TryWideSubnet(IPNetwork2[], out IPNetwork2)
+  nameWithType.vb: IPNetwork2.TryWideSubnet(IPNetwork2(), IPNetwork2)
+- uid: System.Net.IPNetwork2.TryWideSubnet*
+  name: TryWideSubnet
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryWideSubnet_
+  commentId: Overload:System.Net.IPNetwork2.TryWideSubnet
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.TryWideSubnet
+  nameWithType: IPNetwork2.TryWideSubnet
+- uid: System.Net.IPNetwork2.Usable
+  name: Usable
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Usable
+  commentId: P:System.Net.IPNetwork2.Usable
+  fullName: System.Net.IPNetwork2.Usable
+  nameWithType: IPNetwork2.Usable
+- uid: System.Net.IPNetwork2.Usable*
+  name: Usable
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Usable_
+  commentId: Overload:System.Net.IPNetwork2.Usable
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Usable
+  nameWithType: IPNetwork2.Usable
+- uid: System.Net.IPNetwork2.ValidNetmask(System.Net.IPAddress)
+  name: ValidNetmask(IPAddress)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ValidNetmask_System_Net_IPAddress_
+  commentId: M:System.Net.IPNetwork2.ValidNetmask(System.Net.IPAddress)
+  fullName: System.Net.IPNetwork2.ValidNetmask(System.Net.IPAddress)
+  nameWithType: IPNetwork2.ValidNetmask(IPAddress)
+- uid: System.Net.IPNetwork2.ValidNetmask*
+  name: ValidNetmask
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_ValidNetmask_
+  commentId: Overload:System.Net.IPNetwork2.ValidNetmask
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.ValidNetmask
+  nameWithType: IPNetwork2.ValidNetmask
+- uid: System.Net.IPNetwork2.Value
+  name: Value
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Value
+  commentId: P:System.Net.IPNetwork2.Value
+  fullName: System.Net.IPNetwork2.Value
+  nameWithType: IPNetwork2.Value
+- uid: System.Net.IPNetwork2.Value*
+  name: Value
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_Value_
+  commentId: Overload:System.Net.IPNetwork2.Value
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.Value
+  nameWithType: IPNetwork2.Value
+- uid: System.Net.IPNetwork2.WideSubnet(System.Net.IPNetwork2[])
+  name: WideSubnet(IPNetwork2[])
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_WideSubnet_System_Net_IPNetwork2___
+  commentId: M:System.Net.IPNetwork2.WideSubnet(System.Net.IPNetwork2[])
+  name.vb: WideSubnet(IPNetwork2())
+  fullName: System.Net.IPNetwork2.WideSubnet(System.Net.IPNetwork2[])
+  fullName.vb: System.Net.IPNetwork2.WideSubnet(System.Net.IPNetwork2())
+  nameWithType: IPNetwork2.WideSubnet(IPNetwork2[])
+  nameWithType.vb: IPNetwork2.WideSubnet(IPNetwork2())
+- uid: System.Net.IPNetwork2.WideSubnet(System.String,System.String)
+  name: WideSubnet(string, string)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_WideSubnet_System_String_System_String_
+  commentId: M:System.Net.IPNetwork2.WideSubnet(System.String,System.String)
+  name.vb: WideSubnet(String, String)
+  fullName: System.Net.IPNetwork2.WideSubnet(string, string)
+  fullName.vb: System.Net.IPNetwork2.WideSubnet(String, String)
+  nameWithType: IPNetwork2.WideSubnet(string, string)
+  nameWithType.vb: IPNetwork2.WideSubnet(String, String)
+- uid: System.Net.IPNetwork2.WideSubnet*
+  name: WideSubnet
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_WideSubnet_
+  commentId: Overload:System.Net.IPNetwork2.WideSubnet
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.WideSubnet
+  nameWithType: IPNetwork2.WideSubnet
+- uid: System.Net.IPNetwork2.WildcardMask
+  name: WildcardMask
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_WildcardMask
+  commentId: P:System.Net.IPNetwork2.WildcardMask
+  fullName: System.Net.IPNetwork2.WildcardMask
+  nameWithType: IPNetwork2.WildcardMask
+- uid: System.Net.IPNetwork2.WildcardMask*
+  name: WildcardMask
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_WildcardMask_
+  commentId: Overload:System.Net.IPNetwork2.WildcardMask
+  isSpec: "True"
+  fullName: System.Net.IPNetwork2.WildcardMask
+  nameWithType: IPNetwork2.WildcardMask
+- uid: System.Net.IPNetwork2.op_Equality(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name: operator ==(IPNetwork2, IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_Equality_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.op_Equality(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name.vb: =(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.operator ==(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.=(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.operator ==(IPNetwork2, IPNetwork2)
+  nameWithType.vb: IPNetwork2.=(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.op_Equality*
+  name: operator ==
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_Equality_
+  commentId: Overload:System.Net.IPNetwork2.op_Equality
+  isSpec: "True"
+  name.vb: =
+  fullName: System.Net.IPNetwork2.operator ==
+  fullName.vb: System.Net.IPNetwork2.=
+  nameWithType: IPNetwork2.operator ==
+  nameWithType.vb: IPNetwork2.=
+- uid: System.Net.IPNetwork2.op_GreaterThan(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name: operator >(IPNetwork2, IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_GreaterThan_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.op_GreaterThan(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name.vb: '>(IPNetwork2, IPNetwork2)'
+  fullName: System.Net.IPNetwork2.operator >(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.>(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.operator >(IPNetwork2, IPNetwork2)
+  nameWithType.vb: IPNetwork2.>(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.op_GreaterThan*
+  name: operator >
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_GreaterThan_
+  commentId: Overload:System.Net.IPNetwork2.op_GreaterThan
+  isSpec: "True"
+  name.vb: '>'
+  fullName: System.Net.IPNetwork2.operator >
+  fullName.vb: System.Net.IPNetwork2.>
+  nameWithType: IPNetwork2.operator >
+  nameWithType.vb: IPNetwork2.>
+- uid: System.Net.IPNetwork2.op_Inequality(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name: operator !=(IPNetwork2, IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_Inequality_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.op_Inequality(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name.vb: <>(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.operator !=(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.<>(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.operator !=(IPNetwork2, IPNetwork2)
+  nameWithType.vb: IPNetwork2.<>(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.op_Inequality*
+  name: operator !=
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_Inequality_
+  commentId: Overload:System.Net.IPNetwork2.op_Inequality
+  isSpec: "True"
+  name.vb: <>
+  fullName: System.Net.IPNetwork2.operator !=
+  fullName.vb: System.Net.IPNetwork2.<>
+  nameWithType: IPNetwork2.operator !=
+  nameWithType.vb: IPNetwork2.<>
+- uid: System.Net.IPNetwork2.op_LessThan(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name: operator <(IPNetwork2, IPNetwork2)
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_LessThan_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  commentId: M:System.Net.IPNetwork2.op_LessThan(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  name.vb: <(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.operator <(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.<(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  nameWithType: IPNetwork2.operator <(IPNetwork2, IPNetwork2)
+  nameWithType.vb: IPNetwork2.<(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.op_LessThan*
+  name: operator <
+  href: api/System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_LessThan_
+  commentId: Overload:System.Net.IPNetwork2.op_LessThan
+  isSpec: "True"
+  name.vb: <
+  fullName: System.Net.IPNetwork2.operator <
+  fullName.vb: System.Net.IPNetwork2.<
+  nameWithType: IPNetwork2.operator <
+  nameWithType.vb: IPNetwork2.<
+- uid: System.Net.IPNetworkCollection
+  name: IPNetworkCollection
+  href: api/System.Net.IPNetworkCollection.html
+  commentId: T:System.Net.IPNetworkCollection
+  fullName: System.Net.IPNetworkCollection
+  nameWithType: IPNetworkCollection
+- uid: System.Net.IPNetworkCollection.Count
+  name: Count
+  href: api/System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Count
+  commentId: P:System.Net.IPNetworkCollection.Count
+  fullName: System.Net.IPNetworkCollection.Count
+  nameWithType: IPNetworkCollection.Count
+- uid: System.Net.IPNetworkCollection.Count*
+  name: Count
+  href: api/System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Count_
+  commentId: Overload:System.Net.IPNetworkCollection.Count
+  isSpec: "True"
+  fullName: System.Net.IPNetworkCollection.Count
+  nameWithType: IPNetworkCollection.Count
+- uid: System.Net.IPNetworkCollection.Current
+  name: Current
+  href: api/System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Current
+  commentId: P:System.Net.IPNetworkCollection.Current
+  fullName: System.Net.IPNetworkCollection.Current
+  nameWithType: IPNetworkCollection.Current
+- uid: System.Net.IPNetworkCollection.Current*
+  name: Current
+  href: api/System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Current_
+  commentId: Overload:System.Net.IPNetworkCollection.Current
+  isSpec: "True"
+  fullName: System.Net.IPNetworkCollection.Current
+  nameWithType: IPNetworkCollection.Current
+- uid: System.Net.IPNetworkCollection.Dispose
+  name: Dispose()
+  href: api/System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Dispose
+  commentId: M:System.Net.IPNetworkCollection.Dispose
+  fullName: System.Net.IPNetworkCollection.Dispose()
+  nameWithType: IPNetworkCollection.Dispose()
+- uid: System.Net.IPNetworkCollection.Dispose*
+  name: Dispose
+  href: api/System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Dispose_
+  commentId: Overload:System.Net.IPNetworkCollection.Dispose
+  isSpec: "True"
+  fullName: System.Net.IPNetworkCollection.Dispose
+  nameWithType: IPNetworkCollection.Dispose
+- uid: System.Net.IPNetworkCollection.Item(System.Numerics.BigInteger)
+  name: this[BigInteger]
+  href: api/System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Item_System_Numerics_BigInteger_
+  commentId: P:System.Net.IPNetworkCollection.Item(System.Numerics.BigInteger)
+  name.vb: this[](BigInteger)
+  fullName: System.Net.IPNetworkCollection.this[System.Numerics.BigInteger]
+  fullName.vb: System.Net.IPNetworkCollection.this[](System.Numerics.BigInteger)
+  nameWithType: IPNetworkCollection.this[BigInteger]
+  nameWithType.vb: IPNetworkCollection.this[](BigInteger)
+- uid: System.Net.IPNetworkCollection.Item*
+  name: this
+  href: api/System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Item_
+  commentId: Overload:System.Net.IPNetworkCollection.Item
+  isSpec: "True"
+  name.vb: this[]
+  fullName: System.Net.IPNetworkCollection.this
+  fullName.vb: System.Net.IPNetworkCollection.this[]
+  nameWithType: IPNetworkCollection.this
+  nameWithType.vb: IPNetworkCollection.this[]
+- uid: System.Net.IPNetworkCollection.MoveNext
+  name: MoveNext()
+  href: api/System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_MoveNext
+  commentId: M:System.Net.IPNetworkCollection.MoveNext
+  fullName: System.Net.IPNetworkCollection.MoveNext()
+  nameWithType: IPNetworkCollection.MoveNext()
+- uid: System.Net.IPNetworkCollection.MoveNext*
+  name: MoveNext
+  href: api/System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_MoveNext_
+  commentId: Overload:System.Net.IPNetworkCollection.MoveNext
+  isSpec: "True"
+  fullName: System.Net.IPNetworkCollection.MoveNext
+  nameWithType: IPNetworkCollection.MoveNext
+- uid: System.Net.IPNetworkCollection.Reset
+  name: Reset()
+  href: api/System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Reset
+  commentId: M:System.Net.IPNetworkCollection.Reset
+  fullName: System.Net.IPNetworkCollection.Reset()
+  nameWithType: IPNetworkCollection.Reset()
+- uid: System.Net.IPNetworkCollection.Reset*
+  name: Reset
+  href: api/System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Reset_
+  commentId: Overload:System.Net.IPNetworkCollection.Reset
+  isSpec: "True"
+  fullName: System.Net.IPNetworkCollection.Reset
+  nameWithType: IPNetworkCollection.Reset
