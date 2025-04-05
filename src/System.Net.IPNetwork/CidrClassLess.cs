@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using Sockets;
+using System.Net.Sockets;
 
 /// <summary>
 /// Try to guess a CIDR in a ClassLess way ie. ipv4 = 32, ipv6 = 128.

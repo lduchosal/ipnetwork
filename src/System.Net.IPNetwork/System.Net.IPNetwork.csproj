@@ -3,15 +3,15 @@
   <PropertyGroup>
     <TargetFrameworks>net9.0;net8.0;netstandard2.0;netstandard2.1</TargetFrameworks> 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-	  <PackageId>IPNetwork2</PackageId>
+    <PackageId>IPNetwork2</PackageId>
     <PackageVersion>3.1.0</PackageVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <PackageLicenseUrl>https://github.com/lduchosal/ipnetwork/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/lduchosal/ipnetwork</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/lduchosal/ipnetwork/pulls?q=is%3Apr</PackageReleaseNotes>
     <PackageTags>ipnetwork network ip ipv4 ipv6 netmask cidr subnet subnetting supernet supernetting calculation</PackageTags>
-
+    <PackageReadmeFile></PackageReadmeFile>
+    <PackageLicenseExpression>BSD-2-Clause</PackageLicenseExpression>
     <Title>IPNetwork utility classes for .Net</Title>
     <Description>IPNetwork C# library take care of complex network, ip, ipv4, ipv6, netmask, cidr, subnet, subnetting, supernet and supernetting calculation for .Net developpers. It works with IPv4 and IPv6 as well. It is written in C# for .NetStandard and coreclr and has a light and clean API and is fully unit tested.</Description>
     <PackageSummary>IPNetwork utility classes for .Net</PackageSummary>
@@ -26,37 +26,18 @@
     <RootNamespace>System.Net</RootNamespace>
     <LangVersion>latestmajor</LangVersion>
     <NoWarn>SA1010</NoWarn>
+    <Nullable>disable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <WarningLevel>5</WarningLevel>
+  </PropertyGroup>
 
-	</PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
+  </PropertyGroup>
   
   <PropertyGroup>
-	<DefineConstants Condition="'$(OS)' != 'Windows_NT'">$(DefineConstants);TRAVISCI</DefineConstants>
 	<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-	<PackageReadmeFile></PackageReadmeFile>
   </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0|AnyCPU'">
-    <WarningLevel>5</WarningLevel>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0|AnyCPU'">
-    <WarningLevel>5</WarningLevel>
-  </PropertyGroup>
-  
-  <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47'">
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <None Remove="stylecop.json" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <AdditionalFiles Include="stylecop.json" />
-  </ItemGroup>
   
   <ItemGroup>
     <None Include="..\..\LICENSE" Pack="true" PackagePath="." />
@@ -72,20 +53,4 @@
     </PackageReference>
   </ItemGroup>
   
-  <ItemGroup Condition="'$(TargetFramework)' == 'net46'">
-    <PackageReference Include="System.Memory" Version="4.5.5">
-    </PackageReference>
-  </ItemGroup>
-  
-  <ItemGroup Condition="'$(TargetFramework)' == 'net47'">
-    <PackageReference Include="System.Memory" Version="4.5.5">
-    </PackageReference>
-  </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
 </Project>

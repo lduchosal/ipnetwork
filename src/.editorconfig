@@ -144,11 +144,6 @@ dotnet_naming_style.pascal_case.required_suffix =
 dotnet_naming_style.pascal_case.word_separator =
 dotnet_naming_style.pascal_case.capitalization = pascal_case
 
-dotnet_naming_style.pascal_case.required_prefix =
-dotnet_naming_style.pascal_case.required_suffix =
-dotnet_naming_style.pascal_case.word_separator =
-dotnet_naming_style.pascal_case.capitalization = pascal_case
-
 # SA1208: System using directives should be placed before other using directives
 dotnet_diagnostic.SA1208.severity = error
 
@@ -248,11 +243,6 @@ dotnet_naming_style.commence_par_i.required_prefix = I
 dotnet_naming_style.commence_par_i.required_suffix =
 dotnet_naming_style.commence_par_i.word_separator =
 dotnet_naming_style.commence_par_i.capitalization = pascal_case
-
-dotnet_naming_style.casse_pascal.required_prefix =
-dotnet_naming_style.casse_pascal.required_suffix =
-dotnet_naming_style.casse_pascal.word_separator =
-dotnet_naming_style.casse_pascal.capitalization = pascal_case
 
 dotnet_naming_style.casse_pascal.required_prefix =
 dotnet_naming_style.casse_pascal.required_suffix =

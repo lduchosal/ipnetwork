@@ -38,7 +38,7 @@ public class IPNetworkV6ParseTests
     }
 
     /// <summary>
-    /// Test parse of IPv& networks with 128 cidr.
+    /// Test parse of IPv6 networks with 128 cidr.
     /// </summary>
     [TestMethod]
     public void TestParsev6_128()
@@ -67,7 +67,7 @@ public class IPNetworkV6ParseTests
     }
 
     /// <summary>
-    /// Test parse of IPv& networks with 127 cidr.
+    /// Test parse of IPv6 networks with 127 cidr.
     /// </summary>
     [TestMethod]
     public void TestParsev6_127()
@@ -96,7 +96,7 @@ public class IPNetworkV6ParseTests
     }
 
     /// <summary>
-    /// Test parse of IPv& networks with 126 cidr.
+    /// Test parse of IPv6 networks with 126 cidr.
     /// </summary>
     [TestMethod]
     public void TestParsev6_126()
@@ -125,7 +125,7 @@ public class IPNetworkV6ParseTests
     }
 
     /// <summary>
-    /// Test parse of IPv& networks with 125 cidr.
+    /// Test parse of IPv6 networks with 125 cidr.
     /// </summary>
     [TestMethod]
     public void TestParsev6_125()
@@ -154,7 +154,7 @@ public class IPNetworkV6ParseTests
     }
 
     /// <summary>
-    /// Test parse of IPv& networks with 124 cidr.
+    /// Test parse of IPv6 networks with 124 cidr.
     /// </summary>
     [TestMethod]
     public void TestParsev6_124()
@@ -183,7 +183,7 @@ public class IPNetworkV6ParseTests
     }
 
     /// <summary>
-    /// Test parse of IPv& networks with 123 cidr.
+    /// Test parse of IPv6 networks with 123 cidr.
     /// </summary>
     [TestMethod]
     public void TestParsev6_123()
@@ -212,7 +212,7 @@ public class IPNetworkV6ParseTests
     }
 
     /// <summary>
-    /// Test parse of IPv& networks with 112 cidr.
+    /// Test parse of IPv6 networks with 112 cidr.
     /// </summary>
     [TestMethod]
     public void TestParsev6_112()
@@ -241,7 +241,7 @@ public class IPNetworkV6ParseTests
     }
 
     /// <summary>
-    /// Test parse of IPv& networks with 64 cidr.
+    /// Test parse of IPv6 networks with 64 cidr.
     /// </summary>
     [TestMethod]
     public void TestParsev6_64()
@@ -270,7 +270,7 @@ public class IPNetworkV6ParseTests
     }
 
     /// <summary>
-    /// Test parse of IPv& networks with 16 cidr.
+    /// Test parse of IPv6 networks with 16 cidr.
     /// </summary>
     [TestMethod]
     public void TestParsev6_16()
@@ -299,7 +299,7 @@ public class IPNetworkV6ParseTests
     }
 
     /// <summary>
-    /// Test parse of IPv& networks with edge cases.
+    /// Test parse of IPv6 networks with edge cases.
     /// </summary>
     [TestMethod]
     public void TestParsev6_EDGE()

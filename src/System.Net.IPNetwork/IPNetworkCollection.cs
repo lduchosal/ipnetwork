@@ -4,9 +4,9 @@
 
 namespace System.Net;
 
-using Collections;
-using Collections.Generic;
-using Numerics;
+using System.Collections;
+using System.Collections.Generic;
+using System.Numerics;
 
 /// <summary>
 /// Represents a collection of IP networks based on a given parent IP network and subnet CIDR.
@@ -72,8 +72,6 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
         this.enumerator = -1;
     }
 
-    #region Count, Array, Enumerator
-
     /// <summary>
     /// Gets the total number of IP addresses in the subnet.
     /// </summary>
@@ -113,10 +111,6 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
         }
     }
 
-    #endregion
-
-    #region IEnumerable Members
-
     /// <inheritdoc/>
     IEnumerator<IPNetwork2> IEnumerable<IPNetwork2>.GetEnumerator()
     {
@@ -129,17 +123,11 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
         return this;
     }
 
-    #region IEnumerator<IPNetwork> Members
-
     /// <inheritdoc/>
     public IPNetwork2 Current
     {
         get { return this[this.enumerator]; }
     }
-
-    #endregion
-
-    #region IDisposable Members
 
     /// <summary>
     /// Releases all resources used by the object.
@@ -153,10 +141,6 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     {
         // nothing to dispose
     }
-
-    #endregion
-
-    #region IEnumerator Members
 
     /// <summary>
     /// Gets the element in the collection at the current position of the enumerator.
@@ -191,8 +175,4 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     {
         this.enumerator = -1;
     }
-
-    #endregion
-
-    #endregion
 }

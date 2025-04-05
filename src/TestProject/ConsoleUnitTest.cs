@@ -5,14 +5,15 @@
 namespace TestProject;
 
 /// <summary>
-/// Test.
+/// Test the console.
 /// </summary>
 [TestClass]
 public class ConsoleUnitTest
 {
     /// <summary>
-    /// Test.
+    /// Test the console.
     /// </summary>
+    /// <param name="args">The arguments.</param>
     [DataTestMethod]
     [DataRow(["10.0.0.0/8"])]
     [DataRow(["-Nnmcbflu", "10.0.0.0/8"])]

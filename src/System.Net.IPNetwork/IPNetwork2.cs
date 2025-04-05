@@ -4,7 +4,7 @@
 
 namespace System.Net;
 
-using Runtime.Serialization;
+using System.Runtime.Serialization;
 
 /// <summary>
 /// IP Network utility class.
