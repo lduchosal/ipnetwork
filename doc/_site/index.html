@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>IPNetwork utility classes for .Net | IPNetwork </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="IPNetwork utility classes for .Net | IPNetwork ">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <link rel="stylesheet" href="public/docfx.min.css">
+      <link rel="stylesheet" href="public/main.css">
+      <meta name="docfx:navrel" content="toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/lduchosal/ipnetwork/blob/feat/cleanup-documentation/doc/index.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="landing" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="index.html">
+            <img id="logo" class="svg" src="logo.svg" alt="IPNetwork">
+            IPNetwork
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+
+      <div class="content">
+        <div class="actionbar">
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="">
+<h1 id="ipnetwork-utility-classes-for-net">IPNetwork utility classes for .Net</h1>
+
+<p>IPNetwork utility classes take care of complex network, IP, IPv4, IPv6, netmask, CIDR, subnet, subnetting, supernet, and supernetting calculation for .NET developers. It works with IPv4 as well as IPv6, is written in C#, has a light and clean API, and is fully unit-tested with 100% code coverage.</p>
+<h2 id="installation">Installation</h2>
+<pre><code class="lang-shell">   nuget install IPNetwork2
+</code></pre>
+<h2 id="ipnetwork-library">IPNetwork library</h2>
+<h3 id="example-1-ipv6">Example 1 (IPv6)</h3>
+<pre><code class="lang-C#">IPNetwork2 ipnetwork = IPNetwork2.Parse(&quot;2001:0db8::/64&quot;);
+
+Console.WriteLine(&quot;Network : {0}&quot;, ipnetwork.Network);
+Console.WriteLine(&quot;Netmask : {0}&quot;, ipnetwork.Netmask);
+Console.WriteLine(&quot;Broadcast : {0}&quot;, ipnetwork.Broadcast);
+Console.WriteLine(&quot;FirstUsable : {0}&quot;, ipnetwork.FirstUsable);
+Console.WriteLine(&quot;LastUsable : {0}&quot;, ipnetwork.LastUsable);
+Console.WriteLine(&quot;Usable : {0}&quot;, ipnetwork.Usable);
+Console.WriteLine(&quot;Cidr : {0}&quot;, ipnetwork.Cidr);
+</code></pre>
+<p>Output</p>
+<pre><code class="lang-JS">Network : 2001:db8::
+Netmask : ffff:ffff:ffff:ffff::
+Broadcast :
+FirstUsable : 2001:db8::
+LastUsable : 2001:db8::ffff:ffff:ffff:ffff
+Usable : 18446744073709551616
+Cidr : 64
+</code></pre>
+<hr>
+<h3 id="example-2-ipv6">Example 2 (IPv6)</h3>
+<pre><code class="lang-C#">IPNetwork2 ipnetwork = IPNetwork2.Parse(&quot;2001:0db8::/64&quot;);
+
+IPAddress ipaddress = IPAddress.Parse(&quot;2001:0db8::1&quot;);
+IPAddress ipaddress2 = IPAddress.Parse(&quot;2001:0db9::1&quot;);
+
+IPNetwork2 ipnetwork2 = IPNetwork2.Parse(&quot;2001:0db8::1/128&quot;);
+IPNetwork2 ipnetwork3 = IPNetwork2.Parse(&quot;2001:0db9::1/64&quot;);
+
+bool contains1 = ipnetwork.Contains(ipaddress);
+bool contains2 = ipnetwork.Contains(ipaddress2);
+bool contains3 = ipnetwork.Contains(ipnetwork2);
+bool contains4 = ipnetwork.Contains(ipnetwork3);
+
+bool overlap1 = ipnetwork.Overlap(ipnetwork2);
+bool overlap2 = ipnetwork.Overlap(ipnetwork3);
+
+Console.WriteLine(&quot;{0} contains {1} : {2}&quot;, ipnetwork, ipaddress, contains1);
+Console.WriteLine(&quot;{0} contains {1} : {2}&quot;, ipnetwork, ipaddress2, contains2);
+Console.WriteLine(&quot;{0} contains {1} : {2}&quot;, ipnetwork, ipnetwork2, contains3);
+Console.WriteLine(&quot;{0} contains {1} : {2}&quot;, ipnetwork, ipnetwork3, contains4);
+
+
+Console.WriteLine(&quot;{0} overlap {1} : {2}&quot;, ipnetwork, ipnetwork2, overlap1);
+Console.WriteLine(&quot;{0} overlap {1} : {2}&quot;, ipnetwork, ipnetwork3, overlap2);
+</code></pre>
+<p>Output</p>
+<pre><code class="lang-JS">2001:db8::/64 contains 2001:db8::1 : True
+2001:db8::/64 contains 2001:db9::1 : False
+2001:db8::/64 contains 2001:db8::1/128 : True
+2001:db8::/64 contains 2001:db9::/64 : False
+2001:db8::/64 overlap 2001:db8::1/128 : True
+2001:db8::/64 overlap 2001:db9::/64 : False
+</code></pre>
+<hr>
+<h3 id="example-3-ipv6">Example 3 (IPv6)</h3>
+<pre><code class="lang-C#">IPNetwork2 wholeInternet = IPNetwork2.Parse(&quot;::/0&quot;);
+byte newCidr = 2;
+IPNetworkCollection subneted = wholeInternet.Subnet(newCidr);
+
+Console.WriteLine(&quot;{0} was subnetted into {1} subnets&quot;, wholeInternet, subneted.Count);
+Console.WriteLine(&quot;First: {0}&quot;, subneted[0]);
+Console.WriteLine(&quot;Last : {0}&quot;, subneted[subneted.Count - 1]);
+Console.WriteLine(&quot;All  :&quot;);
+
+foreach (IPNetwork2 ipnetwork in subneted) {
+    Console.WriteLine(&quot;{0}&quot;, ipnetwork);
+}
+</code></pre>
+<p>Output</p>
+<pre><code class="lang-JS">::/0 was subnetted into 4 subnets
+First: ::/2
+Last : c000::/2
+All  :
+::/2
+4000::/2
+8000::/2
+c000::/2
+</code></pre>
+<hr>
+<h3 id="example-4-ipv6">Example 4 (IPv6)</h3>
+<pre><code class="lang-C#">IPNetwork2 ipnetwork1 = IPNetwork2.Parse(&quot;2001:0db8::/32&quot;);
+IPNetwork2 ipnetwork2 = IPNetwork2.Parse(&quot;2001:0db9::/32&quot;);
+IPNetwork2[] ipnetwork3 = IPNetwork2.Supernet(new[] { ipnetwork1, ipnetwork2 });
+
+Console.WriteLine(&quot;{0} + {1} = {2}&quot;, ipnetwork1, ipnetwork2, ipnetwork3[0]);
+</code></pre>
+<p>Output</p>
+<pre><code class="lang-JS">2001:db8::/32 + 2001:db9::/32 = 2001:db8::/31
+</code></pre>
+<hr>
+<h3 id="example-5">Example 5</h3>
+<pre><code class="lang-C#">IPNetwork2 ipnetwork = IPNetwork2.Parse(&quot;192.168.168.100/24&quot;);
+
+Console.WriteLine(&quot;Network : {0}&quot;, ipnetwork.Network);
+Console.WriteLine(&quot;Netmask : {0}&quot;, ipnetwork.Netmask);
+Console.WriteLine(&quot;Broadcast : {0}&quot;, ipnetwork.Broadcast);
+Console.WriteLine(&quot;FirstUsable : {0}&quot;, ipnetwork.FirstUsable);
+Console.WriteLine(&quot;LastUsable : {0}&quot;, ipnetwork.LastUsable);
+Console.WriteLine(&quot;Usable : {0}&quot;, ipnetwork.Usable);
+Console.WriteLine(&quot;Cidr : {0}&quot;, ipnetwork.Cidr);
+</code></pre>
+<p>Output</p>
+<pre><code class="lang-MD">Network : 192.168.168.0
+Netmask : 255.255.255.0
+Broadcast : 192.168.168.255
+FirstUsable : 192.168.168.1
+LastUsable : 192.168.168.254
+Usable : 254
+Cidr : 24
+</code></pre>
+<hr>
+<h3 id="example-6">Example 6</h3>
+<pre><code class="lang-C#">IPNetwork2 ipnetwork = IPNetwork2.Parse(&quot;192.168.0.0/24&quot;);
+IPAddress ipaddress = IPAddress.Parse(&quot;192.168.0.100&quot;);
+IPAddress ipaddress2 = IPAddress.Parse(&quot;192.168.1.100&quot;);
+
+IPNetwork2 ipnetwork2 = IPNetwork2.Parse(&quot;192.168.0.128/25&quot;);
+IPNetwork2 ipnetwork3 = IPNetwork2.Parse(&quot;192.168.1.1/24&quot;);
+
+bool contains1 = ipnetwork.Contains(ipaddress);
+bool contains2 = ipnetwork.Contains(ipaddress2);
+bool contains3 = ipnetwork.Contains(ipnetwork2);
+bool contains4 = ipnetwork.Contains(ipnetwork3);
+
+bool overlap1 = ipnetwork.Overlap(ipnetwork2);
+bool overlap2 = ipnetwork.Overlap(ipnetwork3);
+
+Console.WriteLine(&quot;{0} contains {1} : {2}&quot;, ipnetwork, ipaddress, contains1);
+Console.WriteLine(&quot;{0} contains {1} : {2}&quot;, ipnetwork, ipaddress2, contains2);
+Console.WriteLine(&quot;{0} contains {1} : {2}&quot;, ipnetwork, ipnetwork2, contains3);
+Console.WriteLine(&quot;{0} contains {1} : {2}&quot;, ipnetwork, ipnetwork3, contains4);
+
+Console.WriteLine(&quot;{0} overlap {1} : {2}&quot;, ipnetwork, ipnetwork2, overlap1);
+Console.WriteLine(&quot;{0} overlap {1} : {2}&quot;, ipnetwork, ipnetwork3, overlap2); A
+</code></pre>
+<p>Output</p>
+<pre><code class="lang-JS">192.168.0.0/24 contains 192.168.0.100 : True
+192.168.0.0/24 contains 192.168.1.100 : False
+192.168.0.0/24 contains 192.168.0.128/25 : True
+192.168.0.0/24 contains 192.168.1.0/24 : False
+192.168.0.0/24 overlap 192.168.0.128/25 : True
+192.168.0.0/24 overlap 192.168.1.0/24 : False
+</code></pre>
+<hr>
+<h3 id="example-7">Example 7</h3>
+<pre><code class="lang-C#">IPNetwork2 iana_a_block = IPNetwork2.IANA_ABLK_RESERVED1;
+IPNetwork2 iana_b_block = IPNetwork2.IANA_BBLK_RESERVED1;
+IPNetwork2 iana_c_block = IPNetwork2.IANA_CBLK_RESERVED1;
+
+Console.WriteLine(&quot;IANA_ABLK_RESERVED1 is {0}&quot;, iana_a_block);
+Console.WriteLine(&quot;IANA_BBLK_RESERVED1 is {0}&quot;, iana_b_block);
+Console.WriteLine(&quot;IANA_CBLK_RESERVED1 is {0}&quot;, iana_c_block);
+</code></pre>
+<p>Output</p>
+<pre><code class="lang-JS">IANA_ABLK_RESERVED1 is 10.0.0.0/8
+IANA_BBLK_RESERVED1 is 172.16.0.0/12
+IANA_CBLK_RESERVED1 is 192.168.0.0/16
+</code></pre>
+<hr>
+<h3 id="example-8">Example 8</h3>
+<pre><code class="lang-C#">IPNetwork2 wholeInternet = IPNetwork2.Parse(&quot;0.0.0.0/0&quot;);
+byte newCidr = 2;
+IPNetworkCollection subneted = wholeInternet.Subnet(newCidr);
+
+Console.WriteLine(&quot;{0} was subnetted into {1} subnets&quot;, wholeInternet, subneted.Count);
+Console.WriteLine(&quot;First: {0}&quot;, subneted[0]);
+Console.WriteLine(&quot;Last : {0}&quot;, subneted[subneted.Count - 1]);
+Console.WriteLine(&quot;All  :&quot;);
+
+foreach (IPNetwork2 ipnetwork in subneted)
+{
+    Console.WriteLine(&quot;{0}&quot;, ipnetwork);
+}
+</code></pre>
+<p>Output</p>
+<pre><code class="lang-JS">0.0.0.0/0 was subnetted into 4 subnets
+First: 0.0.0.0/2
+Last : 192.0.0.0/2
+All  :
+0.0.0.0/2
+64.0.0.0/2
+128.0.0.0/2
+192.0.0.0/2
+</code></pre>
+<hr>
+<h3 id="example-9">Example 9</h3>
+<pre><code class="lang-C#">IPNetwork2 ipnetwork1 = IPNetwork2.Parse(&quot;192.168.0.0/24&quot;);
+IPNetwork2 ipnetwork2 = IPNetwork2.Parse(&quot;192.168.1.0/24&quot;);
+IPNetwork2[] ipnetwork3 = IPNetwork2.Supernet(new[]{ipnetwork1, ipnetwork2});
+
+Console.WriteLine(&quot;{0} + {1} = {2}&quot;, ipnetwork1, ipnetwork2, ipnetwork3[0]);
+</code></pre>
+<p>Output</p>
+<pre><code class="lang-JS">192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+</code></pre>
+<hr>
+<h3 id="example-10---classless-network-parse">Example 10 - ClassLess network parse</h3>
+<p>If you don't specify the network cidr, IPNetwork will try to guess the CIDR for you. There are two strategies to guess ClassFull (default) and ClassLess.</p>
+<h4 id="classfull-default-strategy">ClassFull (default strategy)</h4>
+<p>is based on the default Class A, B or C networks.
+IPV4 :</p>
+<ul>
+<li>Class A: 0 - 127 with a mask of 255.0.0.0 (/8)</li>
+<li>Class B: 128 - 191 with a mask of 255.255.0.0 (/16)</li>
+<li>Class C: 192 - 223 with a mask of 255.255.255.0 (/24)</li>
+</ul>
+<p>IPV6 : /64</p>
+<h4 id="classless">ClassLess</h4>
+<p>IPV4 : /32
+IPV6 : /128</p>
+<h4 id="ipv4">IPv4</h4>
+<pre><code class="lang-C#">IPNetwork2 defaultParse= IPNetwork2.Parse(&quot;192.168.0.0&quot;); // default to ClassFull
+IPNetwork2 classFullParse = IPNetwork2.Parse(&quot;192.168.0.0&quot;, CidrGuess.ClassFull);
+IPNetwork2 classLessParse = IPNetwork2.Parse(&quot;192.168.0.0&quot;, CidrGuess.ClassLess);
+
+Console.WriteLine(&quot;IPV4 Default Parse : {0}&quot;, defaultStrategy);
+Console.WriteLine(&quot;IPV4 ClassFull Parse : {0}&quot;, classFullParse);
+Console.WriteLine(&quot;IPV4 ClassLess Parse : {0}&quot;, classLessParse);
+</code></pre>
+<p>Output</p>
+<pre><code class="lang-JS">IPV4 Default Parse : 192.168.0.0/24
+IPV4 ClassFull Parse : 192.168.0.0/24
+IPV4 ClassLess Parse : 192.168.0.0/32
+</code></pre>
+<h4 id="ipv6">IPv6</h4>
+<pre><code class="lang-C#">IPNetwork2 defaultParse = IPNetwork2.Parse(&quot;::1&quot;); // default to ClassFull
+IPNetwork2 classFullParse = IPNetwork2.Parse(&quot;::1&quot;, CidrGuess.ClassFull);
+IPNetwork2 classLessParse = IPNetwork2.Parse(&quot;::1&quot;, CidrGuess.ClassLess);
+
+Console.WriteLine(&quot;IPV6 Default Parse : {0}&quot;, defaultParse);
+Console.WriteLine(&quot;IPV6 ClassFull Parse : {0}&quot;, classFullParse);
+Console.WriteLine(&quot;IPV6 ClassLess Parse : {0}&quot;, classLessParse);
+</code></pre>
+<p>Output</p>
+<pre><code class="lang-JS">IPV6 Default Parse : ::/64
+IPV6 ClassFull Parse : ::/64
+IPV6 ClassLess Parse : ::1/128
+</code></pre>
+<hr>
+<h2 id="ipnetwork-utility-command-line">IPNetwork utility command line</h2>
+<p>IPNetwork utility command line take care of complex network, ip, netmask,
+subnet, cidr calculation for command line. It works with IPv4,
+it is written in C# and has a light and clean API and is fully unit tested.</p>
+<p>Below some examples :</p>
+<hr>
+<pre><code class="lang-JS">Provide at least one ipnetwork
+Usage: ipnetwork [-inmcbflu] [-d cidr|-D] [-h|-s cidr|-S|-w|-W|-x|-C network|-o network] networks ...
+Version: 3.1.0
+
+Print options
+        -i : network
+        -n : network address
+        -m : netmask
+        -c : cidr
+        -b : broadcast
+        -f : first usable ip address
+        -l : last usable ip address
+        -u : number of usable ip addresses
+        -t : total number of ip addresses
+
+Parse options
+        -d cidr : use cidr if not provided (default /32)
+        -D      : IPv4 only - use default cidr (ClassA/8, ClassB/16, ClassC/24)
+
+Actions
+        -h         : help message
+        -s cidr    : split network into cidr subnets
+        -w         : supernet networks into smallest possible subnets
+        -W         : supernet networks into one single subnet
+        -x         : list all ipadresses in networks
+        -C network : network contain networks
+        -o network : network overlap networks
+        -S network : substract network from subnet
+
+networks  : one or more network addresses
+            (1.2.3.4 10.0.0.0/8 10.0.0.0/255.0.0.0 2001:db8::/32 2001:db8:1:2:3:4:5:6/128 )
+</code></pre>
+<hr>
+<h3 id="example-10">Example 10</h3>
+<p>Display ipnetwork informations :</p>
+<pre><code class="lang-JS">c:\&gt; ipnetwork 10.0.0.0/8
+</code></pre>
+<pre><code class="lang-JS">IPNetwork   : 10.0.0.0/8
+Network     : 10.0.0.0
+Netmask     : 255.0.0.0
+Cidr        : 8
+Broadcast   : 10.255.255.255
+FirstUsable : 10.0.0.1
+LastUsable  : 10.255.255.254
+Usable      : 16777214
+</code></pre>
+<hr>
+<h3 id="example-11">Example 11</h3>
+<p>Split network into cidr</p>
+<pre><code class="lang-JS">c:\&gt; ipnetwork -s 9 10.0.0.0/8
+</code></pre>
+<pre><code class="lang-JS">IPNetwork   : 10.0.0.0/9
+Network     : 10.0.0.0
+Netmask     : 255.128.0.0
+Cidr        : 9
+Broadcast   : 10.127.255.255
+FirstUsable : 10.0.0.1
+LastUsable  : 10.127.255.254
+Usable      : 8388606
+--
+IPNetwork   : 10.128.0.0/9
+Network     : 10.128.0.0
+Netmask     : 255.128.0.0
+Cidr        : 9
+Broadcast   : 10.255.255.255
+FirstUsable : 10.128.0.1
+LastUsable  : 10.255.255.254
+Usable      : 8388606
+</code></pre>
+<hr>
+<h3 id="example-12">Example 12</h3>
+<p>supernet networks into smallest possible subnets</p>
+<pre><code class="lang-JS">C:\&gt;ipnetwork -w 192.168.0.0/24 192.168.1.0/24
+</code></pre>
+<pre><code class="lang-JS">IPNetwork   : 192.168.0.0/23
+Network     : 192.168.0.0
+Netmask     : 255.255.254.0
+Cidr        : 23
+Broadcast   : 192.168.1.255
+FirstUsable : 192.168.0.1
+LastUsable  : 192.168.1.254
+Usable      : 510
+</code></pre>
+<hr>
+<h3 id="example-13">Example 13</h3>
+<p>supernet networks into smallest possible subnets</p>
+<pre><code class="lang-JS">c:\&gt; ipnetwork -w 192.168.0.0/24 192.168.2.0/24
+</code></pre>
+<pre><code class="lang-JS">
+IPNetwork   : 192.168.0.0/24
+Network     : 192.168.0.0
+Netmask     : 255.255.255.0
+Cidr        : 24
+Broadcast   : 192.168.0.255
+FirstUsable : 192.168.0.1
+LastUsable  : 192.168.0.254
+Usable      : 254
+--
+IPNetwork   : 192.168.2.0/24
+Network     : 192.168.2.0
+Netmask     : 255.255.255.0
+Cidr        : 24
+Broadcast   : 192.168.2.255
+FirstUsable : 192.168.2.1
+LastUsable  : 192.168.2.254
+Usable      : 254
+</code></pre>
+<hr>
+<h3 id="example-14">Example 14</h3>
+<p>supernet networks into smallest possible subnets</p>
+<pre><code class="lang-JS">C:\&gt;ipnetwork -W 192.168.0.0/24 192.168.129.0/24
+</code></pre>
+<pre><code class="lang-JS">IPNetwork   : 192.168.0.0/16
+Network     : 192.168.0.0
+Netmask     : 255.255.0.0
+Cidr        : 16
+Broadcast   : 192.168.255.255
+FirstUsable : 192.168.0.1
+LastUsable  : 192.168.255.254
+Usable      : 65534
+</code></pre>
+<hr>
+<h3 id="example-15">Example 15</h3>
+<p>Split network into cidr, display full network only</p>
+<pre><code class="lang-JS">C:\&gt;ipnetwork -i -s 12 10.0.0.0/8 | grep -v \-\-
+</code></pre>
+<pre><code class="lang-JS">IPNetwork   : 10.0.0.0/12
+IPNetwork   : 10.16.0.0/12
+IPNetwork   : 10.32.0.0/12
+IPNetwork   : 10.48.0.0/12
+IPNetwork   : 10.64.0.0/12
+IPNetwork   : 10.80.0.0/12
+IPNetwork   : 10.96.0.0/12
+IPNetwork   : 10.112.0.0/12
+IPNetwork   : 10.128.0.0/12
+IPNetwork   : 10.144.0.0/12
+IPNetwork   : 10.160.0.0/12
+IPNetwork   : 10.176.0.0/12
+IPNetwork   : 10.192.0.0/12
+IPNetwork   : 10.208.0.0/12
+IPNetwork   : 10.224.0.0/12
+IPNetwork   : 10.240.0.0/12
+</code></pre>
+<hr>
+<h3 id="example-16">Example 16</h3>
+<p>Test if an ip is contained in a network</p>
+<pre><code class="lang-JS">C:\&gt;ipnetwork -C 10.0.0.1 10.0.0.0/8 10.0.1.0/24
+</code></pre>
+<pre><code class="lang-JS">10.0.0.1/32 contains 10.0.0.0/8 : False
+10.0.0.1/32 contains 10.0.1.0/24 : False
+</code></pre>
+<hr>
+<h3 id="example-17">Example 17</h3>
+<p>Test if a network overlap another network</p>
+<pre><code class="lang-JS">C:\&gt;ipnetwork -o 10.0.0.1/24 10.0.0.0/8 10.0.1.0/24
+</code></pre>
+<pre><code class="lang-JS">10.0.0.0/24 overlaps 10.0.0.0/8 : True
+10.0.0.0/24 overlaps 10.0.1.0/24 : False
+</code></pre>
+<hr>
+<h3 id="example-18">Example 18</h3>
+<p>remove one ip from a class and regroup them into the smallest possible network</p>
+<pre><code class="lang-JS">C:\&gt; ipnetwork -i -s 32 192.168.0.0/24 \
+          | grep -v \-\- \
+          | awk &quot;{print $3;}&quot; \
+          | grep -v 192.168.0.213/32 \
+          | xargs ipnetwork -i -w \
+          | grep -v \-\-
+</code></pre>
+<pre><code class="lang-JS">IPNetwork   : 192.168.0.224/27
+IPNetwork   : 192.168.0.216/29
+IPNetwork   : 192.168.0.214/31
+IPNetwork   : 192.168.0.212/32
+IPNetwork   : 192.168.0.208/30
+IPNetwork   : 192.168.0.192/28
+IPNetwork   : 192.168.0.128/26
+IPNetwork   : 192.168.0.0/25
+</code></pre>
+<hr>
+<h3 id="example-18-ipv6">Example 18 (IPv6)</h3>
+<p>IPv6 networks</p>
+<pre><code class="lang-shell">  ipnetwork.exe 2001:0db8::/128
+</code></pre>
+<pre><code class="lang-JS">IPNetwork   : 2001:db8::/128
+Network     : 2001:db8::
+Netmask     : ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+Cidr        : 128
+Broadcast   : 2001:db8::
+FirstUsable : 2001:db8::
+LastUsable  : 2001:db8::
+Usable      : 0
+Total       : 1
+</code></pre>
+<p>Have fun !</p>
+<h2 id="license">License</h2>
+<p><a href="https://app.fossa.io/projects/git%2Bgithub.com%2Flduchosal%2Fipnetwork?ref=badge_large"><img src="https://app.fossa.io/api/projects/git%2Bgithub.com%2Flduchosal%2Fipnetwork.svg?type=large" alt="FOSSA Status"></a></p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/lduchosal/ipnetwork/blob/feat/cleanup-documentation/doc/index.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

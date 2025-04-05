@@ -1,0 +1,209 @@
+{
+  "source_base_path": "C:/Users/Q/Projects/ipnetwork/doc",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.BigIntegerExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.BigIntegerExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.BigIntegerExtensions",
+      "Summary": "<p sourcefile=\"api/System.Net.BigIntegerExtensions.yml\" sourcestartlinenumber=\"1\">Extension methods to convert <xref href=\"System.Numerics.BigInteger\" data-throw-if-not-resolved=\"false\"></xref>\ninstances to hexadecimal, octal, and binary strings.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.CidrClassFull.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.CidrClassFull.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.CidrClassFull",
+      "Summary": "<p sourcefile=\"api/System.Net.CidrClassFull.yml\" sourcestartlinenumber=\"1\">Class <code>CidrClassFull</code> tries to guess CIDR in a ClassFull way.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.CidrClassLess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.CidrClassLess.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.CidrClassLess",
+      "Summary": "<p sourcefile=\"api/System.Net.CidrClassLess.yml\" sourcestartlinenumber=\"1\">Try to guess a CIDR in a ClassLess way ie. ipv4 = 32, ipv6 = 128.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.CidrGuess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.CidrGuess.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.CidrGuess",
+      "Summary": "<p sourcefile=\"api/System.Net.CidrGuess.yml\" sourcestartlinenumber=\"1\">A static helper CidrGuess class.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.FilterEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.FilterEnum.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.FilterEnum",
+      "Summary": "<p sourcefile=\"api/System.Net.FilterEnum.yml\" sourcestartlinenumber=\"1\">Represents different filters for a collection of items.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.ICidrGuess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.ICidrGuess.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.ICidrGuess",
+      "Summary": "<p sourcefile=\"api/System.Net.ICidrGuess.yml\" sourcestartlinenumber=\"1\">An interface to have multiple implemntatino ao CIDR Guesser.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.IPAddressCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.IPAddressCollection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.IPAddressCollection",
+      "Summary": "<p sourcefile=\"api/System.Net.IPAddressCollection.yml\" sourcestartlinenumber=\"1\">Represents a collection of IP addresses within a specific IP network.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.IPAddressExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.IPAddressExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.IPAddressExtensions",
+      "Summary": "<p sourcefile=\"api/System.Net.IPAddressExtensions.yml\" sourcestartlinenumber=\"1\">A collection of extension functions applied to an IPAddress value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.IPNetwork2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.IPNetwork2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.IPNetwork2",
+      "Summary": "<p sourcefile=\"api/System.Net.IPNetwork2.yml\" sourcestartlinenumber=\"1\">IP Network utility class.\nUse IPNetwork.Parse to create instances.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.IPNetworkCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.IPNetworkCollection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.IPNetworkCollection",
+      "Summary": "<p sourcefile=\"api/System.Net.IPNetworkCollection.yml\" sourcestartlinenumber=\"1\">Represents a collection of IP networks based on a given parent IP network and subnet CIDR.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

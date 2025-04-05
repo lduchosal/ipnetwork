@@ -1,0 +1,4839 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Net.IPNetwork2
+  commentId: T:System.Net.IPNetwork2
+  id: IPNetwork2
+  parent: System.Net
+  children:
+  - System.Net.IPNetwork2.#ctor
+  - System.Net.IPNetwork2.#ctor(System.Net.IPAddress,System.Byte)
+  - System.Net.IPNetwork2.AddressFamily
+  - System.Net.IPNetwork2.BitsSet(System.Net.IPAddress)
+  - System.Net.IPNetwork2.Broadcast
+  - System.Net.IPNetwork2.Cidr
+  - System.Net.IPNetwork2.Compare(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.CompareTo(System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.CompareTo(System.Object)
+  - System.Net.IPNetwork2.Contains(System.Net.IPAddress)
+  - System.Net.IPNetwork2.Contains(System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.Contains(System.Net.IPNetwork2,System.Net.IPAddress)
+  - System.Net.IPNetwork2.Contains(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.Equals(System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.Equals(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.Equals(System.Object)
+  - System.Net.IPNetwork2.FirstUsable
+  - System.Net.IPNetwork2.GetHashCode
+  - System.Net.IPNetwork2.IANA_ABLK_RESERVED1
+  - System.Net.IPNetwork2.IANA_BBLK_RESERVED1
+  - System.Net.IPNetwork2.IANA_CBLK_RESERVED1
+  - System.Net.IPNetwork2.IsIANAReserved
+  - System.Net.IPNetwork2.IsIANAReserved(System.Net.IPAddress)
+  - System.Net.IPNetwork2.IsIANAReserved(System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.LastUsable
+  - System.Net.IPNetwork2.ListIPAddress(System.Net.FilterEnum)
+  - System.Net.IPNetwork2.ListIPAddress(System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.Netmask
+  - System.Net.IPNetwork2.Network
+  - System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.Parse(System.Net.IPAddress,System.Net.IPAddress)
+  - System.Net.IPNetwork2.Parse(System.String)
+  - System.Net.IPNetwork2.Parse(System.String,System.Boolean)
+  - System.Net.IPNetwork2.Parse(System.String,System.Byte)
+  - System.Net.IPNetwork2.Parse(System.String,System.Net.ICidrGuess)
+  - System.Net.IPNetwork2.Parse(System.String,System.Net.ICidrGuess,System.Boolean)
+  - System.Net.IPNetwork2.Parse(System.String,System.String)
+  - System.Net.IPNetwork2.Print
+  - System.Net.IPNetwork2.Print(System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.Subnet(System.Byte)
+  - System.Net.IPNetwork2.Subnet(System.Net.IPNetwork2,System.Byte)
+  - System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2[])
+  - System.Net.IPNetwork2.ToBigInteger(System.Net.IPAddress)
+  - System.Net.IPNetwork2.ToCidr(System.Net.IPAddress)
+  - System.Net.IPNetwork2.ToIPAddress(System.Numerics.BigInteger,System.Net.Sockets.AddressFamily)
+  - System.Net.IPNetwork2.ToNetmask(System.Byte,System.Net.Sockets.AddressFamily)
+  - System.Net.IPNetwork2.ToString
+  - System.Net.IPNetwork2.ToUint(System.Byte,System.Net.Sockets.AddressFamily)
+  - System.Net.IPNetwork2.Total
+  - System.Net.IPNetwork2.TryGuessCidr(System.String,System.Byte@)
+  - System.Net.IPNetwork2.TryParse(System.Net.IPAddress,System.Net.IPAddress,System.Net.IPNetwork2@)
+  - System.Net.IPNetwork2.TryParse(System.String,System.Boolean,System.Net.IPNetwork2@)
+  - System.Net.IPNetwork2.TryParse(System.String,System.Byte,System.Net.IPNetwork2@)
+  - System.Net.IPNetwork2.TryParse(System.String,System.Net.ICidrGuess,System.Boolean,System.Net.IPNetwork2@)
+  - System.Net.IPNetwork2.TryParse(System.String,System.Net.ICidrGuess,System.Net.IPNetwork2@)
+  - System.Net.IPNetwork2.TryParse(System.String,System.Net.IPNetwork2@)
+  - System.Net.IPNetwork2.TryParse(System.String,System.String,System.Net.IPNetwork2@)
+  - System.Net.IPNetwork2.TryParseCidr(System.String,System.Net.Sockets.AddressFamily,System.Nullable{System.Byte}@)
+  - System.Net.IPNetwork2.TrySubnet(System.Byte,System.Net.IPNetworkCollection@)
+  - System.Net.IPNetwork2.TrySubnet(System.Net.IPNetwork2,System.Byte,System.Net.IPNetworkCollection@)
+  - System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2,System.Net.IPNetwork2,System.Net.IPNetwork2@)
+  - System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2,System.Net.IPNetwork2@)
+  - System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2[],System.Net.IPNetwork2[]@)
+  - System.Net.IPNetwork2.TryToBigInteger(System.Net.IPAddress,System.Nullable{System.Numerics.BigInteger}@)
+  - System.Net.IPNetwork2.TryToCidr(System.Net.IPAddress,System.Nullable{System.Byte}@)
+  - System.Net.IPNetwork2.TryToNetmask(System.Byte,System.Net.Sockets.AddressFamily,System.Net.IPAddress@)
+  - System.Net.IPNetwork2.TryToUint(System.Byte,System.Net.Sockets.AddressFamily,System.Nullable{System.Numerics.BigInteger}@)
+  - System.Net.IPNetwork2.TryWideSubnet(System.Net.IPNetwork2[],System.Net.IPNetwork2@)
+  - System.Net.IPNetwork2.Usable
+  - System.Net.IPNetwork2.ValidNetmask(System.Net.IPAddress)
+  - System.Net.IPNetwork2.Value
+  - System.Net.IPNetwork2.WideSubnet(System.Net.IPNetwork2[])
+  - System.Net.IPNetwork2.WideSubnet(System.String,System.String)
+  - System.Net.IPNetwork2.WildcardMask
+  - System.Net.IPNetwork2.op_Equality(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.op_GreaterThan(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.op_Inequality(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  - System.Net.IPNetwork2.op_LessThan(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  langs:
+  - csharp
+  - vb
+  name: IPNetwork2
+  nameWithType: IPNetwork2
+  fullName: System.Net.IPNetwork2
+  type: Class
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2XmlSerialization.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: IPNetwork2
+    path: ../src/System.Net.IPNetwork/IPNetwork2XmlSerialization.cs
+    startLine: 11
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    IP Network utility class.
+
+    Use IPNetwork.Parse to create instances.
+  example: []
+  syntax:
+    content: >-
+      [Serializable]
+
+      [CLSCompliant(true)]
+
+      public sealed class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
+    content.vb: >-
+      <Serializable>
+
+      <CLSCompliant(True)>
+
+      Public NotInheritable Class IPNetwork2 Implements IComparable(Of IPNetwork2), ISerializable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IComparable{System.Net.IPNetwork2}
+  - System.Runtime.Serialization.ISerializable
+  inheritedMembers:
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetType
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  attributes:
+  - type: System.SerializableAttribute
+    ctor: System.SerializableAttribute.#ctor
+    arguments: []
+  - type: System.CLSCompliantAttribute
+    ctor: System.CLSCompliantAttribute.#ctor(System.Boolean)
+    arguments:
+    - type: System.Boolean
+      value: true
+- uid: System.Net.IPNetwork2.ToString
+  commentId: M:System.Net.IPNetwork2.ToString
+  id: ToString
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: ToString()
+  nameWithType: IPNetwork2.ToString()
+  fullName: System.Net.IPNetwork2.ToString()
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: ToString
+    path: ../src/System.Net.IPNetwork/IPNetwork2.cs
+    startLine: 22
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Returns a string representation of the object.
+  example: []
+  syntax:
+    content: public override string ToString()
+    return:
+      type: System.String
+      description: A string representation of the object which includes the Network and Cidr values separated by a "/".
+    content.vb: Public Overrides Function ToString() As String
+  overridden: System.Object.ToString
+  overload: System.Net.IPNetwork2.ToString*
+- uid: System.Net.IPNetwork2.BitsSet(System.Net.IPAddress)
+  commentId: M:System.Net.IPNetwork2.BitsSet(System.Net.IPAddress)
+  id: BitsSet(System.Net.IPAddress)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: BitsSet(IPAddress)
+  nameWithType: IPNetwork2.BitsSet(IPAddress)
+  fullName: System.Net.IPNetwork2.BitsSet(System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2BitsSet.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: BitsSet
+    path: ../src/System.Net.IPNetwork/IPNetwork2BitsSet.cs
+    startLine: 19
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Count bits set to 1 in netmask.
+  example: []
+  syntax:
+    content: >-
+      [CLSCompliant(false)]
+
+      public static uint BitsSet(IPAddress netmask)
+    parameters:
+    - id: netmask
+      type: System.Net.IPAddress
+      description: A number representing the netmask to count bits from.
+    return:
+      type: System.UInt32
+      description: The number of bytes set to 1.
+    content.vb: >-
+      <CLSCompliant(False)>
+
+      Public Shared Function BitsSet(netmask As IPAddress) As UInteger
+  overload: System.Net.IPNetwork2.BitsSet*
+  attributes:
+  - type: System.CLSCompliantAttribute
+    ctor: System.CLSCompliantAttribute.#ctor(System.Boolean)
+    arguments:
+    - type: System.Boolean
+      value: false
+- uid: System.Net.IPNetwork2.Contains(System.Net.IPNetwork2,System.Net.IPAddress)
+  commentId: M:System.Net.IPNetwork2.Contains(System.Net.IPNetwork2,System.Net.IPAddress)
+  id: Contains(System.Net.IPNetwork2,System.Net.IPAddress)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Contains(IPNetwork2, IPAddress)
+  nameWithType: IPNetwork2.Contains(IPNetwork2, IPAddress)
+  fullName: System.Net.IPNetwork2.Contains(System.Net.IPNetwork2, System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2contains.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Contains
+    path: ../src/System.Net.IPNetwork/IPNetwork2contains.cs
+    startLine: 22
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Determines whether the given IP address is part of the given IP network.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("static Contains is deprecated, please use instance Contains.")]
+
+      public static bool Contains(IPNetwork2 network, IPAddress ipaddress)
+    parameters:
+    - id: network
+      type: System.Net.IPNetwork2
+      description: The IP network.
+    - id: ipaddress
+      type: System.Net.IPAddress
+      description: The IP address.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the IP address is part of the IP network; otherwise, <code>false</code>.
+    content.vb: >-
+      <Obsolete("static Contains is deprecated, please use instance Contains.")>
+
+      Public Shared Function Contains(network As IPNetwork2, ipaddress As IPAddress) As Boolean
+  overload: System.Net.IPNetwork2.Contains*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: static Contains is deprecated, please use instance Contains.
+- uid: System.Net.IPNetwork2.Contains(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.Contains(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  id: Contains(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Contains(IPNetwork2, IPNetwork2)
+  nameWithType: IPNetwork2.Contains(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.Contains(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2contains.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Contains
+    path: ../src/System.Net.IPNetwork/IPNetwork2contains.cs
+    startLine: 41
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Determines if the given <code class="paramref">network</code> contains the specified <code class="paramref">network2</code>.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("static Contains is deprecated, please use instance Contains.")]
+
+      public static bool Contains(IPNetwork2 network, IPNetwork2 network2)
+    parameters:
+    - id: network
+      type: System.Net.IPNetwork2
+      description: The network to check for containment.
+    - id: network2
+      type: System.Net.IPNetwork2
+      description: The network to check if it is contained.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the <code class="paramref">network</code> contains the <code class="paramref">network2</code>; otherwise, <code>false</code>.
+    content.vb: >-
+      <Obsolete("static Contains is deprecated, please use instance Contains.")>
+
+      Public Shared Function Contains(network As IPNetwork2, network2 As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.Contains*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: static Contains is deprecated, please use instance Contains.
+- uid: System.Net.IPNetwork2.Contains(System.Net.IPAddress)
+  commentId: M:System.Net.IPNetwork2.Contains(System.Net.IPAddress)
+  id: Contains(System.Net.IPAddress)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Contains(IPAddress)
+  nameWithType: IPNetwork2.Contains(IPAddress)
+  fullName: System.Net.IPNetwork2.Contains(System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2contains.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Contains
+    path: ../src/System.Net.IPNetwork/IPNetwork2contains.cs
+    startLine: 57
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: return true if ipaddress is contained in network.
+  example: []
+  syntax:
+    content: >-
+      [CLSCompliant(false)]
+
+      public bool Contains(IPAddress contains)
+    parameters:
+    - id: contains
+      type: System.Net.IPAddress
+      description: A string containing an ip address to convert.
+    return:
+      type: System.Boolean
+      description: true if ipaddress is contained into the IP Network; otherwise, false.
+    content.vb: >-
+      <CLSCompliant(False)>
+
+      Public Function Contains(contains As IPAddress) As Boolean
+  overload: System.Net.IPNetwork2.Contains*
+  attributes:
+  - type: System.CLSCompliantAttribute
+    ctor: System.CLSCompliantAttribute.#ctor(System.Boolean)
+    arguments:
+    - type: System.Boolean
+      value: false
+- uid: System.Net.IPNetwork2.Contains(System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.Contains(System.Net.IPNetwork2)
+  id: Contains(System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Contains(IPNetwork2)
+  nameWithType: IPNetwork2.Contains(IPNetwork2)
+  fullName: System.Net.IPNetwork2.Contains(System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2contains.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Contains
+    path: ../src/System.Net.IPNetwork/IPNetwork2contains.cs
+    startLine: 86
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: return true is network2 is fully contained in network.
+  example: []
+  syntax:
+    content: public bool Contains(IPNetwork2 contains)
+    parameters:
+    - id: contains
+      type: System.Net.IPNetwork2
+      description: The network to test.
+    return:
+      type: System.Boolean
+      description: It returns the boolean value. If network2 is in IPNetwork then it returns True, otherwise returns False.
+    content.vb: Public Function Contains(contains As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.Contains*
+- uid: System.Net.IPNetwork2.#ctor(System.Net.IPAddress,System.Byte)
+  commentId: M:System.Net.IPNetwork2.#ctor(System.Net.IPAddress,System.Byte)
+  id: '#ctor(System.Net.IPAddress,System.Byte)'
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: IPNetwork2(IPAddress, byte)
+  nameWithType: IPNetwork2.IPNetwork2(IPAddress, byte)
+  fullName: System.Net.IPNetwork2.IPNetwork2(System.Net.IPAddress, byte)
+  type: Constructor
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Ctor.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: .ctor
+    path: ../src/System.Net.IPNetwork/IPNetwork2Ctor.cs
+    startLine: 38
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Initializes a new instance of the <xref href="System.Net.IPNetwork2" data-throw-if-not-resolved="false"></xref> class.
+
+    Creates a new IPNetwork.
+  example: []
+  syntax:
+    content: public IPNetwork2(IPAddress ipaddress, byte cidr)
+    parameters:
+    - id: ipaddress
+      type: System.Net.IPAddress
+      description: An ipaddress.
+    - id: cidr
+      type: System.Byte
+      description: A byte representing the netmask in cidr format (/24).
+    content.vb: Public Sub New(ipaddress As IPAddress, cidr As Byte)
+  overload: System.Net.IPNetwork2.#ctor*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: ipaddress is null.
+  nameWithType.vb: IPNetwork2.New(IPAddress, Byte)
+  fullName.vb: System.Net.IPNetwork2.New(System.Net.IPAddress, Byte)
+  name.vb: New(IPAddress, Byte)
+- uid: System.Net.IPNetwork2.GetHashCode
+  commentId: M:System.Net.IPNetwork2.GetHashCode
+  id: GetHashCode
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: GetHashCode()
+  nameWithType: IPNetwork2.GetHashCode()
+  fullName: System.Net.IPNetwork2.GetHashCode()
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2GetHashCode.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: GetHashCode
+    path: ../src/System.Net.IPNetwork/IPNetwork2GetHashCode.cs
+    startLine: 12
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Serves as the default hash function.
+  example: []
+  syntax:
+    content: public override int GetHashCode()
+    return:
+      type: System.Int32
+      description: A hash code for the current object.
+    content.vb: Public Overrides Function GetHashCode() As Integer
+  overridden: System.Object.GetHashCode
+  overload: System.Net.IPNetwork2.GetHashCode*
+- uid: System.Net.IPNetwork2.IANA_ABLK_RESERVED1
+  commentId: P:System.Net.IPNetwork2.IANA_ABLK_RESERVED1
+  id: IANA_ABLK_RESERVED1
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: IANA_ABLK_RESERVED1
+  nameWithType: IPNetwork2.IANA_ABLK_RESERVED1
+  fullName: System.Net.IPNetwork2.IANA_ABLK_RESERVED1
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2IANAblock.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: IANA_ABLK_RESERVED1
+    path: ../src/System.Net.IPNetwork/IPNetwork2IANAblock.cs
+    startLine: 19
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets 10.0.0.0/8.
+  example: []
+  syntax:
+    content: public static IPNetwork2 IANA_ABLK_RESERVED1 { get; }
+    parameters: []
+    return:
+      type: System.Net.IPNetwork2
+      description: The IANA reserved IPNetwork 10.0.0.0/8.
+    content.vb: Public Shared ReadOnly Property IANA_ABLK_RESERVED1 As IPNetwork2
+  overload: System.Net.IPNetwork2.IANA_ABLK_RESERVED1*
+- uid: System.Net.IPNetwork2.IANA_BBLK_RESERVED1
+  commentId: P:System.Net.IPNetwork2.IANA_BBLK_RESERVED1
+  id: IANA_BBLK_RESERVED1
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: IANA_BBLK_RESERVED1
+  nameWithType: IPNetwork2.IANA_BBLK_RESERVED1
+  fullName: System.Net.IPNetwork2.IANA_BBLK_RESERVED1
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2IANAblock.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: IANA_BBLK_RESERVED1
+    path: ../src/System.Net.IPNetwork/IPNetwork2IANAblock.cs
+    startLine: 31
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets 172.12.0.0/12.
+  example: []
+  syntax:
+    content: public static IPNetwork2 IANA_BBLK_RESERVED1 { get; }
+    parameters: []
+    return:
+      type: System.Net.IPNetwork2
+      description: The IANA reserved IPNetwork 172.12.0.0/12.
+    content.vb: Public Shared ReadOnly Property IANA_BBLK_RESERVED1 As IPNetwork2
+  overload: System.Net.IPNetwork2.IANA_BBLK_RESERVED1*
+- uid: System.Net.IPNetwork2.IANA_CBLK_RESERVED1
+  commentId: P:System.Net.IPNetwork2.IANA_CBLK_RESERVED1
+  id: IANA_CBLK_RESERVED1
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: IANA_CBLK_RESERVED1
+  nameWithType: IPNetwork2.IANA_CBLK_RESERVED1
+  fullName: System.Net.IPNetwork2.IANA_CBLK_RESERVED1
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2IANAblock.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: IANA_CBLK_RESERVED1
+    path: ../src/System.Net.IPNetwork/IPNetwork2IANAblock.cs
+    startLine: 43
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets 192.168.0.0/16.
+  example: []
+  syntax:
+    content: public static IPNetwork2 IANA_CBLK_RESERVED1 { get; }
+    parameters: []
+    return:
+      type: System.Net.IPNetwork2
+      description: The IANA reserved IPNetwork 192.168.0.0/16.
+    content.vb: Public Shared ReadOnly Property IANA_CBLK_RESERVED1 As IPNetwork2
+  overload: System.Net.IPNetwork2.IANA_CBLK_RESERVED1*
+- uid: System.Net.IPNetwork2.IsIANAReserved(System.Net.IPAddress)
+  commentId: M:System.Net.IPNetwork2.IsIANAReserved(System.Net.IPAddress)
+  id: IsIANAReserved(System.Net.IPAddress)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: IsIANAReserved(IPAddress)
+  nameWithType: IPNetwork2.IsIANAReserved(IPAddress)
+  fullName: System.Net.IPNetwork2.IsIANAReserved(System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2IANAblock.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: IsIANAReserved
+    path: ../src/System.Net.IPNetwork/IPNetwork2IANAblock.cs
+    startLine: 57
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    return true if ipaddress is contained in
+
+    IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1.
+  example: []
+  syntax:
+    content: public static bool IsIANAReserved(IPAddress ipaddress)
+    parameters:
+    - id: ipaddress
+      type: System.Net.IPAddress
+      description: A string containing an ip address to convert.
+    return:
+      type: System.Boolean
+      description: true if ipaddress is a IANA reserverd IP Netowkr ; otherwise, false.
+    content.vb: Public Shared Function IsIANAReserved(ipaddress As IPAddress) As Boolean
+  overload: System.Net.IPNetwork2.IsIANAReserved*
+- uid: System.Net.IPNetwork2.IsIANAReserved(System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.IsIANAReserved(System.Net.IPNetwork2)
+  id: IsIANAReserved(System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: IsIANAReserved(IPNetwork2)
+  nameWithType: IPNetwork2.IsIANAReserved(IPNetwork2)
+  fullName: System.Net.IPNetwork2.IsIANAReserved(System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2IANAblock.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: IsIANAReserved
+    path: ../src/System.Net.IPNetwork/IPNetwork2IANAblock.cs
+    startLine: 84
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Determines whether the specified IP network is reserved according to the IANA Reserved ranges.
+  remarks: >-
+    <p>
+
+    This method is obsolete and should not be used. Please use the instance method, see IsIANAReserved" instead.
+
+    </p>
+
+    <p>
+
+    Throws an <xref href="System.ArgumentNullException" data-throw-if-not-resolved="false"></xref> if <code class="paramref">ipnetwork</code> is <code>null</code>.
+
+    </p>
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("static IsIANAReserved is deprecated, please use instance IsIANAReserved.")]
+
+      public static bool IsIANAReserved(IPNetwork2 ipnetwork)
+    parameters:
+    - id: ipnetwork
+      type: System.Net.IPNetwork2
+      description: The IP network to check.
+    return:
+      type: System.Boolean
+      description: <code>true</code> if the specified IP network is reserved according to the IANA Reserved ranges; otherwise, <code>false</code>.
+    content.vb: >-
+      <Obsolete("static IsIANAReserved is deprecated, please use instance IsIANAReserved.")>
+
+      Public Shared Function IsIANAReserved(ipnetwork As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.IsIANAReserved*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: static IsIANAReserved is deprecated, please use instance IsIANAReserved.
+- uid: System.Net.IPNetwork2.IsIANAReserved
+  commentId: M:System.Net.IPNetwork2.IsIANAReserved
+  id: IsIANAReserved
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: IsIANAReserved()
+  nameWithType: IPNetwork2.IsIANAReserved()
+  fullName: System.Net.IPNetwork2.IsIANAReserved()
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2IANAblock.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: IsIANAReserved
+    path: ../src/System.Net.IPNetwork/IPNetwork2IANAblock.cs
+    startLine: 100
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    return true if ipnetwork is contained in
+
+    IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1.
+  example: []
+  syntax:
+    content: public bool IsIANAReserved()
+    return:
+      type: System.Boolean
+      description: true if the ipnetwork is a IANA reserverd IP Netowkr ; otherwise, false.
+    content.vb: Public Function IsIANAReserved() As Boolean
+  overload: System.Net.IPNetwork2.IsIANAReserved*
+- uid: System.Net.IPNetwork2.Compare(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.Compare(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  id: Compare(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Compare(IPNetwork2, IPNetwork2)
+  nameWithType: IPNetwork2.Compare(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.Compare(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2IComparableIPNetworkMembers.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Compare
+    path: ../src/System.Net.IPNetwork/IPNetwork2IComparableIPNetworkMembers.cs
+    startLine: 22
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Compares two IPNetwork2 instances.
+  example: []
+  syntax:
+    content: public static int Compare(IPNetwork2 left, IPNetwork2 right)
+    parameters:
+    - id: left
+      type: System.Net.IPNetwork2
+      description: The first IPNetwork2 instance to compare.
+    - id: right
+      type: System.Net.IPNetwork2
+      description: The second IPNetwork2 instance to compare.
+    return:
+      type: System.Int32
+      description: >-
+        A value indicating the relative order of the two IPNetwork2 instances.
+
+        Zero if the instances are equal.
+
+        A negative value if <code class="paramref">left</code> is less than <code class="paramref">right</code>.
+
+        A positive value if <code class="paramref">left</code> is greater than <code class="paramref">right</code>.
+    content.vb: Public Shared Function Compare(left As IPNetwork2, right As IPNetwork2) As Integer
+  overload: System.Net.IPNetwork2.Compare*
+- uid: System.Net.IPNetwork2.CompareTo(System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.CompareTo(System.Net.IPNetwork2)
+  id: CompareTo(System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: CompareTo(IPNetwork2)
+  nameWithType: IPNetwork2.CompareTo(IPNetwork2)
+  fullName: System.Net.IPNetwork2.CompareTo(System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2IComparableIPNetworkMembers.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: CompareTo
+    path: ../src/System.Net.IPNetwork/IPNetwork2IComparableIPNetworkMembers.cs
+    startLine: 71
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Compare two ipnetworks.
+  example: []
+  syntax:
+    content: public int CompareTo(IPNetwork2 other)
+    parameters:
+    - id: other
+      type: System.Net.IPNetwork2
+      description: The other network to compare to.
+    return:
+      type: System.Int32
+      description: A signed number indicating the relative values of this instance and value..
+    content.vb: Public Function CompareTo(other As IPNetwork2) As Integer
+  overload: System.Net.IPNetwork2.CompareTo*
+  implements:
+  - System.IComparable{System.Net.IPNetwork2}.CompareTo(System.Net.IPNetwork2)
+- uid: System.Net.IPNetwork2.CompareTo(System.Object)
+  commentId: M:System.Net.IPNetwork2.CompareTo(System.Object)
+  id: CompareTo(System.Object)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: CompareTo(object)
+  nameWithType: IPNetwork2.CompareTo(object)
+  fullName: System.Net.IPNetwork2.CompareTo(object)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2IComparableIPNetworkMembers.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: CompareTo
+    path: ../src/System.Net.IPNetwork/IPNetwork2IComparableIPNetworkMembers.cs
+    startLine: 81
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Compare two ipnetworks.
+  example: []
+  syntax:
+    content: public int CompareTo(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: The other object to compare to.
+    return:
+      type: System.Int32
+      description: A signed number indicating the relative values of this instance and value..
+    content.vb: Public Function CompareTo(obj As Object) As Integer
+  overload: System.Net.IPNetwork2.CompareTo*
+  nameWithType.vb: IPNetwork2.CompareTo(Object)
+  fullName.vb: System.Net.IPNetwork2.CompareTo(Object)
+  name.vb: CompareTo(Object)
+- uid: System.Net.IPNetwork2.Equals(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.Equals(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  id: Equals(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Equals(IPNetwork2, IPNetwork2)
+  nameWithType: IPNetwork2.Equals(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.Equals(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2IEquatableIPNetworkMembers.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Equals
+    path: ../src/System.Net.IPNetwork/IPNetwork2IEquatableIPNetworkMembers.cs
+    startLine: 17
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Compare two ipnetworks.
+  example: []
+  syntax:
+    content: public static bool Equals(IPNetwork2 left, IPNetwork2 right)
+    parameters:
+    - id: left
+      type: System.Net.IPNetwork2
+      description: An IPNetwork to compare.
+    - id: right
+      type: System.Net.IPNetwork2
+      description: An other IPNetwork to compare to.
+    return:
+      type: System.Boolean
+      description: true if obj has the same value as this instance; otherwise, false.
+    content.vb: Public Shared Function Equals(left As IPNetwork2, right As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.Equals*
+- uid: System.Net.IPNetwork2.Equals(System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.Equals(System.Net.IPNetwork2)
+  id: Equals(System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Equals(IPNetwork2)
+  nameWithType: IPNetwork2.Equals(IPNetwork2)
+  fullName: System.Net.IPNetwork2.Equals(System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2IEquatableIPNetworkMembers.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Equals
+    path: ../src/System.Net.IPNetwork/IPNetwork2IEquatableIPNetworkMembers.cs
+    startLine: 27
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Compare two ipnetworks.
+  example: []
+  syntax:
+    content: public bool Equals(IPNetwork2 other)
+    parameters:
+    - id: other
+      type: System.Net.IPNetwork2
+      description: An IPNetwork to compare to this instance.
+    return:
+      type: System.Boolean
+      description: true if obj has the same value as this instance; otherwise, false.
+    content.vb: Public Function Equals(other As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.Equals*
+- uid: System.Net.IPNetwork2.Equals(System.Object)
+  commentId: M:System.Net.IPNetwork2.Equals(System.Object)
+  id: Equals(System.Object)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Equals(object)
+  nameWithType: IPNetwork2.Equals(object)
+  fullName: System.Net.IPNetwork2.Equals(object)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2IEquatableIPNetworkMembers.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Equals
+    path: ../src/System.Net.IPNetwork/IPNetwork2IEquatableIPNetworkMembers.cs
+    startLine: 37
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Compare two ipnetworks.
+  example: []
+  syntax:
+    content: public override bool Equals(object obj)
+    parameters:
+    - id: obj
+      type: System.Object
+      description: An object value to compare to this instance.
+    return:
+      type: System.Boolean
+      description: true if obj has the same value as this instance; otherwise, false.
+    content.vb: Public Overrides Function Equals(obj As Object) As Boolean
+  overridden: System.Object.Equals(System.Object)
+  overload: System.Net.IPNetwork2.Equals*
+  nameWithType.vb: IPNetwork2.Equals(Object)
+  fullName.vb: System.Net.IPNetwork2.Equals(Object)
+  name.vb: Equals(Object)
+- uid: System.Net.IPNetwork2.ListIPAddress(System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.ListIPAddress(System.Net.IPNetwork2)
+  id: ListIPAddress(System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: ListIPAddress(IPNetwork2)
+  nameWithType: IPNetwork2.ListIPAddress(IPNetwork2)
+  fullName: System.Net.IPNetwork2.ListIPAddress(System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2ListIPAddress.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: ListIPAddress
+    path: ../src/System.Net.IPNetwork/IPNetwork2ListIPAddress.cs
+    startLine: 16
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: List all ip addresses in a subnet.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("static ListIPAddress is deprecated, please use instance ListIPAddress.")]
+
+      public static IPAddressCollection ListIPAddress(IPNetwork2 ipnetwork)
+    parameters:
+    - id: ipnetwork
+      type: System.Net.IPNetwork2
+      description: The network to list IPAdresses.
+    return:
+      type: System.Net.IPAddressCollection
+      description: All the IPAdresses contained in ipnetwork.
+    content.vb: >-
+      <Obsolete("static ListIPAddress is deprecated, please use instance ListIPAddress.")>
+
+      Public Shared Function ListIPAddress(ipnetwork As IPNetwork2) As IPAddressCollection
+  overload: System.Net.IPNetwork2.ListIPAddress*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: static ListIPAddress is deprecated, please use instance ListIPAddress.
+- uid: System.Net.IPNetwork2.ListIPAddress(System.Net.FilterEnum)
+  commentId: M:System.Net.IPNetwork2.ListIPAddress(System.Net.FilterEnum)
+  id: ListIPAddress(System.Net.FilterEnum)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: ListIPAddress(FilterEnum)
+  nameWithType: IPNetwork2.ListIPAddress(FilterEnum)
+  fullName: System.Net.IPNetwork2.ListIPAddress(System.Net.FilterEnum)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2ListIPAddress.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: ListIPAddress
+    path: ../src/System.Net.IPNetwork/IPNetwork2ListIPAddress.cs
+    startLine: 27
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: List all ip addresses in a subnet.
+  example: []
+  syntax:
+    content: public IPAddressCollection ListIPAddress(FilterEnum filter = FilterEnum.All)
+    parameters:
+    - id: filter
+      type: System.Net.FilterEnum
+      description: Filter IPAdresses from IPNetwork.
+    return:
+      type: System.Net.IPAddressCollection
+      description: The filterted IPAdresses contained in ipnetwork.
+    content.vb: Public Function ListIPAddress(filter As FilterEnum = FilterEnum.All) As IPAddressCollection
+  overload: System.Net.IPNetwork2.ListIPAddress*
+- uid: System.Net.IPNetwork2.Value
+  commentId: P:System.Net.IPNetwork2.Value
+  id: Value
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Value
+  nameWithType: IPNetwork2.Value
+  fullName: System.Net.IPNetwork2.Value
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Members.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Value
+    path: ../src/System.Net.IPNetwork/IPNetwork2Members.cs
+    startLine: 26
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets or sets a value indicating whether gets or sets the value of the IPNetwork property.
+  example: []
+  syntax:
+    content: >-
+      [DataMember(Name = "IPNetwork", IsRequired = true)]
+
+      public string Value { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <DataMember(Name:="IPNetwork", IsRequired:=True)>
+
+      Public Property Value As String
+  overload: System.Net.IPNetwork2.Value*
+  attributes:
+  - type: System.Runtime.Serialization.DataMemberAttribute
+    ctor: System.Runtime.Serialization.DataMemberAttribute.#ctor
+    arguments: []
+    namedArguments:
+    - name: Name
+      type: System.String
+      value: IPNetwork
+    - name: IsRequired
+      type: System.Boolean
+      value: true
+- uid: System.Net.IPNetwork2.Network
+  commentId: P:System.Net.IPNetwork2.Network
+  id: Network
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Network
+  nameWithType: IPNetwork2.Network
+  fullName: System.Net.IPNetwork2.Network
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Members.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Network
+    path: ../src/System.Net.IPNetwork/IPNetwork2Members.cs
+    startLine: 50
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets network address.
+  example: []
+  syntax:
+    content: public IPAddress Network { get; }
+    parameters: []
+    return:
+      type: System.Net.IPAddress
+    content.vb: Public ReadOnly Property Network As IPAddress
+  overload: System.Net.IPNetwork2.Network*
+- uid: System.Net.IPNetwork2.AddressFamily
+  commentId: P:System.Net.IPNetwork2.AddressFamily
+  id: AddressFamily
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: AddressFamily
+  nameWithType: IPNetwork2.AddressFamily
+  fullName: System.Net.IPNetwork2.AddressFamily
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Members.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: AddressFamily
+    path: ../src/System.Net.IPNetwork/IPNetwork2Members.cs
+    startLine: 61
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets address Family.
+  example: []
+  syntax:
+    content: public AddressFamily AddressFamily { get; }
+    parameters: []
+    return:
+      type: System.Net.Sockets.AddressFamily
+    content.vb: Public ReadOnly Property AddressFamily As AddressFamily
+  overload: System.Net.IPNetwork2.AddressFamily*
+- uid: System.Net.IPNetwork2.Netmask
+  commentId: P:System.Net.IPNetwork2.Netmask
+  id: Netmask
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Netmask
+  nameWithType: IPNetwork2.Netmask
+  fullName: System.Net.IPNetwork2.Netmask
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Members.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Netmask
+    path: ../src/System.Net.IPNetwork/IPNetwork2Members.cs
+    startLine: 72
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets netmask.
+  example: []
+  syntax:
+    content: public IPAddress Netmask { get; }
+    parameters: []
+    return:
+      type: System.Net.IPAddress
+    content.vb: Public ReadOnly Property Netmask As IPAddress
+  overload: System.Net.IPNetwork2.Netmask*
+- uid: System.Net.IPNetwork2.Broadcast
+  commentId: P:System.Net.IPNetwork2.Broadcast
+  id: Broadcast
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Broadcast
+  nameWithType: IPNetwork2.Broadcast
+  fullName: System.Net.IPNetwork2.Broadcast
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Members.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Broadcast
+    path: ../src/System.Net.IPNetwork/IPNetwork2Members.cs
+    startLine: 83
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets broadcast address.
+  example: []
+  syntax:
+    content: public IPAddress Broadcast { get; }
+    parameters: []
+    return:
+      type: System.Net.IPAddress
+    content.vb: Public ReadOnly Property Broadcast As IPAddress
+  overload: System.Net.IPNetwork2.Broadcast*
+- uid: System.Net.IPNetwork2.FirstUsable
+  commentId: P:System.Net.IPNetwork2.FirstUsable
+  id: FirstUsable
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: FirstUsable
+  nameWithType: IPNetwork2.FirstUsable
+  fullName: System.Net.IPNetwork2.FirstUsable
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Members.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: FirstUsable
+    path: ../src/System.Net.IPNetwork/IPNetwork2Members.cs
+    startLine: 99
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets first usable IP adress in Network.
+  example: []
+  syntax:
+    content: public IPAddress FirstUsable { get; }
+    parameters: []
+    return:
+      type: System.Net.IPAddress
+    content.vb: Public ReadOnly Property FirstUsable As IPAddress
+  overload: System.Net.IPNetwork2.FirstUsable*
+- uid: System.Net.IPNetwork2.LastUsable
+  commentId: P:System.Net.IPNetwork2.LastUsable
+  id: LastUsable
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: LastUsable
+  nameWithType: IPNetwork2.LastUsable
+  fullName: System.Net.IPNetwork2.LastUsable
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Members.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: LastUsable
+    path: ../src/System.Net.IPNetwork/IPNetwork2Members.cs
+    startLine: 115
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets last usable IP adress in Network.
+  example: []
+  syntax:
+    content: public IPAddress LastUsable { get; }
+    parameters: []
+    return:
+      type: System.Net.IPAddress
+    content.vb: Public ReadOnly Property LastUsable As IPAddress
+  overload: System.Net.IPNetwork2.LastUsable*
+- uid: System.Net.IPNetwork2.Usable
+  commentId: P:System.Net.IPNetwork2.Usable
+  id: Usable
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Usable
+  nameWithType: IPNetwork2.Usable
+  fullName: System.Net.IPNetwork2.Usable
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Members.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Usable
+    path: ../src/System.Net.IPNetwork/IPNetwork2Members.cs
+    startLine: 131
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets number of usable IP adress in Network.
+  example: []
+  syntax:
+    content: public BigInteger Usable { get; }
+    parameters: []
+    return:
+      type: System.Numerics.BigInteger
+    content.vb: Public ReadOnly Property Usable As BigInteger
+  overload: System.Net.IPNetwork2.Usable*
+- uid: System.Net.IPNetwork2.Total
+  commentId: P:System.Net.IPNetwork2.Total
+  id: Total
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Total
+  nameWithType: IPNetwork2.Total
+  fullName: System.Net.IPNetwork2.Total
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Members.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Total
+    path: ../src/System.Net.IPNetwork/IPNetwork2Members.cs
+    startLine: 150
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets number of IP adress in Network.
+  example: []
+  syntax:
+    content: public BigInteger Total { get; }
+    parameters: []
+    return:
+      type: System.Numerics.BigInteger
+    content.vb: Public ReadOnly Property Total As BigInteger
+  overload: System.Net.IPNetwork2.Total*
+- uid: System.Net.IPNetwork2.Cidr
+  commentId: P:System.Net.IPNetwork2.Cidr
+  id: Cidr
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Cidr
+  nameWithType: IPNetwork2.Cidr
+  fullName: System.Net.IPNetwork2.Cidr
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Members.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Cidr
+    path: ../src/System.Net.IPNetwork/IPNetwork2Members.cs
+    startLine: 163
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets the CIDR netmask notation.
+  example: []
+  syntax:
+    content: public byte Cidr { get; }
+    parameters: []
+    return:
+      type: System.Byte
+    content.vb: Public ReadOnly Property Cidr As Byte
+  overload: System.Net.IPNetwork2.Cidr*
+- uid: System.Net.IPNetwork2.op_Equality(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.op_Equality(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  id: op_Equality(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: operator ==(IPNetwork2, IPNetwork2)
+  nameWithType: IPNetwork2.operator ==(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.operator ==(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  type: Operator
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Operators.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: op_Equality
+    path: ../src/System.Net.IPNetwork/IPNetwork2Operators.cs
+    startLine: 17
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Compares two IPNetwork.
+  example: []
+  syntax:
+    content: public static bool operator ==(IPNetwork2 left, IPNetwork2 right)
+    parameters:
+    - id: left
+      type: System.Net.IPNetwork2
+      description: left instance.
+    - id: right
+      type: System.Net.IPNetwork2
+      description: Right instance.
+    return:
+      type: System.Boolean
+      description: true if left equals right; otherwise, false.
+    content.vb: Public Shared Operator =(left As IPNetwork2, right As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.op_Equality*
+  nameWithType.vb: IPNetwork2.=(IPNetwork2, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.=(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  name.vb: =(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.op_Inequality(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.op_Inequality(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  id: op_Inequality(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: operator !=(IPNetwork2, IPNetwork2)
+  nameWithType: IPNetwork2.operator !=(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.operator !=(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  type: Operator
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Operators.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: op_Inequality
+    path: ../src/System.Net.IPNetwork/IPNetwork2Operators.cs
+    startLine: 28
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Compares two IPNetwork.
+  example: []
+  syntax:
+    content: public static bool operator !=(IPNetwork2 left, IPNetwork2 right)
+    parameters:
+    - id: left
+      type: System.Net.IPNetwork2
+      description: left instance.
+    - id: right
+      type: System.Net.IPNetwork2
+      description: Right instance.
+    return:
+      type: System.Boolean
+      description: true if left does not equals right; otherwise, false.
+    content.vb: Public Shared Operator <>(left As IPNetwork2, right As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.op_Inequality*
+  nameWithType.vb: IPNetwork2.<>(IPNetwork2, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.<>(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  name.vb: <>(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.op_LessThan(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.op_LessThan(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  id: op_LessThan(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: operator <(IPNetwork2, IPNetwork2)
+  nameWithType: IPNetwork2.operator <(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.operator <(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  type: Operator
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Operators.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: op_LessThan
+    path: ../src/System.Net.IPNetwork/IPNetwork2Operators.cs
+    startLine: 39
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Compares two IPNetwork.
+  example: []
+  syntax:
+    content: public static bool operator <(IPNetwork2 left, IPNetwork2 right)
+    parameters:
+    - id: left
+      type: System.Net.IPNetwork2
+      description: left instance.
+    - id: right
+      type: System.Net.IPNetwork2
+      description: Right instance.
+    return:
+      type: System.Boolean
+      description: true if left is less than right; otherwise, false.
+    content.vb: Public Shared Operator <(left As IPNetwork2, right As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.op_LessThan*
+  nameWithType.vb: IPNetwork2.<(IPNetwork2, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.<(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  name.vb: <(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.op_GreaterThan(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.op_GreaterThan(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  id: op_GreaterThan(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: operator >(IPNetwork2, IPNetwork2)
+  nameWithType: IPNetwork2.operator >(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.operator >(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  type: Operator
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Operators.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: op_GreaterThan
+    path: ../src/System.Net.IPNetwork/IPNetwork2Operators.cs
+    startLine: 50
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Compares two IPNetwork.
+  example: []
+  syntax:
+    content: public static bool operator >(IPNetwork2 left, IPNetwork2 right)
+    parameters:
+    - id: left
+      type: System.Net.IPNetwork2
+      description: left instance.
+    - id: right
+      type: System.Net.IPNetwork2
+      description: Right instance.
+    return:
+      type: System.Boolean
+      description: true if left is greater than right; otherwise, false.
+    content.vb: Public Shared Operator >(left As IPNetwork2, right As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.op_GreaterThan*
+  nameWithType.vb: IPNetwork2.>(IPNetwork2, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.>(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  name.vb: '>(IPNetwork2, IPNetwork2)'
+- uid: System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  id: Overlap(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Overlap(IPNetwork2, IPNetwork2)
+  nameWithType: IPNetwork2.Overlap(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2overlap.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Overlap
+    path: ../src/System.Net.IPNetwork/IPNetwork2overlap.cs
+    startLine: 19
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Determines if two IPNetwork2 objects overlap each other.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("static Overlap is deprecated, please use instance Overlap.")]
+
+      public static bool Overlap(IPNetwork2 network, IPNetwork2 network2)
+    parameters:
+    - id: network
+      type: System.Net.IPNetwork2
+      description: The first IPNetwork2 object.
+    - id: network2
+      type: System.Net.IPNetwork2
+      description: The second IPNetwork2 object.
+    return:
+      type: System.Boolean
+      description: Returns true if the two IPNetwork2 objects overlap, otherwise false.
+    content.vb: >-
+      <Obsolete("static Overlap is deprecated, please use instance Overlap.")>
+
+      Public Shared Function Overlap(network As IPNetwork2, network2 As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.Overlap*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: static Overlap is deprecated, please use instance Overlap.
+- uid: System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2)
+  id: Overlap(System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Overlap(IPNetwork2)
+  nameWithType: IPNetwork2.Overlap(IPNetwork2)
+  fullName: System.Net.IPNetwork2.Overlap(System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2overlap.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Overlap
+    path: ../src/System.Net.IPNetwork/IPNetwork2overlap.cs
+    startLine: 35
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: return true is network2 overlap network.
+  example: []
+  syntax:
+    content: public bool Overlap(IPNetwork2 network2)
+    parameters:
+    - id: network2
+      type: System.Net.IPNetwork2
+      description: The network to test.
+    return:
+      type: System.Boolean
+      description: true if network2 overlaps into the IP Network; otherwise, false.
+    content.vb: Public Function Overlap(network2 As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.Overlap*
+- uid: System.Net.IPNetwork2.Parse(System.String,System.String)
+  commentId: M:System.Net.IPNetwork2.Parse(System.String,System.String)
+  id: Parse(System.String,System.String)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Parse(string, string)
+  nameWithType: IPNetwork2.Parse(string, string)
+  fullName: System.Net.IPNetwork2.Parse(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Parse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Parse
+    path: ../src/System.Net.IPNetwork/IPNetwork2Parse.cs
+    startLine: 27
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.168.100 - 255.255.255.0
+
+
+    ```
+
+    Network   : 192.168.168.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.168.1
+
+    End       : 192.168.168.254
+
+    Broadcast : 192.168.168.255
+
+    ```.
+  example: []
+  syntax:
+    content: public static IPNetwork2 Parse(string ipaddress, string netmask)
+    parameters:
+    - id: ipaddress
+      type: System.String
+      description: A string containing an ip address to convert.
+    - id: netmask
+      type: System.String
+      description: A string representing a netmask in std format (255.255.255.0).
+    return:
+      type: System.Net.IPNetwork2
+      description: An IPNetwork equivalent to the network contained in ipaddress/netmask.
+    content.vb: Public Shared Function Parse(ipaddress As String, netmask As String) As IPNetwork2
+  overload: System.Net.IPNetwork2.Parse*
+  nameWithType.vb: IPNetwork2.Parse(String, String)
+  fullName.vb: System.Net.IPNetwork2.Parse(String, String)
+  name.vb: Parse(String, String)
+- uid: System.Net.IPNetwork2.Parse(System.String,System.Byte)
+  commentId: M:System.Net.IPNetwork2.Parse(System.String,System.Byte)
+  id: Parse(System.String,System.Byte)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Parse(string, byte)
+  nameWithType: IPNetwork2.Parse(string, byte)
+  fullName: System.Net.IPNetwork2.Parse(string, byte)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Parse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Parse
+    path: ../src/System.Net.IPNetwork/IPNetwork2Parse.cs
+    startLine: 46
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.168.100/24
+
+
+    Network   : 192.168.168.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.168.1
+
+    End       : 192.168.168.254
+
+    Broadcast : 192.168.168.255.
+  example: []
+  syntax:
+    content: public static IPNetwork2 Parse(string ipaddress, byte cidr)
+    parameters:
+    - id: ipaddress
+      type: System.String
+      description: A string containing an ip address to convert.
+    - id: cidr
+      type: System.Byte
+      description: A byte representing the netmask in cidr format (/24).
+    return:
+      type: System.Net.IPNetwork2
+      description: An IPNetwork equivalent to the network contained in ipaddress/cidr.
+    content.vb: Public Shared Function Parse(ipaddress As String, cidr As Byte) As IPNetwork2
+  overload: System.Net.IPNetwork2.Parse*
+  nameWithType.vb: IPNetwork2.Parse(String, Byte)
+  fullName.vb: System.Net.IPNetwork2.Parse(String, Byte)
+  name.vb: Parse(String, Byte)
+- uid: System.Net.IPNetwork2.Parse(System.Net.IPAddress,System.Net.IPAddress)
+  commentId: M:System.Net.IPNetwork2.Parse(System.Net.IPAddress,System.Net.IPAddress)
+  id: Parse(System.Net.IPAddress,System.Net.IPAddress)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Parse(IPAddress, IPAddress)
+  nameWithType: IPNetwork2.Parse(IPAddress, IPAddress)
+  fullName: System.Net.IPNetwork2.Parse(System.Net.IPAddress, System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Parse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Parse
+    path: ../src/System.Net.IPNetwork/IPNetwork2Parse.cs
+    startLine: 65
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.168.100 255.255.255.0
+
+
+    Network   : 192.168.168.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.168.1
+
+    End       : 192.168.168.254
+
+    Broadcast : 192.168.168.255.
+  example: []
+  syntax:
+    content: public static IPNetwork2 Parse(IPAddress ipaddress, IPAddress netmask)
+    parameters:
+    - id: ipaddress
+      type: System.Net.IPAddress
+      description: A string containing an ip address to convert.
+    - id: netmask
+      type: System.Net.IPAddress
+      description: A netmask to be used to create the IPNetwork.
+    return:
+      type: System.Net.IPNetwork2
+      description: An IPNetwork equivalent to the network contained in ipaddress/netmask.
+    content.vb: Public Shared Function Parse(ipaddress As IPAddress, netmask As IPAddress) As IPNetwork2
+  overload: System.Net.IPNetwork2.Parse*
+- uid: System.Net.IPNetwork2.Parse(System.String)
+  commentId: M:System.Net.IPNetwork2.Parse(System.String)
+  id: Parse(System.String)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Parse(string)
+  nameWithType: IPNetwork2.Parse(string)
+  fullName: System.Net.IPNetwork2.Parse(string)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Parse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Parse
+    path: ../src/System.Net.IPNetwork/IPNetwork2Parse.cs
+    startLine: 84
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.0.1/24
+
+    192.168.0.1 255.255.255.0
+
+
+    Network   : 192.168.0.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.0.1
+
+    End       : 192.168.0.254
+
+    Broadcast : 192.168.0.255.
+  example: []
+  syntax:
+    content: public static IPNetwork2 Parse(string network)
+    parameters:
+    - id: network
+      type: System.String
+      description: A string containing an ip network to convert.
+    return:
+      type: System.Net.IPNetwork2
+      description: An IPNetwork equivalent to the network contained in string network.
+    content.vb: Public Shared Function Parse(network As String) As IPNetwork2
+  overload: System.Net.IPNetwork2.Parse*
+  nameWithType.vb: IPNetwork2.Parse(String)
+  fullName.vb: System.Net.IPNetwork2.Parse(String)
+  name.vb: Parse(String)
+- uid: System.Net.IPNetwork2.Parse(System.String,System.Boolean)
+  commentId: M:System.Net.IPNetwork2.Parse(System.String,System.Boolean)
+  id: Parse(System.String,System.Boolean)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Parse(string, bool)
+  nameWithType: IPNetwork2.Parse(string, bool)
+  fullName: System.Net.IPNetwork2.Parse(string, bool)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Parse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Parse
+    path: ../src/System.Net.IPNetwork/IPNetwork2Parse.cs
+    startLine: 104
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.0.1/24
+
+    192.168.0.1 255.255.255.0
+
+
+    Network   : 192.168.0.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.0.1
+
+    End       : 192.168.0.254
+
+    Broadcast : 192.168.0.255.
+  example: []
+  syntax:
+    content: public static IPNetwork2 Parse(string network, bool sanitanize)
+    parameters:
+    - id: network
+      type: System.String
+      description: A string containing an ip network to convert.
+    - id: sanitanize
+      type: System.Boolean
+      description: Whether to sanitize network or not.
+    return:
+      type: System.Net.IPNetwork2
+      description: An IPNetwork equivalent to the network contained in string network.
+    content.vb: Public Shared Function Parse(network As String, sanitanize As Boolean) As IPNetwork2
+  overload: System.Net.IPNetwork2.Parse*
+  nameWithType.vb: IPNetwork2.Parse(String, Boolean)
+  fullName.vb: System.Net.IPNetwork2.Parse(String, Boolean)
+  name.vb: Parse(String, Boolean)
+- uid: System.Net.IPNetwork2.Parse(System.String,System.Net.ICidrGuess)
+  commentId: M:System.Net.IPNetwork2.Parse(System.String,System.Net.ICidrGuess)
+  id: Parse(System.String,System.Net.ICidrGuess)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Parse(string, ICidrGuess)
+  nameWithType: IPNetwork2.Parse(string, ICidrGuess)
+  fullName: System.Net.IPNetwork2.Parse(string, System.Net.ICidrGuess)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Parse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Parse
+    path: ../src/System.Net.IPNetwork/IPNetwork2Parse.cs
+    startLine: 124
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.0.1/24
+
+    192.168.0.1 255.255.255.0
+
+
+    Network   : 192.168.0.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.0.1
+
+    End       : 192.168.0.254
+
+    Broadcast : 192.168.0.255.
+  example: []
+  syntax:
+    content: public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess)
+    parameters:
+    - id: network
+      type: System.String
+      description: A string containing an ip network to convert.
+    - id: cidrGuess
+      type: System.Net.ICidrGuess
+      description: A ICidrGuess implementation that will be used to guess CIDR during converion.
+    return:
+      type: System.Net.IPNetwork2
+      description: An IPNetwork equivalent to the network contained in string network.
+    content.vb: Public Shared Function Parse(network As String, cidrGuess As ICidrGuess) As IPNetwork2
+  overload: System.Net.IPNetwork2.Parse*
+  nameWithType.vb: IPNetwork2.Parse(String, ICidrGuess)
+  fullName.vb: System.Net.IPNetwork2.Parse(String, System.Net.ICidrGuess)
+  name.vb: Parse(String, ICidrGuess)
+- uid: System.Net.IPNetwork2.Parse(System.String,System.Net.ICidrGuess,System.Boolean)
+  commentId: M:System.Net.IPNetwork2.Parse(System.String,System.Net.ICidrGuess,System.Boolean)
+  id: Parse(System.String,System.Net.ICidrGuess,System.Boolean)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Parse(string, ICidrGuess, bool)
+  nameWithType: IPNetwork2.Parse(string, ICidrGuess, bool)
+  fullName: System.Net.IPNetwork2.Parse(string, System.Net.ICidrGuess, bool)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Parse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Parse
+    path: ../src/System.Net.IPNetwork/IPNetwork2Parse.cs
+    startLine: 145
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.0.1/24
+
+    192.168.0.1 255.255.255.0
+
+
+    Network   : 192.168.0.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.0.1
+
+    End       : 192.168.0.254
+
+    Broadcast : 192.168.0.255.
+  example: []
+  syntax:
+    content: public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess, bool sanitanize)
+    parameters:
+    - id: network
+      type: System.String
+      description: A string containing an ip network to convert.
+    - id: cidrGuess
+      type: System.Net.ICidrGuess
+      description: A ICidrGuess implementation that will be used to guess CIDR during converion.
+    - id: sanitanize
+      type: System.Boolean
+      description: Whether to sanitize network or not.
+    return:
+      type: System.Net.IPNetwork2
+      description: An IPNetwork equivalent to the network contained in string network.
+    content.vb: Public Shared Function Parse(network As String, cidrGuess As ICidrGuess, sanitanize As Boolean) As IPNetwork2
+  overload: System.Net.IPNetwork2.Parse*
+  nameWithType.vb: IPNetwork2.Parse(String, ICidrGuess, Boolean)
+  fullName.vb: System.Net.IPNetwork2.Parse(String, System.Net.ICidrGuess, Boolean)
+  name.vb: Parse(String, ICidrGuess, Boolean)
+- uid: System.Net.IPNetwork2.Print(System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.Print(System.Net.IPNetwork2)
+  id: Print(System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Print(IPNetwork2)
+  nameWithType: IPNetwork2.Print(IPNetwork2)
+  fullName: System.Net.IPNetwork2.Print(System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Print.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Print
+    path: ../src/System.Net.IPNetwork/IPNetwork2Print.cs
+    startLine: 19
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Print an ipnetwork in a clear representation string.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("static Print is deprecated, please use instance Print.")]
+
+      public static string Print(IPNetwork2 ipnetwork)
+    parameters:
+    - id: ipnetwork
+      type: System.Net.IPNetwork2
+      description: The ipnetwork.
+    return:
+      type: System.String
+      description: Dump an IPNetwork representation as string.
+    content.vb: >-
+      <Obsolete("static Print is deprecated, please use instance Print.")>
+
+      Public Shared Function Print(ipnetwork As IPNetwork2) As String
+  overload: System.Net.IPNetwork2.Print*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: When arg is null.
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: static Print is deprecated, please use instance Print.
+- uid: System.Net.IPNetwork2.Print
+  commentId: M:System.Net.IPNetwork2.Print
+  id: Print
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Print()
+  nameWithType: IPNetwork2.Print()
+  fullName: System.Net.IPNetwork2.Print()
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Print.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Print
+    path: ../src/System.Net.IPNetwork/IPNetwork2Print.cs
+    startLine: 34
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Print an ipnetwork in a clear representation string.
+  example: []
+  syntax:
+    content: public string Print()
+    return:
+      type: System.String
+      description: Dump an IPNetwork representation as string.
+    content.vb: Public Function Print() As String
+  overload: System.Net.IPNetwork2.Print*
+- uid: System.Net.IPNetwork2.Subnet(System.Net.IPNetwork2,System.Byte)
+  commentId: M:System.Net.IPNetwork2.Subnet(System.Net.IPNetwork2,System.Byte)
+  id: Subnet(System.Net.IPNetwork2,System.Byte)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Subnet(IPNetwork2, byte)
+  nameWithType: IPNetwork2.Subnet(IPNetwork2, byte)
+  fullName: System.Net.IPNetwork2.Subnet(System.Net.IPNetwork2, byte)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Subnet.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Subnet
+    path: ../src/System.Net.IPNetwork/IPNetwork2Subnet.cs
+    startLine: 19
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Subnet method is used to divide the given IP network into subnets with the specified CIDR.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("static Subnet is deprecated, please use instance Subnet.")]
+
+      public static IPNetworkCollection Subnet(IPNetwork2 network, byte cidr)
+    parameters:
+    - id: network
+      type: System.Net.IPNetwork2
+      description: The IP network to be subnetted.
+    - id: cidr
+      type: System.Byte
+      description: The CIDR (Classless Inter-Domain Routing) value used to subnet the network.
+    return:
+      type: System.Net.IPNetworkCollection
+      description: A collection of subnets created from the given network using the specified CIDR.
+    content.vb: >-
+      <Obsolete("static Subnet is deprecated, please use instance Subnet.")>
+
+      Public Shared Function Subnet(network As IPNetwork2, cidr As Byte) As IPNetworkCollection
+  overload: System.Net.IPNetwork2.Subnet*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: static Subnet is deprecated, please use instance Subnet.
+  nameWithType.vb: IPNetwork2.Subnet(IPNetwork2, Byte)
+  fullName.vb: System.Net.IPNetwork2.Subnet(System.Net.IPNetwork2, Byte)
+  name.vb: Subnet(IPNetwork2, Byte)
+- uid: System.Net.IPNetwork2.TrySubnet(System.Net.IPNetwork2,System.Byte,System.Net.IPNetworkCollection@)
+  commentId: M:System.Net.IPNetwork2.TrySubnet(System.Net.IPNetwork2,System.Byte,System.Net.IPNetworkCollection@)
+  id: TrySubnet(System.Net.IPNetwork2,System.Byte,System.Net.IPNetworkCollection@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TrySubnet(IPNetwork2, byte, out IPNetworkCollection)
+  nameWithType: IPNetwork2.TrySubnet(IPNetwork2, byte, out IPNetworkCollection)
+  fullName: System.Net.IPNetwork2.TrySubnet(System.Net.IPNetwork2, byte, out System.Net.IPNetworkCollection)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Subnet.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TrySubnet
+    path: ../src/System.Net.IPNetwork/IPNetwork2Subnet.cs
+    startLine: 39
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Subnet a network into multiple nets of cidr mask
+
+    Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
+
+    Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("static TrySubnet is deprecated, please use instance TrySubnet.")]
+
+      public static bool TrySubnet(IPNetwork2 network, byte cidr, out IPNetworkCollection ipnetworkCollection)
+    parameters:
+    - id: network
+      type: System.Net.IPNetwork2
+      description: The network.
+    - id: cidr
+      type: System.Byte
+      description: A byte representing the CIDR to be used to subnet the current IPNetwork.
+    - id: ipnetworkCollection
+      type: System.Net.IPNetworkCollection
+      description: The resulting subnetted IPNetwork.
+    return:
+      type: System.Boolean
+      description: true if network was split successfully; otherwise, false.
+    content.vb: >-
+      <Obsolete("static TrySubnet is deprecated, please use instance TrySubnet.")>
+
+      Public Shared Function TrySubnet(network As IPNetwork2, cidr As Byte, ipnetworkCollection As IPNetworkCollection) As Boolean
+  overload: System.Net.IPNetwork2.TrySubnet*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: static TrySubnet is deprecated, please use instance TrySubnet.
+  nameWithType.vb: IPNetwork2.TrySubnet(IPNetwork2, Byte, IPNetworkCollection)
+  fullName.vb: System.Net.IPNetwork2.TrySubnet(System.Net.IPNetwork2, Byte, System.Net.IPNetworkCollection)
+  name.vb: TrySubnet(IPNetwork2, Byte, IPNetworkCollection)
+- uid: System.Net.IPNetwork2.TrySubnet(System.Byte,System.Net.IPNetworkCollection@)
+  commentId: M:System.Net.IPNetwork2.TrySubnet(System.Byte,System.Net.IPNetworkCollection@)
+  id: TrySubnet(System.Byte,System.Net.IPNetworkCollection@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TrySubnet(byte, out IPNetworkCollection)
+  nameWithType: IPNetwork2.TrySubnet(byte, out IPNetworkCollection)
+  fullName: System.Net.IPNetwork2.TrySubnet(byte, out System.Net.IPNetworkCollection)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Subnet.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TrySubnet
+    path: ../src/System.Net.IPNetwork/IPNetwork2Subnet.cs
+    startLine: 58
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Subnet a network into multiple nets of cidr mask
+
+    Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
+
+    Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
+  example: []
+  syntax:
+    content: public bool TrySubnet(byte cidr1, out IPNetworkCollection ipnetworkCollection)
+    parameters:
+    - id: cidr1
+      type: System.Byte
+      description: A byte representing the CIDR to be used to subnet the current IPNetwork.
+    - id: ipnetworkCollection
+      type: System.Net.IPNetworkCollection
+      description: The resulting subnetted IPNetwork.
+    return:
+      type: System.Boolean
+      description: true if network was split successfully; otherwise, false.
+    content.vb: Public Function TrySubnet(cidr1 As Byte, ipnetworkCollection As IPNetworkCollection) As Boolean
+  overload: System.Net.IPNetwork2.TrySubnet*
+  nameWithType.vb: IPNetwork2.TrySubnet(Byte, IPNetworkCollection)
+  fullName.vb: System.Net.IPNetwork2.TrySubnet(Byte, System.Net.IPNetworkCollection)
+  name.vb: TrySubnet(Byte, IPNetworkCollection)
+- uid: System.Net.IPNetwork2.Subnet(System.Byte)
+  commentId: M:System.Net.IPNetwork2.Subnet(System.Byte)
+  id: Subnet(System.Byte)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Subnet(byte)
+  nameWithType: IPNetwork2.Subnet(byte)
+  fullName: System.Net.IPNetwork2.Subnet(byte)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Subnet.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Subnet
+    path: ../src/System.Net.IPNetwork/IPNetwork2Subnet.cs
+    startLine: 78
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Subnet a network into multiple nets of cidr mask
+
+    Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
+
+    Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
+  example: []
+  syntax:
+    content: public IPNetworkCollection Subnet(byte cidr1)
+    parameters:
+    - id: cidr1
+      type: System.Byte
+      description: A byte representing the CIDR to be used to subnet the current IPNetwork.
+    return:
+      type: System.Net.IPNetworkCollection
+      description: A IPNetworkCollection splitted by CIDR.
+    content.vb: Public Function Subnet(cidr1 As Byte) As IPNetworkCollection
+  overload: System.Net.IPNetwork2.Subnet*
+  nameWithType.vb: IPNetwork2.Subnet(Byte)
+  fullName.vb: System.Net.IPNetwork2.Subnet(Byte)
+  name.vb: Subnet(Byte)
+- uid: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  id: Supernet(System.Net.IPNetwork2,System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Supernet(IPNetwork2, IPNetwork2)
+  nameWithType: IPNetwork2.Supernet(IPNetwork2, IPNetwork2)
+  fullName: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Supernet.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Supernet
+    path: ../src/System.Net.IPNetwork/IPNetwork2Supernet.cs
+    startLine: 22
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Supernet two consecutive cidr equal subnet into a single one
+
+    192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+
+    10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
+
+    192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("static Supernet is deprecated, please use instance Supernet.")]
+
+      public static IPNetwork2 Supernet(IPNetwork2 network, IPNetwork2 network2)
+    parameters:
+    - id: network
+      type: System.Net.IPNetwork2
+      description: the network.
+    - id: network2
+      type: System.Net.IPNetwork2
+      description: The network to supernet with.
+    return:
+      type: System.Net.IPNetwork2
+      description: A supernetted IP Network.
+    content.vb: >-
+      <Obsolete("static Supernet is deprecated, please use instance Supernet.")>
+
+      Public Shared Function Supernet(network As IPNetwork2, network2 As IPNetwork2) As IPNetwork2
+  overload: System.Net.IPNetwork2.Supernet*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: static Supernet is deprecated, please use instance Supernet.
+- uid: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2,System.Net.IPNetwork2,System.Net.IPNetwork2@)
+  commentId: M:System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2,System.Net.IPNetwork2,System.Net.IPNetwork2@)
+  id: TrySupernet(System.Net.IPNetwork2,System.Net.IPNetwork2,System.Net.IPNetwork2@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TrySupernet(IPNetwork2, IPNetwork2, out IPNetwork2)
+  nameWithType: IPNetwork2.TrySupernet(IPNetwork2, IPNetwork2, out IPNetwork2)
+  fullName: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2, System.Net.IPNetwork2, out System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Supernet.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TrySupernet
+    path: ../src/System.Net.IPNetwork/IPNetwork2Supernet.cs
+    startLine: 38
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Try to supernet two consecutive cidr equal subnet into a single one
+
+    192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+
+    10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
+
+    192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
+  example: []
+  syntax:
+    content: >-
+      [Obsolete("static TrySupernet is deprecated, please use instance TrySupernet.")]
+
+      public static bool TrySupernet(IPNetwork2 network, IPNetwork2 network2, out IPNetwork2 supernet)
+    parameters:
+    - id: network
+      type: System.Net.IPNetwork2
+      description: the network.
+    - id: network2
+      type: System.Net.IPNetwork2
+      description: The network to supernet with.
+    - id: supernet
+      type: System.Net.IPNetwork2
+      description: The resulting IPNetwork.
+    return:
+      type: System.Boolean
+      description: true if network2 was supernetted successfully; otherwise, false.
+    content.vb: >-
+      <Obsolete("static TrySupernet is deprecated, please use instance TrySupernet.")>
+
+      Public Shared Function TrySupernet(network As IPNetwork2, network2 As IPNetwork2, supernet As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.TrySupernet*
+  attributes:
+  - type: System.ObsoleteAttribute
+    ctor: System.ObsoleteAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: static TrySupernet is deprecated, please use instance TrySupernet.
+  nameWithType.vb: IPNetwork2.TrySupernet(IPNetwork2, IPNetwork2, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2, System.Net.IPNetwork2, System.Net.IPNetwork2)
+  name.vb: TrySupernet(IPNetwork2, IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2)
+  commentId: M:System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2)
+  id: Supernet(System.Net.IPNetwork2)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Supernet(IPNetwork2)
+  nameWithType: IPNetwork2.Supernet(IPNetwork2)
+  fullName: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Supernet.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Supernet
+    path: ../src/System.Net.IPNetwork/IPNetwork2Supernet.cs
+    startLine: 57
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Supernet two consecutive cidr equal subnet into a single one
+
+    192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+
+    10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
+
+    192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
+  example: []
+  syntax:
+    content: public IPNetwork2 Supernet(IPNetwork2 network2)
+    parameters:
+    - id: network2
+      type: System.Net.IPNetwork2
+      description: The network to supernet with.
+    return:
+      type: System.Net.IPNetwork2
+      description: A supernetted IP Network.
+    content.vb: Public Function Supernet(network2 As IPNetwork2) As IPNetwork2
+  overload: System.Net.IPNetwork2.Supernet*
+- uid: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2,System.Net.IPNetwork2@)
+  commentId: M:System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2,System.Net.IPNetwork2@)
+  id: TrySupernet(System.Net.IPNetwork2,System.Net.IPNetwork2@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TrySupernet(IPNetwork2, out IPNetwork2)
+  nameWithType: IPNetwork2.TrySupernet(IPNetwork2, out IPNetwork2)
+  fullName: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2, out System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2Supernet.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TrySupernet
+    path: ../src/System.Net.IPNetwork/IPNetwork2Supernet.cs
+    startLine: 72
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Try to supernet two consecutive cidr equal subnet into a single one
+
+    192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+
+    10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
+
+    192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
+  example: []
+  syntax:
+    content: public bool TrySupernet(IPNetwork2 network2, out IPNetwork2 supernet)
+    parameters:
+    - id: network2
+      type: System.Net.IPNetwork2
+      description: The network to supernet with.
+    - id: supernet
+      type: System.Net.IPNetwork2
+      description: The resulting IPNetwork.
+    return:
+      type: System.Boolean
+      description: true if network2 was supernetted successfully; otherwise, false.
+    content.vb: Public Function TrySupernet(network2 As IPNetwork2, supernet As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.TrySupernet*
+  nameWithType.vb: IPNetwork2.TrySupernet(IPNetwork2, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2, System.Net.IPNetwork2)
+  name.vb: TrySupernet(IPNetwork2, IPNetwork2)
+- uid: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2[])
+  commentId: M:System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2[])
+  id: Supernet(System.Net.IPNetwork2[])
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: Supernet(IPNetwork2[])
+  nameWithType: IPNetwork2.Supernet(IPNetwork2[])
+  fullName: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2[])
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2SupernetArray.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Supernet
+    path: ../src/System.Net.IPNetwork/IPNetwork2SupernetArray.cs
+    startLine: 20
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Supernet a list of subnet
+
+    192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+
+    192.168.0.0/24 + 192.168.1.0/24 + 192.168.2.0/24 + 192.168.3.0/24 = 192.168.0.0/22.
+  example: []
+  syntax:
+    content: public static IPNetwork2[] Supernet(IPNetwork2[] ipnetworks)
+    parameters:
+    - id: ipnetworks
+      type: System.Net.IPNetwork2[]
+      description: A list of IPNetwork to merge into common supernets.
+    return:
+      type: System.Net.IPNetwork2[]
+      description: The result of IPNetwork if merges succeed, the first ipnetwork otherwise.
+    content.vb: Public Shared Function Supernet(ipnetworks As IPNetwork2()) As IPNetwork2()
+  overload: System.Net.IPNetwork2.Supernet*
+  nameWithType.vb: IPNetwork2.Supernet(IPNetwork2())
+  fullName.vb: System.Net.IPNetwork2.Supernet(System.Net.IPNetwork2())
+  name.vb: Supernet(IPNetwork2())
+- uid: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2[],System.Net.IPNetwork2[]@)
+  commentId: M:System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2[],System.Net.IPNetwork2[]@)
+  id: TrySupernet(System.Net.IPNetwork2[],System.Net.IPNetwork2[]@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TrySupernet(IPNetwork2[], out IPNetwork2[])
+  nameWithType: IPNetwork2.TrySupernet(IPNetwork2[], out IPNetwork2[])
+  fullName: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2[], out System.Net.IPNetwork2[])
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2SupernetArray.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TrySupernet
+    path: ../src/System.Net.IPNetwork/IPNetwork2SupernetArray.cs
+    startLine: 34
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Supernet a list of subnet
+
+    192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
+
+    192.168.0.0/24 + 192.168.1.0/24 + 192.168.2.0/24 + 192.168.3.0/24 = 192.168.0.0/22.
+  example: []
+  syntax:
+    content: public static bool TrySupernet(IPNetwork2[] ipnetworks, out IPNetwork2[] supernet)
+    parameters:
+    - id: ipnetworks
+      type: System.Net.IPNetwork2[]
+      description: A list of IPNetwork to merge into common supernets.
+    - id: supernet
+      type: System.Net.IPNetwork2[]
+      description: The result of IPNetwork merges.
+    return:
+      type: System.Boolean
+      description: true if ipnetworks was supernetted successfully; otherwise, false.
+    content.vb: Public Shared Function TrySupernet(ipnetworks As IPNetwork2(), supernet As IPNetwork2()) As Boolean
+  overload: System.Net.IPNetwork2.TrySupernet*
+  nameWithType.vb: IPNetwork2.TrySupernet(IPNetwork2(), IPNetwork2())
+  fullName.vb: System.Net.IPNetwork2.TrySupernet(System.Net.IPNetwork2(), System.Net.IPNetwork2())
+  name.vb: TrySupernet(IPNetwork2(), IPNetwork2())
+- uid: System.Net.IPNetwork2.ToCidr(System.Net.IPAddress)
+  commentId: M:System.Net.IPNetwork2.ToCidr(System.Net.IPAddress)
+  id: ToCidr(System.Net.IPAddress)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: ToCidr(IPAddress)
+  nameWithType: IPNetwork2.ToCidr(IPAddress)
+  fullName: System.Net.IPNetwork2.ToCidr(System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2ToCidr.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: ToCidr
+    path: ../src/System.Net.IPNetwork/IPNetwork2ToCidr.cs
+    startLine: 22
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Convert netmask to CIDR
+     255.255.255.0 -&gt; 24
+     255.255.0.0   -&gt; 16
+     255.0.0.0     -&gt; 8.
+  example: []
+  syntax:
+    content: public static byte ToCidr(IPAddress netmask)
+    parameters:
+    - id: netmask
+      type: System.Net.IPAddress
+      description: An IPAdress representing the CIDR to convert.
+    return:
+      type: System.Byte
+      description: A byte representing the CIDR converted from the netmask.
+    content.vb: Public Shared Function ToCidr(netmask As IPAddress) As Byte
+  overload: System.Net.IPNetwork2.ToCidr*
+- uid: System.Net.IPNetwork2.TryToCidr(System.Net.IPAddress,System.Nullable{System.Byte}@)
+  commentId: M:System.Net.IPNetwork2.TryToCidr(System.Net.IPAddress,System.Nullable{System.Byte}@)
+  id: TryToCidr(System.Net.IPAddress,System.Nullable{System.Byte}@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryToCidr(IPAddress, out byte?)
+  nameWithType: IPNetwork2.TryToCidr(IPAddress, out byte?)
+  fullName: System.Net.IPNetwork2.TryToCidr(System.Net.IPAddress, out byte?)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2ToCidr.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryToCidr
+    path: ../src/System.Net.IPNetwork/IPNetwork2ToCidr.cs
+    startLine: 37
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Convert netmask to CIDR
+     255.255.255.0 -&gt; 24
+     255.255.0.0   -&gt; 16
+     255.0.0.0     -&gt; 8.
+  example: []
+  syntax:
+    content: public static bool TryToCidr(IPAddress netmask, out byte? cidr)
+    parameters:
+    - id: netmask
+      type: System.Net.IPAddress
+      description: An IPAdress representing the CIDR to convert.
+    - id: cidr
+      type: System.Nullable{System.Byte}
+      description: A byte representing the netmask in cidr format (/24).
+    return:
+      type: System.Boolean
+      description: true if netmask was converted successfully; otherwise, false.
+    content.vb: Public Shared Function TryToCidr(netmask As IPAddress, cidr As Byte?) As Boolean
+  overload: System.Net.IPNetwork2.TryToCidr*
+  nameWithType.vb: IPNetwork2.TryToCidr(IPAddress, Byte?)
+  fullName.vb: System.Net.IPNetwork2.TryToCidr(System.Net.IPAddress, Byte?)
+  name.vb: TryToCidr(IPAddress, Byte?)
+- uid: System.Net.IPNetwork2.ToIPAddress(System.Numerics.BigInteger,System.Net.Sockets.AddressFamily)
+  commentId: M:System.Net.IPNetwork2.ToIPAddress(System.Numerics.BigInteger,System.Net.Sockets.AddressFamily)
+  id: ToIPAddress(System.Numerics.BigInteger,System.Net.Sockets.AddressFamily)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: ToIPAddress(BigInteger, AddressFamily)
+  nameWithType: IPNetwork2.ToIPAddress(BigInteger, AddressFamily)
+  fullName: System.Net.IPNetwork2.ToIPAddress(System.Numerics.BigInteger, System.Net.Sockets.AddressFamily)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2ToIPAddress.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: ToIPAddress
+    path: ../src/System.Net.IPNetwork/IPNetwork2ToIPAddress.cs
+    startLine: 20
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Transform a uint ipaddress into IPAddress object.
+  example: []
+  syntax:
+    content: public static IPAddress ToIPAddress(BigInteger ipaddress, AddressFamily family)
+    parameters:
+    - id: ipaddress
+      type: System.Numerics.BigInteger
+      description: A number representing an ip address to convert.
+    - id: family
+      type: System.Net.Sockets.AddressFamily
+      description: Either IPv4 or IPv6.
+    return:
+      type: System.Net.IPAddress
+      description: An ip adress.
+    content.vb: Public Shared Function ToIPAddress(ipaddress As BigInteger, family As AddressFamily) As IPAddress
+  overload: System.Net.IPNetwork2.ToIPAddress*
+- uid: System.Net.IPNetwork2.ToNetmask(System.Byte,System.Net.Sockets.AddressFamily)
+  commentId: M:System.Net.IPNetwork2.ToNetmask(System.Byte,System.Net.Sockets.AddressFamily)
+  id: ToNetmask(System.Byte,System.Net.Sockets.AddressFamily)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: ToNetmask(byte, AddressFamily)
+  nameWithType: IPNetwork2.ToNetmask(byte, AddressFamily)
+  fullName: System.Net.IPNetwork2.ToNetmask(byte, System.Net.Sockets.AddressFamily)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2ToNetmask.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: ToNetmask
+    path: ../src/System.Net.IPNetwork/IPNetwork2ToNetmask.cs
+    startLine: 24
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Convert CIDR to netmask
+     24 -&gt; 255.255.255.0
+     16 -&gt; 255.255.0.0
+     8 -&gt; 255.0.0.0.
+  example: []
+  syntax:
+    content: public static IPAddress ToNetmask(byte cidr, AddressFamily family)
+    parameters:
+    - id: cidr
+      type: System.Byte
+      description: A byte representing the netmask in cidr format (/24).
+    - id: family
+      type: System.Net.Sockets.AddressFamily
+      description: Either IPv4 or IPv6.
+    return:
+      type: System.Net.IPAddress
+      description: An IPAdress representing cidr.
+    content.vb: Public Shared Function ToNetmask(cidr As Byte, family As AddressFamily) As IPAddress
+  overload: System.Net.IPNetwork2.ToNetmask*
+  nameWithType.vb: IPNetwork2.ToNetmask(Byte, AddressFamily)
+  fullName.vb: System.Net.IPNetwork2.ToNetmask(Byte, System.Net.Sockets.AddressFamily)
+  name.vb: ToNetmask(Byte, AddressFamily)
+- uid: System.Net.IPNetwork2.TryToNetmask(System.Byte,System.Net.Sockets.AddressFamily,System.Net.IPAddress@)
+  commentId: M:System.Net.IPNetwork2.TryToNetmask(System.Byte,System.Net.Sockets.AddressFamily,System.Net.IPAddress@)
+  id: TryToNetmask(System.Byte,System.Net.Sockets.AddressFamily,System.Net.IPAddress@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryToNetmask(byte, AddressFamily, out IPAddress)
+  nameWithType: IPNetwork2.TryToNetmask(byte, AddressFamily, out IPAddress)
+  fullName: System.Net.IPNetwork2.TryToNetmask(byte, System.Net.Sockets.AddressFamily, out System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2ToNetmask.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryToNetmask
+    path: ../src/System.Net.IPNetwork/IPNetwork2ToNetmask.cs
+    startLine: 42
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Convert CIDR to netmask
+     24 -&gt; 255.255.255.0
+     16 -&gt; 255.255.0.0
+     8 -&gt; 255.0.0.0.
+  example: []
+  syntax:
+    content: public static bool TryToNetmask(byte cidr, AddressFamily family, out IPAddress netmask)
+    parameters:
+    - id: cidr
+      type: System.Byte
+      description: A byte representing the netmask in cidr format (/24).
+    - id: family
+      type: System.Net.Sockets.AddressFamily
+      description: Either IPv4 or IPv6.
+    - id: netmask
+      type: System.Net.IPAddress
+      description: The resulting netmask.
+    return:
+      type: System.Boolean
+      description: true if cidr was converted successfully; otherwise, false.
+    content.vb: Public Shared Function TryToNetmask(cidr As Byte, family As AddressFamily, netmask As IPAddress) As Boolean
+  overload: System.Net.IPNetwork2.TryToNetmask*
+  nameWithType.vb: IPNetwork2.TryToNetmask(Byte, AddressFamily, IPAddress)
+  fullName.vb: System.Net.IPNetwork2.TryToNetmask(Byte, System.Net.Sockets.AddressFamily, System.Net.IPAddress)
+  name.vb: TryToNetmask(Byte, AddressFamily, IPAddress)
+- uid: System.Net.IPNetwork2.ToBigInteger(System.Net.IPAddress)
+  commentId: M:System.Net.IPNetwork2.ToBigInteger(System.Net.IPAddress)
+  id: ToBigInteger(System.Net.IPAddress)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: ToBigInteger(IPAddress)
+  nameWithType: IPNetwork2.ToBigInteger(IPAddress)
+  fullName: System.Net.IPNetwork2.ToBigInteger(System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2ToUint.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: ToBigInteger
+    path: ../src/System.Net.IPNetwork/IPNetwork2ToUint.cs
+    startLine: 21
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Convert an ipadress to decimal
+
+    0.0.0.0 -&gt; 0
+
+    0.0.1.0 -&gt; 256.
+  example: []
+  syntax:
+    content: public static BigInteger ToBigInteger(IPAddress ipaddress)
+    parameters:
+    - id: ipaddress
+      type: System.Net.IPAddress
+      description: A string containing an ip address to convert.
+    return:
+      type: System.Numerics.BigInteger
+      description: A number representing the ipaddress.
+    content.vb: Public Shared Function ToBigInteger(ipaddress As IPAddress) As BigInteger
+  overload: System.Net.IPNetwork2.ToBigInteger*
+- uid: System.Net.IPNetwork2.TryToBigInteger(System.Net.IPAddress,System.Nullable{System.Numerics.BigInteger}@)
+  commentId: M:System.Net.IPNetwork2.TryToBigInteger(System.Net.IPAddress,System.Nullable{System.Numerics.BigInteger}@)
+  id: TryToBigInteger(System.Net.IPAddress,System.Nullable{System.Numerics.BigInteger}@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryToBigInteger(IPAddress, out BigInteger?)
+  nameWithType: IPNetwork2.TryToBigInteger(IPAddress, out BigInteger?)
+  fullName: System.Net.IPNetwork2.TryToBigInteger(System.Net.IPAddress, out System.Numerics.BigInteger?)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2ToUint.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryToBigInteger
+    path: ../src/System.Net.IPNetwork/IPNetwork2ToUint.cs
+    startLine: 36
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Convert an ipadress to decimal
+
+    0.0.0.0 -&gt; 0
+
+    0.0.1.0 -&gt; 256.
+  example: []
+  syntax:
+    content: public static bool TryToBigInteger(IPAddress ipaddress, out BigInteger? uintIpAddress)
+    parameters:
+    - id: ipaddress
+      type: System.Net.IPAddress
+      description: A string containing an ip address to convert.
+    - id: uintIpAddress
+      type: System.Nullable{System.Numerics.BigInteger}
+      description: A number representing the IPAdress.
+    return:
+      type: System.Boolean
+      description: true if ipaddress was converted successfully; otherwise, false.
+    content.vb: Public Shared Function TryToBigInteger(ipaddress As IPAddress, uintIpAddress As BigInteger?) As Boolean
+  overload: System.Net.IPNetwork2.TryToBigInteger*
+  nameWithType.vb: IPNetwork2.TryToBigInteger(IPAddress, BigInteger?)
+  fullName.vb: System.Net.IPNetwork2.TryToBigInteger(System.Net.IPAddress, System.Numerics.BigInteger?)
+  name.vb: TryToBigInteger(IPAddress, BigInteger?)
+- uid: System.Net.IPNetwork2.ToUint(System.Byte,System.Net.Sockets.AddressFamily)
+  commentId: M:System.Net.IPNetwork2.ToUint(System.Byte,System.Net.Sockets.AddressFamily)
+  id: ToUint(System.Byte,System.Net.Sockets.AddressFamily)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: ToUint(byte, AddressFamily)
+  nameWithType: IPNetwork2.ToUint(byte, AddressFamily)
+  fullName: System.Net.IPNetwork2.ToUint(byte, System.Net.Sockets.AddressFamily)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2ToUint.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: ToUint
+    path: ../src/System.Net.IPNetwork/IPNetwork2ToUint.cs
+    startLine: 51
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Convert a cidr to BigInteger netmask.
+  example: []
+  syntax:
+    content: public static BigInteger ToUint(byte cidr, AddressFamily family)
+    parameters:
+    - id: cidr
+      type: System.Byte
+      description: A byte representing the netmask in cidr format (/24).
+    - id: family
+      type: System.Net.Sockets.AddressFamily
+      description: Either IPv4 or IPv6.
+    return:
+      type: System.Numerics.BigInteger
+      description: A number representing the netmask exprimed in CIDR.
+    content.vb: Public Shared Function ToUint(cidr As Byte, family As AddressFamily) As BigInteger
+  overload: System.Net.IPNetwork2.ToUint*
+  nameWithType.vb: IPNetwork2.ToUint(Byte, AddressFamily)
+  fullName.vb: System.Net.IPNetwork2.ToUint(Byte, System.Net.Sockets.AddressFamily)
+  name.vb: ToUint(Byte, AddressFamily)
+- uid: System.Net.IPNetwork2.TryToUint(System.Byte,System.Net.Sockets.AddressFamily,System.Nullable{System.Numerics.BigInteger}@)
+  commentId: M:System.Net.IPNetwork2.TryToUint(System.Byte,System.Net.Sockets.AddressFamily,System.Nullable{System.Numerics.BigInteger}@)
+  id: TryToUint(System.Byte,System.Net.Sockets.AddressFamily,System.Nullable{System.Numerics.BigInteger}@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryToUint(byte, AddressFamily, out BigInteger?)
+  nameWithType: IPNetwork2.TryToUint(byte, AddressFamily, out BigInteger?)
+  fullName: System.Net.IPNetwork2.TryToUint(byte, System.Net.Sockets.AddressFamily, out System.Numerics.BigInteger?)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2ToUint.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryToUint
+    path: ../src/System.Net.IPNetwork/IPNetwork2ToUint.cs
+    startLine: 65
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Convert a cidr to uint netmask.
+  example: []
+  syntax:
+    content: public static bool TryToUint(byte cidr, AddressFamily family, out BigInteger? uintNetmask)
+    parameters:
+    - id: cidr
+      type: System.Byte
+      description: A byte representing the netmask in cidr format (/24).
+    - id: family
+      type: System.Net.Sockets.AddressFamily
+      description: Either IPv4 or IPv6.
+    - id: uintNetmask
+      type: System.Nullable{System.Numerics.BigInteger}
+      description: A number representing the netmask.
+    return:
+      type: System.Boolean
+      description: true if cidr was converted successfully; otherwise, false.
+    content.vb: Public Shared Function TryToUint(cidr As Byte, family As AddressFamily, uintNetmask As BigInteger?) As Boolean
+  overload: System.Net.IPNetwork2.TryToUint*
+  nameWithType.vb: IPNetwork2.TryToUint(Byte, AddressFamily, BigInteger?)
+  fullName.vb: System.Net.IPNetwork2.TryToUint(Byte, System.Net.Sockets.AddressFamily, System.Numerics.BigInteger?)
+  name.vb: TryToUint(Byte, AddressFamily, BigInteger?)
+- uid: System.Net.IPNetwork2.TryGuessCidr(System.String,System.Byte@)
+  commentId: M:System.Net.IPNetwork2.TryGuessCidr(System.String,System.Byte@)
+  id: TryGuessCidr(System.String,System.Byte@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryGuessCidr(string, out byte)
+  nameWithType: IPNetwork2.TryGuessCidr(string, out byte)
+  fullName: System.Net.IPNetwork2.TryGuessCidr(string, out byte)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2TryGuessCidr.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryGuessCidr
+    path: ../src/System.Net.IPNetwork/IPNetwork2TryGuessCidr.cs
+    startLine: 19
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Delegate to CidrGuess ClassFull guessing of cidr.
+  example: []
+  syntax:
+    content: public static bool TryGuessCidr(string ip, out byte cidr)
+    parameters:
+    - id: ip
+      type: System.String
+      description: A string representing an IPAdress that will be used to guess the corresponding CIDR.
+    - id: cidr
+      type: System.Byte
+      description: The resulting CIDR as byte.
+    return:
+      type: System.Boolean
+      description: true if cidr was guessed successfully; otherwise, false.
+    content.vb: Public Shared Function TryGuessCidr(ip As String, cidr As Byte) As Boolean
+  overload: System.Net.IPNetwork2.TryGuessCidr*
+  nameWithType.vb: IPNetwork2.TryGuessCidr(String, Byte)
+  fullName.vb: System.Net.IPNetwork2.TryGuessCidr(String, Byte)
+  name.vb: TryGuessCidr(String, Byte)
+- uid: System.Net.IPNetwork2.TryParseCidr(System.String,System.Net.Sockets.AddressFamily,System.Nullable{System.Byte}@)
+  commentId: M:System.Net.IPNetwork2.TryParseCidr(System.String,System.Net.Sockets.AddressFamily,System.Nullable{System.Byte}@)
+  id: TryParseCidr(System.String,System.Net.Sockets.AddressFamily,System.Nullable{System.Byte}@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryParseCidr(string, AddressFamily, out byte?)
+  nameWithType: IPNetwork2.TryParseCidr(string, AddressFamily, out byte?)
+  fullName: System.Net.IPNetwork2.TryParseCidr(string, System.Net.Sockets.AddressFamily, out byte?)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2TryGuessCidr.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryParseCidr
+    path: ../src/System.Net.IPNetwork/IPNetwork2TryGuessCidr.cs
+    startLine: 31
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Try to parse cidr. Have to be &gt;= 0 and &lt;= 32 or 128.
+  example: []
+  syntax:
+    content: public static bool TryParseCidr(string sidr, AddressFamily family, out byte? cidr)
+    parameters:
+    - id: sidr
+      type: System.String
+      description: A string representing a byte CIRD (/24).
+    - id: family
+      type: System.Net.Sockets.AddressFamily
+      description: Either IPv4 or IPv6.
+    - id: cidr
+      type: System.Nullable{System.Byte}
+      description: The resulting CIDR as byte.
+    return:
+      type: System.Boolean
+      description: true if cidr was converted successfully; otherwise, false.
+    content.vb: Public Shared Function TryParseCidr(sidr As String, family As AddressFamily, cidr As Byte?) As Boolean
+  overload: System.Net.IPNetwork2.TryParseCidr*
+  nameWithType.vb: IPNetwork2.TryParseCidr(String, AddressFamily, Byte?)
+  fullName.vb: System.Net.IPNetwork2.TryParseCidr(String, System.Net.Sockets.AddressFamily, Byte?)
+  name.vb: TryParseCidr(String, AddressFamily, Byte?)
+- uid: System.Net.IPNetwork2.TryParse(System.String,System.String,System.Net.IPNetwork2@)
+  commentId: M:System.Net.IPNetwork2.TryParse(System.String,System.String,System.Net.IPNetwork2@)
+  id: TryParse(System.String,System.String,System.Net.IPNetwork2@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryParse(string, string, out IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(string, string, out IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(string, string, out System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryParse
+    path: ../src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+    startLine: 25
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.168.100 - 255.255.255.0
+
+
+    Network   : 192.168.168.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.168.1
+
+    End       : 192.168.168.254
+
+    Broadcast : 192.168.168.255.
+  example: []
+  syntax:
+    content: public static bool TryParse(string ipaddress, string netmask, out IPNetwork2 ipnetwork)
+    parameters:
+    - id: ipaddress
+      type: System.String
+      description: A string containing an ip address to convert.
+    - id: netmask
+      type: System.String
+      description: A string containing a netmaks to convert (255.255.255.0).
+    - id: ipnetwork
+      type: System.Net.IPNetwork2
+      description: When this method returns, contains the IPNetwork value equivalent of the ip adress contained in ipaddress with the netmask corresponding to cidr, if the conversion succeeded, or null if the conversion failed. The conversion fails if the s parameter is null or Empty, is not of the correct format, or represents an invalid ip address. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.
+    return:
+      type: System.Boolean
+      description: true if ipaddress/netmask was converted successfully; otherwise, false..
+    content.vb: Public Shared Function TryParse(ipaddress As String, netmask As String, ipnetwork As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.TryParse*
+  nameWithType.vb: IPNetwork2.TryParse(String, String, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(String, String, System.Net.IPNetwork2)
+  name.vb: TryParse(String, String, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse(System.String,System.Byte,System.Net.IPNetwork2@)
+  commentId: M:System.Net.IPNetwork2.TryParse(System.String,System.Byte,System.Net.IPNetwork2@)
+  id: TryParse(System.String,System.Byte,System.Net.IPNetwork2@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryParse(string, byte, out IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(string, byte, out IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(string, byte, out System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryParse
+    path: ../src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+    startLine: 48
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.168.100/24
+
+
+    Network   : 192.168.168.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.168.1
+
+    End       : 192.168.168.254
+
+    Broadcast : 192.168.168.255.
+  example: []
+  syntax:
+    content: public static bool TryParse(string ipaddress, byte cidr, out IPNetwork2 ipnetwork)
+    parameters:
+    - id: ipaddress
+      type: System.String
+      description: A string containing an ip address to convert.
+    - id: cidr
+      type: System.Byte
+      description: A byte representing the netmask in cidr format (/24).
+    - id: ipnetwork
+      type: System.Net.IPNetwork2
+      description: When this method returns, contains the IPNetwork value equivalent of the ip adress contained in ipaddress with the netmask corresponding to cidr, if the conversion succeeded, or null if the conversion failed. The conversion fails if the s parameter is null or Empty, is not of the correct format, or represents an invalid ip address. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.
+    return:
+      type: System.Boolean
+      description: true if ipaddress/cidr was converted successfully; otherwise, false..
+    content.vb: Public Shared Function TryParse(ipaddress As String, cidr As Byte, ipnetwork As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.TryParse*
+  nameWithType.vb: IPNetwork2.TryParse(String, Byte, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(String, Byte, System.Net.IPNetwork2)
+  name.vb: TryParse(String, Byte, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse(System.String,System.Net.IPNetwork2@)
+  commentId: M:System.Net.IPNetwork2.TryParse(System.String,System.Net.IPNetwork2@)
+  id: TryParse(System.String,System.Net.IPNetwork2@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryParse(string, out IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(string, out IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(string, out System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryParse
+    path: ../src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+    startLine: 71
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.0.1/24
+
+    192.168.0.1 255.255.255.0
+
+
+    Network   : 192.168.0.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.0.1
+
+    End       : 192.168.0.254
+
+    Broadcast : 192.168.0.255.
+  example: []
+  syntax:
+    content: public static bool TryParse(string network, out IPNetwork2 ipnetwork)
+    parameters:
+    - id: network
+      type: System.String
+      description: A string containing an ip network to convert.
+    - id: ipnetwork
+      type: System.Net.IPNetwork2
+      description: When this method returns, contains the IPNetwork value equivalent of the ip adress contained in ipaddress with the netmask corresponding to cidr, if the conversion succeeded, or null if the conversion failed. The conversion fails if the s parameter is null or Empty, is not of the correct format, or represents an invalid ip address. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.
+    return:
+      type: System.Boolean
+      description: true if network was converted successfully; otherwise, false.
+    content.vb: Public Shared Function TryParse(network As String, ipnetwork As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.TryParse*
+  nameWithType.vb: IPNetwork2.TryParse(String, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(String, System.Net.IPNetwork2)
+  name.vb: TryParse(String, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse(System.String,System.Boolean,System.Net.IPNetwork2@)
+  commentId: M:System.Net.IPNetwork2.TryParse(System.String,System.Boolean,System.Net.IPNetwork2@)
+  id: TryParse(System.String,System.Boolean,System.Net.IPNetwork2@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryParse(string, bool, out IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(string, bool, out IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(string, bool, out System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryParse
+    path: ../src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+    startLine: 95
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.0.1/24
+
+    192.168.0.1 255.255.255.0
+
+
+    Network   : 192.168.0.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.0.1
+
+    End       : 192.168.0.254
+
+    Broadcast : 192.168.0.255.
+  example: []
+  syntax:
+    content: public static bool TryParse(string network, bool sanitanize, out IPNetwork2 ipnetwork)
+    parameters:
+    - id: network
+      type: System.String
+      description: A string containing an ip network to convert.
+    - id: sanitanize
+      type: System.Boolean
+      description: Whether to sanitize network or not.
+    - id: ipnetwork
+      type: System.Net.IPNetwork2
+      description: When this method returns, contains the IPNetwork value equivalent of the ip adress contained in ipaddress with the netmask corresponding to cidr, if the conversion succeeded, or null if the conversion failed. The conversion fails if the s parameter is null or Empty, is not of the correct format, or represents an invalid ip address. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.
+    return:
+      type: System.Boolean
+      description: true if network was converted successfully; otherwise, false..
+    content.vb: Public Shared Function TryParse(network As String, sanitanize As Boolean, ipnetwork As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.TryParse*
+  nameWithType.vb: IPNetwork2.TryParse(String, Boolean, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(String, Boolean, System.Net.IPNetwork2)
+  name.vb: TryParse(String, Boolean, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse(System.Net.IPAddress,System.Net.IPAddress,System.Net.IPNetwork2@)
+  commentId: M:System.Net.IPNetwork2.TryParse(System.Net.IPAddress,System.Net.IPAddress,System.Net.IPNetwork2@)
+  id: TryParse(System.Net.IPAddress,System.Net.IPAddress,System.Net.IPNetwork2@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryParse(IPAddress, IPAddress, out IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(IPAddress, IPAddress, out IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(System.Net.IPAddress, System.Net.IPAddress, out System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryParse
+    path: ../src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+    startLine: 119
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.0.1/24
+
+    192.168.0.1 255.255.255.0
+
+
+    Network   : 192.168.0.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.0.1
+
+    End       : 192.168.0.254
+
+    Broadcast : 192.168.0.255.
+  example: []
+  syntax:
+    content: public static bool TryParse(IPAddress ipaddress, IPAddress netmask, out IPNetwork2 ipnetwork)
+    parameters:
+    - id: ipaddress
+      type: System.Net.IPAddress
+      description: An IPAdresse to convert.
+    - id: netmask
+      type: System.Net.IPAddress
+      description: A IPAdresse to be used as netmaks to convert.
+    - id: ipnetwork
+      type: System.Net.IPNetwork2
+      description: When this method returns, contains the IPNetwork value equivalent of the ip adress contained in ipaddress with the netmask corresponding to cidr, if the conversion succeeded, or null if the conversion failed. The conversion fails if the s parameter is null or Empty, is not of the correct format, or represents an invalid ip address. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.
+    return:
+      type: System.Boolean
+      description: true if network was converted successfully; otherwise, false..
+    content.vb: Public Shared Function TryParse(ipaddress As IPAddress, netmask As IPAddress, ipnetwork As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.TryParse*
+  nameWithType.vb: IPNetwork2.TryParse(IPAddress, IPAddress, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(System.Net.IPAddress, System.Net.IPAddress, System.Net.IPNetwork2)
+  name.vb: TryParse(IPAddress, IPAddress, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse(System.String,System.Net.ICidrGuess,System.Net.IPNetwork2@)
+  commentId: M:System.Net.IPNetwork2.TryParse(System.String,System.Net.ICidrGuess,System.Net.IPNetwork2@)
+  id: TryParse(System.String,System.Net.ICidrGuess,System.Net.IPNetwork2@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryParse(string, ICidrGuess, out IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(string, ICidrGuess, out IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(string, System.Net.ICidrGuess, out System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryParse
+    path: ../src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+    startLine: 143
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.0.1/24
+
+    192.168.0.1 255.255.255.0
+
+
+    Network   : 192.168.0.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.0.1
+
+    End       : 192.168.0.254
+
+    Broadcast : 192.168.0.255.
+  example: []
+  syntax:
+    content: public static bool TryParse(string network, ICidrGuess cidrGuess, out IPNetwork2 ipnetwork)
+    parameters:
+    - id: network
+      type: System.String
+      description: A string containing an ip network to convert.
+    - id: cidrGuess
+      type: System.Net.ICidrGuess
+      description: A ICidrGuess implementation that will be used to guess CIDR during converion.
+    - id: ipnetwork
+      type: System.Net.IPNetwork2
+      description: When this method returns, contains the IPNetwork value equivalent of the ip adress contained in ipaddress with the netmask corresponding to cidr, if the conversion succeeded, or null if the conversion failed. The conversion fails if the s parameter is null or Empty, is not of the correct format, or represents an invalid ip address. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.
+    return:
+      type: System.Boolean
+      description: true if network was converted successfully; otherwise, false..
+    content.vb: Public Shared Function TryParse(network As String, cidrGuess As ICidrGuess, ipnetwork As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.TryParse*
+  nameWithType.vb: IPNetwork2.TryParse(String, ICidrGuess, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(String, System.Net.ICidrGuess, System.Net.IPNetwork2)
+  name.vb: TryParse(String, ICidrGuess, IPNetwork2)
+- uid: System.Net.IPNetwork2.TryParse(System.String,System.Net.ICidrGuess,System.Boolean,System.Net.IPNetwork2@)
+  commentId: M:System.Net.IPNetwork2.TryParse(System.String,System.Net.ICidrGuess,System.Boolean,System.Net.IPNetwork2@)
+  id: TryParse(System.String,System.Net.ICidrGuess,System.Boolean,System.Net.IPNetwork2@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryParse(string, ICidrGuess, bool, out IPNetwork2)
+  nameWithType: IPNetwork2.TryParse(string, ICidrGuess, bool, out IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryParse(string, System.Net.ICidrGuess, bool, out System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryParse
+    path: ../src/System.Net.IPNetwork/IPNetwork2TryParse.cs
+    startLine: 168
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    192.168.0.1/24
+
+    192.168.0.1 255.255.255.0
+
+
+    Network   : 192.168.0.0
+
+    Netmask   : 255.255.255.0
+
+    Cidr      : 24
+
+    Start     : 192.168.0.1
+
+    End       : 192.168.0.254
+
+    Broadcast : 192.168.0.255.
+  example: []
+  syntax:
+    content: public static bool TryParse(string network, ICidrGuess cidrGuess, bool sanitanize, out IPNetwork2 ipnetwork)
+    parameters:
+    - id: network
+      type: System.String
+      description: A string containing an ip network to convert.
+    - id: cidrGuess
+      type: System.Net.ICidrGuess
+      description: A ICidrGuess implementation that will be used to guess CIDR during converion.
+    - id: sanitanize
+      type: System.Boolean
+      description: Whether to sanitize network or not.
+    - id: ipnetwork
+      type: System.Net.IPNetwork2
+      description: When this method returns, contains the IPNetwork value equivalent of the ip adress contained in ipaddress with the netmask corresponding to cidr, if the conversion succeeded, or null if the conversion failed. The conversion fails if the s parameter is null or Empty, is not of the correct format, or represents an invalid ip address. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.
+    return:
+      type: System.Boolean
+      description: true if network was converted successfully; otherwise, false..
+    content.vb: Public Shared Function TryParse(network As String, cidrGuess As ICidrGuess, sanitanize As Boolean, ipnetwork As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.TryParse*
+  nameWithType.vb: IPNetwork2.TryParse(String, ICidrGuess, Boolean, IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryParse(String, System.Net.ICidrGuess, Boolean, System.Net.IPNetwork2)
+  name.vb: TryParse(String, ICidrGuess, Boolean, IPNetwork2)
+- uid: System.Net.IPNetwork2.ValidNetmask(System.Net.IPAddress)
+  commentId: M:System.Net.IPNetwork2.ValidNetmask(System.Net.IPAddress)
+  id: ValidNetmask(System.Net.IPAddress)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: ValidNetmask(IPAddress)
+  nameWithType: IPNetwork2.ValidNetmask(IPAddress)
+  fullName: System.Net.IPNetwork2.ValidNetmask(System.Net.IPAddress)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2ValidNetmask.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: ValidNetmask
+    path: ../src/System.Net.IPNetwork/IPNetwork2ValidNetmask.cs
+    startLine: 21
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    return true if netmask is a valid netmask
+
+    255.255.255.0, 255.0.0.0, 255.255.240.0, ...
+  example: []
+  syntax:
+    content: public static bool ValidNetmask(IPAddress netmask)
+    parameters:
+    - id: netmask
+      type: System.Net.IPAddress
+      description: A number representing the netmask to validate.
+    return:
+      type: System.Boolean
+      description: true if netmask is a valid IP Netmask; otherwise, false.
+    content.vb: Public Shared Function ValidNetmask(netmask As IPAddress) As Boolean
+  overload: System.Net.IPNetwork2.ValidNetmask*
+- uid: System.Net.IPNetwork2.WideSubnet(System.String,System.String)
+  commentId: M:System.Net.IPNetwork2.WideSubnet(System.String,System.String)
+  id: WideSubnet(System.String,System.String)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: WideSubnet(string, string)
+  nameWithType: IPNetwork2.WideSubnet(string, string)
+  fullName: System.Net.IPNetwork2.WideSubnet(string, string)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2WideSubnet.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: WideSubnet
+    path: ../src/System.Net.IPNetwork/IPNetwork2WideSubnet.cs
+    startLine: 23
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Finds the widest subnet that can contain both the start and end IP addresses.
+  example: []
+  syntax:
+    content: public static IPNetwork2 WideSubnet(string start, string end)
+    parameters:
+    - id: start
+      type: System.String
+      description: The starting IP address.
+    - id: end
+      type: System.String
+      description: The ending IP address.
+    return:
+      type: System.Net.IPNetwork2
+      description: The widest subnet that contains both the start and end IP addresses.
+    content.vb: Public Shared Function WideSubnet(start As String, [end] As String) As IPNetwork2
+  overload: System.Net.IPNetwork2.WideSubnet*
+  exceptions:
+  - type: System.ArgumentNullException
+    commentId: T:System.ArgumentNullException
+    description: Thrown when either the start or end IP address is null or empty.
+  - type: System.ArgumentException
+    commentId: T:System.ArgumentException
+    description: Thrown when the start or end IP addresses are not valid.
+  - type: System.NotSupportedException
+    commentId: T:System.NotSupportedException
+    description: Thrown when the start and end IP addresses have different address families.
+  nameWithType.vb: IPNetwork2.WideSubnet(String, String)
+  fullName.vb: System.Net.IPNetwork2.WideSubnet(String, String)
+  name.vb: WideSubnet(String, String)
+- uid: System.Net.IPNetwork2.TryWideSubnet(System.Net.IPNetwork2[],System.Net.IPNetwork2@)
+  commentId: M:System.Net.IPNetwork2.TryWideSubnet(System.Net.IPNetwork2[],System.Net.IPNetwork2@)
+  id: TryWideSubnet(System.Net.IPNetwork2[],System.Net.IPNetwork2@)
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: TryWideSubnet(IPNetwork2[], out IPNetwork2)
+  nameWithType: IPNetwork2.TryWideSubnet(IPNetwork2[], out IPNetwork2)
+  fullName: System.Net.IPNetwork2.TryWideSubnet(System.Net.IPNetwork2[], out System.Net.IPNetwork2)
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2WideSubnet.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: TryWideSubnet
+    path: ../src/System.Net.IPNetwork/IPNetwork2WideSubnet.cs
+    startLine: 72
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Attempts to find the widest subnet that contains both the start and end IP addresses. objects.
+  example: []
+  syntax:
+    content: public static bool TryWideSubnet(IPNetwork2[] ipnetworks, out IPNetwork2 ipnetwork)
+    parameters:
+    - id: ipnetworks
+      type: System.Net.IPNetwork2[]
+      description: An array of IPNetwork2 objects to wide subnet.
+    - id: ipnetwork
+      type: System.Net.IPNetwork2
+      description: When this method returns, contains the wide subnet of the IPNetwork2 objects, if wide subnet was successful; otherwise, null.
+    return:
+      type: System.Boolean
+      description: true if wide subnet was successful; otherwise, false.
+    content.vb: Public Shared Function TryWideSubnet(ipnetworks As IPNetwork2(), ipnetwork As IPNetwork2) As Boolean
+  overload: System.Net.IPNetwork2.TryWideSubnet*
+  nameWithType.vb: IPNetwork2.TryWideSubnet(IPNetwork2(), IPNetwork2)
+  fullName.vb: System.Net.IPNetwork2.TryWideSubnet(System.Net.IPNetwork2(), System.Net.IPNetwork2)
+  name.vb: TryWideSubnet(IPNetwork2(), IPNetwork2)
+- uid: System.Net.IPNetwork2.WideSubnet(System.Net.IPNetwork2[])
+  commentId: M:System.Net.IPNetwork2.WideSubnet(System.Net.IPNetwork2[])
+  id: WideSubnet(System.Net.IPNetwork2[])
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: WideSubnet(IPNetwork2[])
+  nameWithType: IPNetwork2.WideSubnet(IPNetwork2[])
+  fullName: System.Net.IPNetwork2.WideSubnet(System.Net.IPNetwork2[])
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2WideSubnet.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: WideSubnet
+    path: ../src/System.Net.IPNetwork/IPNetwork2WideSubnet.cs
+    startLine: 89
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Finds the widest subnet from an array of IP networks.
+  example: []
+  syntax:
+    content: public static IPNetwork2 WideSubnet(IPNetwork2[] ipnetworks)
+    parameters:
+    - id: ipnetworks
+      type: System.Net.IPNetwork2[]
+      description: An array of IPNetwork2 objects representing the IP networks.
+    return:
+      type: System.Net.IPNetwork2
+      description: The widest subnet as an IPNetwork2 object.
+    content.vb: Public Shared Function WideSubnet(ipnetworks As IPNetwork2()) As IPNetwork2
+  overload: System.Net.IPNetwork2.WideSubnet*
+  nameWithType.vb: IPNetwork2.WideSubnet(IPNetwork2())
+  fullName.vb: System.Net.IPNetwork2.WideSubnet(System.Net.IPNetwork2())
+  name.vb: WideSubnet(IPNetwork2())
+- uid: System.Net.IPNetwork2.WildcardMask
+  commentId: P:System.Net.IPNetwork2.WildcardMask
+  id: WildcardMask
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: WildcardMask
+  nameWithType: IPNetwork2.WildcardMask
+  fullName: System.Net.IPNetwork2.WildcardMask
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2WildcardMask.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: WildcardMask
+    path: ../src/System.Net.IPNetwork/IPNetwork2WildcardMask.cs
+    startLine: 83
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Gets netmask Inverse
+
+    https://en.wikipedia.org/wiki/Wildcard_mask
+
+
+    A wildcard mask is a mask of bits that indicates which parts of an IP address are available for examination.
+
+    In the Cisco IOS,[1] they are used in several places, for example:
+       To indicate the size of a network or subnet for some routing protocols, such as OSPF.
+       To indicate what IP addresses should be permitted or denied in access control lists(ACLs).
+
+    A wildcard mask can be thought of as an inverted subnet mask.For example,
+
+    a subnet mask of 255.255.255.0 (binary equivalent = 11111111.11111111.11111111.00000000)
+
+    inverts to a wildcard mask of 0.0.0.255 (binary equivalent = 00000000.00000000.00000000.11111111).
+
+
+    A wild card mask is a matching rule.[2] The rule for a wildcard mask is:
+        0 means that the equivalent bit must match
+        1 means that the equivalent bit does not matter
+
+    Any wildcard bit-pattern can be masked for examination.For example, a wildcard mask of 0.0.0.254
+
+    (binary equivalent = 00000000.00000000.00000000.11111110) applied to IP address 10.10.10.2
+
+    (00001010.00001010.00001010.00000010) will match even-numbered IP addresses 10.10.10.0, 10.10.10.2,
+
+    10.10.10.4, 10.10.10.6 etc.
+
+
+    Same mask applied to 10.10.10.1 (00001010.00001010.00001010.00000001) will match
+
+    odd-numbered IP addresses 10.10.10.1, 10.10.10.3, 10.10.10.5 etc.
+
+
+    A network and wildcard mask combination of 1.1.1.1 0.0.0.0 would match an interface configured
+
+    exactly with 1.1.1.1 only, and nothing else.
+
+
+    Wildcard masks are used in situations where subnet masks may not apply.For example,
+
+    when two affected hosts fall in different subnets, the use of a wildcard mask will
+
+    group them together.
+
+
+    List of wildcard masks
+
+    Slash Netmask Wildcard mask
+
+    /32   255.255.255.255    0.0.0.0
+
+    /31   255.255.255.254    0.0.0.1
+
+    /30   255.255.255.252    0.0.0.3
+
+    /29   255.255.255.248    0.0.0.7
+
+    /28   255.255.255.240    0.0.0.15
+
+    /27   255.255.255.224    0.0.0.31
+
+    /26   255.255.255.192    0.0.0.63
+
+    /25   255.255.255.128    0.0.0.127
+
+    /24   255.255.255.0      0.0.0.255
+
+    /23   255.255.254.0      0.0.1.255
+
+    /22   255.255.252.0      0.0.3.255
+
+    /21   255.255.248.0      0.0.7.255
+
+    /20   255.255.240.0      0.0.15.255
+
+    /19   255.255.224.0      0.0.31.255
+
+    /18   255.255.192.0      0.0.63.255
+
+    /17   255.255.128.0      0.0.127.255
+
+    /16   255.255.0.0        0.0.255.255
+
+    /15   255.254.0.0        0.1.255.255
+
+    /14   255.252.0.0        0.3.255.255
+
+    /13   255.248.0.0        0.7.255.255
+
+    /12   255.240.0.0        0.15.255.255
+
+    /11   255.224.0.0        0.31.255.255
+
+    /10   255.192.0.0        0.63.255.255
+
+    /9    255.128.0.0        0.127.255.255
+
+    /8    255.0.0.0          0.255.255.255
+
+    /7    254.0.0.0          1.255.255.255
+
+    /6    252.0.0.0          3.255.255.255
+
+    /5    248.0.0.0          7.255.255.255
+
+    /4    240.0.0.0          15.255.255.255
+
+    /3    224.0.0.0          31.255.255.255
+
+    /2    192.0.0.0          63.255.255.255
+
+    /1    128.0.0.0          127.255.255.255
+
+    /0    0.0.0.0            255.255.255.255.
+  example: []
+  syntax:
+    content: public IPAddress WildcardMask { get; }
+    parameters: []
+    return:
+      type: System.Net.IPAddress
+    content.vb: Public ReadOnly Property WildcardMask As IPAddress
+  overload: System.Net.IPNetwork2.WildcardMask*
+- uid: System.Net.IPNetwork2.#ctor
+  commentId: M:System.Net.IPNetwork2.#ctor
+  id: '#ctor'
+  parent: System.Net.IPNetwork2
+  langs:
+  - csharp
+  - vb
+  name: IPNetwork2()
+  nameWithType: IPNetwork2.IPNetwork2()
+  fullName: System.Net.IPNetwork2.IPNetwork2()
+  type: Constructor
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetwork2XmlSerialization.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: .ctor
+    path: ../src/System.Net.IPNetwork/IPNetwork2XmlSerialization.cs
+    startLine: 17
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: >-
+    Initializes a new instance of the <xref href="System.Net.IPNetwork2" data-throw-if-not-resolved="false"></xref> class.
+
+    Created for DataContractSerialization. Better use static methods IPNetwork.Parse() to create IPNetworks.
+  example: []
+  syntax:
+    content: public IPNetwork2()
+    content.vb: Public Sub New()
+  overload: System.Net.IPNetwork2.#ctor*
+  nameWithType.vb: IPNetwork2.New()
+  fullName.vb: System.Net.IPNetwork2.New()
+  name.vb: New()
+references:
+- uid: System.Net
+  commentId: N:System.Net
+  href: System.html
+  name: System.Net
+  nameWithType: System.Net
+  fullName: System.Net
+  spec.csharp:
+  - uid: System
+    name: System
+    href: System.html
+  - name: .
+  - uid: System.Net
+    name: Net
+    href: System.Net.html
+  spec.vb:
+  - uid: System
+    name: System
+    href: System.html
+  - name: .
+  - uid: System.Net
+    name: Net
+    href: System.Net.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IComparable{System.Net.IPNetwork2}
+  commentId: T:System.IComparable{System.Net.IPNetwork2}
+  parent: System
+  definition: System.IComparable`1
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  name: IComparable<IPNetwork2>
+  nameWithType: IComparable<IPNetwork2>
+  fullName: System.IComparable<System.Net.IPNetwork2>
+  nameWithType.vb: IComparable(Of IPNetwork2)
+  fullName.vb: System.IComparable(Of System.Net.IPNetwork2)
+  name.vb: IComparable(Of IPNetwork2)
+  spec.csharp:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: <
+  - uid: System.Net.IPNetwork2
+    name: IPNetwork2
+    href: System.Net.IPNetwork2.html
+  - name: '>'
+  spec.vb:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Net.IPNetwork2
+    name: IPNetwork2
+    href: System.Net.IPNetwork2.html
+  - name: )
+- uid: System.Runtime.Serialization.ISerializable
+  commentId: T:System.Runtime.Serialization.ISerializable
+  parent: System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization.iserializable
+  name: ISerializable
+  nameWithType: ISerializable
+  fullName: System.Runtime.Serialization.ISerializable
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.IComparable`1
+  commentId: T:System.IComparable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  name: IComparable<T>
+  nameWithType: IComparable<T>
+  fullName: System.IComparable<T>
+  nameWithType.vb: IComparable(Of T)
+  fullName.vb: System.IComparable(Of T)
+  name.vb: IComparable(Of T)
+  spec.csharp:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.IComparable`1
+    name: IComparable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Runtime.Serialization
+  commentId: N:System.Runtime.Serialization
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Runtime.Serialization
+  nameWithType: System.Runtime.Serialization
+  fullName: System.Runtime.Serialization
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Runtime
+    name: Runtime
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime
+  - name: .
+  - uid: System.Runtime.Serialization
+    name: Serialization
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.runtime.serialization
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System.Net.IPNetwork2.ToString*
+  commentId: Overload:System.Net.IPNetwork2.ToString
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToString
+  name: ToString
+  nameWithType: IPNetwork2.ToString
+  fullName: System.Net.IPNetwork2.ToString
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Net.IPNetwork2.BitsSet*
+  commentId: Overload:System.Net.IPNetwork2.BitsSet
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_BitsSet_System_Net_IPAddress_
+  name: BitsSet
+  nameWithType: IPNetwork2.BitsSet
+  fullName: System.Net.IPNetwork2.BitsSet
+- uid: System.Net.IPAddress
+  commentId: T:System.Net.IPAddress
+  parent: System.Net
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.ipaddress
+  name: IPAddress
+  nameWithType: IPAddress
+  fullName: System.Net.IPAddress
+- uid: System.UInt32
+  commentId: T:System.UInt32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.uint32
+  name: uint
+  nameWithType: uint
+  fullName: uint
+  nameWithType.vb: UInteger
+  fullName.vb: UInteger
+  name.vb: UInteger
+- uid: System.Net.IPNetwork2.Contains*
+  commentId: Overload:System.Net.IPNetwork2.Contains
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Contains_System_Net_IPNetwork2_System_Net_IPAddress_
+  name: Contains
+  nameWithType: IPNetwork2.Contains
+  fullName: System.Net.IPNetwork2.Contains
+- uid: System.Net.IPNetwork2
+  commentId: T:System.Net.IPNetwork2
+  parent: System.Net
+  href: System.Net.IPNetwork2.html
+  name: IPNetwork2
+  nameWithType: IPNetwork2
+  fullName: System.Net.IPNetwork2
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.ArgumentNullException
+  commentId: T:System.ArgumentNullException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentnullexception
+  name: ArgumentNullException
+  nameWithType: ArgumentNullException
+  fullName: System.ArgumentNullException
+- uid: System.Net.IPNetwork2.#ctor*
+  commentId: Overload:System.Net.IPNetwork2.#ctor
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2__ctor_System_Net_IPAddress_System_Byte_
+  name: IPNetwork2
+  nameWithType: IPNetwork2.IPNetwork2
+  fullName: System.Net.IPNetwork2.IPNetwork2
+  nameWithType.vb: IPNetwork2.New
+  fullName.vb: System.Net.IPNetwork2.New
+  name.vb: New
+- uid: System.Byte
+  commentId: T:System.Byte
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte
+  nameWithType: byte
+  fullName: byte
+  nameWithType.vb: Byte
+  fullName.vb: Byte
+  name.vb: Byte
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Net.IPNetwork2.GetHashCode*
+  commentId: Overload:System.Net.IPNetwork2.GetHashCode
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_GetHashCode
+  name: GetHashCode
+  nameWithType: IPNetwork2.GetHashCode
+  fullName: System.Net.IPNetwork2.GetHashCode
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Net.IPNetwork2.IANA_ABLK_RESERVED1*
+  commentId: Overload:System.Net.IPNetwork2.IANA_ABLK_RESERVED1
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_IANA_ABLK_RESERVED1
+  name: IANA_ABLK_RESERVED1
+  nameWithType: IPNetwork2.IANA_ABLK_RESERVED1
+  fullName: System.Net.IPNetwork2.IANA_ABLK_RESERVED1
+- uid: System.Net.IPNetwork2.IANA_BBLK_RESERVED1*
+  commentId: Overload:System.Net.IPNetwork2.IANA_BBLK_RESERVED1
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_IANA_BBLK_RESERVED1
+  name: IANA_BBLK_RESERVED1
+  nameWithType: IPNetwork2.IANA_BBLK_RESERVED1
+  fullName: System.Net.IPNetwork2.IANA_BBLK_RESERVED1
+- uid: System.Net.IPNetwork2.IANA_CBLK_RESERVED1*
+  commentId: Overload:System.Net.IPNetwork2.IANA_CBLK_RESERVED1
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_IANA_CBLK_RESERVED1
+  name: IANA_CBLK_RESERVED1
+  nameWithType: IPNetwork2.IANA_CBLK_RESERVED1
+  fullName: System.Net.IPNetwork2.IANA_CBLK_RESERVED1
+- uid: System.Net.IPNetwork2.IsIANAReserved*
+  commentId: Overload:System.Net.IPNetwork2.IsIANAReserved
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_IsIANAReserved_System_Net_IPAddress_
+  name: IsIANAReserved
+  nameWithType: IPNetwork2.IsIANAReserved
+  fullName: System.Net.IPNetwork2.IsIANAReserved
+- uid: System.Net.IPNetwork2.Compare*
+  commentId: Overload:System.Net.IPNetwork2.Compare
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Compare_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  name: Compare
+  nameWithType: IPNetwork2.Compare
+  fullName: System.Net.IPNetwork2.Compare
+- uid: System.Net.IPNetwork2.CompareTo*
+  commentId: Overload:System.Net.IPNetwork2.CompareTo
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_CompareTo_System_Net_IPNetwork2_
+  name: CompareTo
+  nameWithType: IPNetwork2.CompareTo
+  fullName: System.Net.IPNetwork2.CompareTo
+- uid: System.IComparable{System.Net.IPNetwork2}.CompareTo(System.Net.IPNetwork2)
+  commentId: M:System.IComparable{System.Net.IPNetwork2}.CompareTo(System.Net.IPNetwork2)
+  parent: System.IComparable{System.Net.IPNetwork2}
+  definition: System.IComparable`1.CompareTo(`0)
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  name: CompareTo(IPNetwork2)
+  nameWithType: IComparable<IPNetwork2>.CompareTo(IPNetwork2)
+  fullName: System.IComparable<System.Net.IPNetwork2>.CompareTo(System.Net.IPNetwork2)
+  nameWithType.vb: IComparable(Of IPNetwork2).CompareTo(IPNetwork2)
+  fullName.vb: System.IComparable(Of System.Net.IPNetwork2).CompareTo(System.Net.IPNetwork2)
+  spec.csharp:
+  - uid: System.IComparable{System.Net.IPNetwork2}.CompareTo(System.Net.IPNetwork2)
+    name: CompareTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  - name: (
+  - uid: System.Net.IPNetwork2
+    name: IPNetwork2
+    href: System.Net.IPNetwork2.html
+  - name: )
+  spec.vb:
+  - uid: System.IComparable{System.Net.IPNetwork2}.CompareTo(System.Net.IPNetwork2)
+    name: CompareTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  - name: (
+  - uid: System.Net.IPNetwork2
+    name: IPNetwork2
+    href: System.Net.IPNetwork2.html
+  - name: )
+- uid: System.IComparable`1.CompareTo(`0)
+  commentId: M:System.IComparable`1.CompareTo(`0)
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  name: CompareTo(T)
+  nameWithType: IComparable<T>.CompareTo(T)
+  fullName: System.IComparable<T>.CompareTo(T)
+  nameWithType.vb: IComparable(Of T).CompareTo(T)
+  fullName.vb: System.IComparable(Of T).CompareTo(T)
+  spec.csharp:
+  - uid: System.IComparable`1.CompareTo(`0)
+    name: CompareTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  - name: (
+  - name: T
+  - name: )
+  spec.vb:
+  - uid: System.IComparable`1.CompareTo(`0)
+    name: CompareTo
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.icomparable-1.compareto
+  - name: (
+  - name: T
+  - name: )
+- uid: System.Net.IPNetwork2.Equals*
+  commentId: Overload:System.Net.IPNetwork2.Equals
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Equals_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  name: Equals
+  nameWithType: IPNetwork2.Equals
+  fullName: System.Net.IPNetwork2.Equals
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Net.IPNetwork2.ListIPAddress*
+  commentId: Overload:System.Net.IPNetwork2.ListIPAddress
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_ListIPAddress_System_Net_IPNetwork2_
+  name: ListIPAddress
+  nameWithType: IPNetwork2.ListIPAddress
+  fullName: System.Net.IPNetwork2.ListIPAddress
+- uid: System.Net.IPAddressCollection
+  commentId: T:System.Net.IPAddressCollection
+  parent: System.Net
+  href: System.Net.IPAddressCollection.html
+  name: IPAddressCollection
+  nameWithType: IPAddressCollection
+  fullName: System.Net.IPAddressCollection
+- uid: System.Net.FilterEnum
+  commentId: T:System.Net.FilterEnum
+  parent: System.Net
+  href: System.Net.FilterEnum.html
+  name: FilterEnum
+  nameWithType: FilterEnum
+  fullName: System.Net.FilterEnum
+- uid: System.Net.IPNetwork2.Value*
+  commentId: Overload:System.Net.IPNetwork2.Value
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Value
+  name: Value
+  nameWithType: IPNetwork2.Value
+  fullName: System.Net.IPNetwork2.Value
+- uid: System.Net.IPNetwork2.Network*
+  commentId: Overload:System.Net.IPNetwork2.Network
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Network
+  name: Network
+  nameWithType: IPNetwork2.Network
+  fullName: System.Net.IPNetwork2.Network
+- uid: System.Net.IPNetwork2.AddressFamily*
+  commentId: Overload:System.Net.IPNetwork2.AddressFamily
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_AddressFamily
+  name: AddressFamily
+  nameWithType: IPNetwork2.AddressFamily
+  fullName: System.Net.IPNetwork2.AddressFamily
+- uid: System.Net.Sockets.AddressFamily
+  commentId: T:System.Net.Sockets.AddressFamily
+  parent: System.Net.Sockets
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.net.sockets.addressfamily
+  name: AddressFamily
+  nameWithType: AddressFamily
+  fullName: System.Net.Sockets.AddressFamily
+- uid: System.Net.Sockets
+  commentId: N:System.Net.Sockets
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Net.Sockets
+  nameWithType: System.Net.Sockets
+  fullName: System.Net.Sockets
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Sockets
+    name: Sockets
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.sockets
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Net
+    name: Net
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net
+  - name: .
+  - uid: System.Net.Sockets
+    name: Sockets
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.net.sockets
+- uid: System.Net.IPNetwork2.Netmask*
+  commentId: Overload:System.Net.IPNetwork2.Netmask
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Netmask
+  name: Netmask
+  nameWithType: IPNetwork2.Netmask
+  fullName: System.Net.IPNetwork2.Netmask
+- uid: System.Net.IPNetwork2.Broadcast*
+  commentId: Overload:System.Net.IPNetwork2.Broadcast
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Broadcast
+  name: Broadcast
+  nameWithType: IPNetwork2.Broadcast
+  fullName: System.Net.IPNetwork2.Broadcast
+- uid: System.Net.IPNetwork2.FirstUsable*
+  commentId: Overload:System.Net.IPNetwork2.FirstUsable
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_FirstUsable
+  name: FirstUsable
+  nameWithType: IPNetwork2.FirstUsable
+  fullName: System.Net.IPNetwork2.FirstUsable
+- uid: System.Net.IPNetwork2.LastUsable*
+  commentId: Overload:System.Net.IPNetwork2.LastUsable
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_LastUsable
+  name: LastUsable
+  nameWithType: IPNetwork2.LastUsable
+  fullName: System.Net.IPNetwork2.LastUsable
+- uid: System.Net.IPNetwork2.Usable*
+  commentId: Overload:System.Net.IPNetwork2.Usable
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Usable
+  name: Usable
+  nameWithType: IPNetwork2.Usable
+  fullName: System.Net.IPNetwork2.Usable
+- uid: System.Numerics.BigInteger
+  commentId: T:System.Numerics.BigInteger
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.biginteger
+  name: BigInteger
+  nameWithType: BigInteger
+  fullName: System.Numerics.BigInteger
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: System.Net.IPNetwork2.Total*
+  commentId: Overload:System.Net.IPNetwork2.Total
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Total
+  name: Total
+  nameWithType: IPNetwork2.Total
+  fullName: System.Net.IPNetwork2.Total
+- uid: System.Net.IPNetwork2.Cidr*
+  commentId: Overload:System.Net.IPNetwork2.Cidr
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Cidr
+  name: Cidr
+  nameWithType: IPNetwork2.Cidr
+  fullName: System.Net.IPNetwork2.Cidr
+- uid: System.Net.IPNetwork2.op_Equality*
+  commentId: Overload:System.Net.IPNetwork2.op_Equality
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_Equality_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  name: operator ==
+  nameWithType: IPNetwork2.operator ==
+  fullName: System.Net.IPNetwork2.operator ==
+  nameWithType.vb: IPNetwork2.=
+  fullName.vb: System.Net.IPNetwork2.=
+  name.vb: =
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: System.Net.IPNetwork2.op_Equality*
+    name: ==
+    href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_Equality_System_Net_IPNetwork2_System_Net_IPNetwork2_
+- uid: System.Net.IPNetwork2.op_Inequality*
+  commentId: Overload:System.Net.IPNetwork2.op_Inequality
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_Inequality_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  name: operator !=
+  nameWithType: IPNetwork2.operator !=
+  fullName: System.Net.IPNetwork2.operator !=
+  nameWithType.vb: IPNetwork2.<>
+  fullName.vb: System.Net.IPNetwork2.<>
+  name.vb: <>
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: System.Net.IPNetwork2.op_Inequality*
+    name: '!='
+    href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_Inequality_System_Net_IPNetwork2_System_Net_IPNetwork2_
+- uid: System.Net.IPNetwork2.op_LessThan*
+  commentId: Overload:System.Net.IPNetwork2.op_LessThan
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_LessThan_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  name: operator <
+  nameWithType: IPNetwork2.operator <
+  fullName: System.Net.IPNetwork2.operator <
+  nameWithType.vb: IPNetwork2.<
+  fullName.vb: System.Net.IPNetwork2.<
+  name.vb: <
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: System.Net.IPNetwork2.op_LessThan*
+    name: <
+    href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_LessThan_System_Net_IPNetwork2_System_Net_IPNetwork2_
+- uid: System.Net.IPNetwork2.op_GreaterThan*
+  commentId: Overload:System.Net.IPNetwork2.op_GreaterThan
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_GreaterThan_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  name: operator >
+  nameWithType: IPNetwork2.operator >
+  fullName: System.Net.IPNetwork2.operator >
+  nameWithType.vb: IPNetwork2.>
+  fullName.vb: System.Net.IPNetwork2.>
+  name.vb: '>'
+  spec.csharp:
+  - name: operator
+  - name: " "
+  - uid: System.Net.IPNetwork2.op_GreaterThan*
+    name: '>'
+    href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_op_GreaterThan_System_Net_IPNetwork2_System_Net_IPNetwork2_
+- uid: System.Net.IPNetwork2.Overlap*
+  commentId: Overload:System.Net.IPNetwork2.Overlap
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Overlap_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  name: Overlap
+  nameWithType: IPNetwork2.Overlap
+  fullName: System.Net.IPNetwork2.Overlap
+- uid: System.Net.IPNetwork2.Parse*
+  commentId: Overload:System.Net.IPNetwork2.Parse
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Parse_System_String_System_String_
+  name: Parse
+  nameWithType: IPNetwork2.Parse
+  fullName: System.Net.IPNetwork2.Parse
+- uid: System.Net.ICidrGuess
+  commentId: T:System.Net.ICidrGuess
+  parent: System.Net
+  href: System.Net.ICidrGuess.html
+  name: ICidrGuess
+  nameWithType: ICidrGuess
+  fullName: System.Net.ICidrGuess
+- uid: System.Net.IPNetwork2.Print*
+  commentId: Overload:System.Net.IPNetwork2.Print
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Print_System_Net_IPNetwork2_
+  name: Print
+  nameWithType: IPNetwork2.Print
+  fullName: System.Net.IPNetwork2.Print
+- uid: System.Net.IPNetwork2.Subnet*
+  commentId: Overload:System.Net.IPNetwork2.Subnet
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Subnet_System_Net_IPNetwork2_System_Byte_
+  name: Subnet
+  nameWithType: IPNetwork2.Subnet
+  fullName: System.Net.IPNetwork2.Subnet
+- uid: System.Net.IPNetworkCollection
+  commentId: T:System.Net.IPNetworkCollection
+  parent: System.Net
+  href: System.Net.IPNetworkCollection.html
+  name: IPNetworkCollection
+  nameWithType: IPNetworkCollection
+  fullName: System.Net.IPNetworkCollection
+- uid: System.Net.IPNetwork2.TrySubnet*
+  commentId: Overload:System.Net.IPNetwork2.TrySubnet
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_TrySubnet_System_Net_IPNetwork2_System_Byte_System_Net_IPNetworkCollection__
+  name: TrySubnet
+  nameWithType: IPNetwork2.TrySubnet
+  fullName: System.Net.IPNetwork2.TrySubnet
+- uid: System.Net.IPNetwork2.Supernet*
+  commentId: Overload:System.Net.IPNetwork2.Supernet
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_Supernet_System_Net_IPNetwork2_System_Net_IPNetwork2_
+  name: Supernet
+  nameWithType: IPNetwork2.Supernet
+  fullName: System.Net.IPNetwork2.Supernet
+- uid: System.Net.IPNetwork2.TrySupernet*
+  commentId: Overload:System.Net.IPNetwork2.TrySupernet
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_TrySupernet_System_Net_IPNetwork2_System_Net_IPNetwork2_System_Net_IPNetwork2__
+  name: TrySupernet
+  nameWithType: IPNetwork2.TrySupernet
+  fullName: System.Net.IPNetwork2.TrySupernet
+- uid: System.Net.IPNetwork2[]
+  isExternal: true
+  href: System.Net.IPNetwork2.html
+  name: IPNetwork2[]
+  nameWithType: IPNetwork2[]
+  fullName: System.Net.IPNetwork2[]
+  nameWithType.vb: IPNetwork2()
+  fullName.vb: System.Net.IPNetwork2()
+  name.vb: IPNetwork2()
+  spec.csharp:
+  - uid: System.Net.IPNetwork2
+    name: IPNetwork2
+    href: System.Net.IPNetwork2.html
+  - name: '['
+  - name: ']'
+  spec.vb:
+  - uid: System.Net.IPNetwork2
+    name: IPNetwork2
+    href: System.Net.IPNetwork2.html
+  - name: (
+  - name: )
+- uid: System.Net.IPNetwork2.ToCidr*
+  commentId: Overload:System.Net.IPNetwork2.ToCidr
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToCidr_System_Net_IPAddress_
+  name: ToCidr
+  nameWithType: IPNetwork2.ToCidr
+  fullName: System.Net.IPNetwork2.ToCidr
+- uid: System.Net.IPNetwork2.TryToCidr*
+  commentId: Overload:System.Net.IPNetwork2.TryToCidr
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryToCidr_System_Net_IPAddress_System_Nullable_System_Byte___
+  name: TryToCidr
+  nameWithType: IPNetwork2.TryToCidr
+  fullName: System.Net.IPNetwork2.TryToCidr
+- uid: System.Nullable{System.Byte}
+  commentId: T:System.Nullable{System.Byte}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.byte
+  name: byte?
+  nameWithType: byte?
+  fullName: byte?
+  nameWithType.vb: Byte?
+  fullName.vb: Byte?
+  name.vb: Byte?
+  spec.csharp:
+  - uid: System.Byte
+    name: byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '?'
+  spec.vb:
+  - uid: System.Byte
+    name: Byte
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.byte
+  - name: '?'
+- uid: System.Nullable`1
+  commentId: T:System.Nullable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  name: Nullable<T>
+  nameWithType: Nullable<T>
+  fullName: System.Nullable<T>
+  nameWithType.vb: Nullable(Of T)
+  fullName.vb: System.Nullable(Of T)
+  name.vb: Nullable(Of T)
+  spec.csharp:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Nullable`1
+    name: Nullable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.nullable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Net.IPNetwork2.ToIPAddress*
+  commentId: Overload:System.Net.IPNetwork2.ToIPAddress
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToIPAddress_System_Numerics_BigInteger_System_Net_Sockets_AddressFamily_
+  name: ToIPAddress
+  nameWithType: IPNetwork2.ToIPAddress
+  fullName: System.Net.IPNetwork2.ToIPAddress
+- uid: System.Net.IPNetwork2.ToNetmask*
+  commentId: Overload:System.Net.IPNetwork2.ToNetmask
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToNetmask_System_Byte_System_Net_Sockets_AddressFamily_
+  name: ToNetmask
+  nameWithType: IPNetwork2.ToNetmask
+  fullName: System.Net.IPNetwork2.ToNetmask
+- uid: System.Net.IPNetwork2.TryToNetmask*
+  commentId: Overload:System.Net.IPNetwork2.TryToNetmask
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryToNetmask_System_Byte_System_Net_Sockets_AddressFamily_System_Net_IPAddress__
+  name: TryToNetmask
+  nameWithType: IPNetwork2.TryToNetmask
+  fullName: System.Net.IPNetwork2.TryToNetmask
+- uid: System.Net.IPNetwork2.ToBigInteger*
+  commentId: Overload:System.Net.IPNetwork2.ToBigInteger
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToBigInteger_System_Net_IPAddress_
+  name: ToBigInteger
+  nameWithType: IPNetwork2.ToBigInteger
+  fullName: System.Net.IPNetwork2.ToBigInteger
+- uid: System.Net.IPNetwork2.TryToBigInteger*
+  commentId: Overload:System.Net.IPNetwork2.TryToBigInteger
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryToBigInteger_System_Net_IPAddress_System_Nullable_System_Numerics_BigInteger___
+  name: TryToBigInteger
+  nameWithType: IPNetwork2.TryToBigInteger
+  fullName: System.Net.IPNetwork2.TryToBigInteger
+- uid: System.Nullable{System.Numerics.BigInteger}
+  commentId: T:System.Nullable{System.Numerics.BigInteger}
+  parent: System
+  definition: System.Nullable`1
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.biginteger
+  name: BigInteger?
+  nameWithType: BigInteger?
+  fullName: System.Numerics.BigInteger?
+  spec.csharp:
+  - uid: System.Numerics.BigInteger
+    name: BigInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.biginteger
+  - name: '?'
+  spec.vb:
+  - uid: System.Numerics.BigInteger
+    name: BigInteger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics.biginteger
+  - name: '?'
+- uid: System.Net.IPNetwork2.ToUint*
+  commentId: Overload:System.Net.IPNetwork2.ToUint
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_ToUint_System_Byte_System_Net_Sockets_AddressFamily_
+  name: ToUint
+  nameWithType: IPNetwork2.ToUint
+  fullName: System.Net.IPNetwork2.ToUint
+- uid: System.Net.IPNetwork2.TryToUint*
+  commentId: Overload:System.Net.IPNetwork2.TryToUint
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryToUint_System_Byte_System_Net_Sockets_AddressFamily_System_Nullable_System_Numerics_BigInteger___
+  name: TryToUint
+  nameWithType: IPNetwork2.TryToUint
+  fullName: System.Net.IPNetwork2.TryToUint
+- uid: System.Net.IPNetwork2.TryGuessCidr*
+  commentId: Overload:System.Net.IPNetwork2.TryGuessCidr
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryGuessCidr_System_String_System_Byte__
+  name: TryGuessCidr
+  nameWithType: IPNetwork2.TryGuessCidr
+  fullName: System.Net.IPNetwork2.TryGuessCidr
+- uid: System.Net.IPNetwork2.TryParseCidr*
+  commentId: Overload:System.Net.IPNetwork2.TryParseCidr
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryParseCidr_System_String_System_Net_Sockets_AddressFamily_System_Nullable_System_Byte___
+  name: TryParseCidr
+  nameWithType: IPNetwork2.TryParseCidr
+  fullName: System.Net.IPNetwork2.TryParseCidr
+- uid: System.Net.IPNetwork2.TryParse*
+  commentId: Overload:System.Net.IPNetwork2.TryParse
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryParse_System_String_System_String_System_Net_IPNetwork2__
+  name: TryParse
+  nameWithType: IPNetwork2.TryParse
+  fullName: System.Net.IPNetwork2.TryParse
+- uid: System.Net.IPNetwork2.ValidNetmask*
+  commentId: Overload:System.Net.IPNetwork2.ValidNetmask
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_ValidNetmask_System_Net_IPAddress_
+  name: ValidNetmask
+  nameWithType: IPNetwork2.ValidNetmask
+  fullName: System.Net.IPNetwork2.ValidNetmask
+- uid: System.ArgumentException
+  commentId: T:System.ArgumentException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentexception
+  name: ArgumentException
+  nameWithType: ArgumentException
+  fullName: System.ArgumentException
+- uid: System.NotSupportedException
+  commentId: T:System.NotSupportedException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.notsupportedexception
+  name: NotSupportedException
+  nameWithType: NotSupportedException
+  fullName: System.NotSupportedException
+- uid: System.Net.IPNetwork2.WideSubnet*
+  commentId: Overload:System.Net.IPNetwork2.WideSubnet
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_WideSubnet_System_String_System_String_
+  name: WideSubnet
+  nameWithType: IPNetwork2.WideSubnet
+  fullName: System.Net.IPNetwork2.WideSubnet
+- uid: System.Net.IPNetwork2.TryWideSubnet*
+  commentId: Overload:System.Net.IPNetwork2.TryWideSubnet
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_TryWideSubnet_System_Net_IPNetwork2___System_Net_IPNetwork2__
+  name: TryWideSubnet
+  nameWithType: IPNetwork2.TryWideSubnet
+  fullName: System.Net.IPNetwork2.TryWideSubnet
+- uid: System.Net.IPNetwork2.WildcardMask*
+  commentId: Overload:System.Net.IPNetwork2.WildcardMask
+  href: System.Net.IPNetwork2.html#System_Net_IPNetwork2_WildcardMask
+  name: WildcardMask
+  nameWithType: IPNetwork2.WildcardMask
+  fullName: System.Net.IPNetwork2.WildcardMask
