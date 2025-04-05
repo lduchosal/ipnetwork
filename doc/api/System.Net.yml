@@ -1,0 +1,113 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Net
+  commentId: N:System.Net
+  id: System.Net
+  children:
+  - System.Net.BigIntegerExtensions
+  - System.Net.CidrClassFull
+  - System.Net.CidrClassLess
+  - System.Net.CidrGuess
+  - System.Net.FilterEnum
+  - System.Net.ICidrGuess
+  - System.Net.IPAddressCollection
+  - System.Net.IPAddressExtensions
+  - System.Net.IPNetwork2
+  - System.Net.IPNetworkCollection
+  langs:
+  - csharp
+  - vb
+  name: System.Net
+  nameWithType: System.Net
+  fullName: System.Net
+  type: Namespace
+  assemblies:
+  - System.Net.IPNetwork
+references:
+- uid: System.Net.BigIntegerExtensions
+  commentId: T:System.Net.BigIntegerExtensions
+  href: System.Net.BigIntegerExtensions.html
+  name: BigIntegerExtensions
+  nameWithType: BigIntegerExtensions
+  fullName: System.Net.BigIntegerExtensions
+- uid: System.Net.CidrClassFull
+  commentId: T:System.Net.CidrClassFull
+  href: System.Net.CidrClassFull.html
+  name: CidrClassFull
+  nameWithType: CidrClassFull
+  fullName: System.Net.CidrClassFull
+- uid: System.Net.CidrClassLess
+  commentId: T:System.Net.CidrClassLess
+  href: System.Net.CidrClassLess.html
+  name: CidrClassLess
+  nameWithType: CidrClassLess
+  fullName: System.Net.CidrClassLess
+- uid: System.Net.CidrGuess
+  commentId: T:System.Net.CidrGuess
+  href: System.Net.CidrGuess.html
+  name: CidrGuess
+  nameWithType: CidrGuess
+  fullName: System.Net.CidrGuess
+- uid: System.Net.ICidrGuess
+  commentId: T:System.Net.ICidrGuess
+  parent: System.Net
+  href: System.Net.ICidrGuess.html
+  name: ICidrGuess
+  nameWithType: ICidrGuess
+  fullName: System.Net.ICidrGuess
+- uid: System.Net.FilterEnum
+  commentId: T:System.Net.FilterEnum
+  parent: System.Net
+  href: System.Net.FilterEnum.html
+  name: FilterEnum
+  nameWithType: FilterEnum
+  fullName: System.Net.FilterEnum
+- uid: System.Net.IPAddressCollection
+  commentId: T:System.Net.IPAddressCollection
+  parent: System.Net
+  href: System.Net.IPAddressCollection.html
+  name: IPAddressCollection
+  nameWithType: IPAddressCollection
+  fullName: System.Net.IPAddressCollection
+- uid: System.Net.IPAddressExtensions
+  commentId: T:System.Net.IPAddressExtensions
+  href: System.Net.IPAddressExtensions.html
+  name: IPAddressExtensions
+  nameWithType: IPAddressExtensions
+  fullName: System.Net.IPAddressExtensions
+- uid: System.Net.IPNetwork2
+  commentId: T:System.Net.IPNetwork2
+  parent: System.Net
+  href: System.Net.IPNetwork2.html
+  name: IPNetwork2
+  nameWithType: IPNetwork2
+  fullName: System.Net.IPNetwork2
+- uid: System.Net.IPNetworkCollection
+  commentId: T:System.Net.IPNetworkCollection
+  parent: System.Net
+  href: System.Net.IPNetworkCollection.html
+  name: IPNetworkCollection
+  nameWithType: IPNetworkCollection
+  fullName: System.Net.IPNetworkCollection
+- uid: System.Net
+  commentId: N:System.Net
+  href: System.html
+  name: System.Net
+  nameWithType: System.Net
+  fullName: System.Net
+  spec.csharp:
+  - uid: System
+    name: System
+    href: System.html
+  - name: .
+  - uid: System.Net
+    name: Net
+    href: System.Net.html
+  spec.vb:
+  - uid: System
+    name: System
+    href: System.html
+  - name: .
+  - uid: System.Net
+    name: Net
+    href: System.Net.html

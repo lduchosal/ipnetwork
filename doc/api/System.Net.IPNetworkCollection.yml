@@ -1,0 +1,915 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Net.IPNetworkCollection
+  commentId: T:System.Net.IPNetworkCollection
+  id: IPNetworkCollection
+  parent: System.Net
+  children:
+  - System.Net.IPNetworkCollection.Count
+  - System.Net.IPNetworkCollection.Current
+  - System.Net.IPNetworkCollection.Dispose
+  - System.Net.IPNetworkCollection.Item(System.Numerics.BigInteger)
+  - System.Net.IPNetworkCollection.MoveNext
+  - System.Net.IPNetworkCollection.Reset
+  langs:
+  - csharp
+  - vb
+  name: IPNetworkCollection
+  nameWithType: IPNetworkCollection
+  fullName: System.Net.IPNetworkCollection
+  type: Class
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetworkCollection.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: IPNetworkCollection
+    path: ../src/System.Net.IPNetwork/IPNetworkCollection.cs
+    startLine: 13
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Represents a collection of IP networks based on a given parent IP network and subnet CIDR.
+  example: []
+  syntax:
+    content: 'public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerable, IEnumerator<IPNetwork2>, IEnumerator, IDisposable'
+    content.vb: Public Class IPNetworkCollection Implements IEnumerable(Of IPNetwork2), IEnumerable, IEnumerator(Of IPNetwork2), IEnumerator, IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.Collections.Generic.IEnumerable{System.Net.IPNetwork2}
+  - System.Collections.IEnumerable
+  - System.Collections.Generic.IEnumerator{System.Net.IPNetwork2}
+  - System.Collections.IEnumerator
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: System.Net.IPNetworkCollection.Count
+  commentId: P:System.Net.IPNetworkCollection.Count
+  id: Count
+  parent: System.Net.IPNetworkCollection
+  langs:
+  - csharp
+  - vb
+  name: Count
+  nameWithType: IPNetworkCollection.Count
+  fullName: System.Net.IPNetworkCollection.Count
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetworkCollection.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Count
+    path: ../src/System.Net.IPNetwork/IPNetworkCollection.cs
+    startLine: 79
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets the total number of IP addresses in the subnet.
+  example: []
+  syntax:
+    content: public BigInteger Count { get; }
+    parameters: []
+    return:
+      type: System.Numerics.BigInteger
+    content.vb: Public ReadOnly Property Count As BigInteger
+  overload: System.Net.IPNetworkCollection.Count*
+- uid: System.Net.IPNetworkCollection.Item(System.Numerics.BigInteger)
+  commentId: P:System.Net.IPNetworkCollection.Item(System.Numerics.BigInteger)
+  id: Item(System.Numerics.BigInteger)
+  parent: System.Net.IPNetworkCollection
+  langs:
+  - csharp
+  - vb
+  name: this[BigInteger]
+  nameWithType: IPNetworkCollection.this[BigInteger]
+  fullName: System.Net.IPNetworkCollection.this[System.Numerics.BigInteger]
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetworkCollection.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: this[]
+    path: ../src/System.Net.IPNetwork/IPNetworkCollection.cs
+    startLine: 96
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Retrieves an IPNetwork2 object from the collection by index.
+  example: []
+  syntax:
+    content: public IPNetwork2 this[BigInteger i] { get; }
+    parameters:
+    - id: i
+      type: System.Numerics.BigInteger
+      description: The index of the IPNetwork2 object to retrieve.
+    return:
+      type: System.Net.IPNetwork2
+      description: The IPNetwork2 object at the specified index.
+    content.vb: Public ReadOnly Default Property this[](i As BigInteger) As IPNetwork2
+  overload: System.Net.IPNetworkCollection.Item*
+  exceptions:
+  - type: System.ArgumentOutOfRangeException
+    commentId: T:System.ArgumentOutOfRangeException
+    description: Thrown when the specified index is greater than or equal to the Count of the collection.
+  nameWithType.vb: IPNetworkCollection.this[](BigInteger)
+  fullName.vb: System.Net.IPNetworkCollection.this[](System.Numerics.BigInteger)
+  name.vb: this[](BigInteger)
+- uid: System.Net.IPNetworkCollection.Current
+  commentId: P:System.Net.IPNetworkCollection.Current
+  id: Current
+  parent: System.Net.IPNetworkCollection
+  langs:
+  - csharp
+  - vb
+  name: Current
+  nameWithType: IPNetworkCollection.Current
+  fullName: System.Net.IPNetworkCollection.Current
+  type: Property
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetworkCollection.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Current
+    path: ../src/System.Net.IPNetwork/IPNetworkCollection.cs
+    startLine: 134
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Gets the element in the collection at the current position of the enumerator.
+  example: []
+  syntax:
+    content: public IPNetwork2 Current { get; }
+    parameters: []
+    return:
+      type: System.Net.IPNetwork2
+      description: The element in the collection at the current position of the enumerator.
+    content.vb: Public ReadOnly Property Current As IPNetwork2
+  overload: System.Net.IPNetworkCollection.Current*
+  implements:
+  - System.Collections.Generic.IEnumerator{System.Net.IPNetwork2}.Current
+- uid: System.Net.IPNetworkCollection.Dispose
+  commentId: M:System.Net.IPNetworkCollection.Dispose
+  id: Dispose
+  parent: System.Net.IPNetworkCollection
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: IPNetworkCollection.Dispose()
+  fullName: System.Net.IPNetworkCollection.Dispose()
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetworkCollection.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Dispose
+    path: ../src/System.Net.IPNetwork/IPNetworkCollection.cs
+    startLine: 151
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Releases all resources used by the object.
+  remarks: >-
+    This method implements the IDisposable interface and releases any resources
+
+    held by the object. In this particular implementation, there are no resources
+
+    to dispose of, so the method does nothing.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: System.Net.IPNetworkCollection.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+- uid: System.Net.IPNetworkCollection.MoveNext
+  commentId: M:System.Net.IPNetworkCollection.MoveNext
+  id: MoveNext
+  parent: System.Net.IPNetworkCollection
+  langs:
+  - csharp
+  - vb
+  name: MoveNext()
+  nameWithType: IPNetworkCollection.MoveNext()
+  fullName: System.Net.IPNetworkCollection.MoveNext()
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetworkCollection.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: MoveNext
+    path: ../src/System.Net.IPNetwork/IPNetworkCollection.cs
+    startLine: 175
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Moves the enumerator to the next element in the collection.
+  example: []
+  syntax:
+    content: public bool MoveNext()
+    return:
+      type: System.Boolean
+      description: >-
+        <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">true</a> if the enumerator was successfully moved to the next element;
+
+        <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/bool">false</a> if the enumerator has reached the end of the collection.
+    content.vb: Public Function MoveNext() As Boolean
+  overload: System.Net.IPNetworkCollection.MoveNext*
+  implements:
+  - System.Collections.IEnumerator.MoveNext
+- uid: System.Net.IPNetworkCollection.Reset
+  commentId: M:System.Net.IPNetworkCollection.Reset
+  id: Reset
+  parent: System.Net.IPNetworkCollection
+  langs:
+  - csharp
+  - vb
+  name: Reset()
+  nameWithType: IPNetworkCollection.Reset()
+  fullName: System.Net.IPNetworkCollection.Reset()
+  type: Method
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPNetworkCollection.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Reset
+    path: ../src/System.Net.IPNetwork/IPNetworkCollection.cs
+    startLine: 189
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Sets the enumerator to its initial position, which is before the first element in the collection.
+  example: []
+  syntax:
+    content: public void Reset()
+    content.vb: Public Sub Reset()
+  overload: System.Net.IPNetworkCollection.Reset*
+  implements:
+  - System.Collections.IEnumerator.Reset
+references:
+- uid: System.Net
+  commentId: N:System.Net
+  href: System.html
+  name: System.Net
+  nameWithType: System.Net
+  fullName: System.Net
+  spec.csharp:
+  - uid: System
+    name: System
+    href: System.html
+  - name: .
+  - uid: System.Net
+    name: Net
+    href: System.Net.html
+  spec.vb:
+  - uid: System
+    name: System
+    href: System.html
+  - name: .
+  - uid: System.Net
+    name: Net
+    href: System.Net.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Collections.Generic.IEnumerable{System.Net.IPNetwork2}
+  commentId: T:System.Collections.Generic.IEnumerable{System.Net.IPNetwork2}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<IPNetwork2>
+  nameWithType: IEnumerable<IPNetwork2>
+  fullName: System.Collections.Generic.IEnumerable<System.Net.IPNetwork2>
+  nameWithType.vb: IEnumerable(Of IPNetwork2)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of System.Net.IPNetwork2)
+  name.vb: IEnumerable(Of IPNetwork2)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: System.Net.IPNetwork2
+    name: IPNetwork2
+    href: System.Net.IPNetwork2.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Net.IPNetwork2
+    name: IPNetwork2
+    href: System.Net.IPNetwork2.html
+  - name: )
+- uid: System.Collections.IEnumerable
+  commentId: T:System.Collections.IEnumerable
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerable
+  name: IEnumerable
+  nameWithType: IEnumerable
+  fullName: System.Collections.IEnumerable
+- uid: System.Collections.Generic.IEnumerator{System.Net.IPNetwork2}
+  commentId: T:System.Collections.Generic.IEnumerator{System.Net.IPNetwork2}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerator`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<IPNetwork2>
+  nameWithType: IEnumerator<IPNetwork2>
+  fullName: System.Collections.Generic.IEnumerator<System.Net.IPNetwork2>
+  nameWithType.vb: IEnumerator(Of IPNetwork2)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of System.Net.IPNetwork2)
+  name.vb: IEnumerator(Of IPNetwork2)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - uid: System.Net.IPNetwork2
+    name: IPNetwork2
+    href: System.Net.IPNetwork2.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Net.IPNetwork2
+    name: IPNetwork2
+    href: System.Net.IPNetwork2.html
+  - name: )
+- uid: System.Collections.IEnumerator
+  commentId: T:System.Collections.IEnumerator
+  parent: System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator
+  name: IEnumerator
+  nameWithType: IEnumerator
+  fullName: System.Collections.IEnumerator
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections
+  commentId: N:System.Collections
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections
+  nameWithType: System.Collections
+  fullName: System.Collections
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+- uid: System.Collections.Generic.IEnumerator`1
+  commentId: T:System.Collections.Generic.IEnumerator`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  name: IEnumerator<T>
+  nameWithType: IEnumerator<T>
+  fullName: System.Collections.Generic.IEnumerator<T>
+  nameWithType.vb: IEnumerator(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T)
+  name.vb: IEnumerator(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerator`1
+    name: IEnumerator
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Net.IPNetworkCollection.Count*
+  commentId: Overload:System.Net.IPNetworkCollection.Count
+  href: System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Count
+  name: Count
+  nameWithType: IPNetworkCollection.Count
+  fullName: System.Net.IPNetworkCollection.Count
+- uid: System.Numerics.BigInteger
+  commentId: T:System.Numerics.BigInteger
+  parent: System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.numerics.biginteger
+  name: BigInteger
+  nameWithType: BigInteger
+  fullName: System.Numerics.BigInteger
+- uid: System.Numerics
+  commentId: N:System.Numerics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Numerics
+  nameWithType: System.Numerics
+  fullName: System.Numerics
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Numerics
+    name: Numerics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.numerics
+- uid: System.ArgumentOutOfRangeException
+  commentId: T:System.ArgumentOutOfRangeException
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception
+  name: ArgumentOutOfRangeException
+  nameWithType: ArgumentOutOfRangeException
+  fullName: System.ArgumentOutOfRangeException
+- uid: System.Net.IPNetworkCollection.Item*
+  commentId: Overload:System.Net.IPNetworkCollection.Item
+  href: System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Item_System_Numerics_BigInteger_
+  name: this
+  nameWithType: IPNetworkCollection.this
+  fullName: System.Net.IPNetworkCollection.this
+  nameWithType.vb: IPNetworkCollection.this[]
+  fullName.vb: System.Net.IPNetworkCollection.this[]
+  name.vb: this[]
+- uid: System.Net.IPNetwork2
+  commentId: T:System.Net.IPNetwork2
+  parent: System.Net
+  href: System.Net.IPNetwork2.html
+  name: IPNetwork2
+  nameWithType: IPNetwork2
+  fullName: System.Net.IPNetwork2
+- uid: System.Net.IPNetworkCollection.Current*
+  commentId: Overload:System.Net.IPNetworkCollection.Current
+  href: System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Current
+  name: Current
+  nameWithType: IPNetworkCollection.Current
+  fullName: System.Net.IPNetworkCollection.Current
+- uid: System.Collections.Generic.IEnumerator{System.Net.IPNetwork2}.Current
+  commentId: P:System.Collections.Generic.IEnumerator{System.Net.IPNetwork2}.Current
+  parent: System.Collections.Generic.IEnumerator{System.Net.IPNetwork2}
+  definition: System.Collections.Generic.IEnumerator`1.Current
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1.current
+  name: Current
+  nameWithType: IEnumerator<IPNetwork2>.Current
+  fullName: System.Collections.Generic.IEnumerator<System.Net.IPNetwork2>.Current
+  nameWithType.vb: IEnumerator(Of IPNetwork2).Current
+  fullName.vb: System.Collections.Generic.IEnumerator(Of System.Net.IPNetwork2).Current
+- uid: System.Collections.Generic.IEnumerator`1.Current
+  commentId: P:System.Collections.Generic.IEnumerator`1.Current
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerator-1.current
+  name: Current
+  nameWithType: IEnumerator<T>.Current
+  fullName: System.Collections.Generic.IEnumerator<T>.Current
+  nameWithType.vb: IEnumerator(Of T).Current
+  fullName.vb: System.Collections.Generic.IEnumerator(Of T).Current
+- uid: System.Net.IPNetworkCollection.Dispose*
+  commentId: Overload:System.Net.IPNetworkCollection.Dispose
+  href: System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Dispose
+  name: Dispose
+  nameWithType: IPNetworkCollection.Dispose
+  fullName: System.Net.IPNetworkCollection.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+- uid: System.Net.IPNetworkCollection.MoveNext*
+  commentId: Overload:System.Net.IPNetworkCollection.MoveNext
+  href: System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_MoveNext
+  name: MoveNext
+  nameWithType: IPNetworkCollection.MoveNext
+  fullName: System.Net.IPNetworkCollection.MoveNext
+- uid: System.Collections.IEnumerator.MoveNext
+  commentId: M:System.Collections.IEnumerator.MoveNext
+  parent: System.Collections.IEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator.movenext
+  name: MoveNext()
+  nameWithType: IEnumerator.MoveNext()
+  fullName: System.Collections.IEnumerator.MoveNext()
+  spec.csharp:
+  - uid: System.Collections.IEnumerator.MoveNext
+    name: MoveNext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator.movenext
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.IEnumerator.MoveNext
+    name: MoveNext
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator.movenext
+  - name: (
+  - name: )
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: System.Net.IPNetworkCollection.Reset*
+  commentId: Overload:System.Net.IPNetworkCollection.Reset
+  href: System.Net.IPNetworkCollection.html#System_Net_IPNetworkCollection_Reset
+  name: Reset
+  nameWithType: IPNetworkCollection.Reset
+  fullName: System.Net.IPNetworkCollection.Reset
+- uid: System.Collections.IEnumerator.Reset
+  commentId: M:System.Collections.IEnumerator.Reset
+  parent: System.Collections.IEnumerator
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator.reset
+  name: Reset()
+  nameWithType: IEnumerator.Reset()
+  fullName: System.Collections.IEnumerator.Reset()
+  spec.csharp:
+  - uid: System.Collections.IEnumerator.Reset
+    name: Reset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator.reset
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Collections.IEnumerator.Reset
+    name: Reset
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.ienumerator.reset
+  - name: (
+  - name: )

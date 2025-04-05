@@ -1,0 +1,37 @@
+### YamlMime:TableOfContent
+items:
+- uid: System.Net
+  name: System.Net
+  type: Namespace
+  items:
+  - uid: System.Net.BigIntegerExtensions
+    name: BigIntegerExtensions
+    type: Class
+  - uid: System.Net.CidrClassFull
+    name: CidrClassFull
+    type: Class
+  - uid: System.Net.CidrClassLess
+    name: CidrClassLess
+    type: Class
+  - uid: System.Net.CidrGuess
+    name: CidrGuess
+    type: Class
+  - uid: System.Net.FilterEnum
+    name: FilterEnum
+    type: Enum
+  - uid: System.Net.ICidrGuess
+    name: ICidrGuess
+    type: Interface
+  - uid: System.Net.IPAddressCollection
+    name: IPAddressCollection
+    type: Class
+  - uid: System.Net.IPAddressExtensions
+    name: IPAddressExtensions
+    type: Class
+  - uid: System.Net.IPNetwork2
+    name: IPNetwork2
+    type: Class
+  - uid: System.Net.IPNetworkCollection
+    name: IPNetworkCollection
+    type: Class
+memberLayout: SamePage

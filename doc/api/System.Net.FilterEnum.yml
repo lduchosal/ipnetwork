@@ -1,0 +1,118 @@
+### YamlMime:ManagedReference
+items:
+- uid: System.Net.FilterEnum
+  commentId: T:System.Net.FilterEnum
+  id: FilterEnum
+  parent: System.Net
+  children:
+  - System.Net.FilterEnum.All
+  - System.Net.FilterEnum.Usable
+  langs:
+  - csharp
+  - vb
+  name: FilterEnum
+  nameWithType: FilterEnum
+  fullName: System.Net.FilterEnum
+  type: Enum
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPAddressCollection.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: FilterEnum
+    path: ../src/System.Net.IPNetwork/IPAddressCollection.cs
+    startLine: 13
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Represents different filters for a collection of items.
+  example: []
+  syntax:
+    content: public enum FilterEnum
+    content.vb: Public Enum FilterEnum
+- uid: System.Net.FilterEnum.All
+  commentId: F:System.Net.FilterEnum.All
+  id: All
+  parent: System.Net.FilterEnum
+  langs:
+  - csharp
+  - vb
+  name: All
+  nameWithType: FilterEnum.All
+  fullName: System.Net.FilterEnum.All
+  type: Field
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPAddressCollection.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: All
+    path: ../src/System.Net.IPNetwork/IPAddressCollection.cs
+    startLine: 18
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Every IPAdresses are returned
+  example: []
+  syntax:
+    content: All = 0
+    return:
+      type: System.Net.FilterEnum
+- uid: System.Net.FilterEnum.Usable
+  commentId: F:System.Net.FilterEnum.Usable
+  id: Usable
+  parent: System.Net.FilterEnum
+  langs:
+  - csharp
+  - vb
+  name: Usable
+  nameWithType: FilterEnum.Usable
+  fullName: System.Net.FilterEnum.Usable
+  type: Field
+  source:
+    remote:
+      path: src/System.Net.IPNetwork/IPAddressCollection.cs
+      branch: feat/cleanup-documentation
+      repo: https://github.com/lduchosal/ipnetwork
+    id: Usable
+    path: ../src/System.Net.IPNetwork/IPAddressCollection.cs
+    startLine: 23
+  assemblies:
+  - System.Net.IPNetwork
+  namespace: System.Net
+  summary: Returns only usable IPAdresses
+  example: []
+  syntax:
+    content: Usable = 1
+    return:
+      type: System.Net.FilterEnum
+references:
+- uid: System.Net
+  commentId: N:System.Net
+  href: System.html
+  name: System.Net
+  nameWithType: System.Net
+  fullName: System.Net
+  spec.csharp:
+  - uid: System
+    name: System
+    href: System.html
+  - name: .
+  - uid: System.Net
+    name: Net
+    href: System.Net.html
+  spec.vb:
+  - uid: System
+    name: System
+    href: System.html
+  - name: .
+  - uid: System.Net
+    name: Net
+    href: System.Net.html
+- uid: System.Net.FilterEnum
+  commentId: T:System.Net.FilterEnum
+  parent: System.Net
+  href: System.Net.FilterEnum.html
+  name: FilterEnum
+  nameWithType: FilterEnum
+  fullName: System.Net.FilterEnum
