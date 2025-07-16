@@ -10,7 +10,6 @@ namespace TestProject.IPNetworkTest;
 [TestClass]
 public class IPNetworkSubtractTests
 {
-    
     /// <summary>
     /// Test.
     /// </summary>
