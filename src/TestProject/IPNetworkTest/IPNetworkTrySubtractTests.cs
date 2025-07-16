@@ -10,7 +10,6 @@ namespace TestProject.IPNetworkTest;
 [TestClass]
 public class IPNetworkTrySubtractTests
 {
-    
     /// <summary>
     /// Test.
     /// </summary>
@@ -74,6 +73,5 @@ public class IPNetworkTrySubtractTests
         bool subtracted = network1.TrySubtract(null, out var result);
         Assert.AreEqual(false, subtracted);
         Assert.IsNull(result);
-
     }
 }
