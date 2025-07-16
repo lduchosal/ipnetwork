@@ -13,7 +13,7 @@ using System.Numerics;
 public sealed partial class IPNetwork2
 {
     /// <summary>
-    /// Convert an ipadress to decimal
+    /// Convert an IPAddress to decimal
     /// 0.0.0.0 -> 0
     /// 0.0.1.0 -> 256.
     /// </summary>
@@ -27,12 +27,12 @@ public sealed partial class IPNetwork2
     }
 
     /// <summary>
-    /// Convert an ipadress to decimal
+    /// Convert an IPAddress to decimal
     /// 0.0.0.0 -> 0
     /// 0.0.1.0 -> 256.
     /// </summary>
     /// <param name="ipaddress">A string containing an ip address to convert.</param>
-    /// <param name="uintIpAddress">A number representing the IPAdress.</param>
+    /// <param name="uintIpAddress">A number representing the IPAddress.</param>
     /// <returns>true if ipaddress was converted successfully; otherwise, false.</returns>
     public static bool TryToBigInteger(IPAddress ipaddress, out BigInteger? uintIpAddress)
     {
@@ -48,7 +48,7 @@ public sealed partial class IPNetwork2
     /// </summary>
     /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
     /// <param name="family">Either IPv4 or IPv6.</param>
-    /// <returns>A number representing the netmask exprimed in CIDR.</returns>
+    /// <returns>A number representing the netmask in CIDR form.</returns>
     public static BigInteger ToUint(byte cidr, AddressFamily family)
     {
         InternalToBigInteger(false, cidr, family, out BigInteger? uintNetmask);

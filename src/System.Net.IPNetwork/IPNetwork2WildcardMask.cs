@@ -85,8 +85,8 @@ public sealed partial class IPNetwork2
     {
         get
         {
-            byte cidr = this.family == AddressFamily.InterNetwork ? (byte)32 : (byte)128;
-            BigInteger netmask = ToUint(cidr, this.family);
+            byte acidr = this.family == AddressFamily.InterNetwork ? (byte)32 : (byte)128;
+            BigInteger netmask = ToUint(acidr, this.family);
             BigInteger wildcardmask = netmask - this.InternalNetmask;
 
             return ToIPAddress(wildcardmask, this.family);

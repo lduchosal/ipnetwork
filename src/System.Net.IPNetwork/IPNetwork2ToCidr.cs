@@ -18,12 +18,12 @@ public sealed partial class IPNetwork2
     ///  255.255.0.0   -> 16
     ///  255.0.0.0     -> 8.
     /// </summary>
-    /// <param name="netmask">An IPAdress representing the CIDR to convert.</param>
+    /// <param name="netmask">An IP Address representing the CIDR to convert.</param>
     /// <returns>A byte representing the CIDR converted from the netmask.</returns>
     public static byte ToCidr(IPAddress netmask)
     {
         InternalToCidr(false, netmask, out byte? cidr);
-        return (byte)cidr;
+        return (byte)cidr!;
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public sealed partial class IPNetwork2
     ///  255.255.0.0   -> 16
     ///  255.0.0.0     -> 8.
     /// </summary>
-    /// <param name="netmask">An IPAdress representing the CIDR to convert.</param>
+    /// <param name="netmask">An IPAddress representing the CIDR to convert.</param>
     /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
     /// <returns>true if netmask was converted successfully; otherwise, false.</returns>
     public static bool TryToCidr(IPAddress netmask, out byte? cidr)
@@ -57,17 +57,7 @@ public sealed partial class IPNetwork2
         }
 
         TryToBigInteger(netmask, out BigInteger? uintNetmask2);
-
-        // 20180217 lduchosal
-        // impossible to reach code.
-        // if (parsed == false) {
-        //     if (tryParse == false) {
-        //         throw new ArgumentException("netmask");
-        //     }
-        //     cidr = null;
-        //     return;
-        // }
-        var uintNetmask = (BigInteger)uintNetmask2;
+        var uintNetmask = (BigInteger)uintNetmask2!;
 
         InternalToCidr(tryParse, uintNetmask, netmask.AddressFamily, out byte? cidr2);
         cidr = cidr2;
@@ -96,7 +86,7 @@ public sealed partial class IPNetwork2
             return;
         }
 
-        byte cidr2 = BitsSet(netmask, family);
+        byte cidr2 = BitsSet(netmask);
         cidr = cidr2;
     }
 }

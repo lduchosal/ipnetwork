@@ -68,7 +68,7 @@ public sealed partial class IPNetwork2
     /// Compare two ipnetworks.
     /// </summary>
     /// <param name="other">The other network to compare to.</param>
-    /// <returns>A signed number indicating the relative values of this instance and value..</returns>
+    /// <returns>A signed number indicating the relative values of this instance and value.</returns>
     public int CompareTo(IPNetwork2 other)
     {
         return Compare(this, other);
@@ -78,7 +78,7 @@ public sealed partial class IPNetwork2
     /// Compare two ipnetworks.
     /// </summary>
     /// <param name="obj">The other object to compare to.</param>
-    /// <returns>A signed number indicating the relative values of this instance and value..</returns>
+    /// <returns>A signed number indicating the relative values of this instance and value.</returns>
     public int CompareTo(object obj)
     {
         // null is at less

@@ -120,7 +120,7 @@ public partial class IPNetwork2
     /// Broadcast : 192.168.0.255.
     /// </summary>
     /// <param name="network">A string containing an ip network to convert.</param>
-    /// <param name="cidrGuess">A ICidrGuess implementation that will be used to guess CIDR during converion.</param>
+    /// <param name="cidrGuess">A ICidrGuess implementation that will be used to guess CIDR during conversion.</param>
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
     public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess)
     {
@@ -140,7 +140,7 @@ public partial class IPNetwork2
     /// Broadcast : 192.168.0.255.
     /// </summary>
     /// <param name="network">A string containing an ip network to convert.</param>
-    /// <param name="cidrGuess">A ICidrGuess implementation that will be used to guess CIDR during converion.</param>
+    /// <param name="cidrGuess">A ICidrGuess implementation that will be used to guess CIDR during conversion.</param>
     /// <param name="sanitanize">Whether to sanitize network or not.</param>
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
     public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess, bool sanitanize)

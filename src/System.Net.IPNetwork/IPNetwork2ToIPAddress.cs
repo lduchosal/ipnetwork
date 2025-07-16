@@ -17,7 +17,7 @@ public sealed partial class IPNetwork2
     /// </summary>
     /// <param name="ipaddress">A number representing an ip address to convert.</param>
     /// <param name="family">Either IPv4 or IPv6.</param>
-    /// <returns>An ip adress.</returns>
+    /// <returns>An IPAddress.</returns>
     public static IPAddress ToIPAddress(BigInteger ipaddress, AddressFamily family)
     {
         int width = family == AddressFamily.InterNetwork ? 4 : 16;

@@ -422,7 +422,7 @@ Below some examples :
 
 ```JS
 Provide at least one ipnetwork
-Usage: ipnetwork [-inmcbflu] [-d cidr|-D] [-h|-s cidr|-S|-w|-W|-x|-C network|-o network] networks ...
+Usage: ipnetwork [-inmcbflu] [-d cidr|-D] [-h|-s cidr|-S|-w|-W|-x|-C network|-o network] networks ..
 Version: 3.1.0
 
 Print options

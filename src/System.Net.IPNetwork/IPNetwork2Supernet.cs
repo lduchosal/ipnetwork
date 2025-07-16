@@ -19,7 +19,7 @@ public sealed partial class IPNetwork2
     /// </summary>
     /// <param name="network">the network.</param>
     /// <param name="network2">The network to supernet with.</param>
-    /// <returns>A supernetted IP Network.</returns>
+    /// <returns>A super netted IP Network.</returns>
     [Obsolete("static Supernet is deprecated, please use instance Supernet.")]
     public static IPNetwork2 Supernet(IPNetwork2 network, IPNetwork2 network2)
     {
@@ -35,7 +35,7 @@ public sealed partial class IPNetwork2
     /// <param name="network">the network.</param>
     /// <param name="network2">The network to supernet with.</param>
     /// <param name="supernet">The resulting IPNetwork.</param>
-    /// <returns>true if network2 was supernetted successfully; otherwise, false.</returns>
+    /// <returns>true if network2 was super netted successfully; otherwise, false.</returns>
     [Obsolete("static TrySupernet is deprecated, please use instance TrySupernet.")]
     public static bool TrySupernet(IPNetwork2 network, IPNetwork2 network2, out IPNetwork2 supernet)
     {
@@ -54,7 +54,7 @@ public sealed partial class IPNetwork2
     /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
     /// </summary>
     /// <param name="network2">The network to supernet with.</param>
-    /// <returns>A supernetted IP Network.</returns>
+    /// <returns>A super netted IP Network.</returns>
     public IPNetwork2 Supernet(IPNetwork2 network2)
     {
         InternalSupernet(false, this, network2, out IPNetwork2 supernet);
@@ -69,7 +69,7 @@ public sealed partial class IPNetwork2
     /// </summary>
     /// <param name="network2">The network to supernet with.</param>
     /// <param name="supernet">The resulting IPNetwork.</param>
-    /// <returns>true if network2 was supernetted successfully; otherwise, false.</returns>
+    /// <returns>true if network2 was super netted successfully; otherwise, false.</returns>
     public bool TrySupernet(IPNetwork2 network2, out IPNetwork2 supernet)
     {
         InternalSupernet(true, this, network2, out IPNetwork2 outSupernet);

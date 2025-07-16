@@ -75,7 +75,7 @@ public sealed partial class IPNetwork2
     /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
     /// </summary>
     /// <param name="cidr1">A byte representing the CIDR to be used to subnet the current IPNetwork.</param>
-    /// <returns>A IPNetworkCollection splitted by CIDR.</returns>
+    /// <returns>A IPNetworkCollection split by CIDR.</returns>
     public IPNetworkCollection Subnet(byte cidr1)
     {
         InternalSubnet(false, this, cidr1, out IPNetworkCollection ipnetworkCollection);
