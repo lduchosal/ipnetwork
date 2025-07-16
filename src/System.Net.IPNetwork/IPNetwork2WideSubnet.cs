@@ -48,10 +48,10 @@ public sealed partial class IPNetwork2
             throw new NotSupportedException("MixedAddressFamily");
         }
 
-        var ipnetwork = new IPNetwork2(0, startIP.AddressFamily, 0);
+        IPNetwork2 ipnetwork;
 
         // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-        for (byte cidr = 32; cidr >= 0; cidr--)
+        for (byte cidr = 32; ; cidr--)
         {
             var wideSubnet = Parse(start, cidr);
             if (wideSubnet.Contains(endIP))
@@ -148,10 +148,9 @@ public sealed partial class IPNetwork2
             }
         }
 
-        var ipn = new IPNetwork2(0, family, 0);
+        IPNetwork2 ipn;
 
-        // ReSharper disable once ConditionIsAlwaysTrueOrFalse
-        for (byte cidr = nnin0.cidr; cidr >= 0; cidr--)
+        for (byte cidr = nnin0.cidr; ; cidr--)
         {
             var wideSubnet = new IPNetwork2(uintNnin0, family, cidr);
             if (wideSubnet.Contains(ipaddressX))

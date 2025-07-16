@@ -7,7 +7,7 @@ namespace System.Net;
 using System.Net.Sockets;
 
 /// <summary>
-/// Try to guess a CIDR in a ClassLess way ie. ipv4 = 32, ipv6 = 128.
+/// Try to guess a CIDR in a ClassLess way: ipv4 = 32, ipv6 = 128.
 /// </summary>
 public sealed class CidrClassLess : ICidrGuess
 {
@@ -17,7 +17,7 @@ public sealed class CidrClassLess : ICidrGuess
     /// IPV6 : 128.
     ///
     /// </summary>
-    /// <param name="ip">A string representing an ipadress that will be used to guess CIDR.</param>
+    /// <param name="ip">A string representing an IPAddress that will be used to guess CIDR.</param>
     /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
     /// <returns>true if ip was converted successfully; otherwise, false.</returns>
     public bool TryGuessCidr(string ip, out byte cidr)
