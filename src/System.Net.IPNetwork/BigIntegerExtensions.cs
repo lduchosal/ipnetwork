@@ -66,7 +66,7 @@ public static class BigIntegerExtensions
         }
 
     /// <summary>
-    /// Converts a <see cref="BigInteger"/> to a octal string.
+    /// Converts a <see cref="BigInteger"/> to an octal string.
     /// </summary>
     /// <param name="bigint">A <see cref="BigInteger"/>.</param>
     /// <returns>
@@ -159,7 +159,7 @@ public static class BigIntegerExtensions
             // if the byte array is same size as output, we'll perform the operations in place
             byte[] output = bytes.Length != length ? new byte[length] : bytes;
 
-            // invert all of the source bytes
+            // invert all the source bytes
             for (int i = 0; i < bytes.Length - 1; i++)
             {
                 output[i] = (byte)~bytes[i];

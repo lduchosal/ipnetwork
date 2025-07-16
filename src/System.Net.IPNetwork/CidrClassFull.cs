@@ -29,40 +29,40 @@ public sealed class CidrClassFull : ICidrGuess
     /// <returns>true if ip was converted successfully; otherwise, false.</returns>
     public bool TryGuessCidr(string ip, out byte cidr)
     {
-            bool parsed = IPAddress.TryParse($"{ip}", out var ipaddress);
-            if (parsed == false)
-            {
-                cidr = 0;
-                return false;
-            }
-
-            if (ipaddress.AddressFamily == AddressFamily.InterNetworkV6)
-            {
-                cidr = 64;
-                return true;
-            }
-
-            var uintIPAddress = IPNetwork2.ToBigInteger(ipaddress);
-            uintIPAddress = uintIPAddress >> 30;
-            if (uintIPAddress <= 1)
-            {
-                cidr = 8;
-                return true;
-            }
-
-            if (uintIPAddress <= 2)
-            {
-                cidr = 16;
-                return true;
-            }
-
-            if (uintIPAddress <= 3)
-            {
-                cidr = 24;
-                return true;
-            }
-
+        bool parsed = IPAddress.TryParse($"{ip}", out var ipaddress);
+        if (parsed == false)
+        {
             cidr = 0;
             return false;
         }
+
+        if (ipaddress.AddressFamily == AddressFamily.InterNetworkV6)
+        {
+            cidr = 64;
+            return true;
+        }
+
+        var uintIPAddress = IPNetwork2.ToBigInteger(ipaddress);
+        uintIPAddress = uintIPAddress >> 30;
+        if (uintIPAddress <= 1)
+        {
+            cidr = 8;
+            return true;
+        }
+
+        if (uintIPAddress <= 2)
+        {
+            cidr = 16;
+            return true;
+        }
+
+        if (uintIPAddress <= 3)
+        {
+            cidr = 24;
+            return true;
+        }
+
+        cidr = 0;
+        return false;
+    }
 }

@@ -21,7 +21,7 @@ public sealed partial class IPNetwork2
     /// <see href="http://snipplr.com/view/15557/cidr-class-for-ipv4/"/>
     /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
     /// <param name="family">Either IPv4 or IPv6.</param>
-    /// <returns>An IPAdress representing cidr.</returns>
+    /// <returns>An IPAddress representing cidr.</returns>
     public static IPAddress ToNetmask(byte cidr, AddressFamily family)
     {
         InternalToNetmask(false, cidr, family, out IPAddress netmask);

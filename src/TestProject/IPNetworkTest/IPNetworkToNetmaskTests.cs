@@ -5,7 +5,7 @@
 namespace TestProject.IPNetworkTest;
 
 /// <summary>
-/// Test netmaks conversion from x.x.x.x to cidr.
+/// Test netmask conversion from x.x.x.x to cidr.
 /// </summary>
 [TestClass]
 public class IPNetworkToNetmaskTests

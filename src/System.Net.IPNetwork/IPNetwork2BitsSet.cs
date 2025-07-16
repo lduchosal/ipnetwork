@@ -4,7 +4,6 @@
 
 namespace System.Net;
 
-using System.Net.Sockets;
 using System.Numerics;
 
 /// <summary>
@@ -21,7 +20,7 @@ public sealed partial class IPNetwork2
     public static uint BitsSet(IPAddress netmask)
     {
         var uintNetmask = ToBigInteger(netmask);
-        uint bits = BitsSet(uintNetmask, netmask.AddressFamily);
+        uint bits = BitsSet(uintNetmask);
 
         return bits;
     }
@@ -31,9 +30,8 @@ public sealed partial class IPNetwork2
     /// </summary>
     /// <see href="http://stackoverflow.com/questions/109023/best-algorithm-to-count-the-number-of-set-bits-in-a-32-bit-integer"/>
     /// <param name="netmask">A number representing the netmask to count bits from.</param>
-    /// <param name="family">Either IPv4 or IPv6.</param>
     /// <returns>The number of bytes set to 1.</returns>
-    private static byte BitsSet(BigInteger netmask, AddressFamily family)
+    private static byte BitsSet(BigInteger netmask)
     {
         string s = netmask.ToBinaryString();
 

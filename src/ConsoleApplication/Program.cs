@@ -461,7 +461,7 @@ public static class Program
         Console.WriteLine("\t-s cidr    : split network into cidr subnets");
         Console.WriteLine("\t-w         : supernet networks into smallest possible subnets");
         Console.WriteLine("\t-W         : supernet networks into one single subnet");
-        Console.WriteLine("\t-x         : list all ipaddresses in networks");
+        Console.WriteLine("\t-x         : list all ip adresses in networks");
         Console.WriteLine("\t-C network : network contain networks");
         Console.WriteLine("\t-o network : network overlap networks");
         Console.WriteLine("\t-S network : subtract network from subnet");

@@ -95,7 +95,7 @@ public partial class IPNetwork2
     }
 
     /// <summary>
-    /// Gets first usable IP adress in Network.
+    /// Gets first usable IPAddress in Network.
     /// </summary>
     public IPAddress FirstUsable
     {
@@ -111,7 +111,7 @@ public partial class IPNetwork2
     }
 
     /// <summary>
-    /// Gets last usable IP adress in Network.
+    /// Gets last usable IPAddress in Network.
     /// </summary>
     public IPAddress LastUsable
     {
@@ -127,7 +127,7 @@ public partial class IPNetwork2
     }
 
     /// <summary>
-    /// Gets number of usable IP adress in Network.
+    /// Gets number of usable IPAddress in Network.
     /// </summary>
     public BigInteger Usable
     {
@@ -146,7 +146,7 @@ public partial class IPNetwork2
     }
 
     /// <summary>
-    /// Gets number of IP adress in Network.
+    /// Gets number of IPAddress in Network.
     /// </summary>
     public BigInteger Total
     {
