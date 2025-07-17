@@ -29,6 +29,7 @@
     <Nullable>disable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningLevel>5</WarningLevel>
+    <PackageIcon>ipnetwork.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -40,6 +41,11 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <None Include="..\..\ipnetwork.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+      <Link>ipnetwork.png</Link>
+    </None>
     <None Include="..\..\LICENSE" Pack="true" PackagePath="." />
   </ItemGroup>
   
