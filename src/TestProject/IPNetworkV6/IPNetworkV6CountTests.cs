@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// Count.
 /// </summary>
+[TestClass]
 public class IPNetworkV6CountTests
 {
     /// <summary>

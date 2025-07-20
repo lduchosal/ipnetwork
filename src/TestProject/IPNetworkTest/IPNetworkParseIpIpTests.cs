@@ -28,24 +28,28 @@ public class IPNetworkParseIpIpTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void ParseIpIp2()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             IPAddress ip = null;
             IPAddress netm = null;
             IPNetwork2.Parse(ip, netm);
-        }
+        });
+    }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void ParseIpIp3()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             string ipaddress = "192.168.168.100";
             var ip = IPAddress.Parse(ipaddress);
             IPAddress netm = null;
             IPNetwork2.Parse(ip, netm);
-        }
+        });
+    }
 }

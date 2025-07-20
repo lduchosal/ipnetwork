@@ -20,7 +20,7 @@ public class IPNetworkTryParseTests
         bool parsed = IPNetwork2.TryParse(ip, ip, out IPNetwork2 ipnet);
 
         Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(null, ipnet, "ipnet");
+        Assert.IsNull(ipnet, "ipnet");
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public class IPNetworkTryParseTests
         bool parsed = IPNetwork2.TryParse(string.Empty, 0, out IPNetwork2 ipnet);
 
         Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(null, ipnet, "ipnet");
+        Assert.IsNull(ipnet, "ipnet");
     }
 
     /// <summary>
@@ -44,7 +44,7 @@ public class IPNetworkTryParseTests
         bool parsed = IPNetwork2.TryParse(null, 0, out IPNetwork2 ipnet);
 
         Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(null, ipnet, "ipnet");
+        Assert.IsNull(ipnet, "ipnet");
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public class IPNetworkTryParseTests
         bool parsed = IPNetwork2.TryParse(n, n, out IPNetwork2 ipnet);
 
         Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(null, ipnet, "ipnet");
+        Assert.IsNull(ipnet, "ipnet");
     }
 
     /// <summary>
@@ -68,7 +68,7 @@ public class IPNetworkTryParseTests
     {
         bool parsed = IPNetwork2.TryParse(IPAddress.Parse("10.10.10.10"), null, out IPNetwork2 ipnet);
         Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(null, ipnet, "ipnet");
+        Assert.IsNull(ipnet, "ipnet");
     }
 
     /// <summary>
@@ -80,7 +80,7 @@ public class IPNetworkTryParseTests
         bool parsed = IPNetwork2.TryParse("0.0.0.0", netmask: null, out IPNetwork2 ipnet);
 
         Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(null, ipnet, "ipnet");
+        Assert.IsNull(ipnet, "ipnet");
     }
 
     /// <summary>
@@ -92,7 +92,7 @@ public class IPNetworkTryParseTests
         bool parsed = IPNetwork2.TryParse("x.x.x.x", "x.x.x.x", out IPNetwork2 ipnet);
 
         Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(null, ipnet, "ipnet");
+        Assert.IsNull(ipnet, "ipnet");
     }
 
     /// <summary>
@@ -104,7 +104,7 @@ public class IPNetworkTryParseTests
         bool parsed = IPNetwork2.TryParse("0.0.0.0", "x.x.x.x", out IPNetwork2 ipnet);
 
         Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(null, ipnet, "ipnet");
+        Assert.IsNull(ipnet, "ipnet");
     }
 
     /// <summary>
@@ -116,7 +116,7 @@ public class IPNetworkTryParseTests
         bool parsed = IPNetwork2.TryParse("x.x.x.x", 0, out IPNetwork2 ipnet);
 
         Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(null, ipnet, "ipnet");
+        Assert.IsNull(ipnet, "ipnet");
     }
 
     /// <summary>
@@ -128,7 +128,7 @@ public class IPNetworkTryParseTests
         bool parsed = IPNetwork2.TryParse("0.0.0.0", 33, out IPNetwork2 ipnet);
 
         Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(null, ipnet, "ipnet");
+        Assert.IsNull(ipnet, "ipnet");
     }
 
     /// <summary>

@@ -53,16 +53,18 @@ public class ContainsUnitTest
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestContainsStatic3()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             IPNetwork2 ipnetwork = null;
             IPNetwork2 ipnetwork2 = null;
 
 #pragma warning disable 0618
             IPNetwork2.Contains(ipnetwork, ipnetwork2);
 #pragma warning restore 0618
-        }
+        });
+    }
 
     /// <summary>
     /// Test.
@@ -84,29 +86,33 @@ public class ContainsUnitTest
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestContains8()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
             IPNetwork2 ipnetwork2 = null;
 
             ipnetwork.Contains(ipnetwork2);
-        }
+        });
+    }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestContainsStatic1()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             IPNetwork2 ipnetwork = null;
             IPAddress ipaddress = null;
 
 #pragma warning disable 0618
             IPNetwork2.Contains(ipnetwork, ipaddress);
 #pragma warning restore 0618
-        }
+        });
+    }
 
     /// <summary>
     /// Test.
@@ -127,14 +133,16 @@ public class ContainsUnitTest
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestContains10()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
             IPAddress ipaddress = null;
 
             ipnetwork.Contains(ipaddress);
-        }
+        });
+    }
 
     /// <summary>
     /// Test.

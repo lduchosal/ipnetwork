@@ -14,11 +14,13 @@ public class IPNetworkToCidrTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestToCidrAne()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             IPNetwork2.ToCidr(null);
-        }
+        });
+    }
 
     /// <summary>
     ///     Tests To Cidr functionality with To Cidr AE.
@@ -34,11 +36,13 @@ public class IPNetworkToCidrTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestToCidrAe2()
     {
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
             IPNetwork2.ToCidr(IPAddress.Parse("6.6.6.6"));
-        }
+        });
+    }
 
     /// <summary>
     ///     Tests To Cidr functionality with To Cidr32.

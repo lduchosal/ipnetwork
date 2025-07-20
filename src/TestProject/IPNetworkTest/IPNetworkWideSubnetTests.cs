@@ -54,19 +54,22 @@ public class IPNetworkWideSubnetTests
     ///     Tests WideSubnet with null input to ensure it throws ArgumentNullException.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void WideSubnetNull()
     {
-        IPNetwork2.WideSubnet(null);
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPNetwork2.WideSubnet(null);
+        });
     }
 
     /// <summary>
     ///     Tests WideSubnet with invalid IP addresses to ensure it throws ArgumentException.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void WideSubnetNull2()
     {
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
             string[] ips = ["a", "b", "e", "d"];
             var ipns = new List<IPNetwork2>();
             foreach (string ip in ips)
@@ -78,20 +81,23 @@ public class IPNetworkWideSubnetTests
             }
 
             IPNetwork2.WideSubnet(ipns.ToArray());
-        }
+        });
+    }
 
     /// <summary>
     ///     Tests WideSubnet with mixed IPv4 and IPv6 addresses to ensure it throws ArgumentException.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void WideSubnetMixed()
     {
-        var ipns = new List<IPNetwork2>
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            var ipns = new List<IPNetwork2>
             {
                 IPNetwork2.IANA_ABLK_RESERVED1,
                 IPNetwork2.Parse("2001:0db8::/64"),
             };
-        IPNetwork2.WideSubnet(ipns.ToArray());
+            IPNetwork2.WideSubnet(ipns.ToArray());
+        });
     }
 }

@@ -17,29 +17,33 @@ public class IPNetworkTrySubnetTests
     public void TestInternalSubnet1()
     {
         IPNetwork2.InternalSubnet(true, null, 0, out IPNetworkCollection subnets);
-        Assert.AreEqual(null, subnets, "subnets");
+        Assert.IsNull(subnets, "subnets");
     }
 
     /// <summary>
     /// Test a null collection.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestInternalSubnet2()
     {
-        IPNetwork2.InternalSubnet(false, null, 0, out IPNetworkCollection _);
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPNetwork2.InternalSubnet(false, null, 0, out IPNetworkCollection _);
+        });
     }
 
     /// <summary>
     /// Test a null network.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestTrySubnet1()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
 #pragma warning disable 0618
-        IPNetwork2.TrySubnet(null, 9, out _);
+            IPNetwork2.TrySubnet(null, 9, out _);
 #pragma warning restore 0618
+        });
     }
 
     /// <summary>

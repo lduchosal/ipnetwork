@@ -70,13 +70,15 @@ public class IPNetworkCompareTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestCompareTo5()
     {
-        var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
-        string ipn2 = string.Empty;
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
+            string ipn2 = string.Empty;
 
-        ipn1.CompareTo(ipn2);
+            ipn1.CompareTo(ipn2);
+        });
     }
 
     /// <summary>

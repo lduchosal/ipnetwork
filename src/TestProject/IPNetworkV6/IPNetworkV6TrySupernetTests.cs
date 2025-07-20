@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// TrySupernet.
 /// </summary>
+[TestClass]
 public class IPNetworkV6TrySupernetTests
 {
     /// <summary>
@@ -28,15 +29,17 @@ public class IPNetworkV6TrySupernetTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestTrySupernet2()
     {
-        IPNetwork2 network1 = null;
-        var network2 = IPNetwork2.Parse("2001:db8::/64");
-        IPNetwork2 supernet;
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPNetwork2 network1 = null;
+            var network2 = IPNetwork2.Parse("2001:db8::/64");
+            IPNetwork2 supernet;
 #pragma warning disable 0618
-        IPNetwork2.TrySupernet(network1, network2, out supernet);
+            IPNetwork2.TrySupernet(network1, network2, out supernet);
 #pragma warning restore 0618
+        });
     }
 
     /// <summary>
@@ -157,7 +160,7 @@ public class IPNetworkV6TrySupernetTests
         _ = new[] { IPNetwork2.Parse("2001:db8::/64") };
         bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
-        Assert.AreEqual(null, supernet, "supernet");
+        Assert.IsNull(supernet, "supernet");
         Assert.IsFalse(result, "parsed");
     }
 }

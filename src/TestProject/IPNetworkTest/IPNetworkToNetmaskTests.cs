@@ -27,34 +27,40 @@ public class IPNetworkToNetmaskTests
     /// Test with wrong AddressFamily.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void ToNetmaskNonInet()
     {
-        byte cidr = 0;
-        IPNetwork2.ToNetmask(cidr, AddressFamily.AppleTalk);
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            byte cidr = 0;
+            IPNetwork2.ToNetmask(cidr, AddressFamily.AppleTalk);
+        });
     }
 
     /// <summary>
     /// Test with overflowed cidr.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void ToNetmaskNegative()
     {
-        byte cidr = 0;
-        cidr--;
-        IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetwork);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            byte cidr = 0;
+            cidr--;
+            IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetwork);
+        });
     }
 
     /// <summary>
     /// Test with too big of a cidr.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void ToNetmaskOore1()
     {
-        byte cidr = 33;
-        IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetwork);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            byte cidr = 33;
+            IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetwork);
+        });
     }
 
     /// <summary>
@@ -64,7 +70,7 @@ public class IPNetworkToNetmaskTests
     public void ToNetmaskInternal1()
     {
         IPNetwork2.InternalToNetmask(true, 0, AddressFamily.AppleTalk, out IPAddress result);
-        Assert.AreEqual(null, result);
+        Assert.IsNull(result);
     }
 
     /// <summary>

@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// ParseStringString.
 /// </summary>
+[TestClass]
 public class IPNetworkV6ParseStringStringTests
 {
     /// <summary>
@@ -26,25 +27,29 @@ public class IPNetworkV6ParseStringStringTests
     /// Test ParseString 3.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringString3()
     {
-        string ipaddress = "2001:0db8::";
-        string netmask = null;
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            string ipaddress = "2001:0db8::";
+            string netmask = null;
 
-        IPNetwork2.Parse(ipaddress, netmask);
+            IPNetwork2.Parse(ipaddress, netmask);
+        });
     }
 
     /// <summary>
     /// Test ParseString with string string.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringString5()
     {
-        string ipaddress = "2001:0db8::";
-        string netmask = string.Empty;
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            string ipaddress = "2001:0db8::";
+            string netmask = string.Empty;
 
-        IPNetwork2.Parse(ipaddress, netmask);
+            IPNetwork2.Parse(ipaddress, netmask);
+        });
     }
 }

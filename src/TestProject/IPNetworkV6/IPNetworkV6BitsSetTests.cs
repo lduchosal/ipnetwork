@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// BitsSet.
 /// </summary>
+[TestClass]
 public class IPNetworkV6BitsSetTests
 {
     /// <summary>

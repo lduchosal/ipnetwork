@@ -30,9 +30,10 @@ public class IPNetworkTrySupernetTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestTrySupernet2()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             IPNetwork2 network1 = null;
             var network2 = IPNetwork2.Parse("192.168.1.1/24");
             IPNetwork2 supernet;
@@ -40,7 +41,8 @@ public class IPNetworkTrySupernetTests
 #pragma warning disable 0618
             IPNetwork2.TrySupernet(network1, network2, out supernet);
 #pragma warning restore 0618
-        }
+        });
+    }
 
     /// <summary>
     ///     Tests Try Supernet functionality with Try Supernet Static2.
@@ -199,7 +201,7 @@ public class IPNetworkTrySupernetTests
             bool parsed = false;
             bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
-            Assert.AreEqual(null, supernet, "supernet");
+            Assert.IsNull(supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
         }
 }

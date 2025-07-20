@@ -14,15 +14,17 @@ public class IPNetworkSubnetTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestSubnet1()
     {
-        IPNetwork2 ipnetwork = null;
-        byte cidr = 9;
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPNetwork2 ipnetwork = null;
+            byte cidr = 9;
 
 #pragma warning disable 0618
-        IPNetwork2.Subnet(ipnetwork, cidr);
+            IPNetwork2.Subnet(ipnetwork, cidr);
 #pragma warning restore 0618
+        });
     }
 
     /// <summary>
@@ -43,26 +45,30 @@ public class IPNetworkSubnetTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestSubnet3()
     {
-        IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
-        byte cidr = 55;
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
+            byte cidr = 55;
 
-        ipnetwork.Subnet(cidr);
+            ipnetwork.Subnet(cidr);
+        });
     }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestSubnet4()
     {
-        IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
-        byte cidr = 1;
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
+            byte cidr = 1;
 
-        ipnetwork.Subnet(cidr);
+            ipnetwork.Subnet(cidr);
+        });
     }
 
     /// <summary>
@@ -212,12 +218,14 @@ public class IPNetworkSubnetTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestSubnet13()
     {
-        IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
-        byte cidr = 20;
-        IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
-        IPNetwork2 error = subnets[1000];
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
+            byte cidr = 20;
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
+            IPNetwork2 error = subnets[1000];
+        });
     }
 }

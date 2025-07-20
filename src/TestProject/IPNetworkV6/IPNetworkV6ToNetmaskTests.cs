@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// ToNetmask.
 /// </summary>
+[TestClass]
 public class IPNetworkV6ToNetmaskTests
 {
     /// <summary>
@@ -78,10 +79,12 @@ public class IPNetworkV6ToNetmaskTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void ToNetmaskOore1()
     {
-        byte cidr = 129;
-        IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetworkV6);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            byte cidr = 129;
+            IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetworkV6);
+        });
     }
 }

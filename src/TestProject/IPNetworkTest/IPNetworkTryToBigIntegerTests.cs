@@ -89,7 +89,7 @@ public class IPNetworkTryToBigIntegerTests
     {
         bool parsed = IPNetwork2.TryToBigInteger(null, out BigInteger? result);
 
-        Assert.AreEqual(null, result, "uint");
+        Assert.IsNull(result, "uint");
         Assert.IsFalse(parsed, "parsed");
     }
 
@@ -101,7 +101,7 @@ public class IPNetworkTryToBigIntegerTests
     {
         bool parsed = IPNetwork2.TryToBigInteger(null, out BigInteger? result);
 
-        Assert.AreEqual(null, result, "uint");
+        Assert.IsNull(result, "uint");
         Assert.IsFalse(parsed, "parsed");
     }
 

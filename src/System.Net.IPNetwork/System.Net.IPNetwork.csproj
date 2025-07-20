@@ -29,6 +29,7 @@
     <Nullable>disable</Nullable>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningLevel>5</WarningLevel>
+    <PackageIcon>ipnetwork.png</PackageIcon>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -40,17 +41,20 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <None Include="..\..\ipnetwork.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+      <Link>ipnetwork.png</Link>
+    </None>
     <None Include="..\..\LICENSE" Pack="true" PackagePath="." />
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-    <PackageReference Include="System.Memory" Version="4.5.5">
-    </PackageReference>
+    <PackageReference Include="System.Memory" Version="4.6.3" />
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
-    <PackageReference Include="System.Memory" Version="4.5.5">
-    </PackageReference>
+    <PackageReference Include="System.Memory" Version="4.6.3" />
   </ItemGroup>
   
 </Project>

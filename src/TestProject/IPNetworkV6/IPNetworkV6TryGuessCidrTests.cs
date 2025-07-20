@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// TryGuessCidr.
 /// </summary>
+[TestClass]
 public class IPNetworkV6TryGuessCidrTests
 {
     /// <summary>

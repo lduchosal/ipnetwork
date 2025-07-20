@@ -14,9 +14,11 @@ public class IPNetworkResizeTests
     /// Resize a too big network.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestResize1()
     {
-        IPNetwork2.Resize(new byte[33], AddressFamily.InterNetwork);
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            IPNetwork2.Resize(new byte[33], AddressFamily.InterNetwork);
+        });
     }
 }

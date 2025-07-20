@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// TryParseCidr.
 /// </summary>
+[TestClass]
 public class IPNetworkV6TryParseCidrTests
 {
     /// <summary>
@@ -34,7 +35,7 @@ public class IPNetworkV6TryParseCidrTests
         bool parsed = IPNetwork2.TryParseCidr(sidr, AddressFamily.InterNetworkV6, out byte? cidr);
 
         Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(null, cidr, "cidr");
+        Assert.IsNull(cidr, "cidr");
     }
 
     /// <summary>
@@ -76,6 +77,6 @@ public class IPNetworkV6TryParseCidrTests
         bool parsed = IPNetwork2.TryParseCidr("129", AddressFamily.InterNetworkV6, out byte? cidr);
 
         Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(null, cidr, "cidr");
+        Assert.IsNull(cidr, "cidr");
     }
 }

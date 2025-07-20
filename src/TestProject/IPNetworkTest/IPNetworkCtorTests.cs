@@ -14,9 +14,11 @@ public class IPNetworkCtorTests
     /// Test Ctor with too big of a CIDR.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestCtor1()
     {
-        new IPNetwork2(BigInteger.Zero, AddressFamily.InterNetwork, 33);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            var _ = new IPNetwork2(BigInteger.Zero, AddressFamily.InterNetwork, 33);
+        });
     }
 }

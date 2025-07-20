@@ -7,32 +7,37 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// Subnet.
 /// </summary>
+[TestClass]
 public class IPNetworkV6SubnetTests
 {
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestSubnet3()
     {
-        var ipnetwork = IPNetwork2.Parse("::");
-        byte cidr = 129;
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            var ipnetwork = IPNetwork2.Parse("::");
+            byte cidr = 129;
 
-        ipnetwork.Subnet(cidr);
+            ipnetwork.Subnet(cidr);
+        });
     }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestSubnet4()
     {
-        var ipnetwork = IPNetwork2.Parse("::");
-        byte cidr = 1;
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            var ipnetwork = IPNetwork2.Parse("::");
+            byte cidr = 1;
 
-        ipnetwork.Subnet(cidr);
+            ipnetwork.Subnet(cidr);
+        });
     }
 
     /// <summary>
@@ -148,13 +153,15 @@ public class IPNetworkV6SubnetTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestSubnet13()
     {
-        var ipnetwork = IPNetwork2.Parse("2001:db08::/64");
-        byte cidr = 70;
-        IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
-        IPNetwork2 error = subnets[1000];
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            var ipnetwork = IPNetwork2.Parse("2001:db08::/64");
+            byte cidr = 70;
+            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
+            IPNetwork2 error = subnets[1000];
+        });
     }
 
     /// <summary>
@@ -165,10 +172,10 @@ public class IPNetworkV6SubnetTests
     {
         var network = IPNetwork2.Parse("15.0.0.0/8");
         IPNetworkCollection subnets = network.Subnet(12);
-        Assert.AreEqual(subnets[0].ToString(), "15.0.0.0/12", "subnets[0]");
-        Assert.AreEqual(subnets[1].ToString(), "15.16.0.0/12", "subnets[1]");
-        Assert.AreEqual(subnets[2].ToString(), "15.32.0.0/12", "subnets[2]");
-        Assert.AreEqual(subnets[15].ToString(), "15.240.0.0/12", "subnets[15]");
+        Assert.AreEqual("15.0.0.0/12", subnets[0].ToString(), "subnets[0]");
+        Assert.AreEqual("15.16.0.0/12", subnets[1].ToString(), "subnets[1]");
+        Assert.AreEqual("15.32.0.0/12", subnets[2].ToString(), "subnets[2]");
+        Assert.AreEqual("15.240.0.0/12", subnets[15].ToString(), "subnets[15]");
 
         foreach (IPNetwork2 ipn in subnets)
         {
