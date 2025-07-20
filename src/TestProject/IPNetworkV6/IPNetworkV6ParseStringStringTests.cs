@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// ParseStringString.
 /// </summary>
+[TestClass]
 public class IPNetworkV6ParseStringStringTests
 {
     /// <summary>

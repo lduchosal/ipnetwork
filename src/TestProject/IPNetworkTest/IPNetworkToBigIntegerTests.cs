@@ -146,7 +146,7 @@ public class IPNetworkToBigIntegerTests
     public void TestToBigIntegerInternal1()
     {
         IPNetwork2.InternalToBigInteger(true, 33, AddressFamily.InterNetwork, out BigInteger? result);
-        Assert.AreEqual(null, result, "result");
+        Assert.IsNull(result, "result");
     }
 
     /// <summary>
@@ -156,7 +156,7 @@ public class IPNetworkToBigIntegerTests
     public void TestToBigIntegerInternal2()
     {
         IPNetwork2.InternalToBigInteger(true, 129, AddressFamily.InterNetworkV6, out BigInteger? result);
-        Assert.AreEqual(null, result, "result");
+        Assert.IsNull(result, "result");
     }
 
     /// <summary>
@@ -186,6 +186,6 @@ public class IPNetworkToBigIntegerTests
     public void TestToBigIntegerInternal5()
     {
         IPNetwork2.InternalToBigInteger(true, 32, AddressFamily.AppleTalk, out BigInteger? result);
-        Assert.AreEqual(null, result, "result");
+        Assert.IsNull(result, "result");
     }
 }

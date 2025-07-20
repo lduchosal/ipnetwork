@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// TryToBigInteger.
 /// </summary>
+[TestClass]
 public class IPNetworkV6TryToBigIntegerTests
 {
     /// <summary>

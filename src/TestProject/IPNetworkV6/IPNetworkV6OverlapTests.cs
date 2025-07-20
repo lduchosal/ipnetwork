@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// Overlap.
 /// </summary>
+[TestClass]
 public class IPNetworkV6OverlapTests
 {
     /// <summary>

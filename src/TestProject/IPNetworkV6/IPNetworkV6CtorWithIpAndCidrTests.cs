@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// CtorWithIpAndCidr.
 /// </summary>
+[TestClass]
 public class IPNetworkV6CtorWithIpAndCidrTests
 {
     /// <summary>

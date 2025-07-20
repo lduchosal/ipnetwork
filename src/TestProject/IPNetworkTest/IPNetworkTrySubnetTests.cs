@@ -17,7 +17,7 @@ public class IPNetworkTrySubnetTests
     public void TestInternalSubnet1()
     {
         IPNetwork2.InternalSubnet(true, null, 0, out IPNetworkCollection subnets);
-        Assert.AreEqual(null, subnets, "subnets");
+        Assert.IsNull(subnets, "subnets");
     }
 
     /// <summary>

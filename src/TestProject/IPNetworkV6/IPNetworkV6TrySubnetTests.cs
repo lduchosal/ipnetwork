@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// TrySubnet.
 /// </summary>
+[TestClass]
 public class IPNetworkV6TrySubnetTests
 {
     /// <summary>

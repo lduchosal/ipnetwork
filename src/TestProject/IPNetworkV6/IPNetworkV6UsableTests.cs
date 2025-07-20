@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// Usable.
 /// </summary>
+[TestClass]
 public class IPNetworkV6UsableTests
 {
     /// <summary>

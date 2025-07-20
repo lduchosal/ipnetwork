@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// TrySupernet.
 /// </summary>
+[TestClass]
 public class IPNetworkV6TrySupernetTests
 {
     /// <summary>
@@ -157,7 +158,7 @@ public class IPNetworkV6TrySupernetTests
         _ = new[] { IPNetwork2.Parse("2001:db8::/64") };
         bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
-        Assert.AreEqual(null, supernet, "supernet");
+        Assert.IsNull(supernet, "supernet");
         Assert.IsFalse(result, "parsed");
     }
 }

@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// ParseIpIp.
 /// </summary>
+[TestClass]
 public class IPNetworkV6ParseIpIpTests
 {
     /// <summary>

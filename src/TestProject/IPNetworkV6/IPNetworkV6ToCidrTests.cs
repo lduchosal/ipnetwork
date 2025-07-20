@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// ToCidr.
 /// </summary>
+[TestClass]
 public class IPNetworkV6ToCidrTests
 {
     /// <summary>

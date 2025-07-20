@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// Parse.
 /// </summary>
+[TestClass]
 public class IPNetworkV6ParseTests
 {
     /// <summary>
@@ -31,10 +32,12 @@ public class IPNetworkV6ParseTests
     [DataTestMethod]
     [DataRow("xxxx::", "0")]
     [DataRow("::", "129")]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestParseIPAddressNetmaskAne10(string withFirst, string andSecond)
     {
-        IPNetwork2.Parse(withFirst, andSecond);
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            IPNetwork2.Parse(withFirst, andSecond);
+        });
     }
 
     /// <summary>
@@ -59,7 +62,7 @@ public class IPNetworkV6ParseTests
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+        Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
         Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
         Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
@@ -88,7 +91,7 @@ public class IPNetworkV6ParseTests
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+        Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
         Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
         Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
@@ -117,7 +120,7 @@ public class IPNetworkV6ParseTests
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+        Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
         Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
         Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
@@ -146,7 +149,7 @@ public class IPNetworkV6ParseTests
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+        Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
         Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
         Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
@@ -175,7 +178,7 @@ public class IPNetworkV6ParseTests
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+        Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
         Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
         Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
@@ -204,7 +207,7 @@ public class IPNetworkV6ParseTests
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+        Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
         Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
         Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
@@ -233,7 +236,7 @@ public class IPNetworkV6ParseTests
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+        Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
         Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
         Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
@@ -262,7 +265,7 @@ public class IPNetworkV6ParseTests
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+        Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
         Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
         Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
@@ -291,7 +294,7 @@ public class IPNetworkV6ParseTests
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+        Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
         Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
         Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
@@ -318,7 +321,7 @@ public class IPNetworkV6ParseTests
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(null, ipnetwork.Broadcast, "Broadcast");
+        Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
         Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
         Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");

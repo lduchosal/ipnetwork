@@ -18,7 +18,7 @@ public class IPNetworkSupernetTests
     {
         IPNetwork2.InternalSupernet(true, null, null, out IPNetwork2 result);
 
-        Assert.AreEqual(null, result, "supernet");
+        Assert.IsNull(result, "supernet");
     }
 
     /// <summary>

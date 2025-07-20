@@ -199,7 +199,7 @@ public class IPNetworkTrySupernetTests
             bool parsed = false;
             bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
 
-            Assert.AreEqual(null, supernet, "supernet");
+            Assert.IsNull(supernet, "supernet");
             Assert.AreEqual(parsed, result, "parsed");
         }
 }

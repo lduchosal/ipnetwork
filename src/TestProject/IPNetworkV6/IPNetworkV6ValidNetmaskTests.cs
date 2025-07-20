@@ -7,6 +7,7 @@ namespace TestProject.IPNetworkV6;
 /// <summary>
 /// ValidNetmask.
 /// </summary>
+[TestClass]
 public class IPNetworkV6ValidNetmaskTests
 {
     /// <summary>
