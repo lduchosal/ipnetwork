@@ -172,10 +172,10 @@ public class IPNetworkV6SubnetTests
     {
         var network = IPNetwork2.Parse("15.0.0.0/8");
         IPNetworkCollection subnets = network.Subnet(12);
-        Assert.AreEqual(subnets[0].ToString(), "15.0.0.0/12", "subnets[0]");
-        Assert.AreEqual(subnets[1].ToString(), "15.16.0.0/12", "subnets[1]");
-        Assert.AreEqual(subnets[2].ToString(), "15.32.0.0/12", "subnets[2]");
-        Assert.AreEqual(subnets[15].ToString(), "15.240.0.0/12", "subnets[15]");
+        Assert.AreEqual("15.0.0.0/12", subnets[0].ToString(), "subnets[0]");
+        Assert.AreEqual("15.16.0.0/12", subnets[1].ToString(), "subnets[1]");
+        Assert.AreEqual("15.32.0.0/12", subnets[2].ToString(), "subnets[2]");
+        Assert.AreEqual("15.240.0.0/12", subnets[15].ToString(), "subnets[15]");
 
         foreach (IPNetwork2 ipn in subnets)
         {
