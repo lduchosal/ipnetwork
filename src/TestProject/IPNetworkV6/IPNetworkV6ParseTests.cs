@@ -29,8 +29,8 @@ public class IPNetworkV6ParseTests
     /// <param name="withFirst">First parameter.</param>
     /// <param name="andSecond">Second parameter.</param>
     [DataTestMethod]
-    [DataRow("xxxx::", 0)]
-    [DataRow("::", 129)]
+    [DataRow("xxxx::", "0")]
+    [DataRow("::", "129")]
     [ExpectedException(typeof(ArgumentException))]
     public void TestParseIPAddressNetmaskAne10(string withFirst, string andSecond)
     {
