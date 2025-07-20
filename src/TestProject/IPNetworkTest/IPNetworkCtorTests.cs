@@ -18,7 +18,7 @@ public class IPNetworkCtorTests
     {
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
         {
-            new IPNetwork2(BigInteger.Zero, AddressFamily.InterNetwork, 33);
+            var _ = new IPNetwork2(BigInteger.Zero, AddressFamily.InterNetwork, 33);
         });
     }
 }

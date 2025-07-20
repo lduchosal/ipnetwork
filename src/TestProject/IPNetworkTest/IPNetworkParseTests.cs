@@ -582,7 +582,7 @@ public class IPNetworkParseTests
     {
             string ipaddress = "127.0.0.1";
             IPNetwork2.TryParse(ipaddress, out IPNetwork2 result);
-            Assert.AreEqual(result.Cidr, 8);
+            Assert.AreEqual(8, result.Cidr);
         }
 
     /// <summary>
