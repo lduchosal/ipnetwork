@@ -26,22 +26,26 @@ public class IPNetworkCtorWithIpAndCidrTests
     ///     Tests Ctor With null ip.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void CtorWithIpAndCidr2()
     {
-        IPAddress ip = null;
-        var ipnetwork = new IPNetwork2(ip, 24);
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPAddress ip = null;
+            var ipnetwork = new IPNetwork2(ip, 24);
+        });
     }
 
     /// <summary>
     ///     Tests Ctor With too big cidr.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void CtorWithIpAndCidr3()
     {
-        string ipaddress = "192.168.168.100";
-        var ip = IPAddress.Parse(ipaddress);
-        var ipnetwork = new IPNetwork2(ip, 33);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            string ipaddress = "192.168.168.100";
+            var ip = IPAddress.Parse(ipaddress);
+            var ipnetwork = new IPNetwork2(ip, 33);
+        });
     }
 }

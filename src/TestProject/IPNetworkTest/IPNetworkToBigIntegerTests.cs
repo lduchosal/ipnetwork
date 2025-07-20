@@ -79,21 +79,25 @@ public class IPNetworkToBigIntegerTests
     /// Try to convert from null.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestToBigIntegerAne()
     {
-        IPNetwork2.ToBigInteger(null);
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPNetwork2.ToBigInteger(null);
+        });
     }
 
     /// <summary>
     /// Try to convert from null IPAddress.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestToBigIntegerAne3()
     {
-        IPAddress ip = null;
-        IPNetwork2.ToBigInteger(ip);
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPAddress ip = null;
+            IPNetwork2.ToBigInteger(ip);
+        });
     }
 
     /// <summary>
@@ -111,10 +115,12 @@ public class IPNetworkToBigIntegerTests
     /// Try to convert from invalid cidr.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestToBigIntegerByte()
     {
-        IPNetwork2.ToUint(33, AddressFamily.InterNetwork);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            IPNetwork2.ToUint(33, AddressFamily.InterNetwork);
+        });
     }
 
     /// <summary>
@@ -163,20 +169,24 @@ public class IPNetworkToBigIntegerTests
     /// Try to convert from invalid IPV6 cidr.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestToBigIntegerInternal3()
     {
-        IPNetwork2.InternalToBigInteger(false, 129, AddressFamily.InterNetworkV6, out BigInteger? _);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            IPNetwork2.InternalToBigInteger(false, 129, AddressFamily.InterNetworkV6, out BigInteger? _);
+        });
     }
 
     /// <summary>
     /// Try to convert from invalid AddressFamily.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(NotSupportedException))]
     public void TestToBigIntegerInternal4()
     {
-        IPNetwork2.InternalToBigInteger(false, 32, AddressFamily.AppleTalk, out BigInteger? _);
+        Assert.ThrowsExactly<NotSupportedException>(() =>
+        {
+            IPNetwork2.InternalToBigInteger(false, 32, AddressFamily.AppleTalk, out BigInteger? _);
+        });
     }
 
     /// <summary>

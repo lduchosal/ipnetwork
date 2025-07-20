@@ -14,16 +14,18 @@ public class IPNetworkOverlapTests
     /// Test overlap.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestOverlap1()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             IPNetwork2 network1 = null;
             IPNetwork2 network2 = null;
 
 #pragma warning disable 0618
             IPNetwork2.Overlap(network1, network2);
 #pragma warning restore 0618
-        }
+        });
+    }
 
     /// <summary>
     ///     Tests Overlap functionality with Overlap Static2.
@@ -45,13 +47,15 @@ public class IPNetworkOverlapTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestOverlap2()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             var network1 = IPNetwork2.Parse("10.0.0.0/0");
             IPNetwork2 network2 = null;
             network1.Overlap(network2);
-        }
+        });
+    }
 
     /// <summary>
     ///     Tests Overlap functionality with Overlap3.

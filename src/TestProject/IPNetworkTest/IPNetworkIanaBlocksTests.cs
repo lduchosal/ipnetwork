@@ -92,24 +92,28 @@ public class IPNetworkIanaBlocksTests
     /// Test is a null ipaddress is in IANA block.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestIana7()
     {
-        IPAddress ipaddress = null;
-        IPNetwork2.IsIANAReserved(ipaddress);
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPAddress ipaddress = null;
+            IPNetwork2.IsIANAReserved(ipaddress);
+        });
     }
 
     /// <summary>
     /// Test is a null ipnetwork is in IANA block.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestIana8()
     {
-        IPNetwork2 ipnetwork = null;
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPNetwork2 ipnetwork = null;
 #pragma warning disable 0618
-        IPNetwork2.IsIANAReserved(ipnetwork);
+            IPNetwork2.IsIANAReserved(ipnetwork);
 #pragma warning restore 0618
+        });
     }
 
     /// <summary>

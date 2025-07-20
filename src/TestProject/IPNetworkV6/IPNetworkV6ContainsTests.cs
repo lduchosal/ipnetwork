@@ -98,13 +98,15 @@ public class IPNetworkV6ContainsTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestContains10()
     {
-        var ipnetwork = IPNetwork2.Parse("::/0");
-        IPAddress ipaddress = null;
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            var ipnetwork = IPNetwork2.Parse("::/0");
+            IPAddress ipaddress = null;
 
-        ipnetwork.Contains(ipaddress);
+            ipnetwork.Contains(ipaddress);
+        });
     }
 
     /// <summary>

@@ -14,10 +14,12 @@ public class IPNetworkValidNetmaskTests
     /// Test invalid AddressFamily.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestValidNetmaskInvalid1()
     {
-        IPNetwork2.InternalValidNetmask(BigInteger.Zero, AddressFamily.AppleTalk);
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            IPNetwork2.InternalValidNetmask(BigInteger.Zero, AddressFamily.AppleTalk);
+        });
     }
 
     /// <summary>
@@ -76,14 +78,16 @@ public class IPNetworkValidNetmaskTests
     /// Test null mask.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestValidNetmaskEae2()
     {
-        IPAddress mask = null;
-        bool expected = true;
-        bool result = IPNetwork2.ValidNetmask(mask);
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPAddress mask = null;
+            bool expected = true;
+            bool result = IPNetwork2.ValidNetmask(mask);
 
-        Assert.AreEqual(expected, result, "ValidNetmask");
+            Assert.AreEqual(expected, result, "ValidNetmask");
+        });
     }
 
     /// <summary>

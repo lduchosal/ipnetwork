@@ -15,56 +15,66 @@ public class IPNetworkParseTests
     /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseIPAddressNetmaskAne2()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             IPAddress ip = null;
             IPNetwork2.Parse(ip, ip);
-        }
+        });
+    }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseIPAddressNetmaskAne3()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             IPNetwork2.Parse(string.Empty, 0);
-        }
+        });
+    }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseIPAddressNetmaskAne4()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             IPNetwork2.Parse(null, 0);
-        }
+        });
+    }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseIPAddressNetmaskAne5()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             string n = null;
             IPNetwork2.Parse(n, n);
-        }
+        });
+    }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestParseIPAddressNetmaskAne8()
     {
-        IPNetwork2.Parse("x.x.x.x", "x.x.x.x");
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            IPNetwork2.Parse("x.x.x.x", "x.x.x.x");
+        });
     }
 
     /// <summary>
@@ -72,10 +82,12 @@ public class IPNetworkParseTests
     /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestParseIPAddressNetmaskAne9()
     {
-        IPNetwork2.Parse("0.0.0.0", "x.x.x.x");
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            IPNetwork2.Parse("0.0.0.0", "x.x.x.x");
+        });
     }
 
     /// <summary>
@@ -83,10 +95,12 @@ public class IPNetworkParseTests
     /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestParseIPAddressNetmaskAne10()
     {
-        IPNetwork2.Parse("x.x.x.x", 0);
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            IPNetwork2.Parse("x.x.x.x", 0);
+        });
     }
 
     /// <summary>
@@ -94,10 +108,12 @@ public class IPNetworkParseTests
     /// </summary>
     [TestMethod]
     [TestCategory("Parse")]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestParseIPAddressNetmaskAne11()
     {
-        IPNetwork2.Parse("0.0.0.0", 33);
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            IPNetwork2.Parse("0.0.0.0", 33);
+        });
     }
 
     /// <summary>
@@ -573,32 +589,38 @@ public class IPNetworkParseTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestParseStringAe1()
     {
-        string ipaddress = "garbage";
-        IPNetwork2.Parse(ipaddress);
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            string ipaddress = "garbage";
+            IPNetwork2.Parse(ipaddress);
+        });
     }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestParseStringAe2()
     {
-        string ipaddress = "0.0.0.0 0.0.1.0";
-        IPNetwork2.Parse(ipaddress);
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            string ipaddress = "0.0.0.0 0.0.1.0";
+            IPNetwork2.Parse(ipaddress);
+        });
     }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringAne1()
     {
-        string ipaddress = null;
-        IPNetwork2.Parse(ipaddress);
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            string ipaddress = null;
+            IPNetwork2.Parse(ipaddress);
+        });
     }
 }

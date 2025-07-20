@@ -27,51 +27,59 @@ public class IPNetworkParseStringStringTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringString2()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             string ipaddress = null;
             string netmask = null;
 
             IPNetwork2.Parse(ipaddress, netmask);
-        }
+        });
+    }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringString3()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             string ipaddress = "192.168.168.100";
             string netmask = null;
 
             IPNetwork2.Parse(ipaddress, netmask);
-        }
+        });
+    }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringString4()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             string ipaddress = string.Empty;
             string netmask = string.Empty;
 
             IPNetwork2.Parse(ipaddress, netmask);
-        }
+        });
+    }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringString5()
     {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
             string ipaddress = "192.168.168.100";
             string netmask = string.Empty;
 
             IPNetwork2.Parse(ipaddress, netmask);
-        }
+        });
+    }
 }

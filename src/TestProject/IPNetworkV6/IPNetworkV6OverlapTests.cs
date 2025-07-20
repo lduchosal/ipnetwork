@@ -14,12 +14,14 @@ public class IPNetworkV6OverlapTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestOverlap2()
     {
-        var network1 = IPNetwork2.Parse("2001:0db8::/0");
-        IPNetwork2 network2 = null;
-        network1.Overlap(network2);
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            var network1 = IPNetwork2.Parse("2001:0db8::/0");
+            IPNetwork2 network2 = null;
+            network1.Overlap(network2);
+        });
     }
 
     /// <summary>

@@ -18,10 +18,12 @@ public class IPNetworkV6ParseTests
     [DataTestMethod]
     [DataRow("xxxx::", "xxxx::")]
     [DataRow("::", "xxxx::")]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestParseIPAddressNetmaskAne8(string withFirst, string andSecond)
     {
-        IPNetwork2.Parse(withFirst, andSecond);
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            IPNetwork2.Parse(withFirst, andSecond);
+        });
     }
 
     /// <summary>

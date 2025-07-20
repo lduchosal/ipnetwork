@@ -48,11 +48,13 @@ public class IPNetworkSupernetArrayTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestTrySupernetArray2()
     {
-        IPNetwork2[] ipnetworks = null;
-        IPNetwork2.Supernet(ipnetworks);
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPNetwork2[] ipnetworks = null;
+            IPNetwork2.Supernet(ipnetworks);
+        });
     }
 
     /// <summary>

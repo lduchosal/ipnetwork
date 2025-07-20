@@ -26,11 +26,13 @@ public class IPNetworkV6CtorWithIpAndCidrTests
     /// Test CtorWithIpAndCidr2.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void CtorWithIpAndCidr2()
     {
-        string ipaddress = "2001:db8::";
-        var ip = IPAddress.Parse(ipaddress);
-        var ipn = new IPNetwork2(ip, 129);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            string ipaddress = "2001:db8::";
+            var ip = IPAddress.Parse(ipaddress);
+            var ipn = new IPNetwork2(ip, 129);
+        });
     }
 }

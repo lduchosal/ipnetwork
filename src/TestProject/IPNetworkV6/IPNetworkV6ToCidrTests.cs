@@ -24,10 +24,12 @@ public class IPNetworkV6ToCidrTests
     /// Test ToCidr.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestToCidrAe2()
     {
-        IPNetwork2.ToCidr(IPAddress.Parse("2001:db8:3:4:5:6:7:8"));
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            IPNetwork2.ToCidr(IPAddress.Parse("2001:db8:3:4:5:6:7:8"));
+        });
     }
 
     /// <summary>

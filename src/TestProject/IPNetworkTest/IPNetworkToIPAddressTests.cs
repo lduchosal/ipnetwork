@@ -25,21 +25,24 @@ public class IPNetworkToIPAddressTests
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestToIPAddress2()
     {
-        var ip = new BigInteger(0);
-        IPNetwork2.ToIPAddress(ip, AddressFamily.AppleTalk);
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            var ip = new BigInteger(0);
+            IPNetwork2.ToIPAddress(ip, AddressFamily.AppleTalk);
+        });
     }
 
     /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestToIPAddress3()
     {
-        var ip = new BigInteger(new byte[]
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            var ip = new BigInteger(new byte[]
             {
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
@@ -51,6 +54,7 @@ public class IPNetworkToIPAddressTests
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
             });
-        IPNetwork2.ToIPAddress(ip, AddressFamily.AppleTalk);
+            IPNetwork2.ToIPAddress(ip, AddressFamily.AppleTalk);
+        });
     }
 }

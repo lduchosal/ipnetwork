@@ -504,31 +504,37 @@ public class IPNetworkV6ParseStringTests
     /// Test ParseString garbage.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestParseStringAe1()
     {
-        string ipaddress = "garbage";
-        IPNetwork2.Parse(ipaddress);
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            string ipaddress = "garbage";
+            IPNetwork2.Parse(ipaddress);
+        });
     }
 
     /// <summary>
     /// Test ParseString too long.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentException))]
     public void TestParseStringAe2()
     {
-        string ipaddress = "0:0:0:0:0:0:1:0:0 0:1:2:3:4:5:6:7:8";
-        IPNetwork2.Parse(ipaddress);
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            string ipaddress = "0:0:0:0:0:0:1:0:0 0:1:2:3:4:5:6:7:8";
+            IPNetwork2.Parse(ipaddress);
+        });
     }
 
     /// <summary>
     /// Test ParseString null.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentNullException))]
     public void TestParseStringAne1()
     {
-        IPNetwork2.Parse(null);
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPNetwork2.Parse(null);
+        });
     }
 }

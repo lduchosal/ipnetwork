@@ -148,12 +148,14 @@ public class IPAddressCollectionUnitTest
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestOutOfRangeIPAddress()
     {
-        var ipn = IPNetwork2.Parse("192.168.1.0/29");
-        using IPAddressCollection ips = ipn.ListIPAddress();
-        Console.Write("This is out of range : {0} ", ips[8]);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            var ipn = IPNetwork2.Parse("192.168.1.0/29");
+            using IPAddressCollection ips = ipn.ListIPAddress();
+            Console.Write("This is out of range : {0} ", ips[8]);
+        });
     }
 
     /// <summary>
@@ -203,18 +205,20 @@ public class IPAddressCollectionUnitTest
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestEnumeratorFailed()
     {
-        var ipn = IPNetwork2.Parse("192.168.1.0/29");
-        using IEnumerator<IPAddress> ips = ipn.ListIPAddress();
-        ips.Reset();
-        while (ips.MoveNext())
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
         {
-            Assert.IsNotNull(ips.Current);
-        }
+            var ipn = IPNetwork2.Parse("192.168.1.0/29");
+            using IEnumerator<IPAddress> ips = ipn.ListIPAddress();
+            ips.Reset();
+            while (ips.MoveNext())
+            {
+                Assert.IsNotNull(ips.Current);
+            }
 
-        Console.WriteLine("This is out of range : {0}", ips.Current);
+            Console.WriteLine("This is out of range : {0}", ips.Current);
+        });
     }
 
     /// <summary>
@@ -284,17 +288,19 @@ public class IPAddressCollectionUnitTest
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void TestEnumeratorCurrentOor()
     {
-        var ipn = IPNetwork2.Parse("192.168.1.0/31");
-        IEnumerator ips = ipn.ListIPAddress();
-        Assert.IsNotNull(ips.Current);
-        Assert.IsTrue(ips.MoveNext());
-        Assert.IsNotNull(ips.Current);
-        Assert.IsTrue(ips.MoveNext());
-        Assert.IsFalse(ips.MoveNext());
-        Console.WriteLine("This is out of range : {0} ", ips.Current);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            var ipn = IPNetwork2.Parse("192.168.1.0/31");
+            IEnumerator ips = ipn.ListIPAddress();
+            Assert.IsNotNull(ips.Current);
+            Assert.IsTrue(ips.MoveNext());
+            Assert.IsNotNull(ips.Current);
+            Assert.IsTrue(ips.MoveNext());
+            Assert.IsFalse(ips.MoveNext());
+            Console.WriteLine("This is out of range : {0} ", ips.Current);
+        });
     }
 
     /// <summary>
@@ -358,12 +364,14 @@ public class IPAddressCollectionUnitTest
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void Test_ipv6_OutOfRangeIPAddress()
     {
-        var ipn = IPNetwork2.Parse("::/125");
-        using IPAddressCollection ips = ipn.ListIPAddress();
-        Console.Write("This is out of range : {0} ", ips[8]);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            var ipn = IPNetwork2.Parse("::/125");
+            using IPAddressCollection ips = ipn.ListIPAddress();
+            Console.Write("This is out of range : {0} ", ips[8]);
+        });
     }
 
     /// <summary>
@@ -425,18 +433,19 @@ public class IPAddressCollectionUnitTest
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void Test_ipv6_EnumeratorFailed()
     {
-        var ipn = IPNetwork2.Parse("::/125");
-        using IEnumerator<IPAddress> ips = ipn.ListIPAddress();
-        ips.Reset();
-        while (ips.MoveNext())
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
         {
-            Assert.IsNotNull(ips.Current);
-        }
-
-        Console.WriteLine("This is out of range : {0}", ips.Current);
+            var ipn = IPNetwork2.Parse("::/125");
+            using IEnumerator<IPAddress> ips = ipn.ListIPAddress();
+            ips.Reset();
+            while (ips.MoveNext())
+            {
+                Assert.IsNotNull(ips.Current);
+            }
+            Console.WriteLine("This is out of range : {0}", ips.Current);
+        });
     }
 
     /// <summary>
@@ -495,17 +504,19 @@ public class IPAddressCollectionUnitTest
     /// Test.
     /// </summary>
     [TestMethod]
-    [ExpectedException(typeof(ArgumentOutOfRangeException))]
     public void Test_ipv6_EnumeratorCurrentOor()
     {
-        var ipn = IPNetwork2.Parse("::/127");
-        IEnumerator ips = ipn.ListIPAddress();
-        Assert.IsNotNull(ips.Current);
-        Assert.IsTrue(ips.MoveNext());
-        Assert.IsNotNull(ips.Current);
-        Assert.IsTrue(ips.MoveNext());
-        Assert.IsFalse(ips.MoveNext());
-        Console.WriteLine("This is out of range : {0} ", ips.Current);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            var ipn = IPNetwork2.Parse("::/127");
+            IEnumerator ips = ipn.ListIPAddress();
+            Assert.IsNotNull(ips.Current);
+            Assert.IsTrue(ips.MoveNext());
+            Assert.IsNotNull(ips.Current);
+            Assert.IsTrue(ips.MoveNext());
+            Assert.IsFalse(ips.MoveNext());
+            Console.WriteLine("This is out of range : {0} ", ips.Current);
+        });
     }
 
     /// <summary>
