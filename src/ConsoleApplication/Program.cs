@@ -128,8 +128,10 @@ public static class Program
             case ActionEnum.ListIPAddress:
                 ListIPAddress(ac);
                 break;
-            case ActionEnum.Usage:
             case ActionEnum.SubtractNetwork:
+                SubtractNetwork(ac);
+                break;
+            case ActionEnum.Usage:
             default:
                 Usage();
                 break;
@@ -146,7 +148,18 @@ public static class Program
             }
         }
     }
-
+    
+    private static void SubtractNetwork(ProgramContext ac)
+    {
+        foreach (IPNetwork2 ipnetwork in ac.Networks)
+        {
+            foreach (IPNetwork2 subtracted in ipnetwork.Subtract(ac.SubtractNetwork))
+            {
+                Console.WriteLine("{0}", subtracted);
+            }
+        }
+    }
+    
     private static void ContainNetwork(ProgramContext ac)
     {
         foreach (IPNetwork2 ipnetwork in ac.Networks)
@@ -438,7 +451,7 @@ public static class Program
         string version = fvi.FileVersion;
 
         Console.WriteLine(
-            "Usage: ipnetwork [-inmcbflu] [-d cidr|-D] [-h|-s cidr|-S|-w|-W|-x|-C network|-o network] networks ...");
+            "Usage: ipnetwork [-inmcbflu] [-d cidr|-D] [-h|-s cidr|-S network|-w|-W|-x|-C network|-o network] networks ...");
         Console.WriteLine("Version: {0}", version);
         Console.WriteLine();
         Console.WriteLine("Print options");
@@ -464,7 +477,7 @@ public static class Program
         Console.WriteLine("\t-x         : list all ip adresses in networks");
         Console.WriteLine("\t-C network : network contain networks");
         Console.WriteLine("\t-o network : network overlap networks");
-        Console.WriteLine("\t-S network : subtract network from subnet");
+        Console.WriteLine("\t-S network : subtract network from networks");
         Console.WriteLine(string.Empty);
         Console.WriteLine("networks  : one or more network addresses ");
         Console.WriteLine(
