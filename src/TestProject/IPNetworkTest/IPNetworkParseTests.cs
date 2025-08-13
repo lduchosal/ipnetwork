@@ -622,6 +622,11 @@ public class IPNetworkParseTests
             string ipaddress = null;
             IPNetwork2.Parse(ipaddress);
         });
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            string ipaddress = null;
+            IPNetwork2.Parse(ipaddress);
+        });
     }
     
     /// <summary>
