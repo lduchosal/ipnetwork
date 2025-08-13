@@ -71,7 +71,7 @@ public partial class IPNetwork2
     /// <returns>true if network was converted successfully; otherwise, false.</returns>
     public static bool TryParse(string network, out IPNetwork2 ipnetwork)
     {
-        InternalParse(true, network, CidrGuess.ClassFull, sanitanize: true, out IPNetwork2 ipnetwork2);
+        InternalParse(true, network, CidrGuess.ClassFull, sanitize: true, out IPNetwork2 ipnetwork2);
         bool parsed = ipnetwork2 != null;
         ipnetwork = ipnetwork2;
 
@@ -90,7 +90,7 @@ public partial class IPNetwork2
     /// Broadcast : 192.168.0.255.
     /// </summary>
     /// <param name="network">A string containing an ip network to convert.</param>
-    /// <param name="sanitanize">Whether to sanitize network or not.</param>
+    /// <param name="sanitanize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
     /// <param name="ipnetwork">When this method returns, contains the IPNetwork value equivalent of the IPAddress contained in ipaddress with the netmask corresponding to cidr, if the conversion succeeded, or null if the conversion failed. The conversion fails if the s parameter is null or Empty, is not of the correct format, or represents an invalid ip address. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.</param>
     /// <returns>true if network was converted successfully; otherwise, false.</returns>
     public static bool TryParse(string network, bool sanitanize, out IPNetwork2 ipnetwork)
@@ -163,7 +163,7 @@ public partial class IPNetwork2
     /// </summary>
     /// <param name="network">A string containing an ip network to convert.</param>
     /// <param name="cidrGuess">A ICidrGuess implementation that will be used to guess CIDR during conversion.</param>
-    /// <param name="sanitanize">Whether to sanitize network or not.</param>
+    /// <param name="sanitanize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
     /// <param name="ipnetwork">When this method returns, contains the IPNetwork value equivalent of the IPAddress contained in ipaddress with the netmask corresponding to cidr, if the conversion succeeded, or null if the conversion failed. The conversion fails if the s parameter is null or Empty, is not of the correct format, or represents an invalid ip address. This parameter is passed uninitialized; any value originally supplied in result will be overwritten.</param>
     /// <returns>true if network was converted successfully; otherwise, false.</returns>
     public static bool TryParse(string network, ICidrGuess cidrGuess, bool sanitanize, out IPNetwork2 ipnetwork)

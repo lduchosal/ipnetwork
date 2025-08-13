@@ -82,11 +82,11 @@ public partial class IPNetwork2
     /// <param name="tryParse">Prevent exception.</param>
     /// <param name="network">The network to parse.</param>
     /// <param name="cidrGuess">The way to guess CIDR.</param>
-    /// <param name="sanitanize">Clean up the network.</param>
+    /// <param name="sanitize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
     /// <param name="ipnetwork">The resulting IPNetwork.</param>
     /// <exception cref="ArgumentNullException">When network is null.</exception>
     /// <exception cref="ArgumentException">When network is not valid.</exception>
-    private static void InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, bool sanitanize, out IPNetwork2 ipnetwork)
+    private static void InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, bool sanitize, out IPNetwork2 ipnetwork)
     {
         if (string.IsNullOrEmpty(network))
         {
@@ -99,14 +99,14 @@ public partial class IPNetwork2
             return;
         }
 
-        if (sanitanize)
+        if (sanitize)
         {
             network = Regex.Replace(network, @"[^0-9a-fA-F\.\/\s\:]+", string.Empty, RegexOptions.None, TimeSpan.FromMilliseconds(100));
             network = Regex.Replace(network, @"\s{2,}", " ", RegexOptions.None, TimeSpan.FromMilliseconds(100));
             network = network.Trim();
         }
 
-        StringSplitOptions splitOptions = sanitanize ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None;
+        StringSplitOptions splitOptions = sanitize ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None;
         string[] args = network.Split([' ', '/'], splitOptions);
 
         if (args.Length == 0)
@@ -119,7 +119,7 @@ public partial class IPNetwork2
             ipnetwork = null;
             return;
         }
-
+        
         if (args.Length == 1)
         {
             string cidrlessNetwork = args[0];
@@ -137,14 +137,26 @@ public partial class IPNetwork2
             ipnetwork = null;
             return;
         }
-
-        if (byte.TryParse(args[1], out byte cidr1))
+        
+        if (args.Length == 2)
         {
-            InternalParse(tryParse, args[0], cidr1, out ipnetwork);
+            if (byte.TryParse(args[1], out byte cidr1))
+            {
+                InternalParse(tryParse, args[0], cidr1, out ipnetwork);
+                return;
+            }
+
+            InternalParse(tryParse, args[0], args[1], out ipnetwork);
+        }
+        else
+        {
+            if (tryParse == false)
+            {
+                throw new ArgumentNullException(nameof(network));
+            }
+            ipnetwork = null;
             return;
         }
-
-        InternalParse(tryParse, args[0], args[1], out ipnetwork);
     }
 
     /// <summary>

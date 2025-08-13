@@ -365,7 +365,7 @@ public class TryParseUnitTest
     /// Test.
     /// </summary>
     /// <param name="ipnetwork">The network to parse.</param>
-    /// <param name="sanitanize">To sanitize or not.</param>
+    /// <param name="sanitize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
     /// <param name="parsed">Parse should succeed.</param>
     [DataTestMethod]
     [DataRow("1.1.1.1/1", true, true)]
@@ -380,9 +380,9 @@ public class TryParseUnitTest
     [DataRow("001:02b8::    /    64", false, false)]
     [DataRow("001:02b8::/64", true, true)]
     [DataRow("001:02b8::/64", false, true)]
-    public void Test_TryParse(string ipnetwork, bool sanitanize, bool parsed)
+    public void Test_TryParse(string ipnetwork, bool sanitize, bool parsed)
     {
-        bool result = IPNetwork2.TryParse(ipnetwork, sanitanize, out IPNetwork2 _);
+        bool result = IPNetwork2.TryParse(ipnetwork, sanitize, out IPNetwork2 _);
 
         Assert.AreEqual(parsed, result, "parsed1");
     }
