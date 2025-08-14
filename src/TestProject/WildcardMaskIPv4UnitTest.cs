@@ -16,7 +16,7 @@ public class WildcardMaskIPv4UnitTest
     /// <param name="cidr">The cidr.</param>
     /// <param name="thenNetmask">The resulting netmask.</param>
     /// <param name="andWildcardmask">And the resulting wildcard.</param>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(0, "0.0.0.0", "255.255.255.255")]
     [DataRow(32, "255.255.255.255", "0.0.0.0")]
     public void Test_WildcardMask_ipv4_mask(int cidr, string thenNetmask, string andWildcardmask)
@@ -35,7 +35,7 @@ public class WildcardMaskIPv4UnitTest
     /// </summary>
     /// <param name="netmask">The netmask.</param>
     /// <param name="expected">The expected netmask.</param>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("255.255.255.255", "0.0.0.0")]
     [DataRow("255.255.255.254", "0.0.0.1")]
     [DataRow("255.255.255.252", "0.0.0.3")]
@@ -85,7 +85,7 @@ public class WildcardMaskIPv4UnitTest
     /// </summary>
     /// <param name="cidr">The cidr.</param>
     /// <param name="expected">The resulting netmask.</param>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(32, "0.0.0.0")]
     [DataRow(31, "0.0.0.1")]
     [DataRow(30, "0.0.0.3")]

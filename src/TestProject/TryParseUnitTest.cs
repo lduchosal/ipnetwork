@@ -367,7 +367,7 @@ public class TryParseUnitTest
     /// <param name="ipnetwork">The network to parse.</param>
     /// <param name="sanitize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
     /// <param name="parsed">Parse should succeed.</param>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("1.1.1.1/1", true, true)]
     [DataRow("1.1.1.1/1", false, true)]
     [DataRow("::/0", true, true)]
@@ -392,7 +392,7 @@ public class TryParseUnitTest
     /// </summary>
     /// <param name="ipaddress">The IPAdress to parse.</param>
     /// <param name="parsed">Should be parsed.</param>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("1.1.1.1", true)]
     [DataRow("::", true)]
     [DataRow("001:02b8::", true)]

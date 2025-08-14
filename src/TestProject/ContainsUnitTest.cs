@@ -16,7 +16,7 @@ public class ContainsUnitTest
     /// <param name="network1">The network.</param>
     /// <param name="networkOrAddress">The netmask.</param>
     /// <param name="expected">The result.</param>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("192.168.0.1/24", "192.168.0.1/24", true)]
     [DataRow("192.168.0.1/16", "192.168.1.1/24", true)]
     [DataRow("192.168.0.1/16", "10.10.10.0/24", false)]
@@ -37,7 +37,7 @@ public class ContainsUnitTest
     /// <param name="network1">The network.</param>
     /// <param name="networkOrAddress">An address in the netmask.</param>
     /// <param name="expected">Contained.</param>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("192.168.0.1/24", "192.168.0.100", true)]
     [DataRow("192.168.0.1/24", "10.10.10.10", false)]
     public void TestContainsAdrress(string network1, string networkOrAddress, bool expected)
@@ -150,7 +150,7 @@ public class ContainsUnitTest
     /// <param name="contains1">The network.</param>
     /// <param name="contains2">Contains the IPAddress.</param>
     /// <param name="expected">Result, true if contains.</param>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("1.1.1.0/8", "1.1.1.1", true)]
     [DataRow("1.1.1.0/8", "2.1.1.1", false)]
     [DataRow("192.168.0.1/24", "192.168.0.100", true)]
@@ -175,7 +175,7 @@ public class ContainsUnitTest
     /// <param name="contains1">The network.</param>
     /// <param name="contains2">Contains the IPAddress.</param>
     /// <param name="expected">Result, true if contains.</param>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("0.0.0.0/0", "255.255.255.255", true)]
     [DataRow("1.1.1.0/8", "1.1.1.1", true)]
     [DataRow("1.1.1.0/8", "2.1.1.1", false)]
