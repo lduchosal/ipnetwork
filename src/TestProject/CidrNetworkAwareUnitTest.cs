@@ -22,6 +22,7 @@ public class CidrNetworkAwareUnitTest
     [DataRow("de:ad:be:ef::", 064)]
     [DataRow("0::", 0)]
     [DataRow("1::", 16)]
+    [DataRow("::1", 128)]
     
     // IPv4 patterns
     [DataRow("10.0.0.0", 8)]

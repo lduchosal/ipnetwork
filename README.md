@@ -321,6 +321,17 @@ IPV6 : /128
 
 #### NetworkAware
 
+IPV4 :
+
+Rule of thumb
+• Ends with .0 → /24
+• Ends with .0.0 or .255.255 → /16
+• Ends with .0.0.0 or .255.255.255 → /8
+• Else → /32
+
+
+IPV6 : 
+
 Rule of thumb
 • Ends with :0000 → /112
 • Ends with :0000:0000 → /96
@@ -358,7 +369,7 @@ IPV4 NetworkAware Parse : 192.168.0.0/16
 IPNetwork2 defaultParse = IPNetwork2.Parse("::1"); // default to ClassFull
 IPNetwork2 classFullParse = IPNetwork2.Parse("::1", CidrGuess.ClassFull);
 IPNetwork2 classLessParse = IPNetwork2.Parse("::1", CidrGuess.ClassLess);
-IPNetwork2 networkAwareParse = IPNetwork2.Parse("a:b:c::", CidrGuess.NetworkAware);
+IPNetwork2 networkAwareParse = IPNetwork2.Parse("::1", CidrGuess.NetworkAware);
 
 Console.WriteLine("IPV6 Default Parse : {0}", defaultParse);
 Console.WriteLine("IPV6 ClassFull Parse : {0}", classFullParse);
@@ -372,7 +383,7 @@ Output
 IPV6 Default Parse : ::/64
 IPV6 ClassFull Parse : ::/64
 IPV6 ClassLess Parse : ::1/128
-IPV6 ClassLess Parse : a:b:c::/32
+IPV6 ClassLess Parse : ::1/128
 ```
 
 ---
