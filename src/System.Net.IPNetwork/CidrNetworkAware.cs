@@ -58,38 +58,38 @@ public sealed class CidrNetworkAware : ICidrGuess
     /// IPv4: honors trailing 0s (network) and trailing 255s (wildcard hint) at octet boundaries.
     /// IPv6: honors trailing :0000 at hextet (16-bit) boundaries. Optional trailing :ffff wildcard heuristic is off by default.
     /// </summary>
-    /// <param name="input">IP address as string (no slash). Example: "192.0.43.0" or "2001:db8::".</param>
+    /// <param name="ip">IP address as string (no slash). Example: "192.0.43.0" or "2001:db8::".</param>
     /// <param name="cidr">Guessed CIDR (0..32 for IPv4, 0..128 for IPv6).</param>
     /// <returns>true if parsed and guessed; false if input is not a valid IP address.</returns>
-    public bool TryGuessCidr(string input, out byte cidr)
+    public bool TryGuessCidr(string ip, out byte cidr)
     {
         cidr = 0;
-        if (string.IsNullOrWhiteSpace(input))
+        if (string.IsNullOrWhiteSpace(ip))
             return false;
 
         // Reject if user passed a slash - this API expects a plain address.
         // (You can relax this if you want to honor an explicitly supplied prefix.)
-        if (input.Contains("/"))
+        if (ip.Contains("/"))
             return false;
 
-        if (!IPAddress.TryParse(input.Trim(), out var ip))
+        if (!IPAddress.TryParse(ip.Trim(), out var ipAddress))
             return false;
 
-        if (ip.AddressFamily == AddressFamily.InterNetwork)
+        if (ipAddress.AddressFamily == AddressFamily.InterNetwork)
         {
-            cidr = GuessIpv4(ip);
+            cidr = GuessIpv4(ipAddress);
             return true;
         }
-        else if (ip.AddressFamily == AddressFamily.InterNetworkV6)
+        else if (ipAddress.AddressFamily == AddressFamily.InterNetworkV6)
         {
-            cidr = GuessIpv6(ip);
+            cidr = GuessIpv6(ipAddress);
             return true;
         }
 
         return false;
     }
 
-    private byte GuessIpv4(IPAddress ip)
+    private static byte GuessIpv4(IPAddress ip)
     {
         byte[] b = ip.GetAddressBytes(); // length 4
 
@@ -115,7 +115,7 @@ public sealed class CidrNetworkAware : ICidrGuess
         return 32;
     }
 
-    private byte GuessIpv6(IPAddress ip)
+    private static byte GuessIpv6(IPAddress ip)
     {
         byte[] b = ip.GetAddressBytes(); // length 16
 
@@ -128,7 +128,7 @@ public sealed class CidrNetworkAware : ICidrGuess
         return 128;
     }
 
-    private int CountTrailingHextets(byte[] bytes, ushort value)
+    private static int CountTrailingHextets(byte[] bytes, ushort value)
     {
         // bytes.Length must be 16 for IPv6
         int count = 0;
