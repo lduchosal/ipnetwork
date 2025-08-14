@@ -3,7 +3,53 @@
 namespace System.Net;
 
 /// <summary>
-/// Tries to guess a network-aware CIDR prefix length from a textual IP address
+/// If your CidrGuess is “network-aware” based only on what humans usually encode in the textual address, a good heuristic is:
+/// 
+/// IPv4 (dotted-quad)
+///    • Treat trailing 0s as “network bits” and trailing 255s as a “wildcard” hint for the same boundary.
+///    • Otherwise, fall back to /32 (no safe aggregation from the string alone).
+///    • Special case: 0.0.0.0 (or 255.255.255.255) → /0.
+///
+/// Rule of thumb
+///  Ends with .0 → /24
+///  Ends with .0.0 or .255.255 → /16
+///  Ends with .0.0.0 or .255.255.255 → /8
+///  Else → /32
+///
+/// Matches your examples
+///  Parse("192.0.43.8") → /32
+///  Parse("192.0.43.0") → /24
+///  Parse("192.43.0.0") → /16
+///  Parse("192.0.43.255") → /24 (wildcard hint)
+///  Parse("192.43.255.255") → /16 (wildcard hint)
+///
+/// So: in a network-aware context like this, you generally don’t emit /25, /26, etc.,
+/// because there’s no reliable visual cue for those in dotted-quad—stick to /32, /24, /16, /8, /0.
+///
+/// IPv6 (colon-hex)
+///  IPv6 is grouped by hextets (16-bit chunks), so mirror the idea at 16-bit boundaries.
+///  Use trailing :0000 hextets as “network bits”.
+///  Otherwise, fall back to /128.
+///  Note: operationally, /64 is the standard host subnet size, but you should still infer from the string, not assumptions.
+///
+/// Rule of thumb
+///  Ends with :0000 → /112
+///  Ends with :0000:0000 → /96
+///  Ends with three trailing :0000 → /80
+///  …
+///  Ends with four trailing :0000 → /64
+///  Else → /128
+///
+/// Examples
+///  2001:db8:1:2:3:4:5:6 → /128
+///  2001:db8:1:2:3:4:5:0000 → /112
+///  2001:db8:1:2:3:4:0000:0000 → /96
+///  2001:db8:1:2:3:0000:0000:0000 → /80
+///  2001:db8:1:2:0000:0000:0000:0000 → /64
+///
+/// TL;DR
+///  IPv4: stick to /32, /24, /16, /8, /0 based on trailing .0/.255; otherwise /32.
+///  IPv6: infer /128, /112, /96, /80, /64, … based on trailing :0000 groups; otherwise /128.
 /// </summary>
 public sealed class CidrNetworkAware : ICidrGuess
 {
