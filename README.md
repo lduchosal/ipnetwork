@@ -318,16 +318,40 @@ IPV6 : /64
 IPV4 : /32
 IPV6 : /128
 
+
+#### NetworkAware
+
+IPV4 :
+
+Rule of thumb
+• Ends with .0 → /24
+• Ends with .0.0 or .255.255 → /16
+• Ends with .0.0.0 or .255.255.255 → /8
+• Else → /32
+
+
+IPV6 : 
+
+Rule of thumb
+• Ends with :0000 → /112
+• Ends with :0000:0000 → /96
+• Ends with three trailing :0000 → /80
+• …
+• Ends with four trailing :0000 → /64
+• Else → /128
+
 #### IPv4
 
 ```C#
 IPNetwork2 defaultParse= IPNetwork2.Parse("192.168.0.0"); // default to ClassFull
 IPNetwork2 classFullParse = IPNetwork2.Parse("192.168.0.0", CidrGuess.ClassFull);
 IPNetwork2 classLessParse = IPNetwork2.Parse("192.168.0.0", CidrGuess.ClassLess);
+IPNetwork2 networkAwareParse = IPNetwork2.Parse("192.168.0.0", CidrGuess.NetworkAware);
 
 Console.WriteLine("IPV4 Default Parse : {0}", defaultStrategy);
 Console.WriteLine("IPV4 ClassFull Parse : {0}", classFullParse);
 Console.WriteLine("IPV4 ClassLess Parse : {0}", classLessParse);
+Console.WriteLine("IPV4 NetworkAware Parse : {0}", networkAwareParse);
 ```
 
 Output
@@ -336,6 +360,7 @@ Output
 IPV4 Default Parse : 192.168.0.0/24
 IPV4 ClassFull Parse : 192.168.0.0/24
 IPV4 ClassLess Parse : 192.168.0.0/32
+IPV4 NetworkAware Parse : 192.168.0.0/16
 ```
 
 #### IPv6
@@ -344,10 +369,12 @@ IPV4 ClassLess Parse : 192.168.0.0/32
 IPNetwork2 defaultParse = IPNetwork2.Parse("::1"); // default to ClassFull
 IPNetwork2 classFullParse = IPNetwork2.Parse("::1", CidrGuess.ClassFull);
 IPNetwork2 classLessParse = IPNetwork2.Parse("::1", CidrGuess.ClassLess);
+IPNetwork2 networkAwareParse = IPNetwork2.Parse("::1", CidrGuess.NetworkAware);
 
 Console.WriteLine("IPV6 Default Parse : {0}", defaultParse);
 Console.WriteLine("IPV6 ClassFull Parse : {0}", classFullParse);
 Console.WriteLine("IPV6 ClassLess Parse : {0}", classLessParse);
+Console.WriteLine("IPV6 NetworkAware Parse : {0}", networkAwareParse);
 ```
 
 Output
@@ -355,6 +382,7 @@ Output
 ```JS
 IPV6 Default Parse : ::/64
 IPV6 ClassFull Parse : ::/64
+IPV6 ClassLess Parse : ::1/128
 IPV6 ClassLess Parse : ::1/128
 ```
 
@@ -423,7 +451,7 @@ Below some examples :
 ```JS
 Provide at least one ipnetwork
 Usage: ipnetwork [-inmcbflu] [-d cidr|-D] [-h|-s cidr|-S|-w|-W|-x|-C network|-o network] networks ..
-Version: 3.1.0
+Version: 3.2.0
 
 Print options
         -i : network

@@ -10,15 +10,22 @@ namespace System.Net;
 public static class CidrGuess
 {
     /// <summary>
-    /// Gets classFull guess.
+    /// Gets classFull guesser.
     /// </summary>
     public static ICidrGuess ClassFull { get => CidrClassfull.Value; }
 
     /// <summary>
-    /// Gets classLess guess.
+    /// Gets classLess guesser.
     /// </summary>
     public static ICidrGuess ClassLess { get => CidrClassless.Value; }
 
+    
+    /// <summary>
+    /// Gets a NetworkAware guesser.
+    /// </summary>
+    public static ICidrGuess NetworkAware { get => CidrNetworkAware.Value; }
+
     private static readonly Lazy<ICidrGuess> CidrClassless = new (() => new CidrClassLess());
     private static readonly Lazy<ICidrGuess> CidrClassfull = new (() => new CidrClassFull());
+    private static readonly Lazy<ICidrGuess> CidrNetworkAware = new (() => new CidrNetworkAware());
 }
