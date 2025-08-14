@@ -17,10 +17,9 @@ public class IPNetworkIanaBlocksTests
     public void TestIana1()
     {
         var ipaddress = IPAddress.Parse("192.168.66.66");
-        bool expected = true;
         bool result = IPNetwork2.IsIANAReserved(ipaddress);
 
-        Assert.AreEqual(expected, result, "IANA");
+        Assert.IsTrue(result, "IANA");
     }
 
     /// <summary>
@@ -30,10 +29,9 @@ public class IPNetworkIanaBlocksTests
     public void TestIana2()
     {
         var ipaddress = IPAddress.Parse("10.0.0.0");
-        bool expected = true;
         bool result = IPNetwork2.IsIANAReserved(ipaddress);
 
-        Assert.AreEqual(expected, result, "IANA");
+        Assert.IsTrue(result, "IANA");
     }
 
     /// <summary>
@@ -43,10 +41,9 @@ public class IPNetworkIanaBlocksTests
     public void TestIana3()
     {
         var ipaddress = IPAddress.Parse("172.17.10.10");
-        bool expected = true;
         bool result = IPNetwork2.IsIANAReserved(ipaddress);
 
-        Assert.AreEqual(expected, result, "IANA");
+        Assert.IsTrue(result, "IANA");
     }
 
     /// <summary>
@@ -56,10 +53,9 @@ public class IPNetworkIanaBlocksTests
     public void TestIana4()
     {
         var ipnetwork = IPNetwork2.Parse("192.168.66.66/24");
-        bool expected = true;
         bool result = ipnetwork.IsIANAReserved();
 
-        Assert.AreEqual(expected, result, "IANA");
+        Assert.IsTrue(result, "IANA");
     }
 
     /// <summary>
@@ -69,10 +65,9 @@ public class IPNetworkIanaBlocksTests
     public void TestIana5()
     {
         var ipnetwork = IPNetwork2.Parse("10.10.10/18");
-        bool expected = true;
         bool result = ipnetwork.IsIANAReserved();
 
-        Assert.AreEqual(expected, result, "IANA");
+        Assert.IsTrue(result, "IANA");
     }
 
     /// <summary>
@@ -82,10 +77,9 @@ public class IPNetworkIanaBlocksTests
     public void TestIana6()
     {
         var ipnetwork = IPNetwork2.Parse("172.31.10.10/24");
-        bool expected = true;
         bool result = ipnetwork.IsIANAReserved();
 
-        Assert.AreEqual(expected, result, "IANA");
+        Assert.IsTrue(result, "IANA");
     }
 
     /// <summary>
@@ -136,10 +130,9 @@ public class IPNetworkIanaBlocksTests
     public void TestIana9()
     {
         var ipaddress = IPAddress.Parse("1.2.3.4");
-        bool expected = false;
         bool result = IPNetwork2.IsIANAReserved(ipaddress);
 
-        Assert.AreEqual(expected, result, "IANA");
+        Assert.IsFalse(result, "IANA");
     }
 
     /// <summary>
@@ -149,10 +142,9 @@ public class IPNetworkIanaBlocksTests
     public void TestIana10()
     {
         var ipnetwork = IPNetwork2.Parse("172.16.0.0/8");
-        bool expected = false;
         bool result = ipnetwork.IsIANAReserved();
 
-        Assert.AreEqual(expected, result, "IANA");
+        Assert.IsFalse(result, "IANA");
     }
 
     /// <summary>
@@ -162,9 +154,8 @@ public class IPNetworkIanaBlocksTests
     public void TestIana11()
     {
         var ipnetwork = IPNetwork2.Parse("192.168.15.1/8");
-        bool expected = false;
         bool result = ipnetwork.IsIANAReserved();
 
-        Assert.AreEqual(expected, result, "IANA");
+        Assert.IsFalse(result, "IANA");
     }
 }

@@ -14,7 +14,7 @@ public class ConsoleUnitTest
     /// Test the console.
     /// </summary>
     /// <param name="args">The arguments.</param>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(["10.0.0.0/8"])]
     [DataRow(["-Nnmcbflu", "10.0.0.0/8"])]
     [DataRow(["-N", "-n", "-m", "-c", "-b", "-f", "-l", "-u", "10.0.0.0/8"])]

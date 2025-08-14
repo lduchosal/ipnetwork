@@ -66,9 +66,8 @@ public class IPNetworkOverlapTests
             var network1 = IPNetwork2.Parse("10.0.0.0/0");
             var network2 = IPNetwork2.Parse("10.0.0.0/0");
             bool result = network1.Overlap(network2);
-            bool expected = true;
 
-            Assert.AreEqual(expected, result, "overlap");
+            Assert.IsTrue(result, "overlap");
         }
 
     /// <summary>
@@ -80,9 +79,8 @@ public class IPNetworkOverlapTests
             var network1 = IPNetwork2.Parse("10.10.0.0/16");
             var network2 = IPNetwork2.Parse("10.10.1.0/24");
             bool result = network1.Overlap(network2);
-            bool expected = true;
 
-            Assert.AreEqual(expected, result, "overlap");
+            Assert.IsTrue(result, "overlap");
         }
 
     /// <summary>
@@ -94,9 +92,8 @@ public class IPNetworkOverlapTests
             var network1 = IPNetwork2.Parse("10.10.0.0/24");
             var network2 = IPNetwork2.Parse("10.10.1.0/24");
             bool result = network1.Overlap(network2);
-            bool expected = false;
 
-            Assert.AreEqual(expected, result, "overlap");
+            Assert.IsFalse(result, "overlap");
         }
 
     /// <summary>
@@ -108,8 +105,7 @@ public class IPNetworkOverlapTests
             var network1 = IPNetwork2.Parse("10.10.1.0/24");
             var network2 = IPNetwork2.Parse("10.10.0.0/16");
             bool result = network1.Overlap(network2);
-            bool expected = true;
 
-            Assert.AreEqual(expected, result, "overlap");
+            Assert.IsTrue(result, "overlap");
         }
 }

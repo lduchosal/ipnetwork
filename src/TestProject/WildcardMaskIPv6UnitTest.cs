@@ -45,7 +45,7 @@ public class WildcardMaskIPv6UnitTest
     /// </summary>
     /// <param name="netmask">The netmask.</param>
     /// <param name="expected">The resulting netmask.</param>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", "::")]
     [DataRow("ffff:ffff:ffff:ffff::", "::ffff:ffff:ffff:ffff")]
     [DataRow("::", "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff")]
@@ -65,7 +65,7 @@ public class WildcardMaskIPv6UnitTest
     /// </summary>
     /// <param name="cidr">The cidr.</param>
     /// <param name="expected">The resulting netmask.</param>
-    [DataTestMethod]
+    [TestMethod]
     [DataRow(128, "::")]
     [DataRow(127, "::1")]
     [DataRow(126, "::3")]
