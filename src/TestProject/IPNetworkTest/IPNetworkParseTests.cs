@@ -239,7 +239,7 @@ public class IPNetworkParseTests
         string firstUsable = "0.0.0.0";
         string lastUsable = "0.0.0.0";
         byte cidr = 32;
-        uint usable = 0;
+        uint usable = 1;
 
         var ipnetwork = IPNetwork2.Parse(ipaddress);
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
@@ -266,7 +266,7 @@ public class IPNetworkParseTests
         string firstUsable = "255.255.255.255";
         string lastUsable = "255.255.255.255";
         byte cidr = 32;
-        uint usable = 0;
+        uint usable = 1;
 
         var ipnetwork = IPNetwork2.Parse(ipaddress);
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
@@ -484,7 +484,7 @@ public class IPNetworkParseTests
         string firstUsable = "10.0.0.0";
         string lastUsable = "10.0.0.0";
         byte cidr = 32;
-        uint usable = 0;
+        uint usable = 1;
 
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
@@ -512,7 +512,7 @@ public class IPNetworkParseTests
         string firstUsable = "172.0.0.0";
         string lastUsable = "172.0.0.0";
         byte cidr = 32;
-        uint usable = 0;
+        uint usable = 1;
 
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
@@ -540,7 +540,7 @@ public class IPNetworkParseTests
         string firstUsable = "192.0.0.0";
         string lastUsable = "192.0.0.0";
         byte cidr = 32;
-        uint usable = 0;
+        uint usable = 1;
 
         Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
