@@ -269,7 +269,7 @@ public class TryParseUnitTest
         string firstUsable = "0.0.0.0";
         string lastUsable = "0.0.0.0";
         byte cidr = 32;
-        uint usable = 0;
+        uint usable = 1;
 
         bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
@@ -297,7 +297,7 @@ public class TryParseUnitTest
         string firstUsable = "255.255.255.255";
         string lastUsable = "255.255.255.255";
         byte cidr = 32;
-        uint usable = 0;
+        uint usable = 1;
 
         bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 

@@ -103,7 +103,7 @@ public partial class IPNetwork2
         {
             BigInteger first = this.family == AddressFamily.InterNetworkV6
                 ? this.InternalNetwork
-                : (this.Usable <= 0)
+                : (this.Usable <= 1)
                     ? this.InternalNetwork
                     : this.InternalNetwork + 1;
             return ToIPAddress(first, this.family);
@@ -119,7 +119,7 @@ public partial class IPNetwork2
         {
             BigInteger last = this.family == AddressFamily.InterNetworkV6
                 ? this.InternalBroadcast
-                : (this.Usable <= 0)
+                : (this.Usable <= 1)
                     ? this.InternalNetwork
                     : this.InternalBroadcast - 1;
             return ToIPAddress(last, this.family);
@@ -128,6 +128,12 @@ public partial class IPNetwork2
 
     /// <summary>
     /// Gets number of usable IPAddress in Network.
+    /// 
+    /// According to : https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks
+    /// Address 	Mask			Total 	Usable 	Network 	Broadcast 	FirstUsable 	LastUsable 	Typical use
+    /// 1.0.0.1/32 	255.255.255.255 	1 	**1** 	1.0.0.1 	1.0.0.1 	1.0.0.1 	1.0.0.1 	Host route
+    /// 1.0.0.1/31 	255.255.255.254 	2 	**2** 	1.0.0.1 	1.0.0.2 	1.0.0.1 	1.0.0.2 	Point-to-point links (RFC 3021)
+    /// ...
     /// </summary>
     public BigInteger Usable
     {
@@ -140,7 +146,9 @@ public partial class IPNetwork2
 
             byte[] mask = [0xff, 0xff, 0xff, 0xff, 0x00];
             var bmask = new BigInteger(mask);
-            BigInteger usableIps = (this.cidr > 30) ? 0 : ((bmask >> this.cidr) - 1);
+            BigInteger usableIps = (this.cidr == 32)? 1
+                : (this.cidr == 31)? 2
+                : ((bmask >> this.cidr)- 1);
             return usableIps;
         }
     }
