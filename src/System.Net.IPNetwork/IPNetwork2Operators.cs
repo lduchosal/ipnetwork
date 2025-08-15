@@ -77,7 +77,7 @@ public sealed partial class IPNetwork2
         if (left.TrySupernet(right, out var result))
         {
             return [result];
-        };
+        }
         return [left, right];
     }
 }
