@@ -121,4 +121,58 @@ public class IPNetworkOperatorTests
 
         Assert.IsTrue(eq, "eq");
     }
+    
+    /// <summary>
+    /// Tests Operator functionality with Operator -.
+    /// </summary>
+    [TestMethod]
+    [DataRow("10.0.0.1/32", "10.0.0.1/32", 0)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/25", 1)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/26", 2)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/27", 3)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/28", 4)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/29", 5)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/30", 6)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/31", 7)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/32", 8)]
+    [DataRow("0.0.0.0/0", "0.0.0.0/32", 32)]
+    public void TestOperatorSubtract(string left, string right, int count)
+    {
+        var ipn1 = IPNetwork2.Parse(left);
+        var ipn2 = IPNetwork2.Parse(right);
+
+        var result = ipn1 - ipn2;
+
+        Assert.HasCount(count, result, "subtract");
+    }
+    
+    
+    /// <summary>
+    /// Tests Operator functionality with Operator -.
+    /// </summary>
+    [TestMethod]
+    [DataRow("10.0.0.0/32", "10.0.0.1/32", 1)]
+    [DataRow("10.0.0.0/32", "10.0.0.2/32", 2)]
+    [DataRow("10.0.0.0/32", "10.0.0.3/32", 2)]
+    [DataRow("10.0.0.0/24", "10.0.1.3/32", 2)]
+    [DataRow("10.0.0.0/24", "10.0.1.3/24", 1)]
+    [DataRow("10.0.0.1/32", "10.0.0.1/32", 1)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/25", 1)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/26", 1)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/27", 1)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/28", 1)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/29", 1)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/30", 1)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/31", 1)]
+    [DataRow("10.0.0.1/24", "10.0.0.1/32", 1)]
+    [DataRow("0.0.0.0/0", "0.0.0.0/32", 1)]
+    public void TestOperatorAdd(string left, string right, int count)
+    {
+        var ipn1 = IPNetwork2.Parse(left);
+        var ipn2 = IPNetwork2.Parse(right);
+
+        var result = ipn1 + ipn2;
+
+        Assert.HasCount(count, result, "add");
+    }
 }
