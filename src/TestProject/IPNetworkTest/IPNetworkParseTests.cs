@@ -652,4 +652,29 @@ public class IPNetworkParseTests
         // This assert fails.
         Assert.IsTrue(result);
     }
+    
+    /// <summary>
+    /// Test TryParse with too many chars and sanitize
+    /// </summary>
+    [TestMethod]
+    [DataRow("10.11.0.0", "NetworkAware", "10.11.0.0/16")]
+    [DataRow("10.11.0.0", "ClassLess", "10.11.0.0/32")]
+    [DataRow("10.11.0.0", "ClassFull", "10.11.0.0/8")]
+    public void TestParse(string ipnetwork, string guess, string expected)
+    {
+        var cidrGuess = CidrGuess.ClassLess;
+        if (guess == "NetworkAware")
+        {
+            cidrGuess = CidrGuess.NetworkAware;
+        }
+        else if (guess == "ClassFull")
+        {
+            cidrGuess = CidrGuess.ClassFull;
+        }
+        bool result = IPNetwork2.TryParse(ipnetwork, cidrGuess, out IPNetwork2 ipnetwork2);
+        var ipnetworkExpected = IPNetwork2.Parse(expected);
+        
+        // This assert fails.
+        Assert.AreEqual(ipnetworkExpected, ipnetwork2);
+    }
 }
