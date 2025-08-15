@@ -2,6 +2,8 @@
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
+using System.Collections.Generic;
+
 namespace System.Net;
 
 /// <summary>
@@ -51,5 +53,31 @@ public sealed partial class IPNetwork2
     public static bool operator >(IPNetwork2 left, IPNetwork2 right)
     {
         return Compare(left, right) > 0;
+    }
+    
+    /// <summary>
+    /// Subtract two IPNetwork.
+    /// </summary>
+    /// <param name="left">left instance.</param>
+    /// <param name="right">Right instance.</param>
+    /// <returns>The symmetric difference (subtraction) of two networks.</returns>
+    public static List<IPNetwork2> operator -(IPNetwork2 left, IPNetwork2 right)
+    {
+        return left.Subtract(right);
+    }
+    
+    /// <summary>
+    /// Add two IPNetwork.
+    /// </summary>
+    /// <param name="left">left instance.</param>
+    /// <param name="right">Right instance.</param>
+    /// <returns>Try to supernet two consecutive cidr equal subnet into a single one, otherwise return both netowkrs.</returns>
+    public static List<IPNetwork2> operator +(IPNetwork2 left, IPNetwork2 right)
+    {
+        if (left.TrySupernet(right, out var result))
+        {
+            return [result];
+        };
+        return [left, right];
     }
 }
