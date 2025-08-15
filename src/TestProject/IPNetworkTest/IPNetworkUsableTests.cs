@@ -26,5 +26,4 @@ public class IPNetworkUsableTests
         var network = IPNetwork2.Parse(ipnetwork);
         Assert.AreEqual(usable, network.Usable, "Usable");
     }
-
 }
