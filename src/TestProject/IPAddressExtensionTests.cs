@@ -98,10 +98,7 @@ public class IPAddressExtensionTests
         foreach (int i in Enumerable.Range(1, 1000))
         {
             /* Hash the current interation to get a new block of deterministic bytes. */
-            using (var hash = SHA256.Create())
-            {
-                hashInput = hash.ComputeHash(hashInput);
-            }
+            hashInput = SHA256.HashData(hashInput);
 
             /* Convert the first n bytes for an address. 4 will have an IPv4. 16 will make an IPv6. */
             yield return new IPAddress(hashInput.Take(byteCount).ToArray()).ToString();

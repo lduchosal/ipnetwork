@@ -81,7 +81,7 @@ public static class UniqueLocalAddress
     {
         if (string.IsNullOrEmpty(seed))
         {
-            throw new ArgumentNullException("Seed cannot be null or empty", nameof(seed));
+            throw new ArgumentNullException(nameof(seed), "Seed cannot be null or empty");
         }
 
         byte[] globalId = GenerateGlobalIdFromSeed(seed);

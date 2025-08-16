@@ -362,7 +362,7 @@ public class UniqueLocalAddressTest
         }
 
         // Assert - Should produce mostly unique results
-        Assert.IsTrue(generatedUlas.Count > iterations * 0.9,
+        Assert.IsGreaterThan(iterations * 0.9, generatedUlas.Count,
             "ULA generation should produce highly unique results");
     }
 
@@ -421,7 +421,7 @@ public class UniqueLocalAddressTest
             seen.Add(UniqueLocalAddress.GenerateUlaPrefix().ToString());
         }
 
-        Assert.IsTrue(seen.Count >= 2, "Multiple calls should usually produce at least two distinct prefixes.");
+        Assert.IsGreaterThanOrEqualTo(2, seen.Count, "Multiple calls should usually produce at least two distinct prefixes.");
     }
 
     /// <summary>
