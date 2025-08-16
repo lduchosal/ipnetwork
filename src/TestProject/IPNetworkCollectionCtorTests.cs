@@ -16,10 +16,7 @@ public class IPNetworkCollectionCtorTests
     [TestMethod]
     public void TestCtor1()
     {
-        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
-        {
-            var ipn = new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 33);
-        });
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() => new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 33));
     }
 
     /// <summary>
@@ -28,9 +25,6 @@ public class IPNetworkCollectionCtorTests
     [TestMethod]
     public void TestCtor2()
     {
-        Assert.ThrowsExactly<ArgumentException>(() =>
-        {
-            var ipn = new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 2);
-        });
+        Assert.ThrowsExactly<ArgumentException>(() => new IPNetworkCollection(IPNetwork2.IANA_ABLK_RESERVED1, 2));
     }
 }

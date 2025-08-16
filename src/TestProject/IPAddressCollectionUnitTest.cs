@@ -137,6 +137,10 @@ public class IPAddressCollectionUnitTest
             count++;
         }
 
+        object current = ((IEnumerator)ips).Current;
+        ((IEnumerator)ips).Reset();
+
+        Assert.IsNotNull(current, "current is no null");
         Assert.IsNotNull(last, "last is null");
         Assert.IsNotNull(first, "first is null");
         Assert.AreEqual("192.168.1.0", first.ToString(), "first");

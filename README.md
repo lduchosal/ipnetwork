@@ -481,6 +481,25 @@ Resut:
 ```
 ---
 
+## IPv6 Unique Local Address (ULA)
+
+Unique Local Addresses are IPv6 addresses in the range fc00::/7 that are not routed on the public Internet. They are the IPv6 equivalent of private IPv4 addresses (e.g. 10.0.0.0/8, 192.168.0.0/16).
+
+```C#
+// Generate a random ULA prefix
+var randomUla = UniqueLocalAddress.GenerateUlaPrefix();
+Console.WriteLine($"Random ULA: {randomUla}"); // e.g., fd12:3456:789a::/48
+
+// Create subnets with int subnet IDs (CLS-compliant)
+var subnet1 = UniqueLocalAddress.CreateUlaSubnet(randomUla, 1);
+var subnet2 = UniqueLocalAddress.CreateUlaSubnet(randomUla, 2);
+var maxSubnet = UniqueLocalAddress.CreateUlaSubnet(randomUla, UniqueLocalAddress.MaxSubnetId);
+
+Console.WriteLine($"Subnet 1: {subnet1}"); // e.g., fd12:3456:
+```
+
+---
+
 ## IPNetwork utility command line
 
 IPNetwork utility command line take care of complex network, ip, netmask,
