@@ -180,7 +180,7 @@ public static class UniqueLocalAddress
     /// <returns>40-bit Global ID as a byte array.</returns>
     private static byte[] GenerateGlobalIdFromMac(byte[] macAddress)
     {
-        using var sha1 = SHA1.Create();
+        using var sha2 = SHA256.Create();
         byte[] input = new byte[macAddress.Length + 8];
         Array.Copy(macAddress, 0, input, 0, macAddress.Length);
                 
@@ -188,7 +188,7 @@ public static class UniqueLocalAddress
         byte[] timestamp = BitConverter.GetBytes(DateTimeOffset.UtcNow.ToUnixTimeSeconds());
         Array.Copy(timestamp, 0, input, macAddress.Length, timestamp.Length);
 
-        byte[] hash = sha1.ComputeHash(input);
+        byte[] hash = sha2.ComputeHash(input);
         byte[] globalId = new byte[5];
         Array.Copy(hash, 0, globalId, 0, 5);
         return globalId;
@@ -201,9 +201,9 @@ public static class UniqueLocalAddress
     /// <returns>40-bit Global ID as a byte array.</returns>
     private static byte[] GenerateGlobalIdFromSeed(string seed)
     {
-        using var sha1 = SHA1.Create();
+        using var sha2 = SHA256.Create();
         byte[] seedBytes = Encoding.UTF8.GetBytes(seed);
-        byte[] hash = sha1.ComputeHash(seedBytes);
+        byte[] hash = sha2.ComputeHash(seedBytes);
         byte[] globalId = new byte[5];
         Array.Copy(hash, 0, globalId, 0, 5);
         return globalId;
