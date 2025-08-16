@@ -25,55 +25,56 @@ public partial class IPNetwork2
     /// <param name="ipaddress">A string containing an ip address to convert.</param>
     /// <param name="netmask">A string containing a netmask to convert (255.255.255.0).</param>
     /// <param name="ipnetwork">The resulting IPNetwork.</param>
-    private static void InternalParse(bool tryParse, string ipaddress, string netmask, out IPNetwork2 ipnetwork)
+    private static bool InternalParse(bool tryParse, string ipaddress, string netmask, out IPNetwork2 ipnetwork)
     {
         if (string.IsNullOrEmpty(ipaddress))
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentNullException(nameof(ipaddress));
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
         if (string.IsNullOrEmpty(netmask))
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentNullException(nameof(netmask));
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
         bool ipaddressParsed = IPAddress.TryParse(ipaddress, out IPAddress ip);
-        if (ipaddressParsed == false)
+        if (!ipaddressParsed)
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentException("ipaddress");
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
         bool netmaskParsed = IPAddress.TryParse(netmask, out IPAddress mask);
-        if (netmaskParsed == false)
+        if (!netmaskParsed)
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentException("netmask");
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
-        InternalParse(tryParse, ip, mask, out ipnetwork);
+        bool parsed = InternalParse(tryParse, ip, mask, out ipnetwork);
+        return parsed;
     }
 
     /// <summary>
@@ -86,17 +87,18 @@ public partial class IPNetwork2
     /// <param name="ipnetwork">The resulting IPNetwork.</param>
     /// <exception cref="ArgumentNullException">When network is null.</exception>
     /// <exception cref="ArgumentException">When network is not valid.</exception>
-    private static void InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, bool sanitize, out IPNetwork2 ipnetwork)
+    /// <returns>true if parsed, otherwise false</returns>
+    private static bool InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, bool sanitize, out IPNetwork2 ipnetwork)
     {
         if (string.IsNullOrEmpty(network))
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentNullException(nameof(network));
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
         if (sanitize)
@@ -111,13 +113,13 @@ public partial class IPNetwork2
 
         if (args.Length == 0)
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentNullException(nameof(network));
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
         
         if (args.Length == 1)
@@ -125,37 +127,38 @@ public partial class IPNetwork2
             string cidrlessNetwork = args[0];
             if (cidrGuess.TryGuessCidr(cidrlessNetwork, out byte cidr))
             {
-                InternalParse(tryParse, cidrlessNetwork, cidr, out ipnetwork);
-                return;
+                bool parsed = InternalParse(tryParse, cidrlessNetwork, cidr, out ipnetwork);
+                return parsed;
             }
 
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentException("network");
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
         
         if (args.Length == 2)
         {
             if (byte.TryParse(args[1], out byte cidr1))
             {
-                InternalParse(tryParse, args[0], cidr1, out ipnetwork);
-                return;
+                bool parsed2 = InternalParse(tryParse, args[0], cidr1, out ipnetwork);
+                return parsed2;
             }
 
-            InternalParse(tryParse, args[0], args[1], out ipnetwork);
+            bool parsed3 = InternalParse(tryParse, args[0], args[1], out ipnetwork);
+            return parsed3;
         }
         else
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentNullException(nameof(network));
             }
             ipnetwork = null;
-            return;
+            return false;
         }
     }
 
@@ -173,47 +176,46 @@ public partial class IPNetwork2
     /// <param name="ipaddress">An ip address to convert.</param>
     /// <param name="netmask">A netmask to convert (255.255.255.0).</param>
     /// <param name="ipnetwork">The resulting IPNetwork.</param>
-    private static void InternalParse(bool tryParse, IPAddress ipaddress, IPAddress netmask, out IPNetwork2 ipnetwork)
+    private static bool InternalParse(bool tryParse, IPAddress ipaddress, IPAddress netmask, out IPNetwork2 ipnetwork)
     {
         if (ipaddress == null)
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentNullException(nameof(ipaddress));
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
         if (netmask == null)
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentNullException(nameof(netmask));
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
         var uintIpAddress = ToBigInteger(ipaddress);
-        bool parsed = TryToCidr(netmask, out byte? cidr2);
-        if (parsed == false)
+        bool parsed = TryToCidr(netmask, out byte cidr2);
+        if (!parsed)
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentException("netmask");
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
-        byte cidr = (byte)cidr2!;
-
-        var ipnet = new IPNetwork2(uintIpAddress, ipaddress.AddressFamily, cidr);
+        var ipnet = new IPNetwork2(uintIpAddress, ipaddress.AddressFamily, cidr2);
         ipnetwork = ipnet;
+        return true;
     }
 
     /// <summary>
@@ -230,43 +232,44 @@ public partial class IPNetwork2
     /// <param name="ipaddress">A string containing an ip address to convert.</param>
     /// <param name="cidr">A byte representing the CIDR to be used in conversion (/24).</param>
     /// <param name="ipnetwork">The resulting IPNetwork.</param>
-    private static void InternalParse(bool tryParse, string ipaddress, byte cidr, out IPNetwork2 ipnetwork)
+    private static bool InternalParse(bool tryParse, string ipaddress, byte cidr, out IPNetwork2 ipnetwork)
     {
         if (string.IsNullOrEmpty(ipaddress))
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentNullException(nameof(ipaddress));
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
         bool ipaddressParsed = IPAddress.TryParse(ipaddress, out IPAddress ip);
-        if (ipaddressParsed == false)
+        if (!ipaddressParsed)
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentException("ipaddress");
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
         bool parsedNetmask = TryToNetmask(cidr, ip.AddressFamily, out IPAddress mask);
-        if (parsedNetmask == false)
+        if (!parsedNetmask)
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentException("cidr");
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
-        InternalParse(tryParse, ip, mask, out ipnetwork);
+        bool parsed = InternalParse(tryParse, ip, mask, out ipnetwork);
+        return parsed;
     }
 }

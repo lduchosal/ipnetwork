@@ -18,7 +18,7 @@ public class IPNetworkV6TryToBigIntegerTests
     {
         var mask = IPAddress.Parse("::ffff:ffff");
         uint uintMask = 0xffffffff;
-        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger? result);
+        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger result);
 
         Assert.AreEqual(uintMask, result, "uint");
         Assert.IsTrue(parsed, "parsed");
@@ -32,7 +32,7 @@ public class IPNetworkV6TryToBigIntegerTests
     {
         var mask = IPAddress.Parse("::ffff:ff00");
         uint uintMask = 0xffffff00;
-        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger? result);
+        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger result);
 
         Assert.AreEqual(uintMask, result, "uint");
         Assert.IsTrue(parsed, "parsed");
@@ -46,7 +46,7 @@ public class IPNetworkV6TryToBigIntegerTests
     {
         var mask = IPAddress.Parse("::ffff:0");
         uint uintMask = 0xffff0000;
-        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger? result);
+        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger result);
 
         Assert.AreEqual(uintMask, result, "uint");
         Assert.IsTrue(parsed, "parsed");
@@ -61,7 +61,7 @@ public class IPNetworkV6TryToBigIntegerTests
         var mask = IPAddress.Parse("::ff00:0");
         uint uintMask = 0xff000000;
 
-        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger? result);
+        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger result);
 
         Assert.AreEqual(uintMask, result, "uint");
         Assert.IsTrue(parsed, "parsed");
@@ -75,7 +75,7 @@ public class IPNetworkV6TryToBigIntegerTests
     {
         var mask = IPAddress.Parse("::");
         uint uintMask = 0x00000000;
-        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger? result);
+        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger result);
 
         Assert.AreEqual(uintMask, result, "uint");
         Assert.IsTrue(parsed, "parsed");

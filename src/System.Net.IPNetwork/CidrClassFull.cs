@@ -30,7 +30,7 @@ public sealed class CidrClassFull : ICidrGuess
     public bool TryGuessCidr(string ip, out byte cidr)
     {
         bool parsed = IPAddress.TryParse($"{ip}", out var ipaddress);
-        if (parsed == false)
+        if (!parsed)
         {
             cidr = 0;
             return false;
@@ -43,7 +43,7 @@ public sealed class CidrClassFull : ICidrGuess
         }
 
         var uintIPAddress = IPNetwork2.ToBigInteger(ipaddress);
-        uintIPAddress = uintIPAddress >> 30;
+        uintIPAddress >>= 30;
         if (uintIPAddress <= 1)
         {
             cidr = 8;

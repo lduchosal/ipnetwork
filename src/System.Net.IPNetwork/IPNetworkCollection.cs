@@ -64,7 +64,7 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
 
         if (cidrSubnet < ipnetwork.Cidr)
         {
-            throw new ArgumentException("cidrSubnet");
+            throw new ArgumentException(nameof(cidrSubnet));
         }
 
         this.cidrSubnet = cidrSubnet;
@@ -139,7 +139,17 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     /// </remarks>
     public void Dispose()
     {
-        // nothing to dispose
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Dispose instance 
+    /// </summary>
+    /// <param name="disposing"></param>
+    protected virtual void Dispose(bool disposing)
+    {
+        // Cleanup
     }
 
     /// <summary>
@@ -160,12 +170,7 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     public bool MoveNext()
     {
         this.enumerator++;
-        if (this.enumerator >= this.Count)
-        {
-            return false;
-        }
-
-        return true;
+        return this.enumerator < this.Count;
     }
 
     /// <summary>

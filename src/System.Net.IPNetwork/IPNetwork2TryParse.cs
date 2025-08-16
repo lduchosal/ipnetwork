@@ -71,10 +71,7 @@ public partial class IPNetwork2
     /// <returns>true if network was converted successfully; otherwise, false.</returns>
     public static bool TryParse(string network, out IPNetwork2 ipnetwork)
     {
-        InternalParse(true, network, CidrGuess.ClassFull, sanitize: true, out IPNetwork2 ipnetwork2);
-        bool parsed = ipnetwork2 != null;
-        ipnetwork = ipnetwork2;
-
+        bool parsed = InternalParse(true, network, CidrGuess.ClassFull, sanitize: true, out ipnetwork);
         return parsed;
     }
 
@@ -95,10 +92,7 @@ public partial class IPNetwork2
     /// <returns>true if network was converted successfully; otherwise, false.</returns>
     public static bool TryParse(string network, bool sanitanize, out IPNetwork2 ipnetwork)
     {
-        InternalParse(true, network, CidrGuess.ClassFull, sanitanize, out IPNetwork2 ipnetwork2);
-        bool parsed = ipnetwork2 != null;
-        ipnetwork = ipnetwork2;
-
+        bool parsed = InternalParse(true, network, CidrGuess.ClassFull, sanitanize, out ipnetwork);
         return parsed;
     }
 
@@ -119,10 +113,7 @@ public partial class IPNetwork2
     /// <returns>true if network was converted successfully; otherwise, false.</returns>
     public static bool TryParse(IPAddress ipaddress, IPAddress netmask, out IPNetwork2 ipnetwork)
     {
-        InternalParse(true, ipaddress, netmask, out IPNetwork2 ipnetwork2);
-        bool parsed = ipnetwork2 != null;
-        ipnetwork = ipnetwork2;
-
+        bool parsed = InternalParse(true, ipaddress, netmask, out ipnetwork);
         return parsed;
     }
 
@@ -143,10 +134,7 @@ public partial class IPNetwork2
     /// <returns>true if network was converted successfully; otherwise, false.</returns>
     public static bool TryParse(string network, ICidrGuess cidrGuess, out IPNetwork2 ipnetwork)
     {
-        InternalParse(true, network, cidrGuess, true, out IPNetwork2 ipnetwork2);
-        bool parsed = ipnetwork2 != null;
-        ipnetwork = ipnetwork2;
-
+        bool parsed = InternalParse(true, network, cidrGuess, true, out ipnetwork);
         return parsed;
     }
 
@@ -168,10 +156,7 @@ public partial class IPNetwork2
     /// <returns>true if network was converted successfully; otherwise, false.</returns>
     public static bool TryParse(string network, ICidrGuess cidrGuess, bool sanitanize, out IPNetwork2 ipnetwork)
     {
-        InternalParse(true, network, cidrGuess, sanitanize, out IPNetwork2 ipnetwork2);
-        bool parsed = ipnetwork2 != null;
-        ipnetwork = ipnetwork2;
-
+        bool parsed = InternalParse(true, network, cidrGuess, sanitanize, out ipnetwork);
         return parsed;
     }
 }

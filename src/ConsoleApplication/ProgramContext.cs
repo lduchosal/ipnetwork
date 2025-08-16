@@ -57,7 +57,7 @@ public class ProgramContext
     /// <summary>
     /// Gets or sets a value indicating whether gets or sets the CidrParse.
     /// </summary>
-    public CidrParseEnum CidrParse { get; set; } = CidrParseEnum.Value;
+    public CidrParse CidrParse { get; set; } = CidrParse.Value;
 
     /// <summary>
     /// Gets or sets a value indicating whether gets or sets the CidrParsed.
@@ -82,7 +82,7 @@ public class ProgramContext
     /// <summary>
     /// Gets or sets a value indicating whether gets or sets the Action.
     /// </summary>
-    public ActionEnum Action { get; set; } = ActionEnum.PrintNetworks;
+    public Action Action { get; set; } = Action.PrintNetworks;
 
     /// <summary>
     /// Gets or sets a value indicating whether gets or sets the SubnetCidr.

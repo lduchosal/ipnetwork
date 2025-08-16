@@ -12,7 +12,7 @@ using System.Runtime.Serialization;
 /// </summary>
 [Serializable]
 [CLSCompliant(true)]
-public sealed partial class IPNetwork2 : IComparable<IPNetwork2>, ISerializable
+public sealed partial class IPNetwork2 : ISerializable
 {
     /// <summary>
     /// Returns a string representation of the object.

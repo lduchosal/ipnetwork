@@ -138,12 +138,8 @@ public static class UniqueLocalAddress
     /// <returns>True if the network is a ULA, false otherwise.</returns>
     public static bool IsUlaPrefix(IPNetwork2 network)
     {
-        if (network?.AddressFamily != AddressFamily.InterNetworkV6)
-        {
-            return false;
-        }
-
-        return UlaRange.Contains(network.Network);
+        return network?.AddressFamily == AddressFamily.InterNetworkV6 
+               && UlaRange.Contains(network.Network);
     }
 
     /// <summary>
@@ -153,12 +149,8 @@ public static class UniqueLocalAddress
     /// <returns>True if the network is locally assigned ULA, false otherwise.</returns>
     public static bool IsLocallyAssignedUla(IPNetwork2 network)
     {
-        if (network?.AddressFamily != AddressFamily.InterNetworkV6)
-        {
-            return false;
-        }
-
-        return UlaLocallyAssigned.Contains(network.Network);
+        return network?.AddressFamily == AddressFamily.InterNetworkV6 
+               && UlaLocallyAssigned.Contains(network.Network);
     }
 
     /// <summary>

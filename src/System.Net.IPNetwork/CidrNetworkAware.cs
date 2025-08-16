@@ -75,18 +75,17 @@ public sealed class CidrNetworkAware : ICidrGuess
         if (!IPAddress.TryParse(ip.Trim(), out var ipAddress))
             return false;
 
-        if (ipAddress.AddressFamily == AddressFamily.InterNetwork)
+        switch (ipAddress.AddressFamily)
         {
-            cidr = GuessIpv4(ipAddress);
-            return true;
+            case AddressFamily.InterNetwork:
+                cidr = GuessIpv4(ipAddress);
+                return true;
+            case AddressFamily.InterNetworkV6:
+                cidr = GuessIpv6(ipAddress);
+                return true;
+            default:
+                return false;
         }
-        else if (ipAddress.AddressFamily == AddressFamily.InterNetworkV6)
-        {
-            cidr = GuessIpv6(ipAddress);
-            return true;
-        }
-
-        return false;
     }
 
     private static byte GuessIpv4(IPAddress ip)

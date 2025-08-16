@@ -84,7 +84,11 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
     public static IPNetwork2 Parse(string network)
     {
-        InternalParse(false, network, CidrGuess.ClassFull, true, out IPNetwork2 ipnetwork);
+        bool parsed = InternalParse(false, network, CidrGuess.ClassFull, true, out IPNetwork2 ipnetwork);
+        if (!parsed)
+        {
+            throw new ArgumentException(nameof(network));
+        }
         return ipnetwork;
     }
 
@@ -104,7 +108,11 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
     public static IPNetwork2 Parse(string network, bool sanitanize)
     {
-        InternalParse(false, network, CidrGuess.ClassFull, sanitanize, out IPNetwork2 ipnetwork);
+        bool parsed = InternalParse(false, network, CidrGuess.ClassFull, sanitanize, out IPNetwork2 ipnetwork);
+        if (!parsed)
+        {
+            throw new ArgumentException(nameof(network));
+        }
         return ipnetwork;
     }
 
@@ -124,7 +132,11 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
     public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess)
     {
-        InternalParse(false, network, cidrGuess, true, out IPNetwork2 ipnetwork);
+        bool parsed = InternalParse(false, network, cidrGuess, true, out IPNetwork2 ipnetwork);
+        if (!parsed)
+        {
+            throw new ArgumentException(nameof(network));
+        }
         return ipnetwork;
     }
 
@@ -145,7 +157,11 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
     public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess, bool sanitanize)
     {
-        InternalParse(false, network, cidrGuess, sanitanize, out IPNetwork2 ipnetwork);
+        bool parsed = InternalParse(false, network, cidrGuess, sanitanize, out IPNetwork2 ipnetwork);
+        if (!parsed)
+        {
+            throw new ArgumentException(nameof(network));
+        }
         return ipnetwork;
     }
 }

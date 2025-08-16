@@ -430,7 +430,7 @@ public class UniqueLocalAddressTest
     [TestMethod]
     public void GenerateUlaPrefix_Mac_Is_Deterministic_And_Valid()
     {
-        byte[] mac = new byte[] { 0x02, 0x11, 0x22, 0x33, 0x44, 0x55 }; // locally-administered example
+        byte[] mac = [0x02, 0x11, 0x22, 0x33, 0x44, 0x55]; // locally-administered example
         var p1 = UniqueLocalAddress.GenerateUlaPrefix(mac);
         var p2 = UniqueLocalAddress.GenerateUlaPrefix(mac);
         AssertIsUla48(p1);
@@ -443,8 +443,8 @@ public class UniqueLocalAddressTest
     [TestMethod]
     public void GenerateUlaPrefix_Different_Mac_Usually_Different()
     {
-        var p1 = UniqueLocalAddress.GenerateUlaPrefix(new byte[] { 0, 1, 2, 3, 4, 5 });
-        var p2 = UniqueLocalAddress.GenerateUlaPrefix(new byte[] { 0, 1, 2, 3, 4, 6 });
+        var p1 = UniqueLocalAddress.GenerateUlaPrefix([0, 1, 2, 3, 4, 5]);
+        var p2 = UniqueLocalAddress.GenerateUlaPrefix([0, 1, 2, 3, 4, 6]);
         AssertIsUla48(p1);
         AssertIsUla48(p2);
         Assert.AreNotEqual(p1.ToString(), p2.ToString(), "Different MACs should usually yield different prefixes.");
@@ -457,11 +457,11 @@ public class UniqueLocalAddressTest
     public void GenerateUlaPrefix_Mac_Null_Or_Wrong_Length_Throws()
     {
         Assert.ThrowsExactly<ArgumentNullException>(() => UniqueLocalAddress.GenerateUlaPrefix((byte[])null!));
-        Assert.ThrowsExactly<ArgumentException>(() => UniqueLocalAddress.GenerateUlaPrefix(Array.Empty<byte>()));
+        Assert.ThrowsExactly<ArgumentException>(() => UniqueLocalAddress.GenerateUlaPrefix([]));
         Assert.ThrowsExactly<ArgumentException>(() =>
-            UniqueLocalAddress.GenerateUlaPrefix(new byte[] { 1, 2, 3, 4, 5 })); // 5
+            UniqueLocalAddress.GenerateUlaPrefix([1, 2, 3, 4, 5])); // 5
         Assert.ThrowsExactly<ArgumentException>(() =>
-            UniqueLocalAddress.GenerateUlaPrefix(new byte[] { 1, 2, 3, 4, 5, 6, 7 })); // 7
+            UniqueLocalAddress.GenerateUlaPrefix([1, 2, 3, 4, 5, 6, 7])); // 7
     }
 
     /// <summary>

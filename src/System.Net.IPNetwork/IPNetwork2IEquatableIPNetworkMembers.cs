@@ -7,7 +7,7 @@ namespace System.Net;
 /// <summary>
 /// IEquatable.
 /// </summary>
-public sealed partial class IPNetwork2
+public sealed partial class IPNetwork2 : IComparable<IPNetwork2>, IEquatable<IPNetwork2>
 {
     /// <summary>
     /// Compare two ipnetworks.

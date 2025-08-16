@@ -7,7 +7,7 @@ namespace System.Net;
 /// <summary>
 /// Switch and actions.
 /// </summary>
-public enum ActionEnum
+public enum Action
 {
     /// <summary>
     /// Prints usage.
@@ -52,5 +52,5 @@ public enum ActionEnum
     /// <summary>
     /// Substract networks.
     /// </summary>
-    SubtractNetwork,
+    SubtractNetwork
 }

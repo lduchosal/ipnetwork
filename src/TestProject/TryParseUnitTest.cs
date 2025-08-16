@@ -330,8 +330,9 @@ public class TryParseUnitTest
     public void TestTryParseStringAe2()
     {
         string ipaddress = "0.0.0.0 0.0.1.0";
-        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 _);
+        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
+        Assert.IsNull(ipnetwork, "ipnetwork");
         Assert.IsFalse(parsed, "parsed");
     }
 
@@ -383,7 +384,6 @@ public class TryParseUnitTest
     public void Test_TryParse(string ipnetwork, bool sanitize, bool parsed)
     {
         bool result = IPNetwork2.TryParse(ipnetwork, sanitize, out IPNetwork2 _);
-
         Assert.AreEqual(parsed, result, "parsed1");
     }
 
@@ -403,7 +403,6 @@ public class TryParseUnitTest
     public void Test_IPAddress_TryParse(string ipaddress, bool parsed)
     {
         bool result = IPAddress.TryParse(ipaddress, out IPAddress _);
-
         Assert.AreEqual(parsed, result, "parsed1");
     }
 }

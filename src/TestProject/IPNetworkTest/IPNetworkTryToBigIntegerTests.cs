@@ -18,7 +18,7 @@ public class IPNetworkTryToBigIntegerTests
     {
         var mask = IPAddress.Parse("255.255.255.255");
         uint uintMask = 0xffffffff;
-        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger? result);
+        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger result);
 
         Assert.AreEqual(uintMask, result, "uint");
         Assert.IsTrue(parsed, "parsed");
@@ -32,7 +32,7 @@ public class IPNetworkTryToBigIntegerTests
     {
         var mask = IPAddress.Parse("255.255.255.0");
         uint uintMask = 0xffffff00;
-        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger? result);
+        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger result);
 
         Assert.AreEqual(uintMask, result, "uint");
         Assert.IsTrue(parsed, "parsed");
@@ -46,7 +46,7 @@ public class IPNetworkTryToBigIntegerTests
     {
         var mask = IPAddress.Parse("255.255.0.0");
         uint uintMask = 0xffff0000;
-        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger? result);
+        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger result);
 
         Assert.AreEqual(uintMask, result, "uint");
         Assert.IsTrue(parsed, "parsed");
@@ -61,7 +61,7 @@ public class IPNetworkTryToBigIntegerTests
         var mask = IPAddress.Parse("255.0.0.0");
         uint uintMask = 0xff000000;
 
-        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger? result);
+        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger result);
 
         Assert.AreEqual(uintMask, result, "uint");
         Assert.IsTrue(parsed, "parsed");
@@ -75,7 +75,7 @@ public class IPNetworkTryToBigIntegerTests
     {
         var mask = IPAddress.Parse("0.0.0.0");
         uint uintMask = 0x00000000;
-        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger? result);
+        bool parsed = IPNetwork2.TryToBigInteger(mask, out BigInteger result);
 
         Assert.AreEqual(uintMask, result, "uint");
         Assert.IsTrue(parsed, "parsed");
@@ -87,21 +87,9 @@ public class IPNetworkTryToBigIntegerTests
     [TestMethod]
     public void TestTryToBigIntegerAne()
     {
-        bool parsed = IPNetwork2.TryToBigInteger(null, out BigInteger? result);
+        bool parsed = IPNetwork2.TryToBigInteger(null, out BigInteger result);
 
-        Assert.IsNull(result, "uint");
-        Assert.IsFalse(parsed, "parsed");
-    }
-
-    /// <summary>
-    ///     Tests Try To Big Integer functionality with Try To Big Integer ANE3.
-    /// </summary>
-    [TestMethod]
-    public void TestTryToBigIntegerAne3()
-    {
-        bool parsed = IPNetwork2.TryToBigInteger(null, out BigInteger? result);
-
-        Assert.IsNull(result, "uint");
+        Assert.AreEqual(default, result, "uint");
         Assert.IsFalse(parsed, "parsed");
     }
 
@@ -111,7 +99,7 @@ public class IPNetworkTryToBigIntegerTests
     [TestMethod]
     public void TestTryToBigIntegerAne2()
     {
-        bool parsed = IPNetwork2.TryToBigInteger(IPAddress.IPv6Any, out BigInteger? result);
+        bool parsed = IPNetwork2.TryToBigInteger(IPAddress.IPv6Any, out BigInteger result);
 
         Assert.AreEqual(0, result, "result");
         Assert.IsTrue(parsed, "parsed");
