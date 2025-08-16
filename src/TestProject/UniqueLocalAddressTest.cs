@@ -85,8 +85,8 @@ public class UniqueLocalAddressTest
     /// Test
     /// </summary>
     [TestMethod]
-    [DataRow("test-seed-123", "fd91:2ea0:f3c9::/48")]
-    [DataRow("seed", "fd92:713d:4709::/48")]
+    [DataRow("test-seed-123", "fd93:6c27:9b93::/48")]
+    [DataRow("seed", "fd19:b258:56e1::/48")]
     public void TestGenerateUlaPrefix(string seed, string ipnetwork)
     {
         // Arrange
