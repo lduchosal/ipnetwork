@@ -106,28 +106,6 @@ public partial class IPNetwork2
     /// <param name="ipnetworks">The resulting IPNetworks.</param>
     private static bool InternalParseRange(bool tryParse, string start, string end, out IEnumerable<IPNetwork2> ipnetworks)
     {
-        if (string.IsNullOrEmpty(start))
-        {
-            if (!tryParse)
-            {
-                throw new ArgumentNullException(nameof(start));
-            }
-
-            ipnetworks = null;
-            return false;
-        }
-
-        if (string.IsNullOrEmpty(end))
-        {
-            if (!tryParse)
-            {
-                throw new ArgumentNullException(nameof(end));
-            }
-
-            ipnetworks = null;
-            return false;
-        }
-
         bool startParsed = IPAddress.TryParse(start, out IPAddress startIp);
         if (!startParsed)
         {
@@ -230,7 +208,6 @@ public partial class IPNetwork2
             return false;
         }
 
-        
         if (end.AddressFamily != start.AddressFamily)
         {
             if (!tryParse)
