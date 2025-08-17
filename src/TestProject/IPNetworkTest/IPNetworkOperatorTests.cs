@@ -382,8 +382,8 @@ public class IPNetworkOperatorTests
     ///     Tests Operator functionality with Operator -.
     /// </summary>
     [TestMethod]
+    [DataRow("10.0.0.0/32", 0, "10.0.0.0/32")]
     [DataRow("10.0.0.0/32", 1, "")]
-    [DataRow("255.255.255.255/32", 1, "")]
     [DataRow("10.0.0.0/32", 3, "")]
     [DataRow("10.0.0.0/32", 7, "")]
     [DataRow("10.0.0.0/32", 15, "")]
@@ -392,6 +392,7 @@ public class IPNetworkOperatorTests
     [DataRow("10.0.0.0/32", 4095, "")]
     [DataRow("10.0.0.0/32", -1, "10.0.0.0/31")]
     [DataRow("10.0.0.0/32", -10, "10.0.0.0/29, 10.0.0.8/31, 10.0.0.10/32")]
+    [DataRow("255.255.255.255/32", 1, "")]
     [DataRow("::/128", 1, "")]
     [DataRow("::/127", 1, "::/128")]
     [DataRow("::/128", 3, "")]
