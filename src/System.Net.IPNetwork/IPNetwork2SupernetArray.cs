@@ -49,7 +49,7 @@ public sealed partial class IPNetwork2
     {
         if (ipnetworks == null)
         {
-            if (trySupernet == false)
+            if (!trySupernet)
             {
                 throw new ArgumentNullException(nameof(ipnetworks));
             }

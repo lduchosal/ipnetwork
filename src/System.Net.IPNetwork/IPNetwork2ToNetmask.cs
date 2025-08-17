@@ -61,7 +61,7 @@ public sealed partial class IPNetwork2
         if (family != AddressFamily.InterNetwork
             && family != AddressFamily.InterNetworkV6)
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentException("family");
             }
@@ -73,7 +73,7 @@ public sealed partial class IPNetwork2
         int maxCidr = family == AddressFamily.InterNetwork ? 32 : 128;
         if (cidr > maxCidr)
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentOutOfRangeException(nameof(cidr));
             }

@@ -93,7 +93,7 @@ public sealed partial class IPNetwork2
     {
         if (network1 == null)
         {
-            if (trySupernet == false)
+            if (!trySupernet)
             {
                 throw new ArgumentNullException(nameof(network1));
             }
@@ -104,7 +104,7 @@ public sealed partial class IPNetwork2
 
         if (network2 == null)
         {
-            if (trySupernet == false)
+            if (!trySupernet)
             {
                 throw new ArgumentNullException(nameof(network2));
             }
@@ -127,7 +127,7 @@ public sealed partial class IPNetwork2
 
         if (network1.cidr != network2.cidr)
         {
-            if (trySupernet == false)
+            if (!trySupernet)
             {
                 throw new ArgumentException("cidr");
             }
@@ -147,7 +147,7 @@ public sealed partial class IPNetwork2
         // last is the higher subnet
         if ((first.InternalBroadcast + 1) != last.InternalNetwork)
         {
-            if (trySupernet == false)
+            if (!trySupernet)
             {
                 throw new ArgumentOutOfRangeException(nameof(network1));
             }
@@ -162,7 +162,7 @@ public sealed partial class IPNetwork2
         var networkSupernet = new IPNetwork2(uintSupernet, first.family, cidrSupernet);
         if (networkSupernet.InternalNetwork != first.InternalNetwork)
         {
-            if (trySupernet == false)
+            if (!trySupernet)
             {
                 throw new ArgumentException("network");
             }

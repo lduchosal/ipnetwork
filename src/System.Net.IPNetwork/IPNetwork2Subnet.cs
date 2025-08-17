@@ -94,7 +94,7 @@ public sealed partial class IPNetwork2
     {
         if (network == null)
         {
-            if (trySubnet == false)
+            if (!trySubnet)
             {
                 throw new ArgumentNullException(nameof(network));
             }
@@ -106,7 +106,7 @@ public sealed partial class IPNetwork2
         int maxCidr = network.family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
         if (cidr > maxCidr)
         {
-            if (trySubnet == false)
+            if (!trySubnet)
             {
                 throw new ArgumentOutOfRangeException(nameof(cidr));
             }
@@ -117,7 +117,7 @@ public sealed partial class IPNetwork2
 
         if (cidr < network.Cidr)
         {
-            if (trySubnet == false)
+            if (!trySubnet)
             {
                 throw new ArgumentException("cidr");
             }

@@ -23,7 +23,7 @@ public sealed class CidrClassLess : ICidrGuess
     public bool TryGuessCidr(string ip, out byte cidr)
     {
         bool parsed = IPAddress.TryParse($"{ip}", out IPAddress ipaddress);
-        if (parsed == false)
+        if (!parsed)
         {
             cidr = 0;
             return false;
