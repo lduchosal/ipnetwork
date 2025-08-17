@@ -16,19 +16,19 @@ public class IPNetworkWideSubnetTests
     [TestMethod]
     public void WideSubnet1()
     {
-            string[] ips = ["1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0"];
-            var ipns = new List<IPNetwork2>();
-            foreach (string ip in ips)
+        string[] ips = ["1.1.1.1", "255.255.255.255", "2.2.2.2", "0.0.0.0"];
+        var ipns = new List<IPNetwork2>();
+        foreach (string ip in ips)
+        {
+            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
             {
-                if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
-                {
-                    ipns.Add(ipn);
-                }
+                ipns.Add(ipn);
             }
-
-            var ipnetwork = IPNetwork2.WideSubnet(ipns.ToArray());
-            Assert.AreEqual("0.0.0.0/0", ipnetwork.ToString(), "ipnetwork");
         }
+
+        var ipnetwork = IPNetwork2.WideSubnet(ipns.ToArray());
+        Assert.AreEqual("0.0.0.0/0", ipnetwork.ToString(), "ipnetwork");
+    }
 
     /// <summary>
     ///     Tests WideSubnet with addresses in same range, expecting a /4 network.
@@ -36,19 +36,39 @@ public class IPNetworkWideSubnetTests
     [TestMethod]
     public void WideSubnet2()
     {
-            string[] ips = ["1.1.1.1", "10.0.0.0", "2.2.2.2", "0.0.0.0"];
-            var ipns = new List<IPNetwork2>();
-            foreach (string ip in ips)
+        string[] ips = ["1.1.1.1", "10.0.0.0", "2.2.2.2", "0.0.0.0"];
+        var ipns = new List<IPNetwork2>();
+        foreach (string ip in ips)
+        {
+            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
             {
-                if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
-                {
-                    ipns.Add(ipn);
-                }
+                ipns.Add(ipn);
             }
-
-            var ipnetwork = IPNetwork2.WideSubnet(ipns.ToArray());
-            Assert.AreEqual("0.0.0.0/4", ipnetwork.ToString(), "ipnetwork");
         }
+
+        var ipnetwork = IPNetwork2.WideSubnet(ipns.ToArray());
+        Assert.AreEqual("0.0.0.0/4", ipnetwork.ToString(), "ipnetwork");
+    }
+    
+    /// <summary>
+    /// Tests WideSubnet with addresses in same range
+    /// </summary>
+    [TestMethod]
+    public void WideSubnet3()
+    {
+        string[] ips = ["192.168.1.45", "192.168.1.65"];
+        var ipns = new List<IPNetwork2>();
+        foreach (string ip in ips)
+        {
+            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
+            {
+                ipns.Add(ipn);
+            }
+        }
+
+        var ipnetwork = IPNetwork2.WideSubnet(ipns.ToArray());
+        Assert.AreEqual("192.168.1.0/25", ipnetwork.ToString(), "ipnetwork");
+    }
 
     /// <summary>
     ///     Tests WideSubnet with null input to ensure it throws ArgumentNullException.
