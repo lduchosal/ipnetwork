@@ -47,9 +47,7 @@ public sealed partial class IPNetwork2
     /// <returns>true if network2 was subtracted successfully; otherwise, false.</returns>
     public bool TrySubtract(IPNetwork2 network2, out List<IPNetwork2> result)
     {
-        InternalSubtract(true, this, network2, out List<IPNetwork2> outResult);
-        bool parsed = outResult != null;
-        result = outResult;
+        bool parsed = InternalSubtract(true, this, network2, out result);
         return parsed;
     }
 
@@ -60,7 +58,7 @@ public sealed partial class IPNetwork2
     /// <param name="network1">The first IP network.</param>
     /// <param name="network2">The second IP network.</param>
     /// <param name="result">The resulting subtracted.</param>
-    internal static void InternalSubtract(
+    internal static bool InternalSubtract(
         bool trySubtract,
         IPNetwork2 network1,
         IPNetwork2 network2,
@@ -68,31 +66,31 @@ public sealed partial class IPNetwork2
     {
         if (network1 == null)
         {
-            if (trySubtract == false)
+            if (!trySubtract)
             {
                 throw new ArgumentNullException(nameof(network1));
             }
 
             result = null;
-            return;
+            return false;
         }
 
         if (network2 == null)
         {
-            if (trySubtract == false)
+            if (!trySubtract)
             {
                 throw new ArgumentNullException(nameof(network2));
             }
 
             result = null;
-            return;
+            return false;
         }
 
         // If network2 completely contains network1, return empty
         if (network2.Contains(network1))
         {
             result = [];
-            return;
+            return true;
         }
 
         // If networks don't overlap, return original network
@@ -100,12 +98,12 @@ public sealed partial class IPNetwork2
         {
             var copy = new IPNetwork2(network1.InternalNetwork, network1.family, network1.Cidr);
             result = [copy];
-            return;
+            return true;
         }
 
         // If network1 completely contains network2, we need to split
         result = network1.SplitAroundSubnet(network2);
-        return;
+        return true;
     }
     
     private List<IPNetwork2> SplitAroundSubnet(IPNetwork2 network2)

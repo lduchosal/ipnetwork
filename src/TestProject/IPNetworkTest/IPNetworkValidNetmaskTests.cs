@@ -29,10 +29,9 @@ public class IPNetworkValidNetmaskTests
     public void TestValidNetmask0()
     {
         var mask = IPAddress.Parse("255.255.255.255");
-        bool expected = true;
         bool result = IPNetwork2.ValidNetmask(mask);
 
-        Assert.AreEqual(expected, result, "ValidNetmask");
+        Assert.IsTrue(result, "ValidNetmask");
     }
 
     /// <summary>
@@ -42,10 +41,9 @@ public class IPNetworkValidNetmaskTests
     public void TestValidNetmask1()
     {
         var mask = IPAddress.Parse("255.255.255.0");
-        bool expected = true;
         bool result = IPNetwork2.ValidNetmask(mask);
 
-        Assert.AreEqual(expected, result, "ValidNetmask");
+        Assert.IsTrue(result, "ValidNetmask");
     }
 
     /// <summary>
@@ -55,10 +53,9 @@ public class IPNetworkValidNetmaskTests
     public void TestValidNetmask2()
     {
         var mask = IPAddress.Parse("255.255.0.0");
-        bool expected = true;
         bool result = IPNetwork2.ValidNetmask(mask);
 
-        Assert.AreEqual(expected, result, "ValidNetmask");
+        Assert.IsTrue(result, "ValidNetmask");
     }
 
     /// <summary>
@@ -68,10 +65,9 @@ public class IPNetworkValidNetmaskTests
     public void TestValidNetmaskEae1()
     {
         var mask = IPAddress.Parse("0.255.0.0");
-        bool expected = false;
         bool result = IPNetwork2.ValidNetmask(mask);
 
-        Assert.AreEqual(expected, result, "ValidNetmask");
+        Assert.IsFalse(result, "ValidNetmask");
     }
 
     /// <summary>
@@ -83,10 +79,9 @@ public class IPNetworkValidNetmaskTests
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
             IPAddress mask = null;
-            bool expected = true;
             bool result = IPNetwork2.ValidNetmask(mask);
 
-            Assert.AreEqual(expected, result, "ValidNetmask");
+            Assert.IsTrue(result, "ValidNetmask");
         });
     }
 
@@ -97,9 +92,8 @@ public class IPNetworkValidNetmaskTests
     public void TestValidNetmaskEae3()
     {
         var mask = IPAddress.Parse("255.255.0.1");
-        bool expected = false;
         bool result = IPNetwork2.ValidNetmask(mask);
 
-        Assert.AreEqual(expected, result, "ValidNetmask");
+        Assert.IsFalse(result, "ValidNetmask");
     }
 }

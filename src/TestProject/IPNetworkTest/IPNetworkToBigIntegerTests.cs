@@ -151,8 +151,9 @@ public class IPNetworkToBigIntegerTests
     [TestMethod]
     public void TestToBigIntegerInternal1()
     {
-        IPNetwork2.InternalToBigInteger(true, 33, AddressFamily.InterNetwork, out BigInteger? result);
-        Assert.IsNull(result, "result");
+        bool parsed = IPNetwork2.InternalToBigInteger(true, 33, AddressFamily.InterNetwork, out BigInteger result);
+        Assert.IsFalse(parsed, "parsed");
+        Assert.AreEqual(0, result, "result");
     }
 
     /// <summary>
@@ -161,8 +162,9 @@ public class IPNetworkToBigIntegerTests
     [TestMethod]
     public void TestToBigIntegerInternal2()
     {
-        IPNetwork2.InternalToBigInteger(true, 129, AddressFamily.InterNetworkV6, out BigInteger? result);
-        Assert.IsNull(result, "result");
+        bool parsed = IPNetwork2.InternalToBigInteger(true, 129, AddressFamily.InterNetworkV6, out BigInteger result);
+        Assert.IsFalse(parsed, "parsed");
+        Assert.AreEqual(0, result, "result");
     }
 
     /// <summary>
@@ -173,7 +175,7 @@ public class IPNetworkToBigIntegerTests
     {
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
         {
-            IPNetwork2.InternalToBigInteger(false, 129, AddressFamily.InterNetworkV6, out BigInteger? _);
+            IPNetwork2.InternalToBigInteger(false, 129, AddressFamily.InterNetworkV6, out BigInteger _);
         });
     }
 
@@ -185,7 +187,7 @@ public class IPNetworkToBigIntegerTests
     {
         Assert.ThrowsExactly<NotSupportedException>(() =>
         {
-            IPNetwork2.InternalToBigInteger(false, 32, AddressFamily.AppleTalk, out BigInteger? _);
+            IPNetwork2.InternalToBigInteger(false, 32, AddressFamily.AppleTalk, out BigInteger _);
         });
     }
 
@@ -195,7 +197,8 @@ public class IPNetworkToBigIntegerTests
     [TestMethod]
     public void TestToBigIntegerInternal5()
     {
-        IPNetwork2.InternalToBigInteger(true, 32, AddressFamily.AppleTalk, out BigInteger? result);
-        Assert.IsNull(result, "result");
+        bool parsed = IPNetwork2.InternalToBigInteger(true, 32, AddressFamily.AppleTalk, out BigInteger result);
+        Assert.IsFalse(parsed, "parsed");
+        Assert.AreEqual(0, result, "result");
     }
 }

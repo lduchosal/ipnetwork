@@ -35,17 +35,17 @@ public sealed partial class IPNetwork2
 
         if (!IPAddress.TryParse(start, out IPAddress startIP))
         {
-            throw new ArgumentException("start");
+            throw new ArgumentException(nameof(start));
         }
 
         if (!IPAddress.TryParse(end, out IPAddress endIP))
         {
-            throw new ArgumentException("end");
+            throw new ArgumentException(nameof(end));
         }
 
         if (startIP.AddressFamily != endIP.AddressFamily)
         {
-            throw new NotSupportedException("MixedAddressFamily");
+            throw new NotSupportedException(nameof(AddressFamily));
         }
 
         IPNetwork2 ipnetwork;
@@ -65,6 +65,19 @@ public sealed partial class IPNetwork2
     }
 
     /// <summary>
+    /// Finds the widest subnet from an array of IP networks. </summary> <param name="ipnetworks">An array of IPNetwork2 objects representing the IP networks.</param> <returns>The widest subnet as an IPNetwork2 object.</returns>
+    /// /
+    public static IPNetwork2 WideSubnet(IPNetwork2[] ipnetworks)
+    {
+        bool parsed = InternalWideSubnet(false, ipnetworks, out IPNetwork2 ipn);
+        if (!parsed)
+        {
+            throw new ArgumentException(nameof(ipnetworks));
+        }
+        return ipn;
+    }
+
+    /// <summary>
     /// Attempts to find the widest subnet that contains both the start and end IP addresses. objects.
     /// </summary>
     /// <param name="ipnetworks">An array of IPNetwork2 objects to wide subnet.</param>
@@ -72,25 +85,15 @@ public sealed partial class IPNetwork2
     /// <returns>true if wide subnet was successful; otherwise, false.</returns>
     public static bool TryWideSubnet(IPNetwork2[] ipnetworks, out IPNetwork2 ipnetwork)
     {
-        InternalWideSubnet(true, ipnetworks, out IPNetwork2 ipn);
-        if (ipn == null)
+        bool parsed = InternalWideSubnet(true, ipnetworks, out IPNetwork2 ipn);
+        if (!parsed)
         {
             ipnetwork = null;
             return false;
         }
-
+        
         ipnetwork = ipn;
-
         return true;
-    }
-
-    /// <summary>
-    /// Finds the widest subnet from an array of IP networks. </summary> <param name="ipnetworks">An array of IPNetwork2 objects representing the IP networks.</param> <returns>The widest subnet as an IPNetwork2 object.</returns>
-    /// /
-    public static IPNetwork2 WideSubnet(IPNetwork2[] ipnetworks)
-    {
-        InternalWideSubnet(false, ipnetworks, out IPNetwork2 ipn);
-        return ipn;
     }
 
     /// <summary>
@@ -99,37 +102,38 @@ public sealed partial class IPNetwork2
     /// <param name="tryWide">If true, suppresses exceptions on invalid input; otherwise, throws.</param>
     /// <param name="ipnetworks">The array of IPNetwork2 instances to encompass within the widest subnet.</param>
     /// <param name="ipnetwork">The resulting widest IPNetwork2 subnet, or null if unsuccessful and tryWide is true.</param>
-    internal static void InternalWideSubnet(bool tryWide, IPNetwork2[] ipnetworks, out IPNetwork2 ipnetwork)
+    /// <returns>true if successful, otherwise false.</returns>
+    internal static bool InternalWideSubnet(bool tryWide, IPNetwork2[] ipnetworks, out IPNetwork2 ipnetwork)
     {
         if (ipnetworks == null)
         {
-            if (tryWide == false)
+            if (!tryWide)
             {
                 throw new ArgumentNullException(nameof(ipnetworks));
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
         IPNetwork2[] nnin = Array.FindAll(ipnetworks, ipnet => ipnet != null);
 
         if (nnin.Length <= 0)
         {
-            if (tryWide == false)
+            if (!tryWide)
             {
-                throw new ArgumentException("ipnetworks");
+                throw new ArgumentException(nameof(ipnetworks));
             }
 
             ipnetwork = null;
-            return;
+            return false;
         }
 
         if (nnin.Length == 1)
         {
             IPNetwork2 ipn0 = nnin[0];
             ipnetwork = ipn0;
-            return;
+            return true;
         }
 
         Array.Sort(nnin);
@@ -144,7 +148,12 @@ public sealed partial class IPNetwork2
         {
             if (ipnx.family != family)
             {
-                throw new ArgumentException("MixedAddressFamily");
+                if (!tryWide)
+                {
+                     throw new ArgumentException("MixedAddressFamily");
+                }
+                ipnetwork = null;
+                return false;
             }
         }
 
@@ -161,5 +170,6 @@ public sealed partial class IPNetwork2
         }
 
         ipnetwork = ipn;
+        return true;
     }
 }

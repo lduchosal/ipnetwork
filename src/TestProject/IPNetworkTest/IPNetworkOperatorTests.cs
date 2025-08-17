@@ -11,7 +11,7 @@ namespace TestProject.IPNetworkTest;
 public class IPNetworkOperatorTests
 {
     /// <summary>
-    ///     Tests Operator functionality with Operator Greater1.
+    ///     Tests Operator functionality with Operator Greater.
     /// </summary>
     [TestMethod]
     public void TestOperatorGreater1()
@@ -23,9 +23,9 @@ public class IPNetworkOperatorTests
 
         Assert.IsFalse(greater, "greater");
     }
-
+    
     /// <summary>
-    ///     Tests Operator functionality with Operator Greater2.
+    ///     Tests Operator functionality with Operator Greater.
     /// </summary>
     [TestMethod]
     public void TestOperatorGreater2()
@@ -37,9 +37,108 @@ public class IPNetworkOperatorTests
 
         Assert.IsTrue(greater, "greater");
     }
+    
+    /// <summary>
+    ///     Tests Operator functionality with Operator Greater.
+    /// </summary>
+    [TestMethod]
+    public void TestOperatorGreater3()
+    {
+        var ipn1 = IPNetwork2.Parse("10.0.0.1/32");
+        var ipn2 = IPNetwork2.Parse("10.0.0.1/32");
+
+        bool greater = ipn1 > ipn2;
+
+        Assert.IsFalse(greater, "greater");
+    }
+    
+    
+    /// <summary>
+    ///     Tests Operator functionality with Operator Greater.
+    /// </summary>
+    [TestMethod]
+    public void TestOperatorGreater4()
+    {
+        var ipn1 = IPNetwork2.Parse("10.0.0.0/32");
+        var ipn2 = IPNetwork2.Parse("10.0.0.0/24");
+
+        bool greater = ipn1 > ipn2;
+
+        Assert.IsFalse(greater, "greater");
+    }
 
     /// <summary>
-    ///     Tests Operator functionality with Operator Lower1.
+    ///     Tests Operator functionality with Operator Greater.
+    /// </summary>
+    [TestMethod]
+    public void TestOperatorGreaterOrEqual1()
+    {
+        var ipn1 = IPNetwork2.Parse("10.0.0.1/32");
+        var ipn2 = IPNetwork2.Parse("10.0.0.2/32");
+
+        bool greater = ipn1 >= ipn2;
+
+        Assert.IsFalse(greater, "greater");
+    }
+    
+    /// <summary>
+    ///     Tests Operator functionality with Operator Greater.
+    /// </summary>
+    [TestMethod]
+    public void TestOperatorGreaterOrEqual2()
+    {
+        var ipn1 = IPNetwork2.Parse("10.0.0.100/32");
+        var ipn2 = IPNetwork2.Parse("10.0.0.2/32");
+
+        bool greater = ipn1 >= ipn2;
+
+        Assert.IsTrue(greater, "greater");
+    }
+    
+    /// <summary>
+    ///     Tests Operator functionality with Operator Greater.
+    /// </summary>
+    [TestMethod]
+    public void TestOperatorGreaterOrEqual3()
+    {
+        var ipn1 = IPNetwork2.Parse("10.0.0.1/32");
+        var ipn2 = IPNetwork2.Parse("10.0.0.1/32");
+
+        bool greater = ipn1 >= ipn2;
+
+        Assert.IsTrue(greater, "greater");
+    }
+    
+    /// <summary>
+    /// Tests Operator functionality with Operator Greater.
+    /// </summary>
+    [TestMethod]
+    public void TestOperatorGreaterOrEqual4()
+    {
+        var ipn1 = IPNetwork2.Parse("10.0.0.0/32");
+        var ipn2 = IPNetwork2.Parse("10.0.0.0/24");
+
+        bool greater = ipn1 >= ipn2;
+
+        Assert.IsFalse(greater, "greater");
+    }
+    
+    /// <summary>
+    /// Tests Operator functionality with Operator Greater.
+    /// </summary>
+    [TestMethod]
+    public void TestOperatorGreaterOrEqual5()
+    {
+        var ipn1 = IPNetwork2.Parse("10.0.0.1/32");
+        var ipn2 = IPNetwork2.Parse("10.0.0.1/24");
+
+        bool greater = ipn1 >= ipn2;
+
+        Assert.IsTrue(greater, "greater");
+    }
+
+    /// <summary>
+    ///     Tests Operator functionality with Operator Lower.
     /// </summary>
     [TestMethod]
     public void TestOperatorLower1()
@@ -53,7 +152,7 @@ public class IPNetworkOperatorTests
     }
 
     /// <summary>
-    ///     Tests Operator functionality with Operator Lower2.
+    ///     Tests Operator functionality with Operator Lower.
     /// </summary>
     [TestMethod]
     public void TestOperatorLower2()
@@ -65,6 +164,63 @@ public class IPNetworkOperatorTests
 
         Assert.IsFalse(lower, "lower");
     }
+
+    /// <summary>
+    /// Tests Operator functionality with Operator Lower.
+    /// </summary>
+    [TestMethod]
+    public void TestOperatorLower3()
+    {
+        var ipn1 = IPNetwork2.Parse("10.0.0.0/32");
+        var ipn2 = IPNetwork2.Parse("10.0.0.0/32");
+
+        bool lower = ipn1 < ipn2;
+
+        Assert.IsFalse(lower, "lower");
+    }
+
+    /// <summary>
+    ///     Tests Operator functionality with Operator Lower.
+    /// </summary>
+    [TestMethod]
+    public void TestOperatorLowerOrEqual1()
+    {
+        var ipn1 = IPNetwork2.Parse("10.0.0.1/32");
+        var ipn2 = IPNetwork2.Parse("10.0.0.2/32");
+
+        bool lower = ipn1 <= ipn2;
+
+        Assert.IsTrue(lower, "lower");
+    }
+
+    /// <summary>
+    ///     Tests Operator functionality with Operator Lower.
+    /// </summary>
+    [TestMethod]
+    public void TestOperatorLowerOrEqual2()
+    {
+        var ipn1 = IPNetwork2.Parse("10.0.0.100/32");
+        var ipn2 = IPNetwork2.Parse("10.0.0.2/32");
+
+        bool lower = ipn1 <= ipn2;
+
+        Assert.IsFalse(lower, "lower");
+    }
+
+    /// <summary>
+    /// Tests Operator functionality with Operator Lower.
+    /// </summary>
+    [TestMethod]
+    public void TestOperatorLowerOrEqual3()
+    {
+        var ipn1 = IPNetwork2.Parse("10.0.0.0/32");
+        var ipn2 = IPNetwork2.Parse("10.0.0.0/32");
+
+        bool lower = ipn1 <= ipn2;
+
+        Assert.IsTrue(lower, "lower");
+    }
+
 
     /// <summary>
     ///     Tests Operator functionality with Operator Different1.

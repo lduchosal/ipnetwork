@@ -16,7 +16,7 @@ public class IPNetworkTryToCidrTests
     [TestMethod]
     public void TestTryToCidrAne()
     {
-        bool parsed = IPNetwork2.TryToCidr(null, out byte? _);
+        bool parsed = IPNetwork2.TryToCidr(null, out byte _);
         Assert.IsFalse(parsed, "parsed");
     }
 
@@ -26,7 +26,7 @@ public class IPNetworkTryToCidrTests
     [TestMethod]
     public void TestTryToCidrAe()
     {
-        bool parsed = IPNetwork2.TryToCidr(IPAddress.IPv6Any, out byte? cidr);
+        bool parsed = IPNetwork2.TryToCidr(IPAddress.IPv6Any, out byte cidr);
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual((byte)0, cidr, "cidr");
     }
@@ -37,7 +37,8 @@ public class IPNetworkTryToCidrTests
     [TestMethod]
     public void TestTryToCidrAe2()
     {
-        bool parsed = IPNetwork2.TryToCidr(IPAddress.Parse("6.6.6.6"), out byte? _);
+        bool parsed = IPNetwork2.TryToCidr(IPAddress.Parse("6.6.6.6"), out byte cidr);
+        Assert.AreEqual(default, cidr, "cidr");
         Assert.IsFalse(parsed, "parsed");
     }
 
@@ -49,7 +50,7 @@ public class IPNetworkTryToCidrTests
     {
         var mask = IPAddress.Parse("255.255.255.255");
         byte result = 32;
-        bool parsed = IPNetwork2.TryToCidr(mask, out byte? cidr);
+        bool parsed = IPNetwork2.TryToCidr(mask, out byte cidr);
 
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(cidr, result, "cidr");
@@ -63,7 +64,7 @@ public class IPNetworkTryToCidrTests
     {
         var mask = IPAddress.Parse("255.255.255.0");
         byte result = 24;
-        bool parsed = IPNetwork2.TryToCidr(mask, out byte? cidr);
+        bool parsed = IPNetwork2.TryToCidr(mask, out byte cidr);
 
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(cidr, result, "cidr");
@@ -77,7 +78,7 @@ public class IPNetworkTryToCidrTests
     {
         var mask = IPAddress.Parse("255.255.0.0");
         byte result = 16;
-        bool parsed = IPNetwork2.TryToCidr(mask, out byte? cidr);
+        bool parsed = IPNetwork2.TryToCidr(mask, out byte cidr);
 
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(cidr, result, "cidr");
@@ -91,7 +92,7 @@ public class IPNetworkTryToCidrTests
     {
         var mask = IPAddress.Parse("255.0.0.0");
         byte result = 8;
-        bool parsed = IPNetwork2.TryToCidr(mask, out byte? cidr);
+        bool parsed = IPNetwork2.TryToCidr(mask, out byte cidr);
 
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(cidr, result, "cidr");
@@ -105,7 +106,7 @@ public class IPNetworkTryToCidrTests
     {
         var mask = IPAddress.Parse("0.0.0.0");
         byte result = 0;
-        bool parsed = IPNetwork2.TryToCidr(mask, out byte? cidr);
+        bool parsed = IPNetwork2.TryToCidr(mask, out byte cidr);
 
         Assert.IsTrue(parsed, "parsed");
         Assert.AreEqual(cidr, result, "cidr");

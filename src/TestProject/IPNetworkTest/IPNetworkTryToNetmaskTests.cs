@@ -30,9 +30,8 @@ public class IPNetworkTryToNetmaskTests
     public void TryToNetmask2()
     {
         bool parsed = IPNetwork2.TryToNetmask(33, AddressFamily.InterNetwork, out IPAddress result);
-        IPAddress expected = null;
 
-        Assert.AreEqual(expected, result, "Netmask");
+        Assert.IsNull(result, "Netmask");
         Assert.IsFalse(parsed, "parsed");
     }
 }

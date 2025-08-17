@@ -101,11 +101,12 @@ public partial class IPNetwork2
     {
         get
         {
-            BigInteger first = this.family == AddressFamily.InterNetworkV6
-                ? this.InternalNetwork
-                : (this.Usable <= 1)
-                    ? this.InternalNetwork
-                    : this.InternalNetwork + 1;
+            BigInteger first = this.InternalNetwork;
+            if (this.family == AddressFamily.InterNetwork
+                && this.Usable > 1)
+            {
+                first+= 1;
+            }
             return ToIPAddress(first, this.family);
         }
     }
@@ -117,11 +118,12 @@ public partial class IPNetwork2
     {
         get
         {
-            BigInteger last = this.family == AddressFamily.InterNetworkV6
-                ? this.InternalBroadcast
-                : (this.Usable <= 1)
-                    ? this.InternalNetwork
-                    : this.InternalBroadcast - 1;
+            BigInteger last = this.InternalBroadcast;
+            if (this.family == AddressFamily.InterNetwork
+                && this.Usable > 1)
+            {
+                last -= 1;
+            }
             return ToIPAddress(last, this.family);
         }
     }
@@ -146,9 +148,19 @@ public partial class IPNetwork2
 
             byte[] mask = [0xff, 0xff, 0xff, 0xff, 0x00];
             var bmask = new BigInteger(mask);
-            BigInteger usableIps = (this.cidr == 32)? 1
-                : (this.cidr == 31)? 2
-                : ((bmask >> this.cidr)- 1);
+            BigInteger usableIps;
+            if (this.cidr == 32)
+            {
+                usableIps = 1;
+            }
+            else if (this.cidr == 31)
+            {
+                usableIps = 2;
+            }
+            else
+            {
+                usableIps = ((bmask >> this.cidr)- 1);
+            }
             return usableIps;
         }
     }

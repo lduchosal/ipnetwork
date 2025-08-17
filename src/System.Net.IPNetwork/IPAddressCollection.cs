@@ -9,28 +9,12 @@ using System.Collections.Generic;
 using System.Numerics;
 
 /// <summary>
-/// Represents different filters for a collection of items.
-/// </summary>
-public enum FilterEnum
-{
-    /// <summary>
-    /// Every IPAdresses are returned
-    /// </summary>
-    All,
-
-    /// <summary>
-    /// Returns only usable IPAdresses
-    /// </summary>
-    Usable,
-}
-
-/// <summary>
 /// Represents a collection of IP addresses within a specific IP network.
 /// </summary>
 public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress>
 {
     private readonly IPNetwork2 ipnetwork;
-    private readonly FilterEnum filter;
+    private readonly Filter filter;
     private BigInteger enumerator;
 
     /// <summary>
@@ -38,7 +22,7 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
     /// </summary>
     /// <param name="ipnetwork">The network.</param>
     /// <param name="filter">The filter.</param>
-    internal IPAddressCollection(IPNetwork2 ipnetwork, FilterEnum filter)
+    internal IPAddressCollection(IPNetwork2 ipnetwork, Filter filter)
     {
         this.ipnetwork = ipnetwork;
         this.filter = filter;
@@ -56,7 +40,7 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
         get
         {
             BigInteger count = this.ipnetwork.Total;
-            if (this.filter == FilterEnum.Usable)
+            if (this.filter == Filter.Usable)
             {
                 count -= 2;
             }
@@ -89,7 +73,7 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
             IPNetworkCollection ipn = this.ipnetwork.Subnet(width);
 
             BigInteger index = i;
-            if (this.filter == FilterEnum.Usable)
+            if (this.filter == Filter.Usable)
             {
                 index++;
             }
@@ -140,7 +124,17 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
     /// <inheritdoc />
     public void Dispose()
     {
-        // nothing to dispose
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Dispose instance
+    /// </summary>
+    /// <param name="disposing"></param>
+    protected virtual void Dispose(bool disposing)
+    {
+        // Cleanup
     }
 
     /// <inheritdoc/>

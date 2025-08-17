@@ -44,6 +44,18 @@ public sealed partial class IPNetwork2
         return Compare(left, right) < 0;
     }
 
+    
+    /// <summary>
+    /// Compares two IPNetwork.
+    /// </summary>
+    /// <param name="left">left instance.</param>
+    /// <param name="right">Right instance.</param>
+    /// <returns>true if left is less than right; otherwise, false.</returns>
+    public static bool operator <=(IPNetwork2 left, IPNetwork2 right)
+    {
+        return Compare(left, right) <= 0;
+    }
+
     /// <summary>
     /// Compares two IPNetwork.
     /// </summary>
@@ -53,6 +65,17 @@ public sealed partial class IPNetwork2
     public static bool operator >(IPNetwork2 left, IPNetwork2 right)
     {
         return Compare(left, right) > 0;
+    }
+    
+    /// <summary>
+    /// Compares two IPNetwork.
+    /// </summary>
+    /// <param name="left">left instance.</param>
+    /// <param name="right">Right instance.</param>
+    /// <returns>true if left is greater than right; otherwise, false.</returns>
+    public static bool operator >=(IPNetwork2 left, IPNetwork2 right)
+    {
+        return Compare(left, right) >= 0;
     }
     
     /// <summary>

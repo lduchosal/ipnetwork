@@ -60,7 +60,7 @@ public sealed partial class IPNetwork2
         }
 
         // then test the cidr
-        result = left.cidr.CompareTo(right.cidr);
+        result = (left.cidr * -1).CompareTo((right.cidr * -1));
         return result;
     }
 

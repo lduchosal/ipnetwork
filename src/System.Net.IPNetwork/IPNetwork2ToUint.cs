@@ -21,9 +21,12 @@ public sealed partial class IPNetwork2
     /// <returns>A number representing the ipaddress.</returns>
     public static BigInteger ToBigInteger(IPAddress ipaddress)
     {
-        InternalToBigInteger(false, ipaddress, out BigInteger? uintIpAddress);
-
-        return (BigInteger)uintIpAddress;
+        bool parsed = InternalToBigInteger(false, ipaddress, out BigInteger uintIpAddress);
+        if (!parsed)
+        {
+            throw new ArgumentOutOfRangeException(nameof(ipaddress));
+        }
+        return uintIpAddress;
     }
 
     /// <summary>
@@ -34,12 +37,9 @@ public sealed partial class IPNetwork2
     /// <param name="ipaddress">A string containing an ip address to convert.</param>
     /// <param name="uintIpAddress">A number representing the IPAddress.</param>
     /// <returns>true if ipaddress was converted successfully; otherwise, false.</returns>
-    public static bool TryToBigInteger(IPAddress ipaddress, out BigInteger? uintIpAddress)
+    public static bool TryToBigInteger(IPAddress ipaddress, out BigInteger uintIpAddress)
     {
-        InternalToBigInteger(true, ipaddress, out BigInteger? uintIpAddress2);
-        bool parsed = uintIpAddress2 != null;
-        uintIpAddress = uintIpAddress2;
-
+        bool parsed = InternalToBigInteger(true, ipaddress, out uintIpAddress);
         return parsed;
     }
 
@@ -51,9 +51,12 @@ public sealed partial class IPNetwork2
     /// <returns>A number representing the netmask in CIDR form.</returns>
     public static BigInteger ToUint(byte cidr, AddressFamily family)
     {
-        InternalToBigInteger(false, cidr, family, out BigInteger? uintNetmask);
-
-        return (BigInteger)uintNetmask;
+        bool parsed = InternalToBigInteger(false, cidr, family, out BigInteger uintNetmask);
+        if (!parsed)
+        {
+            throw new ArgumentException(nameof(cidr));
+        }
+        return uintNetmask;
     }
 
     /// <summary>
@@ -63,12 +66,9 @@ public sealed partial class IPNetwork2
     /// <param name="family">Either IPv4 or IPv6.</param>
     /// <param name="uintNetmask">A number representing the netmask.</param>
     /// <returns>true if cidr was converted successfully; otherwise, false.</returns>
-    public static bool TryToUint(byte cidr, AddressFamily family, out BigInteger? uintNetmask)
+    public static bool TryToUint(byte cidr, AddressFamily family, out BigInteger uintNetmask)
     {
-        InternalToBigInteger(true, cidr, family, out BigInteger? uintNetmask2);
-        bool parsed = uintNetmask2 != null;
-        uintNetmask = uintNetmask2;
-
+        bool parsed = InternalToBigInteger(true, cidr, family, out uintNetmask);
         return parsed;
     }
 
@@ -79,46 +79,36 @@ public sealed partial class IPNetwork2
     /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
     /// <param name="family">Either IPv4 or IPv6.</param>
     /// <param name="uintNetmask">A number representing the netmask.</param>
-    internal static void InternalToBigInteger(bool tryParse, byte cidr, AddressFamily family, out BigInteger? uintNetmask)
+    internal static bool InternalToBigInteger(bool tryParse, byte cidr, AddressFamily family, out BigInteger uintNetmask)
     {
-        if (family == AddressFamily.InterNetwork && cidr > 32)
+        if ((family == AddressFamily.InterNetwork && cidr > 32)
+            || (family == AddressFamily.InterNetworkV6 && cidr > 128))
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentOutOfRangeException(nameof(cidr));
             }
 
-            uintNetmask = null;
-            return;
-        }
-
-        if (family == AddressFamily.InterNetworkV6 && cidr > 128)
-        {
-            if (tryParse == false)
-            {
-                throw new ArgumentOutOfRangeException(nameof(cidr));
-            }
-
-            uintNetmask = null;
-            return;
+            uintNetmask = 0;
+            return false;
         }
 
         if (family != AddressFamily.InterNetwork
             && family != AddressFamily.InterNetworkV6)
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new NotSupportedException(family.ToString());
             }
 
-            uintNetmask = null;
-            return;
+            uintNetmask = 0;
+            return false;
         }
 
         if (family == AddressFamily.InterNetwork)
         {
             uintNetmask = cidr == 0 ? 0 : 0xffffffff << (32 - cidr);
-            return;
+            return true;
         }
 
         var mask = new BigInteger([
@@ -135,6 +125,7 @@ public sealed partial class IPNetwork2
         int copy = m.Length > 16 ? 16 : m.Length;
         Array.Copy(m, 0, bmask, 0, copy);
         uintNetmask = new BigInteger(bmask);
+        return true;
     }
 
     /// <summary>
@@ -143,17 +134,17 @@ public sealed partial class IPNetwork2
     /// <param name="tryParse">Indicates whether the method should handle errors silently (true) or throw exceptions (false).</param>
     /// <param name="ipaddress">The IPAddress to convert.</param>
     /// <param name="uintIpAddress">The resulting BigInteger representation of the IP address, or null if conversion fails and tryParse is true.</param>
-    internal static void InternalToBigInteger(bool tryParse, IPAddress ipaddress, out BigInteger? uintIpAddress)
+    internal static bool InternalToBigInteger(bool tryParse, IPAddress ipaddress, out BigInteger uintIpAddress)
     {
         if (ipaddress == null)
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentNullException(nameof(ipaddress));
             }
 
-            uintIpAddress = null;
-            return;
+            uintIpAddress = default;
+            return false;
         }
 
 #if NETSTANDARD2_1
@@ -161,13 +152,13 @@ public sealed partial class IPNetwork2
         Span<byte> span = bytes.AsSpan();
         if (!ipaddress.TryWriteBytes(span, out _))
         {
-            if (tryParse == false)
+            if (!tryParse)
             {
                 throw new ArgumentException("ipaddress");
             }
 
-            uintIpAddress = null;
-            return;
+            uintIpAddress = default;
+            return false;
         }
 
         uintIpAddress = new BigInteger(span, isUnsigned: true, isBigEndian: true);
@@ -188,5 +179,6 @@ public sealed partial class IPNetwork2
         Buffer.BlockCopy(bytes, 0, unsigned, 0, bytes.Length);
         uintIpAddress = new BigInteger(unsigned);
 #endif
+        return true;
     }
 }

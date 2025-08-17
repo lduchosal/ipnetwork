@@ -12,7 +12,7 @@ public class ArgParsed
     /// <summary>
     /// Gets or sets position.
     /// </summary>
-    public int Arg { get; set; }
+    public int Arg { get; }
 
     private event ArgParsedDelegate OnArgParsed;
 

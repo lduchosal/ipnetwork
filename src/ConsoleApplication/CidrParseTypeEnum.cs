@@ -7,7 +7,7 @@ namespace System.Net;
 /// <summary>
 /// CidrParseEnum.
 /// </summary>
-public enum CidrParseEnum
+public enum CidrParse
 {
     /// <summary>
     /// Default value,
@@ -17,5 +17,5 @@ public enum CidrParseEnum
     /// <summary>
     /// The other.
     /// </summary>
-    Value,
+    Value
 }
