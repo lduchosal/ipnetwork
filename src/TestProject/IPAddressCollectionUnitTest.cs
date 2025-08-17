@@ -196,7 +196,7 @@ public class IPAddressCollectionUnitTest
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
         {
             var ipn = IPNetwork2.Parse("192.168.1.0/29");
-            using IEnumerator<IPAddress> ips = ipn.ListIPAddress();
+            using IPAddressCollection ips = ipn.ListIPAddress();
             ips.Reset();
             while (ips.MoveNext())
             {
@@ -214,7 +214,7 @@ public class IPAddressCollectionUnitTest
     public void TestEnumeratorMoveNext()
     {
         var ipn = IPNetwork2.Parse("192.168.1.0/29");
-        using IEnumerator<IPAddress> ips = ipn.ListIPAddress();
+        using IPAddressCollection ips = ipn.ListIPAddress();
         Assert.IsTrue(ips.MoveNext());
         Assert.IsTrue(ips.MoveNext());
         Assert.IsTrue(ips.MoveNext());
@@ -234,7 +234,7 @@ public class IPAddressCollectionUnitTest
     public void TestEnumeratorMoveNext2()
     {
         var ipn = IPNetwork2.Parse("192.168.1.0/31");
-        using IEnumerator<IPAddress> ips = ipn.ListIPAddress();
+        using IPAddressCollection ips = ipn.ListIPAddress();
         Assert.IsTrue(ips.MoveNext());
         Assert.IsTrue(ips.MoveNext());
         Assert.IsFalse(ips.MoveNext());
@@ -403,7 +403,7 @@ public class IPAddressCollectionUnitTest
     public void Tes_ipv6_tResetEnumerator()
     {
         var ipn = IPNetwork2.Parse("::/125");
-        using IEnumerator<IPAddress> ips = ipn.ListIPAddress();
+        using IPAddressCollection ips = ipn.ListIPAddress();
         ips.Reset();
         while (ips.MoveNext())
         {
@@ -426,7 +426,7 @@ public class IPAddressCollectionUnitTest
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
         {
             var ipn = IPNetwork2.Parse("::/125");
-            using IEnumerator<IPAddress> ips = ipn.ListIPAddress();
+            using IPAddressCollection ips = ipn.ListIPAddress();
             ips.Reset();
             while (ips.MoveNext())
             {
@@ -443,7 +443,7 @@ public class IPAddressCollectionUnitTest
     public void Test_ipv6_EnumeratorMoveNext()
     {
         var ipn = IPNetwork2.Parse("::/125");
-        using IEnumerator<IPAddress> ips = ipn.ListIPAddress();
+        using IPAddressCollection ips = ipn.ListIPAddress();
         Assert.IsTrue(ips.MoveNext());
         Assert.IsTrue(ips.MoveNext());
         Assert.IsTrue(ips.MoveNext());
@@ -463,7 +463,7 @@ public class IPAddressCollectionUnitTest
     public void Test_ipv6_EnumeratorMoveNext2()
     {
         var ipn = IPNetwork2.Parse("::/127");
-        using IEnumerator<IPAddress> ips = ipn.ListIPAddress();
+        using IPAddressCollection ips = ipn.ListIPAddress();
         Assert.IsTrue(ips.MoveNext());
         Assert.IsTrue(ips.MoveNext());
         Assert.IsFalse(ips.MoveNext());

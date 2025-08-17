@@ -64,7 +64,7 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
 
         if (cidrSubnet < ipnetwork.Cidr)
         {
-            throw new ArgumentException(nameof(cidrSubnet));
+            throw new ArgumentException("cidrSubnet < ipnetwork.Cidr", nameof(cidrSubnet));
         }
 
         this.cidrSubnet = cidrSubnet;

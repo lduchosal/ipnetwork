@@ -154,7 +154,7 @@ public sealed partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException("ipaddress");
+                throw new ArgumentException(nameof(ipaddress));
             }
 
             uintIpAddress = default;
