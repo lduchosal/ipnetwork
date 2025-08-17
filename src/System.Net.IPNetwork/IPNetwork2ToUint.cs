@@ -81,8 +81,8 @@ public sealed partial class IPNetwork2
     /// <param name="uintNetmask">A number representing the netmask.</param>
     internal static bool InternalToBigInteger(bool tryParse, byte cidr, AddressFamily family, out BigInteger uintNetmask)
     {
-        if (family == AddressFamily.InterNetwork && cidr > 32 
-            || family == AddressFamily.InterNetworkV6 && cidr > 128)
+        if ((family == AddressFamily.InterNetwork && cidr > 32)
+            || (family == AddressFamily.InterNetworkV6 && cidr > 128))
         {
             if (!tryParse)
             {
