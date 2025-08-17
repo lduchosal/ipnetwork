@@ -185,7 +185,7 @@ public partial class IPNetwork2
     /// <param name="start">A start range ip address.</param>
     /// <param name="end">An end range ip address.</param>
     /// <param name="ipnetworks">The resulting IPNetworks.</param>
-    private static bool InternalParseRange(bool tryParse, IPAddress start, IPAddress end, out IEnumerable<IPNetwork2> ipnetworks)
+    internal static bool InternalParseRange(bool tryParse, IPAddress start, IPAddress end, out IEnumerable<IPNetwork2> ipnetworks)
     {
         if (start == null)
         {

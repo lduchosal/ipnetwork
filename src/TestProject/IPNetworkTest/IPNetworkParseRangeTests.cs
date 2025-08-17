@@ -207,24 +207,34 @@ public class IPNetworkParseRangeTests
     /// <summary>
     /// Test the InternalParseRange
     /// </summary>
+    /// <param name="range"></param>
+    [TestMethod]
+    [DataRow("")]
+    [DataRow(null)]
+    public void TestInternalParseRangeFalse2(string range)
+    {
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
+        {
+            IPNetwork2.InternalParseRange(false, range, out var _);
+        });
+    }
+
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
     /// <param name="start"></param>
     /// <param name="end"></param>
-    /// <param name="expected"></param>
     [TestMethod]
-    [DataRow(null, "128.0.0.0", "0.0.0.0/1, 128.0.0.0/32")]
-    [DataRow("0.0.0.0", null, "0.0.0.0/1, 128.0.0.0/32")]
-    [DataRow("0.0.0.0", "::1", "0.0.0.0/1, 128.0.0.0/32")]
-    public void TestInternalParseRangeFalse(string start, string end, string expected)
+    [DataRow(null, "128.0.0.0")]
+    [DataRow("0.0.0.0", null)]
+    [DataRow("0.0.0.0", "::1")]
+    public void TestInternalParseRangeFalse3(string start, string end)
     {
         Assert.ThrowsExactly<ArgumentException>(() =>
         {
-            bool parsed = IPNetwork2.InternalParseRange(false, start, end, out var result);
-            string sresult = string.Join(", ", result);
-            Assert.IsTrue(parsed);
-            Assert.AreEqual(expected, sresult);
+            IPNetwork2.InternalParseRange(false, start, end, out var _);
         });
     }
-    
     /// <summary>
     /// Test the InternalParseRange
     /// </summary>
@@ -235,12 +245,89 @@ public class IPNetworkParseRangeTests
     [DataRow("0.0.0.0 - ::1")]
     [DataRow("::1 - 0.0.0.0")]
     [DataRow("")]
+    public void TestInternalParseRangeTrue(string range)
+    { 
+        bool parsed = IPNetwork2.InternalParseRange(true, range, out var _);
+        Assert.IsFalse(parsed);
+    }
+
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    [TestMethod]
+    [DataRow(null, "128.0.0.0")]
+    [DataRow("0.0.0.0", null)]
+    [DataRow("0.0.0.0", "::1")]
+    public void TestInternalParseRangeTrue(string start, string end)
+    {
+        bool parsed = IPNetwork2.InternalParseRange(true, start, end, out var _);
+        Assert.IsFalse(parsed);
+    }
+
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
+    [TestMethod]
+    public void TestInternalParseRangeTrue()
+    {
+        IPAddress start = null;
+        IPAddress end = null;
+        bool parsed = IPNetwork2.InternalParseRange(true, start, end, out var _);
+        Assert.IsFalse(parsed);
+    }
+
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
+    [TestMethod]
+    public void TestInternalParseRangeFalse()
+    {
+        IPAddress start = null;
+        IPAddress end = null;
+        Assert.ThrowsExactly<ArgumentNullException>(()=> IPNetwork2.InternalParseRange(false, start, end, out _));
+    }
+
+    
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
+    /// <param name="range"></param>
+    [TestMethod]
+    [DataRow("null - 128.0.0.0")]
+    [DataRow("0.0.0.0 - null")]
+    [DataRow("0.0.0.0 - ::1")]
+    [DataRow("::1 - 0.0.0.0")]
     public void TestInternalParseRangeFalse(string range)
     {
         Assert.ThrowsExactly<ArgumentException>(() =>
         {
             IPNetwork2.InternalParseRange(false, range, out var _);
         });
+    }
+    
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
+    [TestMethod]
+    public void TestInternalParseRangeTrueAddressFamily()
+    {
+        IPAddress start = IPAddress.Parse("0.0.0.0");
+        IPAddress end = IPAddress.Parse("::1");
+        bool parsed = IPNetwork2.InternalParseRange(true, start, end, out var _);
+        Assert.IsFalse(parsed);
+    }
+
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
+    [TestMethod]
+    public void TestInternalParseRangeFalseAddressFamily()
+    {
+        IPAddress start = IPAddress.Parse("0.0.0.0");
+        IPAddress end = IPAddress.Parse("::1");
+        Assert.ThrowsExactly<ArgumentException>(()=> IPNetwork2.InternalParseRange(false, start, end, out var _));
     }
 
     /// <summary>
@@ -252,7 +339,7 @@ public class IPNetworkParseRangeTests
     [DataRow(null)]
     public void TestInternalParseRangeFalse_Null(string range)
     {
-        Assert.ThrowsExactly<ArgumentException>(() =>
+        Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
             IPNetwork2.InternalParseRange(false, range, out var _);
         });
