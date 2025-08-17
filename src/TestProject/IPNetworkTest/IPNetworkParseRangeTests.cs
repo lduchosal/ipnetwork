@@ -245,6 +245,8 @@ public class IPNetworkParseRangeTests
     [DataRow("0.0.0.0 - ::1")]
     [DataRow("::1 - 0.0.0.0")]
     [DataRow("")]
+    [DataRow("1.1.1.1 - 2.2.2.2 - 3.3.3.3")]
+    [DataRow("1.1.1.1 - 2.2.2.2 - 3.3.3.3 - 4.4.4.4")]
     public void TestInternalParseRangeTrue(string range)
     { 
         bool parsed = IPNetwork2.InternalParseRange(true, range, out var _);
