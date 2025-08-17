@@ -111,7 +111,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException(nameof(start));
+                throw new ArgumentException("Invalid start IPAddress", nameof(start));
             }
 
             ipnetworks = null;
@@ -123,7 +123,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException(nameof(end));
+                throw new ArgumentException("Invalid end IPAddress", nameof(end));
             }
 
             ipnetworks = null;
