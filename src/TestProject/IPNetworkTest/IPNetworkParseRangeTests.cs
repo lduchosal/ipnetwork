@@ -40,6 +40,42 @@ public class IPNetworkParseRangeTests
         string sresult = string.Join(", ", result);
         Assert.AreEqual(expected, sresult);
     }
+    
+    /// <summary>
+    /// Test the ParseRange
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <param name="expected"></param>
+    [TestMethod]
+    [DataRow("192.168.1.45", "192.168.1.65", "192.168.1.45/32, 192.168.1.46/31, 192.168.1.48/28, 192.168.1.64/31")]
+    [DataRow("192.168.1.32", "192.168.1.63", "192.168.1.32/27")]
+    [DataRow("192.168.0.1", "192.168.0.1", "192.168.0.1/32")]
+    [DataRow("192.168.0.0", "192.168.0.0", "192.168.0.0/32")]
+    [DataRow("192.168.0.0", "192.168.0.1", "192.168.0.0/31")]
+    [DataRow("192.168.0.0", "192.168.0.3", "192.168.0.0/30")]
+    [DataRow("192.168.0.0", "192.168.0.7", "192.168.0.0/29")]
+    [DataRow("192.168.0.0", "192.168.0.15", "192.168.0.0/28")]
+    [DataRow("192.168.0.0", "192.168.0.31", "192.168.0.0/27")]
+    [DataRow("192.168.0.0", "192.168.0.63", "192.168.0.0/26")]
+    [DataRow("192.168.0.0", "192.168.0.127", "192.168.0.0/25")]
+    [DataRow("192.168.0.0", "192.168.0.255", "192.168.0.0/24")]
+    [DataRow("192.168.0.0", "192.168.1.255", "192.168.0.0/23")]
+    [DataRow("192.168.0.0", "192.168.3.255", "192.168.0.0/22")]
+    [DataRow("192.168.0.0", "192.168.7.255", "192.168.0.0/21")]
+    [DataRow("192.168.0.0", "192.168.15.255", "192.168.0.0/20")]
+    [DataRow("192.168.0.0", "192.168.31.255", "192.168.0.0/19")]
+    [DataRow("192.168.0.0", "192.168.63.255", "192.168.0.0/18")]
+    [DataRow("192.168.0.0", "192.168.127.255", "192.168.0.0/17")]
+    [DataRow("192.168.0.0", "192.168.255.255", "192.168.0.0/16")]
+    [DataRow("0.0.0.0", "127.255.255.255", "0.0.0.0/1")]
+    [DataRow("0.0.0.0", "128.0.0.0", "0.0.0.0/1, 128.0.0.0/32")]
+    public void TestParseRange(string start, string end, string expected)
+    {
+        var result = IPNetwork2.ParseRange(start, end);
+        string sresult = string.Join(", ", result);
+        Assert.AreEqual(expected, sresult);
+    }
 
     /// <summary>
     /// Test the ParseRange
@@ -109,6 +145,43 @@ public class IPNetworkParseRangeTests
     public void TestTryParseRange(string range, string expected)
     {
         bool parsed = IPNetwork2.TryParseRange(range, out var result);
+        string sresult = string.Join(", ", result);
+        Assert.IsTrue(parsed);
+        Assert.AreEqual(expected, sresult);
+    }
+    
+    /// <summary>
+    /// Test the TryParseRange
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <param name="expected"></param>
+    [TestMethod]
+    [DataRow("192.168.1.45", "192.168.1.65", "192.168.1.45/32, 192.168.1.46/31, 192.168.1.48/28, 192.168.1.64/31")]
+    [DataRow("192.168.1.32", "192.168.1.63", "192.168.1.32/27")]
+    [DataRow("192.168.0.1", "192.168.0.1", "192.168.0.1/32")]
+    [DataRow("192.168.0.0", "192.168.0.0", "192.168.0.0/32")]
+    [DataRow("192.168.0.0", "192.168.0.1", "192.168.0.0/31")]
+    [DataRow("192.168.0.0", "192.168.0.3", "192.168.0.0/30")]
+    [DataRow("192.168.0.0", "192.168.0.7", "192.168.0.0/29")]
+    [DataRow("192.168.0.0", "192.168.0.15", "192.168.0.0/28")]
+    [DataRow("192.168.0.0", "192.168.0.31", "192.168.0.0/27")]
+    [DataRow("192.168.0.0", "192.168.0.63", "192.168.0.0/26")]
+    [DataRow("192.168.0.0", "192.168.0.127", "192.168.0.0/25")]
+    [DataRow("192.168.0.0", "192.168.0.255", "192.168.0.0/24")]
+    [DataRow("192.168.0.0", "192.168.1.255", "192.168.0.0/23")]
+    [DataRow("192.168.0.0", "192.168.3.255", "192.168.0.0/22")]
+    [DataRow("192.168.0.0", "192.168.7.255", "192.168.0.0/21")]
+    [DataRow("192.168.0.0", "192.168.15.255", "192.168.0.0/20")]
+    [DataRow("192.168.0.0", "192.168.31.255", "192.168.0.0/19")]
+    [DataRow("192.168.0.0", "192.168.63.255", "192.168.0.0/18")]
+    [DataRow("192.168.0.0", "192.168.127.255", "192.168.0.0/17")]
+    [DataRow("192.168.0.0", "192.168.255.255", "192.168.0.0/16")]
+    [DataRow("0.0.0.0", "127.255.255.255", "0.0.0.0/1")]
+    [DataRow("0.0.0.0", "128.0.0.0", "0.0.0.0/1, 128.0.0.0/32")]
+    public void TestTryParseRange(string start, string end, string expected)
+    {
+        bool parsed = IPNetwork2.TryParseRange(start, end, out var result);
         string sresult = string.Join(", ", result);
         Assert.IsTrue(parsed);
         Assert.AreEqual(expected, sresult);
