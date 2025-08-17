@@ -499,6 +499,57 @@ Console.WriteLine($"Subnet 1: {subnet1}"); // e.g., fd12:3456:
 ```
 
 ---
+## ParseRange and TryParseRange
+
+A C# utility for converting IP address ranges into optimal CIDR blocks, supporting both IPv4 and IPv6 addresses.
+Both IPv4 and IPv6 ranges are supported
+The algorithm generates the minimal set of CIDR blocks that exactly cover the specified range
+Input format must be "startIP-endIP" with a single hyphen separator
+Whitespace around IP addresses is automatically trimmed
+Mixed IPv4/IPv6 ranges are not supported (both addresses must be the same family)
+
+### IPv4 Example
+
+```C#
+string ipv4Range = "192.168.1.45 - 192.168.1.65";
+var ipv4Blocks = IPNetwork2.ParseRange(ipv4Range);
+
+Console.WriteLine($"CIDR blocks for {ipv4Range}:");
+foreach (var block in ipv4Blocks)
+{
+Console.WriteLine($"  {block}");
+}
+```
+
+Output
+```
+CIDR blocks for 192.168.1.45 - 192.168.1.65:
+  192.168.1.45/32
+  192.168.1.46/31
+  192.168.1.48/28
+  192.168.1.64/31
+```
+
+### IPv6 Example
+
+```C#
+string ipv6Range = "2001:db8::1000 - 2001:db8::1fff";
+var ipv6Blocks = IPNetwork2.ParseRange(ipv6Range);
+
+Console.WriteLine($"CIDR blocks for {ipv6Range}:");
+foreach (var block in ipv6Blocks)
+{
+Console.WriteLine($"  {block}");
+}
+```
+
+Ouput
+````
+CIDR blocks for 2001:db8::1000 - 2001:db8::1fff:
+  2001:db8::1000/116
+````
+
+---
 
 ## IPNetwork utility command line
 
