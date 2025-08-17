@@ -554,5 +554,4 @@ public class IPAddressCollectionUnitTest
         using IPAddressCollection ips = ipn.ListIPAddress(FilterEnum.Usable);
         Assert.HasCount(6, ips, "Count");
     }
-
 }
