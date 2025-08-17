@@ -256,5 +256,4 @@ public class IPNetworkSupernetTests
 
         Assert.AreEqual(expected, result, "supernet");
     }
-
 }
