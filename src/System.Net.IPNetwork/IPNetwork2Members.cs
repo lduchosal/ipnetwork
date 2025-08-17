@@ -93,7 +93,7 @@ public partial class IPNetwork2
             return ToIPAddress(this.InternalBroadcast, this.family);
         }
     }
-
+    
     /// <summary>
     /// Gets first usable IPAddress in Network.
     /// </summary>
@@ -127,7 +127,31 @@ public partial class IPNetwork2
             return ToIPAddress(last, this.family);
         }
     }
-
+    
+    /// <summary>
+    /// Gets first IPAddress in Network.
+    /// </summary>
+    public IPAddress First
+    {
+        get
+        {
+            BigInteger first = this.InternalNetwork;
+            return ToIPAddress(first, this.family);
+        }
+    }
+    
+    /// <summary>
+    /// Gets last IPAddress in Network.
+    /// </summary>
+    public IPAddress Last
+    {
+        get
+        {
+            BigInteger last = this.InternalBroadcast;
+            return ToIPAddress(last, this.family);
+        }
+    }
+    
     /// <summary>
     /// Gets number of usable IPAddress in Network.
     /// 
