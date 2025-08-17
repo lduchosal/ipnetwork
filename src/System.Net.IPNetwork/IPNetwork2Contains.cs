@@ -70,7 +70,7 @@ public sealed partial class IPNetwork2
 
         BigInteger uintNetwork = this.InternalNetwork;
         BigInteger
-            uintBroadcast = this.InternalBroadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
+            uintBroadcast = this.InternalBroadcast;
         var uintAddress = ToBigInteger(contains);
 
         bool result = uintAddress >= uintNetwork
@@ -93,12 +93,12 @@ public sealed partial class IPNetwork2
 
         BigInteger uintNetwork = this.InternalNetwork;
         BigInteger
-            uintBroadcast = this.InternalBroadcast; // CreateBroadcast(ref uintNetwork, this._netmask, this._family);
+            uintBroadcast = this.InternalBroadcast;
 
         BigInteger uintFirst = contains.InternalNetwork;
         BigInteger
             uintLast = contains
-                .InternalBroadcast; // CreateBroadcast(ref uintFirst, network2._netmask, network2._family);
+                .InternalBroadcast;
 
         bool result = uintFirst >= uintNetwork
                       && uintLast <= uintBroadcast;

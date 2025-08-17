@@ -581,7 +581,8 @@ public class IPNetworkParseTests
     public void TestParseIPAddressNoNetmask127001()
     {
         string ipaddress = "127.0.0.1";
-        IPNetwork2.TryParse(ipaddress, out IPNetwork2 result);
+        bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 result);
+        Assert.IsTrue(parsed);
         Assert.AreEqual(8, result.Cidr);
     }
 
