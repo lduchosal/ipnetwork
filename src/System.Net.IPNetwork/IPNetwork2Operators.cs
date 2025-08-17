@@ -129,7 +129,14 @@ public sealed partial class IPNetwork2
         var startIp = ToIPAddress(start, left.AddressFamily);
         var endIp = ToIPAddress(end, left.AddressFamily);
         
-        InternalParseRange(false, startIp, endIp, out IEnumerable<IPNetwork2> networks);
+        var uintStart = ToBigInteger(startIp);
+        var uintEnd = ToBigInteger(endIp);
+
+        if (uintEnd <= uintStart)
+        {
+            throw new OverflowException("IPNetwork overflow");
+        }
+        InternalParseRange(true, startIp, endIp, out IEnumerable<IPNetwork2> networks);
         return networks;
     }
     
