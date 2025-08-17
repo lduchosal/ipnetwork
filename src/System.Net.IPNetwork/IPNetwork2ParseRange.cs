@@ -104,7 +104,7 @@ public partial class IPNetwork2
     /// <param name="start">A string containing a start range ip address.</param>
     /// <param name="end">A string containing a end range ip address.</param>
     /// <param name="ipnetworks">The resulting IPNetworks.</param>
-    private static bool InternalParseRange(bool tryParse, string start, string end, out IEnumerable<IPNetwork2> ipnetworks)
+    internal static bool InternalParseRange(bool tryParse, string start, string end, out IEnumerable<IPNetwork2> ipnetworks)
     {
         bool startParsed = IPAddress.TryParse(start, out IPAddress startIp);
         if (!startParsed)
@@ -143,7 +143,7 @@ public partial class IPNetwork2
     /// <exception cref="ArgumentNullException">When network is null.</exception>
     /// <exception cref="ArgumentException">When network is not valid.</exception>
     /// <returns>true if parsed, otherwise false</returns>
-    private static bool InternalParseRange(bool tryParse, string range, out IEnumerable<IPNetwork2> ipnetworks)
+    internal static bool InternalParseRange(bool tryParse, string range, out IEnumerable<IPNetwork2> ipnetworks)
     {
         if (string.IsNullOrEmpty(range))
         {

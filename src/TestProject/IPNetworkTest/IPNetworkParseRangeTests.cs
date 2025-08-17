@@ -186,4 +186,65 @@ public class IPNetworkParseRangeTests
         Assert.IsTrue(parsed);
         Assert.AreEqual(expected, sresult);
     }
+
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <param name="expected"></param>
+    [TestMethod]
+    [DataRow("0.0.0.0", "127.255.255.255", "0.0.0.0/1")]
+    [DataRow("0.0.0.0", "128.0.0.0", "0.0.0.0/1, 128.0.0.0/32")]
+    public void TestInternalParseRange(string start, string end, string expected)
+    {
+        bool parsed = IPNetwork2.InternalParseRange(true, start, end, out var result);
+        string sresult = string.Join(", ", result);
+        Assert.IsTrue(parsed);
+        Assert.AreEqual(expected, sresult);
+    }
+
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
+    /// <param name="start"></param>
+    /// <param name="end"></param>
+    /// <param name="expected"></param>
+    [TestMethod]
+    [DataRow(null, "128.0.0.0", "0.0.0.0/1, 128.0.0.0/32")]
+    [DataRow("0.0.0.0", null, "0.0.0.0/1, 128.0.0.0/32")]
+    [DataRow("0.0.0.0", "::1", "0.0.0.0/1, 128.0.0.0/32")]
+    public void TestInternalParseRangeFalse(string start, string end, string expected)
+    {
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            bool parsed = IPNetwork2.InternalParseRange(false, start, end, out var result);
+            string sresult = string.Join(", ", result);
+            Assert.IsTrue(parsed);
+            Assert.AreEqual(expected, sresult);
+        });
+    }
+    
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
+    /// <param name="range"></param>
+    /// <param name="expected"></param>
+    [TestMethod]
+    [DataRow("null - 128.0.0.0", "0.0.0.0/1, 128.0.0.0/32")]
+    [DataRow("0.0.0.0 - null", "0.0.0.0/1, 128.0.0.0/32")]
+    [DataRow("0.0.0.0 - ::1", "0.0.0.0/1, 128.0.0.0/32")]
+    [DataRow("::1 - 0.0.0.0", "0.0.0.0/1, 128.0.0.0/32")]
+    public void TestInternalParseRangeFalse(string range, string expected)
+    {
+        Assert.ThrowsExactly<ArgumentException>(() =>
+        {
+            bool parsed = IPNetwork2.InternalParseRange(false, range, out var result);
+            string sresult = string.Join(", ", result);
+            Assert.IsTrue(parsed);
+            Assert.AreEqual(expected, sresult);
+        });
+    }
+
+    
 }
