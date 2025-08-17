@@ -530,4 +530,29 @@ public class IPAddressCollectionUnitTest
         var ipnetwork = IPNetwork2.Parse("::1");
         Assert.AreEqual(64, ipnetwork.Cidr, "Cidr");
     }
+    
+    /// <summary>
+    /// Test.
+    /// </summary>
+    [TestMethod]
+    [Obsolete("Obsolete")]
+    public void TestListIPAddressFilterEnumAll()
+    {
+        var ipn = IPNetwork2.Parse("192.168.1.0/29");
+        using IPAddressCollection ips = ipn.ListIPAddress(FilterEnum.All);
+        Assert.HasCount(8, ips, "Count");
+    }
+    
+    /// <summary>
+    /// Test.
+    /// </summary>
+    [TestMethod]
+    [Obsolete("Obsolete")]
+    public void TestListIPAddressFilterEnumUsable()
+    {
+        var ipn = IPNetwork2.Parse("192.168.1.0/29");
+        using IPAddressCollection ips = ipn.ListIPAddress(FilterEnum.Usable);
+        Assert.HasCount(6, ips, "Count");
+    }
+
 }
