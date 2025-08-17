@@ -44,14 +44,14 @@ public sealed partial class IPNetwork2
         if (family != AddressFamily.InterNetwork
             && family != AddressFamily.InterNetworkV6)
         {
-            throw new ArgumentException("family");
+            throw new ArgumentException(nameof(family));
         }
 
         int width = family == AddressFamily.InterNetwork ? 4 : 16;
 
         if (bytes.Length > width)
         {
-            throw new ArgumentException("bytes");
+            throw new ArgumentException(nameof(bytes));
         }
 
         byte[] result = new byte[width];

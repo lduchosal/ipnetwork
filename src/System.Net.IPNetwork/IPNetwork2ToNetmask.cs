@@ -63,7 +63,7 @@ public sealed partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException("family");
+                throw new ArgumentException(nameof(family));
             }
 
             netmask = null;

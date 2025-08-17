@@ -45,7 +45,7 @@ public sealed partial class IPNetwork2
         if (family != AddressFamily.InterNetwork
             && family != AddressFamily.InterNetworkV6)
         {
-            throw new ArgumentException("family");
+            throw new ArgumentException(nameof(family));
         }
 
         BigInteger mask = family == AddressFamily.InterNetwork

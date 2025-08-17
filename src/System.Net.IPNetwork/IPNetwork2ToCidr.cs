@@ -78,7 +78,7 @@ public sealed partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException("netmask");
+                throw new ArgumentException(nameof(netmask));
             }
 
             cidr = 0;

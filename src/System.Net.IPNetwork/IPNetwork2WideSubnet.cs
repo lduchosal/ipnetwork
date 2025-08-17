@@ -150,7 +150,7 @@ public sealed partial class IPNetwork2
             {
                 if (!tryWide)
                 {
-                     throw new ArgumentException("MixedAddressFamily");
+                     throw new ArgumentException(nameof(family));
                 }
                 ipnetwork = null;
                 return false;

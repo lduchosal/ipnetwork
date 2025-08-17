@@ -129,7 +129,7 @@ public sealed partial class IPNetwork2
         {
             if (!trySupernet)
             {
-                throw new ArgumentException("cidr");
+                throw new ArgumentException(nameof(cidr));
             }
 
             supernet = null;
@@ -164,7 +164,7 @@ public sealed partial class IPNetwork2
         {
             if (!trySupernet)
             {
-                throw new ArgumentException("network");
+                throw new ArgumentException(nameof(networkSupernet));
             }
 
             supernet = null;

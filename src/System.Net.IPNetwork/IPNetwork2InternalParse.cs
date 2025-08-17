@@ -54,7 +54,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException("ipaddress");
+                throw new ArgumentException(nameof(ipaddress));
             }
 
             ipnetwork = null;
@@ -66,7 +66,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException("netmask");
+                throw new ArgumentException(nameof(netmask));
             }
 
             ipnetwork = null;
@@ -122,7 +122,7 @@ public partial class IPNetwork2
 
             if (!tryParse)
             {
-                throw new ArgumentException("network");
+                throw new ArgumentException(nameof(network));
             }
 
             ipnetwork = null;
@@ -194,7 +194,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException("netmask");
+                throw new ArgumentException(nameof(netmask));
             }
 
             ipnetwork = null;
@@ -238,7 +238,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException("ipaddress");
+                throw new ArgumentException(nameof(ipaddress));
             }
 
             ipnetwork = null;
@@ -250,7 +250,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException("cidr");
+                throw new ArgumentException(nameof(cidr));
             }
 
             ipnetwork = null;

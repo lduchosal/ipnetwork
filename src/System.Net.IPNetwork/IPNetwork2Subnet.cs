@@ -119,7 +119,7 @@ public sealed partial class IPNetwork2
         {
             if (!trySubnet)
             {
-                throw new ArgumentException("cidr");
+                throw new ArgumentException(nameof(cidr));
             }
 
             ipnetworkCollection = null;
