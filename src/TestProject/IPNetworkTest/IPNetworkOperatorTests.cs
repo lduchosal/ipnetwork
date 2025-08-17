@@ -331,4 +331,36 @@ public class IPNetworkOperatorTests
 
         Assert.HasCount(count, result, "add");
     }
+    
+    /// <summary>
+    /// Tests Operator functionality with Operator -.
+    /// </summary>
+    [TestMethod]
+    [DataRow("10.0.0.0/32", 1, "10.0.0.0/31")]
+    [DataRow("10.0.0.0/32", 3, "10.0.0.0/30")]
+    [DataRow("10.0.0.0/32", 7, "10.0.0.0/29")]
+    [DataRow("10.0.0.0/32", 15, "10.0.0.0/28")]
+    [DataRow("10.0.0.0/32", 31, "10.0.0.0/27")]
+    [DataRow("10.0.0.0/32", 63, "10.0.0.0/26")]
+    [DataRow("10.0.0.0/32", 127, "10.0.0.0/25")]
+    [DataRow("10.0.0.0/32", 255, "10.0.0.0/24")]
+    [DataRow("10.0.0.0/32", 511, "10.0.0.0/23")]
+    [DataRow("10.0.0.0/32", 1023, "10.0.0.0/22")]
+    [DataRow("10.0.0.0/32", 2047, "10.0.0.0/21")]
+    [DataRow("10.0.0.0/32", 4095, "10.0.0.0/20")]
+    [DataRow("10.0.0.0/32", -1, "9.255.255.255/32, 10.0.0.0/32")]
+    [DataRow("10.0.0.0/32", -10, "9.255.255.246/31, 9.255.255.248/29, 10.0.0.0/32")]
+    [DataRow("10.0.0.0/32", 2, "10.0.0.0/31, 10.0.0.2/32")]
+    [DataRow("::/128", 1, "::/127")]
+    [DataRow("::/128", 3, "::/126")]
+    [DataRow("::f/128", 1, "::f/128, ::10/128")]
+    [DataRow("1::ffff/128", 1, "1::ffff/128, 1::1:0/128")]
+    public void TestOperatorAdd2(string left, int right, string expected)
+    {
+        var ipn1 = IPNetwork2.Parse(left);
+        var result = ipn1 + right;
+        string sresult = string.Join(", ", result);
+
+        Assert.AreEqual(expected, sresult);
+    }
 }

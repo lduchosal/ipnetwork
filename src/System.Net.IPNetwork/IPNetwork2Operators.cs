@@ -103,4 +103,26 @@ public sealed partial class IPNetwork2
         }
         return [left, right];
     }
+    
+    /// <summary>
+    /// Add IPNetwork.
+    /// </summary>
+    /// <param name="left">left instance.</param>
+    /// <param name="add">number.</param>
+    /// <returns>Try to supernet two consecutive cidr equal subnet into a single one, otherwise return both netowkrs.</returns>
+    public static IEnumerable<IPNetwork2> operator +(IPNetwork2 left, int add)
+    {
+        var uintFirstLeft = ToBigInteger(left.First);
+        var uintLastLeft = ToBigInteger(left.Last);
+        var uintRight = uintLastLeft+add;
+
+        var start = uintFirstLeft > uintRight ? uintRight : uintFirstLeft;
+        var end = uintFirstLeft > uintRight ? uintFirstLeft : uintRight;
+
+        var startIp = ToIPAddress(start, left.AddressFamily);
+        var endIp = ToIPAddress(end, left.AddressFamily);
+        
+        InternalParseRange(false, startIp, endIp, out IEnumerable<IPNetwork2> networks);
+        return networks;
+    }
 }
