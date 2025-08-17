@@ -211,7 +211,7 @@ public class IPNetworkParseRangeTests
     [TestMethod]
     [DataRow("")]
     [DataRow(null)]
-    public void TestInternalParseRangeFalse2(string range)
+    public void TestInternalParseRangeFalse4(string range)
     {
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
@@ -228,7 +228,7 @@ public class IPNetworkParseRangeTests
     [DataRow(null, "128.0.0.0")]
     [DataRow("0.0.0.0", null)]
     [DataRow("0.0.0.0", "::1")]
-    public void TestInternalParseRangeFalse3(string start, string end)
+    public void TestInternalParseRangeFalse6(string start, string end)
     {
         Assert.ThrowsExactly<ArgumentException>(() =>
         {
@@ -282,14 +282,36 @@ public class IPNetworkParseRangeTests
     /// Test the InternalParseRange
     /// </summary>
     [TestMethod]
-    public void TestInternalParseRangeFalse()
+    public void TestInternalParseRangeFalse5()
     {
         IPAddress start = null;
         IPAddress end = null;
         Assert.ThrowsExactly<ArgumentNullException>(()=> IPNetwork2.InternalParseRange(false, start, end, out _));
     }
 
-    
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
+    [TestMethod]
+    public void TestInternalParseRangeFalse2()
+    {
+        IPAddress start = IPAddress.Loopback;
+        IPAddress end = null;
+        Assert.ThrowsExactly<ArgumentNullException>(()=> IPNetwork2.InternalParseRange(false, start, end, out _));
+    }
+
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
+    [TestMethod]
+    public void TestInternalParseRangeTrue2()
+    {
+        IPAddress start = IPAddress.Loopback;
+        IPAddress end = null;
+        bool parsed = IPNetwork2.InternalParseRange(true, start, end, out _);
+        Assert.IsFalse(parsed);
+    }
+
     /// <summary>
     /// Test the InternalParseRange
     /// </summary>
@@ -307,6 +329,20 @@ public class IPNetworkParseRangeTests
         });
     }
     
+    /// <summary>
+    /// Test the InternalParseRange
+    /// </summary>
+    /// <param name="range"></param>
+    [TestMethod]
+    [DataRow("1.1.1.1 - 2.2.2.2 - 3.3.3.3")]
+    public void TestInternalParseRangeFalse3(string range)
+    {
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
+        {
+            IPNetwork2.InternalParseRange(false, range, out var _);
+        });
+    }
+
     /// <summary>
     /// Test the InternalParseRange
     /// </summary>
