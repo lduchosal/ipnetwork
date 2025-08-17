@@ -240,4 +240,21 @@ public class IPNetworkSupernetTests
 
         Assert.AreEqual(expected, result, "supernet");
     }
+    
+    
+    /// <summary>
+    /// Tests WideSubnet with addresses in same range
+    /// </summary>
+    [TestMethod]
+    public void TestSupernet11()
+    {
+        var ipnetwork1 = IPNetwork2.Parse("192.168.1.45/32");
+        var ipnetwork2 = IPNetwork2.Parse("192.168.1.65/32");
+
+        IPNetwork2 result = IPNetwork2.Supernet([ipnetwork1, ipnetwork2])[0];
+        var expected = IPNetwork2.Parse("192.168.1.45/32");
+
+        Assert.AreEqual(expected, result, "supernet");
+    }
+
 }

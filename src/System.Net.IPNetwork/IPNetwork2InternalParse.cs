@@ -110,17 +110,6 @@ public partial class IPNetwork2
 
         StringSplitOptions splitOptions = sanitize ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None;
         string[] args = network.Split([' ', '/'], splitOptions);
-
-        if (args.Length == 0)
-        {
-            if (!tryParse)
-            {
-                throw new ArgumentNullException(nameof(network));
-            }
-
-            ipnetwork = null;
-            return false;
-        }
         
         if (args.Length == 1)
         {
@@ -151,15 +140,14 @@ public partial class IPNetwork2
             bool parsed3 = InternalParse(tryParse, args[0], args[1], out ipnetwork);
             return parsed3;
         }
-        else
+        
+        if (!tryParse)
         {
-            if (!tryParse)
-            {
-                throw new ArgumentNullException(nameof(network));
-            }
-            ipnetwork = null;
-            return false;
+            throw new ArgumentNullException(nameof(network));
         }
+
+        ipnetwork = null;
+        return false;
     }
 
     /// <summary>
