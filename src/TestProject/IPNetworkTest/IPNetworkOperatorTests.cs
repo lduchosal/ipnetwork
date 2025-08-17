@@ -336,6 +336,7 @@ public class IPNetworkOperatorTests
     ///     Tests Operator functionality with Operator +.
     /// </summary>
     [TestMethod]
+    [DataRow("10.0.0.0/32", 0, "10.0.0.0/32")]
     [DataRow("10.0.0.0/32", 1, "10.0.0.0/31")]
     [DataRow("10.0.0.0/32", 2, "10.0.0.0/31, 10.0.0.2/32")]
     [DataRow("10.0.0.0/32", 3, "10.0.0.0/30")]
@@ -377,12 +378,12 @@ public class IPNetworkOperatorTests
         Assert.ThrowsExactly<OverflowException>(() => ipn1 + right);
     }
 
-
     /// <summary>
     ///     Tests Operator functionality with Operator -.
     /// </summary>
     [TestMethod]
     [DataRow("10.0.0.0/32", 1, "")]
+    [DataRow("255.255.255.255/32", 1, "")]
     [DataRow("10.0.0.0/32", 3, "")]
     [DataRow("10.0.0.0/32", 7, "")]
     [DataRow("10.0.0.0/32", 15, "")]
@@ -402,5 +403,21 @@ public class IPNetworkOperatorTests
         string sresult = string.Join(", ", result);
 
         Assert.AreEqual(expected, sresult);
+    }
+    
+    /// <summary>
+    ///     Tests Operator functionality with Operator -.
+    /// </summary>
+    [TestMethod]
+    [DataRow("0.0.0.0/0", -1)]
+    [DataRow("255.255.255.255/32", -1)]
+    public void TestOperatorsubtractOverflow(string left, int right)
+    {
+        var ipn1 = IPNetwork2.Parse(left);
+        Assert.ThrowsExactly<OverflowException>(() =>
+        {
+            var result = ipn1 - right;
+            Assert.AreEqual("32", result.ToString());
+        });
     }
 }

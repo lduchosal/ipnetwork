@@ -117,6 +117,14 @@ public sealed partial class IPNetwork2
     /// <returns>Adds the specified number of IP addresses to the network range.</returns>
     public static IEnumerable<IPNetwork2> operator +(IPNetwork2 left, int add)
     {
+        if (add < 0)
+        {
+            return left - (add * -1);
+        }
+        if (add == 0)
+        {
+            return new[] { left };
+        }
         var start = ToBigInteger(left.First);
         var last = ToBigInteger(left.Last);
         var end = last+ add;
@@ -148,6 +156,27 @@ public sealed partial class IPNetwork2
     /// <returns>Try to supernet two consecutive cidr equal subnet into a single one, otherwise return both netowkrs.</returns>
     public static IEnumerable<IPNetwork2> operator -(IPNetwork2 left, int subtract)
     {
-        return left + (subtract * -1);
+        if (subtract < 0)
+        {
+            return left + (subtract * -1);
+        }
+        if (subtract == 0)
+        {
+            return new[] { left };
+        }
+        var start = ToBigInteger(left.First);
+        var last = ToBigInteger(left.Last);
+        var end = last- subtract;
+
+        if (end < start)
+        {
+            return [];
+        }
+
+        var startIp = ToIPAddress(start, left.AddressFamily);
+        var endIp = ToIPAddress(end, left.AddressFamily);
+        
+        InternalParseRange(true, startIp, endIp, out IEnumerable<IPNetwork2> networks);
+        return networks;
     }
 }
