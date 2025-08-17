@@ -257,6 +257,4 @@ public class IPNetworkParseRangeTests
             IPNetwork2.InternalParseRange(false, range, out var _);
         });
     }
-
-    
 }
