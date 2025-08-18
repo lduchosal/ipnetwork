@@ -1,0 +1,48 @@
+@using System.Net
+@code {
+    [Parameter]
+    public IPNetwork2? IPNetwork { get; set; } = IPNetwork2.Parse("192.168.0.1");
+}
+
+@if (IPNetwork == null)
+{
+    <span>Loading...</span>
+}
+else
+{
+    <table>
+        <tr>
+            <th>IPNetwork</th><td>@IPNetwork</td>
+        </tr>
+        <tr>
+            <th>Network</th><td>@IPNetwork.Network</td>
+        </tr>
+        <tr>
+            <th>Netmask</th><td>@IPNetwork.Netmask</td>
+        </tr>
+        <tr>
+            <th>Cidr</th><td>@IPNetwork.Cidr</td>
+        </tr>
+        <tr>
+            <th>Broadcast</th><td>@IPNetwork.Broadcast</td>
+        </tr>
+        <tr>
+            <th>FirstUsable</th><td>@IPNetwork.FirstUsable</td>
+        </tr>
+        <tr>
+            <th>LastUsable</th><td>@IPNetwork.LastUsable</td>
+        </tr>
+        <tr>
+            <th>Usable</th><td>@IPNetwork.Usable</td>
+        </tr>
+        <tr>
+            <th>First</th><td>@IPNetwork.First</td>
+        </tr>
+        <tr>
+            <th>Last</th><td>@IPNetwork.Last</td>
+        </tr>
+        <tr>
+            <th>Total</th><td>@IPNetwork.Total</td>
+        </tr>
+    </table>
+}

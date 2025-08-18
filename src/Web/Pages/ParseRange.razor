@@ -1,0 +1,43 @@
+﻿@page "/parserange"
+@using System.ComponentModel.DataAnnotations
+@using System.Net
+@using Web.Components
+
+<PageTitle>ParseRange</PageTitle>
+
+<h1>IPNetwork.ParseRange</h1>
+
+<EditForm Model="Model" OnValidSubmit="Submit" FormName="ParseRange">
+<DataAnnotationsValidator />
+<ValidationSummary />
+<p role="status">
+    <InputText @bind-Value="Model!.Range" />
+    <button type="submit">Submit</button>
+</p>
+</EditForm>
+
+@foreach (var ipn in ipns)
+{
+    <IPNetworkTable IPNetwork="@ipn" />
+}
+
+@code {
+    [SupplyParameterFromForm]
+    
+    private ParseModel? Model { get; set; }
+    private IEnumerable<IPNetwork2> ipns = [IPNetwork2.Parse("192.168.0.1")];
+
+    protected override void OnInitialized() =>
+        Model ??= new() { Range = "192.168.0.0 - 192.168.0.255" };
+
+    private void Submit()
+    {
+        ipns = IPNetwork2.ParseRange(Model?.Range);
+    }
+    
+    public class ParseModel
+    {
+        [Required]
+        public string? Range { get; set; }
+    }
+}

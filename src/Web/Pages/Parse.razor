@@ -1,0 +1,63 @@
+﻿@page "/parse"
+@using System.ComponentModel.DataAnnotations
+@using System.Net
+@using Web.Components
+
+<PageTitle>Parse</PageTitle>
+
+<h1>IPNetwork.Parse</h1>
+
+<EditForm Model="Model" OnValidSubmit="Submit" FormName="Parse">
+<DataAnnotationsValidator />
+<ValidationSummary />
+<p role="status">
+    <InputText @bind-Value="Model!.IPNetwork" />
+    <InputSelect @bind-Value="Model!.CidrGuess">
+        <option checked="@(Model!.CidrGuess == "ClassFull")" 
+                value="ClassFull">
+            ClassFull
+        </option>
+        <option checked="@(Model!.CidrGuess == "ClassLess")" 
+                value="ClassLess">
+            ClassLess
+        </option>
+        <option checked="@(Model!.CidrGuess == "NetworkAware")" 
+                value="NetworkAware">
+            NetworkAware
+        </option>
+    </InputSelect></p>
+    <button type="submit">Submit</button>
+</EditForm>
+
+<IPNetworkTable IPNetwork="@ipn" />
+
+@code {
+    [SupplyParameterFromForm]
+    
+    private ParseModel? Model { get; set; }
+
+    private IPNetwork2? ipn { get; set; } = IPNetwork2.Parse("192.168.0.1");
+
+    protected override void OnInitialized() =>
+        Model ??= new() { IPNetwork = "192.168.0.1" };
+
+    private void Submit()
+    {
+        ICidrGuess cidrGuess = Model.CidrGuess switch
+        {
+            "ClassFull" => CidrGuess.ClassFull,
+            "ClassLess" => CidrGuess.ClassLess,
+            "NetworkAware" => CidrGuess.NetworkAware,
+                _ => CidrGuess.ClassFull // default
+        };
+        ipn = IPNetwork2.Parse(Model?.IPNetwork, cidrGuess);
+        
+    }
+    
+    public class ParseModel
+    {
+        [Required]
+        public string? IPNetwork { get; set; }
+        public string? CidrGuess { get; set; }
+    }
+}
