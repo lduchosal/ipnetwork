@@ -43,24 +43,34 @@ PM> nuget install IPNetwork2
 IPNetwork2 ipnetwork = IPNetwork2.Parse("192.168.168.100/24");
 
 Console.WriteLine("Network : {0}", ipnetwork.Network);
+Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
 Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);
 Console.WriteLine("Broadcast : {0}", ipnetwork.Broadcast);
+
 Console.WriteLine("FirstUsable : {0}", ipnetwork.FirstUsable);
 Console.WriteLine("LastUsable : {0}", ipnetwork.LastUsable);
 Console.WriteLine("Usable : {0}", ipnetwork.Usable);
-Console.WriteLine("Cidr : {0}", ipnetwork.Cidr);
+
+Console.WriteLine("First : {0}", ipnetwork.First);
+Console.WriteLine("Last : {0}", ipnetwork.Last);
+Console.WriteLine("Total : {0}", ipnetwork.Total);
 ```
 
 Output
 
 ```MD
 Network : 192.168.168.0
+Cidr : 24
 Netmask : 255.255.255.0
 Broadcast : 192.168.168.255
+
 FirstUsable : 192.168.168.1
 LastUsable : 192.168.168.254
 Usable : 254
-Cidr : 24
+
+First : 192.168.168.0
+Last : 192.168.168.255
+Total : 256
 ```
 
 ---
