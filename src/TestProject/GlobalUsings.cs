@@ -21,3 +21,5 @@ global using Microsoft.VisualStudio.TestTools.UnitTesting;
 global using Newtonsoft.Json;
 
 #pragma warning restore SA1200
+
+[assembly: DoNotParallelize]

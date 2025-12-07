@@ -22,7 +22,7 @@ public partial class IPNetwork2
     private AddressFamily family;
 
     /// <summary>
-    /// Gets or sets a value indicating whether gets or sets the value of the IPNetwork property.
+    /// Gets or sets a value indicating whether a gets or sets the value of the IPNetwork property.
     /// </summary>
     [DataMember(Name = "IPNetwork", IsRequired = true)]
     public string Value

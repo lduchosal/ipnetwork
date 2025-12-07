@@ -8,7 +8,7 @@ using System.Linq;
 namespace System.Net;
 
 /// <summary>
-/// Substract.
+/// Subtract.
 /// </summary>
 public sealed partial class IPNetwork2
 {

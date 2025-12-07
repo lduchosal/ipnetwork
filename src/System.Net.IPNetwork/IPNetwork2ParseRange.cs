@@ -82,7 +82,7 @@ public partial class IPNetwork2
     /// ```
     /// </summary>
     /// <param name="start">A string containing a start range ip address.</param>
-    /// <param name="end">A string containing a end range ip address.</param>
+    /// <param name="end">A string containing an end range ip address.</param>
     /// <returns>An IPNetwork List equivalent to the network contained in the range.</returns>
     public static IEnumerable<IPNetwork2> ParseRange(string start, string end)
     {
@@ -102,7 +102,7 @@ public partial class IPNetwork2
     /// </summary>
     /// <param name="tryParse">Whether to throw exception or not during conversion.</param>
     /// <param name="start">A string containing a start range ip address.</param>
-    /// <param name="end">A string containing a end range ip address.</param>
+    /// <param name="end">A string containing an end range ip address.</param>
     /// <param name="ipnetworks">The resulting IPNetworks.</param>
     internal static bool InternalParseRange(bool tryParse, string start, string end, out IEnumerable<IPNetwork2> ipnetworks)
     {

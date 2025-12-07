@@ -24,7 +24,7 @@ public class BigIntegerBitWiseUnitTest
         var reverseme = new BigInteger(bytes);
         BigInteger reversed = reverseme.PositiveReverse(reverseLength);
         byte[] result = reversed.ToByteArray();
-        Assert.AreEqual(expected.Length, result.Length);
+        Assert.HasCount(expected.Length, result);
 
         for (int i = 0; i < expected.Length; i++)
         {

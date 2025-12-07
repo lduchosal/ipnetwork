@@ -26,8 +26,8 @@ public class IPNetworkSupernetArrayTests
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
-            Assert.AreEqual(expected.Length, result.Length, "supernetarray");
-            Assert.AreEqual(expected[0], expected[0], "suppernet");
+            Assert.HasCount(expected.Length, result);
+            Assert.AreEqual(expected[0], expected[0]);
         }
 
     /// <summary>
@@ -41,7 +41,7 @@ public class IPNetworkSupernetArrayTests
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
-            Assert.AreEqual(expected.Length, result.Length, "supernetarray");
+            Assert.HasCount(expected.Length, result, "supernetarray");
         }
 
     /// <summary>
@@ -73,7 +73,7 @@ public class IPNetworkSupernetArrayTests
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
-            Assert.AreEqual(expected.Length, result.Length, "supernetarray");
+            Assert.HasCount(expected.Length, result, "supernetarray");
         }
 
     /// <summary>
@@ -85,13 +85,13 @@ public class IPNetworkSupernetArrayTests
             var ipnetwork1 = IPNetwork2.Parse("192.168.0.0/24");
             IPNetworkCollection subnetted = ipnetwork1.Subnet(32);
             IPNetwork2[] ipnetworks = subnetted.ToArray();
-            Assert.AreEqual(256, ipnetworks.Length, "subnet");
+            Assert.HasCount(256, ipnetworks, "subnet");
 
             IPNetwork2[] expected = [IPNetwork2.Parse("192.168.0.0/24")];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
-            Assert.AreEqual(expected.Length, result.Length, "supernetarray");
+            Assert.HasCount(expected.Length, result, "supernetarray");
             Assert.AreEqual(expected[0], ipnetwork1, "suppernet");
         }
 
@@ -104,13 +104,13 @@ public class IPNetworkSupernetArrayTests
             var ipnetwork1 = IPNetwork2.Parse("192.168.0.0/16");
             IPNetworkCollection subnetted = ipnetwork1.Subnet(24);
             IPNetwork2[] ipnetworks = subnetted.ToArray();
-            Assert.AreEqual(256, ipnetworks.Length, "subnet");
+            Assert.HasCount(256, ipnetworks, "subnet");
 
             IPNetwork2[] expected = [IPNetwork2.Parse("192.168.0.0/16")];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
-            Assert.AreEqual(expected.Length, result.Length, "supernetarray");
+            Assert.HasCount(expected.Length, result, "supernetarray");
             Assert.AreEqual(expected[0], ipnetwork1, "suppernet");
         }
 
@@ -123,13 +123,13 @@ public class IPNetworkSupernetArrayTests
             var ipnetwork1 = IPNetwork2.Parse("192.168.0.0/8");
             IPNetworkCollection subnetted = ipnetwork1.Subnet(24);
             IPNetwork2[] ipnetworks = subnetted.ToArray();
-            Assert.AreEqual(65536, ipnetworks.Length, "subnet");
+            Assert.HasCount(65536, ipnetworks, "subnet");
 
             IPNetwork2[] expected = [IPNetwork2.Parse("192.0.0.0/8")];
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
-            Assert.AreEqual(expected.Length, result.Length, "supernetarray");
+            Assert.HasCount(expected.Length, result, "supernetarray");
             Assert.AreEqual(expected[0], ipnetwork1, "suppernet");
         }
 
@@ -158,7 +158,7 @@ public class IPNetworkSupernetArrayTests
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
-            Assert.AreEqual(expected.Length, result.Length, "supernetarray");
+            Assert.HasCount(expected.Length, result, "supernetarray");
             Assert.AreEqual(expected[0], result[0], "suppernet");
             Assert.AreEqual(expected[1], result[1], "suppernet1");
             Assert.AreEqual(expected[2], result[2], "suppernet2");
@@ -189,7 +189,7 @@ public class IPNetworkSupernetArrayTests
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
-            Assert.AreEqual(expected.Length, result.Length, "supernetarray");
+            Assert.HasCount(expected.Length, result, "supernetarray");
             Assert.AreEqual(expected[0], result[0], "suppernet");
             Assert.AreEqual(expected[1], result[1], "suppernet1");
         }
@@ -222,7 +222,7 @@ public class IPNetworkSupernetArrayTests
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
-            Assert.AreEqual(expected.Length, result.Length, "supernetarray");
+            Assert.HasCount(expected.Length, result, "supernetarray");
             Assert.AreEqual(expected[0], result[0], "suppernet");
             Assert.AreEqual(expected[1], result[1], "suppernet1");
             Assert.AreEqual(expected[2], result[2], "suppernet2");
@@ -247,7 +247,7 @@ public class IPNetworkSupernetArrayTests
 
             IPNetwork2[] result = IPNetwork2.Supernet(ipnetworks);
 
-            Assert.AreEqual(expected.Length, result.Length, "supernetarray");
+            Assert.HasCount(expected.Length, result, "supernetarray");
             Assert.AreEqual(expected[0], result[0], "suppernet");
         }
 }

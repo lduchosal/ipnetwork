@@ -18,7 +18,7 @@ public class IPNetworkTryToUintTests
     {
         bool parsed = IPNetwork2.TryToUint(32, AddressFamily.InterNetwork, out BigInteger result);
 
-        Assert.IsNotNull(result, "uint");
         Assert.IsTrue(parsed, "parsed");
+        Assert.AreNotEqual(default(BigInteger), result, "uint");
     }
 }
