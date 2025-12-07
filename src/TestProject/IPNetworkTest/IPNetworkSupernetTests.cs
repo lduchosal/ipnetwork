@@ -41,7 +41,7 @@ public class IPNetworkSupernetTests
     {
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
         {
-            var network1 = IPNetwork2.Parse("192.168.0.0/24");
+            var network1 = IPNetwork2.Parse("192.168.1.0/24");
             var network2 = IPNetwork2.Parse("192.168.2.0/24");
             var expected = IPNetwork2.Parse("192.168.0.0/23");
             IPNetwork2 supernet = network1.Supernet(network2);
@@ -86,9 +86,9 @@ public class IPNetworkSupernetTests
     [TestMethod]
     public void TestSupernet1()
     {
-        var network1 = IPNetwork2.Parse("192.168.0.1/24");
-        var network2 = IPNetwork2.Parse("192.168.1.1/24");
-        var expected = IPNetwork2.Parse("192.168.0.0/23");
+        var network1 = IPNetwork2.Parse("192.168.10.1/24");
+        var network2 = IPNetwork2.Parse("192.168.11.1/24");
+        var expected = IPNetwork2.Parse("192.168.10.0/23");
         IPNetwork2 supernet = network1.Supernet(network2);
 
         Assert.AreEqual(expected, supernet, "supernet");
@@ -102,9 +102,8 @@ public class IPNetworkSupernetTests
     {
         Assert.ThrowsExactly<NullReferenceException>(() =>
         {
-            IPNetwork2 network1 = null;
-            var network2 = IPNetwork2.Parse("192.168.1.1/24");
-            network1.Supernet(network2);
+            var network1 = IPNetwork2.Parse("192.168.1.1/24");
+            network1.Supernet(null);
         });
     }
 

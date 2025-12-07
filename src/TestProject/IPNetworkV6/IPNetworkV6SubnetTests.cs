@@ -50,9 +50,9 @@ public class IPNetworkV6SubnetTests
         byte cidr = 65;
 
         IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
-        Assert.AreEqual(2, subnets.Count, "count");
-        Assert.AreEqual("1:1:1:1::/65", subnets[0].ToString(), "subnet1");
-        Assert.AreEqual("1:1:1:1:8000::/65", subnets[1].ToString(), "subnet2");
+        Assert.HasCount(2, subnets);
+        Assert.AreEqual("1:1:1:1::/65", subnets[0].ToString());
+        Assert.AreEqual("1:1:1:1:8000::/65", subnets[1].ToString());
     }
 
     /// <summary>
@@ -65,23 +65,23 @@ public class IPNetworkV6SubnetTests
         byte cidr = 68;
 
         IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
-        Assert.AreEqual(16, subnets.Count, "count");
-        Assert.AreEqual("1:1:1:1::/68", subnets[0].ToString(), "subnet1");
-        Assert.AreEqual("1:1:1:1:1000::/68", subnets[1].ToString(), "subnet2");
-        Assert.AreEqual("1:1:1:1:2000::/68", subnets[2].ToString(), "subnet3");
-        Assert.AreEqual("1:1:1:1:3000::/68", subnets[3].ToString(), "subnet4");
-        Assert.AreEqual("1:1:1:1:4000::/68", subnets[4].ToString(), "subnet5");
-        Assert.AreEqual("1:1:1:1:5000::/68", subnets[5].ToString(), "subnet6");
-        Assert.AreEqual("1:1:1:1:6000::/68", subnets[6].ToString(), "subnet7");
-        Assert.AreEqual("1:1:1:1:7000::/68", subnets[7].ToString(), "subnet8");
-        Assert.AreEqual("1:1:1:1:8000::/68", subnets[8].ToString(), "subnet9");
-        Assert.AreEqual("1:1:1:1:9000::/68", subnets[9].ToString(), "subnet10");
-        Assert.AreEqual("1:1:1:1:a000::/68", subnets[10].ToString(), "subnet11");
-        Assert.AreEqual("1:1:1:1:b000::/68", subnets[11].ToString(), "subnet12");
-        Assert.AreEqual("1:1:1:1:c000::/68", subnets[12].ToString(), "subnet13");
-        Assert.AreEqual("1:1:1:1:d000::/68", subnets[13].ToString(), "subnet14");
-        Assert.AreEqual("1:1:1:1:e000::/68", subnets[14].ToString(), "subnet15");
-        Assert.AreEqual("1:1:1:1:f000::/68", subnets[15].ToString(), "subnet16");
+        Assert.HasCount(16, subnets);
+        Assert.AreEqual("1:1:1:1::/68", subnets[0].ToString());
+        Assert.AreEqual("1:1:1:1:1000::/68", subnets[1].ToString());
+        Assert.AreEqual("1:1:1:1:2000::/68", subnets[2].ToString());
+        Assert.AreEqual("1:1:1:1:3000::/68", subnets[3].ToString());
+        Assert.AreEqual("1:1:1:1:4000::/68", subnets[4].ToString());
+        Assert.AreEqual("1:1:1:1:5000::/68", subnets[5].ToString());
+        Assert.AreEqual("1:1:1:1:6000::/68", subnets[6].ToString());
+        Assert.AreEqual("1:1:1:1:7000::/68", subnets[7].ToString());
+        Assert.AreEqual("1:1:1:1:8000::/68", subnets[8].ToString());
+        Assert.AreEqual("1:1:1:1:9000::/68", subnets[9].ToString());
+        Assert.AreEqual("1:1:1:1:a000::/68", subnets[10].ToString());
+        Assert.AreEqual("1:1:1:1:b000::/68", subnets[11].ToString());
+        Assert.AreEqual("1:1:1:1:c000::/68", subnets[12].ToString());
+        Assert.AreEqual("1:1:1:1:d000::/68", subnets[13].ToString());
+        Assert.AreEqual("1:1:1:1:e000::/68", subnets[14].ToString());
+        Assert.AreEqual("1:1:1:1:f000::/68", subnets[15].ToString());
     }
 
     /// <summary>

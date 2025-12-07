@@ -86,7 +86,7 @@ public class IPNetworkParseTests
     {
         Assert.ThrowsExactly<ArgumentException>(() =>
         {
-            IPNetwork2.Parse("0.0.0.0", "x.x.x.x");
+            IPNetwork2.Parse("0.0.0.1", "x.x.x.x");
         });
     }
 
@@ -134,13 +134,13 @@ public class IPNetworkParseTests
         uint usable = 254;
 
         var ipnetwork = IPNetwork2.Parse(ipaddress, netmask);
-        Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
-        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
-        Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
-        Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
-        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
-        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+        Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network1");
+        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask1");
+        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast1");
+        Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr1");
+        Assert.AreEqual(usable, ipnetwork.Usable, "Usable1");
+        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable1");
+        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable1");
     }
 
     /// <summary>
