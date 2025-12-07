@@ -162,13 +162,13 @@ public class TryParseUnitTest
         bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
 
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
-        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
-        Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
-        Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
-        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
-        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString());
+        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString());
+        Assert.AreEqual(cidr, ipnetwork.Cidr);
+        Assert.AreEqual(usable, ipnetwork.Usable);
+        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString());
+        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString());
     }
 
     /// <summary>
@@ -190,13 +190,13 @@ public class TryParseUnitTest
         bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
-        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
-        Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
-        Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
-        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
-        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString());
+        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString());
+        Assert.AreEqual(cidr, ipnetwork.Cidr);
+        Assert.AreEqual(usable, ipnetwork.Usable);
+        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString());
+        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString());
     }
 
     /// <summary>
@@ -218,13 +218,13 @@ public class TryParseUnitTest
         bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
-        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
-        Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
-        Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
-        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
-        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString());
+        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString());
+        Assert.AreEqual(cidr, ipnetwork.Cidr);
+        Assert.AreEqual(usable, ipnetwork.Usable);
+        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString());
+        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString());
     }
 
     /// <summary>
@@ -246,13 +246,13 @@ public class TryParseUnitTest
         bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
-        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
-        Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
-        Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
-        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
-        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString());
+        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString());
+        Assert.AreEqual(cidr, ipnetwork.Cidr);
+        Assert.AreEqual(usable, ipnetwork.Usable);
+        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString());
+        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString());
     }
 
     /// <summary>
@@ -274,13 +274,13 @@ public class TryParseUnitTest
         bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
-        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
-        Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
-        Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
-        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
-        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString());
+        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString());
+        Assert.AreEqual(cidr, ipnetwork.Cidr);
+        Assert.AreEqual(usable, ipnetwork.Usable);
+        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString());
+        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString());
     }
 
     /// <summary>
@@ -302,13 +302,13 @@ public class TryParseUnitTest
         bool parsed = IPNetwork2.TryParse(ipaddress, out IPNetwork2 ipnetwork);
 
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString(), "Network");
-        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
-        Assert.AreEqual(cidr, ipnetwork.Cidr, "Cidr");
-        Assert.AreEqual(usable, ipnetwork.Usable, "Usable");
-        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
-        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");
+        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(netmask, ipnetwork.Netmask.ToString());
+        Assert.AreEqual(broadcast, ipnetwork.Broadcast.ToString());
+        Assert.AreEqual(cidr, ipnetwork.Cidr);
+        Assert.AreEqual(usable, ipnetwork.Usable);
+        Assert.AreEqual(firstUsable, ipnetwork.FirstUsable.ToString());
+        Assert.AreEqual(lastUsable, ipnetwork.LastUsable.ToString());
     }
 
     /// <summary>
