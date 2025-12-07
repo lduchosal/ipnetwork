@@ -95,7 +95,7 @@ public class IPAddressExtensionTests
         hashInput[0] ^= (byte)byteCount;
 
         /* Loop many times. */
-        foreach (int i in Enumerable.Range(1, 1000))
+        foreach (int _ in Enumerable.Range(1, 1000))
         {
             /* Hash the current interation to get a new block of deterministic bytes. */
             hashInput = SHA256.HashData(hashInput);

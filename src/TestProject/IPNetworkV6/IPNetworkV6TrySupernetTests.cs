@@ -35,9 +35,8 @@ public class IPNetworkV6TrySupernetTests
         {
             IPNetwork2 network1 = null;
             var network2 = IPNetwork2.Parse("2001:db8::/64");
-            IPNetwork2 supernet;
 #pragma warning disable 0618
-            IPNetwork2.TrySupernet(network1, network2, out supernet);
+            IPNetwork2.TrySupernet(network1, network2, out var _);
 #pragma warning restore 0618
         });
     }

@@ -672,7 +672,7 @@ public class IPNetworkParseTests
         {
             cidrGuess = CidrGuess.ClassFull;
         }
-        bool result = IPNetwork2.TryParse(ipnetwork, cidrGuess, out IPNetwork2 ipnetwork2);
+        bool _ = IPNetwork2.TryParse(ipnetwork, cidrGuess, out IPNetwork2 ipnetwork2);
         var ipnetworkExpected = IPNetwork2.Parse(expected);
         
         // This assert fails.

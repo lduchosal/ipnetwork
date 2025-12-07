@@ -27,10 +27,9 @@ public class IPNetworkSupernetTests
     [TestMethod]
     public void TestSupernetInternal2()
     {
-        IPNetwork2 result;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2.InternalSupernet(false, null, null, out result);
+            IPNetwork2.InternalSupernet(false, null, null, out var _);
         });
     }
 

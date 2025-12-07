@@ -31,7 +31,7 @@ public class IPNetworkCtorWithIpAndCidrTests
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
             IPAddress ip = null;
-            var ipnetwork = new IPNetwork2(ip, 24);
+            var _ = new IPNetwork2(ip, 24);
         });
     }
 
@@ -45,7 +45,7 @@ public class IPNetworkCtorWithIpAndCidrTests
         {
             string ipaddress = "192.168.168.100";
             var ip = IPAddress.Parse(ipaddress);
-            var ipnetwork = new IPNetwork2(ip, 33);
+            var _ = new IPNetwork2(ip, 33);
         });
     }
 }

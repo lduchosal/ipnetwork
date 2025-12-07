@@ -160,7 +160,7 @@ public class IPNetworkV6SubnetTests
             var ipnetwork = IPNetwork2.Parse("2001:db08::/64");
             byte cidr = 70;
             IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
-            IPNetwork2 error = subnets[1000];
+            IPNetwork2 _ = subnets[1000];
         });
     }
 

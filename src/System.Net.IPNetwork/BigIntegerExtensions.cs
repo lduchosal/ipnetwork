@@ -103,12 +103,9 @@ public static class BigIntegerExtensions
             string octal = Convert.ToString(int24, 8);
 
             // Ensure leading zero exists if value is positive.
-            if (octal[0] != '0')
+            if (octal[0] != '0' && (bigint.Sign == 1))
             {
-                if (bigint.Sign == 1)
-                {
-                    base8.Append('0');
-                }
+                base8.Append('0');
             }
 
             // Append first converted chunk to StringBuilder.

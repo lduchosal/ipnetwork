@@ -32,7 +32,7 @@ public class IPNetworkV6CtorWithIpAndCidrTests
         {
             string ipaddress = "2001:db8::";
             var ip = IPAddress.Parse(ipaddress);
-            var ipn = new IPNetwork2(ip, 129);
+            var _ = new IPNetwork2(ip, 129);
         });
     }
 }

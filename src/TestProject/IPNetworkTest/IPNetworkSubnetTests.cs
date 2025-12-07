@@ -225,7 +225,7 @@ public class IPNetworkSubnetTests
             IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
             byte cidr = 20;
             IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
-            IPNetwork2 error = subnets[1000];
+            IPNetwork2 _ = subnets[1000];
         });
     }
 }
