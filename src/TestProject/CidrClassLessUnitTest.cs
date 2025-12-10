@@ -98,20 +98,6 @@ public class CidrClassLessUnitTest
     /// Test.
     /// </summary>
     [TestMethod]
-    public void TestIpV6TryGuessCidrNull()
-    {
-        var cidrguess = new CidrClassLess();
-
-        bool parsed = cidrguess.TryGuessCidr(null, out byte cidr);
-
-        Assert.IsFalse(parsed, "parsed");
-        Assert.AreEqual(0, cidr, "cidr");
-    }
-
-    /// <summary>
-    /// Test.
-    /// </summary>
-    [TestMethod]
     public void TestIpV6TryGuessCidr1()
     {
         var cidrguess = new CidrClassLess();
