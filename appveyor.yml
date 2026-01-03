@@ -26,6 +26,10 @@ branches:
 
 init:
   - cmd: git config --global core.autocrlf true
+  
+# install .NET 10 SDK
+install:
+  - cmd: choco install dotnet-10.0-sdk
 
 before_build:
   - cmd: dotnet --version
