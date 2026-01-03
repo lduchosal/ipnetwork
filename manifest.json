@@ -1,0 +1,265 @@
+{
+  "source_base_path": "/home/runner/work/ipnetwork/ipnetwork/doc",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.BigIntegerExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.BigIntegerExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.BigIntegerExtensions",
+      "Summary": "<p sourcefile=\"api/System.Net.BigIntegerExtensions.yml\" sourcestartlinenumber=\"1\">Extension methods to convert <xref href=\"System.Numerics.BigInteger\" data-throw-if-not-resolved=\"false\"></xref>\ninstances to hexadecimal, octal, and binary strings.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.CidrClassFull.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.CidrClassFull.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.CidrClassFull",
+      "Summary": "<p sourcefile=\"api/System.Net.CidrClassFull.yml\" sourcestartlinenumber=\"1\">Class <code>CidrClassFull</code> tries to guess CIDR in a ClassFull way.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.CidrClassLess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.CidrClassLess.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.CidrClassLess",
+      "Summary": "<p sourcefile=\"api/System.Net.CidrClassLess.yml\" sourcestartlinenumber=\"1\">Try to guess a CIDR in a ClassLess way: ipv4 = 32, ipv6 = 128.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.CidrGuess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.CidrGuess.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.CidrGuess",
+      "Summary": "<p sourcefile=\"api/System.Net.CidrGuess.yml\" sourcestartlinenumber=\"1\">A static helper CidrGuess class.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.CidrNetworkAware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.CidrNetworkAware.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.CidrNetworkAware",
+      "Summary": "<p sourcefile=\"api/System.Net.CidrNetworkAware.yml\" sourcestartlinenumber=\"1\">If your CidrGuess is “network-aware” based only on what humans usually encode in the textual address, a good heuristic is:</p>\n<p sourcefile=\"api/System.Net.CidrNetworkAware.yml\" sourcestartlinenumber=\"3\">IPv4 (dotted-quad)\n• Treat trailing 0s as “network bits” and trailing 255s as a “wildcard” hint for the same boundary.\n• Otherwise, fall back to /32 (no safe aggregation from the string alone).\n• Special case: 0.0.0.0 (or 255.255.255.255) → /0.</p>\n<p sourcefile=\"api/System.Net.CidrNetworkAware.yml\" sourcestartlinenumber=\"8\">Rule of thumb\nEnds with .0 → /24\nEnds with .0.0 or .255.255 → /16\nEnds with .0.0.0 or .255.255.255 → /8\nElse → /32</p>\n<p sourcefile=\"api/System.Net.CidrNetworkAware.yml\" sourcestartlinenumber=\"14\">Matches your examples\nParse(&quot;192.0.43.8&quot;) → /32\nParse(&quot;192.0.43.0&quot;) → /24\nParse(&quot;192.43.0.0&quot;) → /16\nParse(&quot;192.0.43.255&quot;) → /24 (wildcard hint)\nParse(&quot;192.43.255.255&quot;) → /16 (wildcard hint)</p>\n<p sourcefile=\"api/System.Net.CidrNetworkAware.yml\" sourcestartlinenumber=\"21\">So: in a network-aware context like this, you generally don’t emit /25, /26, etc.,\nbecause there’s no reliable visual cue for those in dotted-quad—stick to /32, /24, /16, /8, /0.</p>\n<p sourcefile=\"api/System.Net.CidrNetworkAware.yml\" sourcestartlinenumber=\"24\">IPv6 (colon-hex)\nIPv6 is grouped by hextets (16-bit chunks), so mirror the idea at 16-bit boundaries.\nUse trailing :0000 hextets as “network bits”.\nOtherwise, fall back to /128.\nNote: operationally, /64 is the standard host subnet size, but you should still infer from the string, not assumptions.</p>\n<p sourcefile=\"api/System.Net.CidrNetworkAware.yml\" sourcestartlinenumber=\"30\">Rule of thumb\nEnds with :0000 → /112\nEnds with :0000:0000 → /96\nEnds with three trailing :0000 → /80\n…\nEnds with four trailing :0000 → /64\nElse → /128</p>\n<p sourcefile=\"api/System.Net.CidrNetworkAware.yml\" sourcestartlinenumber=\"38\">Examples\n2001:db8:1:2:3:4:5:6 → /128\n2001:db8:1:2:3:4:5:0000 → /112\n2001:db8:1:2:3:4:0000:0000 → /96\n2001:db8:1:2:3:0000:0000:0000 → /80\n2001:db8:1:2:0000:0000:0000:0000 → /64</p>\n<p sourcefile=\"api/System.Net.CidrNetworkAware.yml\" sourcestartlinenumber=\"45\">TL;DR\nIPv4: stick to /32, /24, /16, /8, /0 based on trailing .0/.255; otherwise /32.\nIPv6: infer /128, /112, /96, /80, /64, … based on trailing :0000 groups; otherwise /128.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.Filter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.Filter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.Filter",
+      "Summary": "<p sourcefile=\"api/System.Net.Filter.yml\" sourcestartlinenumber=\"1\">Represents different filters for a collection of items.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.FilterEnum.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.FilterEnum.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.FilterEnum",
+      "Summary": "<p sourcefile=\"api/System.Net.FilterEnum.yml\" sourcestartlinenumber=\"1\">Represents different filters for a collection of items.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.ICidrGuess.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.ICidrGuess.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.ICidrGuess",
+      "Summary": "<p sourcefile=\"api/System.Net.ICidrGuess.yml\" sourcestartlinenumber=\"1\">An interface to have multiple implemntatino ao CIDR Guesser.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.IPAddressCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.IPAddressCollection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.IPAddressCollection",
+      "Summary": "<p sourcefile=\"api/System.Net.IPAddressCollection.yml\" sourcestartlinenumber=\"1\">Represents a collection of IP addresses within a specific IP network.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.IPAddressExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.IPAddressExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.IPAddressExtensions",
+      "Summary": "<p sourcefile=\"api/System.Net.IPAddressExtensions.yml\" sourcestartlinenumber=\"1\">A collection of extension functions applied to an IPAddress value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.IPNetwork2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.IPNetwork2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.IPNetwork2",
+      "Summary": "<p sourcefile=\"api/System.Net.IPNetwork2.yml\" sourcestartlinenumber=\"1\">IP Network utility class.\nUse IPNetwork.Parse to create instances.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.IPNetwork2UlaExtension.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.IPNetwork2UlaExtension.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.IPNetwork2UlaExtension",
+      "Summary": "<p sourcefile=\"api/System.Net.IPNetwork2UlaExtension.yml\" sourcestartlinenumber=\"1\">Extension methods for IPNetwork2 to support ULA operations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.IPNetworkCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.IPNetworkCollection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.IPNetworkCollection",
+      "Summary": "<p sourcefile=\"api/System.Net.IPNetworkCollection.yml\" sourcestartlinenumber=\"1\">Represents a collection of IP networks based on a given parent IP network and subnet CIDR.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.UniqueLocalAddress.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.UniqueLocalAddress.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net.UniqueLocalAddress",
+      "Summary": "<p sourcefile=\"api/System.Net.UniqueLocalAddress.yml\" sourcestartlinenumber=\"1\">Utility class for IPv6 Unique Local Address (ULA) generation and validation.\nImplements RFC 4193 for generating ULA prefixes in the fd00::/8 range.</p>\n<p sourcefile=\"api/System.Net.UniqueLocalAddress.yml\" sourcestartlinenumber=\"4\">A locally-assigned ULA always looks like this (128 bits total):\n| 8 bits  | 40 bits        | 16 bits    | 64 bits           |\n+---------+----------------+-------------+-------------------+\n| fd (8)  | Global ID      | Subnet ID   | Interface ID      |</p>\n<p sourcefile=\"api/System.Net.UniqueLocalAddress.yml\" sourcestartlinenumber=\"9\">•\tfd = the fixed 8-bit prefix (fd00::/8 for locally assigned).\n•\tGlobal ID = 40 random bits, chosen once to make your ULA unique.\n•\tSubnet ID = 16 bits, chosen by you inside your site.\n•\tInterface ID = 64 bits, assigned to each host within the subnet (same rule as all IPv6).</p>\n<p sourcefile=\"api/System.Net.UniqueLocalAddress.yml\" sourcestartlinenumber=\"14\">The /48 prefix is the site prefix (fdXX:XXXX:XXXX::/48).</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/System.Net.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/System.Net.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "System.Net",
+      "Summary": null
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/toc.html"
+        },
+        ".json": {
+          "relative_path": "api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}
