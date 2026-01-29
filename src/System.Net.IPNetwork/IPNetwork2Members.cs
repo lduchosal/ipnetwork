@@ -96,6 +96,7 @@ public partial class IPNetwork2
     
     /// <summary>
     /// Gets first usable IPAddress in Network.
+    /// Per RFC 3021, /31 networks have no reserved network address.
     /// </summary>
     public IPAddress FirstUsable
     {
@@ -103,16 +104,18 @@ public partial class IPNetwork2
         {
             BigInteger first = this.InternalNetwork;
             if (this.family == AddressFamily.InterNetwork
-                && this.Usable > 1)
+                && this.cidr < 31)
             {
-                first+= 1;
+                first += 1;
             }
+
             return ToIPAddress(first, this.family);
         }
     }
 
     /// <summary>
     /// Gets last usable IPAddress in Network.
+    /// Per RFC 3021, /31 networks have no reserved broadcast address.
     /// </summary>
     public IPAddress LastUsable
     {
@@ -120,10 +123,11 @@ public partial class IPNetwork2
         {
             BigInteger last = this.InternalBroadcast;
             if (this.family == AddressFamily.InterNetwork
-                && this.Usable > 1)
+                && this.cidr < 31)
             {
                 last -= 1;
             }
+
             return ToIPAddress(last, this.family);
         }
     }
