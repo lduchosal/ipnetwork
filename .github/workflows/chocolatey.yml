@@ -28,6 +28,7 @@ jobs:
       run: |
         dotnet publish src/ConsoleApplication `
           --configuration Release `
+          --framework net10.0 `
           --runtime win-x64 `
           --self-contained false `
           --output chocolatey/output/publish `
