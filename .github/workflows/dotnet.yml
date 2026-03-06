@@ -12,18 +12,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Setup .NET
-      uses: actions/setup-dotnet@v1
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 10.0.x
-    - name: Install dependencies
-      run: dotnet tool install --global coveralls.net
-    - name: Restore dependencies
+    - name: Install tools
+      run: |
+        dotnet tool install --global coverlet.console
+    - name: Restore
       run: dotnet restore ./src --verbosity m
     - name: Pack
       run: dotnet pack -c release ./src/System.Net.IPNetwork
     - name: Build
-      run: dotnet build  --no-restore -c release ./src/ConsoleApplication --no-restore
-    - name: Test
-      run: dotnet test --verbosity normal ./src/ConsoleApplication/ConsoleApplication.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
+      run: dotnet build --no-restore -c release ./src/ConsoleApplication
+    - name: Test with coverage
+      run: |
+        dotnet build ./src/TestProject/TestProject.csproj -c Debug
+        coverlet src/TestProject/bin/Debug/net10.0/TestProject.dll \
+          --target dotnet \
+          --targetargs "src/TestProject/bin/Debug/net10.0/TestProject.dll" \
+          --format opencover \
+          --output coverage.opencover.xml
+    - name: Upload to Coveralls
+      uses: coverallsapp/github-action@v2
+      with:
+        file: coverage.opencover.xml
+        format: opencover

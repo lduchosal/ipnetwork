@@ -1,0 +1,109 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  nuget:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 10.0.x
+
+    - name: Install tools
+      run: |
+        dotnet tool install --global coverlet.console
+
+    - name: Restore
+      run: dotnet restore ./src --verbosity m
+
+    - name: Build
+      run: dotnet build ./src -c Release /p:Version=${{ github.event.release.tag_name }} /p:PackageVersion=${{ github.event.release.tag_name }} --no-restore
+
+    - name: Test with coverage
+      run: |
+        dotnet build ./src/TestProject/TestProject.csproj -c Debug /p:Version=${{ github.event.release.tag_name }}
+        coverlet src/TestProject/bin/Debug/net10.0/TestProject.dll \
+          --target dotnet \
+          --targetargs "src/TestProject/bin/Debug/net10.0/TestProject.dll" \
+          --format opencover \
+          --output src/TestProject/TestResults/coverage.opencover.xml
+
+    - name: Pack
+      run: dotnet pack src/System.Net.IPNetwork -c Release /p:PackageVersion=${{ github.event.release.tag_name }} --no-build
+
+    - name: Push to NuGet
+      run: dotnet nuget push src/System.Net.IPNetwork/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+
+  chocolatey:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 10.0.x
+
+    - name: Publish application
+      shell: pwsh
+      run: |
+        dotnet publish src/ConsoleApplication `
+          --configuration Release `
+          --framework net10.0 `
+          --runtime win-x64 `
+          --self-contained false `
+          --output chocolatey/output/publish `
+          /p:Version=${{ github.event.release.tag_name }}
+
+    - name: Create release archive
+      shell: pwsh
+      run: |
+        Compress-Archive -Path "chocolatey/output/publish/*" -DestinationPath "chocolatey/output/ipnetwork-win-x64.zip"
+
+    - name: Upload zip to GitHub Release
+      shell: pwsh
+      run: |
+        gh release upload "${{ github.event.release.tag_name }}" "chocolatey/output/ipnetwork-win-x64.zip" --clobber
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Build and push Chocolatey package
+      shell: pwsh
+      run: |
+        $version = "${{ github.event.release.tag_name }}"
+        $zipPath = "chocolatey/output/ipnetwork-win-x64.zip"
+
+        # Calculate checksum
+        $checksum = (Get-FileHash -Path $zipPath -Algorithm SHA256).Hash
+
+        # Update version, checksum in chocolateyinstall.ps1
+        $installScript = Get-Content "chocolatey/tools/chocolateyinstall.ps1" -Raw
+        $installScript = $installScript -replace 'XXX_VERSION_XXX', $version
+        $installScript = $installScript -replace "checksum64\s*=\s*'.*'", "checksum64    = '$checksum'"
+        Set-Content "chocolatey/tools/chocolateyinstall.ps1" $installScript
+
+        # Update version in nuspec
+        $nuspec = Get-Content "chocolatey/ipnetwork.nuspec" -Raw
+        $nuspec = $nuspec -replace 'XXX_VERSION_XXX', $version
+        Set-Content "chocolatey/ipnetwork.nuspec" $nuspec
+
+        # Update version and checksum in VERIFICATION.txt
+        $verification = Get-Content "chocolatey/tools/VERIFICATION.txt" -Raw
+        $verification = $verification -replace 'XXX_VERSION_XXX', $version
+        $verification = $verification -replace 'XXX_CHECKSUM_XXX', $checksum
+        Set-Content "chocolatey/tools/VERIFICATION.txt" $verification
+
+        # Pack and push
+        Push-Location chocolatey
+        choco pack
+        $nupkg = Get-ChildItem "ipnetwork.*.nupkg" | Select-Object -First 1
+        choco push $nupkg.Name --source https://push.chocolatey.org/ --api-key ${{ secrets.CHOCOLATEY_API_KEY }}
+        Pop-Location

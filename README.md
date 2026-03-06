@@ -566,6 +566,12 @@ IPNetwork utility command line take care of complex network, ip, netmask,
 subnet, cidr calculation for command line. It works with IPv4,
 it is written in C# and has a light and clean API and is fully unit tested.
 
+### Installation
+
+```
+choco install ipnetwork
+```
+
 Below some examples :
 
 ---
