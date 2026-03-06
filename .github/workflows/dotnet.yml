@@ -32,10 +32,10 @@ jobs:
         coverlet src/TestProject/bin/Debug/net10.0/TestProject.dll \
           --target dotnet \
           --targetargs "src/TestProject/bin/Debug/net10.0/TestProject.dll" \
-          --format opencover \
-          --output coverage.opencover.xml
+          --format lcov \
+          --output coverage.lcov
     - name: Upload to Coveralls
       uses: coverallsapp/github-action@v2
       with:
-        file: coverage.opencover.xml
-        format: opencover
+        file: coverage.lcov
+        format: lcov
