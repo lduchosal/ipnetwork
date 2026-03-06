@@ -75,5 +75,6 @@ jobs:
         # Pack and push
         Push-Location chocolatey
         choco pack
-        choco push "ipnetwork.$version.nupkg" --source https://push.chocolatey.org/ --api-key ${{ secrets.CHOCOLATEY_API_KEY }}
+        $nupkg = Get-ChildItem "ipnetwork.*.nupkg" | Select-Object -First 1
+        choco push $nupkg.Name --source https://push.chocolatey.org/ --api-key ${{ secrets.CHOCOLATEY_API_KEY }}
         Pop-Location
