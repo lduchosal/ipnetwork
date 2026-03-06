@@ -38,6 +38,11 @@ jobs:
     - name: Pack
       run: dotnet pack src/System.Net.IPNetwork -c Release /p:PackageVersion=${{ github.event.release.tag_name }} --no-build
 
+    - name: Upload nupkg to GitHub Release
+      run: gh release upload "${{ github.event.release.tag_name }}" src/System.Net.IPNetwork/bin/Release/*.nupkg --clobber
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Push to NuGet
       run: dotnet nuget push src/System.Net.IPNetwork/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
 
