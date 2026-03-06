@@ -1,0 +1,7 @@
+# Chocolatey build output
+*.nupkg
+output/
+
+# Temporary files
+*.tmp
+*.bak

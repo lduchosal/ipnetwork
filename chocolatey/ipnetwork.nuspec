@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>ipnetwork</id>
+    <version>XXX_VERSION_XXX</version>
+    <packageSourceUrl>https://github.com/lduchosal/ipnetwork</packageSourceUrl>
+    <owners>lduchosal</owners>
+    <title>IPNetwork CLI</title>
+    <authors>lduchosal</authors>
+    <projectUrl>https://github.com/lduchosal/ipnetwork</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/lduchosal/ipnetwork/master/ipnetwork.png</iconUrl>
+    <licenseUrl>https://github.com/lduchosal/ipnetwork/blob/master/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/lduchosal/ipnetwork</projectSourceUrl>
+    <docsUrl>https://github.com/lduchosal/ipnetwork/blob/master/README.md</docsUrl>
+    <bugTrackerUrl>https://github.com/lduchosal/ipnetwork/issues</bugTrackerUrl>
+    <tags>ipnetwork ip network cidr subnet ipv4 ipv6 networking cli command-line</tags>
+    <summary>Command-line utility for complex IPv4 and IPv6 network calculations</summary>
+    <description>
+IPNetwork is a comprehensive command-line utility for handling complex network calculations involving IPv4 and IPv6 addresses, netmasks, CIDR notation, subnet operations, and supernetting.
+
+## Features
+
+- IPv4 and IPv6 support
+- Network parsing with multiple CIDR guessing strategies (ClassFull, ClassLess, NetworkAware)
+- Subnet and supernet calculations
+- IP range to CIDR conversion
+- Network containment and overlap detection
+- IP address enumeration
+- Unique Local Address (ULA) generation for IPv6
+- Comprehensive command-line interface
+
+## Usage
+
+Display network information:
+```
+ipnetwork 10.0.0.0/8
+```
+
+Split network into subnets:
+```
+ipnetwork -s 9 10.0.0.0/8
+```
+
+Supernet networks:
+```
+ipnetwork -w 192.168.0.0/24 192.168.1.0/24
+```
+
+Test network containment:
+```
+ipnetwork -C 10.0.0.1 10.0.0.0/8
+```
+
+Test network overlap:
+```
+ipnetwork -o 10.0.0.1/24 10.0.0.0/8
+```
+
+For full usage instructions, run: `ipnetwork -h`
+    </description>
+    <releaseNotes>https://github.com/lduchosal/ipnetwork/releases</releaseNotes>
+    <dependencies>
+      <dependency id="dotnet-10.0-runtime" version="10.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

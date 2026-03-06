@@ -1,0 +1,26 @@
+VERIFICATION
+
+Verification is intended to assist the Chocolatey moderators and community
+in verifying that this package's contents are trustworthy.
+
+Package can be verified like this:
+
+1. Download the following:
+
+   Binary archive: https://github.com/lduchosal/ipnetwork/releases/download/XXX_VERSION_XXX/ipnetwork-win-x64.zip
+
+2. You can verify the binary archive using the following checksums:
+
+   checksumType: sha256
+   checksum: XXX_CHECKSUM_XXX
+
+   Using PowerShell:
+   Get-FileHash -Path ipnetwork-win-x64.zip -Algorithm SHA256
+
+3. The binaries are built from the source code available at:
+   https://github.com/lduchosal/ipnetwork
+
+   To build from source:
+   - Clone the repository
+   - Run: dotnet publish src/ConsoleApplication --configuration Release --runtime win-x64
+   - Compare the output with the included binaries
