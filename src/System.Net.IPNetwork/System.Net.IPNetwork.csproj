@@ -48,6 +48,8 @@
     </None>
     <None Include="..\..\LICENSE" Pack="true" PackagePath="." />
     <None Include="..\..\README.md" Pack="true" PackagePath="." />
+    <None Include="..\..\DONATE.md" Pack="true" PackagePath="." />
+    <None Include="..\..\DONATE.jpg" Pack="true" PackagePath="." />
   </ItemGroup>
   
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">

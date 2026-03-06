@@ -58,6 +58,10 @@ ipnetwork -o 10.0.0.1/24 10.0.0.0/8
 ```
 
 For full usage instructions, run: `ipnetwork -h`
+
+## Donate
+
+If you find IPNetwork useful, consider supporting the project: https://github.com/lduchosal/ipnetwork/blob/master/DONATE.md
     </description>
     <releaseNotes>https://github.com/lduchosal/ipnetwork/releases</releaseNotes>
     <dependencies>
