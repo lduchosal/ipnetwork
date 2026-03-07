@@ -20,10 +20,10 @@ public sealed partial class IPNetwork2
     /// A negative value if <paramref name="left"/> is less than <paramref name="right"/>.
     /// A positive value if <paramref name="left"/> is greater than <paramref name="right"/>.
     /// </returns>
-    public static int Compare(IPNetwork2 left, IPNetwork2 right)
+    public static int Compare(IPNetwork2? left, IPNetwork2? right)
     {
         // two null IPNetworks are equal
-        if (ReferenceEquals(left, null) && ReferenceEquals(right, null))
+        if (left is null && right is null)
         {
             return 0;
         }
@@ -35,12 +35,12 @@ public sealed partial class IPNetwork2
         }
 
         // null is always sorted first
-        if (ReferenceEquals(left, null))
+        if (left is null)
         {
             return -1;
         }
 
-        if (ReferenceEquals(right, null))
+        if (right is null)
         {
             return 1;
         }
@@ -69,7 +69,7 @@ public sealed partial class IPNetwork2
     /// </summary>
     /// <param name="other">The other network to compare to.</param>
     /// <returns>A signed number indicating the relative values of this instance and value.</returns>
-    public int CompareTo(IPNetwork2 other)
+    public int CompareTo(IPNetwork2? other)
     {
         return Compare(this, other);
     }
@@ -79,7 +79,7 @@ public sealed partial class IPNetwork2
     /// </summary>
     /// <param name="obj">The other object to compare to.</param>
     /// <returns>A signed number indicating the relative values of this instance and value.</returns>
-    public int CompareTo(object obj)
+    public int CompareTo(object? obj)
     {
         // null is at less
         if (obj == null)
@@ -88,10 +88,7 @@ public sealed partial class IPNetwork2
         }
 
         // convert to a proper Cidr object
-        var other = obj as IPNetwork2;
-
-        // type problem if null
-        if (other == null)
+        if (obj is not IPNetwork2 other)
         {
             throw new ArgumentException(
                 "The supplied parameter is an invalid type. Please supply an IPNetwork type.",

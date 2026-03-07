@@ -13,7 +13,7 @@ public sealed partial class IPNetwork2
 {
     private IPNetwork2(SerializationInfo info, StreamingContext context)
     {
-        string sipnetwork = (string)info.GetValue("IPNetwork", typeof(string));
+        string sipnetwork = info.GetString("IPNetwork") ?? throw new SerializationException("Missing IPNetwork value");
         var ipnetwork = Parse(sipnetwork);
 
         this.ipaddress = ipnetwork.ipaddress;

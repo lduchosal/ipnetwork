@@ -29,9 +29,9 @@ public class IPNetworkToNetmaskTests
     [TestMethod]
     public void ToNetmaskNonInet()
     {
+        byte cidr = 0;
         Assert.ThrowsExactly<ArgumentException>(() =>
         {
-            byte cidr = 0;
             IPNetwork2.ToNetmask(cidr, AddressFamily.AppleTalk);
         });
     }
@@ -42,9 +42,9 @@ public class IPNetworkToNetmaskTests
     [TestMethod]
     public void ToNetmaskNegative()
     {
+        byte cidr = 0;
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
         {
-            byte cidr = 0;
             IPNetwork2.ToNetmask(--cidr, AddressFamily.InterNetwork);
         });
     }
@@ -55,9 +55,9 @@ public class IPNetworkToNetmaskTests
     [TestMethod]
     public void ToNetmaskOore1()
     {
+        byte cidr = 33;
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
         {
-            byte cidr = 33;
             IPNetwork2.ToNetmask(cidr, AddressFamily.InterNetwork);
         });
     }

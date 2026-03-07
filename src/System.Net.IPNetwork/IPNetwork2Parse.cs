@@ -27,7 +27,11 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in ipaddress/netmask.</returns>
     public static IPNetwork2 Parse(string ipaddress, string netmask)
     {
-        InternalParse(false, ipaddress, netmask, out IPNetwork2 ipnetwork);
+        if (!InternalParse(false, ipaddress, netmask, out IPNetwork2? ipnetwork))
+        {
+            throw new ArgumentException("Failed to parse IP address and netmask.", nameof(ipaddress));
+        }
+
         return ipnetwork;
     }
 
@@ -46,7 +50,11 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in ipaddress/cidr.</returns>
     public static IPNetwork2 Parse(string ipaddress, byte cidr)
     {
-        InternalParse(false, ipaddress, cidr, out IPNetwork2 ipnetwork);
+        if (!InternalParse(false, ipaddress, cidr, out IPNetwork2? ipnetwork))
+        {
+            throw new ArgumentException("Failed to parse IP address and CIDR.", nameof(ipaddress));
+        }
+
         return ipnetwork;
     }
 
@@ -65,7 +73,11 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in ipaddress/netmask.</returns>
     public static IPNetwork2 Parse(IPAddress ipaddress, IPAddress netmask)
     {
-        InternalParse(false, ipaddress, netmask, out IPNetwork2 ipnetwork);
+        if (!InternalParse(false, ipaddress, netmask, out IPNetwork2? ipnetwork))
+        {
+            throw new ArgumentException("Failed to parse IP address and netmask.", nameof(ipaddress));
+        }
+
         return ipnetwork;
     }
 
@@ -84,11 +96,11 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
     public static IPNetwork2 Parse(string network)
     {
-        bool parsed = InternalParse(false, network, CidrGuess.ClassFull, true, out IPNetwork2 ipnetwork);
-        if (!parsed)
+        if (!InternalParse(false, network, CidrGuess.ClassFull, true, out IPNetwork2? ipnetwork))
         {
-            throw new ArgumentException(nameof(network));
+            throw new ArgumentException("Failed to parse network.", nameof(network));
         }
+
         return ipnetwork;
     }
 
@@ -104,15 +116,15 @@ public partial class IPNetwork2
     /// Broadcast : 192.168.0.255.
     /// </summary>
     /// <param name="network">A string containing an ip network to convert.</param>
-    /// <param name="sanitanize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
+    /// <param name="sanitize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
-    public static IPNetwork2 Parse(string network, bool sanitanize)
+    public static IPNetwork2 Parse(string network, bool sanitize)
     {
-        bool parsed = InternalParse(false, network, CidrGuess.ClassFull, sanitanize, out IPNetwork2 ipnetwork);
-        if (!parsed)
+        if (!InternalParse(false, network, CidrGuess.ClassFull, sanitize, out IPNetwork2? ipnetwork))
         {
-            throw new ArgumentException(nameof(network));
+            throw new ArgumentException("Failed to parse network.", nameof(network));
         }
+
         return ipnetwork;
     }
 
@@ -132,11 +144,11 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
     public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess)
     {
-        bool parsed = InternalParse(false, network, cidrGuess, true, out IPNetwork2 ipnetwork);
-        if (!parsed)
+        if (!InternalParse(false, network, cidrGuess, true, out IPNetwork2? ipnetwork))
         {
-            throw new ArgumentException(nameof(network));
+            throw new ArgumentException("Failed to parse network.", nameof(network));
         }
+
         return ipnetwork;
     }
 
@@ -153,15 +165,15 @@ public partial class IPNetwork2
     /// </summary>
     /// <param name="network">A string containing an ip network to convert.</param>
     /// <param name="cidrGuess">A ICidrGuess implementation that will be used to guess CIDR during conversion.</param>
-    /// <param name="sanitanize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
+    /// <param name="sanitize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
-    public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess, bool sanitanize)
+    public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess, bool sanitize)
     {
-        bool parsed = InternalParse(false, network, cidrGuess, sanitanize, out IPNetwork2 ipnetwork);
-        if (!parsed)
+        if (!InternalParse(false, network, cidrGuess, sanitize, out IPNetwork2? ipnetwork))
         {
-            throw new ArgumentException(nameof(network));
+            throw new ArgumentException("Failed to parse network.", nameof(network));
         }
+
         return ipnetwork;
     }
 }

@@ -31,13 +31,12 @@ public class IPNetworkV6TrySupernetTests
     [TestMethod]
     public void TestTrySupernet2()
     {
+        IPNetwork2 network1 = null;
+        var network2 = IPNetwork2.Parse("2001:db8::/64");
+
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2 network1 = null;
-            var network2 = IPNetwork2.Parse("2001:db8::/64");
-#pragma warning disable 0618
             IPNetwork2.TrySupernet(network1, network2, out var _);
-#pragma warning restore 0618
         });
     }
 

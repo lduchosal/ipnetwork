@@ -4,6 +4,7 @@
 
 namespace System.Net;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Sockets;
 using System.Numerics;
 
@@ -33,14 +34,14 @@ public sealed partial class IPNetwork2
             throw new ArgumentNullException(nameof(end));
         }
 
-        if (!IPAddress.TryParse(start, out IPAddress startIP))
+        if (!IPAddress.TryParse(start, out IPAddress? startIP))
         {
-            throw new ArgumentException(nameof(start));
+            throw new ArgumentException("Invalid start IP address.", nameof(start));
         }
 
-        if (!IPAddress.TryParse(end, out IPAddress endIP))
+        if (!IPAddress.TryParse(end, out IPAddress? endIP))
         {
-            throw new ArgumentException(nameof(end));
+            throw new ArgumentException("Invalid end IP address.", nameof(end));
         }
 
         if (startIP.AddressFamily != endIP.AddressFamily)
@@ -69,11 +70,11 @@ public sealed partial class IPNetwork2
     /// /
     public static IPNetwork2 WideSubnet(IPNetwork2[] ipnetworks)
     {
-        bool parsed = InternalWideSubnet(false, ipnetworks, out IPNetwork2 ipn);
-        if (!parsed)
+        if (!InternalWideSubnet(false, ipnetworks, out IPNetwork2? ipn))
         {
-            throw new ArgumentException(nameof(ipnetworks));
+            throw new ArgumentException("Invalid IP networks.", nameof(ipnetworks));
         }
+
         return ipn;
     }
 
@@ -83,15 +84,14 @@ public sealed partial class IPNetwork2
     /// <param name="ipnetworks">An array of IPNetwork2 objects to wide subnet.</param>
     /// <param name="ipnetwork">When this method returns, contains the wide subnet of the IPNetwork2 objects, if wide subnet was successful; otherwise, null.</param>
     /// <returns>true if wide subnet was successful; otherwise, false.</returns>
-    public static bool TryWideSubnet(IPNetwork2[] ipnetworks, out IPNetwork2 ipnetwork)
+    public static bool TryWideSubnet(IPNetwork2[] ipnetworks, [NotNullWhen(true)] out IPNetwork2? ipnetwork)
     {
-        bool parsed = InternalWideSubnet(true, ipnetworks, out IPNetwork2 ipn);
-        if (!parsed)
+        if (!InternalWideSubnet(true, ipnetworks, out IPNetwork2? ipn))
         {
             ipnetwork = null;
             return false;
         }
-        
+
         ipnetwork = ipn;
         return true;
     }
@@ -103,8 +103,9 @@ public sealed partial class IPNetwork2
     /// <param name="ipnetworks">The array of IPNetwork2 instances to encompass within the widest subnet.</param>
     /// <param name="ipnetwork">The resulting widest IPNetwork2 subnet, or null if unsuccessful and tryWide is true.</param>
     /// <returns>true if successful, otherwise false.</returns>
-    internal static bool InternalWideSubnet(bool tryWide, IPNetwork2[] ipnetworks, out IPNetwork2 ipnetwork)
+    internal static bool InternalWideSubnet(bool tryWide, IPNetwork2[] ipnetworks, [NotNullWhen(true)] out IPNetwork2? ipnetwork)
     {
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         if (ipnetworks == null)
         {
             if (!tryWide)
@@ -122,7 +123,7 @@ public sealed partial class IPNetwork2
         {
             if (!tryWide)
             {
-                throw new ArgumentException(nameof(ipnetworks));
+                throw new ArgumentException("No valid IP networks provided.", nameof(ipnetworks));
             }
 
             ipnetwork = null;
@@ -140,8 +141,8 @@ public sealed partial class IPNetwork2
         IPNetwork2 nnin0 = nnin[0];
         BigInteger uintNnin0 = nnin0.ipaddress;
 
-        IPNetwork2 nninX = nnin[nnin.Length - 1];
-        IPAddress ipaddressX = nninX.Broadcast;
+        IPNetwork2 nninX = nnin[^1];
+        IPAddress ipaddressX = nninX.Last;
 
         AddressFamily family = ipnetworks[0].family;
         foreach (IPNetwork2 ipnx in ipnetworks)
@@ -150,7 +151,7 @@ public sealed partial class IPNetwork2
             {
                 if (!tryWide)
                 {
-                     throw new ArgumentException(nameof(family));
+                     throw new ArgumentException("All networks must have the same address family.", nameof(ipnetworks));
                 }
                 ipnetwork = null;
                 return false;

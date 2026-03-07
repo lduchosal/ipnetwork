@@ -88,18 +88,18 @@ public class IPNetworkWideSubnetTests
     [TestMethod]
     public void WideSubnetNull2()
     {
+        string[] ips = ["a", "b", "e", "d"];
+        var ipns = new List<IPNetwork2>();
+        foreach (string ip in ips)
+        {
+            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
+            {
+                ipns.Add(ipn);
+            }
+        }
+
         Assert.ThrowsExactly<ArgumentException>(() =>
         {
-            string[] ips = ["a", "b", "e", "d"];
-            var ipns = new List<IPNetwork2>();
-            foreach (string ip in ips)
-            {
-                if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
-                {
-                    ipns.Add(ipn);
-                }
-            }
-
             IPNetwork2.WideSubnet(ipns.ToArray());
         });
     }
@@ -110,13 +110,13 @@ public class IPNetworkWideSubnetTests
     [TestMethod]
     public void WideSubnetMixed()
     {
+        var ipns = new List<IPNetwork2>
+        {
+            IPNetwork2.IANA_ABLK_RESERVED1,
+            IPNetwork2.Parse("2001:0db8::/64"),
+        };
         Assert.ThrowsExactly<ArgumentException>(() =>
         {
-            var ipns = new List<IPNetwork2>
-            {
-                IPNetwork2.IANA_ABLK_RESERVED1,
-                IPNetwork2.Parse("2001:0db8::/64"),
-            };
             IPNetwork2.WideSubnet(ipns.ToArray());
         });
     }

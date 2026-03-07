@@ -52,7 +52,6 @@ public class IPNetworkOperatorTests
         Assert.IsFalse(greater, "greater");
     }
 
-
     /// <summary>
     ///     Tests Operator functionality with Operator Greater.
     /// </summary>
@@ -221,7 +220,6 @@ public class IPNetworkOperatorTests
         Assert.IsTrue(lower, "lower");
     }
 
-
     /// <summary>
     ///     Tests Operator functionality with Operator Different1.
     /// </summary>
@@ -301,7 +299,6 @@ public class IPNetworkOperatorTests
 
         Assert.HasCount(count, result, "subtract");
     }
-
 
     /// <summary>
     ///     Tests Operator functionality with Operator -.
@@ -418,7 +415,6 @@ public class IPNetworkOperatorTests
         Assert.ThrowsExactly<OverflowException>(() =>
         {
             var result = ipn1 - right;
-            Assert.AreEqual("32", result.ToString());
         });
     }
 }

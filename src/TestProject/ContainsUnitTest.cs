@@ -55,14 +55,12 @@ public class ContainsUnitTest
     [TestMethod]
     public void TestContainsStatic3()
     {
+        IPNetwork2 ipnetwork = null;
+        IPNetwork2 ipnetwork2 = null;
+
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2 ipnetwork = null;
-            IPNetwork2 ipnetwork2 = null;
-
-#pragma warning disable 0618
             IPNetwork2.Contains(ipnetwork, ipnetwork2);
-#pragma warning restore 0618
         });
     }
 
@@ -75,9 +73,7 @@ public class ContainsUnitTest
             IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
             IPNetwork2 ipnetwork2 = IPNetwork2.IANA_CBLK_RESERVED1;
 
-#pragma warning disable 0618
             bool result = IPNetwork2.Contains(ipnetwork, ipnetwork2);
-#pragma warning restore 0618
 
             Assert.IsTrue(result, "result");
         }
@@ -88,11 +84,11 @@ public class ContainsUnitTest
     [TestMethod]
     public void TestContains8()
     {
+        var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
+        IPNetwork2 ipnetwork2 = null;
+
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
-            IPNetwork2 ipnetwork2 = null;
-
             ipnetwork.Contains(ipnetwork2);
         });
     }
@@ -103,14 +99,12 @@ public class ContainsUnitTest
     [TestMethod]
     public void TestContainsStatic1()
     {
+        IPNetwork2 ipnetwork = null;
+        IPAddress ipaddress = null;
+
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2 ipnetwork = null;
-            IPAddress ipaddress = null;
-
-#pragma warning disable 0618
             IPNetwork2.Contains(ipnetwork, ipaddress);
-#pragma warning restore 0618
         });
     }
 
@@ -123,9 +117,7 @@ public class ContainsUnitTest
             IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
             var ipaddress = IPAddress.Parse("10.0.0.1");
 
-#pragma warning disable 0618
             bool result = IPNetwork2.Contains(ipnetwork, ipaddress);
-#pragma warning restore 0618
             Assert.IsTrue(result, "result");
         }
 
@@ -135,11 +127,11 @@ public class ContainsUnitTest
     [TestMethod]
     public void TestContains10()
     {
+        var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
+        IPAddress ipaddress = null;
+
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
-            IPAddress ipaddress = null;
-
             ipnetwork.Contains(ipaddress);
         });
     }

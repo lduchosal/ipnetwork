@@ -16,14 +16,12 @@ public class IPNetworkOverlapTests
     [TestMethod]
     public void TestOverlap1()
     {
+        IPNetwork2 network1 = null;
+        IPNetwork2 network2 = null;
+
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2 network1 = null;
-            IPNetwork2 network2 = null;
-
-#pragma warning disable 0618
             IPNetwork2.Overlap(network1, network2);
-#pragma warning restore 0618
         });
     }
 
@@ -36,9 +34,7 @@ public class IPNetworkOverlapTests
             IPNetwork2 network1 = IPNetwork2.IANA_ABLK_RESERVED1;
             IPNetwork2 network2 = IPNetwork2.IANA_ABLK_RESERVED1;
 
-#pragma warning disable 0618
             bool result = IPNetwork2.Overlap(network1, network2);
-#pragma warning restore 0618
 
             Assert.IsTrue(result, "result");
         }
@@ -49,10 +45,10 @@ public class IPNetworkOverlapTests
     [TestMethod]
     public void TestOverlap2()
     {
+        var network1 = IPNetwork2.Parse("10.0.0.0/0");
+        IPNetwork2 network2 = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            var network1 = IPNetwork2.Parse("10.0.0.0/0");
-            IPNetwork2 network2 = null;
             network1.Overlap(network2);
         });
     }

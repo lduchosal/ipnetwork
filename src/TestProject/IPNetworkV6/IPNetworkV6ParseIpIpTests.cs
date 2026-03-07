@@ -30,11 +30,12 @@ public class IPNetworkV6ParseIpIpTests
     [TestMethod]
     public void ParseIpIp3()
     {
+        string ipaddress = "2001:0db8::";
+        var ip = IPAddress.Parse(ipaddress);
+        IPAddress netm = null;
+
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            string ipaddress = "2001:0db8::";
-            var ip = IPAddress.Parse(ipaddress);
-            IPAddress netm = null;
             IPNetwork2.Parse(ip, netm);
         });
     }

@@ -30,12 +30,10 @@ public class IPNetworkParseIpIpTests
     [TestMethod]
     public void ParseIpIp2()
     {
+        IPAddress ip = null;
+        IPAddress netm = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            IPAddress ip = null;
-            IPAddress netm = null;
-            IPNetwork2.Parse(ip, netm);
-        });
+            IPNetwork2.Parse(ip, netm));
     }
 
     /// <summary>
@@ -44,12 +42,10 @@ public class IPNetworkParseIpIpTests
     [TestMethod]
     public void ParseIpIp3()
     {
+        string ipaddress = "192.168.168.100";
+        var ip = IPAddress.Parse(ipaddress);
+        IPAddress netm = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            string ipaddress = "192.168.168.100";
-            var ip = IPAddress.Parse(ipaddress);
-            IPAddress netm = null;
-            IPNetwork2.Parse(ip, netm);
-        });
+            IPNetwork2.Parse(ip, netm));
     }
 }

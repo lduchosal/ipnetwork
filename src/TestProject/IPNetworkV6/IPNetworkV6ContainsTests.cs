@@ -100,11 +100,11 @@ public class IPNetworkV6ContainsTests
     [TestMethod]
     public void TestContains10()
     {
+        var ipnetwork = IPNetwork2.Parse("::/0");
+        IPAddress ipaddress = null;
+
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            var ipnetwork = IPNetwork2.Parse("::/0");
-            IPAddress ipaddress = null;
-
             ipnetwork.Contains(ipaddress);
         });
     }

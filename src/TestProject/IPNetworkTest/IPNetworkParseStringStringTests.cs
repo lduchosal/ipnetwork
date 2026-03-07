@@ -29,13 +29,10 @@ public class IPNetworkParseStringStringTests
     [TestMethod]
     public void TestParseStringString2()
     {
+        string ipaddress = null;
+        string netmask = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            string ipaddress = null;
-            string netmask = null;
-
-            IPNetwork2.Parse(ipaddress, netmask);
-        });
+            IPNetwork2.Parse(ipaddress, netmask));
     }
 
     /// <summary>
@@ -44,13 +41,10 @@ public class IPNetworkParseStringStringTests
     [TestMethod]
     public void TestParseStringString3()
     {
+        string ipaddress = "192.168.168.100";
+        string netmask = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            string ipaddress = "192.168.168.100";
-            string netmask = null;
-
-            IPNetwork2.Parse(ipaddress, netmask);
-        });
+            IPNetwork2.Parse(ipaddress, netmask));
     }
 
     /// <summary>
@@ -59,13 +53,10 @@ public class IPNetworkParseStringStringTests
     [TestMethod]
     public void TestParseStringString4()
     {
+        string ipaddress = string.Empty;
+        string netmask = string.Empty;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            string ipaddress = string.Empty;
-            string netmask = string.Empty;
-
-            IPNetwork2.Parse(ipaddress, netmask);
-        });
+            IPNetwork2.Parse(ipaddress, netmask));
     }
 
     /// <summary>
@@ -74,12 +65,9 @@ public class IPNetworkParseStringStringTests
     [TestMethod]
     public void TestParseStringString5()
     {
+        string ipaddress = "192.168.168.100";
+        string netmask = string.Empty;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            string ipaddress = "192.168.168.100";
-            string netmask = string.Empty;
-
-            IPNetwork2.Parse(ipaddress, netmask);
-        });
+            IPNetwork2.Parse(ipaddress, netmask));
     }
 }

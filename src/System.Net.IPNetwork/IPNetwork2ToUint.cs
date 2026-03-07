@@ -54,7 +54,7 @@ public sealed partial class IPNetwork2
         bool parsed = InternalToBigInteger(false, cidr, family, out BigInteger uintNetmask);
         if (!parsed)
         {
-            throw new ArgumentException(nameof(cidr));
+            throw new ArgumentException("Invalid CIDR.", nameof(cidr));
         }
         return uintNetmask;
     }
@@ -154,7 +154,7 @@ public sealed partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException(nameof(ipaddress));
+                throw new ArgumentException("Invalid IP address.", nameof(ipaddress));
             }
 
             uintIpAddress = default;

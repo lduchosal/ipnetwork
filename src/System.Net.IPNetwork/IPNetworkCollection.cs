@@ -24,7 +24,7 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
 
     private BigInteger Broadcast
     {
-        get { return IPNetwork2.ToBigInteger(this.ipnetwork.Broadcast); }
+        get { return IPNetwork2.ToBigInteger(this.ipnetwork.Broadcast!); }
     }
 
     private BigInteger LastUsable

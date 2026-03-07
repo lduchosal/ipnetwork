@@ -20,10 +20,9 @@ public sealed class CidrClassLess : ICidrGuess
     /// <param name="ip">A string representing an IPAddress that will be used to guess CIDR.</param>
     /// <param name="cidr">A byte representing the netmask in cidr format (/24).</param>
     /// <returns>true if ip was converted successfully; otherwise, false.</returns>
-    public bool TryGuessCidr(string ip, out byte cidr)
+    public bool TryGuessCidr(string? ip, out byte cidr)
     {
-        bool parsed = IPAddress.TryParse($"{ip}", out IPAddress ipaddress);
-        if (!parsed)
+        if (!IPAddress.TryParse($"{ip}", out IPAddress? ipaddress))
         {
             cidr = 0;
             return false;

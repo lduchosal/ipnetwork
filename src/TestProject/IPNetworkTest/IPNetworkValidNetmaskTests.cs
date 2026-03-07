@@ -76,12 +76,11 @@ public class IPNetworkValidNetmaskTests
     [TestMethod]
     public void TestValidNetmaskEae2()
     {
+        IPAddress mask = null;
+
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPAddress mask = null;
             bool result = IPNetwork2.ValidNetmask(mask);
-
-            Assert.IsTrue(result, "ValidNetmask");
         });
     }
 

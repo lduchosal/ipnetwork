@@ -90,6 +90,8 @@ public class SerializeXmlTest
                 mem.SetLength(0);
             }
 
+            Assert.IsNotNull(ipnetwork);
+
             // 5.13 seconds(Ad hoc).
         }
 
@@ -109,11 +111,14 @@ public class SerializeXmlTest
 
             var serializer = new XmlSerializer(typeof(IPNetwork2));
 
+            object result = null;
             for (int i = 0; i < 1000000; i++)
             {
-                serializer.Deserialize(mem);
+                result = serializer.Deserialize(mem);
                 mem.Position = 0;
             }
+
+            Assert.IsNotNull(result);
 
             // 17.98 seconds(Ad hoc).
         }
@@ -130,15 +135,18 @@ public class SerializeXmlTest
             var serializer = new XmlSerializer(typeof(IPNetwork2));
             var mem = new MemoryStream();
 
+            object result = null;
             for (int i = 0; i < 1000000; i++)
             {
                 serializer.Serialize(mem, ipnetwork);
 
                 mem.Position = 0;
-                serializer.Deserialize(mem);
+                result = serializer.Deserialize(mem);
 
                 mem.SetLength(0);
             }
+
+            Assert.IsNotNull(result);
 
             // 17.48 seconds(Ad hoc).
         }
