@@ -19,7 +19,7 @@ public class IPNetwork2DeserializationHashCodeTests
     public void TestHashCode_DataContractDeserialization_MatchesParsed()
     {
         var original = IPNetwork2.Parse("10.0.0.0/8");
-        var serialized = DataContractSerializeHelper.Serialize(original);
+        string serialized = DataContractSerializeHelper.Serialize(original);
         var deserialized = DataContractSerializeHelper.Deserialize<IPNetwork2>(serialized);
 
         Assert.AreEqual(original.GetHashCode(), deserialized.GetHashCode());
@@ -32,7 +32,7 @@ public class IPNetwork2DeserializationHashCodeTests
     public void TestHashCode_DataContractDeserialization_WorksAsDictionaryKey()
     {
         var original = IPNetwork2.Parse("192.168.1.0/24");
-        var serialized = DataContractSerializeHelper.Serialize(original);
+        string serialized = DataContractSerializeHelper.Serialize(original);
         var deserialized = DataContractSerializeHelper.Deserialize<IPNetwork2>(serialized);
 
         var dict = new Dictionary<IPNetwork2, string>
@@ -50,7 +50,7 @@ public class IPNetwork2DeserializationHashCodeTests
     public void TestHashCode_DataContractDeserialization_WorksInHashSet()
     {
         var original = IPNetwork2.Parse("172.16.0.0/12");
-        var serialized = DataContractSerializeHelper.Serialize(original);
+        string serialized = DataContractSerializeHelper.Serialize(original);
         var deserialized = DataContractSerializeHelper.Deserialize<IPNetwork2>(serialized);
 
         var set = new HashSet<IPNetwork2> { original };
@@ -65,7 +65,7 @@ public class IPNetwork2DeserializationHashCodeTests
     public void TestHashCode_JsonDeserialization_MatchesParsed()
     {
         var original = IPNetwork2.Parse("10.0.0.0/8");
-        var serialized = JsonConvert.SerializeObject(original);
+        string serialized = JsonConvert.SerializeObject(original);
         var deserialized = JsonConvert.DeserializeObject<IPNetwork2>(serialized);
 
         Assert.AreEqual(original.GetHashCode(), deserialized.GetHashCode());
@@ -78,7 +78,7 @@ public class IPNetwork2DeserializationHashCodeTests
     public void TestHashCode_JsonDeserialization_WorksAsDictionaryKey()
     {
         var original = IPNetwork2.Parse("192.168.1.0/24");
-        var serialized = JsonConvert.SerializeObject(original);
+        string serialized = JsonConvert.SerializeObject(original);
         var deserialized = JsonConvert.DeserializeObject<IPNetwork2>(serialized);
 
         var dict = new Dictionary<IPNetwork2, string>
@@ -95,7 +95,7 @@ public class IPNetwork2DeserializationHashCodeTests
     [TestMethod]
     public void TestHashCode_DataContractDeserialization_DifferentNetworks_DifferentHashCodes()
     {
-        var networks = new[]
+        string[] networks = new[]
         {
             "10.0.0.0/8",
             "192.168.1.0/24",
@@ -103,10 +103,10 @@ public class IPNetwork2DeserializationHashCodeTests
         };
 
         var hashCodes = new HashSet<int>();
-        foreach (var net in networks)
+        foreach (string net in networks)
         {
             var original = IPNetwork2.Parse(net);
-            var serialized = DataContractSerializeHelper.Serialize(original);
+            string serialized = DataContractSerializeHelper.Serialize(original);
             var deserialized = DataContractSerializeHelper.Deserialize<IPNetwork2>(serialized);
             hashCodes.Add(deserialized.GetHashCode());
         }
