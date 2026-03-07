@@ -45,7 +45,7 @@ public static class Program
             }
 
             ac.CidrParse = CidrParse.Value;
-            ac.CidrParsed = (byte)cidr!;
+            ac.CidrParsed = (byte)cidr;
         }),
         new ArgParsed('s', (ac, arg) =>
         {
@@ -57,7 +57,7 @@ public static class Program
             }
 
             ac.Action = Action.Subnet;
-            ac.SubnetCidr = (byte)cidr!;
+            ac.SubnetCidr = (byte)cidr;
         }),
         new ArgParsed('C', (ac, arg) =>
         {
