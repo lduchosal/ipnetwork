@@ -4,6 +4,7 @@
 
 namespace System.Net;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Sockets;
 
 /// <summary>
@@ -29,7 +30,7 @@ public sealed partial class IPNetwork2
     /// <param name="family">Either IPv4 or IPv6.</param>
     /// <param name="cidr">The resulting CIDR as byte.</param>
     /// <returns>true if cidr was converted successfully; otherwise, false.</returns>
-    public static bool TryParseCidr(string sidr, AddressFamily family, out byte? cidr)
+    public static bool TryParseCidr(string sidr, AddressFamily family, [NotNullWhen(true)] out byte? cidr)
     {
         if (!byte.TryParse(sidr, out byte b))
         {
