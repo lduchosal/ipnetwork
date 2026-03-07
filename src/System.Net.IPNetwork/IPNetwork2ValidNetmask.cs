@@ -21,14 +21,10 @@ public sealed partial class IPNetwork2
     /// <returns>true if netmask is a valid IP Netmask; otherwise, false.</returns>
     public static bool ValidNetmask(IPAddress netmask)
     {
-#if NETSTANDARD2_1
         if (netmask == null)
         {
             throw new ArgumentNullException(nameof(netmask));
         }
-#else
-        ArgumentNullException.ThrowIfNull(netmask);
-#endif
 
         var uintNetmask = ToBigInteger(netmask);
         bool valid = InternalValidNetmask(uintNetmask, netmask.AddressFamily);

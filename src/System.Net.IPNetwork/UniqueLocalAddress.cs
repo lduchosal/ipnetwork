@@ -58,14 +58,10 @@ public static class UniqueLocalAddress
     /// <returns>A ULA /48 network generated using the provided MAC address.</returns>
     public static IPNetwork2 GenerateUlaPrefix(byte[] macAddress)
     {
-#if NETSTANDARD2_1
         if (macAddress == null)
         {
             throw new ArgumentNullException(nameof(macAddress));
         }
-#else
-        ArgumentNullException.ThrowIfNull(macAddress);
-#endif
 
         if (macAddress.Length != 6)
         {
