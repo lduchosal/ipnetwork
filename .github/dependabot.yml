@@ -1,14 +1,7 @@
 version: 2
 updates:
 - package-ecosystem: nuget
-  directory: "/"
+  directory: "/src"
   schedule:
     interval: daily
   open-pull-requests-limit: 10
-  ignore:
-  - dependency-name: MSTest.TestFramework
-    versions:
-    - 2.2.2
-  - dependency-name: MSTest.TestAdapter
-    versions:
-    - 2.2.2
