@@ -29,11 +29,11 @@ public class IPNetworkV6ParseStringStringTests
     [TestMethod]
     public void TestParseStringString3()
     {
+        string ipaddress = "2001:0db8::";
+        string netmask = null;
+
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            string ipaddress = "2001:0db8::";
-            string netmask = null;
-
             IPNetwork2.Parse(ipaddress, netmask);
         });
     }
@@ -44,11 +44,11 @@ public class IPNetworkV6ParseStringStringTests
     [TestMethod]
     public void TestParseStringString5()
     {
+        string ipaddress = "2001:0db8::";
+        string netmask = string.Empty;
+
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            string ipaddress = "2001:0db8::";
-            string netmask = string.Empty;
-
             IPNetwork2.Parse(ipaddress, netmask);
         });
     }

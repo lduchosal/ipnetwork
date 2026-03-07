@@ -93,9 +93,9 @@ public class IPNetworkToBigIntegerTests
     [TestMethod]
     public void TestToBigIntegerAne3()
     {
+        IPAddress ip = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPAddress ip = null;
             IPNetwork2.ToBigInteger(ip);
         });
     }

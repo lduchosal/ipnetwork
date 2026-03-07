@@ -496,9 +496,10 @@ public class IPNetworkV6ParseStringTests
     [TestMethod]
     public void TestParseStringAe1()
     {
+        string ipaddress = "garbage";
+
         Assert.ThrowsExactly<ArgumentException>(() =>
         {
-            string ipaddress = "garbage";
             IPNetwork2.Parse(ipaddress);
         });
     }
@@ -509,9 +510,10 @@ public class IPNetworkV6ParseStringTests
     [TestMethod]
     public void TestParseStringAe2()
     {
+        string ipaddress = "0:0:0:0:0:0:1:0:0 0:1:2:3:4:5:6:7:8";
+
         Assert.ThrowsExactly<ArgumentException>(() =>
         {
-            string ipaddress = "0:0:0:0:0:0:1:0:0 0:1:2:3:4:5:6:7:8";
             IPNetwork2.Parse(ipaddress);
         });
     }

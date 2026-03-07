@@ -50,11 +50,9 @@ public class IPNetworkSupernetArrayTests
     [TestMethod]
     public void TestTrySupernetArray2()
     {
+        IPNetwork2[] ipnetworks = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            IPNetwork2[] ipnetworks = null;
-            IPNetwork2.Supernet(ipnetworks);
-        });
+            IPNetwork2.Supernet(ipnetworks));
     }
 
     /// <summary>

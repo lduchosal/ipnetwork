@@ -37,13 +37,9 @@ Usable      : 4294967294
     [TestMethod]
     public void PrintNull()
     {
+        IPNetwork2 ipn = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            IPNetwork2 ipn = null;
-#pragma warning disable 0618
-            IPNetwork2.Print(ipn);
-#pragma warning restore 0618
-        });
+            IPNetwork2.Print(ipn));
     }
 
     /// <summary>

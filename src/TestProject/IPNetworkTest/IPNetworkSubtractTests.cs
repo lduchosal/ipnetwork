@@ -64,12 +64,12 @@ public class IPNetworkSubtractTests
     [TestMethod]
     public void Test_IPNetwork_Subtract_Exception()
     {
+        // Prepare
+        var network1 = IPNetwork2.Parse("0.0.0.0");
+
+        // Act
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            // Prepare
-            var network1 = IPNetwork2.Parse("0.0.0.0");
-
-            // Act
             network1.Subtract(null);
         });
     }

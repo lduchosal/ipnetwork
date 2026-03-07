@@ -17,9 +17,9 @@ public class IPNetworkParseTests
     [TestCategory("Parse")]
     public void TestParseIPAddressNetmaskAne2()
     {
+        IPAddress ip = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPAddress ip = null;
             IPNetwork2.Parse(ip, ip);
         });
     }
@@ -57,9 +57,9 @@ public class IPNetworkParseTests
     [TestCategory("Parse")]
     public void TestParseIPAddressNetmaskAne5()
     {
+        string n = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            string n = null;
             IPNetwork2.Parse(n, n);
         });
     }
@@ -592,9 +592,9 @@ public class IPNetworkParseTests
     [TestMethod]
     public void TestParseStringAe1()
     {
+        string ipaddress = "garbage";
         Assert.ThrowsExactly<ArgumentException>(() =>
         {
-            string ipaddress = "garbage";
             IPNetwork2.Parse(ipaddress);
         });
     }
@@ -605,9 +605,9 @@ public class IPNetworkParseTests
     [TestMethod]
     public void TestParseStringAe2()
     {
+        string ipaddress = "0.0.0.0 0.0.1.0";
         Assert.ThrowsExactly<ArgumentException>(() =>
         {
-            string ipaddress = "0.0.0.0 0.0.1.0";
             IPNetwork2.Parse(ipaddress);
         });
     }
@@ -618,14 +618,13 @@ public class IPNetworkParseTests
     [TestMethod]
     public void TestParseStringAne1()
     {
+        string ipaddress = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            string ipaddress = null;
             IPNetwork2.Parse(ipaddress);
         });
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            string ipaddress = null;
             IPNetwork2.Parse(ipaddress);
         });
     }

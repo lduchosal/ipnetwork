@@ -28,9 +28,9 @@ public class IPNetworkCtorWithIpAndCidrTests
     [TestMethod]
     public void CtorWithIpAndCidr2()
     {
+        IPAddress ip = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPAddress ip = null;
             var _ = new IPNetwork2(ip, 24);
         });
     }
@@ -41,10 +41,10 @@ public class IPNetworkCtorWithIpAndCidrTests
     [TestMethod]
     public void CtorWithIpAndCidr3()
     {
+        string ipaddress = "192.168.168.100";
+        var ip = IPAddress.Parse(ipaddress);
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
         {
-            string ipaddress = "192.168.168.100";
-            var ip = IPAddress.Parse(ipaddress);
             var _ = new IPNetwork2(ip, 33);
         });
     }

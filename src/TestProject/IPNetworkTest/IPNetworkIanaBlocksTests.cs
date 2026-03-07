@@ -88,9 +88,9 @@ public class IPNetworkIanaBlocksTests
     [TestMethod]
     public void TestIana7()
     {
+        IPAddress ipaddress = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPAddress ipaddress = null;
             IPNetwork2.IsIANAReserved(ipaddress);
         });
     }
@@ -101,12 +101,10 @@ public class IPNetworkIanaBlocksTests
     [TestMethod]
     public void TestIana8()
     {
+        IPNetwork2 ipnetwork = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2 ipnetwork = null;
-#pragma warning disable 0618
             IPNetwork2.IsIANAReserved(ipnetwork);
-#pragma warning restore 0618
         });
     }
 
@@ -117,9 +115,7 @@ public class IPNetworkIanaBlocksTests
     public void TestIanaBlk1()
     {
         IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
-#pragma warning disable 0618
         bool result = IPNetwork2.IsIANAReserved(ipnetwork);
-#pragma warning restore 0618
         Assert.IsTrue(result, "result");
     }
 

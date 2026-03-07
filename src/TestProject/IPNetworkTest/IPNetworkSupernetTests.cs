@@ -39,15 +39,10 @@ public class IPNetworkSupernetTests
     [TestMethod]
     public void Issue33__TestSupernet__Bug_or_default_behavior()
     {
+        var network1 = IPNetwork2.Parse("192.168.1.0/24");
+        var network2 = IPNetwork2.Parse("192.168.2.0/24");
         Assert.ThrowsExactly<ArgumentException>(() =>
-        {
-            var network1 = IPNetwork2.Parse("192.168.1.0/24");
-            var network2 = IPNetwork2.Parse("192.168.2.0/24");
-            var expected = IPNetwork2.Parse("192.168.0.0/23");
-            IPNetwork2 supernet = network1.Supernet(network2);
-
-            Assert.AreEqual(expected, supernet, "supernet");
-        });
+            network1.Supernet(network2));
     }
 
     /// <summary>
@@ -100,11 +95,9 @@ public class IPNetworkSupernetTests
     [TestMethod]
     public void TestSupernet2()
     {
+        var network1 = IPNetwork2.Parse("192.168.1.1/24");
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            var network1 = IPNetwork2.Parse("192.168.1.1/24");
-            network1.Supernet(null);
-        });
+            network1.Supernet(null));
     }
 
     /// <summary>
@@ -113,12 +106,10 @@ public class IPNetworkSupernetTests
     [TestMethod]
     public void TestSupernet3()
     {
+        var network1 = IPNetwork2.Parse("192.168.1.1/24");
+        IPNetwork2 network2 = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            var network1 = IPNetwork2.Parse("192.168.1.1/24");
-            IPNetwork2 network2 = null;
-            network1.Supernet(network2);
-        });
+            network1.Supernet(network2));
     }
 
     /// <summary>
@@ -127,12 +118,10 @@ public class IPNetworkSupernetTests
     [TestMethod]
     public void TestSupernet4()
     {
+        var network1 = IPNetwork2.Parse("192.168.0.1/24");
+        var network2 = IPNetwork2.Parse("192.168.1.1/25");
         Assert.ThrowsExactly<ArgumentException>(() =>
-        {
-            var network1 = IPNetwork2.Parse("192.168.0.1/24");
-            var network2 = IPNetwork2.Parse("192.168.1.1/25");
-            network1.Supernet(network2);
-        });
+            network1.Supernet(network2));
     }
 
     /// <summary>
@@ -141,12 +130,10 @@ public class IPNetworkSupernetTests
     [TestMethod]
     public void TestSupernet5()
     {
+        var network1 = IPNetwork2.Parse("192.168.0.1/24");
+        var network2 = IPNetwork2.Parse("192.168.5.1/24");
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
-        {
-            var network1 = IPNetwork2.Parse("192.168.0.1/24");
-            var network2 = IPNetwork2.Parse("192.168.5.1/24");
-            network1.Supernet(network2);
-        });
+            network1.Supernet(network2));
     }
 
     /// <summary>
@@ -199,12 +186,10 @@ public class IPNetworkSupernetTests
     [TestMethod]
     public void TestSupernet8()
     {
+        var network1 = IPNetwork2.Parse("192.168.1.1/24");
+        var network2 = IPNetwork2.Parse("192.168.2.1/24");
         Assert.ThrowsExactly<ArgumentException>(() =>
-        {
-            var network1 = IPNetwork2.Parse("192.168.1.1/24");
-            var network2 = IPNetwork2.Parse("192.168.2.1/24");
-            network1.Supernet(network2);
-        });
+            network1.Supernet(network2));
     }
 
     /// <summary>

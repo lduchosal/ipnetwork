@@ -16,11 +16,11 @@ public class IPNetworkV6SubnetTests
     [TestMethod]
     public void TestSubnet3()
     {
+        var ipnetwork = IPNetwork2.Parse("::");
+        byte cidr = 129;
+
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
         {
-            var ipnetwork = IPNetwork2.Parse("::");
-            byte cidr = 129;
-
             ipnetwork.Subnet(cidr);
         });
     }
@@ -31,11 +31,11 @@ public class IPNetworkV6SubnetTests
     [TestMethod]
     public void TestSubnet4()
     {
+        var ipnetwork = IPNetwork2.Parse("::");
+        byte cidr = 1;
+
         Assert.ThrowsExactly<ArgumentException>(() =>
         {
-            var ipnetwork = IPNetwork2.Parse("::");
-            byte cidr = 1;
-
             ipnetwork.Subnet(cidr);
         });
     }
@@ -155,11 +155,12 @@ public class IPNetworkV6SubnetTests
     [TestMethod]
     public void TestSubnet13()
     {
+        var ipnetwork = IPNetwork2.Parse("2001:db08::/64");
+        byte cidr = 70;
+        IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
+
         Assert.ThrowsExactly<ArgumentOutOfRangeException>(() =>
         {
-            var ipnetwork = IPNetwork2.Parse("2001:db08::/64");
-            byte cidr = 70;
-            IPNetworkCollection subnets = ipnetwork.Subnet(cidr);
             IPNetwork2 _ = subnets[1000];
         });
     }

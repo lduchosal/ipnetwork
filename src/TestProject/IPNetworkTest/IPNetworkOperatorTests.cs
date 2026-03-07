@@ -418,7 +418,6 @@ public class IPNetworkOperatorTests
         Assert.ThrowsExactly<OverflowException>(() =>
         {
             var result = ipn1 - right;
-            Assert.AreEqual("32", result.ToString());
         });
     }
 }
