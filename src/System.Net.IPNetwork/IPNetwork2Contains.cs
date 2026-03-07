@@ -74,6 +74,7 @@ public sealed partial class IPNetwork2
     /// <param name="network">The network.</param>
     /// <param name="ipaddress">The ip address to test.</param>
     /// <returns>true if ipaddress is contained into the IP Network; otherwise, false.</returns>
+    [Obsolete("static Contains is deprecated, please use instance Contains.")]
     public static bool Contains(IPNetwork2 network, IPAddress ipaddress)
     {
         if (network == null)
@@ -90,6 +91,7 @@ public sealed partial class IPNetwork2
     /// <param name="network">The network.</param>
     /// <param name="network2">The network to test.</param>
     /// <returns>true if network2 is contained into the IP Network; otherwise, false.</returns>
+    [Obsolete("static Contains is deprecated, please use instance Contains.")]
     public static bool Contains(IPNetwork2 network, IPNetwork2 network2)
     {
         if (network == null)

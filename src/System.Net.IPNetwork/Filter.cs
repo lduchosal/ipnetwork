@@ -19,6 +19,7 @@ public enum Filter
 /// <summary>
 /// Represents different filters for a collection of items.
 /// </summary>
+[Obsolete("Use Filter instead")]
 public enum FilterEnum
 {
     /// <summary>

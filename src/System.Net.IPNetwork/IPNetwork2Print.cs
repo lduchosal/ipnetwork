@@ -16,6 +16,7 @@ public sealed partial class IPNetwork2
     /// </summary>
     /// <param name="ipnetwork">The IPNetwork to print.</param>
     /// <returns>Dump an IPNetwork representation as string.</returns>
+    [Obsolete("static Print is deprecated, please use instance Print.")]
     public static string Print(IPNetwork2 ipnetwork)
     {
         if (ipnetwork == null)

@@ -24,6 +24,7 @@ public sealed partial class IPNetwork2
     /// </summary>
     /// <param name="filter">Filter IPAdresses from IPNetwork.</param>
     /// <returns>The filterted IPAdresses contained in ipnetwork.</returns>
+    [Obsolete("Use overload that uses Filter instead")]
     public IPAddressCollection ListIPAddress(FilterEnum filter)
     {
         var newFilter = filter == FilterEnum.Usable ? Filter.Usable : Filter.All;
