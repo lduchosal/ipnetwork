@@ -29,7 +29,7 @@ public partial class IPNetwork2
     {
         if (!InternalParse(false, ipaddress, netmask, out IPNetwork2? ipnetwork))
         {
-            throw new ArgumentException(nameof(ipaddress));
+            throw new ArgumentException("Failed to parse IP address and netmask.", nameof(ipaddress));
         }
 
         return ipnetwork;
@@ -52,7 +52,7 @@ public partial class IPNetwork2
     {
         if (!InternalParse(false, ipaddress, cidr, out IPNetwork2? ipnetwork))
         {
-            throw new ArgumentException(nameof(ipaddress));
+            throw new ArgumentException("Failed to parse IP address and CIDR.", nameof(ipaddress));
         }
 
         return ipnetwork;
@@ -75,7 +75,7 @@ public partial class IPNetwork2
     {
         if (!InternalParse(false, ipaddress, netmask, out IPNetwork2? ipnetwork))
         {
-            throw new ArgumentException(nameof(ipaddress));
+            throw new ArgumentException("Failed to parse IP address and netmask.", nameof(ipaddress));
         }
 
         return ipnetwork;
@@ -98,7 +98,7 @@ public partial class IPNetwork2
     {
         if (!InternalParse(false, network, CidrGuess.ClassFull, true, out IPNetwork2? ipnetwork))
         {
-            throw new ArgumentException(nameof(network));
+            throw new ArgumentException("Failed to parse network.", nameof(network));
         }
 
         return ipnetwork;
@@ -122,7 +122,7 @@ public partial class IPNetwork2
     {
         if (!InternalParse(false, network, CidrGuess.ClassFull, sanitize, out IPNetwork2? ipnetwork))
         {
-            throw new ArgumentException(nameof(network));
+            throw new ArgumentException("Failed to parse network.", nameof(network));
         }
 
         return ipnetwork;
@@ -146,7 +146,7 @@ public partial class IPNetwork2
     {
         if (!InternalParse(false, network, cidrGuess, true, out IPNetwork2? ipnetwork))
         {
-            throw new ArgumentException(nameof(network));
+            throw new ArgumentException("Failed to parse network.", nameof(network));
         }
 
         return ipnetwork;
@@ -171,7 +171,7 @@ public partial class IPNetwork2
     {
         if (!InternalParse(false, network, cidrGuess, sanitize, out IPNetwork2? ipnetwork))
         {
-            throw new ArgumentException(nameof(network));
+            throw new ArgumentException("Failed to parse network.", nameof(network));
         }
 
         return ipnetwork;

@@ -27,7 +27,7 @@ public sealed partial class IPNetwork2
     {
         if (!InternalToNetmask(false, cidr, family, out IPAddress? netmask))
         {
-            throw new ArgumentException(nameof(cidr));
+            throw new ArgumentException("Invalid CIDR.", nameof(cidr));
         }
 
         return netmask;
@@ -63,7 +63,7 @@ public sealed partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException(nameof(family));
+                throw new ArgumentException("Invalid address family.", nameof(family));
             }
 
             netmask = null;

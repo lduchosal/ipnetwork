@@ -25,7 +25,7 @@ public sealed partial class IPNetwork2
         bool cidrified = InternalToCidr(false, netmask, out byte cidr);
         if (!cidrified)
         {
-            throw new ArgumentException(nameof(netmask));
+            throw new ArgumentException("Invalid netmask.", nameof(netmask));
         }
         return cidr;
     }
@@ -78,7 +78,7 @@ public sealed partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException(nameof(netmask));
+                throw new ArgumentException("Invalid netmask.", nameof(netmask));
             }
 
             cidr = 0;

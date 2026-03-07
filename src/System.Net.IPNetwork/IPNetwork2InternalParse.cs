@@ -54,7 +54,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException(nameof(ipaddress));
+                throw new ArgumentException("Invalid IP address.", nameof(ipaddress));
             }
 
             ipnetwork = null;
@@ -65,7 +65,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException(nameof(netmask));
+                throw new ArgumentException("Invalid netmask.", nameof(netmask));
             }
 
             ipnetwork = null;
@@ -121,13 +121,13 @@ public partial class IPNetwork2
 
             if (!tryParse)
             {
-                throw new ArgumentException(nameof(network));
+                throw new ArgumentException("Invalid network.", nameof(network));
             }
 
             ipnetwork = null;
             return false;
         }
-        
+
         if (args.Length == 2)
         {
             if (byte.TryParse(args[1], out byte cidr1))
@@ -194,7 +194,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException(nameof(netmask));
+                throw new ArgumentException("Invalid netmask.", nameof(netmask));
             }
 
             ipnetwork = null;
@@ -237,7 +237,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException(nameof(ipaddress));
+                throw new ArgumentException("Invalid IP address.", nameof(ipaddress));
             }
 
             ipnetwork = null;
@@ -248,7 +248,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException(nameof(cidr));
+                throw new ArgumentException("Invalid CIDR.", nameof(cidr));
             }
 
             ipnetwork = null;

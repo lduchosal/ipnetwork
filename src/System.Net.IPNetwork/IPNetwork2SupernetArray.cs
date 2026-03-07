@@ -23,7 +23,7 @@ public sealed partial class IPNetwork2
     {
         if (!InternalSupernet(false, ipnetworks, out IPNetwork2[]? supernet))
         {
-            throw new ArgumentException(nameof(ipnetworks));
+            throw new ArgumentException("Failed to supernet IP networks.", nameof(ipnetworks));
         }
 
         return supernet;

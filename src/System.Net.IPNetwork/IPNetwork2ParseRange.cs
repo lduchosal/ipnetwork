@@ -70,7 +70,7 @@ public partial class IPNetwork2
     {
         if (!InternalParseRange(false, range, out IEnumerable<IPNetwork2>? ipnetworks))
         {
-            throw new ArgumentException(nameof(range));
+            throw new ArgumentException("Failed to parse range.", nameof(range));
         }
 
         return ipnetworks;
@@ -93,7 +93,7 @@ public partial class IPNetwork2
     {
         if (!InternalParseRange(false, start, end, out IEnumerable<IPNetwork2>? ipnetworks))
         {
-            throw new ArgumentException(nameof(start));
+            throw new ArgumentException("Failed to parse range.", nameof(start));
         }
 
         return ipnetworks;
@@ -220,7 +220,7 @@ public partial class IPNetwork2
         {
             if (!tryParse)
             {
-                throw new ArgumentException(nameof(AddressFamily));
+                throw new ArgumentException("Start and end addresses must have the same address family.", nameof(end));
             }
             ipnetworks = null;
             return false;

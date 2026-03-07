@@ -36,12 +36,12 @@ public sealed partial class IPNetwork2
 
         if (!IPAddress.TryParse(start, out IPAddress? startIP))
         {
-            throw new ArgumentException(nameof(start));
+            throw new ArgumentException("Invalid start IP address.", nameof(start));
         }
 
         if (!IPAddress.TryParse(end, out IPAddress? endIP))
         {
-            throw new ArgumentException(nameof(end));
+            throw new ArgumentException("Invalid end IP address.", nameof(end));
         }
 
         if (startIP.AddressFamily != endIP.AddressFamily)
@@ -72,7 +72,7 @@ public sealed partial class IPNetwork2
     {
         if (!InternalWideSubnet(false, ipnetworks, out IPNetwork2? ipn))
         {
-            throw new ArgumentException(nameof(ipnetworks));
+            throw new ArgumentException("Invalid IP networks.", nameof(ipnetworks));
         }
 
         return ipn;
@@ -123,7 +123,7 @@ public sealed partial class IPNetwork2
         {
             if (!tryWide)
             {
-                throw new ArgumentException(nameof(ipnetworks));
+                throw new ArgumentException("No valid IP networks provided.", nameof(ipnetworks));
             }
 
             ipnetwork = null;
@@ -151,7 +151,7 @@ public sealed partial class IPNetwork2
             {
                 if (!tryWide)
                 {
-                     throw new ArgumentException(nameof(family));
+                     throw new ArgumentException("All networks must have the same address family.", nameof(ipnetworks));
                 }
                 ipnetwork = null;
                 return false;

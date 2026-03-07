@@ -35,7 +35,7 @@ public sealed partial class IPNetwork2
     {
         if (!InternalSubnet(false, this, cidr1, out IPNetworkCollection? ipnetworkCollection))
         {
-            throw new ArgumentException(nameof(cidr1));
+            throw new ArgumentException("Invalid CIDR.", nameof(cidr1));
         }
 
         return ipnetworkCollection;
@@ -53,7 +53,7 @@ public sealed partial class IPNetwork2
     {
         if (!InternalSubnet(false, network, cidr, out IPNetworkCollection? ipnetworkCollection))
         {
-            throw new ArgumentException(nameof(cidr));
+            throw new ArgumentException("Invalid CIDR.", nameof(cidr));
         }
 
         return ipnetworkCollection;
@@ -115,7 +115,7 @@ public sealed partial class IPNetwork2
         {
             if (!trySubnet)
             {
-                throw new ArgumentException(nameof(cidr));
+                throw new ArgumentException("CIDR is smaller than the network CIDR.", nameof(cidr));
             }
 
             ipnetworkCollection = null;

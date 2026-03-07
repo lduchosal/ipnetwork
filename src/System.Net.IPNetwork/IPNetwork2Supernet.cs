@@ -24,7 +24,7 @@ public sealed partial class IPNetwork2
     {
         if (!InternalSupernet(false, this, network2, out IPNetwork2? supernet))
         {
-            throw new ArgumentException(nameof(network2));
+            throw new ArgumentException("Failed to supernet networks.", nameof(network2));
         }
 
         return supernet;
@@ -57,7 +57,7 @@ public sealed partial class IPNetwork2
     {
         if (!InternalSupernet(false, network1, network2, out IPNetwork2? supernet))
         {
-            throw new ArgumentException(nameof(network2));
+            throw new ArgumentException("Failed to supernet networks.", nameof(network2));
         }
 
         return supernet;
@@ -140,7 +140,7 @@ public sealed partial class IPNetwork2
         {
             if (!trySupernet)
             {
-                throw new ArgumentException(nameof(cidr));
+                throw new ArgumentException("Networks must have the same CIDR.", nameof(network1));
             }
 
             supernet = null;
@@ -175,7 +175,7 @@ public sealed partial class IPNetwork2
         {
             if (!trySupernet)
             {
-                throw new ArgumentException(nameof(networkSupernet));
+                throw new ArgumentException("Networks are not contiguous.", nameof(network1));
             }
 
             supernet = null;
