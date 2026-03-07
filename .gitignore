@@ -292,3 +292,6 @@ coverage.xml
 
 # macOS
 .DS_Store
+
+# VS Code
+.vscode/
