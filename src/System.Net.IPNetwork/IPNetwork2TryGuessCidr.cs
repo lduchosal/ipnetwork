@@ -37,7 +37,7 @@ public sealed partial class IPNetwork2
             return false;
         }
 
-        if (!TryToNetmask(b, family, out IPAddress _))
+        if (!TryToNetmask(b, family, out IPAddress? _))
         {
             cidr = null;
             return false;

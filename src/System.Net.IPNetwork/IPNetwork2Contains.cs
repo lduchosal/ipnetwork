@@ -13,42 +13,6 @@ using System.Numerics;
 public sealed partial class IPNetwork2
 {
     /// <summary>
-    /// Determines whether the given IP address is part of the given IP network.
-    /// </summary>
-    /// <param name="network">The IP network.</param>
-    /// <param name="ipaddress">The IP address.</param>
-    /// <returns>
-    /// <c>true</c> if the IP address is part of the IP network; otherwise, <c>false</c>.
-    /// </returns>
-    public static bool Contains(IPNetwork2 network, IPAddress ipaddress)
-    {
-        if (network == null)
-        {
-            throw new ArgumentNullException(nameof(network));
-        }
-
-        return network.Contains(ipaddress);
-    }
-
-    /// <summary>
-    /// Determines if the given <paramref name="network"/> contains the specified <paramref name="network2"/>.
-    /// </summary>
-    /// <param name="network">The network to check for containment.</param>
-    /// <param name="network2">The network to check if it is contained.</param>
-    /// <returns>
-    /// <c>true</c> if the <paramref name="network"/> contains the <paramref name="network2"/>; otherwise, <c>false</c>.
-    /// </returns>
-    public static bool Contains(IPNetwork2 network, IPNetwork2 network2)
-    {
-        if (network == null)
-        {
-            throw new ArgumentNullException(nameof(network));
-        }
-
-        return network.Contains(network2);
-    }
-
-    /// <summary>
     /// return true if ipaddress is contained in network.
     /// </summary>
     /// <param name="contains">A string containing an ip address to convert.</param>
@@ -102,6 +66,38 @@ public sealed partial class IPNetwork2
                       && uintLast <= uintBroadcast;
 
         return result;
+    }
+
+    /// <summary>
+    /// return true if ipaddress is contained in network.
+    /// </summary>
+    /// <param name="network">The network.</param>
+    /// <param name="ipaddress">The ip address to test.</param>
+    /// <returns>true if ipaddress is contained into the IP Network; otherwise, false.</returns>
+    public static bool Contains(IPNetwork2 network, IPAddress ipaddress)
+    {
+        if (network == null)
+        {
+            throw new ArgumentNullException(nameof(network));
+        }
+
+        return network.Contains(ipaddress);
+    }
+
+    /// <summary>
+    /// return true is network2 is fully contained in network.
+    /// </summary>
+    /// <param name="network">The network.</param>
+    /// <param name="network2">The network to test.</param>
+    /// <returns>true if network2 is contained into the IP Network; otherwise, false.</returns>
+    public static bool Contains(IPNetwork2 network, IPNetwork2 network2)
+    {
+        if (network == null)
+        {
+            throw new ArgumentNullException(nameof(network));
+        }
+
+        return network.Contains(network2);
     }
 
     private static BigInteger CreateBroadcast(ref BigInteger network, BigInteger netmask, AddressFamily family)

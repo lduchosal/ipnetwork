@@ -68,20 +68,11 @@ public sealed partial class IPNetwork2
     }
 
     /// <summary>
-    /// Determines whether the specified IP network is reserved according to the IANA Reserved ranges.
+    /// return true if ipnetwork is contained in
+    /// IANA_ABLK_RESERVED1, IANA_BBLK_RESERVED1, IANA_CBLK_RESERVED1.
     /// </summary>
-    /// <param name="ipnetwork">The IP network to check.</param>
-    /// <returns>
-    /// <c>true</c> if the specified IP network is reserved according to the IANA Reserved ranges; otherwise, <c>false</c>.
-    /// </returns>
-    /// <remarks>
-    /// <para>
-    /// This method is obsolete and should not be used. Please use the instance method, see IsIANAReserved" instead.
-    /// </para>
-    /// <para>
-    /// Throws an <see cref="ArgumentNullException"/> if <paramref name="ipnetwork"/> is <c>null</c>.
-    /// </para>
-    /// </remarks>
+    /// <param name="ipnetwork">The IPNetwork to test.</param>
+    /// <returns>true if the ipnetwork is a IANA reserverd IP Netowkr ; otherwise, false.</returns>
     public static bool IsIANAReserved(IPNetwork2 ipnetwork)
     {
         if (ipnetwork == null)

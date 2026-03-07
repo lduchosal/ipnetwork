@@ -18,7 +18,7 @@ public sealed partial class IPNetwork2
     {
         return new IPAddressCollection(this, filter);
     }
-    
+
     /// <summary>
     /// List all ip addresses in a subnet.
     /// </summary>
@@ -26,11 +26,7 @@ public sealed partial class IPNetwork2
     /// <returns>The filterted IPAdresses contained in ipnetwork.</returns>
     public IPAddressCollection ListIPAddress(FilterEnum filter)
     {
-        var newFilter =
-                filter == FilterEnum.Usable
-                    ? Filter.Usable
-                    : Filter.All
-            ;
+        var newFilter = filter == FilterEnum.Usable ? Filter.Usable : Filter.All;
         return new IPAddressCollection(this, newFilter);
     }
 }

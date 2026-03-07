@@ -61,7 +61,7 @@ public sealed class CidrNetworkAware : ICidrGuess
     /// <param name="ip">IP address as string (no slash). Example: "192.0.43.0" or "2001:db8::".</param>
     /// <param name="cidr">Guessed CIDR (0..32 for IPv4, 0..128 for IPv6).</param>
     /// <returns>true if parsed and guessed; false if input is not a valid IP address.</returns>
-    public bool TryGuessCidr(string ip, out byte cidr)
+    public bool TryGuessCidr(string? ip, out byte cidr)
     {
         cidr = 0;
         if (string.IsNullOrWhiteSpace(ip))

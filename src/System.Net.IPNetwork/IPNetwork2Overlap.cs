@@ -12,11 +12,11 @@ using System.Numerics;
 public sealed partial class IPNetwork2
 {
     /// <summary>
-    /// Determines if two IPNetwork2 objects overlap each other.
+    /// return true is network2 overlap network.
     /// </summary>
-    /// <param name="network">The first IPNetwork2 object.</param>
-    /// <param name="network2">The second IPNetwork2 object.</param>
-    /// <returns>Returns true if the two IPNetwork2 objects overlap, otherwise false.</returns>
+    /// <param name="network">The network.</param>
+    /// <param name="network2">The network to test.</param>
+    /// <returns>true if network2 overlaps into the IP Network; otherwise, false.</returns>
     public static bool Overlap(IPNetwork2 network, IPNetwork2 network2)
     {
         if (network == null)

@@ -3,6 +3,7 @@
 // </copyright>
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Net.Sockets;
 using System.Numerics;
 
@@ -27,7 +28,7 @@ public partial class IPNetwork2
     /// <param name="range">A string containing an ip range to convert (192.168.1.45 - 192.168.1.65).</param>
     /// <param name="ipnetworks">An IPNetwork List equivalent to the network contained in the range</param>
     /// <returns>true if parse was successful, false if the parse failed.</returns>
-    public static bool TryParseRange(string range, out IEnumerable<IPNetwork2> ipnetworks)
+    public static bool TryParseRange(string range, [NotNullWhen(true)] out IEnumerable<IPNetwork2>? ipnetworks)
     {
         return InternalParseRange(true, range, out ipnetworks);
     }
@@ -47,7 +48,7 @@ public partial class IPNetwork2
     /// <param name="end">A string containing an ip range end (192.168.1.45 - **192.168.1.65**).</param>
     /// <param name="ipnetworks">An IPNetwork List equivalent to the network contained in the range</param>
     /// <returns>true if parse was successful, false if the parse failed.</returns>
-    public static bool TryParseRange(string start, string end, out IEnumerable<IPNetwork2> ipnetworks)
+    public static bool TryParseRange(string start, string end, [NotNullWhen(true)] out IEnumerable<IPNetwork2>? ipnetworks)
     {
         return InternalParseRange(true, start, end, out ipnetworks);
     }
@@ -67,7 +68,11 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork List equivalent to the network contained in the range.</returns>
     public static IEnumerable<IPNetwork2> ParseRange(string range)
     {
-        InternalParseRange(false, range, out IEnumerable<IPNetwork2> ipnetworks);
+        if (!InternalParseRange(false, range, out IEnumerable<IPNetwork2>? ipnetworks))
+        {
+            throw new ArgumentException(nameof(range));
+        }
+
         return ipnetworks;
     }
 
@@ -86,7 +91,11 @@ public partial class IPNetwork2
     /// <returns>An IPNetwork List equivalent to the network contained in the range.</returns>
     public static IEnumerable<IPNetwork2> ParseRange(string start, string end)
     {
-        InternalParseRange(false, start, end, out IEnumerable<IPNetwork2> ipnetworks);
+        if (!InternalParseRange(false, start, end, out IEnumerable<IPNetwork2>? ipnetworks))
+        {
+            throw new ArgumentException(nameof(start));
+        }
+
         return ipnetworks;
     }
     
@@ -104,10 +113,9 @@ public partial class IPNetwork2
     /// <param name="start">A string containing a start range ip address.</param>
     /// <param name="end">A string containing an end range ip address.</param>
     /// <param name="ipnetworks">The resulting IPNetworks.</param>
-    internal static bool InternalParseRange(bool tryParse, string start, string end, out IEnumerable<IPNetwork2> ipnetworks)
+    internal static bool InternalParseRange(bool tryParse, string start, string end, [NotNullWhen(true)] out IEnumerable<IPNetwork2>? ipnetworks)
     {
-        bool startParsed = IPAddress.TryParse(start, out IPAddress startIp);
-        if (!startParsed)
+        if (!IPAddress.TryParse(start, out IPAddress? startIp))
         {
             if (!tryParse)
             {
@@ -118,8 +126,7 @@ public partial class IPNetwork2
             return false;
         }
 
-        bool endParsed = IPAddress.TryParse(end, out IPAddress endIp);
-        if (!endParsed)
+        if (!IPAddress.TryParse(end, out IPAddress? endIp))
         {
             if (!tryParse)
             {
@@ -143,7 +150,7 @@ public partial class IPNetwork2
     /// <exception cref="ArgumentNullException">When network is null.</exception>
     /// <exception cref="ArgumentException">When network is not valid.</exception>
     /// <returns>true if parsed, otherwise false</returns>
-    internal static bool InternalParseRange(bool tryParse, string range, out IEnumerable<IPNetwork2> ipnetworks)
+    internal static bool InternalParseRange(bool tryParse, string range, [NotNullWhen(true)] out IEnumerable<IPNetwork2>? ipnetworks)
     {
         if (string.IsNullOrEmpty(range))
         {
@@ -185,8 +192,9 @@ public partial class IPNetwork2
     /// <param name="start">A start range ip address.</param>
     /// <param name="end">An end range ip address.</param>
     /// <param name="ipnetworks">The resulting IPNetworks.</param>
-    internal static bool InternalParseRange(bool tryParse, IPAddress start, IPAddress end, out IEnumerable<IPNetwork2> ipnetworks)
+    internal static bool InternalParseRange(bool tryParse, IPAddress start, IPAddress end, [NotNullWhen(true)] out IEnumerable<IPNetwork2>? ipnetworks)
     {
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         if (start == null)
         {
             if (!tryParse)

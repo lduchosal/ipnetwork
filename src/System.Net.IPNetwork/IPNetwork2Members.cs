@@ -81,7 +81,7 @@ public partial class IPNetwork2
     /// <summary>
     /// Gets broadcast address.
     /// </summary>
-    public IPAddress Broadcast
+    public IPAddress? Broadcast
     {
         get
         {

@@ -15,7 +15,7 @@ public sealed partial class IPNetwork2 : IComparable<IPNetwork2>, IEquatable<IPN
     /// <param name="left">An IPNetwork to compare.</param>
     /// <param name="right">An other IPNetwork to compare to.</param>
     /// <returns>true if obj has the same value as this instance; otherwise, false.</returns>
-    public static bool Equals(IPNetwork2 left, IPNetwork2 right)
+    public static bool Equals(IPNetwork2? left, IPNetwork2? right)
     {
         return Compare(left, right) == 0;
     }
@@ -25,7 +25,7 @@ public sealed partial class IPNetwork2 : IComparable<IPNetwork2>, IEquatable<IPN
     /// </summary>
     /// <param name="other">An IPNetwork to compare to this instance.</param>
     /// <returns>true if obj has the same value as this instance; otherwise, false.</returns>
-    public bool Equals(IPNetwork2 other)
+    public bool Equals(IPNetwork2? other)
     {
         return Equals(this, other);
     }
@@ -35,7 +35,7 @@ public sealed partial class IPNetwork2 : IComparable<IPNetwork2>, IEquatable<IPN
     /// </summary>
     /// <param name="obj">An object value to compare to this instance.</param>
     /// <returns>true if obj has the same value as this instance; otherwise, false.</returns>
-    public override bool Equals(object obj)
+    public override bool Equals(object? obj)
     {
         return Equals(this, obj as IPNetwork2);
     }

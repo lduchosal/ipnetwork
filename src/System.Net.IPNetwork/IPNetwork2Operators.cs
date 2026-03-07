@@ -17,7 +17,7 @@ public sealed partial class IPNetwork2
     /// <param name="left">left instance.</param>
     /// <param name="right">Right instance.</param>
     /// <returns>true if left equals right; otherwise, false.</returns>
-    public static bool operator ==(IPNetwork2 left, IPNetwork2 right)
+    public static bool operator ==(IPNetwork2? left, IPNetwork2? right)
     {
         return Equals(left, right);
     }
@@ -28,7 +28,7 @@ public sealed partial class IPNetwork2
     /// <param name="left">left instance.</param>
     /// <param name="right">Right instance.</param>
     /// <returns>true if left does not equals right; otherwise, false.</returns>
-    public static bool operator !=(IPNetwork2 left, IPNetwork2 right)
+    public static bool operator !=(IPNetwork2? left, IPNetwork2? right)
     {
         return !Equals(left, right);
     }
@@ -39,19 +39,19 @@ public sealed partial class IPNetwork2
     /// <param name="left">left instance.</param>
     /// <param name="right">Right instance.</param>
     /// <returns>true if left is less than right; otherwise, false.</returns>
-    public static bool operator <(IPNetwork2 left, IPNetwork2 right)
+    public static bool operator <(IPNetwork2? left, IPNetwork2? right)
     {
         return Compare(left, right) < 0;
     }
 
-    
+
     /// <summary>
     /// Compares two IPNetwork.
     /// </summary>
     /// <param name="left">left instance.</param>
     /// <param name="right">Right instance.</param>
     /// <returns>true if left is less than right; otherwise, false.</returns>
-    public static bool operator <=(IPNetwork2 left, IPNetwork2 right)
+    public static bool operator <=(IPNetwork2? left, IPNetwork2? right)
     {
         return Compare(left, right) <= 0;
     }
@@ -62,18 +62,18 @@ public sealed partial class IPNetwork2
     /// <param name="left">left instance.</param>
     /// <param name="right">Right instance.</param>
     /// <returns>true if left is greater than right; otherwise, false.</returns>
-    public static bool operator >(IPNetwork2 left, IPNetwork2 right)
+    public static bool operator >(IPNetwork2? left, IPNetwork2? right)
     {
         return Compare(left, right) > 0;
     }
-    
+
     /// <summary>
     /// Compares two IPNetwork.
     /// </summary>
     /// <param name="left">left instance.</param>
     /// <param name="right">Right instance.</param>
     /// <returns>true if left is greater than right; otherwise, false.</returns>
-    public static bool operator >=(IPNetwork2 left, IPNetwork2 right)
+    public static bool operator >=(IPNetwork2? left, IPNetwork2? right)
     {
         return Compare(left, right) >= 0;
     }
@@ -123,7 +123,7 @@ public sealed partial class IPNetwork2
         }
         if (add == 0)
         {
-            return new[] { left };
+            return [left];
         }
         var start = ToBigInteger(left.First);
         var last = ToBigInteger(left.Last);
@@ -144,8 +144,8 @@ public sealed partial class IPNetwork2
         {
             throw new OverflowException("IPNetwork overflow");
         }
-        InternalParseRange(true, startIp, endIp, out IEnumerable<IPNetwork2> networks);
-        return networks;
+        InternalParseRange(true, startIp, endIp, out IEnumerable<IPNetwork2>? networks);
+        return networks ?? [];
     }
     
     /// <summary>
@@ -162,7 +162,7 @@ public sealed partial class IPNetwork2
         }
         if (subtract == 0)
         {
-            return new[] { left };
+            return [left];
         }
         var start = ToBigInteger(left.First);
         var last = ToBigInteger(left.Last);
@@ -176,7 +176,7 @@ public sealed partial class IPNetwork2
         var startIp = ToIPAddress(start, left.AddressFamily);
         var endIp = ToIPAddress(end, left.AddressFamily);
         
-        InternalParseRange(true, startIp, endIp, out IEnumerable<IPNetwork2> networks);
-        return networks;
+        InternalParseRange(true, startIp, endIp, out IEnumerable<IPNetwork2>? networks);
+        return networks ?? [];
     }
 }

@@ -5,6 +5,7 @@
 namespace System.Net;
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 /// <summary>
 /// SupernetArray.
@@ -20,7 +21,11 @@ public sealed partial class IPNetwork2
     /// <returns>The result of IPNetwork if merges succeed, the first ipnetwork otherwise.</returns>
     public static IPNetwork2[] Supernet(IPNetwork2[] ipnetworks)
     {
-        InternalSupernet(false, ipnetworks, out IPNetwork2[] supernet);
+        if (!InternalSupernet(false, ipnetworks, out IPNetwork2[]? supernet))
+        {
+            throw new ArgumentException(nameof(ipnetworks));
+        }
+
         return supernet;
     }
 
@@ -32,7 +37,7 @@ public sealed partial class IPNetwork2
     /// <param name="ipnetworks">A list of IPNetwork to merge into common supernets.</param>
     /// <param name="supernet">The result of IPNetwork merges.</param>
     /// <returns>true if ipnetworks was supernetted successfully; otherwise, false.</returns>
-    public static bool TrySupernet(IPNetwork2[] ipnetworks, out IPNetwork2[] supernet)
+    public static bool TrySupernet(IPNetwork2[] ipnetworks, [NotNullWhen(true)] out IPNetwork2[]? supernet)
     {
         bool supernetted = InternalSupernet(true, ipnetworks, out supernet);
         return supernetted;
@@ -45,8 +50,9 @@ public sealed partial class IPNetwork2
     /// <param name="ipnetworks">The array of IP networks to attempt to merge.</param>
     /// <param name="supernet">The resulting array of merged supernets if successful; otherwise, the original input.</param>
     /// <returns><c>true</c> if supernetting was successful; otherwise, <c>false</c>.</returns>
-    internal static bool InternalSupernet(bool trySupernet, IPNetwork2[] ipnetworks, out IPNetwork2[] supernet)
+    internal static bool InternalSupernet(bool trySupernet, IPNetwork2[] ipnetworks, [NotNullWhen(true)] out IPNetwork2[]? supernet)
     {
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         if (ipnetworks == null)
         {
             if (!trySupernet)
@@ -78,8 +84,7 @@ public sealed partial class IPNetwork2
                 IPNetwork2 ipn1 = current.Pop();
                 IPNetwork2 ipn2 = current.Peek();
 
-                bool success = ipn1.TrySupernet(ipn2, out IPNetwork2 outNetwork);
-                if (success)
+                if (ipn1.TrySupernet(ipn2, out IPNetwork2? outNetwork))
                 {
                     current.Pop();
                     current.Push(outNetwork);

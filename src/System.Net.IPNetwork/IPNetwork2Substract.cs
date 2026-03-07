@@ -3,6 +3,7 @@
 // </copyright>
 
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 namespace System.Net;
@@ -27,7 +28,11 @@ public sealed partial class IPNetwork2
     /// <returns>A list of IP Network.</returns>
     public List<IPNetwork2> Subtract(IPNetwork2 network2)
     {
-        InternalSubtract(false, this, network2, out List<IPNetwork2> result);
+        if (!InternalSubtract(false, this, network2, out List<IPNetwork2>? result))
+        {
+            throw new InvalidOperationException("Subtract failed");
+        }
+
         return result;
     }
 
@@ -45,7 +50,7 @@ public sealed partial class IPNetwork2
     /// <param name="network2">The network to supernet with.</param>
     /// <param name="result">The resulting IPNetwork.</param>
     /// <returns>true if network2 was subtracted successfully; otherwise, false.</returns>
-    public bool TrySubtract(IPNetwork2 network2, out List<IPNetwork2> result)
+    public bool TrySubtract(IPNetwork2 network2, [NotNullWhen(true)] out List<IPNetwork2>? result)
     {
         bool parsed = InternalSubtract(true, this, network2, out result);
         return parsed;
@@ -62,8 +67,9 @@ public sealed partial class IPNetwork2
         bool trySubtract,
         IPNetwork2 network1,
         IPNetwork2 network2,
-        out List<IPNetwork2> result)
+        [NotNullWhen(true)] out List<IPNetwork2>? result)
     {
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         if (network1 == null)
         {
             if (!trySubtract)

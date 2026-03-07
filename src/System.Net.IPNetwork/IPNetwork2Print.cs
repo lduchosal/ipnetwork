@@ -14,9 +14,8 @@ public sealed partial class IPNetwork2
     /// <summary>
     /// Print an ipnetwork in a clear representation string.
     /// </summary>
-    /// <param name="ipnetwork">The ipnetwork.</param>
+    /// <param name="ipnetwork">The IPNetwork to print.</param>
     /// <returns>Dump an IPNetwork representation as string.</returns>
-    /// <exception cref="ArgumentNullException">When arg is null.</exception>
     public static string Print(IPNetwork2 ipnetwork)
     {
         if (ipnetwork == null)

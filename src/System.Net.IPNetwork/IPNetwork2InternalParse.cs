@@ -4,6 +4,7 @@
 
 namespace System.Net;
 
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 
 /// <summary>
@@ -25,7 +26,7 @@ public partial class IPNetwork2
     /// <param name="ipaddress">A string containing an ip address to convert.</param>
     /// <param name="netmask">A string containing a netmask to convert (255.255.255.0).</param>
     /// <param name="ipnetwork">The resulting IPNetwork.</param>
-    private static bool InternalParse(bool tryParse, string ipaddress, string netmask, out IPNetwork2 ipnetwork)
+    private static bool InternalParse(bool tryParse, string ipaddress, string netmask, [NotNullWhen(true)] out IPNetwork2? ipnetwork)
     {
         if (string.IsNullOrEmpty(ipaddress))
         {
@@ -49,8 +50,7 @@ public partial class IPNetwork2
             return false;
         }
 
-        bool ipaddressParsed = IPAddress.TryParse(ipaddress, out IPAddress ip);
-        if (!ipaddressParsed)
+        if (!IPAddress.TryParse(ipaddress, out IPAddress? ip))
         {
             if (!tryParse)
             {
@@ -61,8 +61,7 @@ public partial class IPNetwork2
             return false;
         }
 
-        bool netmaskParsed = IPAddress.TryParse(netmask, out IPAddress mask);
-        if (!netmaskParsed)
+        if (!IPAddress.TryParse(netmask, out IPAddress? mask))
         {
             if (!tryParse)
             {
@@ -88,7 +87,7 @@ public partial class IPNetwork2
     /// <exception cref="ArgumentNullException">When network is null.</exception>
     /// <exception cref="ArgumentException">When network is not valid.</exception>
     /// <returns>true if parsed, otherwise false</returns>
-    private static bool InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, bool sanitize, out IPNetwork2 ipnetwork)
+    private static bool InternalParse(bool tryParse, string network, ICidrGuess cidrGuess, bool sanitize, [NotNullWhen(true)] out IPNetwork2? ipnetwork)
     {
         if (string.IsNullOrEmpty(network))
         {
@@ -164,8 +163,9 @@ public partial class IPNetwork2
     /// <param name="ipaddress">An ip address to convert.</param>
     /// <param name="netmask">A netmask to convert (255.255.255.0).</param>
     /// <param name="ipnetwork">The resulting IPNetwork.</param>
-    private static bool InternalParse(bool tryParse, IPAddress ipaddress, IPAddress netmask, out IPNetwork2 ipnetwork)
+    private static bool InternalParse(bool tryParse, IPAddress ipaddress, IPAddress netmask, [NotNullWhen(true)] out IPNetwork2? ipnetwork)
     {
+        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
         if (ipaddress == null)
         {
             if (!tryParse)
@@ -220,7 +220,7 @@ public partial class IPNetwork2
     /// <param name="ipaddress">A string containing an ip address to convert.</param>
     /// <param name="cidr">A byte representing the CIDR to be used in conversion (/24).</param>
     /// <param name="ipnetwork">The resulting IPNetwork.</param>
-    private static bool InternalParse(bool tryParse, string ipaddress, byte cidr, out IPNetwork2 ipnetwork)
+    private static bool InternalParse(bool tryParse, string ipaddress, byte cidr, [NotNullWhen(true)] out IPNetwork2? ipnetwork)
     {
         if (string.IsNullOrEmpty(ipaddress))
         {
@@ -233,8 +233,7 @@ public partial class IPNetwork2
             return false;
         }
 
-        bool ipaddressParsed = IPAddress.TryParse(ipaddress, out IPAddress ip);
-        if (!ipaddressParsed)
+        if (!IPAddress.TryParse(ipaddress, out IPAddress? ip))
         {
             if (!tryParse)
             {
@@ -245,8 +244,7 @@ public partial class IPNetwork2
             return false;
         }
 
-        bool parsedNetmask = TryToNetmask(cidr, ip.AddressFamily, out IPAddress mask);
-        if (!parsedNetmask)
+        if (!TryToNetmask(cidr, ip.AddressFamily, out IPAddress? mask))
         {
             if (!tryParse)
             {
