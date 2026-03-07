@@ -141,6 +141,14 @@ public static class Program
     {
         foreach (IPNetwork2 ipnetwork in ac.Networks)
         {
+            if (ipnetwork.Cidr < 16)
+            {
+                Console.Error.WriteLine(
+                    "WARNING: listing all IP addresses in {0} ({1} addresses). This may take a very long time.",
+                    ipnetwork,
+                    ipnetwork.Total);
+            }
+
             foreach (IPAddress ipaddress in ipnetwork.ListIPAddress())
             {
                 Console.WriteLine("{0}", ipaddress.ToString());
