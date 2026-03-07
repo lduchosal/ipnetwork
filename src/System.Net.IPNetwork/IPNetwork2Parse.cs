@@ -104,11 +104,11 @@ public partial class IPNetwork2
     /// Broadcast : 192.168.0.255.
     /// </summary>
     /// <param name="network">A string containing an ip network to convert.</param>
-    /// <param name="sanitanize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
+    /// <param name="sanitize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
-    public static IPNetwork2 Parse(string network, bool sanitanize)
+    public static IPNetwork2 Parse(string network, bool sanitize)
     {
-        bool parsed = InternalParse(false, network, CidrGuess.ClassFull, sanitanize, out IPNetwork2 ipnetwork);
+        bool parsed = InternalParse(false, network, CidrGuess.ClassFull, sanitize, out IPNetwork2 ipnetwork);
         if (!parsed)
         {
             throw new ArgumentException(nameof(network));
@@ -153,11 +153,11 @@ public partial class IPNetwork2
     /// </summary>
     /// <param name="network">A string containing an ip network to convert.</param>
     /// <param name="cidrGuess">A ICidrGuess implementation that will be used to guess CIDR during conversion.</param>
-    /// <param name="sanitanize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
+    /// <param name="sanitize">If true, removes invalid characters and normalizes whitespace from the network string, keeping only valid network address characters (0-9, a-f, A-F, ., /, :, and spaces).</param>
     /// <returns>An IPNetwork equivalent to the network contained in string network.</returns>
-    public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess, bool sanitanize)
+    public static IPNetwork2 Parse(string network, ICidrGuess cidrGuess, bool sanitize)
     {
-        bool parsed = InternalParse(false, network, cidrGuess, sanitanize, out IPNetwork2 ipnetwork);
+        bool parsed = InternalParse(false, network, cidrGuess, sanitize, out IPNetwork2 ipnetwork);
         if (!parsed)
         {
             throw new ArgumentException(nameof(network));
