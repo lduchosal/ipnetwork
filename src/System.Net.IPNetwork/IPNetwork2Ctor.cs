@@ -21,6 +21,7 @@ public partial class IPNetwork2
     internal IPNetwork2(BigInteger ipaddress, AddressFamily family, byte cidr)
     {
         this.Init(ipaddress, family, cidr);
+        this.cachedHashCode = new Lazy<int>(this.ComputeHashCode);
     }
 
     /// <summary>
@@ -40,6 +41,7 @@ public partial class IPNetwork2
         BigInteger uintIpAddress = ToBigInteger(ipaddress);
 
         this.Init(uintIpAddress, ipaddress.AddressFamily, cidr);
+        this.cachedHashCode = new Lazy<int>(this.ComputeHashCode);
     }
 
     private void Init(BigInteger ipaddress1, AddressFamily family1, byte cidr1)

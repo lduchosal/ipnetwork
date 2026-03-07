@@ -12,7 +12,6 @@ public sealed partial class IPNetwork2
     /// <inheritdoc />
     public override int GetHashCode()
     {
-        this.cachedHashCode ??= this.ComputeHashCode();
         return this.cachedHashCode.Value;
     }
 

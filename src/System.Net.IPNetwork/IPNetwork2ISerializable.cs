@@ -19,6 +19,7 @@ public sealed partial class IPNetwork2
         this.ipaddress = ipnetwork.ipaddress;
         this.cidr = ipnetwork.cidr;
         this.family = ipnetwork.family;
+        this.cachedHashCode = new Lazy<int>(this.ComputeHashCode);
     }
 
     /// <inheritdoc/>
