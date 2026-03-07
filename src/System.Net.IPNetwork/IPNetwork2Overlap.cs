@@ -17,7 +17,6 @@ public sealed partial class IPNetwork2
     /// <param name="network">The first IPNetwork2 object.</param>
     /// <param name="network2">The second IPNetwork2 object.</param>
     /// <returns>Returns true if the two IPNetwork2 objects overlap, otherwise false.</returns>
-    [Obsolete("static Overlap is deprecated, please use instance Overlap.")]
     public static bool Overlap(IPNetwork2 network, IPNetwork2 network2)
     {
         if (network == null)

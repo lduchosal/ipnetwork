@@ -20,7 +20,6 @@ public sealed partial class IPNetwork2
     /// <param name="network">the network.</param>
     /// <param name="network2">The network to supernet with.</param>
     /// <returns>A super netted IP Network.</returns>
-    [Obsolete("static Supernet is deprecated, please use instance Supernet.")]
     public static IPNetwork2 Supernet(IPNetwork2 network, IPNetwork2 network2)
     {
         return network.Supernet(network2);
@@ -36,7 +35,6 @@ public sealed partial class IPNetwork2
     /// <param name="network2">The network to supernet with.</param>
     /// <param name="supernet">The resulting IPNetwork.</param>
     /// <returns>true if network2 was super netted successfully; otherwise, false.</returns>
-    [Obsolete("static TrySupernet is deprecated, please use instance TrySupernet.")]
     public static bool TrySupernet(IPNetwork2 network, IPNetwork2 network2, out IPNetwork2 supernet)
     {
         if (network == null)

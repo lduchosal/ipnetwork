@@ -20,7 +20,6 @@ public sealed partial class IPNetwork2
     /// <returns>
     /// <c>true</c> if the IP address is part of the IP network; otherwise, <c>false</c>.
     /// </returns>
-    [Obsolete("static Contains is deprecated, please use instance Contains.")]
     public static bool Contains(IPNetwork2 network, IPAddress ipaddress)
     {
         if (network == null)
@@ -39,7 +38,6 @@ public sealed partial class IPNetwork2
     /// <returns>
     /// <c>true</c> if the <paramref name="network"/> contains the <paramref name="network2"/>; otherwise, <c>false</c>.
     /// </returns>
-    [Obsolete("static Contains is deprecated, please use instance Contains.")]
     public static bool Contains(IPNetwork2 network, IPNetwork2 network2)
     {
         if (network == null)

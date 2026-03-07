@@ -82,7 +82,6 @@ public sealed partial class IPNetwork2
     /// Throws an <see cref="ArgumentNullException"/> if <paramref name="ipnetwork"/> is <c>null</c>.
     /// </para>
     /// </remarks>
-    [Obsolete("static IsIANAReserved is deprecated, please use instance IsIANAReserved.")]
     public static bool IsIANAReserved(IPNetwork2 ipnetwork)
     {
         if (ipnetwork == null)

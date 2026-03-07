@@ -17,7 +17,6 @@ public sealed partial class IPNetwork2
     /// <returns>
     /// A collection of subnets created from the given network using the specified CIDR.
     /// </returns>
-    [Obsolete("static Subnet is deprecated, please use instance Subnet.")]
     public static IPNetworkCollection Subnet(IPNetwork2 network, byte cidr)
     {
         if (network == null)
@@ -37,7 +36,6 @@ public sealed partial class IPNetwork2
     /// <param name="cidr">A byte representing the CIDR to be used to subnet the current IPNetwork.</param>
     /// <param name="ipnetworkCollection">The resulting subnetted IPNetwork.</param>
     /// <returns>true if network was split successfully; otherwise, false.</returns>
-    [Obsolete("static TrySubnet is deprecated, please use instance TrySubnet.")]
     public static bool TrySubnet(IPNetwork2 network, byte cidr, out IPNetworkCollection ipnetworkCollection)
     {
         if (network == null)
