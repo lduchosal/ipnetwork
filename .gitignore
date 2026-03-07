@@ -289,3 +289,6 @@ __pycache__/
 *.xsd.cs
 src/System.Net.IPNetwork.TestProject.NetCore/coverage.net5.0.opencover.xml
 coverage.xml
+
+# macOS
+.DS_Store
