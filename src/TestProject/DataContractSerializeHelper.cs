@@ -54,8 +54,13 @@ public static class DataContractSerializeHelper
                 return new T();
             }
 
+            var settings = new XmlReaderSettings
+            {
+                DtdProcessing = DtdProcessing.Prohibit,
+                XmlResolver = null,
+            };
             using var textReader = new StringReader(xml);
-            using var xmlReader = XmlReader.Create(textReader);
+            using var xmlReader = XmlReader.Create(textReader, settings);
             var serializer = new DataContractSerializer(typeof(T));
             var result = (T)serializer.ReadObject(xmlReader);
             return result;
