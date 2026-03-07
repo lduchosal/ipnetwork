@@ -14,7 +14,7 @@ using System.Runtime.Serialization;
 public partial class IPNetwork2
 {
     private readonly object sync = new ();
-    private readonly int hashCode;
+    private int? cachedHashCode;
     private BigInteger ipaddress;
     private byte cidr;
     private BigInteger? cachedBroadcast;
