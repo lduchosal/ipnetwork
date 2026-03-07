@@ -23,7 +23,7 @@ public sealed partial class IPNetwork2
     public static int Compare(IPNetwork2? left, IPNetwork2? right)
     {
         // two null IPNetworks are equal
-        if (ReferenceEquals(left, null) && ReferenceEquals(right, null))
+        if (left is null && right is null)
         {
             return 0;
         }
@@ -35,12 +35,12 @@ public sealed partial class IPNetwork2
         }
 
         // null is always sorted first
-        if (ReferenceEquals(left, null))
+        if (left is null)
         {
             return -1;
         }
 
-        if (ReferenceEquals(right, null))
+        if (right is null)
         {
             return 1;
         }

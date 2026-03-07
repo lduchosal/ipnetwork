@@ -141,7 +141,7 @@ public sealed partial class IPNetwork2
         IPNetwork2 nnin0 = nnin[0];
         BigInteger uintNnin0 = nnin0.ipaddress;
 
-        IPNetwork2 nninX = nnin[nnin.Length - 1];
+        IPNetwork2 nninX = nnin[^1];
         IPAddress ipaddressX = nninX.Last;
 
         AddressFamily family = ipnetworks[0].family;
