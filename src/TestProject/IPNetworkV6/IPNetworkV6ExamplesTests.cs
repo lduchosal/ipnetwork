@@ -123,6 +123,9 @@ public class IPNetworkV6ExamplesTests
         {
             Console.WriteLine("{0}", ip);
         }
+
+        Assert.IsNotNull(ips);
+        Assert.AreEqual(16, ips.Count);
     }
 
     /// <summary>
@@ -138,5 +141,9 @@ public class IPNetworkV6ExamplesTests
         Console.WriteLine("IPV6 Default Parse : {0}", defaultParse);
         Console.WriteLine("IPV6 ClassFull Parse : {0}", classFullParse);
         Console.WriteLine("IPV6 ClassLess Parse : {0}", classLessParse);
+
+        Assert.IsNotNull(defaultParse);
+        Assert.IsNotNull(classFullParse);
+        Assert.IsNotNull(classLessParse);
     }
 }

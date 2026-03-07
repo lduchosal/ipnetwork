@@ -61,10 +61,13 @@ public class SerializeJsonTest
     {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
+            string json = null;
             for (int i = 0; i < 1000000; i++)
             {
-                JsonConvert.SerializeObject(ipnetwork);
+                json = JsonConvert.SerializeObject(ipnetwork);
             }
+
+            Assert.IsNotNull(json);
 
             // 3.06 seconds(Ad hoc).
         }
@@ -78,10 +81,13 @@ public class SerializeJsonTest
     {
             string json = "{\"IPNetwork\":\"10.0.0.0/8\"}";
 
+            IPNetwork2 result = null;
             for (int i = 0; i < 1000000; i++)
             {
-                JsonConvert.DeserializeObject<IPNetwork2>(json);
+                result = JsonConvert.DeserializeObject<IPNetwork2>(json);
             }
+
+            Assert.IsNotNull(result);
 
             // 10.20 seconds(Ad hoc).
         }
@@ -95,11 +101,14 @@ public class SerializeJsonTest
     {
             var ipnetwork = IPNetwork2.Parse("10.0.0.1/8");
 
+            IPNetwork2 result = null;
             for (int i = 0; i < 1000000; i++)
             {
                 string json = JsonConvert.SerializeObject(ipnetwork);
-                JsonConvert.DeserializeObject<IPNetwork2>(json);
+                result = JsonConvert.DeserializeObject<IPNetwork2>(json);
             }
+
+            Assert.IsNotNull(result);
 
             // 13.49 seconds(Ad hoc).
         }

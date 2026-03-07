@@ -55,9 +55,9 @@ public class IPNetworkTrySubnetTests
         IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
         byte cidr = 9;
 
-#pragma warning disable 0618
-        IPNetwork2.TrySubnet(ipnetwork, cidr, out IPNetworkCollection _);
-#pragma warning restore 0618
+        bool result = IPNetwork2.TrySubnet(ipnetwork, cidr, out IPNetworkCollection subnets);
+        Assert.IsTrue(result);
+        Assert.IsNotNull(subnets);
     }
 
     /// <summary>
