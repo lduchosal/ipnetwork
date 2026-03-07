@@ -18,12 +18,7 @@ public partial class IPNetwork2
     /// <param name="ipaddress">The IP address of the network.</param>
     /// <param name="family">The address family of the network.</param>
     /// <param name="cidr">The CIDR (Classless Inter-Domain Routing) notation of the network.</param>
-#if TRAVISCI
-    public
-#else
-    internal
-#endif
-        IPNetwork2(BigInteger ipaddress, AddressFamily family, byte cidr)
+    internal IPNetwork2(BigInteger ipaddress, AddressFamily family, byte cidr)
     {
         this.Init(ipaddress, family, cidr);
     }

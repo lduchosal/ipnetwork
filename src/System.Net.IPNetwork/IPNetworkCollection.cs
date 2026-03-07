@@ -49,12 +49,7 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     /// <param name="cidrSubnet">The subnet.</param>
     /// <exception cref="ArgumentOutOfRangeException">Cidr is out of range.</exception>
     /// <exception cref="ArgumentException">Network is invalid.</exception>
-#if TRAVISCI
-    public
-#else
-    internal 
-#endif
-        IPNetworkCollection(IPNetwork2 ipnetwork, byte cidrSubnet)
+    internal IPNetworkCollection(IPNetwork2 ipnetwork, byte cidrSubnet)
     {
         int maxCidr = ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetwork ? 32 : 128;
         if (cidrSubnet > maxCidr)

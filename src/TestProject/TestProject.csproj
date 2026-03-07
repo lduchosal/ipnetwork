@@ -16,7 +16,7 @@
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
-        <DefineConstants>$(DefineConstants)TRACE;TRAVISCI</DefineConstants>
+        <DefineConstants>$(DefineConstants)TRACE</DefineConstants>
     </PropertyGroup>
 
     <ItemGroup>
