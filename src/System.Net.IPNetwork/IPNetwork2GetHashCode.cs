@@ -15,13 +15,12 @@ public sealed partial class IPNetwork2
         return this.cachedHashCode.Value;
     }
 
-    /// <summary>
-    /// 20221105 : ldvhcosal
-    /// GetHashCode uses mutable attributes. That introduce undefined behaviour on Hashtable and dictionary.
-    /// </summary>
-    /// <returns>An number representing the hashCode.</returns>
     private int ComputeHashCode()
     {
-        return $"{this.family.GetHashCode()}|{this.InternalNetwork.GetHashCode()}|{this.cidr.GetHashCode()}".GetHashCode();
+        int hash = 17;
+        hash = (hash * 31) + this.family.GetHashCode();
+        hash = (hash * 31) + this.InternalNetwork.GetHashCode();
+        hash = (hash * 31) + this.cidr.GetHashCode();
+        return hash;
     }
 }
