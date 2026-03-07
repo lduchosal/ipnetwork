@@ -108,7 +108,7 @@ public static class UniqueLocalAddress
         
         if (subnetId < 0 || subnetId > 65535)
         {
-            throw new ArgumentOutOfRangeException(nameof(ulaPrefix));
+            throw new ArgumentOutOfRangeException(nameof(subnetId));
         }
 
         byte[] networkBytes = ulaPrefix.Network.GetAddressBytes();
