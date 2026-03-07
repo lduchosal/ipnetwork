@@ -91,10 +91,14 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     {
         get
         {
+#if NETSTANDARD2_1
             if (i >= this.Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(i));
             }
+#else
+            ArgumentOutOfRangeException.ThrowIfGreaterThanOrEqual(i, this.Count);
+#endif
 
             BigInteger last = this.ipnetwork.AddressFamily == Sockets.AddressFamily.InterNetworkV6
                 ? this.LastUsable

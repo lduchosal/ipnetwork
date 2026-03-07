@@ -18,10 +18,14 @@ public sealed partial class IPNetwork2
     /// <returns>Dump an IPNetwork representation as string.</returns>
     public static string Print(IPNetwork2 ipnetwork)
     {
+#if NETSTANDARD2_1
         if (ipnetwork == null)
         {
             throw new ArgumentNullException(nameof(ipnetwork));
         }
+#else
+        ArgumentNullException.ThrowIfNull(ipnetwork);
+#endif
 
         return ipnetwork.Print();
     }

@@ -19,10 +19,14 @@ public sealed partial class IPNetwork2
     /// <returns>true if network2 overlaps into the IP Network; otherwise, false.</returns>
     public static bool Overlap(IPNetwork2 network, IPNetwork2 network2)
     {
+#if NETSTANDARD2_1
         if (network == null)
         {
             throw new ArgumentNullException(nameof(network));
         }
+#else
+        ArgumentNullException.ThrowIfNull(network);
+#endif
 
         return network.Overlap(network2);
     }
@@ -34,10 +38,14 @@ public sealed partial class IPNetwork2
     /// <returns>true if network2 overlaps into the IP Network; otherwise, false.</returns>
     public bool Overlap(IPNetwork2 network2)
     {
+#if NETSTANDARD2_1
         if (network2 == null)
         {
             throw new ArgumentNullException(nameof(network2));
         }
+#else
+        ArgumentNullException.ThrowIfNull(network2);
+#endif
 
         BigInteger uintNetwork = this.InternalNetwork;
         BigInteger uintBroadcast = this.InternalBroadcast;

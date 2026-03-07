@@ -70,10 +70,14 @@ public sealed partial class IPNetwork2
     /// <returns>true if network was split successfully; otherwise, false.</returns>
     public static bool TrySubnet(IPNetwork2 network, byte cidr, out IPNetworkCollection? ipnetworkCollection)
     {
+#if NETSTANDARD2_1
         if (network == null)
         {
             throw new ArgumentNullException(nameof(network));
         }
+#else
+        ArgumentNullException.ThrowIfNull(network);
+#endif
 
         return InternalSubnet(true, network, cidr, out ipnetworkCollection);
     }

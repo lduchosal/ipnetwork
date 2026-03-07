@@ -57,10 +57,14 @@ public sealed partial class IPNetwork2
     /// <returns>true if ipaddress is a IANA reserverd IP Netowkr ; otherwise, false.</returns>
     public static bool IsIANAReserved(IPAddress ipaddress)
     {
+#if NETSTANDARD2_1
         if (ipaddress == null)
         {
             throw new ArgumentNullException(nameof(ipaddress));
         }
+#else
+        ArgumentNullException.ThrowIfNull(ipaddress);
+#endif
 
         return IANA_ABLK_RESERVED1.Contains(ipaddress)
                || IANA_BBLK_RESERVED1.Contains(ipaddress)
@@ -75,10 +79,14 @@ public sealed partial class IPNetwork2
     /// <returns>true if the ipnetwork is a IANA reserverd IP Netowkr ; otherwise, false.</returns>
     public static bool IsIANAReserved(IPNetwork2 ipnetwork)
     {
+#if NETSTANDARD2_1
         if (ipnetwork == null)
         {
             throw new ArgumentNullException(nameof(ipnetwork));
         }
+#else
+        ArgumentNullException.ThrowIfNull(ipnetwork);
+#endif
 
         return ipnetwork.IsIANAReserved();
     }

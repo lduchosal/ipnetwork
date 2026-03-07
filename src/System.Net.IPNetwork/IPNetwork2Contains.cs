@@ -20,10 +20,14 @@ public sealed partial class IPNetwork2
     [CLSCompliant(false)]
     public bool Contains(IPAddress contains)
     {
+#if NETSTANDARD2_1
         if (contains == null)
         {
             throw new ArgumentNullException(nameof(contains));
         }
+#else
+        ArgumentNullException.ThrowIfNull(contains);
+#endif
 
         if (this.AddressFamily != contains.AddressFamily)
         {
@@ -48,10 +52,14 @@ public sealed partial class IPNetwork2
     /// <returns>It returns the boolean value. If network2 is in IPNetwork then it returns True, otherwise returns False.</returns>
     public bool Contains(IPNetwork2 contains)
     {
+#if NETSTANDARD2_1
         if (contains == null)
         {
             throw new ArgumentNullException(nameof(contains));
         }
+#else
+        ArgumentNullException.ThrowIfNull(contains);
+#endif
 
         BigInteger uintNetwork = this.InternalNetwork;
         BigInteger
@@ -76,10 +84,14 @@ public sealed partial class IPNetwork2
     /// <returns>true if ipaddress is contained into the IP Network; otherwise, false.</returns>
     public static bool Contains(IPNetwork2 network, IPAddress ipaddress)
     {
+#if NETSTANDARD2_1
         if (network == null)
         {
             throw new ArgumentNullException(nameof(network));
         }
+#else
+        ArgumentNullException.ThrowIfNull(network);
+#endif
 
         return network.Contains(ipaddress);
     }
@@ -92,10 +104,14 @@ public sealed partial class IPNetwork2
     /// <returns>true if network2 is contained into the IP Network; otherwise, false.</returns>
     public static bool Contains(IPNetwork2 network, IPNetwork2 network2)
     {
+#if NETSTANDARD2_1
         if (network == null)
         {
             throw new ArgumentNullException(nameof(network));
         }
+#else
+        ArgumentNullException.ThrowIfNull(network);
+#endif
 
         return network.Contains(network2);
     }

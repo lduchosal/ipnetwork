@@ -44,7 +44,6 @@ public sealed partial class IPNetwork2
         return Compare(left, right) < 0;
     }
 
-
     /// <summary>
     /// Compares two IPNetwork.
     /// </summary>

@@ -69,7 +69,7 @@ public sealed class CidrNetworkAware : ICidrGuess
 
         // Reject if user passed a slash - this API expects a plain address.
         // (You can relax this if you want to honor an explicitly supplied prefix.)
-        if (ip.Contains("/"))
+        if (ip.Contains('/'))
             return false;
 
         if (!IPAddress.TryParse(ip.Trim(), out var ipAddress))

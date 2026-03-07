@@ -75,15 +75,23 @@ public sealed partial class IPNetwork2
     /// <returns>true if network1 and network2 were super netted successfully; otherwise, false.</returns>
     public static bool TrySupernet(IPNetwork2 network1, IPNetwork2 network2, [NotNullWhen(true)] out IPNetwork2? supernet)
     {
+#if NETSTANDARD2_1
         if (network1 == null)
         {
             throw new ArgumentNullException(nameof(network1));
         }
+#else
+        ArgumentNullException.ThrowIfNull(network1);
+#endif
 
+#if NETSTANDARD2_1
         if (network2 == null)
         {
             throw new ArgumentNullException(nameof(network2));
         }
+#else
+        ArgumentNullException.ThrowIfNull(network2);
+#endif
 
         return InternalSupernet(true, network1, network2, out supernet);
     }
