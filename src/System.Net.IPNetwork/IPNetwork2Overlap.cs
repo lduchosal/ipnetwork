@@ -14,23 +14,6 @@ public sealed partial class IPNetwork2
     /// <summary>
     /// return true is network2 overlap network.
     /// </summary>
-    /// <param name="network">The network.</param>
-    /// <param name="network2">The network to test.</param>
-    /// <returns>true if network2 overlaps into the IP Network; otherwise, false.</returns>
-    [Obsolete("static Overlap is deprecated, please use instance Overlap.")]
-    public static bool Overlap(IPNetwork2 network, IPNetwork2 network2)
-    {
-        if (network == null)
-        {
-            throw new ArgumentNullException(nameof(network));
-        }
-
-        return network.Overlap(network2);
-    }
-
-    /// <summary>
-    /// return true is network2 overlap network.
-    /// </summary>
     /// <param name="network2">The network to test.</param>
     /// <returns>true if network2 overlaps into the IP Network; otherwise, false.</returns>
     public bool Overlap(IPNetwork2 network2)

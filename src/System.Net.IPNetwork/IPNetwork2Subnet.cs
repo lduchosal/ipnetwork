@@ -42,45 +42,6 @@ public sealed partial class IPNetwork2
     }
 
     /// <summary>
-    /// Subnet a network into multiple nets of cidr mask
-    /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
-    /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
-    /// </summary>
-    /// <param name="network">The network to subnet.</param>
-    /// <param name="cidr">A byte representing the CIDR to be used to subnet the network.</param>
-    /// <returns>A IPNetworkCollection split by CIDR.</returns>
-    [Obsolete("static Subnet is deprecated, please use instance Subnet.")]
-    public static IPNetworkCollection Subnet(IPNetwork2 network, byte cidr)
-    {
-        if (!InternalSubnet(false, network, cidr, out IPNetworkCollection? ipnetworkCollection))
-        {
-            throw new ArgumentException("Invalid CIDR.", nameof(cidr));
-        }
-
-        return ipnetworkCollection;
-    }
-
-    /// <summary>
-    /// Subnet a network into multiple nets of cidr mask
-    /// Subnet 192.168.0.0/24 into cidr 25 gives 192.168.0.0/25, 192.168.0.128/25
-    /// Subnet 10.0.0.0/8 into cidr 9 gives 10.0.0.0/9, 10.128.0.0/9.
-    /// </summary>
-    /// <param name="network">The network to subnet.</param>
-    /// <param name="cidr">A byte representing the CIDR to be used to subnet the network.</param>
-    /// <param name="ipnetworkCollection">The resulting subnetted IPNetwork.</param>
-    /// <returns>true if network was split successfully; otherwise, false.</returns>
-    [Obsolete("static TrySubnet is deprecated, please use instance TrySubnet.")]
-    public static bool TrySubnet(IPNetwork2 network, byte cidr, out IPNetworkCollection? ipnetworkCollection)
-    {
-        if (network == null)
-        {
-            throw new ArgumentNullException(nameof(network));
-        }
-
-        return InternalSubnet(true, network, cidr, out ipnetworkCollection);
-    }
-
-    /// <summary>
     /// Splits a given IP network into smaller subnets of the specified CIDR size.
     /// </summary>
     /// <param name="trySubnet">Indicates whether to throw exceptions or return null on failure.</param>

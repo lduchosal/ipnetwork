@@ -96,30 +96,6 @@ public class IPNetworkIanaBlocksTests
     }
 
     /// <summary>
-    /// Test is a null ipnetwork is in IANA block.
-    /// </summary>
-    [TestMethod]
-    public void TestIana8()
-    {
-        IPNetwork2 ipnetwork = null;
-        Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            IPNetwork2.IsIANAReserved(ipnetwork);
-        });
-    }
-
-    /// <summary>
-    ///     Tests IANA_blocks functionality with IANABlk1.
-    /// </summary>
-    [TestMethod]
-    public void TestIanaBlk1()
-    {
-        IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
-        bool result = IPNetwork2.IsIANAReserved(ipnetwork);
-        Assert.IsTrue(result, "result");
-    }
-
-    /// <summary>
     ///     Tests IANA_blocks functionality with IANA9.
     /// </summary>
     [TestMethod]

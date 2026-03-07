@@ -31,26 +31,4 @@ Usable      : 4294967294
             Assert.AreEqual(expected, print, "Print");
         }
 
-    /// <summary>
-    /// Test.
-    /// </summary>
-    [TestMethod]
-    public void PrintNull()
-    {
-        IPNetwork2 ipn = null;
-        Assert.ThrowsExactly<ArgumentNullException>(() =>
-            IPNetwork2.Print(ipn));
-    }
-
-    /// <summary>
-    ///     Tests Print functionality.
-    /// </summary>
-    [TestMethod]
-    public void PrintStatic()
-    {
-        IPNetwork2 ipn = IPNetwork2.IANA_ABLK_RESERVED1;
-#pragma warning disable 0618
-        IPNetwork2.Print(ipn);
-#pragma warning restore 0618
-    }
 }

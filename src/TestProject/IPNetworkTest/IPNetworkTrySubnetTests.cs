@@ -33,34 +33,6 @@ public class IPNetworkTrySubnetTests
     }
 
     /// <summary>
-    /// Test a null network.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySubnet1()
-    {
-        Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-#pragma warning disable 0618
-            IPNetwork2.TrySubnet(null, 9, out _);
-#pragma warning restore 0618
-        });
-    }
-
-    /// <summary>
-    ///     Tests Try Subnet functionality with Try Subnet Static1.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySubnetStatic1()
-    {
-        IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
-        byte cidr = 9;
-
-        bool result = IPNetwork2.TrySubnet(ipnetwork, cidr, out IPNetworkCollection subnets);
-        Assert.IsTrue(result);
-        Assert.IsNotNull(subnets);
-    }
-
-    /// <summary>
     ///     Tests Try Subnet functionality with Try Subnet3.
     /// </summary>
     [TestMethod]

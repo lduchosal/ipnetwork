@@ -53,35 +53,6 @@ public class ContainsUnitTest
     /// Test.
     /// </summary>
     [TestMethod]
-    public void TestContainsStatic3()
-    {
-        IPNetwork2 ipnetwork = null;
-        IPNetwork2 ipnetwork2 = null;
-
-        Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            IPNetwork2.Contains(ipnetwork, ipnetwork2);
-        });
-    }
-
-    /// <summary>
-    /// Test.
-    /// </summary>
-    [TestMethod]
-    public void TestContainsStatic4()
-    {
-            IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
-            IPNetwork2 ipnetwork2 = IPNetwork2.IANA_CBLK_RESERVED1;
-
-            bool result = IPNetwork2.Contains(ipnetwork, ipnetwork2);
-
-            Assert.IsTrue(result, "result");
-        }
-
-    /// <summary>
-    /// Test.
-    /// </summary>
-    [TestMethod]
     public void TestContains8()
     {
         var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
@@ -92,34 +63,6 @@ public class ContainsUnitTest
             ipnetwork.Contains(ipnetwork2);
         });
     }
-
-    /// <summary>
-    /// Test.
-    /// </summary>
-    [TestMethod]
-    public void TestContainsStatic1()
-    {
-        IPNetwork2 ipnetwork = null;
-        IPAddress ipaddress = null;
-
-        Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            IPNetwork2.Contains(ipnetwork, ipaddress);
-        });
-    }
-
-    /// <summary>
-    /// Test.
-    /// </summary>
-    [TestMethod]
-    public void TestContainsStatic2()
-    {
-            IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
-            var ipaddress = IPAddress.Parse("10.0.0.1");
-
-            bool result = IPNetwork2.Contains(ipnetwork, ipaddress);
-            Assert.IsTrue(result, "result");
-        }
 
     /// <summary>
     /// Test.

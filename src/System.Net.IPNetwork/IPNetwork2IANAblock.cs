@@ -180,23 +180,6 @@ public sealed partial class IPNetwork2
     }
 
     /// <summary>
-    /// return true if ipnetwork is contained in
-    /// any IANA reserved block (IPv4 or IPv6).
-    /// </summary>
-    /// <param name="ipnetwork">The IPNetwork to test.</param>
-    /// <returns>true if the ipnetwork is in an IANA reserved block; otherwise, false.</returns>
-    [Obsolete("static IsIANAReserved(IPNetwork2) is deprecated, please use instance IsIANAReserved.")]
-    public static bool IsIANAReserved(IPNetwork2 ipnetwork)
-    {
-        if (ipnetwork == null)
-        {
-            throw new ArgumentNullException(nameof(ipnetwork));
-        }
-
-        return ipnetwork.IsIANAReserved();
-    }
-
-    /// <summary>
     /// return true if this ipnetwork is contained in
     /// any IANA reserved block (IPv4 or IPv6).
     /// </summary>
