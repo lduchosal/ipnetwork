@@ -4,7 +4,7 @@
     <TargetFrameworks>net10.0;net9.0;net8.0;netstandard2.1</TargetFrameworks> 
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>IPNetwork2</PackageId>
-    <PackageVersion>3.2.0</PackageVersion>
+    <PackageVersion>4.0.0</PackageVersion>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PackageProjectUrl>https://github.com/lduchosal/ipnetwork</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
