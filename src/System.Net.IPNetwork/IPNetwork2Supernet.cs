@@ -45,50 +45,6 @@ public sealed partial class IPNetwork2
     }
 
     /// <summary>
-    /// Supernet two consecutive cidr equal subnet into a single one
-    /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
-    /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
-    /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
-    /// </summary>
-    /// <param name="network1">The first network.</param>
-    /// <param name="network2">The second network.</param>
-    /// <returns>A super netted IP Network.</returns>
-    public static IPNetwork2 Supernet(IPNetwork2 network1, IPNetwork2 network2)
-    {
-        if (!InternalSupernet(false, network1, network2, out IPNetwork2? supernet))
-        {
-            throw new ArgumentException("Failed to supernet networks.", nameof(network2));
-        }
-
-        return supernet;
-    }
-
-    /// <summary>
-    /// Try to supernet two consecutive cidr equal subnet into a single one
-    /// 192.168.0.0/24 + 192.168.1.0/24 = 192.168.0.0/23
-    /// 10.1.0.0/16 + 10.0.0.0/16 = 10.0.0.0/15
-    /// 192.168.0.0/24 + 192.168.0.0/25 = 192.168.0.0/24.
-    /// </summary>
-    /// <param name="network1">The first network.</param>
-    /// <param name="network2">The second network.</param>
-    /// <param name="supernet">The resulting IPNetwork.</param>
-    /// <returns>true if network1 and network2 were super netted successfully; otherwise, false.</returns>
-    public static bool TrySupernet(IPNetwork2 network1, IPNetwork2 network2, [NotNullWhen(true)] out IPNetwork2? supernet)
-    {
-        if (network1 == null)
-        {
-            throw new ArgumentNullException(nameof(network1));
-        }
-
-        if (network2 == null)
-        {
-            throw new ArgumentNullException(nameof(network2));
-        }
-
-        return InternalSupernet(true, network1, network2, out supernet);
-    }
-
-    /// <summary>
     /// Attempts to merge two adjacent IP networks with equal CIDR values into a single supernet.
     /// </summary>
     /// <param name="trySupernet">If true, suppresses exceptions on failure; otherwise, throws.</param>

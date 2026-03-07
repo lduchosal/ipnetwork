@@ -29,21 +29,6 @@ public class IPNetworkV6TrySupernetTests
     /// Test.
     /// </summary>
     [TestMethod]
-    public void TestTrySupernet2()
-    {
-        IPNetwork2 network1 = null;
-        var network2 = IPNetwork2.Parse("2001:db8::/64");
-
-        Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            IPNetwork2.TrySupernet(network1, network2, out var _);
-        });
-    }
-
-    /// <summary>
-    /// Test.
-    /// </summary>
-    [TestMethod]
     public void TestTrySupernet3()
     {
         var network1 = IPNetwork2.Parse("2001:db8::/64");

@@ -14,21 +14,6 @@ public sealed partial class IPNetwork2
     /// <summary>
     /// Print an ipnetwork in a clear representation string.
     /// </summary>
-    /// <param name="ipnetwork">The IPNetwork to print.</param>
-    /// <returns>Dump an IPNetwork representation as string.</returns>
-    public static string Print(IPNetwork2 ipnetwork)
-    {
-        if (ipnetwork == null)
-        {
-            throw new ArgumentNullException(nameof(ipnetwork));
-        }
-
-        return ipnetwork.Print();
-    }
-
-    /// <summary>
-    /// Print an ipnetwork in a clear representation string.
-    /// </summary>
     /// <returns>Dump an IPNetwork representation as string.</returns>
     public string Print()
     {

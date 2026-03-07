@@ -11,35 +11,6 @@ namespace TestProject.IPNetworkTest;
 public class IPNetworkOverlapTests
 {
     /// <summary>
-    /// Test overlap.
-    /// </summary>
-    [TestMethod]
-    public void TestOverlap1()
-    {
-        IPNetwork2 network1 = null;
-        IPNetwork2 network2 = null;
-
-        Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            IPNetwork2.Overlap(network1, network2);
-        });
-    }
-
-    /// <summary>
-    ///     Tests Overlap functionality with Overlap Static2.
-    /// </summary>
-    [TestMethod]
-    public void TestOverlapStatic2()
-    {
-            IPNetwork2 network1 = IPNetwork2.IANA_ABLK_RESERVED1;
-            IPNetwork2 network2 = IPNetwork2.IANA_ABLK_RESERVED1;
-
-            bool result = IPNetwork2.Overlap(network1, network2);
-
-            Assert.IsTrue(result, "result");
-        }
-
-    /// <summary>
     /// Test.
     /// </summary>
     [TestMethod]

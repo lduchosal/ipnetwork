@@ -167,19 +167,6 @@ public class IPNetworkSupernetTests
     /// <summary>
     ///     Tests Supernet functionality with Supernet Static1.
     /// </summary>
-    [TestMethod]
-    public void TestSupernetStatic1()
-    {
-        var network1 = IPNetwork2.Parse("192.168.0.1/25");
-        var network2 = IPNetwork2.Parse("192.168.0.1/24");
-        var expected = IPNetwork2.Parse("192.168.0.0/24");
-#pragma warning disable CS0618 // Type or member is obsolete
-        var supernet = IPNetwork2.Supernet(network1, network2);
-#pragma warning restore CS0618 // Type or member is obsolete
-
-        Assert.AreEqual(expected, supernet, "supernet");
-    }
-
     /// <summary>
     /// Test to supernet continuous networks.
     /// </summary>

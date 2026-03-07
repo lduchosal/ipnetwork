@@ -26,34 +26,6 @@ public class IPNetworkTrySupernetTests
     }
 
     /// <summary>
-    /// Test.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernet2()
-    {
-        IPNetwork2 network1 = null;
-        var network2 = IPNetwork2.Parse("192.168.11.1/24");
-        Assert.ThrowsExactly<ArgumentNullException>(() =>
-        {
-            IPNetwork2.TrySupernet(network1, network2, out var _);
-        });
-    }
-
-    /// <summary>
-    ///     Tests Try Supernet functionality with Try Supernet Static2.
-    /// </summary>
-    [TestMethod]
-    public void TestTrySupernetStatic2()
-    {
-        IPNetwork2 network1 = IPNetwork2.IANA_ABLK_RESERVED1;
-        var network2 = IPNetwork2.Parse("192.168.21.1/24");
-        bool supernetted = IPNetwork2.TrySupernet(network1, network2, out IPNetwork2 supernet);
-
-        Assert.IsFalse(supernetted);
-        Assert.IsNull(supernet);
-    }
-
-    /// <summary>
     ///     Tests Try Supernet functionality with Try Supernet3.
     /// </summary>
     [TestMethod]

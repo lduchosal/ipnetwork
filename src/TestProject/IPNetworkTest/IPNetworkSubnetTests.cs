@@ -14,32 +14,6 @@ public class IPNetworkSubnetTests
     /// Test.
     /// </summary>
     [TestMethod]
-    public void TestSubnet1()
-    {
-        IPNetwork2 ipnetwork = null;
-        byte cidr = 9;
-        Assert.ThrowsExactly<ArgumentNullException>(() =>
-            IPNetwork2.Subnet(ipnetwork, cidr));
-    }
-
-    /// <summary>
-    ///     Tests Subnet functionality with Subnet Static1.
-    /// </summary>
-    [TestMethod]
-    public void TestSubnetStatic1()
-    {
-        IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
-        byte cidr = 9;
-
-        IPNetworkCollection subnets = IPNetwork2.Subnet(ipnetwork, cidr);
-        Assert.IsNotNull(subnets);
-        Assert.AreEqual(2, subnets.Count);
-    }
-
-    /// <summary>
-    /// Test.
-    /// </summary>
-    [TestMethod]
     public void TestSubnet3()
     {
         IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
