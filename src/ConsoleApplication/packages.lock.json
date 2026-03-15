@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "GnuGetOpt": {
+        "type": "Direct",
+        "requested": "[0.9.2.6, )",
+        "resolved": "0.9.2.6",
+        "contentHash": "ABszhRqAWfcxAxz49rnTs2MVT262rwDEgJevLXtDYd4tpUkHFdnf/xeJFVlkBeq1hymQ3n44UBfa36l7hrGzLA=="
+      },
+      "IPNetwork2": {
+        "type": "Project"
+      }
+    },
+    "net8.0": {
+      "GnuGetOpt": {
+        "type": "Direct",
+        "requested": "[0.9.2.6, )",
+        "resolved": "0.9.2.6",
+        "contentHash": "ABszhRqAWfcxAxz49rnTs2MVT262rwDEgJevLXtDYd4tpUkHFdnf/xeJFVlkBeq1hymQ3n44UBfa36l7hrGzLA=="
+      },
+      "IPNetwork2": {
+        "type": "Project"
+      }
+    },
+    "net9.0": {
+      "GnuGetOpt": {
+        "type": "Direct",
+        "requested": "[0.9.2.6, )",
+        "resolved": "0.9.2.6",
+        "contentHash": "ABszhRqAWfcxAxz49rnTs2MVT262rwDEgJevLXtDYd4tpUkHFdnf/xeJFVlkBeq1hymQ3n44UBfa36l7hrGzLA=="
+      },
+      "IPNetwork2": {
+        "type": "Project"
+      }
+    }
+  }
+}
