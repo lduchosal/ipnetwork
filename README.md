@@ -1,7 +1,9 @@
-# IPNetwork 
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/cy2ufc4rwnbxjek8?svg=true)](https://ci.appveyor.com/project/lduchosal/ipnetwork)
+# IPNetwork
 [![Nuget](https://img.shields.io/badge/nuget-ipnetwork2-blue.svg)](https://www.nuget.org/packages/ipnetwork2)
 [![Nuget](https://img.shields.io/nuget/dt/IPNetwork2)](https://www.nuget.org/packages/ipnetwork2)
+[![Chocolatey](https://img.shields.io/chocolatey/v/ipnetwork)](https://community.chocolatey.org/packages/ipnetwork)
+[![Homebrew](https://img.shields.io/badge/homebrew-ipnetwork-orange)](https://github.com/lduchosal/homebrew-ipnetwork)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/cy2ufc4rwnbxjek8?svg=true)](https://ci.appveyor.com/project/lduchosal/ipnetwork)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Flduchosal%2Fipnetwork.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Flduchosal%2Fipnetwork?ref=badge_shield)
 [![Coverage Status](https://coveralls.io/repos/github/lduchosal/ipnetwork/badge.svg?branch=master)](https://coveralls.io/github/lduchosal/ipnetwork?branch=master)
 ![GitHub last commit](https://img.shields.io/github/last-commit/lduchosal/ipnetwork)
@@ -19,7 +21,6 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=bugs)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=lduchosal_ipnetwork&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=lduchosal_ipnetwork)
-[![Chocolatey](https://img.shields.io/chocolatey/v/ipnetwork)](https://community.chocolatey.org/packages/ipnetwork)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-red)](https://github.com/sponsors/lduchosal)
 
 IPNetwork command line and C# library take care of complex network, IP, IPv4, IPv6, netmask, CIDR, subnet, subnetting, supernet, and supernetting calculation for .NET developers. It works with IPv4 as well as IPv6, is written in C#, has a light and clean API, and is fully unit-tested.
@@ -34,7 +35,32 @@ IPNetwork utility classes take care of complex network, IP, IPv4, IPv6, netmask,
 
 ### Installation
 
+#### CLI (Native AOT binary, no .NET runtime required)
+
+**macOS / Linux (Homebrew)**
+```bash
+brew install lduchosal/ipnetwork/ipnetwork
+```
+
+**Windows (Chocolatey)**
+```powershell
+choco install ipnetwork
+```
+
+**Linux (manual)**
+```bash
+# x64
+curl -sL https://github.com/lduchosal/ipnetwork/releases/latest/download/ipnetwork-linux-x64.tar.gz | tar xz -C /usr/local/bin
+
+# ARM64
+curl -sL https://github.com/lduchosal/ipnetwork/releases/latest/download/ipnetwork-linux-arm64.tar.gz | tar xz -C /usr/local/bin
+```
+
+#### .NET Library
+
+```
 PM> nuget install IPNetwork2
+```
 
 ---
 
