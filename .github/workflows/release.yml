@@ -46,6 +46,51 @@ jobs:
     - name: Push to NuGet
       run: dotnet nuget push src/System.Net.IPNetwork/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
 
+  native-binaries:
+    strategy:
+      matrix:
+        include:
+          - os: macos-latest
+            rid: osx-arm64
+            artifact: ipnetwork-osx-arm64
+          - os: macos-13
+            rid: osx-x64
+            artifact: ipnetwork-osx-x64
+          - os: ubuntu-latest
+            rid: linux-x64
+            artifact: ipnetwork-linux-x64
+          - os: ubuntu-24.04-arm
+            rid: linux-arm64
+            artifact: ipnetwork-linux-arm64
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 10.0.x
+
+    - name: Publish Native AOT
+      run: |
+        dotnet publish src/ConsoleApplication \
+          --configuration Release \
+          --runtime ${{ matrix.rid }} \
+          --output publish \
+          /p:Version=${{ github.event.release.tag_name }}
+
+    - name: Create release archive
+      run: |
+        cd publish
+        tar czf ../${{ matrix.artifact }}.tar.gz *
+
+    - name: Upload to GitHub Release
+      run: gh release upload "${{ github.event.release.tag_name }}" "${{ matrix.artifact }}.tar.gz" --clobber
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
   chocolatey:
     runs-on: windows-latest
 
@@ -57,14 +102,12 @@ jobs:
       with:
         dotnet-version: 10.0.x
 
-    - name: Publish application
+    - name: Publish application (Native AOT)
       shell: pwsh
       run: |
         dotnet publish src/ConsoleApplication `
           --configuration Release `
-          --framework net10.0 `
           --runtime win-x64 `
-          --self-contained false `
           --output chocolatey/output/publish `
           /p:Version=${{ github.event.release.tag_name }}
 
@@ -99,12 +142,6 @@ jobs:
         $nuspec = Get-Content "chocolatey/ipnetwork.nuspec" -Raw
         $nuspec = $nuspec -replace 'XXX_VERSION_XXX', $version
         Set-Content "chocolatey/ipnetwork.nuspec" $nuspec
-
-        # Update version and checksum in VERIFICATION.txt
-        $verification = Get-Content "chocolatey/tools/VERIFICATION.txt" -Raw
-        $verification = $verification -replace 'XXX_VERSION_XXX', $version
-        $verification = $verification -replace 'XXX_CHECKSUM_XXX', $checksum
-        Set-Content "chocolatey/tools/VERIFICATION.txt" $verification
 
         # Pack and push
         Push-Location chocolatey

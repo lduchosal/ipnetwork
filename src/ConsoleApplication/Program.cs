@@ -6,10 +6,8 @@ namespace System.Net;
 
 using Gnu.Getopt;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Numerics;
-using System.Reflection;
 
 /// <summary>
 /// Console app for IPNetwork.
@@ -444,11 +442,7 @@ public static class Program
 
     private static void Usage()
     {
-        Assembly assembly = Assembly.GetEntryAssembly()
-                            ?? Assembly.GetExecutingAssembly()
-            ;
-        var fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
-        string version = fvi.FileVersion;
+        string version = typeof(Program).Assembly.GetName().Version?.ToString() ?? "unknown";
 
         Console.WriteLine(
             "Usage: ipnetwork [-inmcbflu] [-d cidr|-D] [-h|-s cidr|-S network|-w|-W|-x|-C network|-o network] networks ...");

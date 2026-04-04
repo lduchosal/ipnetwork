@@ -2,8 +2,12 @@
   "version": 1,
   "dependencies": {
     ".NETStandard,Version=v2.1": {},
+    ".NETStandard,Version=v2.1/osx-arm64": {},
     "net10.0": {},
+    "net10.0/osx-arm64": {},
     "net8.0": {},
-    "net9.0": {}
+    "net8.0/osx-arm64": {},
+    "net9.0": {},
+    "net9.0/osx-arm64": {}
   }
 }

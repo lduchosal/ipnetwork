@@ -64,9 +64,6 @@ For full usage instructions, run: `ipnetwork -h`
 If you find IPNetwork useful, consider supporting the project: https://github.com/lduchosal/ipnetwork/blob/master/DONATE.md
     </description>
     <releaseNotes>https://github.com/lduchosal/ipnetwork/releases</releaseNotes>
-    <dependencies>
-      <dependency id="dotnet-10.0-runtime" version="10.0.0" />
-    </dependencies>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
