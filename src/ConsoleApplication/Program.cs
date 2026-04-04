@@ -262,12 +262,12 @@ public static class Program
 
         if (ac.Network)
         {
-            sw.WriteLine("Network     : {0}", ipn.Network.ToString());
+            sw.WriteLine("Network     : {0}", ipn.Network);
         }
 
         if (ac.Netmask)
         {
-            sw.WriteLine("Netmask     : {0}", ipn.Netmask.ToString());
+            sw.WriteLine("Netmask     : {0}", ipn.Netmask);
         }
 
         if (ac.Cidr)
@@ -277,17 +277,17 @@ public static class Program
 
         if (ac.Broadcast)
         {
-            sw.WriteLine("Broadcast   : {0}", ipn.Broadcast.ToString());
+            sw.WriteLine("Broadcast   : {0}", ipn.Broadcast);
         }
 
         if (ac.FirstUsable)
         {
-            sw.WriteLine("FirstUsable : {0}", ipn.FirstUsable.ToString());
+            sw.WriteLine("FirstUsable : {0}", ipn.FirstUsable);
         }
 
         if (ac.LastUsable)
         {
-            sw.WriteLine("LastUsable  : {0}", ipn.LastUsable.ToString());
+            sw.WriteLine("LastUsable  : {0}", ipn.LastUsable);
         }
 
         if (ac.Usable)
