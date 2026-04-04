@@ -44,7 +44,7 @@ jobs:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Push to NuGet
-      run: dotnet nuget push src/System.Net.IPNetwork/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push src/System.Net.IPNetwork/bin/Release/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }} --skip-duplicate
 
   native-binaries:
     strategy:
@@ -53,7 +53,7 @@ jobs:
           - os: macos-latest
             rid: osx-arm64
             artifact: ipnetwork-osx-arm64
-          - os: macos-13
+          - os: macos-latest
             rid: osx-x64
             artifact: ipnetwork-osx-x64
           - os: ubuntu-latest
