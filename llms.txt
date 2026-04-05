@@ -1,0 +1,247 @@
+# IPNetwork
+
+> IPNetwork is a .NET library and CLI tool for IPv4/IPv6 network calculations: subnetting, supernetting, CIDR, netmask, containment, overlap, subtraction, and IP enumeration.
+
+## Installation
+
+### CLI (Native AOT, no .NET runtime required)
+
+macOS / Linux:
+```
+brew install lduchosal/ipnetwork/ipnetwork
+```
+
+Windows:
+```
+choco install ipnetwork
+```
+
+### .NET Library
+
+```
+dotnet add package IPNetwork2
+```
+
+## CLI Usage
+
+```
+ipnetwork [-inmcbflu] [-j] [-d cidr|-D] [-h|-s cidr|-S network|-w|-W|-x|-C network|-o network] networks ...
+```
+
+### Print options (select which fields to display)
+
+- `-i` : network (CIDR notation)
+- `-n` : network address
+- `-m` : netmask
+- `-c` : CIDR prefix length
+- `-b` : broadcast address
+- `-f` : first usable IP address
+- `-l` : last usable IP address
+- `-u` : number of usable IP addresses
+- `-t` : total number of IP addresses
+
+When no print option is specified, all fields are displayed.
+
+### Output options
+
+- `-j` : JSON output (default is human-readable text)
+
+### Parse options
+
+- `-d cidr` : use this CIDR if not provided in input (default /32)
+- `-D` : IPv4 only - use default CIDR based on class (A/8, B/16, C/24)
+
+### Actions
+
+- `-h` : display help
+- `-s cidr` : split network into subnets of given CIDR
+  - Example: `ipnetwork -s 24 10.0.0.0/8`
+- `-w` : supernet networks into smallest possible subnets
+  - Example: `ipnetwork -w 10.0.0.0/24 10.0.1.0/24`
+- `-W` : supernet networks into one single subnet
+  - Example: `ipnetwork -W 10.0.0.0/24 10.0.10.0/24`
+- `-x` : list all IP addresses in networks
+  - Example: `ipnetwork -x 10.0.0.0/30`
+- `-C network` : test if network contains other networks
+  - Example: `ipnetwork -C 10.0.0.0/8 10.0.1.0/24`
+- `-o network` : test if network overlaps with other networks
+  - Example: `ipnetwork -o 10.0.0.0/8 192.168.0.0/16`
+- `-S network` : subtract network from other networks
+  - Example: `ipnetwork -S 10.0.1.0/24 10.0.0.0/23`
+
+### Input formats
+
+Networks can be specified as:
+- `10.0.0.0/8` (CIDR notation)
+- `10.0.0.0/255.0.0.0` (netmask notation)
+- `1.2.3.4` (single IP, defaults to /32)
+- `2001:db8::/32` (IPv6 CIDR)
+- `2001:db8:1:2:3:4:5:6/128` (IPv6 host)
+
+## CLI Examples
+
+### Display network information
+
+```
+$ ipnetwork 10.0.0.0/8
+
+IPNetwork   : 10.0.0.0/8
+Network     : 10.0.0.0
+Netmask     : 255.0.0.0
+Cidr        : 8
+Broadcast   : 10.255.255.255
+FirstUsable : 10.0.0.1
+LastUsable  : 10.255.255.254
+Usable      : 16777214
+Total       : 16777216
+```
+
+### JSON output
+
+```
+$ ipnetwork -j 192.168.1.0/24
+
+[
+  {
+    "ipnetwork": "192.168.1.0/24",
+    "network": "192.168.1.0",
+    "netmask": "255.255.255.0",
+    "cidr": 24,
+    "broadcast": "192.168.1.255",
+    "firstUsable": "192.168.1.1",
+    "lastUsable": "192.168.1.254",
+    "usable": "254",
+    "total": "256"
+  }
+]
+```
+
+### Select specific fields
+
+```
+$ ipnetwork -n -c 10.0.0.0/8
+
+Network     : 10.0.0.0
+Cidr        : 8
+```
+
+### Subnet
+
+```
+$ ipnetwork -s 9 10.0.0.0/8
+
+IPNetwork   : 10.0.0.0/9
+...
+--
+IPNetwork   : 10.128.0.0/9
+...
+```
+
+### Supernet
+
+```
+$ ipnetwork -w 10.0.0.0/24 10.0.1.0/24
+
+IPNetwork   : 10.0.0.0/23
+...
+```
+
+### Containment test
+
+```
+$ ipnetwork -C 10.0.0.0/8 10.0.1.0/24
+
+10.0.0.0/8 contains 10.0.1.0/24 : True
+```
+
+### Overlap test
+
+```
+$ ipnetwork -o 10.0.0.0/8 192.168.0.0/16
+
+10.0.0.0/8 overlaps 192.168.0.0/16 : False
+```
+
+### Subtract
+
+```
+$ ipnetwork -S 10.0.1.0/24 10.0.0.0/23
+
+10.0.0.0/24
+```
+
+### List IP addresses
+
+```
+$ ipnetwork -x 10.0.0.0/30
+
+10.0.0.0
+10.0.0.1
+10.0.0.2
+10.0.0.3
+```
+
+## C# Library API
+
+Core class: `System.Net.IPNetwork2`
+
+### Parse
+
+```csharp
+IPNetwork2 ipnetwork = IPNetwork2.Parse("192.168.168.100/24");
+// Properties: .Network, .Netmask, .Broadcast, .Cidr,
+//             .FirstUsable, .LastUsable, .Usable, .Total
+```
+
+### Contains / Overlap
+
+```csharp
+bool contains = ipnetwork.Contains(IPAddress.Parse("192.168.168.1")); // true
+bool overlap = ipnetwork.Overlap(IPNetwork2.Parse("192.168.1.0/24")); // false
+```
+
+### Subnet
+
+```csharp
+IPNetworkCollection subnets = ipnetwork.Subnet(25);
+// subnets[0] = 192.168.168.0/25
+// subnets[1] = 192.168.168.128/25
+```
+
+### Supernet
+
+```csharp
+IPNetwork2[] supernet = IPNetwork2.Supernet(new[] {
+    IPNetwork2.Parse("192.168.0.0/24"),
+    IPNetwork2.Parse("192.168.1.0/24")
+});
+// supernet[0] = 192.168.0.0/23
+```
+
+### Subtract
+
+```csharp
+IEnumerable<IPNetwork2> result = network1.Subtract(network2);
+```
+
+### ParseRange
+
+```csharp
+IEnumerable<IPNetwork2> blocks = IPNetwork2.ParseRange("192.168.1.45 - 192.168.1.65");
+// Converts IP range to minimal set of CIDR blocks
+```
+
+### IANA Reserved Blocks
+
+```csharp
+IPNetwork2.IANA_ABLK_RESERVED1  // 10.0.0.0/8
+IPNetwork2.IANA_BBLK_RESERVED1  // 172.16.0.0/12
+IPNetwork2.IANA_CBLK_RESERVED1  // 192.168.0.0/16
+```
+
+## Links
+
+- [GitHub Repository](https://github.com/lduchosal/ipnetwork)
+- [NuGet Package](https://www.nuget.org/packages/ipnetwork2)
+- [Homebrew Tap](https://github.com/lduchosal/homebrew-ipnetwork)
+- [Chocolatey Package](https://community.chocolatey.org/packages/ipnetwork)

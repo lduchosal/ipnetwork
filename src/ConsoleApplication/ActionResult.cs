@@ -123,6 +123,9 @@ public abstract class ActionOutput
     /// </summary>
     public sealed class UsageInfo : ActionOutput
     {
+        /// <summary>Gets the parse errors that triggered the usage display.</summary>
+        public required List<string> Errors { get; init; }
+
         /// <summary>Gets the program version.</summary>
         public required string Version { get; init; }
 
@@ -169,6 +172,9 @@ public sealed class UsageOption
 
     /// <summary>Gets the description.</summary>
     public required string Description { get; init; }
+
+    /// <summary>Gets the optional usage example.</summary>
+    public string? Example { get; init; }
 }
 
 /// <summary>

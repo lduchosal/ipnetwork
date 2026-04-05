@@ -25,7 +25,7 @@ public static class ActionComputer
     {
         return ac.Action switch
         {
-            Action.Usage => BuildUsageInfo(argsList),
+            Action.Usage => BuildUsageInfo(ac, argsList),
             Action.PrintNetworks => new ActionOutput.Networks { Items = [.. ac.Networks] },
             Action.Subnet => ComputeSubnet(ac),
             Action.Supernet => ComputeSupernet(ac),
@@ -159,7 +159,7 @@ public static class ActionComputer
         }
     }
 
-    private static ActionOutput BuildUsageInfo(ArgParsed[] argsList)
+    private static ActionOutput BuildUsageInfo(ProgramContext ac, ArgParsed[] argsList)
     {
         var groupOrder = new List<string>();
         var groups = new Dictionary<string, List<UsageOption>>();
@@ -182,7 +182,8 @@ public static class ActionComputer
             {
                 Flag = ((char)arg.Arg).ToString(),
                 ArgName = arg.ArgName,
-                Description = arg.Description
+                Description = arg.Description,
+                Example = arg.Example
             });
         }
 
@@ -190,6 +191,7 @@ public static class ActionComputer
 
         return new ActionOutput.UsageInfo
         {
+            Errors = ac.ParseErrors,
             Version = version,
             Synopsis = Synopsis,
             OptionGroups = groupOrder.Select(name => new UsageOptionGroup

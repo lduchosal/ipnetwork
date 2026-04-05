@@ -110,6 +110,16 @@ public class TextFormatter : IFormatter
     /// <inheritdoc/>
     public void Write(ActionOutput.UsageInfo usage, ProgramContext ac)
     {
+        if (usage.Errors.Count > 0)
+        {
+            foreach (string error in usage.Errors)
+            {
+                _writer.WriteLine(error);
+            }
+
+            return;
+        }
+
         _writer.WriteLine("Usage: {0}", usage.Synopsis);
         _writer.WriteLine("Version: {0}", usage.Version);
 
@@ -139,6 +149,10 @@ public class TextFormatter : IFormatter
                     ? $"-{opt.Flag} {opt.ArgName}"
                     : $"-{opt.Flag}";
                 _writer.WriteLine("\t{0} : {1}", flagPart.PadRight(maxWidth), opt.Description);
+                if (opt.Example is not null)
+                {
+                    _writer.WriteLine("\t{0}   {1}", new string(' ', maxWidth), opt.Example);
+                }
             }
         }
 

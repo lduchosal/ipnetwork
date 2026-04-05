@@ -4,11 +4,18 @@
 
 namespace System.Net;
 
+using System.Collections.Generic;
+
 /// <summary>
 /// The execution context.
 /// </summary>
 public class ProgramContext
 {
+    /// <summary>
+    /// Gets the parse errors accumulated during argument parsing.
+    /// </summary>
+    public List<string> ParseErrors { get; } = [];
+
     /// <summary>
     /// Gets or sets a value indicating whether JSON output is enabled.
     /// </summary>

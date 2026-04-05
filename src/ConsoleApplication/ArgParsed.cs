@@ -29,6 +29,11 @@ public class ArgParsed
     /// </summary>
     public string? Description { get; }
 
+    /// <summary>
+    /// Gets the usage example (e.g. "ipnetwork -s 24 10.0.0.0/8").
+    /// </summary>
+    public string? Example { get; }
+
     private event ArgParsedDelegate OnArgParsed;
 
     /// <summary>
@@ -67,12 +72,14 @@ public class ArgParsed
     /// <param name="description">The option description.</param>
     /// <param name="onArgParsed">The event on parse.</param>
     /// <param name="argName">The optional argument name (e.g. "cidr").</param>
-    public ArgParsed(int arg, string group, string description, ArgParsedDelegate onArgParsed, string? argName = null)
+    /// <param name="example">An optional usage example.</param>
+    public ArgParsed(int arg, string group, string description, ArgParsedDelegate onArgParsed, string? argName = null, string? example = null)
     {
         this.Arg = arg;
         this.Group = group;
         this.ArgName = argName;
         this.Description = description;
+        this.Example = example;
         this.OnArgParsed += onArgParsed;
     }
 }

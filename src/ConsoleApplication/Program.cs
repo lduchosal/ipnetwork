@@ -38,7 +38,7 @@ public static class Program
         {
             if (!IPNetwork2.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out byte? cidr))
             {
-                Console.WriteLine("Invalid cidr {0}", cidr);
+                ac.ParseErrors.Add(string.Format("Invalid cidr {0}", cidr));
                 ac.Action = Action.Usage;
                 return;
             }
@@ -48,61 +48,66 @@ public static class Program
         }, argName: "cidr"),
 
         // Actions
-        new ArgParsed('h', "Actions", "help message", (ac, _) => { ac.Action = Action.Usage; }),
+        new ArgParsed('h', "Actions", "help message",
+            (ac, _) => { ac.Action = Action.Usage; },
+            example: "ipnetwork -h"),
         new ArgParsed('s', "Actions", "split network into cidr subnets", (ac, arg) =>
         {
             if (!IPNetwork2.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out byte? cidr))
             {
-                Console.WriteLine("Invalid cidr {0}", cidr);
+                ac.ParseErrors.Add(string.Format("Invalid cidr {0}", cidr));
                 ac.Action = Action.Usage;
                 return;
             }
 
             ac.Action = Action.Subnet;
             ac.SubnetCidr = (byte)cidr;
-        }, argName: "cidr"),
+        }, argName: "cidr", example: "ipnetwork -s 24 10.0.0.0/8"),
         new ArgParsed('w', "Actions", "supernet networks into smallest possible subnets",
-            (ac, _) => { ac.Action = Action.Supernet; }),
+            (ac, _) => { ac.Action = Action.Supernet; },
+            example: "ipnetwork -w 10.0.0.0/24 10.0.1.0/24"),
         new ArgParsed('W', "Actions", "supernet networks into one single subnet",
-            (ac, _) => { ac.Action = Action.WideSupernet; }),
+            (ac, _) => { ac.Action = Action.WideSupernet; },
+            example: "ipnetwork -W 10.0.0.0/24 10.0.10.0/24"),
         new ArgParsed('x', "Actions", "list all ip addresses in networks",
-            (ac, _) => { ac.Action = Action.ListIPAddress; }),
+            (ac, _) => { ac.Action = Action.ListIPAddress; },
+            example: "ipnetwork -x 10.0.0.0/30"),
         new ArgParsed('C', "Actions", "network contain networks", (ac, arg) =>
         {
             if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
-                Console.WriteLine($"Unable to parse ipnetwork {arg}", arg);
+                ac.ParseErrors.Add($"Unable to parse ipnetwork {arg}");
                 ac.Action = Action.Usage;
                 return;
             }
 
             ac.Action = Action.ContainNetwork;
             ac.ContainNetwork = ipnetwork;
-        }, argName: "network"),
+        }, argName: "network", example: "ipnetwork -C 10.0.0.0/8 10.0.1.0/24"),
         new ArgParsed('o', "Actions", "network overlap networks", (ac, arg) =>
         {
             if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
-                Console.WriteLine("Unable to parse ipnetwork {0}", arg);
+                ac.ParseErrors.Add(string.Format("Unable to parse ipnetwork {0}", arg));
                 ac.Action = Action.Usage;
                 return;
             }
 
             ac.Action = Action.OverlapNetwork;
             ac.OverlapNetwork = ipnetwork;
-        }, argName: "network"),
+        }, argName: "network", example: "ipnetwork -o 10.0.0.0/8 192.168.0.0/16"),
         new ArgParsed('S', "Actions", "subtract network from networks", (ac, arg) =>
         {
             if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
-                Console.WriteLine("Unable to parse ipnetwork {0}", arg);
+                ac.ParseErrors.Add(string.Format("Unable to parse ipnetwork {0}", arg));
                 ac.Action = Action.Usage;
                 return;
             }
 
             ac.Action = Action.SubtractNetwork;
             ac.SubtractNetwork = ipnetwork;
-        }, argName: "network"),
+        }, argName: "network", example: "ipnetwork -S 10.0.1.0/24 10.0.0.0/23"),
 
         // Hidden
         new ArgParsed('?', (_, _) => { }),
@@ -154,21 +159,21 @@ public static class Program
 
         if (ac.Networks.Length == 0 && ac.Action != Action.Usage)
         {
-            Console.WriteLine("Provide at least one ipnetwork");
+            ac.ParseErrors.Add("Provide at least one ipnetwork");
             ac.Action = Action.Usage;
         }
 
         if (ac.Action == Action.Supernet
             && ipnetworks.Count < 2)
         {
-            Console.WriteLine("Supernet action required at least two ipnetworks");
+            ac.ParseErrors.Add("Supernet action required at least two ipnetworks");
             ac.Action = Action.Usage;
         }
 
         if (ac.Action == Action.WideSupernet
             && ipnetworks.Count < 2)
         {
-            Console.WriteLine("WideSupernet action required at least two ipnetworks");
+            ac.ParseErrors.Add("WideSupernet action required at least two ipnetworks");
             ac.Action = Action.Usage;
         }
 
@@ -192,7 +197,7 @@ public static class Program
         {
             if (!TryParseIPNetwork(ips, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
-                Console.WriteLine("Unable to parse ipnetwork {0}", ips);
+                ac.ParseErrors.Add(string.Format("Unable to parse ipnetwork {0}", ips));
                 continue;
             }
 

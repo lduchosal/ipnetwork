@@ -120,6 +120,18 @@ public class JsonFormatter : IFormatter
     /// <inheritdoc/>
     public void Write(ActionOutput.UsageInfo usage, ProgramContext ac)
     {
+        if (usage.Errors.Count > 0)
+        {
+            foreach (string error in usage.Errors)
+            {
+                _json.WriteStartObject();
+                _json.WriteString("error", error);
+                _json.WriteEndObject();
+            }
+
+            return;
+        }
+
         _json.WriteStartObject();
         _json.WriteString("version", usage.Version);
         _json.WriteString("synopsis", usage.Synopsis);
@@ -142,6 +154,11 @@ public class JsonFormatter : IFormatter
                 }
 
                 _json.WriteString("description", opt.Description);
+                if (opt.Example is not null)
+                {
+                    _json.WriteString("example", opt.Example);
+                }
+
                 _json.WriteEndObject();
             }
 
