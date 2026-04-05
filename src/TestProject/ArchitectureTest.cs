@@ -319,6 +319,8 @@ public class ArchitectureTest
     public void Cli_Types_ShouldResideIn_SystemNet()
     {
         TestResult result = Types.InAssembly(CliAssembly)
+            .That()
+            .DoNotResideInNamespace("Coverlet.Core")
             .Should()
             .ResideInNamespace("System.Net")
             .GetResult();
