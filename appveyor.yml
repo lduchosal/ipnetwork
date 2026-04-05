@@ -39,7 +39,6 @@ before_build:
   - cmd: dotnet tool install --global coverlet.console
   - cmd: dotnet clean ./src
   - cmd: dotnet restore ./src --verbosity m
-  - cmd: nuget restore ./src
 
 build_script:
   - cmd: dotnet pack -c release ./src/System.Net.IPNetwork
