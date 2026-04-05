@@ -289,7 +289,7 @@ public class ConsoleJsonOutputTest
         Assert.IsTrue(usage.TryGetProperty("version", out _));
         Assert.IsTrue(usage.TryGetProperty("synopsis", out _));
         Assert.IsTrue(usage.TryGetProperty("optionGroups", out var groups));
-        Assert.IsTrue(groups.GetArrayLength() > 0);
+        Assert.IsGreaterThan(0, groups.GetArrayLength());
         Assert.IsTrue(usage.TryGetProperty("positionalArgs", out _));
     }
 
@@ -342,10 +342,10 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputHelp()
     {
         string output = CaptureOutput(["-h"]);
-        Assert.IsTrue(output.Contains("Usage: ipnetwork"));
-        Assert.IsTrue(output.Contains("Print options"));
-        Assert.IsTrue(output.Contains("Actions"));
-        Assert.IsTrue(output.Contains("networks"));
+        Assert.Contains("Usage: ipnetwork", output);
+        Assert.Contains("Print options", output);
+        Assert.Contains("Actions", output);
+        Assert.Contains("networks", output);
     }
 
     /// <summary>
@@ -355,8 +355,8 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputHelpContainsExamples()
     {
         string output = CaptureOutput(["-h"]);
-        Assert.IsTrue(output.Contains("ipnetwork -s 24 10.0.0.0/8"));
-        Assert.IsTrue(output.Contains("ipnetwork -C 10.0.0.0/8 10.0.1.0/24"));
+        Assert.Contains("ipnetwork -s 24 10.0.0.0/8", output);
+        Assert.Contains("ipnetwork -C 10.0.0.0/8 10.0.1.0/24", output);
     }
 
     /// <summary>
@@ -366,8 +366,8 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputParseError()
     {
         string output = CaptureOutput(["-w", "10.0.0.0/8"]);
-        Assert.IsTrue(output.Contains("Supernet action required"));
-        Assert.IsFalse(output.Contains("Usage:"));
+        Assert.Contains("Supernet action required", output);
+        Assert.DoesNotContain("Usage:", output);
     }
 
     /// <summary>
@@ -377,7 +377,7 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputWideSupernetSuccess()
     {
         string output = CaptureOutput(["-W", "10.0.0.0/24", "10.0.1.0/24"]);
-        Assert.IsTrue(output.Contains("10.0.0.0/23"));
+        Assert.Contains("10.0.0.0/23", output);
     }
 
     /// <summary>
@@ -387,7 +387,7 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputWideSupernetError()
     {
         string output = CaptureOutput(["-W", "10.0.0.0/8"]);
-        Assert.IsTrue(output.Contains("WideSupernet action required"));
+        Assert.Contains("WideSupernet action required", output);
     }
 
     /// <summary>
@@ -419,8 +419,8 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputListIpAddress()
     {
         string output = CaptureOutput(["-x", "10.0.0.0/30"]);
-        Assert.IsTrue(output.Contains("10.0.0.0"));
-        Assert.IsTrue(output.Contains("10.0.0.3"));
+        Assert.Contains("10.0.0.0", output);
+        Assert.Contains("10.0.0.3", output);
     }
 
     /// <summary>
@@ -430,7 +430,7 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputContain()
     {
         string output = CaptureOutput(["-C", "10.0.0.0/8", "10.0.1.0/24"]);
-        Assert.IsTrue(output.Contains("10.0.0.0/8 contains 10.0.1.0/24 : True"));
+        Assert.Contains("10.0.0.0/8 contains 10.0.1.0/24 : True", output);
     }
 
     /// <summary>
@@ -440,7 +440,7 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputOverlap()
     {
         string output = CaptureOutput(["-o", "10.0.0.0/8", "10.0.1.0/24"]);
-        Assert.IsTrue(output.Contains("10.0.0.0/8 overlaps 10.0.1.0/24 : True"));
+        Assert.Contains("10.0.0.0/8 overlaps 10.0.1.0/24 : True", output);
     }
 
     /// <summary>
@@ -450,7 +450,7 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputSubtract()
     {
         string output = CaptureOutput(["-S", "10.0.1.0/24", "10.0.0.0/23"]);
-        Assert.IsTrue(output.Contains("10.0.0.0/24"));
+        Assert.Contains("10.0.0.0/24", output);
     }
 
     /// <summary>
@@ -460,8 +460,8 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputSubnet()
     {
         string output = CaptureOutput(["-s", "9", "10.0.0.0/8"]);
-        Assert.IsTrue(output.Contains("10.0.0.0/9"));
-        Assert.IsTrue(output.Contains("10.128.0.0/9"));
+        Assert.Contains("10.0.0.0/9", output);
+        Assert.Contains("10.128.0.0/9", output);
     }
 
     /// <summary>
@@ -471,7 +471,7 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputSupernet()
     {
         string output = CaptureOutput(["-w", "10.0.0.0/24", "10.0.1.0/24"]);
-        Assert.IsTrue(output.Contains("10.0.0.0/23"));
+        Assert.Contains("10.0.0.0/23", output);
     }
 
     /// <summary>
@@ -481,7 +481,7 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputDefaultCidr()
     {
         string output = CaptureOutput(["-D", "-c", "10.0.0.0"]);
-        Assert.IsTrue(output.Contains("8"));
+        Assert.Contains("8", output);
     }
 
     /// <summary>
@@ -491,8 +491,8 @@ public class ConsoleJsonOutputTest
     public void TestTextOutputMultipleNetworks()
     {
         string output = CaptureOutput(["-i", "10.0.0.0/8", "192.168.0.0/16"]);
-        Assert.IsTrue(output.Contains("10.0.0.0/8"));
-        Assert.IsTrue(output.Contains("192.168.0.0/16"));
-        Assert.IsTrue(output.Contains("--"));
+        Assert.Contains("10.0.0.0/8", output);
+        Assert.Contains("192.168.0.0/16", output);
+        Assert.Contains("--", output);
     }
 }
