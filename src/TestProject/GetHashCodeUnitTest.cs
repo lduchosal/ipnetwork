@@ -58,9 +58,10 @@ public class GetHashCodeUnitTest
     {
         var ipnetwork = IPNetwork2.Parse("1.0.0.0/1");
         var ipnetwork2 = IPNetwork2.Parse("1.0.0.0/1");
-        var dic = new Dictionary<IPNetwork2, int>();
-
-        dic.Add(ipnetwork, 0);
+        var dic = new Dictionary<IPNetwork2, int>
+        {
+            { ipnetwork, 0 },
+        };
         bool contains3 = dic.ContainsKey(ipnetwork);
         bool contains4 = dic.ContainsKey(ipnetwork2);
 

@@ -13,28 +13,34 @@ using System.Diagnostics.CodeAnalysis;
 /// </summary>
 public static class Program
 {
-    private static readonly Dictionary<int, ArgParsed> Args = new ();
+    private const string GroupPrint = "Print options";
+    private const string GroupOutput = "Output options";
+    private const string GroupParse = "Parse options";
+    private const string GroupActions = "Actions";
+    private const string ArgNameNetwork = "network";
+
+    private static readonly Dictionary<int, ArgParsed> Args = [];
 
     private static readonly ArgParsed[] ArgsList =
     [
         // Print options
-        new ArgParsed('i', "Print options", "network", (ac, _) => { ac.IPNetwork = true; }),
-        new ArgParsed('n', "Print options", "network address", (ac, _) => { ac.Network = true; }),
-        new ArgParsed('m', "Print options", "netmask", (ac, _) => { ac.Netmask = true; }),
-        new ArgParsed('c', "Print options", "cidr", (ac, _) => { ac.Cidr = true; }),
-        new ArgParsed('b', "Print options", "broadcast", (ac, _) => { ac.Broadcast = true; }),
-        new ArgParsed('f', "Print options", "first usable ip address", (ac, _) => { ac.FirstUsable = true; }),
-        new ArgParsed('l', "Print options", "last usable ip address", (ac, _) => { ac.LastUsable = true; }),
-        new ArgParsed('u', "Print options", "number of usable ip addresses", (ac, _) => { ac.Usable = true; }),
-        new ArgParsed('t', "Print options", "total number of ip addresses", (ac, _) => { ac.Total = true; }),
+        new ArgParsed('i', GroupPrint, ArgNameNetwork, (ac, _) => { ac.IPNetwork = true; }),
+        new ArgParsed('n', GroupPrint, "network address", (ac, _) => { ac.Network = true; }),
+        new ArgParsed('m', GroupPrint, "netmask", (ac, _) => { ac.Netmask = true; }),
+        new ArgParsed('c', GroupPrint, "cidr", (ac, _) => { ac.Cidr = true; }),
+        new ArgParsed('b', GroupPrint, "broadcast", (ac, _) => { ac.Broadcast = true; }),
+        new ArgParsed('f', GroupPrint, "first usable ip address", (ac, _) => { ac.FirstUsable = true; }),
+        new ArgParsed('l', GroupPrint, "last usable ip address", (ac, _) => { ac.LastUsable = true; }),
+        new ArgParsed('u', GroupPrint, "number of usable ip addresses", (ac, _) => { ac.Usable = true; }),
+        new ArgParsed('t', GroupPrint, "total number of ip addresses", (ac, _) => { ac.Total = true; }),
 
         // Output options
-        new ArgParsed('j', "Output options", "JSON output", (ac, _) => { ac.Json = true; }),
+        new ArgParsed('j', GroupOutput, "JSON output", (ac, _) => { ac.Json = true; }),
 
         // Parse options
-        new ArgParsed('D', "Parse options", "IPv4 only - use default cidr (ClassA/8, ClassB/16, ClassC/24)",
+        new ArgParsed('D', GroupParse, "IPv4 only - use default cidr (ClassA/8, ClassB/16, ClassC/24)",
             (ac, _) => { ac.CidrParse = CidrParse.Default; }),
-        new ArgParsed('d', "Parse options", "use cidr if not provided (default /32)", (ac, arg) =>
+        new ArgParsed('d', GroupParse, "use cidr if not provided (default /32)", (ac, arg) =>
         {
             if (!IPNetwork2.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out byte? cidr))
             {
@@ -48,10 +54,10 @@ public static class Program
         }, argName: "cidr"),
 
         // Actions
-        new ArgParsed('h', "Actions", "help message",
+        new ArgParsed('h', GroupActions, "help message",
             (ac, _) => { ac.Action = Action.Usage; },
             example: "ipnetwork -h"),
-        new ArgParsed('s', "Actions", "split network into cidr subnets", (ac, arg) =>
+        new ArgParsed('s', GroupActions, "split network into cidr subnets", (ac, arg) =>
         {
             if (!IPNetwork2.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out byte? cidr))
             {
@@ -63,16 +69,16 @@ public static class Program
             ac.Action = Action.Subnet;
             ac.SubnetCidr = (byte)cidr;
         }, argName: "cidr", example: "ipnetwork -s 24 10.0.0.0/8"),
-        new ArgParsed('w', "Actions", "supernet networks into smallest possible subnets",
+        new ArgParsed('w', GroupActions, "supernet networks into smallest possible subnets",
             (ac, _) => { ac.Action = Action.Supernet; },
             example: "ipnetwork -w 10.0.0.0/24 10.0.1.0/24"),
-        new ArgParsed('W', "Actions", "supernet networks into one single subnet",
+        new ArgParsed('W', GroupActions, "supernet networks into one single subnet",
             (ac, _) => { ac.Action = Action.WideSupernet; },
             example: "ipnetwork -W 10.0.0.0/24 10.0.10.0/24"),
-        new ArgParsed('x', "Actions", "list all ip addresses in networks",
+        new ArgParsed('x', GroupActions, "list all ip addresses in networks",
             (ac, _) => { ac.Action = Action.ListIPAddress; },
             example: "ipnetwork -x 10.0.0.0/30"),
-        new ArgParsed('C', "Actions", "network contain networks", (ac, arg) =>
+        new ArgParsed('C', GroupActions, "network contain networks", (ac, arg) =>
         {
             if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
@@ -83,8 +89,8 @@ public static class Program
 
             ac.Action = Action.ContainNetwork;
             ac.ContainNetwork = ipnetwork;
-        }, argName: "network", example: "ipnetwork -C 10.0.0.0/8 10.0.1.0/24"),
-        new ArgParsed('o', "Actions", "network overlap networks", (ac, arg) =>
+        }, argName: ArgNameNetwork, example: "ipnetwork -C 10.0.0.0/8 10.0.1.0/24"),
+        new ArgParsed('o', GroupActions, "network overlap networks", (ac, arg) =>
         {
             if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
@@ -95,8 +101,8 @@ public static class Program
 
             ac.Action = Action.OverlapNetwork;
             ac.OverlapNetwork = ipnetwork;
-        }, argName: "network", example: "ipnetwork -o 10.0.0.0/8 192.168.0.0/16"),
-        new ArgParsed('S', "Actions", "subtract network from networks", (ac, arg) =>
+        }, argName: ArgNameNetwork, example: "ipnetwork -o 10.0.0.0/8 192.168.0.0/16"),
+        new ArgParsed('S', GroupActions, "subtract network from networks", (ac, arg) =>
         {
             if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
@@ -107,7 +113,7 @@ public static class Program
 
             ac.Action = Action.SubtractNetwork;
             ac.SubtractNetwork = ipnetwork;
-        }, argName: "network", example: "ipnetwork -S 10.0.1.0/24 10.0.0.0/23"),
+        }, argName: ArgNameNetwork, example: "ipnetwork -S 10.0.1.0/24 10.0.0.0/23"),
 
         // Hidden
         new ArgParsed('?', (_, _) => { }),

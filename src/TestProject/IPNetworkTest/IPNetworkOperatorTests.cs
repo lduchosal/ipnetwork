@@ -369,7 +369,7 @@ public class IPNetworkOperatorTests
     [TestMethod]
     [DataRow("0.0.0.0/0", 1, "0.0.0.0/32")]
     [DataRow("255.255.255.255/32", 1, "10.0.0.0/31")]
-    public void TestOperatorAddOverflow(string left, int right, string expected)
+    public void TestOperatorAddOverflow(string left, int right, string _)
     {
         var ipn1 = IPNetwork2.Parse(left);
         Assert.ThrowsExactly<OverflowException>(() => ipn1 + right);

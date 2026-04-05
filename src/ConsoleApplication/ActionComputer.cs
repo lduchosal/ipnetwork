@@ -42,7 +42,7 @@ public static class ActionComputer
         };
     }
 
-    private static ActionOutput ComputeSubnet(ProgramContext ac)
+    private static ActionOutput.NetworkGroups ComputeSubnet(ProgramContext ac)
     {
         var groups = new List<List<IPNetwork2>>();
         foreach (var ipnetwork in ac.Networks)
@@ -87,7 +87,7 @@ public static class ActionComputer
         return new ActionOutput.Networks { Items = [result] };
     }
 
-    private static ActionOutput ComputeContain(ProgramContext ac)
+    private static ActionOutput.ContainResults ComputeContain(ProgramContext ac)
     {
         if (ac.ContainNetwork is null)
         {
@@ -108,7 +108,7 @@ public static class ActionComputer
         return new ActionOutput.ContainResults { Items = results };
     }
 
-    private static ActionOutput ComputeOverlap(ProgramContext ac)
+    private static ActionOutput.OverlapResults ComputeOverlap(ProgramContext ac)
     {
         if (ac.OverlapNetwork is null)
         {
@@ -129,7 +129,7 @@ public static class ActionComputer
         return new ActionOutput.OverlapResults { Items = results };
     }
 
-    private static ActionOutput ComputeSubtract(ProgramContext ac)
+    private static ActionOutput.SubtractResults ComputeSubtract(ProgramContext ac)
     {
         if (ac.SubtractNetwork is null)
         {
@@ -159,7 +159,7 @@ public static class ActionComputer
         }
     }
 
-    private static ActionOutput BuildUsageInfo(ProgramContext ac, ArgParsed[] argsList)
+    private static ActionOutput.UsageInfo BuildUsageInfo(ProgramContext ac, ArgParsed[] argsList)
     {
         var groupOrder = new List<string>();
         var groups = new Dictionary<string, List<UsageOption>>();

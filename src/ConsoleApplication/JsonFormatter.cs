@@ -41,22 +41,22 @@ public class JsonFormatter : IFormatter
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.Networks n, ProgramContext ac)
+    public void Write(ActionOutput.Networks output, ProgramContext ac)
     {
-        WriteNetworks(n.Items, ac);
+        WriteNetworks(output.Items, ac);
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.NetworkGroups g, ProgramContext ac)
+    public void Write(ActionOutput.NetworkGroups output, ProgramContext ac)
     {
-        for (int i = 0; i < g.Groups.Count; i++)
+        for (int i = 0; i < output.Groups.Count; i++)
         {
-            var group = g.Groups[i];
+            var group = output.Groups[i];
             if (group.Count == 0)
             {
                 _json.WriteStartObject();
                 _json.WriteString("error",
-                    $"Unable to subnet ipnetwork {g.InputNetworks[i]} into cidr {g.SubnetCidr}");
+                    $"Unable to subnet ipnetwork {output.InputNetworks[i]} into cidr {output.SubnetCidr}");
                 _json.WriteEndObject();
             }
             else
@@ -69,15 +69,15 @@ public class JsonFormatter : IFormatter
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.SubtractResults sub, ProgramContext ac)
+    public void Write(ActionOutput.SubtractResults output, ProgramContext ac)
     {
-        WriteNetworks(sub.Items, ac);
+        WriteNetworks(output.Items, ac);
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.ContainResults c, ProgramContext ac)
+    public void Write(ActionOutput.ContainResults output, ProgramContext ac)
     {
-        foreach (var r in c.Items)
+        foreach (var r in output.Items)
         {
             _json.WriteStartObject();
             _json.WriteString("network", r.Network);
@@ -88,9 +88,9 @@ public class JsonFormatter : IFormatter
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.OverlapResults o, ProgramContext ac)
+    public void Write(ActionOutput.OverlapResults output, ProgramContext ac)
     {
-        foreach (var r in o.Items)
+        foreach (var r in output.Items)
         {
             _json.WriteStartObject();
             _json.WriteString("network", r.Network);
@@ -101,28 +101,28 @@ public class JsonFormatter : IFormatter
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.IpAddresses ip, ProgramContext ac)
+    public void Write(ActionOutput.IpAddresses output, ProgramContext ac)
     {
-        foreach (string addr in ip.Items)
+        foreach (string addr in output.Items)
         {
             _json.WriteStringValue(addr);
         }
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.Error e, ProgramContext ac)
+    public void Write(ActionOutput.Error output, ProgramContext ac)
     {
         _json.WriteStartObject();
-        _json.WriteString("error", e.Message);
+        _json.WriteString("error", output.Message);
         _json.WriteEndObject();
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.UsageInfo usage, ProgramContext ac)
+    public void Write(ActionOutput.UsageInfo output, ProgramContext ac)
     {
-        if (usage.Errors.Count > 0)
+        if (output.Errors.Count > 0)
         {
-            foreach (string error in usage.Errors)
+            foreach (string error in output.Errors)
             {
                 _json.WriteStartObject();
                 _json.WriteString("error", error);
@@ -133,12 +133,12 @@ public class JsonFormatter : IFormatter
         }
 
         _json.WriteStartObject();
-        _json.WriteString("version", usage.Version);
-        _json.WriteString("synopsis", usage.Synopsis);
+        _json.WriteString("version", output.Version);
+        _json.WriteString("synopsis", output.Synopsis);
 
         _json.WritePropertyName("optionGroups");
         _json.WriteStartArray();
-        foreach (var group in usage.OptionGroups)
+        foreach (var group in output.OptionGroups)
         {
             _json.WriteStartObject();
             _json.WriteString("name", group.Name);
@@ -171,10 +171,10 @@ public class JsonFormatter : IFormatter
         _json.WritePropertyName("positionalArgs");
         _json.WriteStartObject();
         _json.WriteString("name", "networks");
-        _json.WriteString("description", usage.NetworksDescription);
+        _json.WriteString("description", output.NetworksDescription);
         _json.WritePropertyName("examples");
         _json.WriteStartArray();
-        foreach (string example in usage.NetworksExamples)
+        foreach (string example in output.NetworksExamples)
         {
             _json.WriteStringValue(example);
         }

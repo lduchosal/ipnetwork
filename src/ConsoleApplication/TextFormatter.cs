@@ -30,61 +30,61 @@ public class TextFormatter : IFormatter
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.Networks n, ProgramContext ac)
+    public void Write(ActionOutput.Networks output, ProgramContext ac)
     {
-        WriteNetworkList(n.Items, ac);
+        WriteNetworkList(output.Items, ac);
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.NetworkGroups g, ProgramContext ac)
+    public void Write(ActionOutput.NetworkGroups output, ProgramContext ac)
     {
-        for (int i = 0; i < g.Groups.Count; i++)
+        for (int i = 0; i < output.Groups.Count; i++)
         {
-            var group = g.Groups[i];
+            var group = output.Groups[i];
             if (group.Count == 0)
             {
-                _writer.WriteLine("Unable to subnet ipnetwork {0} into cidr {1}", g.InputNetworks[i], g.SubnetCidr);
+                _writer.WriteLine("Unable to subnet ipnetwork {0} into cidr {1}", output.InputNetworks[i], output.SubnetCidr);
             }
             else
             {
                 WriteNetworkList(group, ac);
             }
 
-            WriteSeparator(g.Groups.Count, i + 1);
+            WriteSeparator(output.Groups.Count, i + 1);
         }
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.SubtractResults sub, ProgramContext ac)
+    public void Write(ActionOutput.SubtractResults output, ProgramContext ac)
     {
-        foreach (var ipn in sub.Items)
+        foreach (var ipn in output.Items)
         {
             _writer.WriteLine("{0}", ipn);
         }
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.ContainResults c, ProgramContext ac)
+    public void Write(ActionOutput.ContainResults output, ProgramContext ac)
     {
-        foreach (var r in c.Items)
+        foreach (var r in output.Items)
         {
             _writer.WriteLine("{0} contains {1} : {2}", r.Network, r.Test, r.Contains);
         }
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.OverlapResults o, ProgramContext ac)
+    public void Write(ActionOutput.OverlapResults output, ProgramContext ac)
     {
-        foreach (var r in o.Items)
+        foreach (var r in output.Items)
         {
             _writer.WriteLine("{0} overlaps {1} : {2}", r.Network, r.Test, r.Overlaps);
         }
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.IpAddresses ip, ProgramContext ac)
+    public void Write(ActionOutput.IpAddresses output, ProgramContext ac)
     {
-        foreach (var ipnetwork in ip.InputNetworks)
+        foreach (var ipnetwork in output.InputNetworks)
         {
             if (ipnetwork.Cidr < 16)
             {
@@ -95,24 +95,24 @@ public class TextFormatter : IFormatter
             }
         }
 
-        foreach (string addr in ip.Items)
+        foreach (string addr in output.Items)
         {
             _writer.WriteLine("{0}", addr);
         }
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.Error e, ProgramContext ac)
+    public void Write(ActionOutput.Error output, ProgramContext ac)
     {
-        _writer.WriteLine(e.Message);
+        _writer.WriteLine(output.Message);
     }
 
     /// <inheritdoc/>
-    public void Write(ActionOutput.UsageInfo usage, ProgramContext ac)
+    public void Write(ActionOutput.UsageInfo output, ProgramContext ac)
     {
-        if (usage.Errors.Count > 0)
+        if (output.Errors.Count > 0)
         {
-            foreach (string error in usage.Errors)
+            foreach (string error in output.Errors)
             {
                 _writer.WriteLine(error);
             }
@@ -120,28 +120,20 @@ public class TextFormatter : IFormatter
             return;
         }
 
-        _writer.WriteLine("Usage: {0}", usage.Synopsis);
-        _writer.WriteLine("Version: {0}", usage.Version);
+        WriteUsageHelp(output);
+    }
 
-        foreach (var group in usage.OptionGroups)
+    private void WriteUsageHelp(ActionOutput.UsageInfo output)
+    {
+        _writer.WriteLine("Usage: {0}", output.Synopsis);
+        _writer.WriteLine("Version: {0}", output.Version);
+
+        foreach (var group in output.OptionGroups)
         {
             _writer.WriteLine();
             _writer.WriteLine(group.Name);
 
-            int maxWidth = 0;
-            foreach (var opt in group.Options)
-            {
-                int width = 1 + opt.Flag.Length;
-                if (opt.ArgName is not null)
-                {
-                    width += 1 + opt.ArgName.Length;
-                }
-
-                if (width > maxWidth)
-                {
-                    maxWidth = width;
-                }
-            }
+            int maxWidth = ComputeMaxFlagWidth(group.Options);
 
             foreach (var opt in group.Options)
             {
@@ -157,8 +149,28 @@ public class TextFormatter : IFormatter
         }
 
         _writer.WriteLine();
-        _writer.WriteLine("networks  : {0} ", usage.NetworksDescription);
-        _writer.WriteLine("            ({0} )", string.Join(" ", usage.NetworksExamples));
+        _writer.WriteLine("networks  : {0} ", output.NetworksDescription);
+        _writer.WriteLine("            ({0} )", string.Join(" ", output.NetworksExamples));
+    }
+
+    private static int ComputeMaxFlagWidth(List<UsageOption> options)
+    {
+        int maxWidth = 0;
+        foreach (var opt in options)
+        {
+            int width = 1 + opt.Flag.Length;
+            if (opt.ArgName is not null)
+            {
+                width += 1 + opt.ArgName.Length;
+            }
+
+            if (width > maxWidth)
+            {
+                maxWidth = width;
+            }
+        }
+
+        return maxWidth;
     }
 
     private void WriteNetworkList(List<IPNetwork2> networks, ProgramContext ac)

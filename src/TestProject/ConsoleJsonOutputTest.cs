@@ -163,7 +163,7 @@ public class ConsoleJsonOutputTest
         Assert.AreEqual(1, root.GetArrayLength());
         Assert.AreEqual("10.0.0.0/8", root[0].GetProperty("network").GetString());
         Assert.AreEqual("10.0.1.0/24", root[0].GetProperty("test").GetString());
-        Assert.AreEqual(true, root[0].GetProperty("contains").GetBoolean());
+        Assert.IsTrue(root[0].GetProperty("contains").GetBoolean());
     }
 
     /// <summary>
@@ -178,8 +178,8 @@ public class ConsoleJsonOutputTest
 
         Assert.AreEqual(JsonValueKind.Array, root.ValueKind);
         Assert.AreEqual(2, root.GetArrayLength());
-        Assert.AreEqual(true, root[0].GetProperty("contains").GetBoolean());
-        Assert.AreEqual(false, root[1].GetProperty("contains").GetBoolean());
+        Assert.IsTrue(root[0].GetProperty("contains").GetBoolean());
+        Assert.IsFalse(root[1].GetProperty("contains").GetBoolean());
     }
 
     /// <summary>
@@ -196,7 +196,7 @@ public class ConsoleJsonOutputTest
         Assert.AreEqual(1, root.GetArrayLength());
         Assert.AreEqual("10.0.0.0/8", root[0].GetProperty("network").GetString());
         Assert.AreEqual("10.0.1.0/24", root[0].GetProperty("test").GetString());
-        Assert.AreEqual(true, root[0].GetProperty("overlaps").GetBoolean());
+        Assert.IsTrue(root[0].GetProperty("overlaps").GetBoolean());
     }
 
     /// <summary>
@@ -211,8 +211,8 @@ public class ConsoleJsonOutputTest
 
         Assert.AreEqual(JsonValueKind.Array, root.ValueKind);
         Assert.AreEqual(2, root.GetArrayLength());
-        Assert.AreEqual(true, root[0].GetProperty("overlaps").GetBoolean());
-        Assert.AreEqual(false, root[1].GetProperty("overlaps").GetBoolean());
+        Assert.IsTrue(root[0].GetProperty("overlaps").GetBoolean());
+        Assert.IsFalse(root[1].GetProperty("overlaps").GetBoolean());
     }
 
     /// <summary>
