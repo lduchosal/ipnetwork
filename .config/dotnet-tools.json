@@ -6,13 +6,29 @@
       "version": "4.0.1",
       "commands": [
         "csmacnz.Coveralls"
-      ]
+      ],
+      "rollForward": false
     },
     "versionize": {
       "version": "2.5.0",
       "commands": [
         "versionize"
-      ]
+      ],
+      "rollForward": false
+    },
+    "coverlet.console": {
+      "version": "8.0.1",
+      "commands": [
+        "coverlet"
+      ],
+      "rollForward": false
+    },
+    "dotnet-coverage": {
+      "version": "18.5.2",
+      "commands": [
+        "dotnet-coverage"
+      ],
+      "rollForward": false
     }
   }
 }
