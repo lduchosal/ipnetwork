@@ -91,6 +91,79 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+  homebrew:
+    needs: native-binaries
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Download release tarballs
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        VERSION="${{ github.event.release.tag_name }}"
+        for arch in osx-arm64 osx-x64 linux-arm64 linux-x64; do
+          gh release download "$VERSION" --repo "${{ github.repository }}" --pattern "ipnetwork-${arch}.tar.gz"
+        done
+
+    - name: Compute checksums and update formula
+      env:
+        GH_TOKEN: ${{ secrets.HOMEBREW_TAP_TOKEN }}
+      run: |
+        VERSION="${{ github.event.release.tag_name }}"
+        SHA_OSX_ARM64=$(sha256sum ipnetwork-osx-arm64.tar.gz | cut -d' ' -f1)
+        SHA_OSX_X64=$(sha256sum ipnetwork-osx-x64.tar.gz | cut -d' ' -f1)
+        SHA_LINUX_ARM64=$(sha256sum ipnetwork-linux-arm64.tar.gz | cut -d' ' -f1)
+        SHA_LINUX_X64=$(sha256sum ipnetwork-linux-x64.tar.gz | cut -d' ' -f1)
+
+        cat > ipnetwork.rb <<EOF
+        class Ipnetwork < Formula
+          desc "Command-line utility for complex IPv4 and IPv6 network calculations"
+          homepage "https://github.com/lduchosal/ipnetwork"
+          license "BSD-2-Clause"
+          version "${VERSION}"
+
+          on_macos do
+            if Hardware::CPU.arm?
+              url "https://github.com/lduchosal/ipnetwork/releases/download/${VERSION}/ipnetwork-osx-arm64.tar.gz"
+              sha256 "${SHA_OSX_ARM64}"
+            else
+              url "https://github.com/lduchosal/ipnetwork/releases/download/${VERSION}/ipnetwork-osx-x64.tar.gz"
+              sha256 "${SHA_OSX_X64}"
+            end
+          end
+
+          on_linux do
+            if Hardware::CPU.arm?
+              url "https://github.com/lduchosal/ipnetwork/releases/download/${VERSION}/ipnetwork-linux-arm64.tar.gz"
+              sha256 "${SHA_LINUX_ARM64}"
+            else
+              url "https://github.com/lduchosal/ipnetwork/releases/download/${VERSION}/ipnetwork-linux-x64.tar.gz"
+              sha256 "${SHA_LINUX_X64}"
+            end
+          end
+
+          def install
+            bin.install "ipnetwork"
+          end
+
+          test do
+            output = shell_output("#{bin}/ipnetwork 10.0.0.0/8")
+            assert_match "IPNetwork   : 10.0.0.0/8", output
+          end
+        end
+        EOF
+
+        # Remove leading whitespace from heredoc
+        sed -i 's/^        //' ipnetwork.rb
+
+        # Push to homebrew tap repo
+        CONTENT=$(base64 -w0 ipnetwork.rb)
+        SHA=$(gh api repos/lduchosal/homebrew-ipnetwork/contents/Formula/ipnetwork.rb --jq '.sha')
+        gh api --method PUT repos/lduchosal/homebrew-ipnetwork/contents/Formula/ipnetwork.rb \
+          -f message="chore: bump ipnetwork formula to ${VERSION}" \
+          -f content="$CONTENT" \
+          -f sha="$SHA"
+
   chocolatey:
     runs-on: windows-latest
 
