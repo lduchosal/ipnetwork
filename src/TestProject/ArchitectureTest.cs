@@ -60,7 +60,7 @@ public class ArchitectureTest
     {
         TestResult result = Types.InAssembly(CliAssembly)
             .That()
-            .ImplementInterface(typeof(IFormatter))
+            .ImplementInterface<IFormatter>()
             .Should()
             .ResideInNamespace("System.Net")
             .GetResult();
@@ -75,7 +75,7 @@ public class ArchitectureTest
     public void Formatters_ShouldImplement_IFormatter()
     {
         Type[] formatters = GetImplementations<IFormatter>(CliAssembly);
-        Assert.IsTrue(formatters.Length > 0, "No IFormatter implementations found");
+        Assert.IsNotEmpty(formatters, "No IFormatter implementations found");
     }
 
     /// <summary>
@@ -85,7 +85,7 @@ public class ArchitectureTest
     public void Formatters_ShouldHave_AtLeastTwoImplementations()
     {
         Type[] formatters = GetImplementations<IFormatter>(CliAssembly);
-        Assert.IsTrue(formatters.Length >= 2,
+        Assert.IsGreaterThanOrEqualTo(2, formatters.Length,
             $"Expected at least 2 IFormatter implementations, found {formatters.Length}");
     }
 
@@ -110,7 +110,7 @@ public class ArchitectureTest
     {
         Type[] nestedTypes = typeof(ActionOutput).GetNestedTypes();
 
-        Assert.IsTrue(nestedTypes.Length > 0, "ActionOutput has no nested types");
+        Assert.IsNotEmpty(nestedTypes, "ActionOutput has no nested types");
 
         foreach (Type type in nestedTypes)
         {
@@ -148,7 +148,7 @@ public class ArchitectureTest
                 [typeof(IFormatter), typeof(ProgramContext)]);
             Assert.IsNotNull(method,
                 $"ActionOutput.{type.Name} must override WriteTo(IFormatter, ProgramContext)");
-            Assert.IsTrue(method.DeclaringType == type,
+            Assert.AreEqual(type, method.DeclaringType,
                 $"ActionOutput.{type.Name} must override WriteTo, not inherit it");
         }
     }
@@ -162,7 +162,7 @@ public class ArchitectureTest
         System.Reflection.ConstructorInfo[] constructors = typeof(ActionOutput)
             .GetConstructors(System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance);
 
-        Assert.AreEqual(0, constructors.Length,
+        Assert.IsEmpty(constructors,
             "ActionOutput must not have public constructors (closed hierarchy)");
     }
 
@@ -173,7 +173,7 @@ public class ArchitectureTest
     public void ActionOutput_ShouldHave_AtLeast8Subtypes()
     {
         Type[] nestedTypes = typeof(ActionOutput).GetNestedTypes();
-        Assert.IsTrue(nestedTypes.Length >= 8,
+        Assert.IsGreaterThanOrEqualTo(8, nestedTypes.Length,
             $"Expected at least 8 ActionOutput subtypes, found {nestedTypes.Length}");
     }
 
@@ -213,7 +213,7 @@ public class ArchitectureTest
     {
         TestResult result = Types.InAssembly(LibraryAssembly)
             .That()
-            .ImplementInterface(typeof(ICidrGuess))
+            .ImplementInterface<ICidrGuess>()
             .Should()
             .BeSealed()
             .GetResult();
@@ -228,7 +228,7 @@ public class ArchitectureTest
     public void CidrGuess_ShouldHave_AtLeast3Implementations()
     {
         Type[] implementations = GetImplementations<ICidrGuess>(LibraryAssembly);
-        Assert.IsTrue(implementations.Length >= 3,
+        Assert.IsGreaterThanOrEqualTo(3, implementations.Length,
             $"Expected at least 3 ICidrGuess implementations, found {implementations.Length}");
     }
 
