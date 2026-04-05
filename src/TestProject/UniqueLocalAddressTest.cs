@@ -27,7 +27,7 @@ public class UniqueLocalAddressTest
         Assert.IsTrue(UniqueLocalAddress.IsLocallyAssignedUla(ula));
     }
 
-    
+
     /// <summary>
     /// Test
     /// </summary>
@@ -123,7 +123,7 @@ public class UniqueLocalAddressTest
     [TestMethod]
     public void TestGenerateUlaPrefix_WithNullMac_ThrowsException()
     {
-        Assert.ThrowsExactly<ArgumentNullException>(() => UniqueLocalAddress.GenerateUlaPrefix((byte[])null));
+        Assert.ThrowsExactly<ArgumentNullException>(() => UniqueLocalAddress.GenerateUlaPrefix((byte[])null!));
     }
 
 
@@ -167,7 +167,7 @@ public class UniqueLocalAddressTest
         Assert.IsTrue(UniqueLocalAddress.IsUlaPrefix(subnet));
         Assert.IsTrue(ulaPrefix.Contains(subnet.Network));
     }
-    
+
     /// <summary>
     /// Test
     /// </summary>

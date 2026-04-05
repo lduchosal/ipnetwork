@@ -17,11 +17,11 @@ public class IPNetworkV6OverlapTests
     public void TestOverlap2()
     {
         var network1 = IPNetwork2.Parse("2001:0db8::/0");
-        IPNetwork2 network2 = null;
+        IPNetwork2? network2 = null;
 
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            network1.Overlap(network2);
+            network1.Overlap(network2!);
         });
     }
 

@@ -23,7 +23,7 @@ public class CidrNetworkAwareUnitTest
     [DataRow("0::", 0)]
     [DataRow("1::", 16)]
     [DataRow("::1", 128)]
-    
+
     // IPv4 patterns
     [DataRow("10.0.0.0", 8)]
     [DataRow("0.0.0.0", 0)]
@@ -36,8 +36,8 @@ public class CidrNetworkAwareUnitTest
     [DataRow("192.43.0.0", 16)]
 
     // IPv4 wildcard patterns (.255 endings)
-    [DataRow("192.43.255.255", 16 )]
-    [DataRow("10.255.255.255", 8 )]
+    [DataRow("192.43.255.255", 16)]
+    [DataRow("10.255.255.255", 8)]
     [DataRow("192.0.43.255", 24)]
     [DataRow("192.0.255.255", 16)]
     [DataRow("192.255.255.255", 8)]

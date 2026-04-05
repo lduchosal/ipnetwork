@@ -16,14 +16,14 @@ public class WildcardMaskIPv6UnitTest
     [TestMethod]
     public void Test_WildcardMask_ipv6_mask_0()
     {
-            var ipnetwork = IPNetwork2.Parse("::/0");
+        var ipnetwork = IPNetwork2.Parse("::/0");
 
-            string netmask = ipnetwork.Netmask.ToString();
-            string wildcardmask = ipnetwork.WildcardMask.ToString();
+        string netmask = ipnetwork.Netmask.ToString();
+        string wildcardmask = ipnetwork.WildcardMask.ToString();
 
-            Assert.AreEqual("::", netmask, "netmask");
-            Assert.AreEqual("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", wildcardmask, "wildcardmask");
-        }
+        Assert.AreEqual("::", netmask, "netmask");
+        Assert.AreEqual("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", wildcardmask, "wildcardmask");
+    }
 
     /// <summary>
     /// Test.
@@ -31,14 +31,14 @@ public class WildcardMaskIPv6UnitTest
     [TestMethod]
     public void Test_WildcardMask_ipv6_mask_128()
     {
-            var ipnetwork = IPNetwork2.Parse("::/128");
+        var ipnetwork = IPNetwork2.Parse("::/128");
 
-            string netmask = ipnetwork.Netmask.ToString();
-            string wildcardmask = ipnetwork.WildcardMask.ToString();
+        string netmask = ipnetwork.Netmask.ToString();
+        string wildcardmask = ipnetwork.WildcardMask.ToString();
 
-            Assert.AreEqual("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", netmask, "netmask");
-            Assert.AreEqual("::", wildcardmask, "wildcardmask");
-        }
+        Assert.AreEqual("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", netmask, "netmask");
+        Assert.AreEqual("::", wildcardmask, "wildcardmask");
+    }
 
     /// <summary>
     /// Test.
@@ -51,14 +51,14 @@ public class WildcardMaskIPv6UnitTest
     [DataRow("::", "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff")]
     public void Test_WildcardMask_ipv6(string netmask, string expected)
     {
-            var ipnetwork = IPNetwork2.Parse($"::/{netmask}");
+        var ipnetwork = IPNetwork2.Parse($"::/{netmask}");
 
-            string netmask2 = ipnetwork.Netmask.ToString();
-            string wildcardmask = ipnetwork.WildcardMask.ToString();
+        string netmask2 = ipnetwork.Netmask.ToString();
+        string wildcardmask = ipnetwork.WildcardMask.ToString();
 
-            Assert.AreEqual(netmask, netmask2, "netmask");
-            Assert.AreEqual(expected, wildcardmask, "wildcardmask");
-        }
+        Assert.AreEqual(netmask, netmask2, "netmask");
+        Assert.AreEqual(expected, wildcardmask, "wildcardmask");
+    }
 
     /// <summary>
     /// Test.
@@ -197,15 +197,15 @@ public class WildcardMaskIPv6UnitTest
     [DataRow(0, "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff")]
     public void Test_WildcardMask_ipv6_cidr(int cidr, string expected)
     {
-            var ipnetwork = IPNetwork2.Parse($"::/{cidr}");
+        var ipnetwork = IPNetwork2.Parse($"::/{cidr}");
 
-            int cidr2 = ipnetwork.Cidr;
-            var expectedipv6 = IPAddress.Parse(expected);
-            var expectedcidr = IPNetwork2.ToBigInteger(expectedipv6);
-            IPAddress wildcardmask = ipnetwork.WildcardMask;
-            var wildcardcidr = IPNetwork2.ToBigInteger(wildcardmask);
+        int cidr2 = ipnetwork.Cidr;
+        var expectedipv6 = IPAddress.Parse(expected);
+        var expectedcidr = IPNetwork2.ToBigInteger(expectedipv6);
+        IPAddress wildcardmask = ipnetwork.WildcardMask;
+        var wildcardcidr = IPNetwork2.ToBigInteger(wildcardmask);
 
-            Assert.AreEqual(cidr, cidr2, "netmask");
-            Assert.AreEqual(expectedcidr, wildcardcidr, "wildcardcidr");
-        }
+        Assert.AreEqual(cidr, cidr2, "netmask");
+        Assert.AreEqual(expectedcidr, wildcardcidr, "wildcardcidr");
+    }
 }

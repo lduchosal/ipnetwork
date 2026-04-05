@@ -16,10 +16,10 @@ public class IPNetworkToIPAddressTests
     [TestMethod]
     public void TestToIPAddress()
     {
-            var ip = new BigInteger(0);
-            var result = IPNetwork2.ToIPAddress(ip, AddressFamily.InterNetwork);
-            Assert.AreEqual(IPAddress.Any, result, "ToIPAddress");
-        }
+        var ip = new BigInteger(0);
+        var result = IPNetwork2.ToIPAddress(ip, AddressFamily.InterNetwork);
+        Assert.AreEqual(IPAddress.Any, result, "ToIPAddress");
+    }
 
     /// <summary>
     /// Test.

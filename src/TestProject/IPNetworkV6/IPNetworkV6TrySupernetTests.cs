@@ -19,7 +19,7 @@ public class IPNetworkV6TrySupernetTests
         var network1 = IPNetwork2.Parse("2001:db8::/65");
         var network2 = IPNetwork2.Parse("2001:db8:0:0:8000::/65");
         var supernetExpected = IPNetwork2.Parse("2001:db8::/64");
-        bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
+        bool result = network1.TrySupernet(network2, out var supernet);
 
         Assert.IsTrue(result, "supernetted");
         Assert.AreEqual(supernetExpected, supernet, "supernet");
@@ -32,9 +32,9 @@ public class IPNetworkV6TrySupernetTests
     public void TestTrySupernet3()
     {
         var network1 = IPNetwork2.Parse("2001:db8::/64");
-        IPNetwork2 network2 = null;
-        IPNetwork2 supernetExpected = null;
-        bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
+        IPNetwork2? network2 = null;
+        IPNetwork2? supernetExpected = null;
+        bool result = network1.TrySupernet(network2!, out var supernet);
 
         Assert.AreEqual(supernetExpected, supernet, "supernet");
         Assert.IsFalse(result, "parsed");
@@ -48,8 +48,8 @@ public class IPNetworkV6TrySupernetTests
     {
         var network1 = IPNetwork2.Parse("2001:db8::/64");
         var network2 = IPNetwork2.Parse("2001:db9::/65");
-        IPNetwork2 supernetExpected = null;
-        bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
+        IPNetwork2? supernetExpected = null;
+        bool result = network1.TrySupernet(network2, out var supernet);
 
         Assert.AreEqual(supernetExpected, supernet, "supernet");
         Assert.IsFalse(result, "parsed");
@@ -63,8 +63,8 @@ public class IPNetworkV6TrySupernetTests
     {
         var network1 = IPNetwork2.Parse("2001:db8::/64");
         var network2 = IPNetwork2.Parse("2001:dba::/64");
-        IPNetwork2 supernetExpected = null;
-        bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
+        IPNetwork2? supernetExpected = null;
+        bool result = network1.TrySupernet(network2, out var supernet);
 
         Assert.AreEqual(supernetExpected, supernet, "supernet");
         Assert.IsFalse(result, "parsed");
@@ -79,7 +79,7 @@ public class IPNetworkV6TrySupernetTests
         var network1 = IPNetwork2.Parse("2001:db8::/64");
         var network2 = IPNetwork2.Parse("2001:db8::1/65");
         var supernetExpected = IPNetwork2.Parse("2001:db8::/64");
-        bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
+        bool result = network1.TrySupernet(network2, out var supernet);
 
         Assert.AreEqual(supernetExpected, supernet, "supernet");
         Assert.IsTrue(result, "parsed");
@@ -93,8 +93,8 @@ public class IPNetworkV6TrySupernetTests
     {
         var network1 = IPNetwork2.Parse("2001:db0::/64");
         var network2 = IPNetwork2.Parse("2001:dbf::/64");
-        IPNetwork2 supernetExpected = null;
-        bool result = network1.TrySupernet(network2, out IPNetwork2 supernet);
+        IPNetwork2? supernetExpected = null;
+        bool result = network1.TrySupernet(network2, out var supernet);
 
         Assert.AreEqual(supernetExpected, supernet, "supernet");
         Assert.IsFalse(result, "parsed");
@@ -110,9 +110,9 @@ public class IPNetworkV6TrySupernetTests
         var network2 = IPNetwork2.Parse("192.168.2.1/24");
         IPNetwork2[] network3 = [network1, network2];
         IPNetwork2[] supernetExpected = [network1, network2];
-        bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
+        bool result = IPNetwork2.TrySupernet(network3, out var supernet);
 
-        Assert.AreEqual(supernetExpected[0], supernet[0], "supernet");
+        Assert.AreEqual(supernetExpected[0], supernet![0], "supernet");
         Assert.AreEqual(supernetExpected[1], supernet[1], "supernet");
         Assert.IsTrue(result, "parsed");
     }
@@ -127,9 +127,9 @@ public class IPNetworkV6TrySupernetTests
         var network2 = IPNetwork2.Parse("2001:db8:0:0:8000::/65");
         IPNetwork2[] network3 = [network1, network2];
         IPNetwork2[] supernetExpected = [IPNetwork2.Parse("2001:db8::/64")];
-        bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
+        bool result = IPNetwork2.TrySupernet(network3, out var supernet);
 
-        Assert.AreEqual(supernetExpected[0], supernet[0], "supernet");
+        Assert.AreEqual(supernetExpected[0], supernet![0], "supernet");
         Assert.IsTrue(result, "parsed");
     }
 
@@ -139,9 +139,9 @@ public class IPNetworkV6TrySupernetTests
     [TestMethod]
     public void TestTrySupernet11()
     {
-        IPNetwork2[] network3 = null;
+        IPNetwork2[]? network3 = null;
         _ = new[] { IPNetwork2.Parse("2001:db8::/64") };
-        bool result = IPNetwork2.TrySupernet(network3, out IPNetwork2[] supernet);
+        bool result = IPNetwork2.TrySupernet(network3!, out var supernet);
 
         Assert.IsNull(supernet, "supernet");
         Assert.IsFalse(result, "parsed");

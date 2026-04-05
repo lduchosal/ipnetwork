@@ -6,6 +6,7 @@ namespace System.Net;
 
 using Gnu.Getopt;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Numerics;
 
@@ -59,7 +60,7 @@ public static class Program
         }),
         new ArgParsed('C', (ac, arg) =>
         {
-            if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2 ipnetwork))
+            if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
                 Console.WriteLine($"Unable to parse ipnetwork {arg}", arg);
                 ac.Action = Action.Usage;
@@ -71,7 +72,7 @@ public static class Program
         }),
         new ArgParsed('o', (ac, arg) =>
         {
-            if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2 ipnetwork))
+            if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
                 Console.WriteLine("Unable to parse ipnetwork {0}", arg);
                 ac.Action = Action.Usage;
@@ -83,7 +84,7 @@ public static class Program
         }),
         new ArgParsed('S', (ac, arg) =>
         {
-            if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2 ipnetwork))
+            if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
                 Console.WriteLine("Unable to parse ipnetwork {0}", arg);
                 ac.Action = Action.Usage;
@@ -156,6 +157,11 @@ public static class Program
     
     private static void SubtractNetwork(ProgramContext ac)
     {
+        if (ac.SubtractNetwork is null)
+        {
+            return;
+        }
+
         foreach (IPNetwork2 ipnetwork in ac.Networks)
         {
             foreach (IPNetwork2 subtracted in ipnetwork.Subtract(ac.SubtractNetwork))
@@ -164,9 +170,14 @@ public static class Program
             }
         }
     }
-    
+
     private static void ContainNetwork(ProgramContext ac)
     {
+        if (ac.ContainNetwork is null)
+        {
+            return;
+        }
+
         foreach (IPNetwork2 ipnetwork in ac.Networks)
         {
             bool contain = ac.ContainNetwork.Contains(ipnetwork);
@@ -176,6 +187,11 @@ public static class Program
 
     private static void OverlapNetwork(ProgramContext ac)
     {
+        if (ac.OverlapNetwork is null)
+        {
+            return;
+        }
+
         foreach (IPNetwork2 ipnetwork in ac.Networks)
         {
             bool overlap = ac.OverlapNetwork.Overlap(ipnetwork);
@@ -185,9 +201,10 @@ public static class Program
 
     private static void WideSupernetNetworks(ProgramContext ac)
     {
-        if (!IPNetwork2.TryWideSubnet(ac.Networks, out IPNetwork2 widesubnet))
+        if (!IPNetwork2.TryWideSubnet(ac.Networks, out IPNetwork2? widesubnet))
         {
             Console.WriteLine("Unable to wide subnet these networks");
+            return;
         }
 
         PrintNetwork(ac, widesubnet);
@@ -195,9 +212,10 @@ public static class Program
 
     private static void SupernetNetworks(ProgramContext ac)
     {
-        if (!IPNetwork2.TrySupernet(ac.Networks, out IPNetwork2[] supernet))
+        if (!IPNetwork2.TrySupernet(ac.Networks, out IPNetwork2[]? supernet))
         {
             Console.WriteLine("Unable to supernet these networks");
+            return;
         }
 
         PrintNetworks(ac, supernet, supernet.Length);
@@ -210,7 +228,8 @@ public static class Program
         {
             i++;
             int networkLength = ac.Networks.Length;
-            if (!ipnetwork.TrySubnet(ac.SubnetCidr, out IPNetworkCollection ipnetworks))
+            if (!ipnetwork.TrySubnet(ac.SubnetCidr, out IPNetworkCollection? ipnetworks)
+                || ipnetworks is null)
             {
                 Console.WriteLine("Unable to subnet ipnetwork {0} into cidr {1}", ipnetwork, ac.SubnetCidr);
                 PrintSeparator(networkLength, i);
@@ -319,8 +338,8 @@ public static class Program
 
         while ((c = g.getopt()) != -1)
         {
-            string optArg = g.Optarg;
-            Args[c].Run(ac, optArg);
+            string? optArg = g.Optarg;
+            Args[c].Run(ac, optArg ?? string.Empty);
         }
 
         var ipnetworks = new List<string>();
@@ -373,7 +392,7 @@ public static class Program
         var ipnetworks = new List<IPNetwork2>();
         foreach (string ips in ac.NetworksString)
         {
-            if (!TryParseIPNetwork(ips, ac.CidrParse, ac.CidrParsed, out IPNetwork2 ipnetwork))
+            if (!TryParseIPNetwork(ips, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
                 Console.WriteLine("Unable to parse ipnetwork {0}", ips);
                 continue;
@@ -385,9 +404,9 @@ public static class Program
         ac.Networks = ipnetworks.ToArray();
     }
 
-    private static bool TryParseIPNetwork(string ip, CidrParse cidrParse, byte cidr, out IPNetwork2 ipn)
+    private static bool TryParseIPNetwork(string ip, CidrParse cidrParse, byte cidr, [NotNullWhen(true)] out IPNetwork2? ipn)
     {
-        IPNetwork2 ipnetwork = null;
+        IPNetwork2? ipnetwork = null;
         switch (cidrParse)
         {
             case CidrParse.Default when !IPNetwork2.TryParse(ip, out ipnetwork):
@@ -404,6 +423,12 @@ public static class Program
 
                 break;
             }
+        }
+
+        if (ipnetwork is null)
+        {
+            ipn = null;
+            return false;
         }
 
         ipn = ipnetwork;

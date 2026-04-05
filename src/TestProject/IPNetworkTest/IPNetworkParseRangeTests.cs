@@ -40,7 +40,7 @@ public class IPNetworkParseRangeTests
         string sresult = string.Join(", ", result);
         Assert.AreEqual(expected, sresult);
     }
-    
+
     /// <summary>
     /// Test the ParseRange
     /// </summary>
@@ -145,11 +145,11 @@ public class IPNetworkParseRangeTests
     public void TestTryParseRange(string range, string expected)
     {
         bool parsed = IPNetwork2.TryParseRange(range, out var result);
-        string sresult = string.Join(", ", result);
+        string sresult = string.Join(", ", result!);
         Assert.IsTrue(parsed);
         Assert.AreEqual(expected, sresult);
     }
-    
+
     /// <summary>
     /// Test the TryParseRange
     /// </summary>
@@ -182,7 +182,7 @@ public class IPNetworkParseRangeTests
     public void TestTryParseRange(string start, string end, string expected)
     {
         bool parsed = IPNetwork2.TryParseRange(start, end, out var result);
-        string sresult = string.Join(", ", result);
+        string sresult = string.Join(", ", result!);
         Assert.IsTrue(parsed);
         Assert.AreEqual(expected, sresult);
     }
@@ -199,7 +199,7 @@ public class IPNetworkParseRangeTests
     public void TestInternalParseRange(string start, string end, string expected)
     {
         bool parsed = IPNetwork2.InternalParseRange(true, start, end, out var result);
-        string sresult = string.Join(", ", result);
+        string sresult = string.Join(", ", result!);
         Assert.IsTrue(parsed);
         Assert.AreEqual(expected, sresult);
     }
@@ -248,7 +248,7 @@ public class IPNetworkParseRangeTests
     [DataRow("1.1.1.1 - 2.2.2.2 - 3.3.3.3")]
     [DataRow("1.1.1.1 - 2.2.2.2 - 3.3.3.3 - 4.4.4.4")]
     public void TestInternalParseRangeTrue(string range)
-    { 
+    {
         bool parsed = IPNetwork2.InternalParseRange(true, range, out var _);
         Assert.IsFalse(parsed);
     }
@@ -274,9 +274,9 @@ public class IPNetworkParseRangeTests
     [TestMethod]
     public void TestInternalParseRangeTrue()
     {
-        IPAddress start = null;
-        IPAddress end = null;
-        bool parsed = IPNetwork2.InternalParseRange(true, start, end, out var _);
+        IPAddress? start = null;
+        IPAddress? end = null;
+        bool parsed = IPNetwork2.InternalParseRange(true, start!, end!, out var _);
         Assert.IsFalse(parsed);
     }
 
@@ -286,9 +286,9 @@ public class IPNetworkParseRangeTests
     [TestMethod]
     public void TestInternalParseRangeFalse5()
     {
-        IPAddress start = null;
-        IPAddress end = null;
-        Assert.ThrowsExactly<ArgumentNullException>(()=> IPNetwork2.InternalParseRange(false, start, end, out _));
+        IPAddress? start = null;
+        IPAddress? end = null;
+        Assert.ThrowsExactly<ArgumentNullException>(() => IPNetwork2.InternalParseRange(false, start!, end!, out _));
     }
 
     /// <summary>
@@ -298,8 +298,8 @@ public class IPNetworkParseRangeTests
     public void TestInternalParseRangeFalse2()
     {
         IPAddress start = IPAddress.Loopback;
-        IPAddress end = null;
-        Assert.ThrowsExactly<ArgumentNullException>(()=> IPNetwork2.InternalParseRange(false, start, end, out _));
+        IPAddress? end = null;
+        Assert.ThrowsExactly<ArgumentNullException>(() => IPNetwork2.InternalParseRange(false, start, end!, out _));
     }
 
     /// <summary>
@@ -309,8 +309,8 @@ public class IPNetworkParseRangeTests
     public void TestInternalParseRangeTrue2()
     {
         IPAddress start = IPAddress.Loopback;
-        IPAddress end = null;
-        bool parsed = IPNetwork2.InternalParseRange(true, start, end, out _);
+        IPAddress? end = null;
+        bool parsed = IPNetwork2.InternalParseRange(true, start, end!, out _);
         Assert.IsFalse(parsed);
     }
 
@@ -330,7 +330,7 @@ public class IPNetworkParseRangeTests
             IPNetwork2.InternalParseRange(false, range, out var _);
         });
     }
-    
+
     /// <summary>
     /// Test the InternalParseRange
     /// </summary>
@@ -351,8 +351,8 @@ public class IPNetworkParseRangeTests
     [TestMethod]
     public void TestInternalParseRangeTrueAddressFamily()
     {
-        IPAddress start = IPAddress.Parse("0.0.0.0");
-        IPAddress end = IPAddress.Parse("::1");
+        var start = IPAddress.Parse("0.0.0.0");
+        var end = IPAddress.Parse("::1");
         bool parsed = IPNetwork2.InternalParseRange(true, start, end, out var _);
         Assert.IsFalse(parsed);
     }
@@ -363,9 +363,9 @@ public class IPNetworkParseRangeTests
     [TestMethod]
     public void TestInternalParseRangeFalseAddressFamily()
     {
-        IPAddress start = IPAddress.Parse("0.0.0.0");
-        IPAddress end = IPAddress.Parse("::1");
-        Assert.ThrowsExactly<ArgumentException>(()=> IPNetwork2.InternalParseRange(false, start, end, out var _));
+        var start = IPAddress.Parse("0.0.0.0");
+        var end = IPAddress.Parse("::1");
+        Assert.ThrowsExactly<ArgumentException>(() => IPNetwork2.InternalParseRange(false, start, end, out var _));
     }
 
     /// <summary>

@@ -19,7 +19,7 @@ public class IPNetworkV6TrySubnetTests
         var ipnetwork = IPNetwork2.Parse("2001:db08::/64");
         byte cidr = 255;
 
-        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection _);
+        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection? _);
 
         Assert.IsFalse(subnetted, "subnetted");
     }
@@ -33,7 +33,7 @@ public class IPNetworkV6TrySubnetTests
         var ipnetwork = IPNetwork2.Parse("2001:db08::/64");
         byte cidr = 63;
 
-        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection _);
+        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection? _);
 
         Assert.IsFalse(subnetted, "subnetted");
     }
@@ -47,10 +47,10 @@ public class IPNetworkV6TrySubnetTests
         var ipnetwork = IPNetwork2.Parse("2001:db8::/64");
         byte cidr = 65;
 
-        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection subnets);
+        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection? subnets);
 
         Assert.IsTrue(subnetted, "subnetted");
-        Assert.AreEqual(2, subnets.Count, "count");
+        Assert.AreEqual(2, subnets!.Count, "count");
         Assert.AreEqual("2001:db8::/65", subnets[0].ToString(), "subnet1");
         Assert.AreEqual("2001:db8:0:0:8000::/65", subnets[1].ToString(), "subnet2");
     }
@@ -64,10 +64,10 @@ public class IPNetworkV6TrySubnetTests
         var ipnetwork = IPNetwork2.Parse("2001:db8::/64");
         byte cidr = 68;
 
-        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection subnets);
+        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection? subnets);
 
         Assert.IsTrue(subnetted, "subnetted");
-        Assert.AreEqual(16, subnets.Count, "count");
+        Assert.AreEqual(16, subnets!.Count, "count");
         Assert.AreEqual("2001:db8::/68", subnets[0].ToString(), "subnet1");
         Assert.AreEqual("2001:db8:0:0:1000::/68", subnets[1].ToString(), "subnet2");
         Assert.AreEqual("2001:db8:0:0:2000::/68", subnets[2].ToString(), "subnet3");

@@ -59,9 +59,9 @@ public class IPNetworkV6ParseTests
         byte cidr = 128;
         BigInteger usable = 1;
 
-        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out var ipnetwork);
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(network, ipnetwork!.Network.ToString());
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr);
@@ -87,9 +87,9 @@ public class IPNetworkV6ParseTests
         byte cidr = 127;
         BigInteger usable = 2;
 
-        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out var ipnetwork);
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(network, ipnetwork!.Network.ToString());
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr);
@@ -115,9 +115,9 @@ public class IPNetworkV6ParseTests
         byte cidr = 126;
         BigInteger usable = 4;
 
-        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out var ipnetwork);
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(network, ipnetwork!.Network.ToString());
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr);
@@ -143,9 +143,9 @@ public class IPNetworkV6ParseTests
         byte cidr = 125;
         BigInteger usable = 8;
 
-        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out var ipnetwork);
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(network, ipnetwork!.Network.ToString());
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr);
@@ -171,9 +171,9 @@ public class IPNetworkV6ParseTests
         byte cidr = 124;
         BigInteger usable = 16;
 
-        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out var ipnetwork);
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(network, ipnetwork!.Network.ToString());
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr);
@@ -199,9 +199,9 @@ public class IPNetworkV6ParseTests
         byte cidr = 123;
         BigInteger usable = 32;
 
-        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out var ipnetwork);
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(network, ipnetwork!.Network.ToString());
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr);
@@ -227,9 +227,9 @@ public class IPNetworkV6ParseTests
         byte cidr = 112;
         uint usable = 65536;
 
-        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out var ipnetwork);
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(network, ipnetwork!.Network.ToString());
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr);
@@ -255,9 +255,9 @@ public class IPNetworkV6ParseTests
         byte cidr = 64;
         var usable = BigInteger.Pow(2, 128 - cidr);
 
-        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out var ipnetwork);
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(network, ipnetwork!.Network.ToString());
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr);
@@ -283,9 +283,9 @@ public class IPNetworkV6ParseTests
         byte cidr = 16;
         var usable = BigInteger.Pow(2, 128 - cidr);
 
-        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out var ipnetwork);
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(network, ipnetwork!.Network.ToString());
         Assert.AreEqual(netmask2, ipnetwork.Netmask.ToString(), "Netmask");
         Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr);
@@ -309,10 +309,10 @@ public class IPNetworkV6ParseTests
         byte cidr = 128;
         uint usable = 1;
 
-        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out IPNetwork2 ipnetwork);
+        bool parsed = IPNetwork2.TryParse(ipaddress, netmask, out var ipnetwork);
 
         Assert.IsTrue(parsed, "parsed");
-        Assert.AreEqual(network, ipnetwork.Network.ToString());
+        Assert.AreEqual(network, ipnetwork!.Network.ToString());
         Assert.AreEqual(netmask, ipnetwork.Netmask.ToString());
         Assert.IsNull(ipnetwork.Broadcast, "Broadcast");
         Assert.AreEqual(cidr, ipnetwork.Cidr);

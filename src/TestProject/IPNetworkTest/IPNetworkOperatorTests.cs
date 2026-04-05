@@ -402,7 +402,7 @@ public class IPNetworkOperatorTests
 
         Assert.AreEqual(expected, sresult);
     }
-    
+
     /// <summary>
     ///     Tests Operator functionality with Operator -.
     /// </summary>

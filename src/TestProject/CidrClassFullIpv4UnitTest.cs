@@ -16,13 +16,13 @@ public class CidrClassFullIpv4UnitTest
     [TestMethod]
     public void TestTryGuessCidrNull()
     {
-            var cidrguess = new CidrClassFull();
+        var cidrguess = new CidrClassFull();
 
-            bool parsed = cidrguess.TryGuessCidr(null, out byte cidr);
+        bool parsed = cidrguess.TryGuessCidr(null, out byte cidr);
 
-            Assert.IsFalse(parsed, "parsed");
-            Assert.AreEqual(0, cidr, "cidr");
-        }
+        Assert.IsFalse(parsed, "parsed");
+        Assert.AreEqual(0, cidr, "cidr");
+    }
 
     /// <summary>
     /// Test.
@@ -30,13 +30,13 @@ public class CidrClassFullIpv4UnitTest
     [TestMethod]
     public void TestTryGuessCidrA()
     {
-            var cidrguess = new CidrClassFull();
+        var cidrguess = new CidrClassFull();
 
-            bool parsed = cidrguess.TryGuessCidr("10.0.0.0", out byte cidr);
+        bool parsed = cidrguess.TryGuessCidr("10.0.0.0", out byte cidr);
 
-            Assert.IsTrue(parsed, "parsed");
-            Assert.AreEqual(8, cidr, "cidr");
-        }
+        Assert.IsTrue(parsed, "parsed");
+        Assert.AreEqual(8, cidr, "cidr");
+    }
 
     /// <summary>
     /// Test.
@@ -44,13 +44,13 @@ public class CidrClassFullIpv4UnitTest
     [TestMethod]
     public void TestTryGuessCidrB()
     {
-            var cidrguess = new CidrClassFull();
+        var cidrguess = new CidrClassFull();
 
-            bool parsed = cidrguess.TryGuessCidr("172.0.0.0", out byte cidr);
+        bool parsed = cidrguess.TryGuessCidr("172.0.0.0", out byte cidr);
 
-            Assert.IsTrue(parsed, "parsed");
-            Assert.AreEqual(16, cidr, "cidr");
-        }
+        Assert.IsTrue(parsed, "parsed");
+        Assert.AreEqual(16, cidr, "cidr");
+    }
 
     /// <summary>
     /// Test.
@@ -58,13 +58,13 @@ public class CidrClassFullIpv4UnitTest
     [TestMethod]
     public void TestTryGuessCidrC()
     {
-            var cidrguess = new CidrClassFull();
+        var cidrguess = new CidrClassFull();
 
-            bool parsed = cidrguess.TryGuessCidr("192.0.0.0", out byte cidr);
+        bool parsed = cidrguess.TryGuessCidr("192.0.0.0", out byte cidr);
 
-            Assert.IsTrue(parsed, "parsed");
-            Assert.AreEqual(24, cidr, "cidr");
-        }
+        Assert.IsTrue(parsed, "parsed");
+        Assert.AreEqual(24, cidr, "cidr");
+    }
 
     /// <summary>
     /// Test.
@@ -72,13 +72,13 @@ public class CidrClassFullIpv4UnitTest
     [TestMethod]
     public void TestTryGuessCidrD()
     {
-            var cidrguess = new CidrClassFull();
+        var cidrguess = new CidrClassFull();
 
-            bool parsed = cidrguess.TryGuessCidr("224.0.0.0", out byte cidr);
+        bool parsed = cidrguess.TryGuessCidr("224.0.0.0", out byte cidr);
 
-            Assert.IsTrue(parsed, "parsed");
-            Assert.AreEqual(24, cidr, "cidr");
-        }
+        Assert.IsTrue(parsed, "parsed");
+        Assert.AreEqual(24, cidr, "cidr");
+    }
 
     /// <summary>
     /// Test.
@@ -86,11 +86,11 @@ public class CidrClassFullIpv4UnitTest
     [TestMethod]
     public void TestTryGuessCidrE()
     {
-            var cidrguess = new CidrClassFull();
+        var cidrguess = new CidrClassFull();
 
-            bool parsed = cidrguess.TryGuessCidr("240.0.0.0", out byte cidr);
+        bool parsed = cidrguess.TryGuessCidr("240.0.0.0", out byte cidr);
 
-            Assert.IsTrue(parsed, "parsed");
-            Assert.AreEqual(24, cidr, "cidr");
-        }
+        Assert.IsTrue(parsed, "parsed");
+        Assert.AreEqual(24, cidr, "cidr");
+    }
 }

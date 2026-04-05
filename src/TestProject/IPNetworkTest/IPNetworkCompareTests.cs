@@ -45,7 +45,7 @@ public class IPNetworkCompareTests
     public void TestCompareTo3()
     {
         var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
-        object ipn2 = null;
+        object? ipn2 = null;
 
         int comparison = ipn1.CompareTo(ipn2);
 
@@ -59,7 +59,7 @@ public class IPNetworkCompareTests
     public void TestCompareTo4()
     {
         var ipn1 = IPNetwork2.Parse("10.0.0.1/16");
-        IPNetwork2 ipn2 = null;
+        IPNetwork2? ipn2 = null;
 
         int comparison = ipn1.CompareTo(ipn2);
 

@@ -1,4 +1,4 @@
-﻿// <copyright file="DataContractSerializeHelper.cs" company="IPNetwork">
+// <copyright file="DataContractSerializeHelper.cs" company="IPNetwork">
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
@@ -19,25 +19,25 @@ public static class DataContractSerializeHelper
     public static string Serialize<T>(T obj, bool formatting = true)
         where T : new()
     {
-            if (obj == null)
-            {
-                return string.Empty;
-            }
+        if (obj == null)
+        {
+            return string.Empty;
+        }
 
-            var serializer = new DataContractSerializer(typeof(T));
-            var settings = new XmlWriterSettings
-            {
-                OmitXmlDeclaration = true,
-                Indent = formatting,
-            };
-            using var textWriter = new StringWriter();
-            using (var xmlWriter = XmlWriter.Create(textWriter, settings))
-            {
-                serializer.WriteObject(xmlWriter, obj);
-            }
+        var serializer = new DataContractSerializer(typeof(T));
+        var settings = new XmlWriterSettings
+        {
+            OmitXmlDeclaration = true,
+            Indent = formatting,
+        };
+        using var textWriter = new StringWriter();
+        using (var xmlWriter = XmlWriter.Create(textWriter, settings))
+        {
+            serializer.WriteObject(xmlWriter, obj);
+        }
 
-            string result = textWriter.ToString();
-            return result;
+        string result = textWriter.ToString();
+        return result;
     }
 
     /// <summary>
@@ -49,20 +49,20 @@ public static class DataContractSerializeHelper
     public static T Deserialize<T>(string xml)
         where T : new()
     {
-            if (string.IsNullOrWhiteSpace(xml))
-            {
-                return new T();
-            }
+        if (string.IsNullOrWhiteSpace(xml))
+        {
+            return new T();
+        }
 
-            var settings = new XmlReaderSettings
-            {
-                DtdProcessing = DtdProcessing.Prohibit,
-                XmlResolver = null,
-            };
-            using var textReader = new StringReader(xml);
-            using var xmlReader = XmlReader.Create(textReader, settings);
-            var serializer = new DataContractSerializer(typeof(T));
-            var result = (T)serializer.ReadObject(xmlReader);
-            return result;
+        var settings = new XmlReaderSettings
+        {
+            DtdProcessing = DtdProcessing.Prohibit,
+            XmlResolver = null,
+        };
+        using var textReader = new StringReader(xml);
+        using var xmlReader = XmlReader.Create(textReader, settings);
+        var serializer = new DataContractSerializer(typeof(T));
+        var result = (T?)serializer.ReadObject(xmlReader);
+        return result!;
     }
 }

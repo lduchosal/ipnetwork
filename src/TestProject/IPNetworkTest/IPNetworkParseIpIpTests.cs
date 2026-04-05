@@ -16,13 +16,13 @@ public class IPNetworkParseIpIpTests
     [TestMethod]
     public void ParseIpIp1()
     {
-            string ipaddress = "192.168.168.100";
-            string netmask = "255.255.255.0";
-            var ip = IPAddress.Parse(ipaddress);
-            var netm = IPAddress.Parse(netmask);
-            var ipnetwork = IPNetwork2.Parse(ip, netm);
-            Assert.AreEqual("192.168.168.0/24", ipnetwork.ToString(), "network");
-        }
+        string ipaddress = "192.168.168.100";
+        string netmask = "255.255.255.0";
+        var ip = IPAddress.Parse(ipaddress);
+        var netm = IPAddress.Parse(netmask);
+        var ipnetwork = IPNetwork2.Parse(ip, netm);
+        Assert.AreEqual("192.168.168.0/24", ipnetwork.ToString(), "network");
+    }
 
     /// <summary>
     /// Test.
@@ -30,10 +30,10 @@ public class IPNetworkParseIpIpTests
     [TestMethod]
     public void ParseIpIp2()
     {
-        IPAddress ip = null;
-        IPAddress netm = null;
+        IPAddress? ip = null;
+        IPAddress? netm = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-            IPNetwork2.Parse(ip, netm));
+            IPNetwork2.Parse(ip!, netm!));
     }
 
     /// <summary>
@@ -44,8 +44,8 @@ public class IPNetworkParseIpIpTests
     {
         string ipaddress = "192.168.168.100";
         var ip = IPAddress.Parse(ipaddress);
-        IPAddress netm = null;
+        IPAddress? netm = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-            IPNetwork2.Parse(ip, netm));
+            IPNetwork2.Parse(ip, netm!));
     }
 }

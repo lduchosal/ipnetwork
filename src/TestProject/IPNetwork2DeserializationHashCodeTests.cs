@@ -68,7 +68,7 @@ public class IPNetwork2DeserializationHashCodeTests
         string serialized = JsonConvert.SerializeObject(original);
         var deserialized = JsonConvert.DeserializeObject<IPNetwork2>(serialized);
 
-        Assert.AreEqual(original.GetHashCode(), deserialized.GetHashCode());
+        Assert.AreEqual(original.GetHashCode(), deserialized!.GetHashCode());
     }
 
     /// <summary>
@@ -86,7 +86,7 @@ public class IPNetwork2DeserializationHashCodeTests
             { original, "found" },
         };
 
-        Assert.IsTrue(dict.ContainsKey(deserialized));
+        Assert.IsTrue(dict.ContainsKey(deserialized!));
     }
 
     /// <summary>

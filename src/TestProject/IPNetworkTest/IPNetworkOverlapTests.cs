@@ -17,10 +17,10 @@ public class IPNetworkOverlapTests
     public void TestOverlap2()
     {
         var network1 = IPNetwork2.Parse("10.0.0.0/0");
-        IPNetwork2 network2 = null;
+        IPNetwork2? network2 = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            network1.Overlap(network2);
+            network1.Overlap(network2!);
         });
     }
 
@@ -30,12 +30,12 @@ public class IPNetworkOverlapTests
     [TestMethod]
     public void TestOverlap3()
     {
-            var network1 = IPNetwork2.Parse("10.0.0.0/0");
-            var network2 = IPNetwork2.Parse("10.0.0.0/0");
-            bool result = network1.Overlap(network2);
+        var network1 = IPNetwork2.Parse("10.0.0.0/0");
+        var network2 = IPNetwork2.Parse("10.0.0.0/0");
+        bool result = network1.Overlap(network2);
 
-            Assert.IsTrue(result, "overlap");
-        }
+        Assert.IsTrue(result, "overlap");
+    }
 
     /// <summary>
     ///     Tests Overlap functionality with Overlap4.
@@ -43,12 +43,12 @@ public class IPNetworkOverlapTests
     [TestMethod]
     public void TestOverlap4()
     {
-            var network1 = IPNetwork2.Parse("10.10.0.0/16");
-            var network2 = IPNetwork2.Parse("10.10.1.0/24");
-            bool result = network1.Overlap(network2);
+        var network1 = IPNetwork2.Parse("10.10.0.0/16");
+        var network2 = IPNetwork2.Parse("10.10.1.0/24");
+        bool result = network1.Overlap(network2);
 
-            Assert.IsTrue(result, "overlap");
-        }
+        Assert.IsTrue(result, "overlap");
+    }
 
     /// <summary>
     ///     Tests Overlap functionality with Overlap5.
@@ -56,12 +56,12 @@ public class IPNetworkOverlapTests
     [TestMethod]
     public void TestOverlap5()
     {
-            var network1 = IPNetwork2.Parse("10.10.0.0/24");
-            var network2 = IPNetwork2.Parse("10.10.1.0/24");
-            bool result = network1.Overlap(network2);
+        var network1 = IPNetwork2.Parse("10.10.0.0/24");
+        var network2 = IPNetwork2.Parse("10.10.1.0/24");
+        bool result = network1.Overlap(network2);
 
-            Assert.IsFalse(result, "overlap");
-        }
+        Assert.IsFalse(result, "overlap");
+    }
 
     /// <summary>
     ///     Tests Overlap functionality with Overlap6.
@@ -69,10 +69,10 @@ public class IPNetworkOverlapTests
     [TestMethod]
     public void TestOverlap6()
     {
-            var network1 = IPNetwork2.Parse("10.10.1.0/24");
-            var network2 = IPNetwork2.Parse("10.10.0.0/16");
-            bool result = network1.Overlap(network2);
+        var network1 = IPNetwork2.Parse("10.10.1.0/24");
+        var network2 = IPNetwork2.Parse("10.10.0.0/16");
+        bool result = network1.Overlap(network2);
 
-            Assert.IsTrue(result, "overlap");
-        }
+        Assert.IsTrue(result, "overlap");
+    }
 }

@@ -28,10 +28,10 @@ public class IPNetworkCtorWithIpAndCidrTests
     [TestMethod]
     public void CtorWithIpAndCidr2()
     {
-        IPAddress ip = null;
+        IPAddress? ip = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            var _ = new IPNetwork2(ip, 24);
+            var _ = new IPNetwork2(ip!, 24);
         });
     }
 

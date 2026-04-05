@@ -16,12 +16,12 @@ public class IPNetworkParseStringStringTests
     [TestMethod]
     public void TestParseStringString1()
     {
-            string ipaddress = "192.168.168.100";
-            string netmask = "255.255.255.0";
+        string ipaddress = "192.168.168.100";
+        string netmask = "255.255.255.0";
 
-            var ipnetwork = IPNetwork2.Parse(ipaddress, netmask);
-            Assert.AreEqual("192.168.168.0/24", ipnetwork.ToString(), "network");
-        }
+        var ipnetwork = IPNetwork2.Parse(ipaddress, netmask);
+        Assert.AreEqual("192.168.168.0/24", ipnetwork.ToString(), "network");
+    }
 
     /// <summary>
     /// Test.
@@ -29,10 +29,10 @@ public class IPNetworkParseStringStringTests
     [TestMethod]
     public void TestParseStringString2()
     {
-        string ipaddress = null;
-        string netmask = null;
+        string? ipaddress = null;
+        string? netmask = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-            IPNetwork2.Parse(ipaddress, netmask));
+            IPNetwork2.Parse(ipaddress!, netmask!));
     }
 
     /// <summary>
@@ -42,9 +42,9 @@ public class IPNetworkParseStringStringTests
     public void TestParseStringString3()
     {
         string ipaddress = "192.168.168.100";
-        string netmask = null;
+        string? netmask = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-            IPNetwork2.Parse(ipaddress, netmask));
+            IPNetwork2.Parse(ipaddress, netmask!));
     }
 
     /// <summary>

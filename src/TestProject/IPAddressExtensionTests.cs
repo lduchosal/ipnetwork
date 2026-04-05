@@ -35,21 +35,21 @@ public class IPAddressExtensionTests
     [DataRow("239.255.255.255", 4)]
     [DataRow("240.0.0.0", 4)]
     [DataRow("255.255.255.255", 4)]
-    
-    [DataRow("::1",16)]
-    [DataRow("::",16)]
-    [DataRow("::1234:ABCD",16)]
-    [DataRow("1234::ABCD",16)]
-    [DataRow("1234:ABCD::",16)]
-    [DataRow("1:2:3:4:5:6:7:8",16)]
-    [DataRow("FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF",16)]
+
+    [DataRow("::1", 16)]
+    [DataRow("::", 16)]
+    [DataRow("::1234:ABCD", 16)]
+    [DataRow("1234::ABCD", 16)]
+    [DataRow("1234:ABCD::", 16)]
+    [DataRow("1:2:3:4:5:6:7:8", 16)]
+    [DataRow("FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF:FFFF", 16)]
     public void TestIPAddressToIPNetwork_SingleAddress_IPv4(string ipAddress, int bytecount)
     {
         // Prepare
         var ipAddr = IPAddress.Parse(ipAddress);
         int expectedSize = bytecount * 8;
         var net = ipAddr.AsIPNetwork();
-        
+
         Assert.AreEqual($"{ipAddr}/{expectedSize}", $"{net}");
         Assert.AreEqual(ipAddr, net.FirstUsable);
         Assert.AreEqual(ipAddr, net.LastUsable);
@@ -72,7 +72,7 @@ public class IPAddressExtensionTests
         foreach (IPAddress ipAddr in addrs.Select(IPAddress.Parse))
         {
             var net = ipAddr.AsIPNetwork();
-            
+
             Assert.AreEqual($"{ipAddr}/{expectedSize}", $"{net}");
             Assert.AreEqual(ipAddr, net.FirstUsable);
             Assert.AreEqual(ipAddr, net.LastUsable);

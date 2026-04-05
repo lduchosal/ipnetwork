@@ -1,4 +1,4 @@
-﻿// <copyright file="ContainsUnitTest.cs" company="IPNetwork">
+// <copyright file="ContainsUnitTest.cs" company="IPNetwork">
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
@@ -23,13 +23,13 @@ public class ContainsUnitTest
     [DataRow("192.168.1.1/24", "192.168.0.0/16", false)]
     public void TestContainsNetwork(string network1, string networkOrAddress, bool expected)
     {
-            var ipnetwork = IPNetwork2.Parse(network1);
+        var ipnetwork = IPNetwork2.Parse(network1);
 
-            var ipnetwork2 = IPNetwork2.Parse(networkOrAddress);
-            bool result = ipnetwork.Contains(ipnetwork2);
+        var ipnetwork2 = IPNetwork2.Parse(networkOrAddress);
+        bool result = ipnetwork.Contains(ipnetwork2);
 
-            Assert.AreEqual(expected, result, "contains");
-        }
+        Assert.AreEqual(expected, result, "contains");
+    }
 
     /// <summary>
     /// Test.
@@ -42,12 +42,12 @@ public class ContainsUnitTest
     [DataRow("192.168.0.1/24", "10.10.10.10", false)]
     public void TestContainsAdrress(string network1, string networkOrAddress, bool expected)
     {
-            var ipnetwork = IPNetwork2.Parse(network1);
-            var ipaddress = IPAddress.Parse(networkOrAddress);
-            bool result = ipnetwork.Contains(ipaddress);
+        var ipnetwork = IPNetwork2.Parse(network1);
+        var ipaddress = IPAddress.Parse(networkOrAddress);
+        bool result = ipnetwork.Contains(ipaddress);
 
-            Assert.AreEqual(expected, result, "contains");
-        }
+        Assert.AreEqual(expected, result, "contains");
+    }
 
     /// <summary>
     /// Test.
@@ -56,11 +56,11 @@ public class ContainsUnitTest
     public void TestContains8()
     {
         var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
-        IPNetwork2 ipnetwork2 = null;
+        IPNetwork2? ipnetwork2 = null;
 
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            ipnetwork.Contains(ipnetwork2);
+            ipnetwork.Contains(ipnetwork2!);
         });
     }
 
@@ -71,11 +71,11 @@ public class ContainsUnitTest
     public void TestContains10()
     {
         var ipnetwork = IPNetwork2.Parse("0.0.0.0/0");
-        IPAddress ipaddress = null;
+        IPAddress? ipaddress = null;
 
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            ipnetwork.Contains(ipaddress);
+            ipnetwork.Contains(ipaddress!);
         });
     }
 
@@ -96,13 +96,13 @@ public class ContainsUnitTest
     [DataRow("192.168.1.1/24", "192.168.0.0", false)]
     public void Test_Contains2_IPAddress_Should_Match_Contains(string contains1, string contains2, bool expected)
     {
-            var ipnetwork = IPNetwork2.Parse(contains1);
-            var ipaddress = IPAddress.Parse(contains2);
+        var ipnetwork = IPNetwork2.Parse(contains1);
+        var ipaddress = IPAddress.Parse(contains2);
 
-            bool result1 = ipnetwork.Contains(ipaddress);
+        bool result1 = ipnetwork.Contains(ipaddress);
 
-            Assert.AreEqual(expected, result1, "contains1");
-        }
+        Assert.AreEqual(expected, result1, "contains1");
+    }
 
     /// <summary>
     /// Test.
@@ -122,11 +122,11 @@ public class ContainsUnitTest
     [DataRow("192.168.1.1/24", "192.168.0.0/16", false)]
     public void Test_Contains2_IPNetwork_Should_Match_Contains(string contains1, string contains2, bool expected)
     {
-            var ipnetwork = IPNetwork2.Parse(contains1);
-            var ipaddress = IPNetwork2.Parse(contains2);
+        var ipnetwork = IPNetwork2.Parse(contains1);
+        var ipaddress = IPNetwork2.Parse(contains2);
 
-            bool result1 = ipnetwork.Contains(ipaddress);
+        bool result1 = ipnetwork.Contains(ipaddress);
 
-            Assert.AreEqual(expected, result1, "contains1");
-        }
+        Assert.AreEqual(expected, result1, "contains1");
+    }
 }

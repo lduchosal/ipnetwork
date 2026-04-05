@@ -83,7 +83,7 @@ public class IPNetworkToBigIntegerTests
     {
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2.ToBigInteger(null);
+            IPNetwork2.ToBigInteger(null!);
         });
     }
 
@@ -93,10 +93,10 @@ public class IPNetworkToBigIntegerTests
     [TestMethod]
     public void TestToBigIntegerAne3()
     {
-        IPAddress ip = null;
+        IPAddress? ip = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2.ToBigInteger(ip);
+            IPNetwork2.ToBigInteger(ip!);
         });
     }
 

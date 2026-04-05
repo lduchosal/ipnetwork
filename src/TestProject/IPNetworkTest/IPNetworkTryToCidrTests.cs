@@ -16,7 +16,7 @@ public class IPNetworkTryToCidrTests
     [TestMethod]
     public void TestTryToCidrAne()
     {
-        bool parsed = IPNetwork2.TryToCidr(null, out byte _);
+        bool parsed = IPNetwork2.TryToCidr(null!, out byte _);
         Assert.IsFalse(parsed, "parsed");
     }
 

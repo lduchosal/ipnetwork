@@ -30,11 +30,11 @@ public class IPNetworkV6ParseStringStringTests
     public void TestParseStringString3()
     {
         string ipaddress = "2001:0db8::";
-        string netmask = null;
+        string? netmask = null;
 
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2.Parse(ipaddress, netmask);
+            IPNetwork2.Parse(ipaddress, netmask!);
         });
     }
 

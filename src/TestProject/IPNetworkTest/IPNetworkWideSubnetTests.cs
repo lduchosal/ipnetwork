@@ -20,7 +20,7 @@ public class IPNetworkWideSubnetTests
         var ipns = new List<IPNetwork2>();
         foreach (string ip in ips)
         {
-            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
+            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2? ipn))
             {
                 ipns.Add(ipn);
             }
@@ -40,7 +40,7 @@ public class IPNetworkWideSubnetTests
         var ipns = new List<IPNetwork2>();
         foreach (string ip in ips)
         {
-            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
+            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2? ipn))
             {
                 ipns.Add(ipn);
             }
@@ -49,7 +49,7 @@ public class IPNetworkWideSubnetTests
         var ipnetwork = IPNetwork2.WideSubnet(ipns.ToArray());
         Assert.AreEqual("0.0.0.0/4", ipnetwork.ToString(), "ipnetwork");
     }
-    
+
     /// <summary>
     /// Tests WideSubnet with addresses in same range
     /// </summary>
@@ -60,7 +60,7 @@ public class IPNetworkWideSubnetTests
         var ipns = new List<IPNetwork2>();
         foreach (string ip in ips)
         {
-            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
+            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2? ipn))
             {
                 ipns.Add(ipn);
             }
@@ -78,7 +78,7 @@ public class IPNetworkWideSubnetTests
     {
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2.WideSubnet(null);
+            IPNetwork2.WideSubnet(null!);
         });
     }
 
@@ -92,7 +92,7 @@ public class IPNetworkWideSubnetTests
         var ipns = new List<IPNetwork2>();
         foreach (string ip in ips)
         {
-            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2 ipn))
+            if (IPNetwork2.TryParse(ip, 32, out IPNetwork2? ipn))
             {
                 ipns.Add(ipn);
             }

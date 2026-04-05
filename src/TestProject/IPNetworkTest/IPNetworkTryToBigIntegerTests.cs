@@ -87,7 +87,7 @@ public class IPNetworkTryToBigIntegerTests
     [TestMethod]
     public void TestTryToBigIntegerAne()
     {
-        bool parsed = IPNetwork2.TryToBigInteger(null, out BigInteger result);
+        bool parsed = IPNetwork2.TryToBigInteger(null!, out BigInteger result);
 
         Assert.AreEqual(default, result, "uint");
         Assert.IsFalse(parsed, "parsed");

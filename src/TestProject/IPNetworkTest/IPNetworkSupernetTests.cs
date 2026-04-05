@@ -16,7 +16,7 @@ public class IPNetworkSupernetTests
     [TestMethod]
     public void TestSupernetInternal1()
     {
-        IPNetwork2.InternalSupernet(true, null, null, out IPNetwork2 result);
+        IPNetwork2.InternalSupernet(true, null!, null!, out IPNetwork2? result);
 
         Assert.IsNull(result, "supernet");
     }
@@ -29,7 +29,7 @@ public class IPNetworkSupernetTests
     {
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2.InternalSupernet(false, null, null, out var _);
+            IPNetwork2.InternalSupernet(false, null!, null!, out var _);
         });
     }
 
@@ -97,7 +97,7 @@ public class IPNetworkSupernetTests
     {
         var network1 = IPNetwork2.Parse("192.168.1.1/24");
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-            network1.Supernet(null));
+            network1.Supernet(null!));
     }
 
     /// <summary>
@@ -107,9 +107,9 @@ public class IPNetworkSupernetTests
     public void TestSupernet3()
     {
         var network1 = IPNetwork2.Parse("192.168.1.1/24");
-        IPNetwork2 network2 = null;
+        IPNetwork2? network2 = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
-            network1.Supernet(network2));
+            network1.Supernet(network2!));
     }
 
     /// <summary>
@@ -210,8 +210,8 @@ public class IPNetworkSupernetTests
 
         Assert.AreEqual(expected, result, "supernet");
     }
-    
-    
+
+
     /// <summary>
     /// Tests WideSubnet with addresses in same range
     /// </summary>

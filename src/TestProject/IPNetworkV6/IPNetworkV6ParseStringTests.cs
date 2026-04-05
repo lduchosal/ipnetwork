@@ -526,7 +526,7 @@ public class IPNetworkV6ParseStringTests
     {
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2.Parse(null);
+            IPNetwork2.Parse(null!);
         });
     }
 }

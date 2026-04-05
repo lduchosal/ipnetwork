@@ -37,6 +37,6 @@ public class ConsoleUnitTest
     [DataRow(["-o", "10.0.0.0/8", "1.1.1.1"])]
     public void TestProgramMain(string[] args)
     {
-            Program.Main(args);
-        }
+        Program.Main(args);
+    }
 }

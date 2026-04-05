@@ -32,11 +32,11 @@ public class IPNetworkV6ParseIpIpTests
     {
         string ipaddress = "2001:0db8::";
         var ip = IPAddress.Parse(ipaddress);
-        IPAddress netm = null;
+        IPAddress? netm = null;
 
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2.Parse(ip, netm);
+            IPNetwork2.Parse(ip, netm!);
         });
     }
 }

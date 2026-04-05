@@ -16,7 +16,7 @@ public class IPNetworkTrySubnetTests
     [TestMethod]
     public void TestInternalSubnet1()
     {
-        IPNetwork2.InternalSubnet(true, null, 0, out IPNetworkCollection subnets);
+        IPNetwork2.InternalSubnet(true, null!, 0, out IPNetworkCollection? subnets);
         Assert.IsNull(subnets, "subnets");
     }
 
@@ -28,7 +28,7 @@ public class IPNetworkTrySubnetTests
     {
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2.InternalSubnet(false, null, 0, out IPNetworkCollection _);
+            IPNetwork2.InternalSubnet(false, null!, 0, out IPNetworkCollection? _);
         });
     }
 
@@ -41,7 +41,7 @@ public class IPNetworkTrySubnetTests
         IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
         byte cidr = 55;
 
-        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection _);
+        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection? _);
 
         Assert.IsFalse(subnetted, "subnetted");
     }
@@ -55,7 +55,7 @@ public class IPNetworkTrySubnetTests
         IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
         byte cidr = 1;
 
-        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection _);
+        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection? _);
 
         Assert.IsFalse(subnetted, "subnetted");
     }
@@ -69,10 +69,10 @@ public class IPNetworkTrySubnetTests
         IPNetwork2 ipnetwork = IPNetwork2.IANA_ABLK_RESERVED1;
         byte cidr = 9;
 
-        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection subnets);
+        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection? subnets);
 
         Assert.IsTrue(subnetted, "subnetted");
-        Assert.AreEqual(2, subnets.Count, "count");
+        Assert.AreEqual(2, subnets!.Count, "count");
         Assert.AreEqual("10.0.0.0/9", subnets[0].ToString(), "subnet1");
         Assert.AreEqual("10.128.0.0/9", subnets[1].ToString(), "subnet2");
     }
@@ -86,10 +86,10 @@ public class IPNetworkTrySubnetTests
         IPNetwork2 ipnetwork = IPNetwork2.IANA_CBLK_RESERVED1;
         byte cidr = 20;
 
-        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection subnets);
+        bool subnetted = ipnetwork.TrySubnet(cidr, out IPNetworkCollection? subnets);
 
         Assert.IsTrue(subnetted, "subnetted");
-        Assert.AreEqual(16, subnets.Count, "count");
+        Assert.AreEqual(16, subnets!.Count, "count");
         Assert.AreEqual("192.168.0.0/20", subnets[0].ToString(), "subnet1");
         Assert.AreEqual("192.168.16.0/20", subnets[1].ToString(), "subnet2");
         Assert.AreEqual("192.168.32.0/20", subnets[2].ToString(), "subnet3");

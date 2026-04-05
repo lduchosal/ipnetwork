@@ -16,7 +16,7 @@ public class IPNetworkV6TryToNetmaskTests
     [TestMethod]
     public void TryToNetmask1()
     {
-        bool parsed = IPNetwork2.TryToNetmask(0, AddressFamily.InterNetworkV6, out IPAddress result);
+        bool parsed = IPNetwork2.TryToNetmask(0, AddressFamily.InterNetworkV6, out IPAddress? result);
         var expected = IPAddress.Parse("::");
 
         Assert.AreEqual(expected, result, "Netmask");
@@ -29,7 +29,7 @@ public class IPNetworkV6TryToNetmaskTests
     [TestMethod]
     public void TryToNetmask2()
     {
-        bool parsed = IPNetwork2.TryToNetmask(33, AddressFamily.InterNetworkV6, out IPAddress result);
+        bool parsed = IPNetwork2.TryToNetmask(33, AddressFamily.InterNetworkV6, out IPAddress? result);
         var expected = IPAddress.Parse("ffff:ffff:8000::");
 
         Assert.AreEqual(expected, result, "Netmask");

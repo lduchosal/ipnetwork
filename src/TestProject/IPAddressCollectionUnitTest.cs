@@ -107,8 +107,8 @@ public class IPAddressCollectionUnitTest
     public void TestIterateIPAddress()
     {
         var ipn = IPNetwork2.Parse("192.168.1.0/29");
-        IPAddress last = null;
-        IPAddress first = null;
+        IPAddress? last = null;
+        IPAddress? first = null;
         int count = 0;
         using IPAddressCollection ips = ipn.ListIPAddress();
         foreach (IPAddress ip in ips)
@@ -331,8 +331,8 @@ public class IPAddressCollectionUnitTest
     public void Test_ipv6_IterateIPAddress()
     {
         var ipn = IPNetwork2.Parse("::/125");
-        IPAddress last = null;
-        IPAddress first = null;
+        IPAddress? last = null;
+        IPAddress? first = null;
         int count = 0;
         using IPAddressCollection ips = ipn.ListIPAddress();
         foreach (IPAddress ip in ips)

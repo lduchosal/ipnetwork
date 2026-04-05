@@ -67,17 +67,17 @@ public class ProgramContext
     /// <summary>
     /// Gets or sets a value indicating whether gets or sets the ContainNetwork.
     /// </summary>
-    public IPNetwork2 ContainNetwork { get; set; }
+    public IPNetwork2? ContainNetwork { get; set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether gets or sets the OverlapNetwork.
     /// </summary>
-    public IPNetwork2 OverlapNetwork { get; set; }
+    public IPNetwork2? OverlapNetwork { get; set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether gets or sets the SubtractNetwork.
     /// </summary>
-    public IPNetwork2 SubtractNetwork { get; set; }
+    public IPNetwork2? SubtractNetwork { get; set; }
 
     /// <summary>
     /// Gets or sets a value indicating whether gets or sets the Action.
@@ -92,10 +92,10 @@ public class ProgramContext
     /// <summary>
     /// Gets or sets a value indicating whether gets or sets the NetworksString.
     /// </summary>
-    public string[] NetworksString { get; set; }
+    public string[] NetworksString { get; set; } = [];
 
     /// <summary>
     /// Gets or sets a value indicating whether gets or sets the Networks.
     /// </summary>
-    public IPNetwork2[] Networks { get; set; }
+    public IPNetwork2[] Networks { get; set; } = [];
 }

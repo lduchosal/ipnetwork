@@ -178,7 +178,7 @@ public class IPNetworkExamplesTests
         var network = IPNetwork2.Parse("192.168.0.0/24");
         var network2 = IPNetwork2.Parse("192.168.10.0/24");
 
-        bool supernetted = network.TrySupernet(network2, out IPNetwork2 _);
+        bool supernetted = network.TrySupernet(network2, out IPNetwork2? _);
         Assert.IsFalse(supernetted);
     }
 
@@ -191,9 +191,9 @@ public class IPNetworkExamplesTests
         var network = IPNetwork2.Parse("192.168.0.0/24");
         var network2 = IPNetwork2.Parse("192.168.10.0/24");
 
-        bool wideSubnetted = IPNetwork2.TryWideSubnet([network, network2], out IPNetwork2 ipnetwork);
+        bool wideSubnetted = IPNetwork2.TryWideSubnet([network, network2], out IPNetwork2? ipnetwork);
         Assert.IsTrue(wideSubnetted);
-        Assert.AreEqual("192.168.0.0/20", ipnetwork.ToString());
+        Assert.AreEqual("192.168.0.0/20", ipnetwork!.ToString());
 
         Console.WriteLine("Network : {0}", ipnetwork.Network);
         Console.WriteLine("Netmask : {0}", ipnetwork.Netmask);

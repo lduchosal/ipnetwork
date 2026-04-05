@@ -16,13 +16,13 @@ public class IPNetworkTryParseCidrTests
     [TestMethod]
     public void TryParseCidr1()
     {
-            string sidr = "0";
-            byte? result = 0;
-            bool parsed = IPNetwork2.TryParseCidr(sidr, AddressFamily.InterNetwork, out byte? cidr);
+        string sidr = "0";
+        byte? result = 0;
+        bool parsed = IPNetwork2.TryParseCidr(sidr, AddressFamily.InterNetwork, out byte? cidr);
 
-            Assert.IsTrue(parsed, "parsed");
-            Assert.AreEqual(result, cidr, "cidr");
-        }
+        Assert.IsTrue(parsed, "parsed");
+        Assert.AreEqual(result, cidr, "cidr");
+    }
 
     /// <summary>
     ///     Tests Try Parse Cidr functionality with a /2 network.
@@ -30,14 +30,14 @@ public class IPNetworkTryParseCidrTests
     [TestMethod]
     public void TryParseCidr2()
     {
-            string sidr = "sadsd";
-            byte? result = null;
+        string sidr = "sadsd";
+        byte? result = null;
 
-            bool parsed = IPNetwork2.TryParseCidr(sidr, AddressFamily.InterNetwork, out byte? cidr);
+        bool parsed = IPNetwork2.TryParseCidr(sidr, AddressFamily.InterNetwork, out byte? cidr);
 
-            Assert.IsFalse(parsed, "parsed");
-            Assert.AreEqual(result, cidr, "cidr");
-        }
+        Assert.IsFalse(parsed, "parsed");
+        Assert.AreEqual(result, cidr, "cidr");
+    }
 
     /// <summary>
     ///     Tests Try Parse Cidr functionality with a /3 network.
@@ -45,12 +45,12 @@ public class IPNetworkTryParseCidrTests
     [TestMethod]
     public void TryParseCidr3()
     {
-            string sidr = "33";
-            byte? result = null;
+        string sidr = "33";
+        byte? result = null;
 
-            bool parsed = IPNetwork2.TryParseCidr(sidr, AddressFamily.InterNetwork, out byte? cidr);
+        bool parsed = IPNetwork2.TryParseCidr(sidr, AddressFamily.InterNetwork, out byte? cidr);
 
-            Assert.IsFalse(parsed, "parsed");
-            Assert.AreEqual(result, cidr, "cidr");
-        }
+        Assert.IsFalse(parsed, "parsed");
+        Assert.AreEqual(result, cidr, "cidr");
+    }
 }

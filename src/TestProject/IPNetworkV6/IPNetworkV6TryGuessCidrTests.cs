@@ -16,7 +16,7 @@ public class IPNetworkV6TryGuessCidrTests
     [TestMethod]
     public void TestTryGuessCidrNull()
     {
-        bool parsed = IPNetwork2.TryGuessCidr(null, out byte cidr);
+        bool parsed = IPNetwork2.TryGuessCidr(null!, out byte cidr);
 
         Assert.IsFalse(parsed, "parsed");
         Assert.AreEqual(0, cidr, "cidr");

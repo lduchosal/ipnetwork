@@ -68,7 +68,7 @@ public class IPNetworkToNetmaskTests
     [TestMethod]
     public void ToNetmaskInternal1()
     {
-        IPNetwork2.InternalToNetmask(true, 0, AddressFamily.AppleTalk, out IPAddress result);
+        IPNetwork2.InternalToNetmask(true, 0, AddressFamily.AppleTalk, out IPAddress? result);
         Assert.IsNull(result);
     }
 

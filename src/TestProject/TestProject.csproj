@@ -11,7 +11,10 @@
         <LangVersion>latestmajor</LangVersion>
         <NoWarn>SA1010</NoWarn>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <Nullable>enable</Nullable>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+        <WarningLevel>5</WarningLevel>
+        <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
         <EnableMSTestRunner>true</EnableMSTestRunner>
     </PropertyGroup>
 

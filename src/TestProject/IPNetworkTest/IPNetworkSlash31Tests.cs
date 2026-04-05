@@ -46,7 +46,7 @@ public class IPNetworkSlash31Tests
         // Assert
         Assert.AreEqual(expectedNetwork, ipnetwork.Network.ToString(), "Network");
         Assert.AreEqual(expectedNetmask, ipnetwork.Netmask.ToString(), "Netmask");
-        Assert.AreEqual(expectedBroadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
+        Assert.AreEqual(expectedBroadcast, ipnetwork!.Broadcast!.ToString(), "Broadcast");
         Assert.AreEqual(expectedFirst, ipnetwork.First.ToString(), "First");
         Assert.AreEqual(expectedLast, ipnetwork.Last.ToString(), "Last");
         Assert.AreEqual(expectedCidr, ipnetwork.Cidr, "Cidr");
@@ -129,7 +129,7 @@ public class IPNetworkSlash31Tests
 
         // Assert
         Assert.AreEqual(expectedNetwork, ipnetwork.Network.ToString(), "Network");
-        Assert.AreEqual(expectedBroadcast, ipnetwork.Broadcast.ToString(), "Broadcast");
+        Assert.AreEqual(expectedBroadcast, ipnetwork!.Broadcast!.ToString(), "Broadcast");
         Assert.AreEqual(expectedUsable, ipnetwork.Usable, "Usable");
         Assert.AreEqual(expectedFirstUsable, ipnetwork.FirstUsable.ToString(), "FirstUsable");
         Assert.AreEqual(expectedLastUsable, ipnetwork.LastUsable.ToString(), "LastUsable");

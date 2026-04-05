@@ -101,11 +101,11 @@ public class IPNetworkV6ContainsTests
     public void TestContains10()
     {
         var ipnetwork = IPNetwork2.Parse("::/0");
-        IPAddress ipaddress = null;
+        IPAddress? ipaddress = null;
 
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            ipnetwork.Contains(ipaddress);
+            ipnetwork.Contains(ipaddress!);
         });
     }
 

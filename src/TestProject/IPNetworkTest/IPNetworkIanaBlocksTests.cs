@@ -88,10 +88,10 @@ public class IPNetworkIanaBlocksTests
     [TestMethod]
     public void TestIana7()
     {
-        IPAddress ipaddress = null;
+        IPAddress? ipaddress = null;
         Assert.ThrowsExactly<ArgumentNullException>(() =>
         {
-            IPNetwork2.IsIANAReserved(ipaddress);
+            IPNetwork2.IsIANAReserved(ipaddress!);
         });
     }
 
