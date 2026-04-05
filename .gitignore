@@ -295,3 +295,4 @@ coverage.xml
 
 # VS Code
 .vscode/
+coverage.json
