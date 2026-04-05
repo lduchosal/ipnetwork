@@ -1,4 +1,4 @@
-﻿// <copyright file="ArgParsed.cs" company="IPNetwork">
+// <copyright file="ArgParsed.cs" company="IPNetwork">
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
@@ -10,9 +10,24 @@ namespace System.Net;
 public class ArgParsed
 {
     /// <summary>
-    /// Gets or sets position.
+    /// Gets the option character.
     /// </summary>
     public int Arg { get; }
+
+    /// <summary>
+    /// Gets the option group for usage display (e.g. "Print options").
+    /// </summary>
+    public string? Group { get; }
+
+    /// <summary>
+    /// Gets the argument name for usage display (e.g. "cidr", "network").
+    /// </summary>
+    public string? ArgName { get; }
+
+    /// <summary>
+    /// Gets the description for usage display.
+    /// </summary>
+    public string? Description { get; }
 
     private event ArgParsedDelegate OnArgParsed;
 
@@ -41,6 +56,23 @@ public class ArgParsed
     public ArgParsed(int arg, ArgParsedDelegate onArgParsed)
     {
         this.Arg = arg;
+        this.OnArgParsed += onArgParsed;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ArgParsed"/> class with usage metadata.
+    /// </summary>
+    /// <param name="arg">The option character.</param>
+    /// <param name="group">The option group name.</param>
+    /// <param name="description">The option description.</param>
+    /// <param name="onArgParsed">The event on parse.</param>
+    /// <param name="argName">The optional argument name (e.g. "cidr").</param>
+    public ArgParsed(int arg, string group, string description, ArgParsedDelegate onArgParsed, string? argName = null)
+    {
+        this.Arg = arg;
+        this.Group = group;
+        this.ArgName = argName;
+        this.Description = description;
         this.OnArgParsed += onArgParsed;
     }
 }

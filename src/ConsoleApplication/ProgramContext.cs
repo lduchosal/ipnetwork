@@ -10,6 +10,11 @@ namespace System.Net;
 public class ProgramContext
 {
     /// <summary>
+    /// Gets or sets a value indicating whether JSON output is enabled.
+    /// </summary>
+    public bool Json { get; set; }
+
+    /// <summary>
     /// Gets or sets a value indicating whether gets or sets the  IPNetwork.
     /// </summary>
     public bool IPNetwork { get; set; }

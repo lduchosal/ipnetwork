@@ -1,4 +1,4 @@
-﻿// <copyright file="Program.cs" company="IPNetwork">
+// <copyright file="Program.cs" company="IPNetwork">
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
@@ -7,8 +7,6 @@ namespace System.Net;
 using Gnu.Getopt;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.IO;
-using System.Numerics;
 
 /// <summary>
 /// Console app for IPNetwork.
@@ -19,22 +17,24 @@ public static class Program
 
     private static readonly ArgParsed[] ArgsList =
     [
-        new ArgParsed('i', (ac, _) => { ac.IPNetwork = true; }),
-        new ArgParsed('n', (ac, _) => { ac.Network = true; }),
-        new ArgParsed('m', (ac, _) => { ac.Netmask = true; }),
-        new ArgParsed('c', (ac, _) => { ac.Cidr = true; }),
-        new ArgParsed('b', (ac, _) => { ac.Broadcast = true; }),
-        new ArgParsed('f', (ac, _) => { ac.FirstUsable = true; }),
-        new ArgParsed('l', (ac, _) => { ac.LastUsable = true; }),
-        new ArgParsed('u', (ac, _) => { ac.Usable = true; }),
-        new ArgParsed('t', (ac, _) => { ac.Total = true; }),
-        new ArgParsed('w', (ac, _) => { ac.Action = Action.Supernet; }),
-        new ArgParsed('W', (ac, _) => { ac.Action = Action.WideSupernet; }),
-        new ArgParsed('h', (ac, _) => { ac.Action = Action.Usage; }),
-        new ArgParsed('x', (ac, _) => { ac.Action = Action.ListIPAddress; }),
-        new ArgParsed('?', (_, _) => { }),
-        new ArgParsed('D', (ac, _) => { ac.CidrParse = CidrParse.Default; }),
-        new ArgParsed('d', (ac, arg) =>
+        // Print options
+        new ArgParsed('i', "Print options", "network", (ac, _) => { ac.IPNetwork = true; }),
+        new ArgParsed('n', "Print options", "network address", (ac, _) => { ac.Network = true; }),
+        new ArgParsed('m', "Print options", "netmask", (ac, _) => { ac.Netmask = true; }),
+        new ArgParsed('c', "Print options", "cidr", (ac, _) => { ac.Cidr = true; }),
+        new ArgParsed('b', "Print options", "broadcast", (ac, _) => { ac.Broadcast = true; }),
+        new ArgParsed('f', "Print options", "first usable ip address", (ac, _) => { ac.FirstUsable = true; }),
+        new ArgParsed('l', "Print options", "last usable ip address", (ac, _) => { ac.LastUsable = true; }),
+        new ArgParsed('u', "Print options", "number of usable ip addresses", (ac, _) => { ac.Usable = true; }),
+        new ArgParsed('t', "Print options", "total number of ip addresses", (ac, _) => { ac.Total = true; }),
+
+        // Output options
+        new ArgParsed('j', "Output options", "JSON output", (ac, _) => { ac.Json = true; }),
+
+        // Parse options
+        new ArgParsed('D', "Parse options", "IPv4 only - use default cidr (ClassA/8, ClassB/16, ClassC/24)",
+            (ac, _) => { ac.CidrParse = CidrParse.Default; }),
+        new ArgParsed('d', "Parse options", "use cidr if not provided (default /32)", (ac, arg) =>
         {
             if (!IPNetwork2.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out byte? cidr))
             {
@@ -45,8 +45,11 @@ public static class Program
 
             ac.CidrParse = CidrParse.Value;
             ac.CidrParsed = (byte)cidr;
-        }),
-        new ArgParsed('s', (ac, arg) =>
+        }, argName: "cidr"),
+
+        // Actions
+        new ArgParsed('h', "Actions", "help message", (ac, _) => { ac.Action = Action.Usage; }),
+        new ArgParsed('s', "Actions", "split network into cidr subnets", (ac, arg) =>
         {
             if (!IPNetwork2.TryParseCidr(arg, Sockets.AddressFamily.InterNetwork, out byte? cidr))
             {
@@ -57,8 +60,14 @@ public static class Program
 
             ac.Action = Action.Subnet;
             ac.SubnetCidr = (byte)cidr;
-        }),
-        new ArgParsed('C', (ac, arg) =>
+        }, argName: "cidr"),
+        new ArgParsed('w', "Actions", "supernet networks into smallest possible subnets",
+            (ac, _) => { ac.Action = Action.Supernet; }),
+        new ArgParsed('W', "Actions", "supernet networks into one single subnet",
+            (ac, _) => { ac.Action = Action.WideSupernet; }),
+        new ArgParsed('x', "Actions", "list all ip addresses in networks",
+            (ac, _) => { ac.Action = Action.ListIPAddress; }),
+        new ArgParsed('C', "Actions", "network contain networks", (ac, arg) =>
         {
             if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
@@ -69,8 +78,8 @@ public static class Program
 
             ac.Action = Action.ContainNetwork;
             ac.ContainNetwork = ipnetwork;
-        }),
-        new ArgParsed('o', (ac, arg) =>
+        }, argName: "network"),
+        new ArgParsed('o', "Actions", "network overlap networks", (ac, arg) =>
         {
             if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
@@ -81,8 +90,8 @@ public static class Program
 
             ac.Action = Action.OverlapNetwork;
             ac.OverlapNetwork = ipnetwork;
-        }),
-        new ArgParsed('S', (ac, arg) =>
+        }, argName: "network"),
+        new ArgParsed('S', "Actions", "subtract network from networks", (ac, arg) =>
         {
             if (!TryParseIPNetwork(arg, ac.CidrParse, ac.CidrParsed, out IPNetwork2? ipnetwork))
             {
@@ -93,7 +102,10 @@ public static class Program
 
             ac.Action = Action.SubtractNetwork;
             ac.SubtractNetwork = ipnetwork;
-        })
+        }, argName: "network"),
+
+        // Hidden
+        new ArgParsed('?', (_, _) => { }),
     ];
 
     /// <summary>
@@ -103,223 +115,9 @@ public static class Program
     public static void Main(string[] args)
     {
         ProgramContext ac = ParseArgs(args);
-
-        switch (ac.Action)
-        {
-            case Action.Subnet:
-                SubnetNetworks(ac);
-                break;
-            case Action.Supernet:
-                SupernetNetworks(ac);
-                break;
-            case Action.WideSupernet:
-                WideSupernetNetworks(ac);
-                break;
-            case Action.PrintNetworks:
-                PrintNetworks(ac);
-                break;
-            case Action.ContainNetwork:
-                ContainNetwork(ac);
-                break;
-            case Action.OverlapNetwork:
-                OverlapNetwork(ac);
-                break;
-            case Action.ListIPAddress:
-                ListIPAddress(ac);
-                break;
-            case Action.SubtractNetwork:
-                SubtractNetwork(ac);
-                break;
-            default:
-                Usage();
-                break;
-        }
-    }
-
-    private static void ListIPAddress(ProgramContext ac)
-    {
-        foreach (IPNetwork2 ipnetwork in ac.Networks)
-        {
-            if (ipnetwork.Cidr < 16)
-            {
-                Console.Error.WriteLine(
-                    "WARNING: listing all IP addresses in {0} ({1} addresses). This may take a very long time.",
-                    ipnetwork,
-                    ipnetwork.Total);
-            }
-
-            foreach (IPAddress ipaddress in ipnetwork.ListIPAddress())
-            {
-                Console.WriteLine("{0}", ipaddress.ToString());
-            }
-        }
-    }
-    
-    private static void SubtractNetwork(ProgramContext ac)
-    {
-        if (ac.SubtractNetwork is null)
-        {
-            return;
-        }
-
-        foreach (IPNetwork2 ipnetwork in ac.Networks)
-        {
-            foreach (IPNetwork2 subtracted in ipnetwork.Subtract(ac.SubtractNetwork))
-            {
-                Console.WriteLine("{0}", subtracted);
-            }
-        }
-    }
-
-    private static void ContainNetwork(ProgramContext ac)
-    {
-        if (ac.ContainNetwork is null)
-        {
-            return;
-        }
-
-        foreach (IPNetwork2 ipnetwork in ac.Networks)
-        {
-            bool contain = ac.ContainNetwork.Contains(ipnetwork);
-            Console.WriteLine("{0} contains {1} : {2}", ac.ContainNetwork, ipnetwork, contain);
-        }
-    }
-
-    private static void OverlapNetwork(ProgramContext ac)
-    {
-        if (ac.OverlapNetwork is null)
-        {
-            return;
-        }
-
-        foreach (IPNetwork2 ipnetwork in ac.Networks)
-        {
-            bool overlap = ac.OverlapNetwork.Overlap(ipnetwork);
-            Console.WriteLine("{0} overlaps {1} : {2}", ac.OverlapNetwork, ipnetwork, overlap);
-        }
-    }
-
-    private static void WideSupernetNetworks(ProgramContext ac)
-    {
-        if (!IPNetwork2.TryWideSubnet(ac.Networks, out IPNetwork2? widesubnet))
-        {
-            Console.WriteLine("Unable to wide subnet these networks");
-            return;
-        }
-
-        PrintNetwork(ac, widesubnet);
-    }
-
-    private static void SupernetNetworks(ProgramContext ac)
-    {
-        if (!IPNetwork2.TrySupernet(ac.Networks, out IPNetwork2[]? supernet))
-        {
-            Console.WriteLine("Unable to supernet these networks");
-            return;
-        }
-
-        PrintNetworks(ac, supernet, supernet.Length);
-    }
-
-    private static void SubnetNetworks(ProgramContext ac)
-    {
-        BigInteger i = 0;
-        foreach (IPNetwork2 ipnetwork in ac.Networks)
-        {
-            i++;
-            int networkLength = ac.Networks.Length;
-            if (!ipnetwork.TrySubnet(ac.SubnetCidr, out IPNetworkCollection? ipnetworks)
-                || ipnetworks is null)
-            {
-                Console.WriteLine("Unable to subnet ipnetwork {0} into cidr {1}", ipnetwork, ac.SubnetCidr);
-                PrintSeparator(networkLength, i);
-                continue;
-            }
-
-            PrintNetworks(ac, ipnetworks, ipnetworks.Count);
-            PrintSeparator(networkLength, i);
-        }
-    }
-
-    private static void PrintSeparator(BigInteger max, BigInteger index)
-    {
-        if (max > 1 && index != max)
-        {
-            Console.WriteLine("--");
-        }
-    }
-    
-    private static void PrintNetworks(ProgramContext ac, IEnumerable<IPNetwork2> ipnetworks, BigInteger networkLength)
-    {
-        int i = 0;
-        foreach (IPNetwork2 ipn in ipnetworks)
-        {
-            i++;
-            PrintNetwork(ac, ipn);
-            PrintSeparator(networkLength, i);
-        }
-    }
-    
-    private static void PrintNetworks(ProgramContext ac)
-    {
-        int i = 0;
-        foreach (IPNetwork2 ipnetwork in ac.Networks)
-        {
-            i++;
-            PrintNetwork(ac, ipnetwork);
-            PrintSeparator(ac.Networks.Length, i);
-        }
-    }
-
-    private static void PrintNetwork(ProgramContext ac, IPNetwork2 ipn)
-    {
-        using var sw = new StringWriter();
-        if (ac.IPNetwork)
-        {
-            sw.WriteLine("IPNetwork   : {0}", ipn);
-        }
-
-        if (ac.Network)
-        {
-            sw.WriteLine("Network     : {0}", ipn.Network);
-        }
-
-        if (ac.Netmask)
-        {
-            sw.WriteLine("Netmask     : {0}", ipn.Netmask);
-        }
-
-        if (ac.Cidr)
-        {
-            sw.WriteLine("Cidr        : {0}", ipn.Cidr);
-        }
-
-        if (ac.Broadcast)
-        {
-            sw.WriteLine("Broadcast   : {0}", ipn.Broadcast);
-        }
-
-        if (ac.FirstUsable)
-        {
-            sw.WriteLine("FirstUsable : {0}", ipn.FirstUsable);
-        }
-
-        if (ac.LastUsable)
-        {
-            sw.WriteLine("LastUsable  : {0}", ipn.LastUsable);
-        }
-
-        if (ac.Usable)
-        {
-            sw.WriteLine("Usable      : {0}", ipn.Usable);
-        }
-
-        if (ac.Total)
-        {
-            sw.WriteLine("Total       : {0}", ipn.Total);
-        }
-
-        Console.Write(sw.ToString());
+        ActionOutput output = ActionComputer.Compute(ac, ArgsList);
+        IFormatter formatter = ac.Json ? new JsonFormatter(Console.Out) : new TextFormatter(Console.Out);
+        formatter.Write(output, ac);
     }
 
     static Program()
@@ -333,7 +131,7 @@ public static class Program
     private static ProgramContext ParseArgs(string[] args)
     {
         int c;
-        var g = new Getopt("ipnetwork", args, "inmcbfltud:Dhs:wWxC:o:S:");
+        var g = new Getopt("ipnetwork", args, "jinmcbfltud:Dhs:wWxC:o:S:");
         var ac = new ProgramContext();
 
         while ((c = g.getopt()) != -1)
@@ -354,7 +152,7 @@ public static class Program
         ac.NetworksString = ipnetworks.ToArray();
         ParseIPNetworks(ac);
 
-        if (ac.Networks.Length == 0)
+        if (ac.Networks.Length == 0 && ac.Action != Action.Usage)
         {
             Console.WriteLine("Provide at least one ipnetwork");
             ac.Action = Action.Usage;
@@ -439,14 +237,13 @@ public static class Program
     {
         ArgumentNullException.ThrowIfNull(ac);
 
-        return !ac.IPNetwork 
-               && !ac.Network 
-               && !ac.Netmask 
-               && !ac.Cidr 
-               && !ac.Broadcast 
-               && !ac.FirstUsable 
-               && !ac.LastUsable 
-               && !ac.Total 
+        return ac is { IPNetwork: false, Network: false }
+               && !ac.Netmask
+               && !ac.Cidr
+               && !ac.Broadcast
+               && !ac.FirstUsable
+               && !ac.LastUsable
+               && !ac.Total
                && !ac.Usable;
     }
 
@@ -465,41 +262,4 @@ public static class Program
         ac.Total = true;
     }
 
-    private static void Usage()
-    {
-        string version = typeof(Program).Assembly.GetName().Version?.ToString() ?? "unknown";
-
-        Console.WriteLine(
-            "Usage: ipnetwork [-inmcbflu] [-d cidr|-D] [-h|-s cidr|-S network|-w|-W|-x|-C network|-o network] networks ...");
-        Console.WriteLine("Version: {0}", version);
-        Console.WriteLine();
-        Console.WriteLine("Print options");
-        Console.WriteLine("\t-i : network");
-        Console.WriteLine("\t-n : network address");
-        Console.WriteLine("\t-m : netmask");
-        Console.WriteLine("\t-c : cidr");
-        Console.WriteLine("\t-b : broadcast");
-        Console.WriteLine("\t-f : first usable ip address");
-        Console.WriteLine("\t-l : last usable ip address");
-        Console.WriteLine("\t-u : number of usable ip addresses");
-        Console.WriteLine("\t-t : total number of ip addresses");
-        Console.WriteLine();
-        Console.WriteLine("Parse options");
-        Console.WriteLine("\t-d cidr : use cidr if not provided (default /32)");
-        Console.WriteLine("\t-D      : IPv4 only - use default cidr (ClassA/8, ClassB/16, ClassC/24)");
-        Console.WriteLine();
-        Console.WriteLine("Actions");
-        Console.WriteLine("\t-h         : help message");
-        Console.WriteLine("\t-s cidr    : split network into cidr subnets");
-        Console.WriteLine("\t-w         : supernet networks into smallest possible subnets");
-        Console.WriteLine("\t-W         : supernet networks into one single subnet");
-        Console.WriteLine("\t-x         : list all ip adresses in networks");
-        Console.WriteLine("\t-C network : network contain networks");
-        Console.WriteLine("\t-o network : network overlap networks");
-        Console.WriteLine("\t-S network : subtract network from networks");
-        Console.WriteLine(string.Empty);
-        Console.WriteLine("networks  : one or more network addresses ");
-        Console.WriteLine(
-            "            (1.2.3.4 10.0.0.0/8 10.0.0.0/255.0.0.0 2001:db8::/32 2001:db8:1:2:3:4:5:6/128 )");
-    }
 }
