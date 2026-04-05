@@ -23,7 +23,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <None Remove="TestResults\**"/>
+        <None Remove="TestResults\**" />
     </ItemGroup>
 
     <ItemGroup>
@@ -38,24 +38,25 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
+        <PackageReference Include="NetArchTest.eNhancedEdition" Version="1.4.5" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
     </ItemGroup>
     <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
-        <Reference Include="System"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="Microsoft.CSharp"/>
-        <Reference Include="System.Data"/>
+        <Reference Include="System" />
+        <Reference Include="System.Core" />
+        <Reference Include="Microsoft.CSharp" />
+        <Reference Include="System.Data" />
     </ItemGroup>
     <ItemGroup>
-        <ProjectReference Include="..\ConsoleApplication\ConsoleApplication.csproj"/>
-        <ProjectReference Include="..\System.Net.IPNetwork\System.Net.IPNetwork.csproj"/>
+        <ProjectReference Include="..\ConsoleApplication\ConsoleApplication.csproj" />
+        <ProjectReference Include="..\System.Net.IPNetwork\System.Net.IPNetwork.csproj" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Remove="TestResults\**"/>
+        <Compile Remove="TestResults\**" />
     </ItemGroup>
     <ItemGroup>
-        <EmbeddedResource Remove="TestResults\**"/>
+        <EmbeddedResource Remove="TestResults\**" />
     </ItemGroup>
 
 </Project>
