@@ -31,7 +31,7 @@
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Microsoft.CodeCoverage" Version="18.4.0" />
+        <PackageReference Include="Microsoft.CodeCoverage" Version="18.5.1" />
         <PackageReference Include="MSTest.TestAdapter" Version="4.2.1" />
         <PackageReference Include="MSTest.TestFramework" Version="4.2.1" />
         <PackageReference Include="coverlet.collector" Version="10.0.0">
@@ -40,7 +40,7 @@
         </PackageReference>
         <PackageReference Include="NetArchTest.eNhancedEdition" Version="1.4.5" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
-        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.4.0" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.5.1" />
     </ItemGroup>
     <ItemGroup Condition="'$(TargetFramework)'=='net40' OR '$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
         <Reference Include="System" />
