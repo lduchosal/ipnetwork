@@ -43,11 +43,11 @@
       },
       "MSTest.TestFramework": {
         "type": "Direct",
-        "requested": "[4.2.1, )",
-        "resolved": "4.2.1",
-        "contentHash": "I4/RbS2TpGZ56CE98+jPbrGlcerYtw2LvPVKzQGvyQQcJDekPy2Kd+fnThXYn+geJ1sW+vA9B7++rFNxvKcWxA==",
+        "requested": "[4.2.2, )",
+        "resolved": "4.2.2",
+        "contentHash": "IGjOt2kE6NxIgWYcM40DYSzCFaajLe6wHEICPRBnCqj1K4f9HrBLMPo4PE4mM/uKHNgDBvhvj/t1bXenUcQKqQ==",
         "dependencies": {
-          "MSTest.Analyzers": "4.2.1"
+          "MSTest.Analyzers": "4.2.2"
         }
       },
       "NetArchTest.eNhancedEdition": {
@@ -137,8 +137,8 @@
       },
       "MSTest.Analyzers": {
         "type": "Transitive",
-        "resolved": "4.2.1",
-        "contentHash": "1i9jgE/42KGGyZ4s0MdrYM/Uu/dRYhbRfYQifcO0AZ6vw4sBXRjoQGQRGNSm771AYgPAmoGl0u4sJc2lMET6HQ=="
+        "resolved": "4.2.2",
+        "contentHash": "0VUx09Q6MdPlTCG+xTqEoXIrjr32F1Ya5EI/hfQdRSczZh61AWWtCdGXRCe3DDfUUbPVvFBZTJcrlTT1Cv25Dg=="
       },
       "ipnetwork": {
         "type": "Project",
