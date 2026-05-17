@@ -16,6 +16,7 @@
         <WarningLevel>5</WarningLevel>
         <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
         <EnableMSTestRunner>true</EnableMSTestRunner>
+        <OutputType>Exe</OutputType>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
