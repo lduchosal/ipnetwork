@@ -39,3 +39,20 @@ jobs:
       with:
         file: coverage.lcov
         format: lcov
+
+  windows-net48:
+    name: Test net48 (Windows)
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 10.0.x
+    - name: Restore
+      run: dotnet restore ./src --verbosity m
+    - name: Build TestProject (net48)
+      run: dotnet build ./src/TestProject/TestProject.csproj -c Debug -f net48 --no-restore
+    - name: Run net48 tests against netstandard2.0 build
+      run: ./src/TestProject/bin/Debug/net48/TestProject.exe
