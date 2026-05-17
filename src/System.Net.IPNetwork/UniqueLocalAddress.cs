@@ -179,7 +179,7 @@ public static class UniqueLocalAddress
         byte[] timestamp = BitConverter.GetBytes(DateTimeOffset.UtcNow.ToUnixTimeSeconds());
         Array.Copy(timestamp, 0, input, macAddress.Length, timestamp.Length);
 
-#if NETSTANDARD2_1
+#if NETSTANDARD
         using var sha2 = SHA256.Create();
         byte[] hash = sha2.ComputeHash(input);
 #else
@@ -198,7 +198,7 @@ public static class UniqueLocalAddress
     private static byte[] GenerateGlobalIdFromSeed(string seed)
     {
         byte[] seedBytes = Encoding.UTF8.GetBytes(seed);
-#if NETSTANDARD2_1
+#if NETSTANDARD
         using var sha2 = SHA256.Create();
         byte[] hash = sha2.ComputeHash(seedBytes);
 #else
