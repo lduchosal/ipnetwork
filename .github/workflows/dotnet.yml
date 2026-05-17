@@ -55,4 +55,4 @@ jobs:
     - name: Build TestProject (net48)
       run: dotnet build ./src/TestProject/TestProject.csproj -c Debug -f net48 --no-restore
     - name: Run net48 tests against netstandard2.0 build
-      run: ./src/TestProject/bin/Debug/net48/TestProject.exe
+      run: dotnet test ./src/TestProject/TestProject.csproj -c Debug -f net48 --no-build --logger "console;verbosity=normal"
