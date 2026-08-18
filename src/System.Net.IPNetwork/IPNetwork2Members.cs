@@ -6,6 +6,7 @@ namespace System.Net;
 
 using System.Numerics;
 using System.Net.Sockets;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 
 /// <summary>
@@ -13,11 +14,21 @@ using System.Runtime.Serialization;
 /// </summary>
 public partial class IPNetwork2
 {
-    private readonly object sync = new ();
     private readonly Lazy<int> cachedHashCode;
     private BigInteger ipaddress;
     private byte cidr;
-    private BigInteger? cachedBroadcast;
+
+    /// <summary>
+    /// Lazily computed broadcast address.
+    /// <para>
+    /// This is deliberately a reference rather than a <see cref="Nullable{T}"/> of
+    /// <see cref="BigInteger"/>: a <c>BigInteger?</c> spans three fields (<c>hasValue</c>, the sign and the
+    /// magnitude array) and therefore cannot be written or read atomically, so a reader could observe it
+    /// half initialised and compute a wrong broadcast address. A reference is published by a single store,
+    /// and <c>volatile</c> orders that store after the box is fully initialised.
+    /// </para>
+    /// </summary>
+    private volatile StrongBox<BigInteger>? cachedBroadcast;
 
     private AddressFamily family;
 
@@ -38,10 +49,7 @@ public partial class IPNetwork2
             this.ipaddress = ipnetwork.ipaddress;
             this.family = ipnetwork.family;
             this.cidr = ipnetwork.cidr;
-            lock (this.sync)
-            {
-                this.cachedBroadcast = null;
-            }
+            this.cachedBroadcast = null;
         }
     }
 
@@ -224,25 +232,21 @@ public partial class IPNetwork2
     {
         get
         {
+            // Volatile read: either the cache is not published yet, or it is fully initialised.
             var cached = this.cachedBroadcast;
             if (cached != null)
             {
                 return cached.Value;
             }
 
-            lock (this.sync)
-            {
-                var cached2 = this.cachedBroadcast;
-                if (cached2 != null)
-                {
-                    return cached2.Value;
-                }
+            var network = this.InternalNetwork;
+            var computed = CreateBroadcast(ref network, this.InternalNetmask, this.family);
 
-                var network = this.InternalNetwork;
-                var computed = CreateBroadcast(ref network, this.InternalNetmask, this.family);
-                this.cachedBroadcast = computed;
-                return computed;
-            }
+            // No lock: CreateBroadcast is pure, so racing threads compute the same value and the
+            // duplicated work is cheaper than serialising every first access.
+            this.cachedBroadcast = new StrongBox<BigInteger>(computed);
+
+            return computed;
         }
     }
 
