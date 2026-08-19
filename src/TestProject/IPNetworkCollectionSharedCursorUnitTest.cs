@@ -120,6 +120,32 @@ public class IPNetworkCollectionSharedCursorUnitTest
             + "them silently skipped the subnets consumed by the other.");
     }
 
+    /// <summary>
+    ///     Deterministic guard for the same defect, and for its side effect: because GetEnumerator()
+    ///     returns the collection itself, the collection is also the IDisposable that foreach disposes at
+    ///     the end of every loop. A collection must hand out an enumerator distinct from itself.
+    /// </summary>
+    [TestMethod]
+    public void TestGetEnumeratorReturnsAnInstanceDistinctFromTheCollection()
+    {
+        var network = IPNetwork2.Parse("192.168.0.0/24");
+        IPNetworkCollection subnets = network.Subnet(26);
+
+        IEnumerator<IPNetwork2> first = ((IEnumerable<IPNetwork2>)subnets).GetEnumerator();
+        IEnumerator<IPNetwork2> second = ((IEnumerable<IPNetwork2>)subnets).GetEnumerator();
+
+        Assert.AreNotSame(
+            subnets,
+            first,
+            "GetEnumerator() returned the collection itself, so every enumeration shares one cursor and "
+            + "foreach disposes the collection when it ends.");
+        Assert.AreNotSame(
+            first,
+            second,
+            "Two calls to GetEnumerator() returned the same instance, so two enumerations cannot be "
+            + "independent.");
+    }
+
     private static int CountByForeach(IPNetworkCollection subnets)
     {
         int count = 0;
