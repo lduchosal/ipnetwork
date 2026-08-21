@@ -59,12 +59,12 @@ public class IPAddressCollection : IEnumerable<IPAddress>, IEnumerator<IPAddress
     /// </summary>
     /// <param name="i">The index of the IP address to retrieve.</param>
     /// <returns>The IP address corresponding to the given index.</returns>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when the given index is greater than or equal to the Count property of the IPNetwork collection.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the given index is negative, or greater than or equal to the Count property of the IPNetwork collection.</exception>
     public IPAddress this[BigInteger i]
     {
         get
         {
-            if (i >= this.Count)
+            if (i < 0 || i >= this.Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(i));
             }

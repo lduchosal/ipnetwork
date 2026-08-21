@@ -18,9 +18,11 @@ public class IPNetworkCollectionResetTests
     {
         var ipn = IPNetwork2.Parse("192.168.1.0/29");
         using IPNetworkCollection ipns = ipn.Subnet(32);
+        ipns.MoveNext();
         IPNetwork2 ipn0 = ipns.Current;
         ipns.MoveNext();
         ipns.Reset();
+        ipns.MoveNext();
         IPNetwork2 ipn1 = ipns.Current;
 
         Assert.AreEqual(ipn0, ipn1, "reset");

@@ -86,12 +86,12 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     /// <returns>
     /// The IPNetwork2 object at the specified index.
     /// </returns>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when the specified index is greater than or equal to the Count of the collection.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the specified index is negative, or greater than or equal to the Count of the collection.</exception>
     public IPNetwork2 this[BigInteger i]
     {
         get
         {
-            if (i >= this.Count)
+            if (i < 0 || i >= this.Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(i));
             }
