@@ -1,5 +1,9 @@
 <Project>
   <PropertyGroup>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <!-- Some SDK distributions (Homebrew among them) ship ILCompiler and ILLink.Tasks in a local
+         library-packs feed whose packages hash differently from nuget.org. Restoring from it writes
+         hashes into packages.lock.json that CI cannot match (NU1403), so always restore from the feeds. -->
+    <DisableImplicitLibraryPacksFolder>true</DisableImplicitLibraryPacksFolder>
   </PropertyGroup>
 </Project>

@@ -12,18 +12,17 @@
         "type": "Direct",
         "requested": "[10.0.13, )",
         "resolved": "10.0.13",
-        "contentHash": "zCm1JCKoZRybCHp23r8l4aJ8fzzFFhm9Do3+VwfgiWZsgl75+yy4z6UDs66PfWWopkPwiBMFY4bOM8Ifpwl4Lg=="
+        "contentHash": "MnT222WlxhelguLZTQx9soBHKW7TeY6A9YUwVaprjUd+ARlhLAkfsXGFNX9w6kRq89/yxUcAQ/lzvmgndSFfOw=="
       },
       "Microsoft.NET.ILLink.Tasks": {
         "type": "Direct",
         "requested": "[10.0.13, )",
         "resolved": "10.0.13",
-        "contentHash": "5Y5W4N5MD+7NRoRUG0aVUt1TaETXgTO6ItGWQ65cvRYXDzmsDZjsi6xmrVb8i7HWkOD8Fub0knuMyJLApbJ8wg=="
+        "contentHash": "40yrBMsLEcjixBR4G+FiUaBPvxXIPSKJ2OgSrbOZcmSDBda4Sb0k7BWrfDpIvn3IvvDzwOL/tEPa6gDQfh6aRw=="
       },
       "IPNetwork2": {
         "type": "Project"
       }
-    },
-    "net10.0/osx-arm64": {}
+    }
   }
 }
