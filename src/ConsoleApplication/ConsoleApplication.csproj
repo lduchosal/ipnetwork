@@ -6,7 +6,6 @@
 		<ImplicitUsings>disable</ImplicitUsings>
 		<SignAssembly>True</SignAssembly>
 		<AssemblyOriginatorKeyFile>..\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
-		<Version>5.0.1</Version>
 		<RootNamespace>System.Net</RootNamespace>
 		<LangVersion>latestmajor</LangVersion>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>

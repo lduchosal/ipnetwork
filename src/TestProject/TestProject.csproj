@@ -7,7 +7,6 @@
         <SignAssembly Condition="'$(OS)' != 'Windows_NT'">true</SignAssembly>
         <AssemblyOriginatorKeyFile>..\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
-        <Version>5.0.1</Version>
         <LangVersion>latestmajor</LangVersion>
         <NoWarn>SA1010</NoWarn>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
@@ -52,6 +51,10 @@
     <ItemGroup>
         <ProjectReference Include="..\ConsoleApplication\ConsoleApplication.csproj" Condition="'$(TargetFramework)' == 'net10.0'" />
         <ProjectReference Include="..\System.Net.IPNetwork\System.Net.IPNetwork.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <!-- Read by VersionConsistencyUnitTest to check every assembly carries the solution version. -->
+        <AssemblyMetadata Include="ExpectedVersion" Value="$(Version)" />
     </ItemGroup>
     <ItemGroup Condition="'$(TargetFramework)' != 'net10.0'">
         <Compile Remove="ArchitectureTest.cs" />

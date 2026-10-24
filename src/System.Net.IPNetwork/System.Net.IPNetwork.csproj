@@ -4,8 +4,17 @@
     <TargetFrameworks>net10.0;net9.0;net8.0;netstandard2.1;netstandard2.0</TargetFrameworks>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageId>IPNetwork2</PackageId>
-    <PackageVersion>5.0.1</PackageVersion>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <!-- The version attributes are generated from $(Version); the descriptive ones stay in Properties/AssemblyInfo.cs. -->
+    <GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
+    <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
+    <!-- The assembly is strong-named: AssemblyVersion only follows the major version, so that minor and
+         patch releases do not force consumers to recompile. FileVersion carries the full version. -->
+    <AssemblyVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '^\d+').Value).0.0.0</AssemblyVersion>
+    <FileVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '^\d+\.\d+\.\d+').Value).0</FileVersion>
     <PackageProjectUrl>https://github.com/lduchosal/ipnetwork</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageReleaseNotes>https://github.com/lduchosal/ipnetwork/pulls?q=is%3Apr</PackageReleaseNotes>
