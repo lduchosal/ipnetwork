@@ -1,21 +1,8 @@
 version: '5.0.{build}'
 image: Visual Studio 2022
 
-assembly_info:
-  patch: true
-  file: AssemblyInfo.*
-  assembly_version: "{version}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
-
-dotnet_csproj:
-  patch: true
-  file: '**\*.csproj'
-  version: '{version}'
-  package_version: '{version}'
-  assembly_version: '{version}'
-  file_version: '{version}'
-  informational_version: '{version}'
+# No assembly_info / dotnet_csproj patching: every version derives from the <Version> in
+# src/Directory.Build.props, and the version above only labels the AppVeyor build.
 
 build:
   project: src/
