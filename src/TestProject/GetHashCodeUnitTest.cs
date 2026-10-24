@@ -37,24 +37,29 @@ public class GetHashCodeUnitTest
     }
 
     /// <summary>
-    /// Test.
+    /// The hash code follows the network: once <see cref="IPNetwork2.Value"/> is rewritten, the
+    /// instance hashes like any other instance of the new network, as the Equals/GetHashCode
+    /// contract requires.
     /// </summary>
     [TestMethod]
-    public void TestGetHashCode_Refactor__to_not_reference_mutable_fields()
+    public void TestGetHashCode_FollowsValue()
     {
         var ipnetwork = IPNetwork2.Parse("1.0.0.0/1");
         int hashCode1 = ipnetwork.GetHashCode();
         ipnetwork.Value = "255.255.255.255/32";
         int hashCode2 = ipnetwork.GetHashCode();
+        int expected = IPNetwork2.Parse("255.255.255.255/32").GetHashCode();
 
-        Assert.AreEqual(hashCode1, hashCode2, "hashcode");
+        Assert.AreNotEqual(hashCode1, hashCode2, "hashcode");
+        Assert.AreEqual(expected, hashCode2, "hashcode");
     }
 
     /// <summary>
-    /// Test.
+    /// Like any mutable key, a network rewritten after being added to a dictionary can no longer be
+    /// found there, neither by itself nor by an instance equal to its former value.
     /// </summary>
     [TestMethod]
-    public void TestGetHashCode_Dictionary_failed()
+    public void TestGetHashCode_Dictionary_MutatedKeyIsLost()
     {
         var ipnetwork = IPNetwork2.Parse("1.0.0.0/1");
         var ipnetwork2 = IPNetwork2.Parse("1.0.0.0/1");
@@ -71,7 +76,7 @@ public class GetHashCodeUnitTest
 
         Assert.IsTrue(contains3, "contains3");
         Assert.IsTrue(contains4, "contains4");
-        Assert.IsTrue(contains5, "contains5");
+        Assert.IsFalse(contains5, "contains5");
         Assert.IsFalse(contains6, "contains6");
     }
 

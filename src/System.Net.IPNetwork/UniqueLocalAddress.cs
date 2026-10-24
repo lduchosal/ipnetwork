@@ -26,20 +26,28 @@ namespace System.Net;
 /// </summary>
 public static class UniqueLocalAddress
 {
-    /// <summary>
-    /// ULA prefix for locally assigned addresses (fd00::/8).
-    /// </summary>
-    public static readonly IPNetwork2 UlaLocallyAssigned = IPNetwork2.Parse("fd00::/8");
+    // These three used to be public static readonly fields. IPNetwork2.Value has a public setter, so
+    // handing out the shared instance let any caller rewrite, for the entire process, what counts as a
+    // ULA prefix. They are properties now, and each one returns a copy backed by the same immutable
+    // snapshot: same answers, one small allocation, and nothing a caller can write through.
+    private static readonly IPNetwork2 UlaLocallyAssignedPrefix = IPNetwork2.Parse("fd00::/8");
+    private static readonly IPNetwork2 UlaCentrallyAssignedPrefix = IPNetwork2.Parse("fc00::/8");
+    private static readonly IPNetwork2 UlaFullRange = IPNetwork2.Parse("fc00::/7");
 
     /// <summary>
-    /// ULA prefix for centrally assigned addresses (fc00::/8) - currently undefined.
+    /// Gets the ULA prefix for locally assigned addresses (fd00::/8).
     /// </summary>
-    public static readonly IPNetwork2 UlaCentrallyAssigned = IPNetwork2.Parse("fc00::/8");
+    public static IPNetwork2 UlaLocallyAssigned => UlaLocallyAssignedPrefix.Copy();
 
     /// <summary>
-    /// Full ULA range (fc00::/7).
+    /// Gets the ULA prefix for centrally assigned addresses (fc00::/8) - currently undefined.
     /// </summary>
-    public static readonly IPNetwork2 UlaRange = IPNetwork2.Parse("fc00::/7");
+    public static IPNetwork2 UlaCentrallyAssigned => UlaCentrallyAssignedPrefix.Copy();
+
+    /// <summary>
+    /// Gets the full ULA range (fc00::/7).
+    /// </summary>
+    public static IPNetwork2 UlaRange => UlaFullRange.Copy();
 
     /// <summary>
     /// Generates a random ULA /48 prefix using the algorithm from RFC 4193.
@@ -128,7 +136,7 @@ public static class UniqueLocalAddress
     /// <returns>True if the address is a ULA, false otherwise.</returns>
     public static bool IsUla(IPAddress address)
     {
-        return address?.AddressFamily == AddressFamily.InterNetworkV6 && UlaRange.Contains(address);
+        return address?.AddressFamily == AddressFamily.InterNetworkV6 && UlaFullRange.Contains(address);
     }
 
     /// <summary>
@@ -139,7 +147,7 @@ public static class UniqueLocalAddress
     public static bool IsUlaPrefix(IPNetwork2 network)
     {
         return network?.AddressFamily == AddressFamily.InterNetworkV6 
-               && UlaRange.Contains(network.Network);
+               && UlaFullRange.Contains(network.Network);
     }
 
     /// <summary>
@@ -150,7 +158,7 @@ public static class UniqueLocalAddress
     public static bool IsLocallyAssignedUla(IPNetwork2 network)
     {
         return network?.AddressFamily == AddressFamily.InterNetworkV6 
-               && UlaLocallyAssigned.Contains(network.Network);
+               && UlaLocallyAssignedPrefix.Contains(network.Network);
     }
 
     /// <summary>

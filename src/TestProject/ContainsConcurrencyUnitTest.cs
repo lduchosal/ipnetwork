@@ -62,19 +62,28 @@ public class ContainsConcurrencyUnitTest
     [TestMethod]
     public void TestBroadcastCacheIsAtomicallyPublishable()
     {
-        FieldInfo[] fields = typeof(IPNetwork2)
-            .GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public)
+        // The cache lives on the immutable state snapshot rather than on IPNetwork2 itself since the
+        // Value setter was made atomic, so look for it on the class and on the types nested in it.
+        Type[] holders = new[] { typeof(IPNetwork2) }
+            .Concat(typeof(IPNetwork2).GetNestedTypes(BindingFlags.NonPublic | BindingFlags.Public))
+            .ToArray();
+
+        FieldInfo[] fields = holders
+            .SelectMany(holder => holder.GetFields(BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Public))
             .Where(field => field.Name.IndexOf("broadcast", StringComparison.OrdinalIgnoreCase) >= 0)
             .ToArray();
 
-        Assert.AreEqual(1, fields.Length, "Expected exactly one broadcast cache field on IPNetwork2.");
+        Assert.AreEqual(
+            1,
+            fields.Length,
+            "Expected exactly one broadcast cache field on IPNetwork2 or on its nested state.");
 
         FieldInfo cache = fields[0];
         Assert.IsFalse(
             cache.FieldType.IsValueType,
-            $"IPNetwork2.{cache.Name} is a value type ({cache.FieldType.Name}). A multi-word struct cannot be "
-            + "published atomically, so a reader on the lock-free fast path can observe it half written. "
-            + "Store the cache behind a reference instead.");
+            $"{cache.DeclaringType!.Name}.{cache.Name} is a value type ({cache.FieldType.Name}). A multi-word "
+            + "struct cannot be published atomically, so a reader on the lock-free fast path can observe it "
+            + "half written. Store the cache behind a reference instead.");
     }
 
     private static string? ObserveContains(IPNetwork2 network)

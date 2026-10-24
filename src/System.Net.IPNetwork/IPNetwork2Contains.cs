@@ -25,14 +25,14 @@ public sealed partial class IPNetwork2
             throw new ArgumentNullException(nameof(contains));
         }
 
-        if (this.AddressFamily != contains.AddressFamily)
+        Snapshot snapshot = this.state;
+        if (snapshot.Family != contains.AddressFamily)
         {
             return false;
         }
 
-        BigInteger uintNetwork = this.InternalNetwork;
-        BigInteger
-            uintBroadcast = this.InternalBroadcast;
+        BigInteger uintNetwork = snapshot.Network;
+        BigInteger uintBroadcast = snapshot.Broadcast;
         var uintAddress = ToBigInteger(contains);
 
         bool result = uintAddress >= uintNetwork
@@ -53,14 +53,13 @@ public sealed partial class IPNetwork2
             throw new ArgumentNullException(nameof(contains));
         }
 
-        BigInteger uintNetwork = this.InternalNetwork;
-        BigInteger
-            uintBroadcast = this.InternalBroadcast;
+        Snapshot snapshot = this.state;
+        BigInteger uintNetwork = snapshot.Network;
+        BigInteger uintBroadcast = snapshot.Broadcast;
 
-        BigInteger uintFirst = contains.InternalNetwork;
-        BigInteger
-            uintLast = contains
-                .InternalBroadcast;
+        Snapshot other = contains.state;
+        BigInteger uintFirst = other.Network;
+        BigInteger uintLast = other.Broadcast;
 
         bool result = uintFirst >= uintNetwork
                       && uintLast <= uintBroadcast;

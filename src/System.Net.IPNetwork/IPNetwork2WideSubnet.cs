@@ -139,15 +139,15 @@ public sealed partial class IPNetwork2
 
         Array.Sort(nnin);
         IPNetwork2 nnin0 = nnin[0];
-        BigInteger uintNnin0 = nnin0.ipaddress;
+        BigInteger uintNnin0 = nnin0.InternalIpAddress;
 
         IPNetwork2 nninX = nnin[nnin.Length - 1];
         IPAddress ipaddressX = nninX.Last;
 
-        AddressFamily family = ipnetworks[0].family;
+        AddressFamily family = ipnetworks[0].AddressFamily;
         foreach (IPNetwork2 ipnx in ipnetworks)
         {
-            if (ipnx.family != family)
+            if (ipnx.AddressFamily != family)
             {
                 if (!tryWide)
                 {
@@ -160,7 +160,7 @@ public sealed partial class IPNetwork2
 
         IPNetwork2 ipn;
 
-        for (byte cidr = nnin0.cidr; ; cidr--)
+        for (byte cidr = nnin0.Cidr; ; cidr--)
         {
             var wideSubnet = new IPNetwork2(uintNnin0, family, cidr);
             if (wideSubnet.Contains(ipaddressX))

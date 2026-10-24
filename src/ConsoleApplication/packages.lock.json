@@ -10,19 +10,20 @@
       },
       "Microsoft.DotNet.ILCompiler": {
         "type": "Direct",
-        "requested": "[10.0.5, )",
-        "resolved": "10.0.5",
-        "contentHash": "3Fb+xF56wbjRCp4wC7LCRck+lhQv5UhFAw1xDcuXIugoPAuVJuKOdA/rUmGST73ki6ib+8TD0AhbVvacTdyRmg=="
+        "requested": "[10.0.13, )",
+        "resolved": "10.0.13",
+        "contentHash": "zCm1JCKoZRybCHp23r8l4aJ8fzzFFhm9Do3+VwfgiWZsgl75+yy4z6UDs66PfWWopkPwiBMFY4bOM8Ifpwl4Lg=="
       },
       "Microsoft.NET.ILLink.Tasks": {
         "type": "Direct",
-        "requested": "[10.0.7, )",
-        "resolved": "10.0.7",
-        "contentHash": "TH3MSazsQm+XAv0HZuKaNpCZyYQiIfMxnylkkSmkQ9e9GR/FrhQCabgh8cyjunzyi7+nrlaMtphv4mbyMXGF2Q=="
+        "requested": "[10.0.13, )",
+        "resolved": "10.0.13",
+        "contentHash": "5Y5W4N5MD+7NRoRUG0aVUt1TaETXgTO6ItGWQ65cvRYXDzmsDZjsi6xmrVb8i7HWkOD8Fub0knuMyJLApbJ8wg=="
       },
       "IPNetwork2": {
         "type": "Project"
       }
-    }
+    },
+    "net10.0/osx-arm64": {}
   }
 }

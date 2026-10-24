@@ -10,17 +10,13 @@ namespace System.Net;
 public sealed partial class IPNetwork2
 {
     /// <inheritdoc />
+    /// <remarks>
+    /// The hash is memoized on the state snapshot, not on the instance, so rewriting
+    /// <see cref="Value"/> drops the memoized value along with the network it described. Two equal
+    /// networks therefore keep hashing equally, whether or not either of them has been mutated.
+    /// </remarks>
     public override int GetHashCode()
     {
-        return this.cachedHashCode.Value;
-    }
-
-    private int ComputeHashCode()
-    {
-        int hash = 17;
-        hash = (hash * 31) + this.family.GetHashCode();
-        hash = (hash * 31) + this.InternalNetwork.GetHashCode();
-        hash = (hash * 31) + this.cidr.GetHashCode();
-        return hash;
+        return this.state.HashCode;
     }
 }

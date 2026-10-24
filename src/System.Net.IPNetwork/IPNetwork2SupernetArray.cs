@@ -129,7 +129,7 @@ public sealed partial class IPNetwork2
             int networkCompare = ipn1.InternalNetwork.CompareTo(ipn2.InternalNetwork);
             if (networkCompare == 0)
             {
-                int cidrCompare = ipn1.cidr.CompareTo(ipn2.cidr);
+                int cidrCompare = ipn1.Cidr.CompareTo(ipn2.Cidr);
                 return cidrCompare;
             }
 

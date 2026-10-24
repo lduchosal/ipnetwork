@@ -1,4 +1,4 @@
-﻿// <copyright file="IPNetwork2.cs" company="IPNetwork">
+// <copyright file="IPNetwork2.cs" company="IPNetwork">
 // Copyright (c) IPNetwork. All rights reserved.
 // </copyright>
 
@@ -22,6 +22,9 @@ public sealed partial class IPNetwork2 : ISerializable
     /// </returns>
     public override string ToString()
     {
-        return $"{this.Network}/{this.Cidr}";
+        // One snapshot for both halves: printing the network of one assignment next to the CIDR of
+        // another would describe a network that was never assigned.
+        Snapshot snapshot = this.state;
+        return $"{ToIPAddress(snapshot.Network, snapshot.Family)}/{snapshot.Cidr}";
     }
 }
