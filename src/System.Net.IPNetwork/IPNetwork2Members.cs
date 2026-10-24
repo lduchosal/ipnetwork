@@ -254,17 +254,6 @@ public partial class IPNetwork2
     }
 
     /// <summary>
-    /// Gets the netmask as a BigInteger representation based on the CIDR and address family.
-    /// </summary>
-    internal BigInteger InternalNetmask
-    {
-        get
-        {
-            return this.state.Netmask;
-        }
-    }
-
-    /// <summary>
     /// Gets the address the network was built from, host bits included.
     /// </summary>
     internal BigInteger InternalIpAddress
@@ -383,14 +372,8 @@ public partial class IPNetwork2
                 hash = (hash * 31) + this.Network.GetHashCode();
                 hash = (hash * 31) + this.cidr.GetHashCode();
 
-                // Zero marks "not computed yet", so the one network that would hash to it borrows the
-                // neighbouring value instead. Equal networks still hash equally, which is all the
-                // Equals/GetHashCode contract asks for.
-                if (hash == 0)
-                {
-                    hash = 1;
-                }
-
+                // Zero marks "not computed yet", so a network that hashes to zero is simply recomputed
+                // on every call: the computation is pure, only the memoization is lost.
                 Volatile.Write(ref this.cachedHashCode, hash);
                 return hash;
             }

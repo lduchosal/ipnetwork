@@ -42,6 +42,28 @@ public class IPNetworkCollectionSharedCursorUnitTest
     }
 
     /// <summary>
+    ///     Resetting an enumerator brings it back before the first element, without affecting the
+    ///     cursor of the collection itself.
+    /// </summary>
+    [TestMethod]
+    public void TestEnumeratorResetRestartsFromTheFirstElement()
+    {
+        var network = IPNetwork2.Parse("192.168.0.0/24");
+        IPNetworkCollection subnets = network.Subnet(26);
+
+        using IEnumerator<IPNetwork2> enumerator = ((IEnumerable<IPNetwork2>)subnets).GetEnumerator();
+        Assert.IsTrue(enumerator.MoveNext());
+        Assert.IsTrue(enumerator.MoveNext());
+        Assert.AreEqual(IPNetwork2.Parse("192.168.0.64/26"), enumerator.Current);
+
+        enumerator.Reset();
+
+        Assert.IsTrue(enumerator.MoveNext(), "The enumerator is expected to restart after Reset().");
+        Assert.AreEqual(IPNetwork2.Parse("192.168.0.0/26"), enumerator.Current);
+        Assert.AreEqual(4, CountByForeach(subnets), "Resetting an enumerator disturbed the collection.");
+    }
+
+    /// <summary>
     ///     Nested enumeration of the same collection must visit every pair. The inner loop consumes the
     ///     one and only cursor, so the outer loop is truncated as a side effect.
     /// </summary>
