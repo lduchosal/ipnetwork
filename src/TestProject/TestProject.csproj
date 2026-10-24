@@ -7,7 +7,7 @@
         <SignAssembly Condition="'$(OS)' != 'Windows_NT'">true</SignAssembly>
         <AssemblyOriginatorKeyFile>..\System.Net.IPNetwork.snk</AssemblyOriginatorKeyFile>
         <EnableNETAnalyzers>true</EnableNETAnalyzers>
-        <Version>5.0.0</Version>
+        <Version>5.0.1</Version>
         <LangVersion>latestmajor</LangVersion>
         <NoWarn>SA1010</NoWarn>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
