@@ -86,12 +86,12 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     /// <returns>
     /// The IPNetwork2 object at the specified index.
     /// </returns>
-    /// <exception cref="ArgumentOutOfRangeException">Thrown when the specified index is greater than or equal to the Count of the collection.</exception>
+    /// <exception cref="ArgumentOutOfRangeException">Thrown when the specified index is negative, or greater than or equal to the Count of the collection.</exception>
     public IPNetwork2 this[BigInteger i]
     {
         get
         {
-            if (i >= this.Count)
+            if (i < 0 || i >= this.Count)
             {
                 throw new ArgumentOutOfRangeException(nameof(i));
             }
@@ -109,13 +109,13 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     /// <inheritdoc/>
     IEnumerator<IPNetwork2> IEnumerable<IPNetwork2>.GetEnumerator()
     {
-        return this;
+        return new Enumerator(this);
     }
 
     /// <inheritdoc/>
     IEnumerator IEnumerable.GetEnumerator()
     {
-        return this;
+        return new Enumerator(this);
     }
 
     /// <inheritdoc/>
@@ -174,5 +174,47 @@ public class IPNetworkCollection : IEnumerable<IPNetwork2>, IEnumerator<IPNetwor
     public void Reset()
     {
         this.enumerator = -1;
+    }
+
+    /// <summary>
+    /// Walks the collection with a cursor of its own, so that a second, a nested or a concurrent
+    /// enumeration never disturbs another one.
+    /// </summary>
+    private struct Enumerator : IEnumerator<IPNetwork2>
+    {
+        private readonly IPNetworkCollection collection;
+        private BigInteger enumerator;
+
+        public Enumerator(IPNetworkCollection collection)
+        {
+            this.collection = collection;
+            this.enumerator = -1;
+        }
+
+        public IPNetwork2 Current
+        {
+            get { return this.collection[this.enumerator]; }
+        }
+
+        object IEnumerator.Current
+        {
+            get { return this.Current; }
+        }
+
+        public bool MoveNext()
+        {
+            this.enumerator++;
+            return this.enumerator < this.collection.Count;
+        }
+
+        public void Reset()
+        {
+            this.enumerator = -1;
+        }
+
+        public void Dispose()
+        {
+            // nothing to dispose
+        }
     }
 }

@@ -8,33 +8,38 @@ using System.Numerics;
 using System.Net.Sockets;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using System.Threading;
 
 /// <summary>
 /// Properties and members of IPNetwork2.
 /// </summary>
 public partial class IPNetwork2
 {
-    private readonly Lazy<int> cachedHashCode;
-    private BigInteger ipaddress;
-    private byte cidr;
-
     /// <summary>
-    /// Lazily computed broadcast address.
+    /// The whole mutable state of the instance, held behind a single reference.
     /// <para>
-    /// This is deliberately a reference rather than a <see cref="Nullable{T}"/> of
-    /// <see cref="BigInteger"/>: a <c>BigInteger?</c> spans three fields (<c>hasValue</c>, the sign and the
-    /// magnitude array) and therefore cannot be written or read atomically, so a reader could observe it
-    /// half initialised and compute a wrong broadcast address. A reference is published by a single store,
-    /// and <c>volatile</c> orders that store after the box is fully initialised.
+    /// The address, the family and the CIDR only ever change together, by one store of this field, so a
+    /// reader always observes a network that was actually assigned and never a mix of two. Writing them
+    /// as three separate fields could not offer that: a reader could pair the new CIDR with the old
+    /// address and compute a network nobody ever asked for.
+    /// </para>
+    /// <para>
+    /// Everything derived from that triple is memoized on the snapshot rather than on the instance,
+    /// which is what invalidates the broadcast address and the hash code when <see cref="Value"/>
+    /// rewrites the network: the old snapshot, caches included, is simply dropped.
     /// </para>
     /// </summary>
-    private volatile StrongBox<BigInteger>? cachedBroadcast;
-
-    private AddressFamily family;
+    private volatile Snapshot state;
 
     /// <summary>
-    /// Gets or sets a value indicating whether a gets or sets the value of the IPNetwork property.
+    /// Gets or sets the network in CIDR notation.
     /// </summary>
+    /// <remarks>
+    /// The setter replaces the whole network at once. Readers of a single property, or of a single
+    /// method such as <see cref="Contains(IPAddress)"/> or <see cref="ToString"/>, therefore see either
+    /// the network before the assignment or the one after it. Combining several properties into one
+    /// observation remains the caller's own responsibility, as for any mutable object.
+    /// </remarks>
     [DataMember(Name = "IPNetwork", IsRequired = true)]
     public string Value
     {
@@ -45,11 +50,7 @@ public partial class IPNetwork2
 
         set
         {
-            var ipnetwork = Parse(value);
-            this.ipaddress = ipnetwork.ipaddress;
-            this.family = ipnetwork.family;
-            this.cidr = ipnetwork.cidr;
-            this.cachedBroadcast = null;
+            this.state = Parse(value).state;
         }
     }
 
@@ -60,7 +61,8 @@ public partial class IPNetwork2
     {
         get
         {
-            return ToIPAddress(this.InternalNetwork, this.family);
+            Snapshot snapshot = this.state;
+            return ToIPAddress(snapshot.Network, snapshot.Family);
         }
     }
 
@@ -71,7 +73,7 @@ public partial class IPNetwork2
     {
         get
         {
-            return this.family;
+            return this.state.Family;
         }
     }
 
@@ -82,7 +84,8 @@ public partial class IPNetwork2
     {
         get
         {
-            return ToIPAddress(this.InternalNetmask, this.family);
+            Snapshot snapshot = this.state;
+            return ToIPAddress(snapshot.Netmask, snapshot.Family);
         }
     }
 
@@ -93,15 +96,16 @@ public partial class IPNetwork2
     {
         get
         {
-            if (this.family == AddressFamily.InterNetworkV6)
+            Snapshot snapshot = this.state;
+            if (snapshot.Family == AddressFamily.InterNetworkV6)
             {
                 return null;
             }
 
-            return ToIPAddress(this.InternalBroadcast, this.family);
+            return ToIPAddress(snapshot.Broadcast, snapshot.Family);
         }
     }
-    
+
     /// <summary>
     /// Gets first usable IPAddress in Network.
     /// Per RFC 3021, /31 networks have no reserved network address.
@@ -110,14 +114,15 @@ public partial class IPNetwork2
     {
         get
         {
-            BigInteger first = this.InternalNetwork;
-            if (this.family == AddressFamily.InterNetwork
-                && this.cidr < 31)
+            Snapshot snapshot = this.state;
+            BigInteger first = snapshot.Network;
+            if (snapshot.Family == AddressFamily.InterNetwork
+                && snapshot.Cidr < 31)
             {
                 first += 1;
             }
 
-            return ToIPAddress(first, this.family);
+            return ToIPAddress(first, snapshot.Family);
         }
     }
 
@@ -129,17 +134,18 @@ public partial class IPNetwork2
     {
         get
         {
-            BigInteger last = this.InternalBroadcast;
-            if (this.family == AddressFamily.InterNetwork
-                && this.cidr < 31)
+            Snapshot snapshot = this.state;
+            BigInteger last = snapshot.Broadcast;
+            if (snapshot.Family == AddressFamily.InterNetwork
+                && snapshot.Cidr < 31)
             {
                 last -= 1;
             }
 
-            return ToIPAddress(last, this.family);
+            return ToIPAddress(last, snapshot.Family);
         }
     }
-    
+
     /// <summary>
     /// Gets first IPAddress in Network.
     /// </summary>
@@ -147,11 +153,11 @@ public partial class IPNetwork2
     {
         get
         {
-            BigInteger first = this.InternalNetwork;
-            return ToIPAddress(first, this.family);
+            Snapshot snapshot = this.state;
+            return ToIPAddress(snapshot.Network, snapshot.Family);
         }
     }
-    
+
     /// <summary>
     /// Gets last IPAddress in Network.
     /// </summary>
@@ -159,11 +165,11 @@ public partial class IPNetwork2
     {
         get
         {
-            BigInteger last = this.InternalBroadcast;
-            return ToIPAddress(last, this.family);
+            Snapshot snapshot = this.state;
+            return ToIPAddress(snapshot.Broadcast, snapshot.Family);
         }
     }
-    
+
     /// <summary>
     /// Gets number of usable IPAddress in Network.
     /// 
@@ -177,26 +183,28 @@ public partial class IPNetwork2
     {
         get
         {
-            if (this.family == AddressFamily.InterNetworkV6)
+            Snapshot snapshot = this.state;
+            if (snapshot.Family == AddressFamily.InterNetworkV6)
             {
-                return this.Total;
+                return TotalOf(snapshot);
             }
 
             byte[] mask = [0xff, 0xff, 0xff, 0xff, 0x00];
             var bmask = new BigInteger(mask);
             BigInteger usableIps;
-            if (this.cidr == 32)
+            if (snapshot.Cidr == 32)
             {
                 usableIps = 1;
             }
-            else if (this.cidr == 31)
+            else if (snapshot.Cidr == 31)
             {
                 usableIps = 2;
             }
             else
             {
-                usableIps = ((bmask >> this.cidr)- 1);
+                usableIps = (bmask >> snapshot.Cidr) - 1;
             }
+
             return usableIps;
         }
     }
@@ -208,9 +216,7 @@ public partial class IPNetwork2
     {
         get
         {
-            int max = this.family == AddressFamily.InterNetwork ? 32 : 128;
-            var count = BigInteger.Pow(2, max - this.cidr);
-            return count;
+            return TotalOf(this.state);
         }
     }
 
@@ -221,7 +227,7 @@ public partial class IPNetwork2
     {
         get
         {
-            return this.cidr;
+            return this.state.Cidr;
         }
     }
 
@@ -232,21 +238,7 @@ public partial class IPNetwork2
     {
         get
         {
-            // Volatile read: either the cache is not published yet, or it is fully initialised.
-            var cached = this.cachedBroadcast;
-            if (cached != null)
-            {
-                return cached.Value;
-            }
-
-            var network = this.InternalNetwork;
-            var computed = CreateBroadcast(ref network, this.InternalNetmask, this.family);
-
-            // No lock: CreateBroadcast is pure, so racing threads compute the same value and the
-            // duplicated work is cheaper than serialising every first access.
-            this.cachedBroadcast = new StrongBox<BigInteger>(computed);
-
-            return computed;
+            return this.state.Broadcast;
         }
     }
 
@@ -257,19 +249,134 @@ public partial class IPNetwork2
     {
         get
         {
-            BigInteger uintNetwork = this.ipaddress & this.InternalNetmask;
-            return uintNetwork;
+            return this.state.Network;
         }
     }
 
     /// <summary>
-    /// Gets the netmask as a BigInteger representation based on the CIDR and address family.
+    /// Gets the address the network was built from, host bits included.
     /// </summary>
-    internal BigInteger InternalNetmask
+    internal BigInteger InternalIpAddress
     {
         get
         {
-            return ToUint(this.cidr, this.family);
+            return this.state.IpAddress;
+        }
+    }
+
+    private static BigInteger TotalOf(Snapshot snapshot)
+    {
+        int max = snapshot.Family == AddressFamily.InterNetwork ? 32 : 128;
+        return BigInteger.Pow(2, max - snapshot.Cidr);
+    }
+
+    /// <summary>
+    /// An immutable (address, family, cidr) triple, plus the values derived from it.
+    /// <para>
+    /// Being immutable is what makes the triple publishable by a single store, and what lets several
+    /// instances share one snapshot: <see cref="IPNetwork2.Copy"/> hands out a network backed by the
+    /// same snapshot, so a caller who rewrites the copy cannot reach the original.
+    /// </para>
+    /// </summary>
+    private sealed class Snapshot
+    {
+        private readonly BigInteger ipaddress;
+        private readonly AddressFamily family;
+        private readonly byte cidr;
+
+        /// <summary>
+        /// Lazily computed broadcast address.
+        /// <para>
+        /// This is deliberately a reference rather than a <see cref="Nullable{T}"/> of
+        /// <see cref="BigInteger"/>: a <c>BigInteger?</c> spans three fields (<c>hasValue</c>, the sign
+        /// and the magnitude array) and therefore cannot be written or read atomically, so a reader
+        /// could observe it half initialised and compute a wrong broadcast address. A reference is
+        /// published by a single store, and <c>volatile</c> orders that store after the box is fully
+        /// initialised.
+        /// </para>
+        /// </summary>
+        private volatile StrongBox<BigInteger>? cachedBroadcast;
+
+        /// <summary>
+        /// Lazily computed hash code, or zero while it has not been computed yet. An <see cref="int"/>
+        /// is written and read atomically, so no box is needed here.
+        /// </summary>
+        private int cachedHashCode;
+
+        internal Snapshot(BigInteger ipaddress, AddressFamily family, byte cidr)
+        {
+            this.ipaddress = ipaddress;
+            this.family = family;
+            this.cidr = cidr;
+        }
+
+        internal BigInteger IpAddress
+        {
+            get { return this.ipaddress; }
+        }
+
+        internal AddressFamily Family
+        {
+            get { return this.family; }
+        }
+
+        internal byte Cidr
+        {
+            get { return this.cidr; }
+        }
+
+        internal BigInteger Netmask
+        {
+            get { return ToUint(this.cidr, this.family); }
+        }
+
+        internal BigInteger Network
+        {
+            get { return this.ipaddress & this.Netmask; }
+        }
+
+        internal BigInteger Broadcast
+        {
+            get
+            {
+                // Volatile read: either the cache is not published yet, or it is fully initialised.
+                StrongBox<BigInteger>? cached = this.cachedBroadcast;
+                if (cached != null)
+                {
+                    return cached.Value;
+                }
+
+                BigInteger network = this.Network;
+                BigInteger computed = CreateBroadcast(ref network, this.Netmask, this.family);
+
+                // No lock: CreateBroadcast is pure, so racing threads compute the same value and the
+                // duplicated work is cheaper than serialising every first access.
+                this.cachedBroadcast = new StrongBox<BigInteger>(computed);
+
+                return computed;
+            }
+        }
+
+        internal int HashCode
+        {
+            get
+            {
+                int cached = Volatile.Read(ref this.cachedHashCode);
+                if (cached != 0)
+                {
+                    return cached;
+                }
+
+                int hash = 17;
+                hash = (hash * 31) + this.family.GetHashCode();
+                hash = (hash * 31) + this.Network.GetHashCode();
+                hash = (hash * 31) + this.cidr.GetHashCode();
+
+                // Zero marks "not computed yet", so a network that hashes to zero is simply recomputed
+                // on every call: the computation is pure, only the memoization is lost.
+                Volatile.Write(ref this.cachedHashCode, hash);
+                return hash;
+            }
         }
     }
 }

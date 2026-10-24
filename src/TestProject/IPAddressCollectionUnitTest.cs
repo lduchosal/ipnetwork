@@ -118,10 +118,12 @@ public class IPAddressCollectionUnitTest
             count++;
         }
 
-        object current = ((IEnumerator)ips).Current;
-        ((IEnumerator)ips).Reset();
+        var enumerator = (IEnumerator)ips;
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(
+            () => _ = enumerator.Current,
+            "Current is read at the start position here, it must not yield an out of range element.");
+        enumerator.Reset();
 
-        Assert.IsNotNull(current, "current is no null");
         Assert.IsNotNull(last, "last is null");
         Assert.IsNotNull(first, "first is null");
         Assert.AreEqual("192.168.1.0", first.ToString(), "first");
@@ -265,7 +267,9 @@ public class IPAddressCollectionUnitTest
     {
         var ipn = IPNetwork2.Parse("192.168.1.0/31");
         IEnumerator ips = ipn.ListIPAddress();
-        Assert.IsNotNull(ips.Current);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(
+            () => _ = ips.Current,
+            "Current before the first MoveNext() must not return an element outside the network.");
         Assert.IsTrue(ips.MoveNext());
         Assert.IsNotNull(ips.Current);
         Assert.IsTrue(ips.MoveNext());
@@ -280,7 +284,9 @@ public class IPAddressCollectionUnitTest
     {
         var ipn = IPNetwork2.Parse("192.168.1.0/31");
         IEnumerator ips = ipn.ListIPAddress();
-        Assert.IsNotNull(ips.Current);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(
+            () => _ = ips.Current,
+            "Current before the first MoveNext() must not return an element outside the network.");
         Assert.IsTrue(ips.MoveNext());
         Assert.IsNotNull(ips.Current);
         Assert.IsTrue(ips.MoveNext());
@@ -485,7 +491,9 @@ public class IPAddressCollectionUnitTest
     {
         var ipn = IPNetwork2.Parse("::/127");
         IEnumerator ips = ipn.ListIPAddress();
-        Assert.IsNotNull(ips.Current);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(
+            () => _ = ips.Current,
+            "Current before the first MoveNext() must not return an element outside the network.");
         Assert.IsTrue(ips.MoveNext());
         Assert.IsNotNull(ips.Current);
         Assert.IsTrue(ips.MoveNext());
@@ -500,7 +508,9 @@ public class IPAddressCollectionUnitTest
     {
         var ipn = IPNetwork2.Parse("::/127");
         IEnumerator ips = ipn.ListIPAddress();
-        Assert.IsNotNull(ips.Current);
+        Assert.ThrowsExactly<ArgumentOutOfRangeException>(
+            () => _ = ips.Current,
+            "Current before the first MoveNext() must not return an element outside the network.");
         Assert.IsTrue(ips.MoveNext());
         Assert.IsNotNull(ips.Current);
         Assert.IsTrue(ips.MoveNext());

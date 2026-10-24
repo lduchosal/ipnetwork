@@ -82,17 +82,17 @@ public sealed partial class IPNetwork2
 
         if (network1.Contains(network2))
         {
-            supernet = new IPNetwork2(network1.InternalNetwork, network1.family, network1.Cidr);
+            supernet = new IPNetwork2(network1.InternalNetwork, network1.AddressFamily, network1.Cidr);
             return true;
         }
 
         if (network2.Contains(network1))
         {
-            supernet = new IPNetwork2(network2.InternalNetwork, network2.family, network2.Cidr);
+            supernet = new IPNetwork2(network2.InternalNetwork, network2.AddressFamily, network2.Cidr);
             return true;
         }
 
-        if (network1.cidr != network2.cidr)
+        if (network1.Cidr != network2.Cidr)
         {
             if (!trySupernet)
             {
@@ -124,9 +124,9 @@ public sealed partial class IPNetwork2
         }
 
         BigInteger uintSupernet = first.InternalNetwork;
-        byte cidrSupernet = (byte)(first.cidr - 1);
+        byte cidrSupernet = (byte)(first.Cidr - 1);
 
-        var networkSupernet = new IPNetwork2(uintSupernet, first.family, cidrSupernet);
+        var networkSupernet = new IPNetwork2(uintSupernet, first.AddressFamily, cidrSupernet);
         if (networkSupernet.InternalNetwork != first.InternalNetwork)
         {
             if (!trySupernet)

@@ -62,7 +62,7 @@ public sealed partial class IPNetwork2
             return false;
         }
 
-        int maxCidr = network.family == Sockets.AddressFamily.InterNetwork ? 32 : 128;
+        int maxCidr = network.AddressFamily == Sockets.AddressFamily.InterNetwork ? 32 : 128;
         if (cidr > maxCidr)
         {
             if (!trySubnet)

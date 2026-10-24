@@ -20,8 +20,7 @@ public partial class IPNetwork2
     /// <param name="cidr">The CIDR (Classless Inter-Domain Routing) notation of the network.</param>
     internal IPNetwork2(BigInteger ipaddress, AddressFamily family, byte cidr)
     {
-        this.Init(ipaddress, family, cidr);
-        this.cachedHashCode = new Lazy<int>(this.ComputeHashCode);
+        this.state = CreateSnapshot(ipaddress, family, cidr);
     }
 
     /// <summary>
@@ -40,20 +39,40 @@ public partial class IPNetwork2
 
         BigInteger uintIpAddress = ToBigInteger(ipaddress);
 
-        this.Init(uintIpAddress, ipaddress.AddressFamily, cidr);
-        this.cachedHashCode = new Lazy<int>(this.ComputeHashCode);
+        this.state = CreateSnapshot(uintIpAddress, ipaddress.AddressFamily, cidr);
     }
 
-    private void Init(BigInteger ipaddress1, AddressFamily family1, byte cidr1)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="IPNetwork2"/> class sharing the state of another one.
+    /// </summary>
+    /// <param name="state">The snapshot to share.</param>
+    private IPNetwork2(Snapshot state)
     {
-        int maxCidr = family1 == AddressFamily.InterNetwork ? 32 : 128;
-        if (cidr1 > maxCidr)
+        this.state = state;
+    }
+
+    /// <summary>
+    /// Returns a network equal to this one that no other caller holds a reference to.
+    /// </summary>
+    /// <remarks>
+    /// The snapshot is immutable, so it is shared rather than copied: the returned instance answers
+    /// exactly like this one, and rewriting its <see cref="Value"/> replaces its own snapshot without
+    /// touching this instance. That is what lets the shared singletons be handed out safely.
+    /// </remarks>
+    /// <returns>An independent <see cref="IPNetwork2"/> holding the same network.</returns>
+    internal IPNetwork2 Copy()
+    {
+        return new IPNetwork2(this.state);
+    }
+
+    private static Snapshot CreateSnapshot(BigInteger ipaddress, AddressFamily family, byte cidr)
+    {
+        int maxCidr = family == AddressFamily.InterNetwork ? 32 : 128;
+        if (cidr > maxCidr)
         {
-            throw new ArgumentOutOfRangeException(nameof(cidr1));
+            throw new ArgumentOutOfRangeException(nameof(cidr));
         }
 
-        this.ipaddress = ipaddress1;
-        this.family = family1;
-        this.cidr = cidr1;
+        return new Snapshot(ipaddress, family, cidr);
     }
 }

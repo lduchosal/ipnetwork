@@ -102,7 +102,7 @@ public sealed partial class IPNetwork2
         // If networks don't overlap, return original network
         if (!network1.Contains(network2))
         {
-            var copy = new IPNetwork2(network1.InternalNetwork, network1.family, network1.Cidr);
+            var copy = new IPNetwork2(network1.InternalNetwork, network1.AddressFamily, network1.Cidr);
             result = [copy];
             return true;
         }
@@ -144,6 +144,6 @@ public sealed partial class IPNetwork2
             queue.Enqueue(rightHalf);
         }
         
-        return result.OrderBy(n => n.ipaddress).ToList();
+        return result.OrderBy(n => n.InternalIpAddress).ToList();
     }
 }

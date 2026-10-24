@@ -16,10 +16,7 @@ public sealed partial class IPNetwork2
         string sipnetwork = info.GetString("IPNetwork") ?? throw new SerializationException("Missing IPNetwork value");
         var ipnetwork = Parse(sipnetwork);
 
-        this.ipaddress = ipnetwork.ipaddress;
-        this.cidr = ipnetwork.cidr;
-        this.family = ipnetwork.family;
-        this.cachedHashCode = new Lazy<int>(this.ComputeHashCode);
+        this.state = ipnetwork.state;
     }
 
     /// <inheritdoc/>

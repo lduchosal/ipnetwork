@@ -45,22 +45,27 @@ public sealed partial class IPNetwork2
             return 1;
         }
 
+        // one snapshot per side, so that a network rewritten halfway through the comparison is
+        // either wholly the old one or wholly the new one
+        Snapshot leftState = left.state;
+        Snapshot rightState = right.state;
+
         // first test family
-        int result = left.family.CompareTo(right.family);
+        int result = leftState.Family.CompareTo(rightState.Family);
         if (result != 0)
         {
             return result;
         }
 
         // second test the network
-        result = left.InternalNetwork.CompareTo(right.InternalNetwork);
+        result = leftState.Network.CompareTo(rightState.Network);
         if (result != 0)
         {
             return result;
         }
 
         // then test the cidr
-        result = (left.cidr * -1).CompareTo((right.cidr * -1));
+        result = (leftState.Cidr * -1).CompareTo(rightState.Cidr * -1);
         return result;
     }
 
