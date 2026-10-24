@@ -4,7 +4,6 @@
 
 namespace TestProject;
 
-using System.Diagnostics;
 using System.Reflection;
 using System.Threading;
 
@@ -133,8 +132,9 @@ public class IPNetwork2MutabilityUnitTest
         var set = new HashSet<IPNetwork2> { expected };
 
         Assert.IsTrue(network.Equals(expected), "The mutated network is expected to equal a freshly parsed one.");
-        Assert.IsTrue(
-            set.Contains(network),
+        Assert.Contains(
+            network,
+            set,
             "A HashSet does not find the mutated network even though it equals the stored one: equal "
             + "instances carry different hash codes.");
     }
@@ -221,9 +221,11 @@ public class IPNetwork2MutabilityUnitTest
                         Volatile.Write(ref stop, 1);
                     }
                 }
-            });
+            })
+            {
+                IsBackground = true,
+            };
 
-            reader.IsBackground = true;
             readers[i] = reader;
             reader.Start();
         }
@@ -236,16 +238,14 @@ public class IPNetwork2MutabilityUnitTest
                 shared.Value = flip ? NetworkA : NetworkB;
                 flip = !flip;
             }
-        });
+        })
+        {
+            IsBackground = true,
+        };
 
-        writer.IsBackground = true;
         writer.Start();
 
-        var clock = Stopwatch.StartNew();
-        while (clock.Elapsed < Budget && Volatile.Read(ref anomaly) == null)
-        {
-            Thread.Sleep(10);
-        }
+        SpinWait.SpinUntil(() => Volatile.Read(ref anomaly) != null, Budget);
 
         Volatile.Write(ref stop, 1);
         writer.Join(TimeSpan.FromSeconds(30));

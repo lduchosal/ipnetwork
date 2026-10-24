@@ -118,7 +118,10 @@ public class CollectionIndexBoundsUnitTest
             {
                 subnets.Reset();
             }
-        });
+        })
+        {
+            IsBackground = true,
+        };
 
         var reader = new Thread(() =>
         {
@@ -141,17 +144,15 @@ public class CollectionIndexBoundsUnitTest
                     // Throwing is the acceptable behaviour, keep looking for a silent escape.
                 }
             }
-        });
+        })
+        {
+            IsBackground = true,
+        };
 
-        resetter.IsBackground = true;
-        reader.IsBackground = true;
         resetter.Start();
         reader.Start();
 
-        for (int i = 0; i < 200 && Volatile.Read(ref escaped) == null; i++)
-        {
-            Thread.Sleep(10);
-        }
+        SpinWait.SpinUntil(() => Volatile.Read(ref escaped) != null, TimeSpan.FromSeconds(2));
 
         Volatile.Write(ref stop, 1);
         resetter.Join(TimeSpan.FromSeconds(30));

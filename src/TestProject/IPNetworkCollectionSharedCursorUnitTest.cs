@@ -99,9 +99,11 @@ public class IPNetworkCollectionSharedCursorUnitTest
                 {
                     Interlocked.CompareExchange(ref failure, ex.GetType().Name + ": " + ex.Message, null);
                 }
-            });
+            })
+            {
+                IsBackground = true,
+            };
 
-            worker.IsBackground = true;
             workers[i] = worker;
             worker.Start();
         }

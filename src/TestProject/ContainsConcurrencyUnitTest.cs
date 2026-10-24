@@ -73,9 +73,9 @@ public class ContainsConcurrencyUnitTest
             .Where(field => field.Name.IndexOf("broadcast", StringComparison.OrdinalIgnoreCase) >= 0)
             .ToArray();
 
-        Assert.AreEqual(
+        Assert.HasCount(
             1,
-            fields.Length,
+            fields,
             "Expected exactly one broadcast cache field on IPNetwork2 or on its nested state.");
 
         FieldInfo cache = fields[0];
