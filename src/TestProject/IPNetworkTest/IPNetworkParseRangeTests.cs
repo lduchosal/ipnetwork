@@ -34,6 +34,9 @@ public class IPNetworkParseRangeTests
     [DataRow("192.168.0.0 - 192.168.255.255", "192.168.0.0/16")]
     [DataRow("0.0.0.0 - 127.255.255.255", "0.0.0.0/1")]
     [DataRow("0.0.0.0 - 128.0.0.0", "0.0.0.0/1, 128.0.0.0/32")]
+    [DataRow("0.0.0.0 - 255.255.255.255", "0.0.0.0/0")]
+    [DataRow("2001:db8:: - 2001:db8::ffff:ffff", "2001:db8::/96")]
+    [DataRow("2001:db8:: - 2001:db8::2:ffff:ffff", "2001:db8::/95, 2001:db8::2:0:0/96")]
     public void TestParseRange(string range, string expected)
     {
         var result = IPNetwork2.ParseRange(range);
@@ -70,6 +73,9 @@ public class IPNetworkParseRangeTests
     [DataRow("192.168.0.0", "192.168.255.255", "192.168.0.0/16")]
     [DataRow("0.0.0.0", "127.255.255.255", "0.0.0.0/1")]
     [DataRow("0.0.0.0", "128.0.0.0", "0.0.0.0/1, 128.0.0.0/32")]
+    [DataRow("0.0.0.0", "255.255.255.255", "0.0.0.0/0")]
+    [DataRow("2001:db8::", "2001:db8::ffff:ffff", "2001:db8::/96")]
+    [DataRow("2001:db8::", "2001:db8::2:ffff:ffff", "2001:db8::/95, 2001:db8::2:0:0/96")]
     public void TestParseRange(string start, string end, string expected)
     {
         var result = IPNetwork2.ParseRange(start, end);
@@ -142,6 +148,9 @@ public class IPNetworkParseRangeTests
     [DataRow("192.168.0.0 - 192.168.255.255", "192.168.0.0/16")]
     [DataRow("0.0.0.0 - 127.255.255.255", "0.0.0.0/1")]
     [DataRow("0.0.0.0 - 128.0.0.0", "0.0.0.0/1, 128.0.0.0/32")]
+    [DataRow("0.0.0.0 - 255.255.255.255", "0.0.0.0/0")]
+    [DataRow("2001:db8:: - 2001:db8::ffff:ffff", "2001:db8::/96")]
+    [DataRow("2001:db8:: - 2001:db8::2:ffff:ffff", "2001:db8::/95, 2001:db8::2:0:0/96")]
     public void TestTryParseRange(string range, string expected)
     {
         bool parsed = IPNetwork2.TryParseRange(range, out var result);
@@ -179,6 +188,9 @@ public class IPNetworkParseRangeTests
     [DataRow("192.168.0.0", "192.168.255.255", "192.168.0.0/16")]
     [DataRow("0.0.0.0", "127.255.255.255", "0.0.0.0/1")]
     [DataRow("0.0.0.0", "128.0.0.0", "0.0.0.0/1, 128.0.0.0/32")]
+    [DataRow("0.0.0.0", "255.255.255.255", "0.0.0.0/0")]
+    [DataRow("2001:db8::", "2001:db8::ffff:ffff", "2001:db8::/96")]
+    [DataRow("2001:db8::", "2001:db8::2:ffff:ffff", "2001:db8::/95, 2001:db8::2:0:0/96")]
     public void TestTryParseRange(string start, string end, string expected)
     {
         bool parsed = IPNetwork2.TryParseRange(start, end, out var result);
@@ -196,6 +208,9 @@ public class IPNetworkParseRangeTests
     [TestMethod]
     [DataRow("0.0.0.0", "127.255.255.255", "0.0.0.0/1")]
     [DataRow("0.0.0.0", "128.0.0.0", "0.0.0.0/1, 128.0.0.0/32")]
+    [DataRow("0.0.0.0", "255.255.255.255", "0.0.0.0/0")]
+    [DataRow("2001:db8::", "2001:db8::ffff:ffff", "2001:db8::/96")]
+    [DataRow("2001:db8::", "2001:db8::2:ffff:ffff", "2001:db8::/95, 2001:db8::2:0:0/96")]
     public void TestInternalParseRange(string start, string end, string expected)
     {
         bool parsed = IPNetwork2.InternalParseRange(true, start, end, out var result);
@@ -244,6 +259,7 @@ public class IPNetworkParseRangeTests
     [DataRow("0.0.0.0 - null")]
     [DataRow("0.0.0.0 - ::1")]
     [DataRow("::1 - 0.0.0.0")]
+    [DataRow("192.168.0.2 - 192.168.0.1")]
     [DataRow("")]
     [DataRow("1.1.1.1 - 2.2.2.2 - 3.3.3.3")]
     [DataRow("1.1.1.1 - 2.2.2.2 - 3.3.3.3 - 4.4.4.4")]
@@ -262,6 +278,7 @@ public class IPNetworkParseRangeTests
     [DataRow(null, "128.0.0.0")]
     [DataRow("0.0.0.0", null)]
     [DataRow("0.0.0.0", "::1")]
+    [DataRow("192.168.0.2", "192.168.0.1")]
     public void TestInternalParseRangeTrue(string start, string end)
     {
         bool parsed = IPNetwork2.InternalParseRange(true, start, end, out var _);
