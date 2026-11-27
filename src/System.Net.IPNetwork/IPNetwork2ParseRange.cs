@@ -233,6 +233,12 @@ public partial class IPNetwork2
 
         if (startValue > endValue)
         {
+            if (tryParse)
+            {
+                ipnetworks = null;
+                return false;
+            }
+
             throw new ArgumentException("Start IP must be less than or equal to end IP", nameof(end));
         }
 
@@ -249,7 +255,7 @@ public partial class IPNetwork2
             result.Add(network);
         
             // Move to the next IP after this block
-            uint blockSize = (uint)(1 << (addressBits - prefixLength));
+            BigInteger blockSize = BigInteger.One << (addressBits - prefixLength);
             current += blockSize;
         }
         
